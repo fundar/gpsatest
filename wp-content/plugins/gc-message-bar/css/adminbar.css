@@ -1,0 +1,17 @@
+.gc_adminbar_icon>a {
+    color: white !important;
+    background: #008dbe !important;
+}
+.gc_adminbar_icon>a:hover {
+    color: white !important;
+    background: #819829 !important;
+}
+.gc_adminbar_icon {
+    .ab-submenu>li>a {
+        color: #008dbe !important;
+    }
+    .ab-submenu>li>a:hover {
+        color: white !important;
+        background: #008dbe !important;
+    }
+}

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+	<addon>
+		<slug>eventon-action-user</slug>
+		<name>Action User</name>
+		<link>http://www.myeventon.com/addons/action-user/</link>
+		<download>http://www.myeventon.com/addons/action-user/</download>
+		<icon>assets/images/icons/icon_au.jpg</icon>
+		<iconty>local</iconty>
+		<desc>Wanna get event contributors involved in your EventON calendar with better permission control? You can do that plus lot more with Action User addon.</desc>
+	</addon>
+	<addon>
+		<slug>eventon-daily-view</slug>
+		<name>Daily View Addon</name>
+		<link>http://www.myeventon.com/addons/daily-view/</link>
+		<download>http://www.myeventon.com/addons/daily-view/</download>
+		<icon>assets/images/icons/icon_dv.jpg</icon>
+		<iconty>local</iconty>
+		<desc>Do you have too many events to fit in one month and you want to organize them into days? This addon will allow you to showcase events for one day of the month at a time.</desc>
+	</addon>
+	<addon>
+		<slug>eventon-full-cal</slug>
+		<name>Full Cal</name>
+		<link>http://www.myeventon.com/addons/full-cal/</link>
+		<download>http://www.myeventon.com/addons/full-cal/</download>
+		<icon>assets/images/icons/icon_fc.jpg</icon>
+		<iconty>local</iconty>
+		<desc>The list style calendar works for you but you would really like a full grid calendar? Here is the addon that will convert EventON to a full grid calendar view.</desc>
+	</addon>
+	<addon>
+		<slug>eventon-geo-calendar</slug>
+		<name>Geo Calendar</name>
+		<link>http://www.myeventon.com/addons/geo-calendar/</link>
+		<download>http://www.myeventon.com/addons/geo-calendar/</download>
+		<icon>assets/images/icons/icon_geo.jpg</icon>
+		<iconty>local</iconty>
+		<desc>If location of an event is more important to you than time, this is what you want. Convert your EventON calendar to a location-based event type calendar where location of an event comes before date.</desc>
+	</addon>
+	<addon>
+		<slug>eventon-single-event</slug>
+		<name>Single Events</name>
+		<link>http://www.myeventon.com/addons/single-events/</link>
+		<download>http://www.myeventon.com/addons/single-events/</download>
+		<icon>assets/images/icons/icon_sin.jpg</icon>
+		<iconty>local</iconty>
+		<desc>Looking to promote single events in EventON via social media? Use this addon to share individual event pages that matches the awesome EventON layout design.</desc>
+	</addon>
+	
+	<addon>
+		<slug>eventon-daily-repeats</slug>
+		<name>Daily Repeats</name>
+		<link>http://www.myeventon.com/addons/daily-repeats/</link>
+		<download>http://www.myeventon.com/addons/daily-repeats/</download>
+		<icon>assets/images/icons/icon_dr.jpg</icon>
+		<iconty>local</iconty>
+		<desc>Daily Repeats will allow you to create events that can repeat on a daily basis - a feature that extends the repeating events capabilities of the calendar.</desc>
+	</addon>
+	<addon>
+		<slug>eventon-csv-importer</slug>
+		<name>CSV Importer</name>
+		<link>http://www.myeventon.com/addons/csv-event-importer/</link>
+		<download>http://www.myeventon.com/addons/csv-event-importer/</download>
+		<icon>assets/images/icons/icon_csv.jpg</icon>
+		<iconty>local</iconty>
+		<desc>Are you looking to import events from another program to EventON? CSV Import addon is the tool for you. It will import any number of events from a properly build CSV file into your EventON Calendar in few steps.</desc>
+	</addon>	
+		
+</xml>

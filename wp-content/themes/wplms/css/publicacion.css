@@ -1,0 +1,26 @@
+/** publicaciones **/
+.top-puplicaciones {
+    margin: 0;
+    padding: 50px 0;
+}
+.separador {
+    background: none repeat scroll 0 0 #dbdbdb;
+    height: 1px;
+    margin-bottom: 15px;
+}
+.publicacionpost {
+    clear: both;
+    margin-bottom: 10px;
+}
+.publicacionpost h3 {
+    font-family: steelfish_rgregular;
+    font-size: 26px;
+    margin-top: 0;
+}
+.tags {
+    border-top: 0px solid #000!important;
+    display: inline-block;
+    margin-top:0px;
+    padding: 0 0 10px !important;
+    width: 100%;
+}

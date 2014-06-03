@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8 />
+	<title>Roster of Practitioners</title>
+
+	<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'/>
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.js'></script>
+	<link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.css' rel='stylesheet'/>
+	<link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.css' rel='stylesheet'/>
+	<link href='css/map-style.css' rel='stylesheet'/>
+	<script src="js/gpsa-rosters.geojson.js" type="text/javascript"></script>
+	<style>
+		body { margin:0; padding:0; }
+		#map { position: absolute !important; }
+	</style>
+</head>
+<body>
+	<div id='map'>
+		<div id="themes-layers" class="layers"></div>
+		<div id='info'></div>
+	</div>
+
+	<script src="js/map-init.js" type="text/javascript"></script>
+</body>
+</html>

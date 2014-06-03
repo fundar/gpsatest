@@ -1,0 +1,711 @@
+/* This stylesheet is for admin page. I really need to spent some time to optimize it… :\ */
+
+
+
+#post-categories-select {
+	display: none;
+}
+#post-taxonomy-relation {
+	vertical-align: top;
+}
+
+
+table.tc-variables-table {
+	border-spacing: 0;
+	border: none;
+	width: 100%;
+	position: relative;
+	margin: 1em 0 2em;
+	font-size: 13px;
+	line-height: 22px;
+}
+table.tc-variables-table thead {
+	border-bottom: 2px solid #000;
+}
+table.tc-variables-table td, 
+table.tc-variables-table th {
+	border: none;
+	text-align: left;
+	vertical-align: top;
+	padding: 0;
+	border-image: initial;
+}
+table.tc-variables-table th {
+	font-weight: bold;
+	font-size: 12px;
+	line-height: 18px;
+	color: #222222;
+	padding-left: 11px;
+	padding-right: 22px;
+	padding-bottom: 11px;
+}
+
+table.tc-variables-table td {
+	line-height: 22px;
+	padding: 6px 22px 6px 11px;
+}
+table.tc-variables-table td:first-child {
+	font-family: 'Courier',monospace;
+	font-size: 12px;
+}
+table.tc-variables-table tbody tr:nth-child(odd) td {
+	background-color: #f0f7fe;
+}
+table.tc-variables-table tbody tr:hover td {
+	background-color: #fff6bf !important;
+}
+table.settings-table tbody tr:hover td {
+	background-color: #f0f7fe !important;
+}
+	
+
+#touchcarousel-options input[type="text"],
+#touchcarousel-options input[type="number"] {
+	width: 75px;
+}
+.tc-tip {
+	position: absolute;
+	top: -32px;
+	left: 10px;
+	width: 380px;
+	color: #555;
+}
+
+
+#layout-text-input,
+#layout-css-text-input {
+	font-family: 'Courier',monospace;
+	font-size: 12px;
+	
+	width: 100%;
+	
+	line-height: 1.4;
+	-moz-tab-size:4; 
+	-o-tab-size:4; 
+	-webkit-tab-size:4; 
+	tab-size:4;
+}
+.ui-dropdownchecklist-selector {
+	border: 1px solid #ddd;
+	background: #fff url(dropdown.png) no-repeat center right;
+	height: 22px;
+}
+.ui-dropdownchecklist-selector:hover {
+	background-image: url(dropdown_hover.png);
+	border-color: #5794bf;
+}
+.ui-dropdownchecklist-selector.ui-state-disabled {
+	background-image: none !important;
+	border-color: #ddd !important;
+	color: #555;
+}
+.ui-dropdownchecklist-text {
+	font-size: 12px;
+	line-height: 15px;
+
+	 padding: 3px 3px 3px ; 
+	margin-right: 17px; /* background dropdown.png image */
+}
+
+.ui-dropdownchecklist-dropcontainer {
+	background-color: #fff;
+	border: 1px solid #999;
+}
+
+.ui-dropdownchecklist-item {
+	padding: 3px 3px 4px;
+}
+
+.ui-dropdownchecklist-item-hover {
+	background-color: #39f;
+}
+
+.ui-dropdownchecklist-item-disabled label {
+	color: #ccc;
+}
+
+.ui-dropdownchecklist-item-hover .ui-dropdownchecklist-text {
+	color: #fff;
+}
+
+.ui-dropdownchecklist-group {
+	font-weight: bold;
+	font-style: italic;
+	padding: 7px 5px 3px;
+}
+
+.ui-dropdownchecklist-indent {
+	padding-left: 20px;
+}
+
+.settings-table {
+	width: 100%;
+}
+.settings-table td {
+	vertical-align: top;
+	padding: 8px 4px;
+}
+.settings-table td:first-child label {
+	text-align: right;
+	width: 150px;
+	float: right;
+	margin-top: 4px;
+}
+.radio-buttons label {
+	padding: 4px 6px 4px 0;
+	display: block;
+}
+.radio-buttons input {
+	margin-right: 6px;
+}
+
+
+
+#layout-type-group {
+	list-style-type: none;
+	margin-left: -10px;
+}
+#layout-type-group li {
+	margin-left: 10px;
+	padding: 5px;
+	width: 100px;
+	background: #FFF;
+	border-radius: 4px;
+	border: 2px solid #EEE;
+	float: left;
+	cursor: pointer;
+	text-align: center;
+	color: #21759b;
+	font-weight: bold;
+}
+#layout-type-group li:active {
+	box-shadow: inset 0 2px 2px rgba(0,0,0,0.1);
+}
+#layout-type-group li.first {
+	margin-left: 0;
+}
+#layout-type-group .layout-image {
+	width: 100px;
+	height: 60px;
+	display: block;
+}
+#layout-type-group .layout-title {
+	margin: 0;
+	display: block;
+}
+#layout-type-group li:hover {
+	border: 2px solid rgba(0,0,0,0.3);
+}
+#layout-type-group li:active {
+	border: 2px solid rgba(0,0,0,0.4);
+}
+#layout-type-group li.selected {
+	border: 2px solid #90bacd;
+}
+/*
+#layout-1 {
+	background: url("../img/layout1.png");
+}
+#layout-2 {
+	background: url("../img/layout2.png");
+}
+#layout-3 {
+	background: url("../img/layout3.png");
+}
+#layout-4 {
+	background: url("../img/layout4.png");
+}
+*/
+#layout-custom-img {
+	background: url("../img/layout-custom.png");
+}
+.layout-info-text {
+	margin-top: 12px;
+	margin-bottom: 4px;
+}
+textarea {
+	width:100%;
+}
+.tc-left-column {
+	float: left;
+	width: 610px;
+}
+.back-to-list-link {
+	text-decoration: none;
+	margin-top: 11px;
+	display: block;
+	width: 180px;
+	
+}
+
+
+
+
+
+
+
+
+
+.touchcarousel-admin .manage-slides-block {
+	width:100%;
+	float:left;
+	margin-right: 420px;
+	background:red;
+}
+
+.touchcarousel-admin .sortable-slides-container {
+	margin-right: 420px;
+}
+.touchcarousel-admin .sortable-slides-body {
+	float: left;
+	clear: left;
+	width: 100%;
+	margin-right: -420px;
+}
+.touchcarousel-admin .options-sidebar {
+	float: right;
+	clear: right;	
+	width: 400px;
+	position: relative;
+	display: block;
+}
+
+
+
+.touchcarousel-admin .actions-holder {
+	margin-top:-1px;
+	margin-bottom:21px;
+	padding:5px 10px 4px;
+	height:23px;
+}
+
+.touchcarousel-admin .actions-holder .waiting {
+	width: 50px;
+	height: 16px;
+	padding: 0;
+	overflow: hidden;
+	margin-left: 10px;
+	margin-top: 4px;
+	background-repeat: no-repeat;	
+	float: left;
+	text-align: left;
+	background-position: top left;
+	color: #008000;
+}
+.touchcarousel-admin .actions-holder .waiting.ajax-saved {
+	visibility:visible;
+	background-image: none !important;
+}
+.touchcarousel-admin .actions-holder .waiting.unsaved {
+	color: red;
+}
+
+.touchcarousel-admin .button80 {
+	min-width: 80px;
+	text-align: center;
+}
+
+
+.touchcarousel-admin .incorrect-image-url {
+	color:#C00;	
+}
+#save-slider {
+	float: left;
+}
+
+
+
+
+
+
+.touchcarousel-admin .options-sidebar label{
+	display: block;
+	float: left;		
+	width: 130px;
+	text-align: right;
+	margin: 5px 5px 0 0;
+}
+.touchcarousel-admin .options-sidebar .unit {
+	float:left;
+	display:block;	
+	margin: 6px 0 0 3px;
+}
+.touchcarousel-admin .options-sidebar input{
+	float:left;
+}
+.touchcarousel-admin .options-sidebar input[type=checkbox] {
+    margin-top: 6px;
+}
+.touchcarousel-admin .options-sidebar select {
+	width:150px;
+}
+.touchcarousel-admin .options-sidebar .fields-group {
+	padding: 0 0 0 0;
+	border-bottom: 1px solid #EEEBEB;
+	margin-bottom: 10px;
+}
+
+
+
+.rs-hidden-controls {
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+	filter: alpha(opacity=30);
+	-moz-opacity: 0.3;
+	-khtml-opacity: 0.3;
+	opacity: 0.3;		
+}
+a.button-primary {
+	color:#FFF !important;
+}
+
+
+.touchcarousel-admin .options-sidebar .field-row {
+	clear: both;
+	margin-bottom: 10px;
+	height: 20px;
+	position: relative;	
+}
+.touchcarousel-admin .hidden {
+	display:none !important;
+}
+
+
+
+.touchcarousel-content-editor .slide-area {
+	border:1px solid #CCC;
+	float:left;
+	position:relative;
+	overflow:hidden;
+	margin-top:7px;
+}
+.touchcarousel-content-editor .admin-captions-container {	
+	width:100%;
+	height:100%;
+	margin:0;
+	padding:0;
+	position:relative;
+}
+.rs-tooltip {
+	opacity:0.8 !important;
+}
+
+.touchcarousel-content-editor .admin-caption-item {
+	position:absolute !important;	
+	left:0;
+	top:0;
+	border:none;
+	min-width:0;
+	min-height:0;
+	cursor:move !important;
+	
+	/*padding:15px 10px;
+	
+	font-family:Georgia;
+	font-size:24px;
+	color:white;
+	background:rgba(0,0,0,0.75);*/
+	
+	z-index:0;
+}
+.touchcarousel-content-editor .admin-caption-item.rs-editor {	
+	font-family: sans-serif;
+	font-size:13px;
+	padding:0;
+	color:#000;
+	background:none;	
+	min-width:200px;
+	min-height:100px;	
+	z-index:10000;
+}
+.touchcarousel-content-editor .admin-caption-item .rs-handle {
+	width:20px;
+	height:20px;
+	background:#FDD;
+	
+}
+.touchcarousel-content-editor #sortable-captions {
+	overflow-x: hidden;
+	overflow-y: scroll;
+	height: 130px;
+	position: relative;
+	width: 190px;
+	float: left;
+	margin-left: -100%;
+	padding: 5px;
+}
+.touchcarousel-content-editor .ui-state-default {
+	cursor:move;
+	padding:3px 5px;
+	position:relative;
+}
+.touchcarousel-content-editor .list-item-selected {
+	/*-webkit-box-shadow: inset 0 0 0 2px #FFC369;
+	-moz-box-shadow: inset 0 0 0 2px #FFC369;
+	box-shadow: inset 0 0 0 2px #FFC369;*/
+	border-color: #FFC369 !important;
+	background: #FFD699 !important;
+
+}
+.touchcarousel-content-editor #sortable-captions .ui-caption-remove {
+	width: 18px;
+	height: 16px;
+	background: red;
+	display: block;
+	position: absolute;
+	right: 2px;
+	top: 3px;
+	
+	cursor:pointer;
+	
+	background:url(../images/admin_icons.png) 0 0 no-repeat;
+	background-position: -30px -36px;
+}
+.touchcarousel-content-editor .content-editor-options {	
+	margin-top:0px;
+	
+	width:100%;	
+	height:200px;
+	float:left;
+	
+	font-size: 12px;
+	color:#333;
+	
+	position:relative;
+}
+.touchcarousel-content-editor .content-editor-options .button-primary {
+	margin-top:10px;
+}
+.touchcarousel-content-editor .content-editor-options .ui-sortable {
+	border:1px solid #CCC;	
+}
+.touchcarousel-content-editor label,
+.touchcarousel-content-editor input,
+.touchcarousel-content-editor select {
+	float: left;	
+
+}
+.touchcarousel-content-editor input[type='text'] {
+	width:50px;
+}
+.touchcarousel-content-editor .base-props {
+	float:left;
+	margin:10px 0 7px 109px;
+}
+.touchcarousel-content-editor label {
+	display: block;
+	float: left;				
+	margin: 3px 4px 0 0;
+}
+.touchcarousel-content-editor .base-props label {
+	margin-left:10px;
+}
+.touchcarousel-content-editor .base-props select {
+	margin-right:20px;
+}
+
+.touchcarousel-content-editor select {
+	
+}
+.touchcarousel-content-editor .fields-group {
+	float:left;	
+}
+.touchcarousel-content-editor .animation-type-block {
+	width:140px;
+	float:left;
+	height:125px;
+	margin-left:10px;
+	margin-top:16px
+}
+
+.touchcarousel-content-editor .hidden-group {
+	visibility:hidden;
+}
+.touchcarousel-content-editor .animation-type-block .radio-group-label {
+	margin-top:-1px;
+}
+.touchcarousel-content-editor .animation-type-block .r-button {
+ 
+	padding: 2px 0;
+	clear: both;
+}
+.touchcarousel-content-editor .animation-type-block label {
+    display: block;
+    padding: 2px 0 0 10px;
+}
+
+.touchcarousel-content-editor .animation-type-block input {
+    float: left;
+    position: relative;
+    top: 6px;
+    left: 6px;
+}
+.touchcarousel-content-editor .animation-settings-block {
+	float:left;
+	margin-top:2px;	
+}
+
+/*.touchcarousel-content-editor .main-animation-block {
+	background: #f5f5f5;
+	border: 1px solid #dfdfdf;
+	width:100%;
+	margin-left: 210px;
+}
+
+.touchcarousel-content-editor .main-block-container {
+	float: right;
+	clear: right;
+	width: 100%;
+	margin-left: -210px;
+	position: relative;
+}*/
+.touchcarousel-content-editor .main-animation-block {
+	background: #f5f5f5;
+	border: 1px solid #dfdfdf;
+	margin-left: 210px; 
+}
+.touchcarousel-content-editor .text-area-caption-editor {
+	font: normal normal normal 12px/1.5em Verdana,Arial,sans-serif;
+}
+.touchcarousel-content-editor .main-block-container {
+	
+	float: left;
+    width: 100%;
+  
+   
+	/*float: right;
+	clear: right;
+	width: 100%;
+	margin-left: -210px;
+	position: relative;*/
+}
+
+.touchcarousel-content-editor .main-animation-block .field-row{
+	margin-top:10px;
+	float:left;
+}
+.touchcarousel-content-editor .animation-settings-block input[type='text'] {
+	width:70px;
+}
+.touchcarousel-content-editor .animation-settings-block input[type='checkbox'] {
+	margin-top:4px;
+}
+.touchcarousel-content-editor .animation-settings-block label {
+	float:left;
+	clear:left;
+}
+.touchcarousel-content-editor .animation-settings-block .col {	
+	float:left;
+	
+}
+.touchcarousel-content-editor .animation-settings-block .col1 {	
+	width:70px;
+	margin-right:30px;
+}
+.touchcarousel-content-editor .animation-settings-block .col2 {	
+	width:150px;
+	margin-right:25px;
+}
+.touchcarousel-content-editor .animation-settings-block .col3 {	
+	width:100px;
+	margin-top:20px;
+	margin-right:15px;
+}
+.touchcarousel-content-editor .animation-settings-block .col3 {	
+	width:100px;
+	margin-top:20px;
+}
+.touchcarousel-content-editor .animation-settings-block .col3 {	
+	width:100px;
+	margin-top:21px;
+}
+.touchcarousel-content-editor .animation-settings-block .move-dist-container {
+	margin-top:14px;
+}
+
+
+/*.touchcarousel-content-editor input[type='checkbox'] {
+	border:1px solid red;
+	
+	float: none;
+	clear: none;
+	width: auto;
+}
+.touchcarousel-content-editor label[type='checkbox'] {	
+	float: none;
+	clear: none;
+	width: auto;
+}*/
+.touchcarousel-content-editor div.label_checkbox_pair {
+	clear: both;
+	float: none;
+	position: relative;
+}
+.touchcarousel-content-editor div.label_checkbox_pair input {
+	left: 0px;
+	position: absolute;
+	top: 2px;
+	width:auto;
+	float:none;
+	clear:none;
+}
+.touchcarousel-content-editor div.label_checkbox_pair label {
+	display: block;
+	margin-left: 20px;
+}
+
+
+
+.touchcarousel-content-editor .options-half {
+	width:90px;
+	float:left;		
+}
+.touchcarousel-content-editor .options-separator {
+	height:20px;
+	width:200px;
+}
+.touchcarousel-content-editor .options-half.options-last {
+	margin-left:20px;
+}
+.touchcarousel-content-editor input {
+	/*width:90px;*/
+	
+}
+
+.touchcarousel-content-editor .rs-selected {
+	 -webkit-box-shadow: inset  0 0 0 2px #FFC369;
+     -moz-box-shadow: inset  0 0 0 2px #FFC369;
+     box-shadow: inset 0 0 0 2px #FFC369;
+}
+
+.touchcarousel-admin .touchcarousels-table tr {
+	height:45px;
+}
+
+/* tabs */
+.touchcarousel-admin .settings-area .ui-tabs-nav {
+	padding:0;
+}
+.touchcarousel-admin .settings-area .ui-tabs-panel {
+	padding: 0.5em 0;
+}
+.touchcarousel-admin .settings-area .ui-widget-content {
+	background: none;
+	border: none;
+}
+.touchcarousel-admin .settings-area .ui-state-active {
+	background: #f5f5f5;
+	border-color: #dfdfdf;
+}
+.touchcarousel-admin .settings-area .ui-widget-header {
+	border: none;
+}
+.touchcarousel-admin .settings-area .ui-tabs-nav {
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+	border-radius: 0;
+	
+	border-bottom: 1px solid #dfdfdf;
+	background: none;
+	
+}
+

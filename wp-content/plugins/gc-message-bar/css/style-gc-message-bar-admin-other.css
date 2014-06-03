@@ -1,0 +1,160 @@
+/* import resources */
+/* common vars */
+/* c: color / bg: background / err: error  */
+/*@defc_bodycolor_light:  #999999;*/
+/* a: a3be2d; */
+/* ENGINE */
+/* common styling functions: sf */
+/* core functions: cf */
+/* base core functions: bcf */
+#gc_message_bar_allow_or_deny .inside {
+  padding: 8px 12px 8px 10px !important;
+  margin: 0 !important;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  -webkit-border-radius: 5px 5px 0 0;
+  -moz-border-radius: 5px 5px 0 0;
+  -ms-border-radius: 5px 5px 0 0;
+  -o-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+  background: #d5ecf4;
+  /* Old browsers */
+
+  background-image: url('../images/white_noise_texture.png'), -moz-linear-gradient(top, #ffffff 0%, #d5ecf4 100%);
+  /* FF3.6+ */
+
+  background-image: url('../images/white_noise_texture.png'), -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #d5ecf4));
+  /* Chrome,Safari4+ */
+
+  background-image: url('../images/white_noise_texture.png'), -webkit-linear-gradient(top, #ffffff 0%, #d5ecf4 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background-image: url('../images/white_noise_texture.png'), -o-linear-gradient(top, #ffffff 0%, #d5ecf4 100%);
+  /* Opera 11.10+ */
+
+  background-image: url('../images/white_noise_texture.png'), -ms-linear-gradient(top, #ffffff 0%, #d5ecf4 100%);
+  /* IE10+ */
+
+  background-image: url('../images/white_noise_texture.png'), linear-gradient(to bottom, #ffffff 0%, #d5ecf4 100%);
+  /* W3C */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffff, endColorstr=#d5ecf4, GradientType=0);
+  /* IE6-9 */
+
+  background-repeat: repeat-all;
+  background-position: top center, top center;
+  /* onoff */
+
+}
+#gc_message_bar_allow_or_deny .inside .onoff .edit {
+  float: left;
+  height: 30px;
+}
+#gc_message_bar_allow_or_deny .inside .onoff .edit a {
+  height: 24px;
+  line-height: 24px;
+  border: 3px solid #bbbbbb;
+  display: inline-block;
+  font-weight: 700 !important;
+  font-size: 14px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+#gc_message_bar_allow_or_deny .inside .onoff .edit a b {
+  display: block;
+  width: 16px;
+  height: 16px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  background-color: #dddddd;
+  background-image: -moz-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: -ms-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#eeeeee), to(#dddddd));
+  background-image: -webkit-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: -o-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: linear-gradient(top, #eeeeee, #dddddd);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@uppercolor', endColorstr='@lowercolor', GradientType=0);*/
+
+}
+#gc_message_bar_allow_or_deny .inside .onoff .edit a span {
+  display: block;
+  padding: 0 8px;
+  line-height: 24px;
+  width: 30px;
+  text-align: center;
+}
+#gc_message_bar_allow_or_deny .inside .onoff .edit a:hover {
+  border: 3px solid #008dbe;
+  position: relative;
+}
+#gc_message_bar_allow_or_deny .inside .onoff .edit a:hover b {
+  background-color: #008dbe;
+  background-image: -moz-linear-gradient(top, #56bcef, #008dbe);
+  background-image: -ms-linear-gradient(top, #56bcef, #008dbe);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#56bcef), to(#008dbe));
+  background-image: -webkit-linear-gradient(top, #56bcef, #008dbe);
+  background-image: -o-linear-gradient(top, #56bcef, #008dbe);
+  background-image: linear-gradient(top, #56bcef, #008dbe);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@uppercolor', endColorstr='@lowercolor', GradientType=0);*/
+
+}
+#gc_message_bar_allow_or_deny .inside .onoff .edit .on {
+  background: #f2f9fc;
+  color: #008dbe;
+}
+#gc_message_bar_allow_or_deny .inside .onoff .edit .on b {
+  border: 1px solid white;
+  float: left;
+  margin-right: 3px;
+  -moz-box-shadow: 0 0 1px 1px rgba(69, 69, 69, 0.7), inset 0 -3px 0 0 #bbbbbb;
+  -webkit-box-shadow: 0 0 1px 1px rgba(69, 69, 69, 0.7), inset 0 -3px 0 0 #bbbbbb;
+  box-shadow: 0 0 1px 1px rgba(69, 69, 69, 0.7), inset 0 -3px 0 0 #bbbbbb;
+}
+#gc_message_bar_allow_or_deny .inside .onoff .edit .on span {
+  float: left;
+}
+#gc_message_bar_allow_or_deny .inside .onoff .edit .on:hover b {
+  border: 1px solid #9cd6f1;
+  -moz-box-shadow: 0 0 1px 1px rgba(69, 69, 69, 0.8), inset 0 -3px 0 0 #0079a9;
+  -webkit-box-shadow: 0 0 1px 1px rgba(69, 69, 69, 0.8), inset 0 -3px 0 0 #0079a9;
+  box-shadow: 0 0 1px 1px rgba(69, 69, 69, 0.8), inset 0 -3px 0 0 #0079a9;
+}
+#gc_message_bar_allow_or_deny .inside .onoff .edit .off {
+  background: #666666;
+  color: #dddddd;
+}
+#gc_message_bar_allow_or_deny .inside .onoff .edit .off b {
+  border: 1px solid white;
+  float: left;
+  margin-left: 3px;
+  -moz-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.7), inset 0 -3px 0 0 #bbbbbb;
+  -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.7), inset 0 -3px 0 0 #bbbbbb;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.7), inset 0 -3px 0 0 #bbbbbb;
+}
+#gc_message_bar_allow_or_deny .inside .onoff .edit .off span {
+  float: left;
+}
+#gc_message_bar_allow_or_deny .inside .onoff .edit .off:hover b {
+  border: 1px solid #9cd6f1;
+  -moz-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.8), inset 0 -3px 0 0 #0079a9;
+  -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.8), inset 0 -3px 0 0 #0079a9;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.8), inset 0 -3px 0 0 #0079a9;
+}
+#gc_message_bar_allow_or_deny .inside .onoff .label {
+  float: left;
+  margin-left: 16px;
+}
+#gc_message_bar_allow_or_deny .inside .onoff .label label {
+  line-height: 30px;
+  height: 30px;
+  cursor: auto;
+}

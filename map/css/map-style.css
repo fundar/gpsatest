@@ -1,0 +1,41 @@
+#map { position:relative; top:0; bottom:0; width:100%; }
+#info {
+	background:rgba(255,255,255,0.75);
+	border:1px solid #fff;
+	position:relative;
+	width:260px;
+	top:10px;
+	right:10px;
+	padding:10px;
+	border-radius:3px;
+	float:right;
+	z-index:2;
+}
+
+#themes-layers {
+	bottom: 5px;
+	left: 10px;
+	position: absolute;
+	width: 168px;
+	z-index: 100;
+}
+
+#themes-layers a:hover, #themes-layers a:focus, #themes-layers a.active {
+	background: none repeat scroll 0 0 #85A5B7;
+	border-left: 5px solid #333333;
+	color: #FFFFFF;
+	width:168px;
+}
+
+#themes-layers a {
+	background: none repeat scroll 0 0 #a9d7ef;
+	border-left: 5px solid #FFFFFF;
+	color: #FFFFFF !important;
+	margin: 1px 0 !important;
+	padding: 4px;
+	text-decoration:none !important;
+	border: 1px solid #333;
+	cursor:pointer;
+	width:163px;
+	float:left;
+}

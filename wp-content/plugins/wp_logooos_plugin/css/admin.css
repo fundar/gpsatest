@@ -1,0 +1,107 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* ======================= General Style ======================= */
+
+.horizontalRuler {
+	border: 0;
+	color: #DCDCDC;
+	background-color: #DCDCDC;
+	height: 1px;
+	width: 100%;
+	text-align: left;
+	margin-top:20px;
+	margin-bottom:20px;
+}
+
+#titlediv {
+	margin-bottom:20px;
+}
+
+#logooos_page_title {
+	font-weight:normal;
+	color:#777777;
+	height:60px;
+	line-height:60px;
+	border-bottom:1px solid #DDDDDD;
+	margin:0px 20px 20px 0px;
+}
+
+.successMessage {
+	background-color: #fffbcc;
+	border:1px solid #e6db55;
+	padding:10px;
+	margin:0px 20px 20px 0px;
+	color:#777777;
+}
+
+.failMessage {
+	background-color: #ffd1d1;
+	border:1px solid #db7a7a;
+	padding:10px;
+	margin:0px 20px 20px 0px;
+	color:#777777;
+}
+
+/* ======================= Generate Shortcode ======================= */
+
+
+#logooos_gene_short_leftSidebar {
+	width:220px;
+	float:left;
+	border:1px solid #DDDDDD;
+	background-color:#F5F5F5;
+	padding:10px;
+}
+#logooos_gene_short_leftSidebar .row {
+	display:block;
+	margin-top:10px;
+	padding-top:10px;
+	border-top:1px solid #DDDDDD;
+}
+#logooos_gene_short_leftSidebar .row:first-child {
+	margin-top:0px;
+	padding-top:0px;
+	border-top:none;
+}
+#logooos_gene_short_leftSidebar .row label {
+	display:block;
+	margin-bottom:5px;
+	font-weight:bold;
+}
+#logooos_gene_short_leftSidebar .row select,
+#logooos_gene_short_leftSidebar .row input[type="text"] {
+	width:218px;
+	margin:0px;
+}
+
+#logooos_gene_short_leftSidebar .row .button-primary {
+	height: 26px;
+	display: inline-block;
+	vertical-align: top;
+}
+
+#logooos_noteParagraph {
+	margin:0px 20px 20px 262px;
+	color:#777777;
+}
+#logooos_div_shortcode {
+	background-color: #fffbcc;
+	border:1px solid #e6db55;
+	padding:10px;
+	margin:0px 20px 20px 262px;
+	color:#777777;
+}
+
+#logooos_gene_short_preview {
+	margin:0px 20px 0px 262px;
+	/*padding:25px;
+	border:1px solid #DDDDDD;*/
+}
+
+.logooos_farbtastic {
+	display:none;
+}
+
+
+

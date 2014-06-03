@@ -1,0 +1,119 @@
+.chosen-container{
+	min-width:140px !important;
+}
+
+#menu-posts-vibetheme div.wp-menu-image:before {
+content: "\f100" !important;
+}
+
+#menu-posts-vibeplugin div.wp-menu-image:before {
+content: "\f106" !important;
+}
+
+.meta_box_repeatable_remove{
+	text-decoration: none;
+	color:#bb4138;
+}
+.sort.handle{
+	color:#166a82;
+}
+
+#menu-posts-features div.wp-menu-image:before {
+content: "\f325" !important;
+}
+
+.menu-icon-generic.toplevel_page_lms div.wp-menu-image:before {
+content: "\f123" !important;
+}
+
+#menu-posts-codex div.wp-menu-image:before {
+content: "\f118" !important;
+}
+
+#menu-posts-testimonials div.wp-menu-image:before {
+content: "\f132" !important;
+}
+.author-social-remove{
+	text-decoration: none;
+}
+.icon-cancel{
+	display: inline-block;
+width: 26px;
+height: 26px;
+-webkit-font-smoothing: antialiased;
+font-size: 26px;
+color:#b43e36;
+line-height: 1;
+font-family: "dashicons";
+text-decoration: inherit;
+font-weight: normal;
+font-style: normal;
+vertical-align: top;
+-moz-transition: color .1s ease-in 0;
+-webkit-transition: color .1s ease-in 0;
+text-align: center;
+}
+.icon-cancel:before{
+	content: "\f158";
+	font-family: 'dashicons';
+
+}
+.vibe-reports-wrap{
+	margin-left: 300px;
+padding-top: 18px;
+}
+
+.vibe-reports-wrap .postbox .stat{
+	font-size: 1.5em!important;
+	font-weight: bold;
+	text-align: center;
+}
+
+.vibe-reports-wrap .vibe-reports-sidebar {
+display: inline;
+width: 281px;
+margin-left: -300px;
+clear: both;
+float: left;
+}
+.vibe-reports-wrap .vibe-reports-main {
+float: left;
+min-width: 100%;
+}
+
+.on_off{
+   width:65px;
+   height:26px;
+   display:block;
+   background: url(../images/off.png);
+}
+.on_off.active{
+   background: url(../images/on.png);
+}
+.on_off_mega,.sidebar-columns,
+.select-sidebar{
+    display:none;
+}
+.menu-item-depth-1 .on_off_mega,
+.select-sidebar.active,
+.sidebar-columns.active{
+   display:block; 
+}
+
+.lms-settings li{
+	padding: 12px 0;
+	border-bottom: 1px solid #DDD;
+}
+.lms-settings li span{
+	color:#bbb;
+	margin-left:20px;
+	font-size:11px;
+	text-transform: uppercase;
+}
+.lms-settings li label{
+	font-weight: 600;
+	font-size: 14px;
+	margin-right:20px;
+	width:320px;
+	float:left;
+}

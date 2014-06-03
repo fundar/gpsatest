@@ -1,0 +1,67 @@
+/*========================================================================*/
+/*   TABLE OF CONTENT
+/*========================================================================*/
+/*
+/*		01. CAROUSELS
+/*		02. BUDDYPRESS
+/*		03. GENERAL
+/*
+/*========================================================================*/
+ 
+/*========================================================================*/
+/*   01. CAROUSELS
+/*========================================================================*/
+
+.heading_more{
+	left: 66px;
+	right:auto;
+}
+
+.block.courseitem .star-rating+strong{
+float:left;
+}
+
+.v_module.custom_post_carousel{
+direction: ltr;
+text-align: right;
+}
+.flexslider .slides > li{
+text-align:right !important;
+  direction:rtl !important;
+}
+.slides{
+  direction:ltr !important;
+}
+
+.widget_carousel .flex-direction-nav a.flex-next, .vibe_carousel .flex-direction-nav a.flex-next{
+	left:24px !important;
+	right:auto !important;
+}
+.widget_carousel .flex-direction-nav a.flex-prev, .vibe_carousel .flex-direction-nav a.flex-prev{
+	left:0 !important;
+	right:auto !important;
+}
+
+/*========================================================================*/
+/*   02. BuddyPress
+/*========================================================================*/
+#buddypress div.item-list-tabs ul li a span{
+		float:left;
+}
+#buddypress #groups-directory-form div.dir-search, #buddypress #course-directory-form div.dir-search, #buddypress #members-directory-form div.dir-search,
+#buddypress div.dir-search{
+	float:left;
+}
+
+.star-rating span{float:right;}
+
+.widget .button{
+	margin:10px 0;
+}
+
+.course_students li > ul, .quiz_students li > ul{
+	left:90px;
+}
+
+.course_bulk_actions a{float:left;}
+

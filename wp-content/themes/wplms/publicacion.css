@@ -1,0 +1,52 @@
+/** publicaciones **/
+.top-puplicaciones {
+    margin: 0;
+    padding: 50px 0;
+}
+.separador {
+    background: none repeat scroll 0 0 #dbdbdb;
+    height: 1px;
+    margin-bottom: 15px;
+}
+.publicacionpost {
+    clear: both;
+    margin-bottom: 10px;
+}
+.publicacionpost h3 {
+    font-family: steelfish_rgregular;
+    font-size: 26px;
+    margin-top: 0;
+}
+.tags {
+    border-top: 0px solid #000!important;
+    display: inline-block;
+    margin-top:0px !important;
+    padding: 0 0 10px !important;
+    width: 100%;
+}
+.breadcrumbs li {
+    float: left;
+    font-size: 9px !important;
+    margin-right: 5px;
+    text-transform: none;
+    white-space: nowrap;
+}
+
+.box-bookmark {
+    background: none repeat scroll 0 0 #29356C;
+    color: #FFFFFF;
+    display: inline-block;
+    margin:20px 0 25px;
+}
+.box-bookmark > .add-bookmark {
+    background: url("css/images/icon-favorities.png") no-repeat scroll 11px 11px rgba(0, 0, 0, 0);
+    color: #FFFFFF;
+    display: table;
+    text-indent: 29px;
+    padding: 11px;
+}
+.box-bookmark > a.add-bookmark:hover{
+	background: url("css/images/icon-favorities.png") no-repeat scroll 11px 11px rgba(250, 250, 250, 0.15);
+  
+}
+.adthis{}

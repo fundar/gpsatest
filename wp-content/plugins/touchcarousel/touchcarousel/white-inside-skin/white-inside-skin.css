@@ -1,0 +1,121 @@
+/******************************************************\
+*
+*  White skin with controls inside carousel
+*
+*    1. Arrows(direction) navigation
+*    2. Paging navigation
+*
+\******************************************************/
+
+
+
+/******************************************************\
+*
+*  1. Arrows (direction) navigation
+*
+\******************************************************/
+.touchcarousel.white-inside .arrow-icon {
+	top: 0;
+	background-image: url('sprite.png');
+	background-repeat: no-repeat;
+	width: 19px;
+	height: 23px;	
+	margin-top: 0;
+}
+.touchcarousel.white-inside .arrow-holder {
+	top: auto;
+	bottom: 18px;
+	width: 25px;
+	height: 25px;	
+	
+	-moz-opacity: 0.8;	
+	-webkit-opacity: 0.8;	
+	opacity: 0.8;	
+}
+.touchcarousel.white-inside .arrow-holder.left {
+	left: auto;
+	right: 37px;
+}
+.touchcarousel.white-inside .arrow-holder.right {	
+	right: 10px;
+}
+
+.touchcarousel.white-inside .arrow-icon.left {
+	left: 0;
+	background-position: -11px -12px;
+}
+.touchcarousel.white-inside .arrow-icon.right {
+	right: 0;
+	background-position: -178px -12px;
+}
+
+.touchcarousel.white-inside .arrow-holder.disabled .arrow-icon.left {
+	background-position: -48px -12px;
+}
+.touchcarousel.white-inside .arrow-holder.disabled .arrow-icon.right {
+	background-position: -141px -12px;
+}
+.touchcarousel.white-inside .arrow-holder:hover {
+	-moz-opacity: 1;	
+	-webkit-opacity: 1;	
+	opacity: 1;	
+}
+.touchcarousel.white-inside .arrow-holder:active {
+	-moz-opacity: 0.7;	
+	-webkit-opacity: 0.7;	
+	opacity: 0.7;	
+}
+.touchcarousel.white-inside .arrow-holder.disabled {
+	-moz-opacity: 1;	
+	-webkit-opacity: 1;	
+	opacity: 1;	
+}
+
+/******************************************************\
+*
+*  2. Paging navigation
+*
+\******************************************************/
+
+.touchcarousel.white-inside .tc-paging-container {		
+	width: auto;
+	float: none;
+	
+	right: 11px;
+	
+	margin-top: 0;	
+	top: 10px;
+}
+.touchcarousel.white-inside .tc-paging-centerer {
+	float: none;
+	position: relative;
+	left: 0;
+}
+.touchcarousel.white-inside .tc-paging-centerer-inside {	
+	position: relative;
+	left: 0;
+	float: none;	
+}
+.touchcarousel.white-inside .tc-paging-item {
+	background: url('sprite.png') no-repeat -95px -4px;
+	
+	width: 16px;
+	height: 16px;	
+	
+	-moz-opacity: 0.8;	
+	-webkit-opacity: 0.8;	
+	opacity: 0.8;	
+}
+.touchcarousel.white-inside .tc-paging-item.current {	
+	background: url('sprite.png') no-repeat -95px -22px;
+}
+.touchcarousel.white-inside .tc-paging-item:hover {		
+	-moz-opacity: 1;	
+	-webkit-opacity: 1;	
+	opacity: 1;		
+}
+
+
+
+
+

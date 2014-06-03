@@ -1,0 +1,28 @@
+/* 
+    Document   : admin_menu
+    Created on : Jul 16, 2013, 5:37:29 PM
+    Author     : Riyo
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+.on_off{
+   width:65px;
+   height:26px;
+   display:block;
+   background: url(../../../metaboxes/library/images/off.png);
+}
+.on_off.active{
+   background: url(../../../metaboxes/library/images/on.png);
+}
+.on_off_mega,
+.sidebar{
+    display:none;
+}
+.menu-item-depth-1 .on_off_mega{
+    display:block;
+}
+
+.sidebar.active{
+   display:block; 
+}

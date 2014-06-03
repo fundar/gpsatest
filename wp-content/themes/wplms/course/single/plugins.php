@@ -1,0 +1,7 @@
+<?php
+
+
+echo 'WPLMS PLUGINS';
+
+
+?>

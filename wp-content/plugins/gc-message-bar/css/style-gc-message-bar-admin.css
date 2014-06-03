@@ -1,0 +1,2213 @@
+/* import resources */
+/* common vars */
+/* c: color / bg: background / err: error  */
+/*@defc_bodycolor_light:  #999999;*/
+/* a: a3be2d; */
+/* ENGINE */
+/* common styling functions: sf */
+/* core functions: cf */
+/* base core functions: bcf */
+/* general */
+.GCPLUGIN {
+  float: left;
+  width: 820px;
+  margin: 20px 0 0 2px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #555555;
+  /* ENGINE */
+
+}
+.GCPLUGIN a,
+.GCPLUGIN input,
+.GCPLUGIN textarea {
+  outline: none;
+}
+.GCPLUGIN a {
+  color: #008dbe;
+  text-decoration: none;
+}
+.GCPLUGIN a:hover {
+  color: #819829;
+}
+.GCPLUGIN li,
+.GCPLUGIN ul {
+  margin: 0;
+  padding: 0;
+}
+.GCPLUGIN h1,
+.GCPLUGIN h2,
+.GCPLUGIN h3,
+.GCPLUGIN h4 {
+  margin: 0;
+}
+.GCPLUGIN .clear {
+  clear: both;
+}
+.GCPLUGIN .wrapper820 {
+  width: 820px;
+  padding: 1px;
+}
+.GCPLUGIN .adminpanel {
+  background-color: #ffffff;
+  border: 1px solid #aaaaaa;
+  width: 818px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: 0 0 10px 2px #aaaaaa;
+  -webkit-box-shadow: 0 0 10px 2px #aaaaaa;
+  box-shadow: 0 0 10px 2px #aaaaaa;
+}
+.GCPLUGIN header {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  -webkit-border-radius: 5px 5px 0 0;
+  -moz-border-radius: 5px 5px 0 0;
+  -ms-border-radius: 5px 5px 0 0;
+  -o-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+  background: #d5ecf4;
+  /* Old browsers */
+
+  background-image: url('../images/white_noise_texture.png'), -moz-linear-gradient(top, #ffffff 0%, #d5ecf4 100%);
+  /* FF3.6+ */
+
+  background-image: url('../images/white_noise_texture.png'), -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #d5ecf4));
+  /* Chrome,Safari4+ */
+
+  background-image: url('../images/white_noise_texture.png'), -webkit-linear-gradient(top, #ffffff 0%, #d5ecf4 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background-image: url('../images/white_noise_texture.png'), -o-linear-gradient(top, #ffffff 0%, #d5ecf4 100%);
+  /* Opera 11.10+ */
+
+  background-image: url('../images/white_noise_texture.png'), -ms-linear-gradient(top, #ffffff 0%, #d5ecf4 100%);
+  /* IE10+ */
+
+  background-image: url('../images/white_noise_texture.png'), linear-gradient(to bottom, #ffffff 0%, #d5ecf4 100%);
+  /* W3C */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffff, endColorstr=#d5ecf4, GradientType=0);
+  /* IE6-9 */
+
+  background-repeat: repeat-all;
+  background-position: top center, top center;
+  border-bottom: 1px solid #666666;
+}
+.GCPLUGIN header .headertop {
+  height: 80px;
+}
+.GCPLUGIN header .headertop .logo {
+  float: left;
+  background: url('../images/gc-message-bar-logo.png') top left no-repeat;
+  width: 271px;
+  height: 41px;
+  margin: 19px 0 0 19px;
+}
+.GCPLUGIN header .headertop .connectblock {
+  float: right;
+  margin: 16px 19px 0 0;
+}
+.GCPLUGIN header .headertop .connectblock .whatismygc {
+  background: url('../images/whatismygc.png') top left no-repeat;
+  width: 226px;
+  height: 71px;
+  position: absolute;
+  margin: 32px 0 0 4px;
+}
+.GCPLUGIN header .headertop .connectblock a {
+  display: block;
+  text-align: center;
+  height: 45px;
+  line-height: 45px;
+  color: white;
+  padding: 0 16px 3px;
+  float: right;
+  text-shadow: 1px 1px 1px rgba(69, 69, 69, 0.4);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: 0 8px 6px -6px rgba(69, 69, 69, 0.7), inset 0 -3px 0 0 #bd6101;
+  -webkit-box-shadow: 0 8px 6px -6px rgba(69, 69, 69, 0.7), inset 0 -3px 0 0 #bd6101;
+  box-shadow: 0 8px 6px -6px rgba(69, 69, 69, 0.7), inset 0 -3px 0 0 #bd6101;
+  border: 1px solid #ff9b44;
+  background-color: #d2741d;
+  background-image: -moz-linear-gradient(top, #ff9b44, #d2741d);
+  background-image: -ms-linear-gradient(top, #ff9b44, #d2741d);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ff9b44), to(#d2741d));
+  background-image: -webkit-linear-gradient(top, #ff9b44, #d2741d);
+  background-image: -o-linear-gradient(top, #ff9b44, #d2741d);
+  background-image: linear-gradient(top, #ff9b44, #d2741d);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@uppercolor', endColorstr='@lowercolor', GradientType=0);*/
+
+}
+.GCPLUGIN header .headertop .connectblock a b {
+  font-weight: 700;
+}
+.GCPLUGIN header .headertop .connectblock a:hover {
+  -moz-box-shadow: 0 8px 6px -6px rgba(69, 69, 69, 0.7), inset 0 -3px 0 0 #728a18;
+  -webkit-box-shadow: 0 8px 6px -6px rgba(69, 69, 69, 0.7), inset 0 -3px 0 0 #728a18;
+  box-shadow: 0 8px 6px -6px rgba(69, 69, 69, 0.7), inset 0 -3px 0 0 #728a18;
+  border: 1px solid #b9d245;
+  background-color: #819829;
+  background-image: -moz-linear-gradient(top, #b9d245, #819829);
+  background-image: -ms-linear-gradient(top, #b9d245, #819829);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#b9d245), to(#819829));
+  background-image: -webkit-linear-gradient(top, #b9d245, #819829);
+  background-image: -o-linear-gradient(top, #b9d245, #819829);
+  background-image: linear-gradient(top, #b9d245, #819829);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@uppercolor', endColorstr='@lowercolor', GradientType=0);*/
+
+}
+.GCPLUGIN header .headertop .connectblock a.disconnect {
+  display: block;
+  margin-top: 16px;
+  margin-right: 8px;
+  width: 16px;
+  height: 16px;
+  color: white;
+  padding: 0 !important;
+  float: right;
+  text-indent: -9999px;
+  text-shadow: none !important;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  background: url(../images/delete_connection.png) top left no-repeat;
+  border: none !important;
+}
+.GCPLUGIN header .headertop .connectblock a.disconnect:hover {
+  background-position: bottom left;
+}
+.GCPLUGIN header .headertop .connectblock .indicator {
+  float: right;
+  height: 48px;
+  line-height: 48px;
+  margin-right: 16px;
+}
+.GCPLUGIN header .headertop .connectblock .indicator_blue {
+  color: #008dbe;
+}
+.GCPLUGIN header .headertop .connectblock .indicator_blue b {
+  display: inline-block;
+  padding: 0 6px;
+  height: 28px;
+  line-height: 28px;
+  color: #008dbe;
+  background: #c5e4f0;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  font-weight: 400 !important;
+}
+.GCPLUGIN header nav {
+  height: 40px;
+  line-height: 40px;
+}
+.GCPLUGIN header nav b {
+  text-transform: uppercase;
+}
+.GCPLUGIN header nav ul {
+  margin: 4px 0 0 0;
+  padding: 0;
+  list-style-type: none;
+}
+.GCPLUGIN header nav ul li {
+  margin: 0 0 0 8px;
+  padding: 0;
+  float: left;
+}
+.GCPLUGIN header nav ul li a {
+  font-weight: 400 !important;
+  padding: 0 8px;
+  line-height: 32px;
+  height: 32px;
+  display: block;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+.GCPLUGIN header nav ul li a:hover {
+  background: #008dbe;
+  color: #fff;
+}
+.GCPLUGIN header nav ul .first {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  border-left: none !important;
+}
+.GCPLUGIN header nav ul.menu1 {
+  float: left;
+  margin-left: 8px;
+}
+.GCPLUGIN header nav ul.menu1 li {
+  margin: 0 0 0 4px;
+  padding: 0 0 0 4px;
+  border-left: 1px solid #c5e4f0;
+}
+.GCPLUGIN header nav ul.menu2 {
+  float: right;
+  margin-right: 8px;
+}
+.GCPLUGIN section.subscribemsg {
+  border-bottom: 1px solid #666666;
+  height: 340px;
+}
+.GCPLUGIN section.subscribemsg iframe {
+  width: 818px;
+  height: 340px;
+}
+.GCPLUGIN section.communitymsg {
+  border-bottom: 1px solid #666666;
+  height: 168px;
+}
+.GCPLUGIN section.communitymsg iframe {
+  width: 818px;
+  height: 168px;
+}
+.GCPLUGIN section.newprodmsg {
+  border-bottom: 1px solid #666666;
+  height: 280px;
+}
+.GCPLUGIN section.newprodmsg iframe {
+  width: 818px;
+  height: 280px;
+}
+.GCPLUGIN section.adminblock {
+  background: #eeeeee;
+  border-bottom: 1px solid #666666;
+}
+.GCPLUGIN section.adminblock .blockheader {
+  line-height: 96px;
+  height: 96px;
+  padding: 0 16px;
+}
+.GCPLUGIN section.adminblock .blockheader .opener {
+  display: inline-block;
+}
+.GCPLUGIN section.adminblock .blockheader .opener span {
+  background-color: none;
+  width: 33px;
+  height: 33px;
+  margin: 31px 4px 0 0;
+  display: block;
+  float: left;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.GCPLUGIN section.adminblock .blockheader .opener h2 {
+  text-transform: uppercase;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  float: left;
+  color: #555555;
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.9);
+}
+.GCPLUGIN section.adminblock .blockheader .opener b {
+  display: none;
+  float: left;
+  height: 25px;
+  line-height: 25px;
+  margin: 35px 0 0 12px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  background: #d4d4d4;
+  color: #555555;
+  font-weight: 300 !important;
+  padding: 0 8px;
+  font-size: 12px;
+}
+.GCPLUGIN section.adminblock .blockheader .opener:hover span {
+  background-color: #56bcef;
+  background-position: bottom left;
+  -moz-box-shadow: 1px 2px 1px -1px rgba(255, 255, 255, 0.9);
+  -webkit-box-shadow: 1px 2px 1px -1px rgba(255, 255, 255, 0.9);
+  box-shadow: 1px 2px 1px -1px rgba(255, 255, 255, 0.9);
+}
+.GCPLUGIN section.adminblock .blockheader .opener:hover h2 {
+  color: #0079a9;
+}
+.GCPLUGIN section.adminblock .blockheader .opener:hover b {
+  display: block;
+}
+.GCPLUGIN section.adminblock .blockheader .open span {
+  background: url(../images/block_arrow_bottom.png) top left no-repeat;
+}
+.GCPLUGIN section.adminblock .blockheader .close span {
+  background: url(../images/block_arrow_right.png) top left no-repeat;
+}
+.GCPLUGIN section.adminblock nav {
+  border-bottom: 2px solid #666666;
+  height: 41px;
+  margin: 0 16px;
+  background-color: #dddddd;
+  background-image: -moz-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: -ms-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#eeeeee), to(#dddddd));
+  background-image: -webkit-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: -o-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: linear-gradient(top, #eeeeee, #dddddd);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@uppercolor', endColorstr='@lowercolor', GradientType=0);*/
+
+}
+.GCPLUGIN section.adminblock nav ul {
+  position: absolute;
+  list-style-type: none;
+}
+.GCPLUGIN section.adminblock nav ul li {
+  display: block;
+  margin-left: 4px;
+  margin-bottom: 2px;
+  float: left;
+}
+.GCPLUGIN section.adminblock nav ul li a {
+  text-transform: uppercase;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #555555;
+  display: block;
+  border-style: solid;
+  border-color: #666666;
+  border-top-width: 1px;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-bottom: none;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 16px;
+  -webkit-border-radius: 5px 5px 0 0;
+  -moz-border-radius: 5px 5px 0 0;
+  -ms-border-radius: 5px 5px 0 0;
+  -o-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+  text-shadow: none !important;
+  background-color: #bbbbbb;
+  background-image: -moz-linear-gradient(top, #999999, #bbbbbb);
+  background-image: -ms-linear-gradient(top, #999999, #bbbbbb);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#999999), to(#bbbbbb));
+  background-image: -webkit-linear-gradient(top, #999999, #bbbbbb);
+  background-image: -o-linear-gradient(top, #999999, #bbbbbb);
+  background-image: linear-gradient(top, #999999, #bbbbbb);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@uppercolor', endColorstr='@lowercolor', GradientType=0);*/
+
+}
+.GCPLUGIN section.adminblock nav ul li a:hover {
+  color: white;
+  background-color: #56bcef;
+  background-image: -moz-linear-gradient(top, #008dbe, #56bcef);
+  background-image: -ms-linear-gradient(top, #008dbe, #56bcef);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#008dbe), to(#56bcef));
+  background-image: -webkit-linear-gradient(top, #008dbe, #56bcef);
+  background-image: -o-linear-gradient(top, #008dbe, #56bcef);
+  background-image: linear-gradient(top, #008dbe, #56bcef);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@uppercolor', endColorstr='@lowercolor', GradientType=0);*/
+
+  text-shadow: 1px 1px 1px rgba(69, 69, 69, 0.4);
+}
+.GCPLUGIN section.adminblock nav ul .first {
+  margin-left: 0;
+}
+.GCPLUGIN section.adminblock nav ul .sel {
+  margin-bottom: 0;
+}
+.GCPLUGIN section.adminblock nav ul .sel a,
+.GCPLUGIN section.adminblock nav ul .sel a:hover {
+  color: #666666;
+  height: 42px;
+  line-height: 42px;
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.9);
+  background-color: #eeeeee;
+  background-image: -moz-linear-gradient(top, #ffffff, #eeeeee);
+  background-image: -ms-linear-gradient(top, #ffffff, #eeeeee);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#eeeeee));
+  background-image: -webkit-linear-gradient(top, #ffffff, #eeeeee);
+  background-image: -o-linear-gradient(top, #ffffff, #eeeeee);
+  background-image: linear-gradient(top, #ffffff, #eeeeee);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@uppercolor', endColorstr='@lowercolor', GradientType=0);*/
+
+  -moz-box-shadow: 0 -3px 2px 1px rgba(69, 69, 69, 0.1);
+  -webkit-box-shadow: 0 -3px 2px 1px rgba(69, 69, 69, 0.1);
+  box-shadow: 0 -3px 2px 1px rgba(69, 69, 69, 0.1);
+}
+.GCPLUGIN section.adminblock .blockcntwithtabs {
+  border-top: none !important;
+}
+.GCPLUGIN section.adminblock .blockcnt {
+  margin: 0 16px;
+  border-top: 1px solid #cccccc;
+  /* item */
+
+  /* definput */
+
+  /* displayfilter */
+
+  /* darklight */
+
+  /* onoff */
+
+  /* slider */
+
+  /* checkboxgroup */
+
+  /* composemessage */
+
+}
+.GCPLUGIN section.adminblock .blockcnt .item {
+  border-bottom: 1px solid #d4d4d4;
+  /*.chkbx {
+                    height: 26px;
+                    margin-top: 7px;
+                    /*vertical-align: middle;
+                }*/
+
+  /* inside ad block */
+
+  /* end inside ad block */
+
+}
+.GCPLUGIN section.adminblock .blockcnt .item .label {
+  width: 250px;
+  height: 40px;
+  line-height: 40px;
+  margin-right: 20px;
+  float: left;
+  font-weight: 700;
+  color: #444444;
+}
+.GCPLUGIN section.adminblock .blockcnt .item .desc label {
+  font-size: 11px;
+  margin: 3px 0 4px 270px;
+  color: #888888;
+  font-family: 'Roboto', sans-serif;
+  font-style: italic;
+  font-weight: 300;
+  display: inline-block;
+}
+.GCPLUGIN section.adminblock .blockcnt .item .edit {
+  height: 40px;
+}
+.GCPLUGIN section.adminblock .blockcnt .item .edit input.def,
+.GCPLUGIN section.adminblock .blockcnt .item .edit select.def {
+  margin-top: 5px;
+  border: 1px solid #999999;
+  color: #222222;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  width: 300px;
+  height: 30px;
+  line-height: 30px;
+  display: inline-block;
+}
+.GCPLUGIN section.adminblock .blockcnt .item .edit input.def {
+  padding: 0 6px;
+  width: 300px;
+  height: 30px;
+  line-height: 30px;
+}
+.GCPLUGIN section.adminblock .blockcnt .item .edit input.chkbxdef {
+  width: 13px;
+  height: 13px;
+  padding: 0;
+  margin: 15px 0 0 0;
+  vertical-align: bottom;
+  position: relative;
+  top: -1px;
+  *overflow: hidden;
+}
+.GCPLUGIN section.adminblock .blockcnt .item .ad {
+  float: right;
+}
+.GCPLUGIN section.adminblock .blockcnt .item .ad .wooblock {
+  margin: 5px 0 0;
+  background: white;
+  height: 30px;
+  line-height: 30px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+}
+.GCPLUGIN section.adminblock .blockcnt .item .ad .wooblock a,
+.GCPLUGIN section.adminblock .blockcnt .item .ad .wooblock a:hover {
+  border: none;
+  background: none;
+  margin: 0;
+}
+.GCPLUGIN section.adminblock .blockcnt .item .ad .wooblock a b,
+.GCPLUGIN section.adminblock .blockcnt .item .ad .wooblock a:hover b {
+  display: block;
+  float: left;
+  background: url('../images/woocommerce_logo.png') top left no-repeat;
+  width: 95px;
+  height: 19px;
+  margin: 7px 8px 0 0;
+}
+.GCPLUGIN section.adminblock .blockcnt .item .ad .wooblock a i,
+.GCPLUGIN section.adminblock .blockcnt .item .ad .wooblock a:hover i {
+  display: block;
+  float: left;
+  font-style: normal !important;
+  font-family: 'Roboto Condensed', sans-serif;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 9px;
+  line-height: 29px;
+  margin: 1px 8px 0 8px;
+  color: #888888;
+}
+.GCPLUGIN section.adminblock .blockcnt .item .ad .woolinkblock {
+  text-align: center;
+  font-size: 10px;
+  color: #888888;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+.GCPLUGIN section.adminblock .blockcnt .item .ad .woolinkblock a,
+.GCPLUGIN section.adminblock .blockcnt .item .ad .woolinkblock a:hover {
+  border: none;
+  background: none;
+  margin: 0;
+  font-weight: 400 !important;
+  font-size: 10px;
+}
+.GCPLUGIN section.adminblock .blockcnt .item .ad .woolinkblock u {
+  text-decoration: none !important;
+  display: inline-block;
+  padding: 0 6px;
+}
+.GCPLUGIN section.adminblock .blockcnt .displayfilter input.addinput {
+  float: left;
+  margin-right: 8px;
+}
+.GCPLUGIN section.adminblock .blockcnt .displayfilter input.addbutton {
+  margin-top: 5px;
+  display: block;
+  float: left;
+  font-family: 'Roboto Condensed', sans-serif;
+  text-align: center;
+  height: 30px;
+  line-height: 20px;
+  color: white;
+  padding: 0 12px 3px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 1px rgba(69, 69, 69, 0.4);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  -moz-box-shadow: inset 0 -3px 0 0 #0079a9;
+  -webkit-box-shadow: inset 0 -3px 0 0 #0079a9;
+  box-shadow: inset 0 -3px 0 0 #0079a9;
+  border: 1px solid #0079a9;
+  background-color: #008dbe;
+  background-image: -moz-linear-gradient(top, #56bcef, #008dbe);
+  background-image: -ms-linear-gradient(top, #56bcef, #008dbe);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#56bcef), to(#008dbe));
+  background-image: -webkit-linear-gradient(top, #56bcef, #008dbe);
+  background-image: -o-linear-gradient(top, #56bcef, #008dbe);
+  background-image: linear-gradient(top, #56bcef, #008dbe);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@uppercolor', endColorstr='@lowercolor', GradientType=0);*/
+
+}
+.GCPLUGIN section.adminblock .blockcnt .displayfilter input.addbutton:hover {
+  -moz-box-shadow: inset 0 -3px 0 0 #728a18;
+  -webkit-box-shadow: inset 0 -3px 0 0 #728a18;
+  box-shadow: inset 0 -3px 0 0 #728a18;
+  border: 1px solid #728a18;
+  background-color: #819829;
+  background-image: -moz-linear-gradient(top, #b9d245, #819829);
+  background-image: -ms-linear-gradient(top, #b9d245, #819829);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#b9d245), to(#819829));
+  background-image: -webkit-linear-gradient(top, #b9d245, #819829);
+  background-image: -o-linear-gradient(top, #b9d245, #819829);
+  background-image: linear-gradient(top, #b9d245, #819829);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@uppercolor', endColorstr='@lowercolor', GradientType=0);*/
+
+  cursor: pointer;
+}
+.GCPLUGIN section.adminblock .blockcnt .displayfilter .pagelist {
+  margin: 4px 0 9px 255px;
+}
+.GCPLUGIN section.adminblock .blockcnt .displayfilter .pagelist .pageitem {
+  background: #eeeeee;
+  line-height: 24px;
+  height: 24px;
+  overflow: hidden;
+  padding: 0 6px;
+  margin-bottom: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+}
+.GCPLUGIN section.adminblock .blockcnt .displayfilter .pagelist .pageitem .specified-close-page {
+  display: block;
+  float: left;
+  background: url(../images/delete_edit.png) top left no-repeat;
+  width: 16px;
+  height: 16px;
+  margin: 4px 6px 0 0;
+}
+.GCPLUGIN section.adminblock .blockcnt .displayfilter .pagelist .pageitem .specified-close-page:hover {
+  cursor: pointer;
+  background-position: bottom left;
+}
+.GCPLUGIN section.adminblock .blockcnt .displayfilter .pagelist .pageitem .filter-specified-page {
+  display: block;
+  float: left;
+  font-size: 12px;
+  line-height: 24px !important;
+  height: 24px;
+  position: relative;
+}
+.GCPLUGIN section.adminblock .blockcnt .color .wp-picker-container .wp-color-result {
+  height: 24px;
+  line-height: 24px;
+  border: 3px solid #bbbbbb;
+  display: inline-block;
+  font-weight: 300 !important;
+  font-size: 12px;
+  margin: 5px 0 0 !important;
+  top: 0 !important;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+.GCPLUGIN section.adminblock .blockcnt .color .wp-picker-container .wp-color-result:hover {
+  border: 3px solid #008dbe;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.GCPLUGIN section.adminblock .blockcnt .color .wp-picker-container input[type=text] {
+  width: 100px !important;
+  margin-left: 8px;
+  margin-top: 0 !important;
+}
+.GCPLUGIN section.adminblock .blockcnt .color .wp-picker-container input[type=button] {
+  margin-left: 8px;
+  margin-top: 7px;
+  background: url(../images/delete_edit.png) top left no-repeat;
+  width: 16px;
+  height: 16px;
+  border: none !important;
+  text-indent: -9999px;
+}
+.GCPLUGIN section.adminblock .blockcnt .color .wp-picker-container input[type=button]:hover {
+  cursor: pointer;
+  background-position: bottom left;
+}
+.GCPLUGIN section.adminblock .blockcnt .color .wp-picker-container .wp-color-result:after {
+  background: white;
+  color: #555555;
+  -webkit-border-radius: 0 3px 3px 0;
+  -moz-border-radius: 0 3px 3px 0;
+  -ms-border-radius: 0 3px 3px 0;
+  -o-border-radius: 0 3px 3px 0;
+  border-radius: 0 3px 3px 0;
+  border-left: 1px solid #bbbbbb;
+  font-size: 12px;
+  line-height: 24px;
+  padding: 0 6px;
+}
+.GCPLUGIN section.adminblock .blockcnt .color .wp-picker-container .wp-color-result:focus {
+  top: 0;
+  border-color: #008dbe;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.GCPLUGIN section.adminblock .blockcnt .color .wp-picker-container .wp-color-result:focus:after {
+  border-color: #bbbbbb !important;
+}
+.GCPLUGIN section.adminblock .blockcnt .color .wp-picker-container .wp-picker-input-wrap {
+  margin-top: 5px;
+}
+.GCPLUGIN section.adminblock .blockcnt .color .wp-picker-container .wp-picker-input-wrap input[type=text] {
+  margin-right: 0;
+  margin-bottom: 0;
+}
+.GCPLUGIN section.adminblock .blockcnt .color .wp-picker-container .wp-picker-default {
+  padding: 0 !important;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.GCPLUGIN section.adminblock .blockcnt .color .wp-picker-container .iris-picker {
+  z-index: 9998;
+  background-color: #ffffff;
+  border: 1px solid #aaaaaa;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: 0 0 10px 2px #aaaaaa;
+  -webkit-box-shadow: 0 0 10px 2px #aaaaaa;
+  box-shadow: 0 0 10px 2px #aaaaaa;
+}
+.GCPLUGIN section.adminblock .blockcnt .selectbox {
+  /* jQueryUI and jQuery Mobile compatability fix - Feel free to remove this style if you are not using jQuery Mobile */
+
+  /* Another jQueryUI and jQuery Mobile compatability fix - Feel free to remove this style if you are not using jQuery Mobile */
+
+  /* Styles that apply to all SelectBoxIt elements */
+
+}
+.GCPLUGIN section.adminblock .blockcnt .selectbox .jqueryui .ui-icon {
+  background-color: inherit;
+}
+.GCPLUGIN section.adminblock .blockcnt .selectbox .jqueryui .ui-icon-triangle-1-s {
+  background-position: -64px -16px;
+}
+.GCPLUGIN section.adminblock .blockcnt .selectbox .edit {
+  display: inline-block;
+  position: relative;
+  width: 300px;
+  /* Width of the dropdown button */
+
+}
+.GCPLUGIN section.adminblock .blockcnt .selectbox .selectboxit-container {
+  margin: 5px 0 0 1px;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  height: 28px;
+  font-family: 'Roboto', sans-serif;
+  color: #222222;
+  font-size: 16px;
+  /* Height and Vertical Alignment of Text */
+
+  /* Options List */
+
+  /* Disabled Mouse Interaction */
+
+  /* Button Text */
+
+  /* Individual options */
+
+  /* Individual Option Optgroup Header */
+
+  /* Drop Down optgroup header hover psuedo class */
+
+  /* The first Drop Down option */
+
+  /* The first Drop Down option optgroup */
+
+  /* The last Drop Down option */
+
+  /* Drop Down down arrow container */
+
+  /* Drop Down individual option icon positioning */
+
+  /*
+                      Default Theme
+                      -------------
+                      Note: Feel free to remove all of the CSS underneath this line if you are not using the default theme
+                    */
+
+}
+.GCPLUGIN section.adminblock .blockcnt .selectbox .selectboxit-container .selectboxit {
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  border-radius: 3px;
+  overflow: hidden;
+  display: block;
+  position: relative;
+  width: 300px;
+}
+.GCPLUGIN section.adminblock .blockcnt .selectbox .selectboxit-container .selectboxit .selectboxit-option-icon-container {
+  margin-left: 5px;
+}
+.GCPLUGIN section.adminblock .blockcnt .selectbox .selectboxit-container span {
+  height: 28px;
+  /* Height of the drop down */
+
+  line-height: 28px;
+  /* Vertically positions the drop down text */
+
+  display: block;
+  font-family: 'Roboto', sans-serif;
+  color: #222222;
+  font-size: 16px;
+}
+.GCPLUGIN section.adminblock .blockcnt .selectbox .selectboxit-container .selectboxit-options {
+  width: 270px;
+  /* Width of the dropdown button */
+
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  min-width: 100%;
+  /* Minimum Width of the dropdown list box options */
+
+  *width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: absolute;
+  overflow-x: hidden;
+  overflow-y: auto;
+  cursor: pointer;
+  display: none;
+  z-index: 9999999999999;
+  border-radius: 3px;
+  text-align: left;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.GCPLUGIN section.adminblock .blockcnt .selectbox .selectboxit-container .selectboxit-options a {
+  height: 28px;
+  /* Height of the drop down */
+
+  line-height: 28px;
+  /* Vertically positions the drop down text */
+
+  display: block;
+}
+.GCPLUGIN section.adminblock .blockcnt .selectbox .selectboxit-container .selectboxit-options .selectboxit-disabled {
+  -moz-opacity: 0.65;
+  -khtml-opacity: 0.65;
+  opacity: 0.65;
+  /*-ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=( @opacity * 100 ));
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=( @opacity * 100 ));*/
+
+  /*filter:alpha(opacity=( @opacity * 100 ));*/
+
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  cursor: default;
+}
+.GCPLUGIN section.adminblock .blockcnt .selectbox .selectboxit-container .selectboxit:focus {
+  outline: 0;
+}
+.GCPLUGIN section.adminblock .blockcnt .selectbox .selectboxit-container .selectboxit.selectboxit-disabled {
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  cursor: default;
+}
+.GCPLUGIN section.adminblock .blockcnt .selectbox .selectboxit-container .selectboxit-text {
+  text-indent: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  float: left;
+}
+.GCPLUGIN section.adminblock .blockcnt .selectbox .selectboxit-container .selectboxit-option {
+  text-indent: 5px;
+  /* Horizontal Positioning of the select box option text */
+
+  margin: 0;
+  list-style-type: none;
+}
+.GCPLUGIN section.adminblock .blockcnt .selectbox .selectboxit-container .selectboxit-option .selectboxit-option-anchor {
+  padding: 0 2px;
+}
+.GCPLUGIN section.adminblock .blockcnt .selectbox .selectboxit-container .selectboxit-option .selectboxit-option-anchor:hover {
+  text-decoration: none;
+}
+.GCPLUGIN section.adminblock .blockcnt .selectbox .selectboxit-container .selectboxit-optgroup-header {
+  text-indent: 5px;
+  /* Horizontal Positioning of the select box option text */
+
+  margin: 0;
+  list-style-type: none;
+  font-weight: bold;
+}
+.GCPLUGIN section.adminblock .blockcnt .selectbox .selectboxit-container .selectboxit-optgroup-header:hover {
+  cursor: default;
+}
+.GCPLUGIN section.adminblock .blockcnt .selectbox .selectboxit-container .selectboxit-option-first:hover,
+.GCPLUGIN section.adminblock .blockcnt .selectbox .selectboxit-container .selectboxit-option-first {
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+}
+.GCPLUGIN section.adminblock .blockcnt .selectbox .selectboxit-container .selectboxit-optgroup-header + .selectboxit-option-first {
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+}
+.GCPLUGIN section.adminblock .blockcnt .selectbox .selectboxit-container .selectboxit-option-last {
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+.GCPLUGIN section.adminblock .blockcnt .selectbox .selectboxit-container .selectboxit-arrow-container {
+  /* Positions the down arrow */
+
+  width: 28px;
+  position: absolute;
+  right: 0;
+  /* Drop Down down arrow for jQueryUI and jQuery Mobile */
+
+}
+.GCPLUGIN section.adminblock .blockcnt .selectbox .selectboxit-container .selectboxit-arrow-container .selectboxit-arrow {
+  /* Horizontally centers the down arrow */
+
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+}
+.GCPLUGIN section.adminblock .blockcnt .selectbox .selectboxit-container .selectboxit-arrow-container .selectboxit-arrow.ui-icon {
+  top: 30%;
+}
+.GCPLUGIN section.adminblock .blockcnt .selectbox .selectboxit-container .selectboxit-option-icon-container {
+  float: left;
+}
+.GCPLUGIN section.adminblock .blockcnt .selectbox .selectboxit-container .selectboxit-option-icon {
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
+}
+.GCPLUGIN section.adminblock .blockcnt .selectbox .selectboxit-container .selectboxit-option-icon-url {
+  width: 18px;
+  background-size: 18px 18px;
+  background-repeat: no-repeat;
+  height: 100%;
+  background-position: center;
+  float: left;
+}
+.GCPLUGIN section.adminblock .blockcnt .selectbox .selectboxit-container .selectboxit-btn {
+  background-color: #f5f5f5;
+  background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+  background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+  background-repeat: repeat-x;
+  border: 1px solid #999999;
+}
+.GCPLUGIN section.adminblock .blockcnt .selectbox .selectboxit-container .selectboxit-btn.selectboxit-enabled:hover,
+.GCPLUGIN section.adminblock .blockcnt .selectbox .selectboxit-container .selectboxit-btn.selectboxit-enabled:focus,
+.GCPLUGIN section.adminblock .blockcnt .selectbox .selectboxit-container .selectboxit-btn.selectboxit-enabled:active {
+  color: #222222;
+  background-color: #e6e6e6;
+}
+.GCPLUGIN section.adminblock .blockcnt .selectbox .selectboxit-container .selectboxit-btn.selectboxit-enabled:hover,
+.GCPLUGIN section.adminblock .blockcnt .selectbox .selectboxit-container .selectboxit-btn.selectboxit-enabled:focus {
+  color: #222222;
+  text-decoration: none;
+  background-position: 0 -15px;
+}
+.GCPLUGIN section.adminblock .blockcnt .selectbox .selectboxit-container .selectboxit-default-arrow {
+  width: 0;
+  height: 0;
+  border-top: 4px solid #000000;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+.GCPLUGIN section.adminblock .blockcnt .selectbox .selectboxit-container .selectboxit-list {
+  background-color: white;
+  /*border: 1px solid #ccc;
+                        border: 1px solid rgba(0, 0, 0, 0.2);*/
+
+  border: 1px solid #aaaaaa;
+  -moz-box-shadow: 0 0 10px 2px #aaaaaa;
+  -webkit-box-shadow: 0 0 10px 2px #aaaaaa;
+  box-shadow: 0 0 10px 2px #aaaaaa;
+}
+.GCPLUGIN section.adminblock .blockcnt .selectbox .selectboxit-container .selectboxit-list .selectboxit-option-anchor {
+  color: #222222;
+}
+.GCPLUGIN section.adminblock .blockcnt .selectbox .selectboxit-container .selectboxit-list > .selectboxit-focus > .selectboxit-option-anchor {
+  color: white !important;
+  background-color: #008dbe;
+  /*
+                        background-image: -moz-linear-gradient(top, #0088cc, #0077b3);
+                        background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0077b3));
+                        background-image: -webkit-linear-gradient(top, #0088cc, #0077b3);
+                        background-image: -o-linear-gradient(top, #0088cc, #0077b3);
+                        background-image: linear-gradient(to bottom, #0088cc, #0077b3);
+                        background-repeat: repeat-x;
+                        */
+
+}
+.GCPLUGIN section.adminblock .blockcnt .selectbox .selectboxit-container .selectboxit-list > .selectboxit-focus > .selectboxit-option-anchor span {
+  color: white !important;
+}
+.GCPLUGIN section.adminblock .blockcnt .selectbox .selectboxit-container .selectboxit-list > .selectboxit-disabled > .selectboxit-option-anchor {
+  color: #999999;
+}
+.GCPLUGIN section.adminblock .blockcnt .selectbox .selectboxit-container * {
+  /* Prevents text selection */
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: -moz-none;
+  ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  outline: none;
+  white-space: nowrap;
+}
+.GCPLUGIN section.adminblock .blockcnt .darklight .edit a {
+  height: 24px;
+  line-height: 24px;
+  border: 3px solid #bbbbbb;
+  display: inline-block;
+  font-weight: 300 !important;
+  font-size: 12px;
+  margin: 5px 0 0;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+.GCPLUGIN section.adminblock .blockcnt .darklight .edit a b {
+  display: block;
+  width: 16px;
+  height: 16px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  background-color: #dddddd;
+  background-image: -moz-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: -ms-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#eeeeee), to(#dddddd));
+  background-image: -webkit-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: -o-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: linear-gradient(top, #eeeeee, #dddddd);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@uppercolor', endColorstr='@lowercolor', GradientType=0);*/
+
+}
+.GCPLUGIN section.adminblock .blockcnt .darklight .edit a span {
+  display: block;
+  padding: 0 8px;
+  line-height: 24px;
+  width: 30px;
+  text-align: center;
+}
+.GCPLUGIN section.adminblock .blockcnt .darklight .edit a:hover {
+  border: 3px solid #008dbe;
+  position: relative;
+}
+.GCPLUGIN section.adminblock .blockcnt .darklight .edit a:hover b {
+  background-color: #e6f4f9;
+  background-image: -moz-linear-gradient(top, #f2f9fc, #e6f4f9);
+  background-image: -ms-linear-gradient(top, #f2f9fc, #e6f4f9);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f2f9fc), to(#e6f4f9));
+  background-image: -webkit-linear-gradient(top, #f2f9fc, #e6f4f9);
+  background-image: -o-linear-gradient(top, #f2f9fc, #e6f4f9);
+  background-image: linear-gradient(top, #f2f9fc, #e6f4f9);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@uppercolor', endColorstr='@lowercolor', GradientType=0);*/
+
+}
+.GCPLUGIN section.adminblock .blockcnt .darklight .edit .light {
+  background: white;
+  color: #555555;
+}
+.GCPLUGIN section.adminblock .blockcnt .darklight .edit .light b {
+  border: 1px solid white;
+  float: left;
+  margin-right: 3px;
+  -moz-box-shadow: 0 0 1px 1px rgba(69, 69, 69, 0.7), inset 0 -3px 0 0 #bbbbbb;
+  -webkit-box-shadow: 0 0 1px 1px rgba(69, 69, 69, 0.7), inset 0 -3px 0 0 #bbbbbb;
+  box-shadow: 0 0 1px 1px rgba(69, 69, 69, 0.7), inset 0 -3px 0 0 #bbbbbb;
+}
+.GCPLUGIN section.adminblock .blockcnt .darklight .edit .light span {
+  float: left;
+}
+.GCPLUGIN section.adminblock .blockcnt .darklight .edit .light:hover b {
+  -moz-box-shadow: 0 0 1px 1px rgba(69, 69, 69, 0.8), inset 0 -3px 0 0 #c3dbe4;
+  -webkit-box-shadow: 0 0 1px 1px rgba(69, 69, 69, 0.8), inset 0 -3px 0 0 #c3dbe4;
+  box-shadow: 0 0 1px 1px rgba(69, 69, 69, 0.8), inset 0 -3px 0 0 #c3dbe4;
+}
+.GCPLUGIN section.adminblock .blockcnt .darklight .edit .dark {
+  background: #666666;
+  color: white;
+}
+.GCPLUGIN section.adminblock .blockcnt .darklight .edit .dark b {
+  border: 1px solid white;
+  float: left;
+  margin-left: 3px;
+  -moz-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.7), inset 0 -3px 0 0 #bbbbbb;
+  -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.7), inset 0 -3px 0 0 #bbbbbb;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.7), inset 0 -3px 0 0 #bbbbbb;
+}
+.GCPLUGIN section.adminblock .blockcnt .darklight .edit .dark span {
+  float: left;
+}
+.GCPLUGIN section.adminblock .blockcnt .darklight .edit .dark:hover b {
+  border: 1px solid white;
+  float: left;
+  margin-left: 3px;
+  -moz-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.8), inset 0 -3px 0 0 #c3dbe4;
+  -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.8), inset 0 -3px 0 0 #c3dbe4;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.8), inset 0 -3px 0 0 #c3dbe4;
+}
+.GCPLUGIN section.adminblock .blockcnt .onoff .edit a {
+  height: 24px;
+  line-height: 24px;
+  border: 3px solid #bbbbbb;
+  display: inline-block;
+  font-weight: 700 !important;
+  font-size: 14px;
+  margin: 5px 0 0;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+.GCPLUGIN section.adminblock .blockcnt .onoff .edit a b {
+  display: block;
+  width: 16px;
+  height: 16px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  background-color: #dddddd;
+  background-image: -moz-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: -ms-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#eeeeee), to(#dddddd));
+  background-image: -webkit-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: -o-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: linear-gradient(top, #eeeeee, #dddddd);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@uppercolor', endColorstr='@lowercolor', GradientType=0);*/
+
+}
+.GCPLUGIN section.adminblock .blockcnt .onoff .edit a span {
+  display: block;
+  padding: 0 8px;
+  line-height: 24px;
+  width: 30px;
+  text-align: center;
+}
+.GCPLUGIN section.adminblock .blockcnt .onoff .edit a:hover {
+  border: 3px solid #008dbe;
+  position: relative;
+}
+.GCPLUGIN section.adminblock .blockcnt .onoff .edit a:hover b {
+  background-color: #008dbe;
+  background-image: -moz-linear-gradient(top, #56bcef, #008dbe);
+  background-image: -ms-linear-gradient(top, #56bcef, #008dbe);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#56bcef), to(#008dbe));
+  background-image: -webkit-linear-gradient(top, #56bcef, #008dbe);
+  background-image: -o-linear-gradient(top, #56bcef, #008dbe);
+  background-image: linear-gradient(top, #56bcef, #008dbe);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@uppercolor', endColorstr='@lowercolor', GradientType=0);*/
+
+}
+.GCPLUGIN section.adminblock .blockcnt .onoff .edit .on {
+  background: #f2f9fc;
+  color: #008dbe;
+}
+.GCPLUGIN section.adminblock .blockcnt .onoff .edit .on b {
+  border: 1px solid white;
+  float: left;
+  margin-right: 3px;
+  -moz-box-shadow: 0 0 1px 1px rgba(69, 69, 69, 0.7), inset 0 -3px 0 0 #bbbbbb;
+  -webkit-box-shadow: 0 0 1px 1px rgba(69, 69, 69, 0.7), inset 0 -3px 0 0 #bbbbbb;
+  box-shadow: 0 0 1px 1px rgba(69, 69, 69, 0.7), inset 0 -3px 0 0 #bbbbbb;
+}
+.GCPLUGIN section.adminblock .blockcnt .onoff .edit .on span {
+  float: left;
+}
+.GCPLUGIN section.adminblock .blockcnt .onoff .edit .on:hover b {
+  border: 1px solid #9cd6f1;
+  -moz-box-shadow: 0 0 1px 1px rgba(69, 69, 69, 0.8), inset 0 -3px 0 0 #0079a9;
+  -webkit-box-shadow: 0 0 1px 1px rgba(69, 69, 69, 0.8), inset 0 -3px 0 0 #0079a9;
+  box-shadow: 0 0 1px 1px rgba(69, 69, 69, 0.8), inset 0 -3px 0 0 #0079a9;
+}
+.GCPLUGIN section.adminblock .blockcnt .onoff .edit .off {
+  background: #666666;
+  color: #dddddd;
+}
+.GCPLUGIN section.adminblock .blockcnt .onoff .edit .off b {
+  border: 1px solid white;
+  float: left;
+  margin-left: 3px;
+  -moz-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.7), inset 0 -3px 0 0 #bbbbbb;
+  -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.7), inset 0 -3px 0 0 #bbbbbb;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.7), inset 0 -3px 0 0 #bbbbbb;
+}
+.GCPLUGIN section.adminblock .blockcnt .onoff .edit .off span {
+  float: left;
+}
+.GCPLUGIN section.adminblock .blockcnt .onoff .edit .off:hover b {
+  border: 1px solid #9cd6f1;
+  -moz-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.8), inset 0 -3px 0 0 #0079a9;
+  -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.8), inset 0 -3px 0 0 #0079a9;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.8), inset 0 -3px 0 0 #0079a9;
+}
+.GCPLUGIN section.adminblock .blockcnt .slider .edit {
+  margin-top: 6px;
+}
+.GCPLUGIN section.adminblock .blockcnt .slider .edit .value {
+  float: left;
+  height: 26px;
+  line-height: 26px;
+  background: #666666;
+  color: #666666;
+  padding: 0 6px;
+  font-size: 14px;
+  font-weight: 300 !important;
+  margin: 1px 8px 0 0;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+.GCPLUGIN section.adminblock .blockcnt .slider .edit .zone {
+  float: left;
+}
+.GCPLUGIN section.adminblock .blockcnt .slider .edit .zone .controller {
+  position: absolute;
+  margin-left: 25px;
+  margin-right: 3px;
+  z-index: 10;
+  display: block;
+  float: left;
+  width: 10px;
+  height: 26px;
+  border: 1px solid white;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  background-color: #dddddd;
+  background-image: -moz-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: -ms-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#eeeeee), to(#dddddd));
+  background-image: -webkit-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: -o-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: linear-gradient(top, #eeeeee, #dddddd);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@uppercolor', endColorstr='@lowercolor', GradientType=0);*/
+
+  -moz-box-shadow: 0 0 1px 1px rgba(69, 69, 69, 0.7), inset 0 -3px 0 0 #bbbbbb;
+  -webkit-box-shadow: 0 0 1px 1px rgba(69, 69, 69, 0.7), inset 0 -3px 0 0 #bbbbbb;
+  box-shadow: 0 0 1px 1px rgba(69, 69, 69, 0.7), inset 0 -3px 0 0 #bbbbbb;
+}
+.GCPLUGIN section.adminblock .blockcnt .slider .edit .zone .bar {
+  position: absolute;
+  height: 6px;
+  width: 150px;
+  border: 3px solid #bbbbbb;
+  background: #666666;
+  margin-top: 8px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+}
+.GCPLUGIN section.adminblock .blockcnt .slider .edit .zone .bar .inside {
+  height: 4px;
+  width: 25px;
+  background: #33a8db;
+  border: 1px solid #9cd6f1;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  -ms-border-radius: 1px;
+  -o-border-radius: 1px;
+  border-radius: 1px;
+}
+.GCPLUGIN section.adminblock .blockcnt .slider .edit:hover .zone .controller {
+  cursor: pointer;
+  background-color: #e6f4f9;
+  background-image: -moz-linear-gradient(top, #f2f9fc, #e6f4f9);
+  background-image: -ms-linear-gradient(top, #f2f9fc, #e6f4f9);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f2f9fc), to(#e6f4f9));
+  background-image: -webkit-linear-gradient(top, #f2f9fc, #e6f4f9);
+  background-image: -o-linear-gradient(top, #f2f9fc, #e6f4f9);
+  background-image: linear-gradient(top, #f2f9fc, #e6f4f9);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@uppercolor', endColorstr='@lowercolor', GradientType=0);*/
+
+  border: 1px solid white;
+  -moz-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.8), inset 0 -3px 0 0 #c3dbe4;
+  -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.8), inset 0 -3px 0 0 #c3dbe4;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.8), inset 0 -3px 0 0 #c3dbe4;
+}
+.GCPLUGIN section.adminblock .blockcnt .slider .edit:hover .zone .bar {
+  border: 3px solid #008dbe;
+}
+.GCPLUGIN section.adminblock .blockcnt .chechboxgroup .chechboxgroup {
+  /* width: 818px - 2 x 16px margin = 786 */
+
+  width: 516px;
+  float: right;
+  margin: 8px 0;
+}
+.GCPLUGIN section.adminblock .blockcnt .chechboxgroup .chechboxgroup .chkbxdef {
+  width: 13px;
+  height: 13px;
+  padding: 0;
+  margin: 7px 0 0 0;
+  vertical-align: bottom;
+  position: relative;
+  top: -1px;
+  *overflow: hidden;
+}
+.GCPLUGIN section.adminblock .blockcnt .chechboxgroup .chechboxgroup .chkbx {
+  height: 26px;
+  width: 20px;
+  float: left;
+  margin: 0;
+}
+.GCPLUGIN section.adminblock .blockcnt .chechboxgroup .chechboxgroup label {
+  height: 26px;
+  line-height: 26px;
+  width: 464px;
+  float: left;
+}
+.GCPLUGIN section.adminblock .blockcnt .composemessage {
+  border-bottom: 1px solid #d4d4d4;
+}
+.GCPLUGIN section.adminblock .blockcnt .composemessage .label {
+  margin-top: 7px;
+}
+.GCPLUGIN section.adminblock .blockcnt .composemessage label {
+  height: 26px;
+  line-height: 26px;
+  font-weight: 700;
+  color: #444444;
+  margin-top: 7px;
+}
+.GCPLUGIN section.adminblock .blockcnt .composemessage label i {
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  color: #888888;
+  font-family: sans-serif;
+}
+.GCPLUGIN section.adminblock .blockcnt .composemessage .edit .msgtxt {
+  float: left;
+  width: 730px;
+}
+.GCPLUGIN section.adminblock .blockcnt .composemessage .edit .msgtxt input {
+  width: 720px;
+}
+.GCPLUGIN section.adminblock .blockcnt .composemessage .edit .btntxt {
+  width: 357px;
+  float: left;
+}
+.GCPLUGIN section.adminblock .blockcnt .composemessage .edit .btntxt input {
+  width: 347px;
+}
+.GCPLUGIN section.adminblock .blockcnt .composemessage .edit .urltxt input {
+  width: 347px;
+}
+.GCPLUGIN section.adminblock .blockcnt .composemessage .edit .msgtxt input,
+.GCPLUGIN section.adminblock .blockcnt .composemessage .edit .btntxt input,
+.GCPLUGIN section.adminblock .blockcnt .composemessage .edit .urltxt input {
+  height: 30px;
+  line-height: 30px;
+  font-weight: 700;
+  border: 1px solid #999999;
+  color: #222222;
+  font-size: 18px;
+  font-family: 'Roboto', sans-serif;
+  padding: 0 4px;
+}
+.GCPLUGIN section.adminblock .blockcnt .composemessage .edit .msgtxt_counter {
+  float: left;
+  width: 36px;
+  margin-left: 16px;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  border: 2px solid #dddddd;
+  font-size: 18px;
+  font-weight: 700;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+.GCPLUGIN section.adminblock .blockcnt .composemessage .editoption {
+  margin: 0 0 7px;
+}
+.GCPLUGIN section.adminblock .blockcnt .composemessage .editoption .optiem {
+  float: left;
+  margin: 5px 24px 0 0;
+}
+.GCPLUGIN section.adminblock .blockcnt .composemessage .editoption .optiem .chkbx {
+  float: left;
+  height: 26px;
+  width: 20px;
+  margin: 0;
+}
+.GCPLUGIN section.adminblock .blockcnt .composemessage .editoption .optiem .chkbx .chkbxdef {
+  width: 13px;
+  height: 13px;
+  padding: 0;
+  margin: 7px 0 0 0;
+  vertical-align: bottom;
+  position: relative;
+  top: -1px;
+  *overflow: hidden;
+}
+.GCPLUGIN section.adminblock .blockcnt .composemessage .editoption .optiem label {
+  margin: 0;
+  float: left;
+}
+.GCPLUGIN section.adminblock .blockcnt .composemessage .leftcol {
+  float: left;
+  width: 357px;
+  margin-right: 16px;
+}
+.GCPLUGIN section.adminblock .blockcnt .composemessage .rightcol {
+  float: left;
+  width: 413px;
+}
+.GCPLUGIN section.adminblock .blockcnt .composemessage .rightcol .btntxt_counter {
+  float: left;
+  width: 36px;
+  margin-left: 16px;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  border: 2px solid #dddddd;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+.GCPLUGIN section.adminblock .blockcnt .composemessage .desc {
+  font-size: 12px;
+  color: #888888;
+  margin: 5px 0 7px;
+}
+.GCPLUGIN section.adminblock .blockcnt .composemessage .alldesc {
+  font-size: 12px;
+  color: #888888;
+  margin: 5px 0 7px;
+}
+.GCPLUGIN section.adminblock .blockcnt .composemessage .previewblock {
+  padding: 8px 0;
+}
+.GCPLUGIN section.adminblock .blockcnt .composemessage .previewblock .label {
+  text-transform: uppercase;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #bbbbbb;
+  margin-bottom: 8px;
+}
+.GCPLUGIN section.adminblock .blockcnt .composemessage .previewblock .view {
+  border: 1px solid #666666;
+  background: white;
+  height: 28px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  /* tmp */
+
+  padding: 16px;
+  color: #dddddd;
+  text-align: center;
+  /* end tmp */
+
+}
+.GCPLUGIN section.adminblock .blockcnt .hideitemgroup {
+  display: none;
+}
+.GCPLUGIN section.adminblock .blockcnt .itemgroup {
+  background: #dddddd;
+  padding: 12px 16px 4px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+.GCPLUGIN section.adminblock .blockcnt .itemgroup h3 {
+  text-transform: uppercase;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #555555;
+  line-height: 20px;
+  height: 20px;
+  padding-bottom: 10px;
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.9);
+}
+.GCPLUGIN section.adminblock .blockcnt .itemgroup .item {
+  border-bottom: none !important;
+  border-top: 1px solid #c4c4c4;
+}
+.GCPLUGIN section.adminblock .blockcnt .itemgroup .label {
+  width: 234px;
+}
+.GCPLUGIN section.adminblock .blockcnt .itemgroup .desc label {
+  margin-left: 254px;
+}
+.GCPLUGIN section.adminblock .blockcnt .itemgroup .noplugin {
+  padding: 0 0 8px 0;
+}
+.GCPLUGIN section.adminblock .blockcnt .before-itemgroup {
+  margin-top: 16px;
+}
+.GCPLUGIN section.adminblock .blockcnt .after-itemgroup {
+  margin-bottom: 16px;
+}
+.GCPLUGIN section.adminblock .blockcnt .after-itemgroup-border {
+  border-top: 1px solid #c4c4c4;
+}
+.GCPLUGIN section.adminblock .blockfooter {
+  padding: 32px 16px;
+}
+.GCPLUGIN section.adminblock .blockfooter input.savebutton {
+  display: block;
+  font-family: 'Roboto Condensed', sans-serif;
+  text-align: center;
+  height: 45px;
+  line-height: 40px;
+  color: white;
+  padding: 0 32px 4px;
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 1px rgba(69, 69, 69, 0.4);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: 0 8px 6px -6px rgba(69, 69, 69, 0.7), inset 0 -3px 0 0 #bd6101;
+  -webkit-box-shadow: 0 8px 6px -6px rgba(69, 69, 69, 0.7), inset 0 -3px 0 0 #bd6101;
+  box-shadow: 0 8px 6px -6px rgba(69, 69, 69, 0.7), inset 0 -3px 0 0 #bd6101;
+  border: 1px solid #ff9b44;
+  background-color: #d2741d;
+  background-image: -moz-linear-gradient(top, #ff9b44, #d2741d);
+  background-image: -ms-linear-gradient(top, #ff9b44, #d2741d);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ff9b44), to(#d2741d));
+  background-image: -webkit-linear-gradient(top, #ff9b44, #d2741d);
+  background-image: -o-linear-gradient(top, #ff9b44, #d2741d);
+  background-image: linear-gradient(top, #ff9b44, #d2741d);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@uppercolor', endColorstr='@lowercolor', GradientType=0);*/
+
+}
+.GCPLUGIN section.adminblock .blockfooter input.savebutton:hover {
+  -moz-box-shadow: 0 8px 6px -6px rgba(69, 69, 69, 0.7), inset 0 -3px 0 0 #728a18;
+  -webkit-box-shadow: 0 8px 6px -6px rgba(69, 69, 69, 0.7), inset 0 -3px 0 0 #728a18;
+  box-shadow: 0 8px 6px -6px rgba(69, 69, 69, 0.7), inset 0 -3px 0 0 #728a18;
+  border: 1px solid #b9d245;
+  background-color: #819829;
+  background-image: -moz-linear-gradient(top, #b9d245, #819829);
+  background-image: -ms-linear-gradient(top, #b9d245, #819829);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#b9d245), to(#819829));
+  background-image: -webkit-linear-gradient(top, #b9d245, #819829);
+  background-image: -o-linear-gradient(top, #b9d245, #819829);
+  background-image: linear-gradient(top, #b9d245, #819829);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@uppercolor', endColorstr='@lowercolor', GradientType=0);*/
+
+  cursor: pointer;
+}
+.GCPLUGIN section.adminblock label {
+  cursor: inherit;
+}
+.GCPLUGIN footer {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  -webkit-border-radius: 0 0 5px 5px;
+  -moz-border-radius: 0 0 5px 5px;
+  -ms-border-radius: 0 0 5px 5px;
+  -o-border-radius: 0 0 5px 5px;
+  border-radius: 0 0 5px 5px;
+  background: #ffffff;
+  /* Old browsers */
+
+  background-image: url('../images/white_noise_texture.png'), -moz-linear-gradient(top, #d5ecf4 0%, #ffffff 100%);
+  /* FF3.6+ */
+
+  background-image: url('../images/white_noise_texture.png'), -webkit-gradient(linear, left top, left bottom, color-stop(0%, #d5ecf4), color-stop(100%, #ffffff));
+  /* Chrome,Safari4+ */
+
+  background-image: url('../images/white_noise_texture.png'), -webkit-linear-gradient(top, #d5ecf4 0%, #ffffff 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background-image: url('../images/white_noise_texture.png'), -o-linear-gradient(top, #d5ecf4 0%, #ffffff 100%);
+  /* Opera 11.10+ */
+
+  background-image: url('../images/white_noise_texture.png'), -ms-linear-gradient(top, #d5ecf4 0%, #ffffff 100%);
+  /* IE10+ */
+
+  background-image: url('../images/white_noise_texture.png'), linear-gradient(to bottom, #d5ecf4 0%, #ffffff 100%);
+  /* W3C */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#d5ecf4, endColorstr=#ffffff, GradientType=0);
+  /* IE6-9 */
+
+  background-repeat: repeat-all;
+  background-position: top center, top center;
+}
+.GCPLUGIN footer nav {
+  height: 40px;
+  line-height: 40px;
+}
+.GCPLUGIN footer nav b {
+  text-transform: uppercase;
+}
+.GCPLUGIN footer nav ul {
+  margin: 4px 0 0 0;
+  padding: 0;
+  list-style-type: none;
+}
+.GCPLUGIN footer nav ul li {
+  margin: 0 0 0 8px;
+  padding: 0;
+  float: left;
+}
+.GCPLUGIN footer nav ul li a {
+  font-weight: 400 !important;
+  padding: 0 8px;
+  line-height: 32px;
+  height: 32px;
+  display: block;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+.GCPLUGIN footer nav ul li a:hover {
+  background: #008dbe;
+  color: white;
+}
+.GCPLUGIN footer nav ul .first {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  border-left: none !important;
+}
+.GCPLUGIN footer nav ul.menu1 {
+  float: left;
+  margin-left: 8px;
+  font-weight: 700;
+}
+.GCPLUGIN footer nav ul.menu1 li {
+  margin: 0 0 0 4px;
+  padding: 0 0 0 4px;
+  border-left: 1px solid #c5e4f0;
+}
+.GCPLUGIN footer nav ul.menu2 {
+  float: right;
+  margin-right: 8px;
+}
+.GCPLUGIN footer .metainfo {
+  padding: 24px 19px 11px;
+  font-size: 12px;
+  color: #999999;
+}
+.GCPLUGIN footer .metablock {
+  float: left;
+  /* ENGINE */
+  /* END ENGINE */
+
+}
+.GCPLUGIN footer .metablock .gcpversion {
+  display: inline-block;
+}
+.GCPLUGIN footer .metablock .gcpengine {
+  border-left: 1px solid #c5e4f0;
+  margin-left: 8px;
+  padding-left: 4px;
+  display: inline-block;
+}
+.GCPLUGIN footer .metablock .gcpengine a {
+  display: inline-block;
+  line-height: 22px;
+  height: 22px;
+  padding: 0 6px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+}
+.GCPLUGIN footer .metablock .gcpengine a:hover {
+  background: #008dbe;
+  color: white;
+}
+.GCPLUGIN footer .copyblock {
+  float: right;
+}
+.GCPLUGIN .enginepanel {
+  margin-top: 16px;
+  background-color: #555555;
+  border: 1px solid #ffffff;
+  width: 818px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: 0 0 10px 2px #aaaaaa;
+  -webkit-box-shadow: 0 0 10px 2px #aaaaaa;
+  box-shadow: 0 0 10px 2px #aaaaaa;
+}
+.GCPLUGIN .enginepanel header {
+  background: none !important;
+  line-height: 96px;
+  height: 96px;
+  padding: 0 16px;
+  border-bottom: 1px solid #999999;
+}
+.GCPLUGIN .enginepanel header .opener {
+  display: inline-block;
+}
+.GCPLUGIN .enginepanel header .opener span {
+  background-color: none;
+  width: 33px;
+  height: 33px;
+  margin: 31px 4px 0 0;
+  display: block;
+  float: left;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.GCPLUGIN .enginepanel header .opener h2 {
+  text-transform: uppercase;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  float: left;
+  color: white;
+  /*.sf-white-textshadow();*/
+
+}
+.GCPLUGIN .enginepanel header .opener b {
+  display: none;
+  float: left;
+  height: 25px;
+  line-height: 25px;
+  margin: 35px 0 0 12px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  background: #444444;
+  color: #aaaaaa;
+  font-weight: 300 !important;
+  padding: 0 8px;
+  font-size: 12px;
+}
+.GCPLUGIN .enginepanel header .opener:hover span {
+  background-color: #56bcef;
+  /*.sf-white-boxshadow();*/
+
+}
+.GCPLUGIN .enginepanel header .opener:hover h2 {
+  color: #56bcef;
+}
+.GCPLUGIN .enginepanel header .opener:hover b {
+  display: block;
+}
+.GCPLUGIN .enginepanel header .open span {
+  background: url(../images/block_arrow_bottom.png) bottom left no-repeat;
+}
+.GCPLUGIN .enginepanel header .close span {
+  background: url(../images/block_arrow_right.png) bottom left no-repeat;
+}
+.GCPLUGIN .enginepanel section.engine_settings {
+  margin: 0 16px;
+  /* item */
+
+  /* onoff */
+
+}
+.GCPLUGIN .enginepanel section.engine_settings .item {
+  border-top: 1px solid #666666;
+  /*.chkbx {
+                    height: 26px;
+                    margin-top: 7px;
+                    /*vertical-align: middle;
+                }*/
+
+}
+.GCPLUGIN .enginepanel section.engine_settings .item .label {
+  width: 250px;
+  height: 40px;
+  line-height: 40px;
+  margin-right: 20px;
+  float: left;
+  font-weight: 700;
+  color: #ffffff;
+}
+.GCPLUGIN .enginepanel section.engine_settings .item .edit {
+  height: 40px;
+}
+.GCPLUGIN .enginepanel section.engine_settings .item .edit input.def,
+.GCPLUGIN .enginepanel section.engine_settings .item .edit select.def {
+  margin-top: 5px;
+  border: 1px solid #000000;
+  color: #222222;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  width: 300px;
+  height: 30px;
+  line-height: 30px;
+  display: inline-block;
+}
+.GCPLUGIN .enginepanel section.engine_settings .item .edit input.def {
+  padding: 0 6px;
+  width: 300px;
+  height: 30px;
+  line-height: 30px;
+}
+.GCPLUGIN .enginepanel section.engine_settings .item .edit input.chkbxdef {
+  width: 13px;
+  height: 13px;
+  padding: 0;
+  margin: 15px 0 0 0;
+  vertical-align: bottom;
+  position: relative;
+  top: -1px;
+  *overflow: hidden;
+}
+.GCPLUGIN .enginepanel section.engine_settings .item .desc {
+  font-size: 11px;
+  margin: 0 0 4px 270px;
+  color: #aaaaaa;
+  font-family: 'Roboto', sans-serif;
+  font-style: italic;
+  font-weight: 300;
+  display: inline-block;
+}
+.GCPLUGIN .enginepanel section.engine_settings .onoff .edit a {
+  height: 24px;
+  line-height: 24px;
+  border: 3px solid #bbbbbb;
+  display: inline-block;
+  font-weight: 700 !important;
+  font-size: 14px;
+  margin: 5px 0 0;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+.GCPLUGIN .enginepanel section.engine_settings .onoff .edit a b {
+  display: block;
+  width: 16px;
+  height: 16px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  background-color: #dddddd;
+  background-image: -moz-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: -ms-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#eeeeee), to(#dddddd));
+  background-image: -webkit-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: -o-linear-gradient(top, #eeeeee, #dddddd);
+  background-image: linear-gradient(top, #eeeeee, #dddddd);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@uppercolor', endColorstr='@lowercolor', GradientType=0);*/
+
+}
+.GCPLUGIN .enginepanel section.engine_settings .onoff .edit a span {
+  display: block;
+  padding: 0 8px;
+  line-height: 24px;
+  width: 30px;
+  text-align: center;
+}
+.GCPLUGIN .enginepanel section.engine_settings .onoff .edit a:hover {
+  border: 3px solid #008dbe;
+  position: relative;
+}
+.GCPLUGIN .enginepanel section.engine_settings .onoff .edit a:hover b {
+  background-color: #008dbe;
+  background-image: -moz-linear-gradient(top, #56bcef, #008dbe);
+  background-image: -ms-linear-gradient(top, #56bcef, #008dbe);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#56bcef), to(#008dbe));
+  background-image: -webkit-linear-gradient(top, #56bcef, #008dbe);
+  background-image: -o-linear-gradient(top, #56bcef, #008dbe);
+  background-image: linear-gradient(top, #56bcef, #008dbe);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@uppercolor', endColorstr='@lowercolor', GradientType=0);*/
+
+}
+.GCPLUGIN .enginepanel section.engine_settings .onoff .edit .on {
+  background: #f2f9fc;
+  color: #008dbe;
+}
+.GCPLUGIN .enginepanel section.engine_settings .onoff .edit .on b {
+  border: 1px solid white;
+  float: left;
+  margin-right: 3px;
+  -moz-box-shadow: 0 0 1px 1px rgba(69, 69, 69, 0.7), inset 0 -3px 0 0 #bbbbbb;
+  -webkit-box-shadow: 0 0 1px 1px rgba(69, 69, 69, 0.7), inset 0 -3px 0 0 #bbbbbb;
+  box-shadow: 0 0 1px 1px rgba(69, 69, 69, 0.7), inset 0 -3px 0 0 #bbbbbb;
+}
+.GCPLUGIN .enginepanel section.engine_settings .onoff .edit .on span {
+  float: left;
+}
+.GCPLUGIN .enginepanel section.engine_settings .onoff .edit .on:hover b {
+  border: 1px solid #9cd6f1;
+  -moz-box-shadow: 0 0 1px 1px rgba(69, 69, 69, 0.8), inset 0 -3px 0 0 #0079a9;
+  -webkit-box-shadow: 0 0 1px 1px rgba(69, 69, 69, 0.8), inset 0 -3px 0 0 #0079a9;
+  box-shadow: 0 0 1px 1px rgba(69, 69, 69, 0.8), inset 0 -3px 0 0 #0079a9;
+}
+.GCPLUGIN .enginepanel section.engine_settings .onoff .edit .off {
+  background: #666666;
+  color: #dddddd;
+}
+.GCPLUGIN .enginepanel section.engine_settings .onoff .edit .off b {
+  border: 1px solid white;
+  float: left;
+  margin-left: 3px;
+  -moz-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.7), inset 0 -3px 0 0 #bbbbbb;
+  -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.7), inset 0 -3px 0 0 #bbbbbb;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.7), inset 0 -3px 0 0 #bbbbbb;
+}
+.GCPLUGIN .enginepanel section.engine_settings .onoff .edit .off span {
+  float: left;
+}
+.GCPLUGIN .enginepanel section.engine_settings .onoff .edit .off:hover b {
+  border: 1px solid #9cd6f1;
+  -moz-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.8), inset 0 -3px 0 0 #0079a9;
+  -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.8), inset 0 -3px 0 0 #0079a9;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.8), inset 0 -3px 0 0 #0079a9;
+}
+.GCPLUGIN .enginepanel section.engine_settings .first {
+  border-top: none !important;
+}
+.GCPLUGIN .enginepanel section.engine_settings .metrixcode .connectlabel {
+  float: left;
+  color: white;
+  background: #819829;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  height: 24px;
+  line-height: 24px;
+  padding: 0 12px;
+  margin: 8px 0 0;
+}
+.GCPLUGIN .enginepanel section.engine_settings .metrixcode .disconnectlink {
+  float: left;
+  margin: 12px 0 0 8px;
+}
+.GCPLUGIN .enginepanel section.engine_settings .metrixcode .disconnectlink a {
+  display: block;
+  width: 16px;
+  height: 16px;
+  color: white;
+  padding: 0 !important;
+  text-indent: -9999px;
+  text-shadow: none !important;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  background: url(../images/delete_connection_engine.png) top left no-repeat;
+  border: none !important;
+}
+.GCPLUGIN .enginepanel section.engine_settings .metrixcode .disconnectlink a:hover {
+  background-position: bottom left;
+}
+.GCPLUGIN .enginepanel section.engine_settings .metrixcode .connectbutton {
+  float: left;
+  margin: 4px 0 0;
+}
+.GCPLUGIN .enginepanel section.engine_settings .metrixcode .connectbutton a {
+  display: block;
+  font-family: 'Roboto Condensed', sans-serif;
+  text-align: center;
+  height: 27px;
+  line-height: 27px;
+  color: white;
+  padding: 0 12px 3px;
+  font-size: 16px;
+  font-weight: 400;
+  text-shadow: 1px 1px 1px rgba(69, 69, 69, 0.4);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: 0 8px 6px -6px rgba(69, 69, 69, 0.7), inset 0 -3px 0 0 #bd6101;
+  -webkit-box-shadow: 0 8px 6px -6px rgba(69, 69, 69, 0.7), inset 0 -3px 0 0 #bd6101;
+  box-shadow: 0 8px 6px -6px rgba(69, 69, 69, 0.7), inset 0 -3px 0 0 #bd6101;
+  border: 1px solid #ff9b44;
+  background-color: #d2741d;
+  background-image: -moz-linear-gradient(top, #ff9b44, #d2741d);
+  background-image: -ms-linear-gradient(top, #ff9b44, #d2741d);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ff9b44), to(#d2741d));
+  background-image: -webkit-linear-gradient(top, #ff9b44, #d2741d);
+  background-image: -o-linear-gradient(top, #ff9b44, #d2741d);
+  background-image: linear-gradient(top, #ff9b44, #d2741d);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@uppercolor', endColorstr='@lowercolor', GradientType=0);*/
+
+}
+.GCPLUGIN .enginepanel section.engine_settings .metrixcode .connectbutton a:hover {
+  -moz-box-shadow: 0 8px 6px -6px rgba(69, 69, 69, 0.7), inset 0 -3px 0 0 #728a18;
+  -webkit-box-shadow: 0 8px 6px -6px rgba(69, 69, 69, 0.7), inset 0 -3px 0 0 #728a18;
+  box-shadow: 0 8px 6px -6px rgba(69, 69, 69, 0.7), inset 0 -3px 0 0 #728a18;
+  border: 1px solid #b9d245;
+  background-color: #819829;
+  background-image: -moz-linear-gradient(top, #b9d245, #819829);
+  background-image: -ms-linear-gradient(top, #b9d245, #819829);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#b9d245), to(#819829));
+  background-image: -webkit-linear-gradient(top, #b9d245, #819829);
+  background-image: -o-linear-gradient(top, #b9d245, #819829);
+  background-image: linear-gradient(top, #b9d245, #819829);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@uppercolor', endColorstr='@lowercolor', GradientType=0);*/
+
+}
+.GCPLUGIN .enginepanel section.engine_settings .metrixcode .label2 {
+  width: 250px;
+  height: 30px;
+  line-height: 30px;
+  margin-right: 20px;
+  float: left;
+  font-weight: 700;
+  color: #ffffff;
+}
+.GCPLUGIN .enginepanel section.engine_settings .metrixcode .metrixcodelabel {
+  color: white;
+  background: #444444;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  height: 24px;
+  line-height: 24px;
+  padding: 0 12px;
+  margin: 3px 0 0;
+  float: left;
+}
+.GCPLUGIN .enginepanel section.engine_settings .metrixcode .desc a {
+  font-style: normal !important;
+  color: #ff9b44;
+}
+.GCPLUGIN .enginepanel section.engine_settings .metrixcode .desc a:hover {
+  color: #b9d245;
+}
+.GCPLUGIN .enginepanel footer {
+  border-top: 1px solid #999999;
+  background: none !important;
+  padding: 32px 16px;
+}
+.GCPLUGIN .enginepanel footer input.savebutton {
+  display: block;
+  font-family: 'Roboto Condensed', sans-serif;
+  text-align: center;
+  height: 45px;
+  line-height: 40px;
+  color: white;
+  padding: 0 32px 4px;
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 1px rgba(69, 69, 69, 0.4);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: 0 8px 6px -6px rgba(69, 69, 69, 0.7), inset 0 -3px 0 0 #bd6101;
+  -webkit-box-shadow: 0 8px 6px -6px rgba(69, 69, 69, 0.7), inset 0 -3px 0 0 #bd6101;
+  box-shadow: 0 8px 6px -6px rgba(69, 69, 69, 0.7), inset 0 -3px 0 0 #bd6101;
+  border: 1px solid #ff9b44;
+  background-color: #d2741d;
+  background-image: -moz-linear-gradient(top, #ff9b44, #d2741d);
+  background-image: -ms-linear-gradient(top, #ff9b44, #d2741d);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ff9b44), to(#d2741d));
+  background-image: -webkit-linear-gradient(top, #ff9b44, #d2741d);
+  background-image: -o-linear-gradient(top, #ff9b44, #d2741d);
+  background-image: linear-gradient(top, #ff9b44, #d2741d);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@uppercolor', endColorstr='@lowercolor', GradientType=0);*/
+
+}
+.GCPLUGIN .enginepanel footer input.savebutton:hover {
+  -moz-box-shadow: 0 8px 6px -6px rgba(69, 69, 69, 0.7), inset 0 -3px 0 0 #728a18;
+  -webkit-box-shadow: 0 8px 6px -6px rgba(69, 69, 69, 0.7), inset 0 -3px 0 0 #728a18;
+  box-shadow: 0 8px 6px -6px rgba(69, 69, 69, 0.7), inset 0 -3px 0 0 #728a18;
+  border: 1px solid #b9d245;
+  background-color: #819829;
+  background-image: -moz-linear-gradient(top, #b9d245, #819829);
+  background-image: -ms-linear-gradient(top, #b9d245, #819829);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#b9d245), to(#819829));
+  background-image: -webkit-linear-gradient(top, #b9d245, #819829);
+  background-image: -o-linear-gradient(top, #b9d245, #819829);
+  background-image: linear-gradient(top, #b9d245, #819829);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@uppercolor', endColorstr='@lowercolor', GradientType=0);*/
+
+  cursor: pointer;
+}
+/* selectboxit fix */
+.selectboxit-container {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+}
+/* url notification nag fix */
+.gcurl-nag {
+  margin-top: 8px;
+}

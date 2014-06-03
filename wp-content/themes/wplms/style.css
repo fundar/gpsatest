@@ -1,0 +1,50 @@
+/*
+Theme Name: WPLMS
+Theme URI: http://www.VibeThemes.com/
+Description: WPLMS is a Learning Management System for WordPress. The theme is deep integrated with BuddyPress and comes packed with the Course Module plugin. 
+Theme has very powerful features which are essential for a full fledges LMS. Theme utilizes maximum of both WordPress and BuddyPress and can be run on a large scale platform as well.
+Author: Mr.Vibe
+Author URI: http://www.VibeThemes.com/
+Version: 1.3.1
+License: Themeforest
+License URI: http://themeforest.net/licenses
+*/
+
+/*=== ADD Your Custom Changes here ===*/
+
+
+.security-question-section input[type="number"]{border:1px solid #DDD;}
+.security-question-section+.submit{clear:both;}
+.content ul.question_options {
+clear: both;
+display: inline-block;
+width: 100%;
+list-style:none;
+}
+.bbp-forum-title{
+	font-size: 18px;
+	font-weight: 600;
+}
+#bbpress-forums .bbp-forum-info .bbp-forum-content, #bbpress-forums p.bbp-topic-meta{
+font-size:13px;
+color:#666;
+}
+#bp_search{
+border: 1px solid #DDD;
+padding: 9px 12px;
+border-radius: 2px;
+}
+.bbp-topic-permalink{
+font-size:16px;
+}
+#bbpress-forums p.bbp-topic-meta img.avatar, #bbpress-forums ul.bbp-reply-revision-log img.avatar, #bbpress-forums ul.bbp-topic-revision-log img.avatar,#bbpress-forums div.bbp-template-notice img.avatar, #bbpress-forums .widget_display_topics img.avatar, #bbpress-forums .widget_display_replies img.avatar{
+	width: 32px;
+     border-radius: 50%;
+     border: 1px solid #ddd;
+}
+
+.bbp-breadcrumb,
+.bbp-breadcrumb a{
+font-weight:600;
+text-transform:uppercase;
+}

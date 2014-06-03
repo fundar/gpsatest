@@ -1,0 +1,393 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Custom WordPress Sidebar Plugin\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-09-29 14:21-0000\n"
+"PO-Revision-Date: 2013-09-29 14:21-0000\n"
+"Last-Translator: Sunny Johal - WordPress Gorilla <support@wordpressgorilla.com>\n"
+"Language-Team: Titanium Themes <support@titaniumthemes.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED KINGDOM\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../custom-theme-sidebars.php:77
+#: ../custom-theme-sidebars.php:78
+msgid "Theme Sidebars"
+msgstr ""
+
+#: ../custom-theme-sidebars.php:188
+#: ../includes/theme-sidebar-admin-page.php:284
+#: ../includes/theme-sidebar-admin-page.php:725
+msgid "Select a Sidebar"
+msgstr ""
+
+#: ../custom-theme-sidebars.php:189
+msgid "Add to Sidebar"
+msgstr ""
+
+#: ../custom-theme-sidebars.php:191
+msgid "This page is asking you to confirm that you want to leave - data you have entered may not be saved."
+msgstr ""
+
+#: ../custom-theme-sidebars.php:192
+msgid "Warning! You are about to permanently delete all sidebars. 'Cancel' to stop, 'OK' to delete."
+msgstr ""
+
+#: ../custom-theme-sidebars.php:193
+msgid "You are about to permanently delete this sidebar. 'Cancel' to stop, 'OK' to delete."
+msgstr ""
+
+#: ../custom-theme-sidebars.php:194
+#: ../includes/theme-sidebar-admin-page.php:286
+#: ../includes/theme-sidebar-admin-page.php:727
+msgid "Deactivate Sidebar"
+msgstr ""
+
+#: ../custom-theme-sidebars.php:195
+msgid "Leave Page"
+msgstr ""
+
+#: ../custom-theme-sidebars.php:196
+msgid "Stay on Page"
+msgstr ""
+
+#: ../custom-theme-sidebars.php:197
+msgid "No Results Found."
+msgstr ""
+
+#: ../custom-theme-sidebars.php:198
+msgid "No Sidebars"
+msgstr ""
+
+#: ../custom-theme-sidebars.php:259
+msgid "This screen is used for managing your custom sidebar menus. It provides a way to replace the default sidebars that have been registed with your theme. If your theme does not natively support sidebar widget areas you can learn about adding this support by following the Documentation link to the side."
+msgstr ""
+
+#: ../custom-theme-sidebars.php:260
+msgid "From this screen you can:"
+msgstr ""
+
+#: ../custom-theme-sidebars.php:261
+msgid "Create, edit, and delete custom sidebars"
+msgstr ""
+
+#: ../custom-theme-sidebars.php:262
+msgid "Choose which sidebar you would like to replace"
+msgstr ""
+
+#: ../custom-theme-sidebars.php:263
+msgid "Add, organize, and modify pages/posts etc that belong to a custom sidebar"
+msgstr ""
+
+#: ../custom-theme-sidebars.php:267
+msgid "Overview"
+msgstr ""
+
+#: ../custom-theme-sidebars.php:272
+msgid "For more information:"
+msgstr ""
+
+#: ../custom-theme-sidebars.php:273
+msgid "Documentation on Registering Sidebars"
+msgstr ""
+
+#: ../custom-theme-sidebars.php:274
+msgid "Support Forums"
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page-functions.php:69
+#: ../includes/classes/class-master-walker-sidebar-edit.php:110
+msgid "All Posts In Category"
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page-functions.php:129
+#: ../includes/theme-sidebar-admin-page-functions.php:433
+#: ../includes/theme-sidebar-admin-page-functions.php:774
+#: ../includes/theme-sidebar-admin-page-functions.php:1040
+msgid "No items."
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page-functions.php:158
+#: ../includes/theme-sidebar-admin-page-functions.php:450
+#: ../includes/theme-sidebar-admin-page-functions.php:799
+#: ../includes/theme-sidebar-admin-page-functions.php:1069
+msgid "&laquo;"
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page-functions.php:159
+#: ../includes/theme-sidebar-admin-page-functions.php:451
+#: ../includes/theme-sidebar-admin-page-functions.php:800
+#: ../includes/theme-sidebar-admin-page-functions.php:1070
+msgid "&raquo;"
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page-functions.php:200
+#: ../includes/theme-sidebar-admin-page-functions.php:833
+msgid "Most Used"
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page-functions.php:205
+#: ../includes/theme-sidebar-admin-page-functions.php:488
+#: ../includes/theme-sidebar-admin-page-functions.php:834
+#: ../includes/theme-sidebar-admin-page-functions.php:1106
+#: ../includes/theme-sidebar-admin-page-functions.php:1329
+msgid "View All"
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page-functions.php:210
+#: ../includes/theme-sidebar-admin-page-functions.php:286
+#: ../includes/theme-sidebar-admin-page-functions.php:489
+#: ../includes/theme-sidebar-admin-page-functions.php:550
+#: ../includes/theme-sidebar-admin-page-functions.php:835
+#: ../includes/theme-sidebar-admin-page-functions.php:911
+#: ../includes/theme-sidebar-admin-page-functions.php:1111
+#: ../includes/theme-sidebar-admin-page-functions.php:1177
+msgid "Search"
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page-functions.php:303
+#: ../includes/theme-sidebar-admin-page-functions.php:562
+#: ../includes/theme-sidebar-admin-page-functions.php:923
+msgid "No results found."
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page-functions.php:318
+#: ../includes/theme-sidebar-admin-page-functions.php:661
+#: ../includes/theme-sidebar-admin-page-functions.php:938
+#: ../includes/theme-sidebar-admin-page-functions.php:1186
+#: ../includes/theme-sidebar-admin-page-functions.php:1355
+msgid "Select All"
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page-functions.php:487
+msgid "Most Recent"
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page-functions.php:501
+#: ../includes/theme-sidebar-admin-page-functions.php:507
+#: ../includes/theme-sidebar-admin-page-functions.php:581
+#: ../includes/theme-sidebar-admin-page-functions.php:587
+#: ../includes/theme-sidebar-admin-page-functions.php:846
+#: ../includes/theme-sidebar-admin-page-functions.php:852
+#: ../includes/theme-sidebar-admin-page-functions.php:876
+#: ../includes/theme-sidebar-admin-page-functions.php:882
+#: ../includes/classes/class-master-walker-sidebar-edit.php:66
+#: ../includes/classes/class-master-walker-sidebar-edit.php:132
+#, php-format
+msgid "All %s"
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page-functions.php:515
+#: ../includes/theme-sidebar-admin-page-functions.php:522
+#: ../includes/theme-sidebar-admin-page-functions.php:595
+#: ../includes/theme-sidebar-admin-page-functions.php:602
+#: ../includes/classes/class-master-walker-sidebar-edit.php:154
+#: ../includes/classes/class-master-walker-sidebar-edit.php:158
+#, php-format
+msgid "%s Archive"
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page-functions.php:969
+msgid "Author Archives"
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page-functions.php:1219
+msgid "Template Hierarchy"
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page-functions.php:1256
+msgid "404 - Page Not Found"
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page-functions.php:1267
+#: ../includes/classes/class-master-walker-sidebar-edit.php:88
+msgid "Author Archive"
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page-functions.php:1278
+msgid "Blog Index Page"
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page-functions.php:1289
+msgid "Date Archive"
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page-functions.php:1304
+#, php-format
+msgid "Page Template: %s"
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page-functions.php:1316
+msgid "Search Results"
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page.php:34
+msgid "Cheatin&#8217; uh?"
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page.php:37
+msgid "This theme does not support widgets, please use a theme that supports widgets in order to enable the sidebar generator."
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page.php:235
+#: ../includes/theme-sidebar-admin-page.php:253
+msgid "Create a New Sidebar"
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page.php:251
+msgid "Manage your sidebar replacements here or:"
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page.php:252
+msgid "Create a new sidebar for your theme:"
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page.php:260
+#: ../includes/theme-sidebar-admin-page.php:580
+msgid "Sidebar Name"
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page.php:261
+msgid "Default Sidebar To Replace"
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page.php:311
+msgid "Edit"
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page.php:314
+msgid "Delete"
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page.php:335
+msgid "Delete All Sidebars"
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page.php:481
+#: ../includes/theme-sidebar-admin-page.php:500
+#: ../includes/theme-sidebar-functions.php:119
+#: ../includes/theme-sidebar-functions.php:335
+msgid "Sidebar"
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page.php:484
+#, php-format
+msgid "%1$s has been updated."
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page.php:502
+#, php-format
+msgid "%1$s has been deleted."
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page.php:522
+msgid "Select a sidebar to edit:"
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page.php:528
+msgid "Select"
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page.php:533
+msgid "Create a new Sidebar."
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page.php:581
+msgid "Enter sidebar name here"
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page.php:611
+#: ../includes/theme-sidebar-admin-page.php:806
+msgid "Create Sidebar"
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page.php:649
+#: ../includes/theme-sidebar-admin-page.php:842
+msgid "Save Sidebar"
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page.php:669
+msgid "Give your sidebar a name above, then click Create Sidebar."
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page.php:678
+msgid "Drag each item into the order you prefer. Click the arrow on the right of the item to reveal additional configuration options. Please ensure that any items added to this sidebar contain the default 'Sidebar to Replace' widget area selected in the sidebar properties below."
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page.php:683
+msgid "Add items from the column on the left. Please ensure that any items added to this sidebar contain the default 'Sidebar to Replace' widget area selected in the sidebar properties below."
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page.php:711
+msgid "Sidebar Properties"
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page.php:716
+msgid "Sidebar to Replace"
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page.php:736
+msgid "Sidebar Description"
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page.php:738
+msgid "Enter sidebar description here"
+msgstr ""
+
+#: ../includes/theme-sidebar-admin-page.php:774
+msgid "Delete Sidebar"
+msgstr ""
+
+#: ../includes/theme-sidebar-ajax-actions.php:156
+#: ../includes/theme-sidebar-ajax-actions.php:215
+msgid "Custom Sidebar"
+msgstr ""
+
+#: ../includes/theme-sidebar-functions.php:38
+msgid "Custom Sidebar Instances"
+msgstr ""
+
+#: ../includes/theme-sidebar-functions.php:39
+msgid "Custom Sidebar Instance"
+msgstr ""
+
+#: ../includes/classes/class-master-walker-sidebar-edit.php:159
+msgid "Archive"
+msgstr ""
+
+#: ../includes/classes/class-master-walker-sidebar-edit.php:165
+msgid "Template"
+msgstr ""
+
+#: ../includes/classes/class-master-walker-sidebar-edit.php:188
+#, php-format
+msgid "%s (Invalid)"
+msgstr ""
+
+#: ../includes/classes/class-master-walker-sidebar-edit.php:204
+#, php-format
+msgid "%s (Pending)"
+msgstr ""
+
+#: ../includes/classes/class-master-walker-sidebar-edit.php:217
+msgid "Edit Sidebar Item"
+msgstr ""
+
+#: ../includes/classes/class-master-walker-sidebar-edit.php:228
+#, php-format
+msgid "Original: %s"
+msgstr ""
+
+#: ../includes/classes/class-master-walker-sidebar-edit.php:242
+msgid "Remove"
+msgstr ""
+
+#: ../includes/classes/class-master-walker-sidebar-edit.php:243
+msgid "Cancel"
+msgstr ""
+
