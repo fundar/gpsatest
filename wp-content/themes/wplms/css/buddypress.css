@@ -269,7 +269,7 @@ input[type="file"]{
 	max-width: 72px;
 }
 #buddypress form#whats-new-form #whats-new-avatar img{
-	border-radius:50%;
+	border-radius:2px;
 }
 #buddypress form#whats-new-form #whats-new-content {
 	margin-left: 75px;
@@ -2419,7 +2419,7 @@ body.activity-permalink #buddypress ul.item-list li.activity-item {
 #activityform,
 .activity_content{
 	padding:20px;
-	background:#FFF;
+	background:#f4f4f4;
 	border-radius:2px;
 }
 
