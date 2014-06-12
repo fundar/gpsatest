@@ -28,7 +28,7 @@ function wpcf7_select_shortcode_handler( $tag ) {
 	$atts = array();
 
 	$atts['class'] = $tag->get_class_option( $class );
-	$atts['id'] = $tag->get_id_option();
+	$atts['id'] = $tag->get_option( 'id', 'id', true );
 	$atts['tabindex'] = $tag->get_option( 'tabindex', 'int', true );
 
 	if ( $tag->is_required() )
@@ -48,11 +48,6 @@ function wpcf7_select_shortcode_handler( $tag ) {
 	$name = $tag->name;
 	$values = $tag->values;
 	$labels = $tag->labels;
-
-	if ( $data = (array) $tag->get_data_option() ) {
-		$values = array_merge( $values, array_values( $data ) );
-		$labels = array_merge( $labels, array_values( $data ) );
-	}
 
 	$empty_select = empty( $values );
 
@@ -101,7 +96,7 @@ function wpcf7_select_shortcode_handler( $tag ) {
 
 	$html = sprintf(
 		'<span class="wpcf7-form-control-wrap %1$s"><select %2$s>%3$s</select>%4$s</span>',
-		sanitize_html_class( $tag->name ), $atts, $html, $validation_error );
+		$tag->name, $atts, $html, $validation_error );
 
 	return $html;
 }
@@ -130,10 +125,6 @@ function wpcf7_select_validation_filter( $result, $tag ) {
 			$result['valid'] = false;
 			$result['reason'][$name] = wpcf7_get_message( 'invalid_required' );
 		}
-	}
-
-	if ( isset( $result['reason'][$name] ) && $id = $tag->get_id_option() ) {
-		$result['idref'][$name] = $id;
 	}
 
 	return $result;

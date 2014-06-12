@@ -18,11 +18,11 @@ class BP_Members_Component extends BP_Component {
 	 *
 	 * @since BuddyPress (1.5)
 	 */
-	public function __construct() {
+	function __construct() {
 		parent::start(
 			'members',
 			__( 'Members', 'buddypress' ),
-			buddypress()->plugin_dir,
+			BP_PLUGIN_DIR,
 			array(
 				'adminbar_myaccount_order' => 20
 			)
@@ -37,7 +37,6 @@ class BP_Members_Component extends BP_Component {
 	public function includes( $includes = array() ) {
 		$includes = array(
 			'actions',
-			'classes',
 			'filters',
 			'screens',
 			'template',
@@ -46,11 +45,6 @@ class BP_Members_Component extends BP_Component {
 			'functions',
 			'notifications',
 		);
-
-		if ( is_admin() ) {
-			$includes[] = 'admin';
-		}
-
 		parent::includes( $includes );
 	}
 
@@ -69,19 +63,12 @@ class BP_Members_Component extends BP_Component {
 		if ( !defined( 'BP_MEMBERS_SLUG' ) )
 			define( 'BP_MEMBERS_SLUG', $this->id );
 
-		$members_globals = array(
+		parent::setup_globals( array(
 			'slug'          => BP_MEMBERS_SLUG,
 			'root_slug'     => isset( $bp->pages->members->slug ) ? $bp->pages->members->slug : BP_MEMBERS_SLUG,
 			'has_directory' => true,
-			'directory_title' => _x( 'Members', 'component directory title', 'buddypress' ),
-			'global_tables' => array(
-				'table_name_last_activity' => bp_core_get_table_prefix() . 'bp_activity',
-				'table_name_signups'       => bp_core_get_table_prefix() . 'signups',
-			),
 			'search_string' => __( 'Search Members...', 'buddypress' ),
-		);
-
-		parent::setup_globals( $members_globals );
+		) );
 
 		/** Logged in user ****************************************************/
 
@@ -107,9 +94,6 @@ class BP_Members_Component extends BP_Component {
 
 		// Fetch the full name displayed user
 		$bp->displayed_user->fullname = bp_core_get_user_displayname( bp_displayed_user_id() );
-
-		/** Signup ***************************************************/
-		$bp->signup = new stdClass;
 
 		/** Profiles Fallback *************************************************/
 
@@ -212,7 +196,7 @@ class BP_Members_Component extends BP_Component {
 	 *
 	 * @global BuddyPress $bp The one true BuddyPress instance
 	 */
-	public function setup_title() {
+	function setup_title() {
 		$bp = buddypress();
 
 		if ( bp_is_my_profile() ) {

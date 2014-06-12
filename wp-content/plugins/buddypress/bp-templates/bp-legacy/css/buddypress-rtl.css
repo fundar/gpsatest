@@ -84,9 +84,6 @@ Hello, this is the BuddyPress Legacy stylesheet.
 	margin: 0 !important;
 	padding: 0 !important;
 }
-#buddypress .clear {
-	clear: right;
-}
 
 /*--------------------------------------------------------------
 3.0 - BuddyPress
@@ -1378,13 +1375,6 @@ body.register #buddypress div.page ul {
 #buddypress .field-visibility-settings legend,
 #buddypress .field-visibility-settings-toggle {
 	font-style: italic;
-}
-#buddypress .field-visibility-settings .radio {
-	list-style: none;
-	margin-bottom: 0;
-}
-#buddypress .field-visibility select {
-	margin: 0;
 }
 
 /*--------------------------------------------------------------

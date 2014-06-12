@@ -122,8 +122,6 @@ class BP_Notifications_Notification {
 		);
 		$data_format = array( '%d', '%d', '%d', '%s', '%s', '%s', '%d' );
 
-		do_action_ref_array( 'bp_notification_before_save', array( &$this ) );
-
 		// Update
 		if ( ! empty( $this->id ) ) {
 			$result = self::_update( $data, array( 'ID' => $this->id ), $data_format, array( '%d' ) );
@@ -140,8 +138,6 @@ class BP_Notifications_Notification {
 			$this->id = $wpdb->insert_id;
 			$retval   = $wpdb->insert_id;
 		}
-
-		do_action_ref_array( 'bp_notification_after_save', array( &$this ) );
 
 		// Return the result
 		return $retval;
@@ -319,9 +315,9 @@ class BP_Notifications_Notification {
 		}
 
 		// is_new
-		if ( ! empty( $args['is_new'] ) && 'both' !== $args['is_new'] ) {
+		if ( ! empty( $args['is_new'] ) ) {
 			$where_conditions['is_new'] = "is_new = 1";
-		} elseif ( isset( $args['is_new'] ) && ( 0 === $args['is_new'] || false === $args['is_new'] ) ) {
+		} elseif ( ( 0 === $args['is_new'] ) || ( false === $args['is_new'] ) ) {
 			$where_conditions['is_new'] = "is_new = 0";
 		}
 
@@ -537,13 +533,10 @@ class BP_Notifications_Notification {
 	 *           filter by. Can be an array of component names.
 	 *     @type string|array $component_action Name of the action to
 	 *           filter by. Can be an array of actions.
-	 *     @type bool $is_new Whether to limit to new notifications. True
-	 *           returns only new notifications, false returns only non-new
-	 *           notifications. 'both' returns all. Default: true.
+	 *     @type bool $is_new Whether to limit the query to is_new (unread)
+	 *           notifications. Default: true.
 	 *     @type string $search_terms Term to match against component_name
 	 *           or component_action fields.
-	 *     @type string $order_by Field to order results by.
-	 *     @type string $sort_order ASC or DESC.
 	 *     @type int $page Number of the current page of results. Default:
 	 *           false (no pagination - all items).
 	 *     @type int $per_page Number of items to show per page. Default:
@@ -619,25 +612,16 @@ class BP_Notifications_Notification {
 	public static function get_total_count( $args ) {
 		global $wpdb;
 
-		/**
-		 * Default component_name to active_components
-		 *
-		 * @see http://buddypress.trac.wordpress.org/ticket/5300
-		 */
 		$args = wp_parse_args( $args, array(
-			'component_name' => bp_notifications_get_registered_components()
+			'component_name' => bp_notifications_get_registered_components(),
 		) );
 
-		// Load BuddyPress
-		$bp = buddypress();
-
-		// Build the query
+		$bp         = buddypress();
 		$select_sql = "SELECT COUNT(*)";
 		$from_sql   = "FROM {$bp->notifications->table_name}";
 		$where_sql  = self::get_where_sql( $args );
 		$sql        = "{$select_sql} {$from_sql} {$where_sql}";
 
-		// Return the queried results
 		return $wpdb->get_var( $sql );
 	}
 
@@ -661,11 +645,6 @@ class BP_Notifications_Notification {
 		$update = self::get_query_clauses( $update_args );
 		$where  = self::get_query_clauses( $where_args  );
 
-		// make sure we delete the notification cache for the user on update
-		if ( ! empty( $where_args['user_id'] ) ) {
-			wp_cache_delete( 'all_for_user_' . $where_args['user_id'], 'bp_notifications' );
-		}
-
 		return self::_update( $update['data'], $where['data'], $update['format'], $where['format'] );
 	}
 
@@ -684,8 +663,6 @@ class BP_Notifications_Notification {
 	 */
 	public static function delete( $args = array() ) {
 		$where = self::get_query_clauses( $args );
-
-		do_action( 'bp_notification_before_delete', $args );
 
 		return self::_delete( $where['data'], $where['format'] );
 	}

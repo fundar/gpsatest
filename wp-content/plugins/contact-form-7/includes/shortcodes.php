@@ -241,7 +241,7 @@ class WPCF7_Shortcode {
 
 	public function get_option( $opt, $pattern = '', $single = false ) {
 		$preset_patterns = array(
-			'date' => '([0-9]{4}-[0-9]{2}-[0-9]{2}|today(.*))',
+			'date' => '[0-9]{4}-[0-9]{2}-[0-9]{2}',
 			'int' => '[0-9]+',
 			'signed_int' => '-?[0-9]+',
 			'class' => '[-0-9a-zA-Z_]+',
@@ -275,10 +275,6 @@ class WPCF7_Shortcode {
 
 			return $results;
 		}
-	}
-
-	public function get_id_option() {
-		return $this->get_option( 'id', 'id', true );
 	}
 
 	public function get_class_option( $default = '' ) {
@@ -341,29 +337,6 @@ class WPCF7_Shortcode {
 		return $default;
 	}
 
-	public function get_date_option( $opt ) {
-		$option = $this->get_option( $opt, 'date', true );
-
-		if ( preg_match( '/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/', $option ) ) {
-			return $option;
-		}
-
-		if ( preg_match( '/^today(?:([+-][0-9]+)([a-z]*))?/', $option, $matches ) ) {
-			$number = isset( $matches[1] ) ? (int) $matches[1] : 0;
-			$unit = isset( $matches[2] ) ? $matches[2] : '';
-
-			if ( ! preg_match( '/^(day|month|year|week)s?$/', $unit ) ) {
-				$unit = 'days';
-			}
-
-			$date = gmdate( 'Y-m-d',
-				strtotime( sprintf( 'today %1$s %2$s', $number, $unit ) ) );
-			return $date;
-		}
-
-		return false;
-	}
-
 	public function get_default_option() {
 		$options = (array) $this->get_option( 'default' );
 
@@ -388,12 +361,6 @@ class WPCF7_Shortcode {
 		}
 
 		return false;
-	}
-
-	public function get_data_option( $args = '' ) {
-		$options = (array) $this->get_option( 'data' );
-
-		return apply_filters( 'wpcf7_form_tag_data_option', null, $options, $args );
 	}
 
 	public function get_first_match_option( $pattern ) {

@@ -22,11 +22,11 @@ class BP_Forums_Component extends BP_Component {
 	 *
 	 * @since BuddyPress (1.5.0)
 	 */
-	public function __construct() {
+	function __construct() {
 		parent::start(
 			'forums',
 			__( 'Discussion Forums', 'buddypress' ),
-			buddypress()->plugin_dir,
+			BP_PLUGIN_DIR,
 			array(
 				'adminbar_myaccount_order' => 80
 			)
@@ -231,7 +231,7 @@ class BP_Forums_Component extends BP_Component {
 	/**
 	 * Set up the title for pages and the <title> element.
 	 */
-	public function setup_title() {
+	function setup_title() {
 		$bp = buddypress();
 
 		// Adjust title based on view

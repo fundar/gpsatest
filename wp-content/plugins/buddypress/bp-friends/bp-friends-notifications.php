@@ -164,12 +164,12 @@ function friends_format_notifications( $action, $item_id, $secondary_item_id, $t
 
 	// Return either an HTML link or an array, depending on the requested format
 	if ( 'string' == $format ) {
-		$return = apply_filters( $filter, '<a href="' . esc_url( $link ) . '">' . esc_html( $text ) . '</a>', (int) $total_items, $item_id );
+		$return = apply_filters( $filter, '<a href="' . esc_url( $link ) . '">' . esc_html( $text ) . '</a>', (int) $total_items );
 	} else {
 		$return = apply_filters( $filter, array(
 			'link' => $link,
 			'text' => $text
-		), (int) $total_items, $item_id );
+		), (int) $total_items );
 	}
 
 	do_action( 'friends_format_notifications', $action, $item_id, $secondary_item_id, $total_items, $return );

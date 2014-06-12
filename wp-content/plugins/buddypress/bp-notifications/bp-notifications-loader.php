@@ -20,11 +20,11 @@ class BP_Notifications_Component extends BP_Component {
 	 *
 	 * @since BuddyPress (1.9.0)
 	 */
-	public function __construct() {
+	function __construct() {
 		parent::start(
 			'notifications',
 			__( 'Notifications', 'buddypress' ),
-			buddypress()->plugin_dir,
+			BP_PLUGIN_DIR,
 			array(
 				'adminbar_myaccount_order' => 30
 			)
@@ -49,7 +49,6 @@ class BP_Notifications_Component extends BP_Component {
 			'buddybar',
 			'template',
 			'functions',
-			'cache',
 		);
 
 		parent::includes( $includes );
@@ -104,18 +103,10 @@ class BP_Notifications_Component extends BP_Component {
 	 */
 	public function setup_nav( $main_nav = array(), $sub_nav = array() ) {
 
-		// Only grab count if we're on a user page and current user has access
-		if ( bp_is_user() && bp_user_has_access() ) {
-			$count    = bp_notifications_get_unread_notification_count( bp_displayed_user_id() );
-			$class    = ( 0 === $count ) ? 'no-count' : 'count';
-			$nav_name = sprintf( __( 'Notifications <span class="%s">%s</span>', 'buddypress' ), esc_attr( $class ), number_format_i18n( $count ) );
-		} else {
-			$nav_name = __( 'Notifications', 'buddypress' );
-		}
-
 		// Add 'Notifications' to the main navigation
+		$count    = bp_notifications_get_unread_notification_count( bp_loggedin_user_id() );
 		$main_nav = array(
-			'name'                    => $nav_name,
+			'name'                    => sprintf( __( 'Notifications <span>%d</span>', 'buddypress' ), number_format_i18n( $count ) ),
 			'slug'                    => $this->slug,
 			'position'                => 30,
 			'show_for_displayed_user' => bp_core_can_edit_settings(),
@@ -222,7 +213,7 @@ class BP_Notifications_Component extends BP_Component {
 	 *
 	 * @since BuddyPress (1.9.0)
 	 */
-	public function setup_title() {
+	function setup_title() {
 		$bp = buddypress();
 
 		// Adjust title

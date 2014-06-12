@@ -84,9 +84,6 @@ Hello, this is the BuddyPress Legacy stylesheet.
 	margin: 0 !important;
 	padding: 0 !important;
 }
-#buddypress .clear {
-	clear: left;
-}
 
 /*--------------------------------------------------------------
 3.0 - BuddyPress
@@ -293,16 +290,14 @@ body.activity-permalink #buddypress .activity-content blockquote {
 	margin-left: 1em;
 	white-space: nowrap;
 }
-#buddypress .activity-list li.load-more,
-#buddypress .activity-list li.load-newest {
+#buddypress .activity-list li.load-more {
 	background: #f0f0f0;
 	font-size: 110%;
 	margin: 15px 0;
 	padding: 10px 15px;
 	text-align: center;
 }
-#buddypress .activity-list li.load-more a,
-#buddypress .activity-list li.load-newest a {
+#buddypress .activity-list li.load-more a {
 	color: #4D4D4D;
 }
 
@@ -491,8 +486,7 @@ body.activity-permalink #buddypress div.activity-comments div.acomment-content {
 	float: right;
 	margin: -39px 0 0 0;
 }
-#buddypress div.dir-search input[type=text],
-#buddypress li.groups-members-search input[type=text] {
+#buddypress div.dir-search input[type=text] {
 	font-size: 90%;
 	padding: 1px 3px;
 }
@@ -587,9 +581,7 @@ body.activity-permalink #buddypress div.activity-comments div.acomment-content {
 #buddypress .standard-form select,
 #buddypress .standard-form input[type=password],
 #buddypress .dir-search input[type=search],
-#buddypress .dir-search input[type=text],
-#buddypress .groups-members-search input[type=search],
-#buddypress .groups-members-search input[type=text] {
+#buddypress .dir-search input[type=text] {
 	border: 1px solid #ccc;
 	background: #fafafa;
 	border-radius: 0;
@@ -610,8 +602,8 @@ body.activity-permalink #buddypress div.activity-comments div.acomment-content {
 	font-weight: bold;
 	margin: 15px 0 5px 0;
 }
-#buddypress .standard-form div.checkbox label:nth-child(n+2),
-#buddypress .standard-form div.radio div label {
+#buddypress .standard-form div.checkbox label,
+#buddypress .standard-form div.radio label {
 	color: #888;
 	font-size: 100%;
 	font-weight: normal;
@@ -767,7 +759,6 @@ a.bp-title-button {
 
 #buddypress form.standard-form .main-column ul#friend-list {
 	clear:none;
-	float: left;
 }
 
 #buddypress form.standard-form .main-column ul#friend-list h4 {
@@ -898,7 +889,6 @@ a.bp-title-button {
 }
 #buddypress table.notifications,
 #buddypress table.notifications-settings,
-#buddypress table.profile-settings,
 #buddypress table.profile-fields,
 #buddypress table.wp-profile-fields,
 #buddypress table.messages-notices,
@@ -907,7 +897,6 @@ a.bp-title-button {
 }
 #buddypress table.notifications thead tr,
 #buddypress table.notifications-settings thead tr,
-#buddypress table.profile-settings thead tr,
 #buddypress table.profile-fields thead tr,
 #buddypress table.wp-profile-fields thead tr,
 #buddypress table.messages-notices thead tr,
@@ -933,7 +922,6 @@ a.bp-title-button {
 }
 #buddypress table.notifications tr td,
 #buddypress table.notifications-settings tr td,
-#buddypress table.profile-settings tr td,
 #buddypress table.profile-fields tr td,
 #buddypress table.wp-profile-fields tr td,
 #buddypress table.messages-notices tr td,
@@ -970,7 +958,6 @@ a.bp-title-button {
 }
 #buddypress table.notifications tr.alt td,
 #buddypress table.notifications-settings tr.alt td,
-#buddypress table.profile-settings tr.alt td,
 #buddypress table.profile-fields tr.alt td,
 #buddypress table.wp-profile-fields tr.alt td,
 #buddypress table.messages-notices tr.alt td,
@@ -990,8 +977,7 @@ a.bp-title-button {
 #buddypress table.notification-settings td:first-child {
 	display: none;
 }
-#buddypress table.notification-settings th.title,
-#buddypress table.profile-settings th.title {
+#buddypress table.notification-settings th.title {
 	width: 80%;
 }
 #buddypress table.notification-settings .yes,
@@ -1432,13 +1418,6 @@ body.register #buddypress div.page ul {
 #buddypress .field-visibility-settings legend,
 #buddypress .field-visibility-settings-toggle {
 	font-style: italic;
-}
-#buddypress .field-visibility-settings .radio {
-	list-style: none;
-	margin-bottom: 0;
-}
-#buddypress .field-visibility select {
-	margin: 0;
 }
 
 /*--------------------------------------------------------------
