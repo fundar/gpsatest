@@ -884,7 +884,7 @@ nav .menu li:hover > a{
 	color:#FFF !important;
 }
 nav .sub-menu li:hover > a{
-	color:#fbfbfb;
+	color:#5c5c5c !important;
 }
 
 nav .menu li a{
@@ -899,8 +899,10 @@ nav .menu li a{
 	border-left: 1px solid rgba(209, 209, 209, 0.1);
 	
 }
-nav .menu li.current-menu-item a{
-	color:#F4F4F4;
+nav .menu li.current-menu-item a {
+    background: none repeat scroll 0 0 #6D6F9D;
+    border-bottom: 1px solid #6D6F9D;
+    color: #F4F4F4;
 }
 nav .menu li.iconstyle{
 	width:88px;
