@@ -24,6 +24,8 @@
 			<?php bp_activity_avatar(); ?>
 
 		</a>
+                            <?php do_action( 'showcountry'); ?>
+
 	</div>
 
 	<div class="activity-content">
