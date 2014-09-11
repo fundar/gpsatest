@@ -29,4 +29,13 @@ function country_networking() {
  	echo '<div class="Country">'. $country . '</div>';
 }
 //add_action( 'bp_get_activity_content_body', 'country_networking' );
+function bbg_my_groups_activity_default( $qs ) {
+if ( empty( $qs ) && empty( $_POST ) ) {
+$qs = 'action=activity_update';
+}
+
+return $qs;
+}
+add_filter( 'bp_ajax_querystring', 'bbg_my_groups_activity_default', 999 );
+
 ?>
