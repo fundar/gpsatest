@@ -27,6 +27,10 @@
 .GCPLUGIN a {
   color: #008dbe;
   text-decoration: none;
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
 }
 .GCPLUGIN a:hover {
   color: #819829;
@@ -105,9 +109,9 @@
 .GCPLUGIN header .headertop .logo {
   float: left;
   background: url('../images/gc-message-bar-logo.png') top left no-repeat;
-  width: 271px;
-  height: 41px;
-  margin: 19px 0 0 19px;
+  width: 252px;
+  height: 32px;
+  margin: 29px 0 0 19px;
 }
 .GCPLUGIN header .headertop .connectblock {
   float: right;
@@ -207,11 +211,11 @@
   line-height: 28px;
   color: #008dbe;
   background: #c5e4f0;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
-  border-radius: 5px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
   font-weight: 400 !important;
 }
 .GCPLUGIN header nav {
@@ -237,11 +241,11 @@
   line-height: 32px;
   height: 32px;
   display: block;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
-  border-radius: 5px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
 }
 .GCPLUGIN header nav ul li a:hover {
   background: #008dbe;
@@ -259,11 +263,12 @@
 .GCPLUGIN header nav ul.menu1 li {
   margin: 0 0 0 4px;
   padding: 0 0 0 4px;
-  border-left: 1px solid #c5e4f0;
+  border-left: 1px solid #d9dfe2;
 }
 .GCPLUGIN header nav ul.menu2 {
   float: right;
   margin-right: 8px;
+  font-size: 12px;
 }
 .GCPLUGIN section.subscribemsg {
   border-bottom: 1px solid #666666;
@@ -542,6 +547,15 @@
   top: -1px;
   *overflow: hidden;
 }
+.GCPLUGIN section.adminblock .blockcnt .item .edit .pagefilterinput {
+  width: 310px !important;
+}
+.GCPLUGIN section.adminblock .blockcnt .item .edit .pagefiltertype {
+  width: 120px !important;
+  float: left;
+  margin-right: 8px;
+  font-size: 14px !important;
+}
 .GCPLUGIN section.adminblock .blockcnt .item .ad {
   float: right;
 }
@@ -683,6 +697,23 @@
 .GCPLUGIN section.adminblock .blockcnt .displayfilter .pagelist .pageitem .specified-close-page:hover {
   cursor: pointer;
   background-position: bottom left;
+}
+.GCPLUGIN section.adminblock .blockcnt .displayfilter .pagelist .pageitem .specified-label {
+  display: block;
+  margin: 4px 6px 0 0;
+  float: left;
+  font-size: 11px;
+  font-family: 'Roboto Condensed', sans-serif;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  height: 16px;
+  line-height: 16px;
+  padding: 0 4px;
+  background: #bbbbbb;
+  color: white;
 }
 .GCPLUGIN section.adminblock .blockcnt .displayfilter .pagelist .pageitem .filter-specified-page {
   display: block;
@@ -1711,11 +1742,11 @@
   line-height: 32px;
   height: 32px;
   display: block;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
-  border-radius: 5px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
 }
 .GCPLUGIN footer nav ul li a:hover {
   background: #008dbe;
@@ -1734,11 +1765,12 @@
 .GCPLUGIN footer nav ul.menu1 li {
   margin: 0 0 0 4px;
   padding: 0 0 0 4px;
-  border-left: 1px solid #c5e4f0;
+  border-left: 1px solid #d9dfe2;
 }
 .GCPLUGIN footer nav ul.menu2 {
   float: right;
   margin-right: 8px;
+  font-size: 12px;
 }
 .GCPLUGIN footer .metainfo {
   padding: 24px 19px 11px;
@@ -1755,7 +1787,7 @@
   display: inline-block;
 }
 .GCPLUGIN footer .metablock .gcpengine {
-  border-left: 1px solid #c5e4f0;
+  border-left: 1px solid #d9dfe2;
   margin-left: 8px;
   padding-left: 4px;
   display: inline-block;
@@ -1777,6 +1809,28 @@
 }
 .GCPLUGIN footer .copyblock {
   float: right;
+  height: 24px;
+  line-height: 24px;
+}
+.GCPLUGIN footer .copyblock .copytxt {
+  display: inline-block;
+  vertical-align: top;
+}
+.GCPLUGIN footer .copyblock .copylogo {
+  margin-left: 12px;
+  display: inline-block;
+  position: relative;
+  width: 152px;
+  height: 24px;
+}
+.GCPLUGIN footer .copyblock .copylogo .gclogo {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  background: url(../images/getconversion-logo.png) top left no-repeat;
+  width: 152px;
+  height: 26px;
+  text-indent: -99999px;
 }
 .GCPLUGIN .enginepanel {
   margin-top: 16px;

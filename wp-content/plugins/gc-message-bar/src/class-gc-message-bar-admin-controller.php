@@ -19,6 +19,7 @@ class Gc_Message_Bar_Admin_Controller implements Gc_MessageBar_Controller_Interf
         $this->event_manager->listen(GC_MESSAGE_BAR_NAME.".admin_init",array($this,"on_admin_init"));
         $this->event_manager->listen(GC_MESSAGE_BAR_NAME.".handle_request",array($this,"on_handle_request"));
         $this->event_manager->listen(GC_MESSAGE_BAR_NAME.".handle_request:after",array($this,"on_post_handle_request"));
+        $this->event_manager->listen(GC_MESSAGE_BAR_NAME.".handle_service_request:after",array($this,"on_post_handle_request"));
         $this->options = Gc_MessageBar_CF::create("Option_Repository_Factory")->get_instance()->get_namespace($this->namespace);
     }
     
@@ -136,6 +137,7 @@ class Gc_Message_Bar_Admin_Controller implements Gc_MessageBar_Controller_Interf
     public function add_page() {
         $request = Gc_MessageBar_CF::create("Request");
         $data = $request->get_param('data');
+        $type = $request->get_param('filtertype',"");
 
         if (preg_match("%\b(([\w-]+://?|www[.])[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/)))%s", $data)) {
             $opt = $this->options->get("displayed_pages");
@@ -147,12 +149,16 @@ class Gc_Message_Bar_Admin_Controller implements Gc_MessageBar_Controller_Interf
             if (in_array($data, $pages)) {
                 die(json_encode(array("success" => false, "reason" => 'This URL is already exists.')));
             }
+            if($type == "beginswith"){
+                $data .= "*";
+            }
             $pages[] = $data;
 
             $opt->set_value(serialize($pages));
             $opt->save();
             $last_element = end($pages); //pointer set to end
             $last_key = key($pages);     //get the key, where the pointer is
+            $this->clear_cache_plugins();
             die(json_encode(array("success" => true, "result" => $this->create_specified_pages_element($last_key, $last_element), "serialized" => htmlspecialchars(serialize($pages)))));
         } else {
             die(json_encode(array("success" => false, "reason" => 'You can only add URLs.')));
@@ -168,16 +174,28 @@ class Gc_Message_Bar_Admin_Controller implements Gc_MessageBar_Controller_Interf
         unset($pages[$key]);
         $opt->set_value(serialize($pages));
         $opt->save();
+        $this->clear_cache_plugins();
+        
         die(json_encode(array("success" => true, "serialized" => htmlspecialchars(serialize($pages)))));
     }
     
     protected function create_specified_pages_element($key, $element) {
         $val = $element;
+        $url = $val;
+        if(substr($val,-1) == "*"){
+            $label = "Begins with";
+            
+            $val = substr($val,0,-1);
+
+        } else{
+            $label = "Equals to";
+        }
+        $element = $val;        
         if (strlen($val)>70) {
             $element = "...";
             $element .= substr($val, strlen($val)-70); 
         }
-        return $retstr = "<div class=\"pageitem\" id=\"gc-message-box-specified-page-".$key."\">\n<div class=\"specified-close-page\"></div>\n<input type=\"hidden\" id=\"gc-message-bar-specified-page-key-$key\" value=\"$val\"/>\n<div class=\"filter-specified-page\">".$element."</div>\n<div class=\"clear\"></div>\n</div>";
+        return $retstr = "<div class=\"pageitem\" id=\"gc-message-bar-specified-page-".$key."\">\n<div class=\"specified-close-page\"></div>\n<input type=\"hidden\" id=\"gc-message-bar-specified-page-key-$key\" value=\"$url\"/>\n<div class=\"specified-label\">".$label."</div><div class=\"filter-specified-page\">".$element."</div>\n<div class=\"clear\"></div>\n</div>";
     }
 
     public function adminbar_init(){
@@ -351,6 +369,17 @@ class Gc_Message_Bar_Admin_Controller implements Gc_MessageBar_Controller_Interf
 
     }    
 
+    protected function clear_cache_plugins(){
+        $cache = Gc_MessageBar_CF::create_and_init("Wp_Cache",
+            array(
+                "config" => Gc_MessageBar_Service_Locator::get("config")
+            )
+        );
+        $cache->w3_total_cache_flush();
+        $cache->wp_super_cache_flush();
+
+    }
+
 
 
     public function style_sub_message() {
@@ -425,14 +454,17 @@ class Gc_Message_Bar_Admin_Controller implements Gc_MessageBar_Controller_Interf
             return;
         }
         $data = $request->get_param('post');
+        if(false == is_array($data)){
+            $data = array();
+        }
 
 		if (isset($data[$this->namespace . 'role_filter_list'])) {
-			$data[$this->namespace . 'role_filter_list'] = htmlspecialchars(serialize($data[$this->namespace . 'role_filter_list']));
+			$data[$this->namespace . 'role_filter_list'] = htmlspecialchars(@serialize($data[$this->namespace . 'role_filter_list']));
 		} else {
 			$data[$this->namespace . 'role_filter_list'] = serialize(array());
 		}
 		if (isset($data[$this->namespace . 'group_filter_list'])) {
-			$data[$this->namespace . 'group_filter_list'] = htmlspecialchars(serialize($data[$this->namespace . 'group_filter_list']));
+			$data[$this->namespace . 'group_filter_list'] = htmlspecialchars(@serialize($data[$this->namespace . 'group_filter_list']));
 		} else {
 			$data[$this->namespace . 'group_filter_list'] = serialize(array());
 		}
@@ -460,15 +492,57 @@ class Gc_Message_Bar_Admin_Controller implements Gc_MessageBar_Controller_Interf
             }
             $option->save();
         }
-
     }
     public function on_post_handle_request($event){
-        $cache = new Gc_Message_Bar_Wp_Cache($this->namespace,$this);
-        $cache->w3_total_cache_flush();
-        $cache->wp_super_cache_flush();
+
+        $this->generate_css($event);
+        $this->clear_cache_plugins();
         $event->set_handled();
 
     }
+
+    public function generate_css($event){
+        $data = $event->get_param("data",array());
+        $css_handling = $this->options->get("css_handling")->get_value();
+        if($css_handling != 2){
+            return;
+        }
+        $config = Gc_MessageBar_Service_Locator::get(GC_MESSAGE_BAR_SL_CONFIG);
+        $dev_mode = false;
+        if(isset($config["GCTYPE"]) and strtolower($config["GCTYPE"]) == "dev"){
+            $dev_mode = true;
+        }
+
+        $renderer = new Gc_Message_Bar_Style_Renderer(GC_MESSAGE_BAR_NS);
+        $renderer->configure(
+            array(
+                "echo" => false,
+                "minify" => false,
+                "dev_mode" => $dev_mode
+            ));
+        $custom_css = $renderer->render(array());
+        $this->write_css_to_cache($custom_css);
+
+    }
+
+
+    public function css_cache_generation_error_admin_notices(){
+        echo "<div class='updated'><p>Error writing css cache</p></div>";
+    }
+
+    public function write_css_to_cache($content){
+        $cache_path = $this->options->get("cache_directory")->get_value();
+        $cache = Gc_MessageBar_CF::create_and_init("Cache",array(
+            "cache_dir" => $cache_path
+            ));
+        if(false == $cache->write_file("style-".GC_MESSAGE_BAR_TYPE.".css",$content)){
+            //Error writing css file
+            add_action('admin_notices', array($this,'css_cache_generation_error_admin_notices'));    
+            return;
+        }
+
+    }
+
     protected function handle_service_request($request){
         if (!$request->has_param($this->namespace.'engine')) {
             return false;
@@ -493,6 +567,9 @@ class Gc_Message_Bar_Admin_Controller implements Gc_MessageBar_Controller_Interf
             }
             $option->save();
         }
+        $event = new Gc_MessageBar_Event(array("data" => $data,"namespace" => $this->namespace));
+        $this->event_manager->dispatch(GC_MESSAGE_BAR_NAME.".handle_service_request",$event,true);
+
         return true;
     }
 

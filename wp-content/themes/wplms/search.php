@@ -1,6 +1,7 @@
 <?php
+
 if (isset($_GET["post_type"]) && $_GET["post_type"] == 'course'){ 
-    load_template(TEMPLATEPATH . '/search-course.php'); 
+    load_template(TEMPLATEPATH . '/search-incourse.php'); 
     exit();
 }
 
@@ -14,7 +15,7 @@ if (isset($_GET["post_type"]) && $_GET["post_type"] == 'course'){
             <div class="col-md-9 col-sm-8">
                 <div class="pagetitle">
                     <h1><?php _e('Search Results for "', 'vibe'); the_search_query(); ?>"</h1>
-                    <h5><?php echo $total_results.' results found';  ?></h5>
+                    <h5><?php echo $total_results.__(' results found','vibe');  ?></h5>
                 </div>
             </div>
             <div class="col-md-3 col-sm-4">
@@ -60,7 +61,7 @@ if (isset($_GET["post_type"]) && $_GET["post_type"] == 'course'){
                                     </p>
                                 </div>
                                 <p>'.get_the_excerpt().'</p>
-                                <a href="'.get_permalink().'" class="link">Read More</a>
+                                <a href="'.get_permalink().'" class="link">'.__('Read More','vibe').'</a>
                             </div>
                         </div>';
                     endwhile;
@@ -73,9 +74,10 @@ if (isset($_GET["post_type"]) && $_GET["post_type"] == 'course'){
         </div>
         <div class="col-md-3 col-sm-4">
             <div class="sidebar">
-                <?php 
-                    if ( !function_exists('dynamic_sidebar')|| !dynamic_sidebar('mainsidebar') ) : ?>
-                <?php endif; ?>
+                <?php
+                    $sidebar = apply_filters('wplms_sidebar','searchsidebar');
+                    if ( !function_exists('dynamic_sidebar')|| !dynamic_sidebar($sidebar) ) : ?>
+                    <?php endif; ?>
             </div>
         </div>
     </div>

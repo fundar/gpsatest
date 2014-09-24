@@ -11,24 +11,24 @@ $vibe_shortcodes['accordion'] = array(
         
     ),
     'shortcode' => '[agroup] {{child_shortcode}}  [/agroup]',
-    'popup_title' => __('Insert Accordion Shortcode', 'vibe'),
+    'popup_title' => __('Insert Accordion Shortcode', 'vibe-shortcodes'),
     'child_shortcode' => array(
         'params' => array(
             'title' => array(
 			'type' => 'text',
-			'label' => __('Accordion Title', 'vibe'),
-			'desc' => __('Add the title of the accordion', 'vibe'),
+			'label' => __('Accordion Title 1', 'vibe-shortcodes'),
+			'desc' => __('Add the title of the accordion', 'vibe-shortcodes'),
 			'std' => 'Title'
 		),
 		'content' => array(
 			'std' => 'Content',
 			'type' => 'textarea',
-			'label' => __('Accordion Content', 'vibe'),
-			'desc' => __('Add the content. Accepts HTML & other Shortcodes.', 'vibe'),
+			'label' => __('Accordion Content', 'vibe-shortcodes'),
+			'desc' => __('Add the content. Accepts HTML & other Shortcodes.', 'vibe-shortcodes'),
 		),
               ),
         'shortcode' => '[accordion title="{{title}}"] {{content}} [/accordion]',
-        'clone_button' => __('Add Accordion Toggle', 'vibe')
+        'clone_button' => __('Add Accordion Toggle', 'vibe-shortcodes')
     )
 );
 
@@ -43,14 +43,14 @@ $vibe_shortcodes['button'] = array(
 		'url' => array(
 			'std' => '',
 			'type' => 'text',
-			'label' => __('Link URL', 'vibe'),
-			'desc' => __('Add the button\'s url eg http://www.example.com', 'vibe')
+			'label' => __('Link URL', 'vibe-shortcodes'),
+			'desc' => __('Add the button\'s url eg http://www.example.com', 'vibe-shortcodes')
 		),
         'class' => array(
 			'std' => '',
 			'type' => 'select_hide',
-			'label' => __('Button Style', 'vibe'),
-			'desc' => __('Select button style', 'vibe'),
+			'label' => __('Button Style', 'vibe-shortcodes'),
+			'desc' => __('Select button style', 'vibe-shortcodes'),
                         'options' => array(
 				'' => 'Base',
 				'primary' => 'Primary',
@@ -62,51 +62,51 @@ $vibe_shortcodes['button'] = array(
 		),
 		'bg' => array(
 			'type' => 'color',
-			'label' => __('Background color', 'vibe'),
-			'desc' => __('Select the button\'s size', 'vibe')
+			'label' => __('Background color', 'vibe-shortcodes'),
+			'desc' => __('Select the button\'s size', 'vibe-shortcodes')
 		),
                 'hover_bg' => array(
 			'type' => 'color',
-			'label' => __('Hover Bg color', 'vibe'),
-			'desc' => __('Select the button\'s on hover background color ', 'vibe')
+			'label' => __('Hover Bg color', 'vibe-shortcodes'),
+			'desc' => __('Select the button\'s on hover background color ', 'vibe-shortcodes')
 		),
                 'color' => array(
 			'type' => 'color',
-			'label' => __('Text color', 'vibe'),
-			'desc' => __('Select the button\'s text color', 'vibe')
+			'label' => __('Text color', 'vibe-shortcodes'),
+			'desc' => __('Select the button\'s text color', 'vibe-shortcodes')
 		),
                 'size' => array(
 			'type' => 'slide',
-			'label' => __('Font Size', 'vibe'),
+			'label' => __('Font Size', 'vibe-shortcodes'),
                         'min' => 0,
                         'max' => 100,
                         'std' => 0,
 		),
 		'width' => array(
 			'type' => 'slide',
-			'label' => __('Width', 'vibe'),
+			'label' => __('Width', 'vibe-shortcodes'),
                         'min' => 0,
                         'max' => 500,
                         'std' => 0,
 		),
                 'height' => array(
 			'type' => 'slide',
-			'label' => __('Height', 'vibe'),
+			'label' => __('Height', 'vibe-shortcodes'),
                         'min' => 0,
                         'max' => 100,
                         'std' => 0,
 		),
 		'radius' => array(
 			'type' => 'slide',
-			'label' => __('Border Radius', 'vibe'),
+			'label' => __('Border Radius', 'vibe-shortcodes'),
                         'min' => 0,
                         'max' => 150,
                         'std' => 0
 		),
 		'target' => array(
 			'type' => 'select',
-			'label' => __('Button Target', 'vibe'),
-			'desc' => __('_self = open in same window. _blank = open in new window', 'vibe'),
+			'label' => __('Button Target', 'vibe-shortcodes'),
+			'desc' => __('_self = open in same window. _blank = open in new window', 'vibe-shortcodes'),
 			'options' => array(
 				'_self' => '_self',
 				'_blank' => '_blank'
@@ -115,12 +115,12 @@ $vibe_shortcodes['button'] = array(
             'content' => array(
 			'std' => '',
 			'type' => 'text',
-			'label' => __('Button Anchor', 'vibe'),
-			'desc' => __('Replace button label with the text you enter.', 'vibe'),
+			'label' => __('Button Anchor', 'vibe-shortcodes'),
+			'desc' => __('Replace button label with the text you enter.', 'vibe-shortcodes'),
 		)
 	),
 	'shortcode' => '[button url="{{url}}" class="{{class}}" bg="{{bg}}" hover_bg="{{hover_bg}}" size="{{size}}" color="{{color}}" radius="{{radius}}" width="{{width}}"  height="{{height}}"  target="{{target}}"] {{content}} [/button]',
-	'popup_title' => __('Insert Button Shortcode', 'vibe')
+	'popup_title' => __('Insert Button Shortcode', 'vibe-shortcodes')
 );
 
 
@@ -131,7 +131,7 @@ $vibe_shortcodes['button'] = array(
 $vibe_shortcodes['columns'] = array(
 	'params' => array(),
 	'shortcode' => ' {{child_shortcode}} ', // as there is no wrapper shortcode
-	'popup_title' => __('Insert Columns Shortcode', 'vibe'),
+	'popup_title' => __('Insert Columns Shortcode', 'vibe-shortcodes'),
 	'no_preview' => true,
 	
 	// child shortcode is clonable & sortable
@@ -139,8 +139,8 @@ $vibe_shortcodes['columns'] = array(
 		'params' => array(
 			'column' => array(
 				'type' => 'select',
-				'label' => __('Column Type', 'vibe'),
-				'desc' => __('Select the type, ie width of the column.', 'vibe'),
+				'label' => __('Column Type', 'vibe-shortcodes'),
+				'desc' => __('Select the type, ie width of the column.', 'vibe-shortcodes'),
 				'options' => array(
                     'one_fifth' => 'One Fifth',
                     'one_fourth' => 'One Fourth',
@@ -155,8 +155,8 @@ $vibe_shortcodes['columns'] = array(
 			),
                         'first' => array(
 				'type' => 'select',
-				'label' => __('Column Type', 'vibe'),
-				'desc' => __('Select the type, ie width of the column.', 'vibe'),
+				'label' => __('Column Type', 'vibe-shortcodes'),
+				'desc' => __('Select the type, ie width of the column.', 'vibe-shortcodes'),
 				'options' => array(
                                         '' => 'Default',
                                         'first' => 'First in Row (from Left)',
@@ -165,12 +165,12 @@ $vibe_shortcodes['columns'] = array(
 			'content' => array(
 				'std' => '',
 				'type' => 'textarea',
-				'label' => __('Column Content', 'vibe'),
-				'desc' => __('Add the column content.', 'vibe'),
+				'label' => __('Column Content', 'vibe-shortcodes'),
+				'desc' => __('Add the column content.', 'vibe-shortcodes'),
 			)
 		),
 		'shortcode' => '[{{column}} first={{first}}] {{content}} [/{{column}}] ',
-		'clone_button' => __('Add Column', 'vibe')
+		'clone_button' => __('Add Column', 'vibe-shortcodes')
 	)
 );
 
@@ -183,14 +183,14 @@ $vibe_shortcodes['icons'] = array(
 	'params' => array(
 		'icon' => array(
 					'type' => 'icon',
-					'label' => __('Icon type', 'vibe'),
-					'desc' => __('Select Icon type', 'vibe'),
+					'label' => __('Icon type', 'vibe-shortcodes'),
+					'desc' => __('Select Icon type', 'vibe-shortcodes'),
 					
                  ),
                  'size' => array(
 					'type' => 'slide',
-					'label' => __('Icon Size', 'vibe'),
-					'desc' => __('Icon Size', 'vibe'),
+					'label' => __('Icon Size', 'vibe-shortcodes'),
+					'desc' => __('Icon Size', 'vibe-shortcodes'),
 					'min' => 0,
                                         'max' => 100,
                                         'std' => 0,
@@ -199,8 +199,8 @@ $vibe_shortcodes['icons'] = array(
                  'class' => array(
 			'std' => '',
 			'type' => 'select_hide',
-			'label' => __('Custom Style', 'vibe'),
-			'desc' => __('icon style', 'vibe'),
+			'label' => __('Custom Style', 'vibe-shortcodes'),
+			'desc' => __('icon style', 'vibe-shortcodes'),
                         'options' => array(
 				'' => 'Text Style',
                                 'other' => 'Custom',
@@ -209,38 +209,38 @@ $vibe_shortcodes['icons'] = array(
 		),
                  'color' => array(
 					'type' => 'color',
-					'label' => __('Icon Color', 'vibe'),
-					'desc' => __('Icon Color', 'vibe')
+					'label' => __('Icon Color', 'vibe-shortcodes'),
+					'desc' => __('Icon Color', 'vibe-shortcodes')
                  )
                  ,
                  'bg' => array(
 					'type' => 'color',
-					'label' => __('Icon Bg Color', 'vibe'),
-					'desc' => __('Icon Background color', 'vibe'),
+					'label' => __('Icon Bg Color', 'vibe-shortcodes'),
+					'desc' => __('Icon Background color', 'vibe-shortcodes'),
                  ),
                  'hovercolor' => array(
 					'type' => 'color',
-					'label' => __('Icon Hover Color', 'vibe'),
-					'desc' => __('Icon Color', 'vibe'),
+					'label' => __('Icon Hover Color', 'vibe-shortcodes'),
+					'desc' => __('Icon Color', 'vibe-shortcodes'),
                  )
                  ,
                  'hoverbg' => array(
 					'type' => 'color',
-					'label' => __('Icon Hover Bg Color', 'vibe'),
-					'desc' => __('Icon Background color', 'vibe'),
+					'label' => __('Icon Hover Bg Color', 'vibe-shortcodes'),
+					'desc' => __('Icon Background color', 'vibe-shortcodes'),
                  ),
                  'padding' => array(
 					'type' => 'slide',
-					'label' => __('Icon padding', 'vibe'),
-					'desc' => __('Icon Background padding', 'vibe'),
+					'label' => __('Icon padding', 'vibe-shortcodes'),
+					'desc' => __('Icon Background padding', 'vibe-shortcodes'),
 					'min' => 0,
                                         'max' => 100,
                                         'std' => 0,
                  ),
                  'radius' => array(
 					'type' => 'slide',
-					'label' => __('Icon Bg Radius', 'vibe'),
-					'desc' => __('Icon Background radius', 'vibe'),
+					'label' => __('Icon Bg Radius', 'vibe-shortcodes'),
+					'desc' => __('Icon Background radius', 'vibe-shortcodes'),
 					'min' => 0,
                                         'max' => 100,
                                         'std' => 0,
@@ -249,7 +249,7 @@ $vibe_shortcodes['icons'] = array(
 		
 	),
 	'shortcode' => '[icon icon="{{icon}}" size="{{size}}" color="{{color}}" bg="{{bg}}" hovercolor="{{hovercolor}}" hoverbg="{{hoverbg}}" padding="{{padding}}" radius="{{radius}}"]',
-	'popup_title' => __('Insert Icon Shortcode', 'vibe')
+	'popup_title' => __('Insert Icon Shortcode', 'vibe-shortcodes')
 );
 
 
@@ -262,8 +262,8 @@ $vibe_shortcodes['alert'] = array(
 	'params' => array(
 		'style' => array(
 			'type' => 'select_hide',
-			'label' => __('Alert Style', 'vibe'),
-			'desc' => __('Select the alert\'s style, ie the alert colour', 'vibe'),
+			'label' => __('Alert Style', 'vibe-shortcodes'),
+			'desc' => __('Select the alert\'s style, ie the alert colour', 'vibe-shortcodes'),
 			'options' => array(
 				'block' => 'Orange',
 				'info' => 'Blue',
@@ -275,29 +275,29 @@ $vibe_shortcodes['alert'] = array(
 		),
             'bg' => array(
 					'type' => 'color',
-					'label' => __('Alert Bg Color', 'vibe'),
-					'desc' => __('Background color', 'vibe'),
+					'label' => __('Alert Bg Color', 'vibe-shortcodes'),
+					'desc' => __('Background color', 'vibe-shortcodes'),
                  ),
             'border' => array(
 					'type' => 'color',
-					'label' => __('Alert Border Color', 'vibe'),
-					'desc' => __('Border color', 'vibe'),
+					'label' => __('Alert Border Color', 'vibe-shortcodes'),
+					'desc' => __('Border color', 'vibe-shortcodes'),
                  ),
             'color' => array(
 					'type' => 'color',
-					'label' => __('Text Color', 'vibe'),
-					'desc' => __('Alert Text color', 'vibe'),
+					'label' => __('Text Color', 'vibe-shortcodes'),
+					'desc' => __('Alert Text color', 'vibe-shortcodes'),
                  ),
 		'content' => array(
 			'std' => 'Your Alert/Information Message!',
 			'type' => 'textarea',
-			'label' => __('Alert Text', 'vibe'),
-			'desc' => __('Add the alert\'s text', 'vibe'),
+			'label' => __('Alert Text', 'vibe-shortcodes'),
+			'desc' => __('Add the alert\'s text', 'vibe-shortcodes'),
 		)
 		
 	),
 	'shortcode' => '[alert style="{{style}}" bg="{{bg}}" border="{{border}}" color="{{color}}"] {{content}} [/alert]',
-	'popup_title' => __('Insert Alert Shortcode', 'vibe')
+	'popup_title' => __('Insert Alert Shortcode', 'vibe-shortcodes')
 );
 
 /*-----------------------------------------------------------------------------------*/
@@ -310,19 +310,19 @@ $vibe_shortcodes['tooltip'] = array(
         'tip' => array(
 			'std' => 'Tip content!',
 			'type' => 'textarea',
-			'label' => __('Tooltip Text', 'vibe'),
-			'desc' => __('Add the Tooltip text', 'vibe'),
+			'label' => __('Tooltip Text', 'vibe-shortcodes'),
+			'desc' => __('Add the Tooltip text', 'vibe-shortcodes'),
 		),
 		'content' => array(
 			'std' => 'Tooltip',
 			'type' => 'text',
-			'label' => __('Tooltip Anchor', 'vibe'),
-			'desc' => __('Add the Tooltip anchor', 'vibe'),
+			'label' => __('Tooltip Anchor', 'vibe-shortcodes'),
+			'desc' => __('Add the Tooltip anchor', 'vibe-shortcodes'),
 		),
 		
 	),
 	'shortcode' => '[tooltip tip="{{tip}}"] {{content}} [/tooltip]',
-	'popup_title' => __('Insert Tooltip Shortcode', 'vibe')
+	'popup_title' => __('Insert Tooltip Shortcode', 'vibe-shortcodes')
 );
 
 
@@ -336,14 +336,14 @@ $vibe_shortcodes['roundprogress'] = array(
 	'params' => array(
 		'percentage' => array(
 			'type' => 'text',
-			'label' => __('Percentage Cover', 'vibe'),
-			'desc' => __('Only number eg:20', 'vibe'),
+			'label' => __('Percentage Cover', 'vibe-shortcodes'),
+			'desc' => __('Only number eg:20', 'vibe-shortcodes'),
 			'std' => '20'
 		),
                 'style' => array(
 			'type' => 'select',
-			'label' => __('Style', 'vibe'),
-			'desc' => __('Tron or Custom', 'vibe'),
+			'label' => __('Style', 'vibe-shortcodes'),
+			'desc' => __('Tron or Custom', 'vibe-shortcodes'),
 			'options' => array(
 				'' => 'Tron',
 				'other' => 'Custom'
@@ -352,35 +352,35 @@ $vibe_shortcodes['roundprogress'] = array(
                 'radius' => array(
 			'std' => '200',
 			'type' => 'text',
-			'label' => __('Circle Diameter', 'vibe'),
-			'desc' => __('In pixels eg: 100', 'vibe'),
+			'label' => __('Circle Diameter', 'vibe-shortcodes'),
+			'desc' => __('In pixels eg: 100', 'vibe-shortcodes'),
 		),
                 'thickness' => array(
 			'std' => '20',
 			'type' => 'text',
-			'label' => __('Circle Thickness', 'vibe'),
-			'desc' => __('In percentage', 'vibe'),
+			'label' => __('Circle Thickness', 'vibe-shortcodes'),
+			'desc' => __('In percentage', 'vibe-shortcodes'),
 		),
                  'color' => array(
 					'type' => 'color',
-					'label' => __('Progress  Text Color', 'vibe'),
-					'desc' => __('Progress  Text color', 'vibe'),
+					'label' => __('Progress  Text Color', 'vibe-shortcodes'),
+					'desc' => __('Progress  Text color', 'vibe-shortcodes'),
                  ),
                  'bg_color' => array(
 					'type' => 'color',
-					'label' => __('Progress Circle Color', 'vibe'),
-					'desc' => __('Progress Circle color', 'vibe'),
+					'label' => __('Progress Circle Color', 'vibe-shortcodes'),
+					'desc' => __('Progress Circle color', 'vibe-shortcodes'),
                  ),
 		'content' => array(
 			'std' => '20%',
 			'type' => 'text',
-			'label' => __('Some Content', 'vibe'),
-			'desc' => __('like : 20% Skill, shortcodes/html allowed', 'vibe'),
+			'label' => __('Some Content', 'vibe-shortcodes'),
+			'desc' => __('like : 20% Skill, shortcodes/html allowed', 'vibe-shortcodes'),
 		),
 		
 	),
 	'shortcode' => '[roundprogress style="{{style}}" color="{{color}}" bg_color="{{bg_color}}" percentage="{{percentage}}" radius="{{radius}}" thickness="{{thickness}}"] {{content}} [/roundprogress]',
-	'popup_title' => __('Insert Round Progress Shortcode', 'vibe')
+	'popup_title' => __('Insert Round Progress Shortcode', 'vibe-shortcodes')
 );
 
 
@@ -394,20 +394,20 @@ $vibe_shortcodes['progressbar'] = array(
 	'params' => array(
 		'percentage' => array(
 			'type' => 'text',
-			'label' => __('Percentage Cover', 'vibe'),
-			'desc' => __('Only number eg:20', 'vibe'),
+			'label' => __('Percentage Cover', 'vibe-shortcodes'),
+			'desc' => __('Only number eg:20', 'vibe-shortcodes'),
 			'std' => '20'
 		),
 		'content' => array(
 			'std' => '20%',
 			'type' => 'text',
-			'label' => __('Some Content', 'vibe'),
-			'desc' => __('like : 20% Skill, shortcodes/html allowed', 'vibe'),
+			'label' => __('Some Content', 'vibe-shortcodes'),
+			'desc' => __('like : 20% Skill, shortcodes/html allowed', 'vibe-shortcodes'),
 		),
 		'color' => array(
 			'type' => 'select_hide',
-			'label' => __('Color', 'vibe'),
-			'desc' => __('Select progressbar color', 'vibe'),
+			'label' => __('Color', 'vibe-shortcodes'),
+			'desc' => __('Select progressbar color', 'vibe-shortcodes'),
 			'options' => array(
 				'' => 'Default',
                                 'other' => 'Custom',
@@ -416,17 +416,17 @@ $vibe_shortcodes['progressbar'] = array(
 		),
         'bg' => array(
 			'type' => 'color',
-			'label' => __('Stripe Bg Color', 'vibe'),
-			'desc' => __('Stripe Background color', 'vibe'),
+			'label' => __('Stripe Bg Color', 'vibe-shortcodes'),
+			'desc' => __('Stripe Background color', 'vibe-shortcodes'),
          ),
          'textcolor' => array(
 			'type' => 'color',
-			'label' => __('Text Color', 'vibe'),
-			'desc' => __('Stripe Text color', 'vibe'),
+			'label' => __('Text Color', 'vibe-shortcodes'),
+			'desc' => __('Stripe Text color', 'vibe-shortcodes'),
          )
 	),
 	'shortcode' => '[progressbar color="{{color}}" percentage="{{percentage}}" bg={{bg}} textcolor={{textcolor}}] {{content}} [/progressbar]',
-	'popup_title' => __('Insert Progressbar Shortcode', 'vibe')
+	'popup_title' => __('Insert Progressbar Shortcode', 'vibe-shortcodes')
 );
 
 
@@ -441,8 +441,8 @@ $vibe_shortcodes['tabs'] = array(
             'style' => array(
                 'std' => '',
                 'type' => 'select',
-                'label' => __('Tabs Style', 'vibe'),
-                'desc' => __('select a style', 'vibe'),
+                'label' => __('Tabs Style', 'vibe-shortcodes'),
+                'desc' => __('select a style', 'vibe-shortcodes'),
                 'options' => array(
                     '' => 'Top Horizontal',
                     'tabs-left' => 'Left Vertical',
@@ -452,8 +452,8 @@ $vibe_shortcodes['tabs'] = array(
             'theme' => array(
                 'std' => '',
                 'type' => 'select',
-                'label' => __('Tabs theme', 'vibe'),
-                'desc' => __('select a theme', 'vibe'),
+                'label' => __('Tabs theme', 'vibe-shortcodes'),
+                'desc' => __('select a theme', 'vibe-shortcodes'),
                 'options' => array(
                     '' => 'Light',
                     'dark' => 'Dark'
@@ -461,30 +461,30 @@ $vibe_shortcodes['tabs'] = array(
             ),
         ),
     'shortcode' => '[tabs style="{{style}}" theme={{theme}}] {{child_shortcode}}  [/tabs]',
-    'popup_title' => __('Insert Tab Shortcode', 'vibe'),
+    'popup_title' => __('Insert Tab Shortcode', 'vibe-shortcodes'),
     
     'child_shortcode' => array(
         'params' => array(
             'title' => array(
                 'std' => 'Title',
                 'type' => 'text',
-                'label' => __('Tab Title', 'vibe'),
-                'desc' => __('Title of the tab', 'vibe'),
+                'label' => __('Tab Title', 'vibe-shortcodes'),
+                'desc' => __('Title of the tab', 'vibe-shortcodes'),
             ),  
             'icon' => array(
             			'type' => 'icon',
-            			'label' => __('Title Icon', 'vibe'),
-            			'desc' => __('Select Icon type', 'vibe'),
+            			'label' => __('Title Icon', 'vibe-shortcodes'),
+            			'desc' => __('Select Icon type', 'vibe-shortcodes'),
             			),   
             'content' => array(
                 'std' => 'Tab Content',
                 'type' => 'textarea',
-                'label' => __('Tab Content', 'vibe'),
-                'desc' => __('Add the tabs content', 'vibe')
+                'label' => __('Tab Content', 'vibe-shortcodes'),
+                'desc' => __('Add the tabs content', 'vibe-shortcodes')
             )
         ),
         'shortcode' => '[tab title="{{title}}" icon="{{icon}}"] {{content}} [/tab]',
-        'clone_button' => __('Add Tab', 'vibe')
+        'clone_button' => __('Add Tab', 'vibe-shortcodes')
     )
 );
 
@@ -501,8 +501,8 @@ $vibe_shortcodes['note'] = array(
 		'style' => array(
 				'std' => 'default',
 				'type' => 'select_hide',
-				'label' => __('Background Color', 'vibe'),
-				'desc' => __('Background color & theme of note', 'vibe'),
+				'label' => __('Background Color', 'vibe-shortcodes'),
+				'desc' => __('Background color & theme of note', 'vibe-shortcodes'),
                                 'options' => array(
 					'' => 'Default',
                                         'other' => 'Custom'
@@ -527,15 +527,35 @@ $vibe_shortcodes['note'] = array(
 		'content' => array(
 			'std' => '',
 			'type' => 'textarea',
-			'label' => __('Content', 'vibe'),
-			'desc' => __('Note Content, supports HTML/Shortcodes', 'vibe'),
+			'label' => __('Content', 'vibe-shortcodes'),
+			'desc' => __('Note Content, supports HTML/Shortcodes', 'vibe-shortcodes'),
 		)
 		
 	),
 	'shortcode' => '[note style="{{style}}" bg="{{bg}}" border="{{border}}" bordercolor="{{bordercolor}}" color="{{color}}"] {{content}} [/note]',
-	'popup_title' => __('Insert Note Shortcode', 'vibe')
+	'popup_title' => __('Insert Note Shortcode', 'vibe-shortcodes')
 );
 
+
+/*-----------------------------------------------------------------------------------*/
+/*	DIVIDER Config
+/*-----------------------------------------------------------------------------------*/
+
+
+$vibe_shortcodes['divider'] = array(
+	'no_preview' => true,
+	'params' => array(
+		'style' => array(
+				'std' => 'clear',
+				'type' => 'text',
+				'label' => __('Divider Class', 'vibe-shortcodes'),
+				'desc' => __('clear : To begin form new line. Change Size using : one_third,one_fourth,one_fifth,two_third. Use multiple styles space saperated', 'vibe-shortcodes'),
+			)
+		
+	),
+	'shortcode' => '[divider style="{{style}}"]',
+	'popup_title' => __('Insert Divider Shortcode', 'vibe-shortcodes')
+);
 
 /*-----------------------------------------------------------------------------------*/
 /*	Tagline Config
@@ -546,8 +566,8 @@ $vibe_shortcodes['tagline'] = array(
 	'params' => array(
 		'style' => array(
 			'type' => 'select_hide',
-			'label' => __('Tagline Style', 'vibe'),
-			'desc' => __('Select the Tagline style', 'vibe'),
+			'label' => __('Tagline Style', 'vibe-shortcodes'),
+			'desc' => __('Select the Tagline style', 'vibe-shortcodes'),
 			'options' => array(
 				'boxed' => 'Boxed',
 				'tagfullwidth' => 'Fullwidth',
@@ -578,13 +598,13 @@ $vibe_shortcodes['tagline'] = array(
 		'content' => array(
 			'std' => 'Tagline Supports HTML',
 			'type' => 'textarea',
-			'label' => __('Tagline', 'vibe'),
-			'desc' => __('Supports HTML content', 'vibe'),
+			'label' => __('Tagline', 'vibe-shortcodes'),
+			'desc' => __('Supports HTML content', 'vibe-shortcodes'),
 		)
 		
 	),
 	'shortcode' => '[tagline style="{{style}}" bg="{{bg}}" border="{{border}}" bordercolor="{{bordercolor}}" color="{{color}}"] {{content}} [/tagline]',
-	'popup_title' => __('Insert Tagline Shortcode', 'vibe')
+	'popup_title' => __('Insert Tagline Shortcode', 'vibe-shortcodes')
 );
 
 
@@ -599,11 +619,11 @@ $vibe_shortcodes['popups'] = array(
                 'id' => array(
                 'std' =>'',
 				'type' => 'text',
-				'label' => __('Enter Popup ID', 'vibe'),
+				'label' => __('Enter Popup ID', 'vibe-shortcodes'),
 			),  
                 'classes' => array(
                                 'type' => 'select',
-                                'label' => __('Anchor Style', 'vibe'),
+                                'label' => __('Anchor Style', 'vibe-shortcodes'),
                                 'options' => array(
 				    'default' => 'Default',
 		                    'btn' =>  'Button',
@@ -613,19 +633,19 @@ $vibe_shortcodes['popups'] = array(
                     'content' => array(
                         'std' =>'',
 			'type' => 'textarea',
-			'label' => __('Popup/Modal Anchor', 'vibe'),
-			'desc' => __('Supports HTML & Shortcodes', 'vibe')
+			'label' => __('Popup/Modal Anchor', 'vibe-shortcodes'),
+			'desc' => __('Supports HTML & Shortcodes', 'vibe-shortcodes')
 			),
 		    'auto' => array(
                         'std' =>'',
 			'type' => 'select',
-			'label' => __('Show Popup on Page-load', 'vibe'),
+			'label' => __('Show Popup on Page-load', 'vibe-shortcodes'),
                         'options' => array(1 => 'Yes',0 => 'No')
 			), 
 		
 	),
 	'shortcode' => '[popup id="{{id}}" auto="{{auto}}" classes="{{classes}}"] {{content}} [/popup] ',
-	'popup_title' => __('Insert Popups Shortcode', 'vibe')
+	'popup_title' => __('Insert Popups Shortcode', 'vibe-shortcodes')
 );
 
 /*-----------------------------------------------------------------------------------*/
@@ -638,17 +658,17 @@ $vibe_shortcodes['testimonial'] = array(
                 'id' => array(
                 'std' =>'',
 				'type' => 'text',
-				'label' => __('Enter Testimonial ID', 'vibe'),
+				'label' => __('Enter Testimonial ID', 'vibe-shortcodes'),
 			),
              	'length' => array(
                 'std' =>'100',
 				'type' => 'text',
-				'label' => __('Number of Characters to show', 'vibe'),
-                'desc' => __('If number of characters entered above is less than Testimonial Post length, Read more link will appear', 'vibe'), 
+				'label' => __('Number of Characters to show', 'vibe-shortcodes'),
+                'desc' => __('If number of characters entered above is less than Testimonial Post length, Read more link will appear', 'vibe-shortcodes'), 
 			),
 	),
 	'shortcode' => '[testimonial id="{{id}}" length={{length}}]',
-	'popup_title' => __('Insert Testimonial Shortcode', 'vibe')
+	'popup_title' => __('Insert Testimonial Shortcode', 'vibe-shortcodes')
 );
 
 /*-----------------------------------------------------------------------------------*/
@@ -661,11 +681,11 @@ $vibe_shortcodes['course'] = array(
                 'id' => array(
                 'std' =>'',
 				'type' => 'text',
-				'label' => __('Enter Course ID', 'vibe'),
+				'label' => __('Enter Course ID', 'vibe-shortcodes'),
 			),
 	),
 	'shortcode' => '[course id="{{id}}"]',
-	'popup_title' => __('Insert Course Shortcode', 'vibe')
+	'popup_title' => __('Insert Course Shortcode', 'vibe-shortcodes')
 );
 
 /*-----------------------------------------------------------------------------------*/
@@ -678,7 +698,7 @@ $vibe_shortcodes['pullquote'] = array(
                 'style' => array(
                         'std' =>'',
 			'type' => 'select',
-			'label' => __('Select Testimonial', 'vibe'),
+			'label' => __('Select Testimonial', 'vibe-shortcodes'),
                         'options' => array(
                             'left' => 'LEFT',
                             'right' => 'RIGHT'
@@ -686,11 +706,11 @@ $vibe_shortcodes['pullquote'] = array(
 			),
             'content' => array(
 					'type' => 'textarea',
-					'label' => __('Content', 'vibe'),	
+					'label' => __('Content', 'vibe-shortcodes'),	
                     ),
 	),
 	'shortcode' => '[pullquote style="{{style}}"]{{content}}[/pullquote]',
-	'popup_title' => __('Insert PullQuote Shortcode', 'vibe')
+	'popup_title' => __('Insert PullQuote Shortcode', 'vibe-shortcodes')
 );
 
 
@@ -704,40 +724,40 @@ $vibe_shortcodes['team_member'] = array(
                 'pic' => array(
 			'std' => '',
 			'type' => 'text',
-			'label' => __('Member Image', 'vibe'),
-			'desc' => __('Image url of team member', 'vibe'),
+			'label' => __('Member Image', 'vibe-shortcodes'),
+			'desc' => __('Image url of team member', 'vibe-shortcodes'),
 		),
 		'name' => array(
 			'std' => '',
 			'type' => 'text',
-			'label' => __('Member Name', 'vibe'),
-			'desc' => __('Name of team member (HTML allowed)', 'vibe'),
+			'label' => __('Member Name', 'vibe-shortcodes'),
+			'desc' => __('Name of team member (HTML allowed)', 'vibe-shortcodes'),
 		),
-                'designation' => array(
+        'designation' => array(
 			'std' => '',
 			'type' => 'text',
-			'label' => __('Designation', 'vibe'),
-			'desc' => __('Designation of Team Member (HTML allowed)', 'vibe'),
+			'label' => __('Designation', 'vibe-shortcodes'),
+			'desc' => __('Designation of Team Member (HTML allowed)', 'vibe-shortcodes'),
 		),
         ),
-        'shortcode' => '[team_member pic=\'{{pic}}\' name="{{name}}" designation="{{designation}}"] {{child_shortcode}}  [/team_member]',
-        'popup_title' => __('Insert Team Member Shortcode', 'vibe'),
+        'shortcode' => '[team_member pic="{{pic}}" name="{{name}}" designation="{{designation}}"] {{child_shortcode}}  [/team_member]',
+        'popup_title' => __('Insert Team Member Shortcode', 'vibe-shortcodes'),
         'child_shortcode' => array(
         'params' => array(
                 'icon' => array(
 					'type' => 'socialicon',
-					'label' => __('Social Icon', 'vibe'),	
+					'label' => __('Social Icon', 'vibe-shortcodes'),	
                     ),
             'url' => array(
 						'std' => 'http://www.vibethemes.com',
 						'type' => 'text',
-						'label' => __('Icon Link', 'vibe'),
+						'label' => __('Icon Link', 'vibe-shortcodes'),
                     )
                 ),
         'shortcode' => '[team_social url="{{url}}" icon="{{icon}}"]',
-        'clone_button' => __('Add Social Information', 'vibe')
+        'clone_button' => __('Add Social Information', 'vibe-shortcodes')
                 )
-            );
+    );
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -750,13 +770,13 @@ $vibe_shortcodes['maps'] = array(
 		'map' => array(
 			'std' => '',
 			'type' => 'textarea',
-			'label' => __('End Map Iframe code', 'vibe'),
-			'desc' => __('Enter your map iframce code including iframe tags', 'vibe'),
+			'label' => __('End Map Iframe code', 'vibe-shortcodes'),
+			'desc' => __('Enter your map iframce code including iframe tags', 'vibe-shortcodes'),
 		)
 		
 	),
 	'shortcode' => '[map]{{map}}[/map]',
-	'popup_title' => __('Insert Google Maps Shortcode', 'vibe')
+	'popup_title' => __('Insert Google Maps Shortcode', 'vibe-shortcodes')
 );
 
 /*-----------------------------------------------------------------------------------*/
@@ -771,8 +791,8 @@ $vibe_shortcodes['gallery'] = array(
 		'size' => array(
 		                'std' =>'',
 			'type' => 'select',
-			'label' => __('Select Thumb Size', 'vibe'),
-			'desc' => __('Image size', 'vibe'),
+			'label' => __('Select Thumb Size', 'vibe-shortcodes'),
+			'desc' => __('Image size', 'vibe-shortcodes'),
 			'options' => array(
 			                        '' => 'Select Size',
 			                        'normal' => 'Normal',
@@ -785,13 +805,13 @@ $vibe_shortcodes['gallery'] = array(
                 'ids' => array(
 			'std' => '',
 			'type' => 'text',
-			'label' => __('Attachment Ids', 'vibe'),
-			'desc' => __('Attachment Ids separated by comma', 'vibe'),
+			'label' => __('Attachment Ids', 'vibe-shortcodes'),
+			'desc' => __('Attachment Ids separated by comma', 'vibe-shortcodes'),
 		)
 		
 	),
 	'shortcode' => '[gallery size="{{size}}" ids="{{ids}}"]',
-	'popup_title' => __('Insert Gallery Shortcode', 'vibe')
+	'popup_title' => __('Insert Gallery Shortcode', 'vibe-shortcodes')
 );
 
 /*-----------------------------------------------------------------------------------*/
@@ -804,19 +824,19 @@ $vibe_shortcodes['socialicons'] = array(
 	'params' => array(
 		'icon' => array(
 					'type' => 'socialicon',
-					'label' => __('Social Icon', 'vibe'),
-					'desc' => __('Select Elastic Social Icon, takes size/color of text it is inserted in:', 'vibe'),
+					'label' => __('Social Icon', 'vibe-shortcodes'),
+					'desc' => __('Select Elastic Social Icon, takes size/color of text it is inserted in:', 'vibe-shortcodes'),
 				),	
 				'size' => array(
 					'std' => '32',
 					'type' => 'text',
-					'label' => __('Size in pixels', 'vibe'),
-					'desc' => __('Enter Elastic font size in pixels ', 'vibe'),
+					'label' => __('Size in pixels', 'vibe-shortcodes'),
+					'desc' => __('Enter Elastic font size in pixels ', 'vibe-shortcodes'),
 				),
 				),
 				
 				        'shortcode' => '[socialicon icon="{{icon}}" size="{{size}}"]',
-				        'popup_title' => __('Insert Social Icon Shortcode', 'vibe')
+				        'popup_title' => __('Insert Social Icon Shortcode', 'vibe-shortcodes')
 			);
 /*-----------------------------------------------------------------------------------*/
 /*	Forms
@@ -830,49 +850,51 @@ $vibe_shortcodes['forms'] = array(
                     'to' => array(
 					'std' => 'example@example.com',
 					'type' => 'text',
-					'label' => __('Enter email', 'vibe'),
-					'desc' => __('Email is sent to this email. Use comma for multiple entries', 'vibe'),
+					'label' => __('Enter email', 'vibe-shortcodes'),
+					'desc' => __('Email is sent to this email. Use comma for multiple entries', 'vibe-shortcodes'),
 				),
                     'subject' => array(
 					'std' => 'Subject',
 					'type' => 'text',
-					'label' => __('Email Subject', 'vibe'),
-					'desc' => __('Subject of email', 'vibe'),
+					'label' => __('Email Subject', 'vibe-shortcodes'),
+					'desc' => __('Subject of email', 'vibe-shortcodes'),
 				),             
 		),
 	'shortcode' => '[form to="{{to}}" subject="{{subject}}"] {{child_shortcode}}  [/form]',
-    'popup_title' => __('Generate ContactForm Shortcode', 'vibe'),
+    'popup_title' => __('Generate ContactForm Shortcode', 'vibe-shortcodes'),
     'child_shortcode' => array(
         'params' => array(
                     'placeholder' => array(
 			'std' => 'Name',
 			'type' => 'text',
-			'label' => __('Label Text', 'vibe'),
-			'desc' => __('Add the content. Accepts HTML & other Shortcodes.', 'vibe'),
+			'label' => __('Label Text', 'vibe-shortcodes'),
+			'desc' => __('Add the content. Accepts HTML & other Shortcodes.', 'vibe-shortcodes'),
                     ),
                     'type' => array(
 			'type' => 'select',
-			'label' => __('Form Element', 'vibe'),
-			'desc' => __('select Form element type', 'vibe'),
+			'label' => __('Form Element', 'vibe-shortcodes'),
+			'desc' => __('select Form element type', 'vibe-shortcodes'),
 			'options' => array(
                             'text' => 'Single Line Text Box (Text)',
                             'textarea' => 'Multi Line Text Box (TextArea)',
                             'select' => 'Select from Options (Select)',
+                            'captcha' => 'Captcha field',
                             'submit' => 'Submit Button'
                         )
                     ),
-                    'options' => array(
+            'options' => array(
 			'std' => '',
 			'type' => 'text',
-			'label' => __('Enter Select Options', 'vibe'),
-			'desc' => __('Comma seperated options.', 'vibe'),
+			'label' => __('Enter Select Options', 'vibe-shortcodes'),
+			'desc' => __('Comma seperated options.', 'vibe-shortcodes'),
                     ),
-                    'validate' => array(
+            'validate' => array(
 			'type' => 'select',
-			'label' => __('Validation', 'vibe'),
-			'desc' => __('select Form element type', 'vibe'),
+			'label' => __('Validation', 'vibe-shortcodes'),
+			'desc' => __('select Form element type', 'vibe-shortcodes'),
 			'options' => array(
                             '' => 'None',
+                            'required' => 'Required',
                             'email' => 'Email',
                             'numeric' => 'Numeric',
                             'phone' => 'Phone Number'
@@ -881,7 +903,7 @@ $vibe_shortcodes['forms'] = array(
                     
               ),
         'shortcode' => '[form_element type="{{type}}" validate="{{validate}}" options="{{options}}" placeholder="{{placeholder}}"]',
-        'clone_button' => __('Add Form Element', 'vibe')
+        'clone_button' => __('Add Form Element', 'vibe-shortcodes')
     )
 );	
 
@@ -896,12 +918,12 @@ $vibe_shortcodes['heading'] = array(
 		'content' => array(
 			'std' => '',
 			'type' => 'textarea',
-			'label' => __('Enter Heading', 'vibe'),
-			'desc' => __('Enter heading.', 'vibe')
+			'label' => __('Enter Heading', 'vibe-shortcodes'),
+			'desc' => __('Enter heading.', 'vibe-shortcodes')
                     )
 		),
 	'shortcode' => '[heading] {{content}} [/heading]',
-	'popup_title' => __('Insert Heading Shortcode', 'vibe')
+	'popup_title' => __('Insert Heading Shortcode', 'vibe-shortcodes')
 );					
 
 /*-----------------------------------------------------------------------------------*/
@@ -914,13 +936,36 @@ $vibe_shortcodes['iframevideo'] = array(
 		'content' => array(
 			'std' => '',
 			'type' => 'textarea',
-			'label' => __('Enter Video iframe Code', 'vibe'),
-			'desc' => __('For Responsive iframe videos form Youtube, Vimeo,bliptv etc...', 'vibe')
+			'label' => __('Enter Video iframe Code', 'vibe-shortcodes'),
+			'desc' => __('For Responsive iframe videos form Youtube, Vimeo,bliptv etc...', 'vibe-shortcodes')
                     )
 		),
 	'shortcode' => '[iframevideo] {{content}} [/iframevideo]',
-	'popup_title' => __('Insert iFrame Video Shortcode', 'vibe')
+	'popup_title' => __('Insert iFrame Video Shortcode', 'vibe-shortcodes')
 );					
 
+/*-----------------------------------------------------------------------------------*/
+/*	IFRAME
+/*-----------------------------------------------------------------------------------*/
+
+$vibe_shortcodes['iframe'] = array(
+	'no_preview' => true,
+	'params' => array(
+		'height' => array(
+					'std' => '600',
+					'type' => 'text',
+					'label' => __('Enter Iframe Height', 'vibe-shortcodes'),
+					'desc' => __('Set iframe height', 'vibe-shortcodes'),
+				),
+		'content' => array(
+			'std' => '',
+			'type' => 'textarea',
+			'label' => __('Enter iframe URL', 'vibe-shortcodes'),
+			'desc' => __('For Responsive iframe based content, like Articulate storyline, iSpring content etc...', 'vibe-shortcodes')
+                    )
+		),
+	'shortcode' => '[iframe height={{height}}] {{content}} [/iframe]',
+	'popup_title' => __('Insert iFrame Shortcode', 'vibe-shortcodes')
+);	
 
 ?>

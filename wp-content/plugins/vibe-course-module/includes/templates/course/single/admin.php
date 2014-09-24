@@ -38,7 +38,13 @@ foreach($curriculum as $c){
 				foreach($members_unchecked_quiz as $unchecked_quiz ){
 					$member_id=$unchecked_quiz['meta_key'];
 					$bp_name = bp_core_get_userlink( $member_id );
-			    	$bp_location = bp_get_profile_field_data('field=Location&user_id='.$member_id);
+					$bp_location ='';
+
+					if(function_exists('vibe_get_option'))
+					$field = vibe_get_option('student_field');
+
+					if(bp_is_active('xprofile'))
+			    	$bp_location = bp_get_profile_field_data('field='.$field.'&user_id='.$member_id);
 					echo '<li id="s'.$member_id.'">';
 			    	echo get_avatar($member_id);
 			    	echo '<h6>'. $bp_name . '</h6>';
@@ -73,7 +79,12 @@ if(count($members_submit_course)){
 		$member_id=$submit_course['meta_key'];
 
 		$bp_name = bp_core_get_userlink( $member_id );
-    	$bp_location = bp_get_profile_field_data('field=Location&user_id='.$member_id);
+
+		if(function_exists('vibe_get_option'))
+		$field = vibe_get_option('student_field');
+
+		if(bp_is_active('xprofile'))
+    	$bp_location = bp_get_profile_field_data('field='.$field.'&user_id='.$member_id);
 
 		echo '<li id="s'.$member_id.'">';
     	echo get_avatar($member_id);
@@ -159,7 +170,11 @@ echo '</div>';
 
 			if (function_exists('bp_get_profile_field_data')) {
 			    $bp_name = bp_core_get_userlink( $student );
-			    $bp_location = bp_get_profile_field_data('field=Location&user_id='.$student);
+
+			    if(function_exists('vibe_get_option'))
+				$field = vibe_get_option('student_field');
+
+			    $bp_location = bp_get_profile_field_data('field='.$field.'&user_id='.$student);
 			    
 			    if ($bp_name) {
 			    	echo '<li id="s'.$student.'"><input type="checkbox" class="member" value="'.$student.'"/>';

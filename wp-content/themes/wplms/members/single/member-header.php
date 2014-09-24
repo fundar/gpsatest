@@ -30,6 +30,8 @@
 		if(!isset($field) || $field =='')
 			$field = 'Location';
 
+		
+		if(bp_is_active('xprofile'))
 		echo bp_get_profile_field_data( array('user_id'=>$user_id,'field'=>$field ));
 
 	?>

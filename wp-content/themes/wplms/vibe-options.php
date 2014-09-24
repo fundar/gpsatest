@@ -200,7 +200,7 @@ $sections[] = array(
                                     array(
 						'id' => 'notice',
 						'type' => 'divide',
-                        'desc' => 'Details required for Auto-Update'
+                        'desc' => __('Details required for Auto-Update','vibe')
 						),
                                     array(
 						'id' => 'username',
@@ -249,9 +249,17 @@ $sections[] = array(
 						'title' => __('Fix Top Header on Scroll', 'vibe'), 
 						'sub_desc' => __('Fix header on top of screen' , 'vibe'),
 						'desc' => __('header is fixed to top as user scrolls down.', 'vibe'),
-						'options' => array('0' => 'Static','1' => 'Fixed on Scroll'),//Must provide key => value pairs for radio options
+						'options' => array('0' => __('Static','vibe'),'1' => __('Fixed on Scroll','vibe')),//Must provide key => value pairs for radio options
 						'std' => '0'
-						),     
+						),  
+						array(
+						'id' => 'course_search',
+                        'title' => __('Navigation Search as Course Search', 'vibe'),
+                        'sub_desc' => __('Force the header search to search only in courses', 'vibe'),
+                        'type' => 'button_set',
+						'options' => array('0' => __('No','vibe'),'1'=>__('Yes','vibe')),//Must provide key => value pairs for radio options
+						'std' => '0'
+						),   
 					)
 				);
 
@@ -266,6 +274,15 @@ $sections[] = array(
                         'title' => __('Create New sidebars ', 'vibe'),
                         'sub_desc' => __('Dynamically generate sidebars', 'vibe'),
                         'desc' => __('Use these sidebars in various layouts.', 'vibe')
+						),	
+					array(
+							'id' => 'events_sidebar',
+							'type' => 'select',
+							'title' => __('All Events page Sidebar', 'vibe'), 
+							'sub_desc' => __('Select All events page sidebar', 'vibe'),
+							'desc' => __('Select a sidebar for all events page', 'vibe'),
+							'options' => $sidebararray,
+							'std' => 'mainsidebar'
 						),			
 					)
 				);
@@ -276,8 +293,16 @@ $sections[] = array(
 				'desc' => '<p class="description">'.__('BuddyPress settings and Variables','vibe').'..</p>',
 				'fields' => array(
 					array(
+						'id' => 'default_avatar',
+						'type' => 'upload',
+						'title' => __('Upload BuddyPress Default avatar', 'vibe'), 
+						'sub_desc' => __('BuddyPress default members avatar', 'vibe'),
+						'desc' => __('This avatar is shown for members who have not uploaded any custom avatar.', 'vibe'),
+                        'std' => VIBE_URL.'/images/avatar.jpg'
+						),
+					array(
 						'id' => 'loop_number',
-                        'title' => __('Buddypress Per Page', 'vibe'),
+                        'title' => __('Buddypress Items Per Page', 'vibe'),
                         'sub_desc' => __('number of items shown per page', 'vibe'),
                         'desc' => __('Number of Buddypress items (Courses,Members,Groups,Forums,Blogs etc..)', 'vibe'),
                         'type' => 'text',
@@ -289,7 +314,7 @@ $sections[] = array(
                         'sub_desc' => __('Members latest activity is shown below the name', 'vibe'),
                         'desc' => __('Members activity is shown in All members page.', 'vibe'),
                         'type' => 'button_set',
-						'options' => array('0' => 'No','1'=>'Yes'),//Must provide key => value pairs for radio options
+						'options' => array('0' => __('No','vibe'),'1'=>__('Yes','vibe')),//Must provide key => value pairs for radio options
 						'std' => '0'
 						),
 					array(
@@ -298,7 +323,16 @@ $sections[] = array(
                         'sub_desc' => __('All members pages can be viewed by:', 'vibe'),
                         'desc' => __('Profile viewability : All {Non-Loggedin}, Members{Loggedin Members},Teachers {Teachers, Admins,Editors}', 'vibe'),
                         'type' => 'button_set',
-						'options' => array('0' => 'All','1'=>'Members only','2' => 'Teachers only','3' => 'Admins only'),//Must provide key => value pairs for radio options
+						'options' => array('0' => __('All','vibe'),'1'=>__('Members only','vibe'),'2' => __('Teachers only','vibe'),'3' => __('Admins only','vibe')),//Must provide key => value pairs for radio options
+						'std' => '0'
+						),
+					array(
+						'id' => 'single_member_view',
+                        'title' => __('Single Member Profile View', 'vibe'),
+                        'sub_desc' => __('Single members profile can be viewed by:', 'vibe'),
+                        'desc' => __('Profile viewability : All {Non-Loggedin}, Members{Loggedin Members},Teachers {Teachers, Admins,Editors}', 'vibe'),
+                        'type' => 'button_set',
+						'options' => array('0' => __('All','vibe'),'1'=>__('Members only','vibe'),'2' => __('Teachers only','vibe'),'3' => __('Admins only','vibe')),//Must provide key => value pairs for radio options
 						'std' => '0'
 						),
 					array(
@@ -314,7 +348,7 @@ $sections[] = array(
                         'sub_desc' => __('Activity can be viewed by :', 'vibe'),
                         'desc' => __('Activity viewability : All {Non-Loggedin}, Members{Loggedin Members},Teachers {Teachers, Admins,Editors}', 'vibe'),
                         'type' => 'button_set',
-						'options' => array('0' => 'All','1'=>'Members only','2' => 'Teachers only','3' => 'Admins only'),//Must provide key => value pairs for radio options
+						'options' => array('0' => __('All','vibe'),'1'=>__('Members only','vibe'),'2' => __('Teachers only','vibe'),'3' => __('Admins only','vibe')),//Must provide key => value pairs for radio options
 						'std' => '0'
 						),	
 					array(
@@ -330,7 +364,7 @@ $sections[] = array(
                         'sub_desc' => __('Groups can be created by :', 'vibe'),
                         'desc' => __('Group creation : Members{Loggedin Members},Teachers {Teachers, Admins,Editors}', 'vibe'),
                         'type' => 'button_set',
-						'options' => array('1'=>'Members only','2' => 'Teachers only','3' => 'Admins only'),//Must provide key => value pairs for radio options
+						'options' => array('1'=>__('Members only','vibe'),'2' => __('Teachers only','vibe'),'3' => __('Admins only','vibe')),//Must provide key => value pairs for radio options
 						'std' => '1'
 						),	
 					array(
@@ -339,7 +373,7 @@ $sections[] = array(
                         'sub_desc' => __('Single Profile activity can be viewed by :', 'vibe'),
                         'desc' => __('Activity viewability : All {Non-Loggedin}, Members{Loggedin Members},Teachers {Teachers, Admins,Editors}', 'vibe'),
                         'type' => 'button_set',
-						'options' => array('0' => 'All','1'=>'Members only','2' => 'Teachers only','3' => 'Admins only'),//Must provide key => value pairs for radio options
+						'options' => array('0' => __('All','vibe'),'1'=>__('Members only','vibe'),'2' => __('Teachers only','vibe'),'3' => __('Admins only','vibe')),//Must provide key => value pairs for radio options
 						'std' => '0'
 						),	
 					array(
@@ -348,7 +382,7 @@ $sections[] = array(
                         'sub_desc' => __('Single Profile Groups can be viewed by :', 'vibe'),
                         'desc' => __('Group viewability : All {Non-Loggedin}, Members{Loggedin Members},Teachers {Teachers, Admins,Editors}', 'vibe'),
                         'type' => 'button_set',
-						'options' => array('0' => 'All','1'=>'Members only','2' => 'Teachers only','3' => 'Admins only'),//Must provide key => value pairs for radio options
+						'options' => array('0' => __('All','vibe'),'1'=>__('Members only','vibe'),'2' => __('Teachers only','vibe'),'3' => __('Admins only','vibe')),//Must provide key => value pairs for radio options
 						'std' => '0'
 						),	
 					array(
@@ -357,9 +391,33 @@ $sections[] = array(
                         'sub_desc' => __('Single Profile Forums can be viewed by :', 'vibe'),
                         'desc' => __('Group viewability : All {Non-Loggedin}, Members{Loggedin Members},Teachers {Teachers, Admins,Editors}', 'vibe'),
                         'type' => 'button_set',
-						'options' => array('0' => 'All','1'=>'Members only','2' => 'Teachers only','3' => 'Admins only'),//Must provide key => value pairs for radio options
+						'options' => array('0' => __('All','vibe'),'1'=>__('Members only','vibe'),'2' => __('Teachers only','vibe'),'3' => __('Admins only','vibe')),//Must provide key => value pairs for radio options
 						'std' => '0'
-						),						
+						),
+					array(
+						'id' => 'activation_redirect',
+						'type' => 'pages_select',
+                        'title' => __('Redirect Page on User ACtivation', 'vibe'),
+                        'sub_desc' => __('User is redirected to this page on activating her account.', 'vibe'),
+                        'desc' => __('After registering and activating the account the user is redirected to this page.','vibe')
+						),
+					array(
+						'id' => 'enable_groups_join_button',
+						'type' => 'button_set',
+                        'title' => __('Enable Join Group/Request Membership button', 'vibe'),
+                        'sub_desc' => __('Button is shown in Groups directory', 'vibe'),
+                        'desc' => __('Join Group for Public groups and Request Membership button for private groups','vibe'),
+                        'options' => array(0 => __('Disable','vibe'),1=>__('Enable','vibe'))
+						),
+					array(
+						'id' => 'student_activity',
+                        'title' => __('Restrict Student activity view', 'vibe'),
+                        'sub_desc' => __('Restrict student view of activity', 'vibe'),
+                        'desc' => __('Student can view only her activity', 'vibe'),
+                        'type' => 'button_set',
+						'options' => array('' => __('All Activity','vibe'),'1'=>__('Student Activity','vibe')),//Must provide key => value pairs for radio options
+						'std' => ''
+						),									
 					)
 				);
 
@@ -367,26 +425,114 @@ $sections[] = array(
 $sections[] = array(
 				'icon' => 'welcome-learn-more',
 				'title' => __('Course Manager', 'vibe'),
-				'desc' => '<p class="description">'.__('Manage Fonts to be used in the Site. Fonts selected here will be available in Theme customizer font family select options.','vibe').'..</p>',
+				'desc' => '<p class="description">'.__('Manage Course Options from here.','vibe').'..</p>',
 				'fields' => array(
 					 	array(
 						'id' => 'take_course_page',
 						'type' => 'pages_select',
                         'title' => __('Take This Course Page', 'vibe'),
-                        'sub_desc' => __('A Page with Take Course Page Template', 'vibe'),
+                        'sub_desc' => __('A Page with Start Course Page Template', 'vibe'),
+						),
+						array(
+						'id' => 'create_course',
+						'type' => 'pages_select',
+                        'title' => __('Create a Course Page', 'vibe'),
+                        'sub_desc' => __('A Page with "Create Content" Page Template', 'vibe'),
+						),
+						array(
+						'id' => 'new_course_status',
+                        'title' => __('Admin Approval for Course', 'vibe'),
+                        'sub_desc' => __('Force instructors for Admin approval for new course', 'vibe'),
+                        'desc' => __('Force Courses created by Instructors are first sent to Administrator for Approval.', 'vibe'),
+                        'type' => 'button_set',
+						'options' => array('pending' => __('Yes, require approval','vibe'),'publish'=>__('No, allow publish','vibe')),
+						'std' => '0'
+						),
+						array(
+						'id' => 'nextunit_access',
+                        'title' => __('Unit Locking', 'vibe'),
+                        'sub_desc' => __('Set access to next units based on previous unit status', 'vibe'),
+                        'desc' => __('Force users to complete previous units and quiz evalution before viewing the next units', 'vibe'),
+                        'type' => 'button_set',
+						'options' => array('0' => __('Free Access','vibe'),'1'=>__('Force prev Unit/Quiz Complete','vibe')),
+						'std' => '0'
+						),
+						array(
+						'id' => 'unit_media_lock',
+                        'title' => __('Unit Media Lock', 'vibe'),
+                        'sub_desc' => __('Hide unit completion button unless the Media(Audio/Video) is complete', 'vibe'),
+                        'desc' => __('Force users to view/listen the Media, Audio/Video in units before marking the unit as complete', 'vibe'),
+                        'type' => 'button_set',
+						'options' => array('0' => __('No','vibe'),'1'=>__('Yes','vibe')),
+						'std' => '0'
+						),
+						array(
+						'id' => 'assignment_locking',
+                        'title' => __('Assignment Locking', 'vibe'),
+                        'sub_desc' => __('Force users to finish assignments to complete units', 'vibe'),
+                        'desc' => __('Mark complete button for a unit will appear only after student has finished the unit assignment', 'vibe'),
+                        'type' => 'button_set',
+						'options' => array('0' => __('Do not lock','vibe'),'1'=>__('Lock Unit Completion','vibe')),
+						'std' => '0'
+						),
+						array(
+						'id' => 'private_course',
+                        'title' => __('Enable Private Courses', 'vibe'),
+                        'sub_desc' => __('Enable private courses', 'vibe'),
+                        'desc' => __('Courses which are not connected to any WooCommerce Plugin/PMPro Membership will appear as Private', 'vibe'),
+                        'type' => 'button_set',
+						'options' => array('0' => __('No','vibe'),'1'=>__('Yes','vibe')),
+						'std' => '0'
+						),
+						array(
+						'id' => 'course_progressbar',
+                        'title' => __('Show Course Progressbar', 'vibe'),
+                        'sub_desc' => __('Show course progress bar above course timeline', 'vibe'),
+                        'desc' => __('Course Progress bar is shown in Course curriculum page', 'vibe'),
+                        'type' => 'button_set',
+						'options' => array('0' => __('No','vibe'),'1'=>__('Yes','vibe')),
+						'std' => '0'
+						),
+						array(
+						'id' => 'instructor_add_students',
+                        'title' => __('Instructors can Add Students', 'vibe'),
+                        'sub_desc' => __('Enable Instructors to be able to add students', 'vibe'),
+                        'desc' => __('A Bulk Action is added in Course -> Admin -> Members which enables Instructos to add students to the course', 'vibe'),
+                        'type' => 'button_set',
+						'options' => array('0' => __('No','vibe'),'1'=>__('Yes','vibe')),
+						'std' => '0'
+						),
+						array(
+						'id' => 'instructor_assign_badges',
+                        'title' => __('Instructors can Assign/Remove Certificates & Badges', 'vibe'),
+                        'sub_desc' => __('Enable Instructors to be able to assign Certificates & Badges to Students', 'vibe'),
+                        'desc' => __('A Bulk Action is added in Course -> Admin -> Members which enables Instructos to assign Certificates & Badges to Students for the course', 'vibe'),
+                        'type' => 'button_set',
+						'options' => array('0' => __('No','vibe'),'1'=>__('Yes','vibe')),
+						'std' => '0'
+						),
+						array(
+						'id' => 'instructor_content_privacy',
+                        'title' => __('Force Instructor Content Privacy', 'vibe'),
+                        'sub_desc' => __('Select boxes show only instructor units/quizzes/questions', 'vibe'),
+                        'desc' => __('Instructors can view titles but can not open content', 'vibe'),
+                        'type' => 'button_set',
+						'options' => array('0' => __('No','vibe'),'1'=>__('Yes','vibe')),
+						'std' => '0'
 						),
                         array(
 						'id' => 'teacher_form',
 						'type' => 'pages_select',
-                        'title' => __('Become a Teacher Page', 'vibe'),
+                        'title' => __('Become n Instructor Page', 'vibe'),
                         'sub_desc' => __('A Page with become a teacher form.', 'vibe'),
 						),
                         array(
 						'id' => 'certificate_page',
 						'type' => 'pages_select',
-                        'title' => __('Certificate Page', 'vibe'),
-                        'sub_desc' => __('A Page with certificate page template.', 'vibe'),
+                        'title' => __('Fallback Certificate Page', 'vibe'),
+                        'sub_desc' => __('A Page with certificate page template, Fallback to courses with no Certificate Templates.', 'vibe'),
 						),
+						
                         array(
 						'id' => 'student_field',
 						'type' => 'text',
@@ -401,13 +547,100 @@ $sections[] = array(
                         'sub_desc' => __('Enter the name of the Instructor Field to show below the name.', 'vibe'),
                         'std'=>'Speciality'
 						),
+						array(
+						'id' => 'instructor_field_group',
+						'type' => 'text',
+                        'title' => __('Instructor Field Group', 'vibe'),
+                        'sub_desc' => __('Enter the name of the Instructor Field Group you want to hide from Students from viewing in Profile -> edit (* No Required fields & Case senstitive).', 'vibe'),
+                        'std'=>'Instructor'
+						),
                         array(
 						'id' => 'instructor_about',
 						'type' => 'text',
                         'title' => __('Instructor Description Field', 'vibe'),
-                        'sub_desc' => __('Instructor Description is picked from this field.', 'vibe'),
+                        'sub_desc' => __('Instructor Description is picked from this field in the Instructor Widget', 'vibe'),
                         'std'=>'About'
-						)
+						),
+						array(
+						'id' => 'auto_eval_question_type',
+						'type' => 'multi_select',
+                        'title' => __('Auto-Evaluation Question Types', 'vibe'),
+                        'sub_desc' => __('Question types which will be evaluated by Auto-Evaluation', 'vibe'),
+                        'desc' => __('These question types will be evaluated by auto quiz evaluation process for exact match.','vibe'),
+                        'options' => array(
+                        	'truefalse' => __('True False','vibe'),
+                        	'single' => __('Multiple Choice','vibe'),
+                        	'multiple' => __('Multiple Correct','vibe'),
+                        	'sort' => __('Sort Answer Question','vibe'),
+                        	'match' => __('Match Answers','vibe'),
+                        	'select' => __('Dropdown select','vibe'),
+                        	'fillblank' => __('Fill in the Blank','vibe'),
+                        	'smalltext' => __('Small Text Answer','vibe'),
+                        	),
+                        'std' => array('single')
+						),
+						array(
+						'id' => 'hide_courses',
+						'type' => 'posts_multi_select',
+                        'title' => __('Hide Courses from Directory', 'vibe'),
+                        'sub_desc' => __('Hide courses from directory & pages, only accessible via direct link', 'vibe'),
+                        'args' => 'post_type=course',
+                        'class' => 'chosen',
+                        'std'=>''
+						),
+						array(
+						'id' => 'course_duration_display_parameter',
+						'type' => 'select',
+                        'title' => __('Course Duration parameter', 'vibe'),
+                        'sub_desc' => __('Set course duration parameter', 'vibe'),
+                        'desc' => __('Course duration parameter for display purpose','vibe'),
+                        'options' => array(
+                        	0 => __('Automatic','vibe'),
+                        	1 => __('Seconds','vibe'),
+                        	60 => __('Minutes','vibe'),
+                        	3600 => __('Hours','vibe'),
+                        	86400 => __('Days','vibe'),
+                        	604800 => __('Weeks','vibe'),
+                        	2592000 => __('Months','vibe'),
+                        	31536000 => __('Years','vibe'),
+                        	),
+                        'std' => 0
+						),
+
+						array(
+						'id' => 'ninja_instructor_form_id',
+						'type' => 'text',
+                        'title' => __('Instructor Form ID', 'vibe'),
+                        'sub_desc' => __('Enter the Form ID of the Instructor Form created using NINJA FORMS Plugin.( ** Optional refer ', 'vibe').'<a href="http://vibethemes.com/forums/forum/wordpress-html-css/wordpress-themes/wplms/tips-tricks-docs/13992-tip-using-instructor-sign-up-with-ninja-forms">link</a> )',
+                        'std'=>''
+						),
+						array(
+						'id' => 'finished_course_access',
+                        'title' => __('Finished Course Access', 'vibe'),
+                        'sub_desc' => __('Allow students to view Finished courses', 'vibe'),
+                        'desc' => __('Make finished courses secure area viewable to students', 'vibe'),
+                        'type' => 'button_set',
+						'options' => array('' => __('No','vibe'),'1'=>__('Yes','vibe')),
+						'std' => ''
+						),
+						array(
+						'id' => 'level',
+                        'title' => __('Enable Levels', 'vibe'),
+                        'sub_desc' => __('Enables Level taxonomy', 'vibe'),
+                        'desc' => __('Enables Level taxonomy in Course, Units, Quizzes, Questions, Assignment and search page ', 'vibe'),
+                        'type' => 'button_set',
+						'options' => array('' => __('No','vibe'),'1'=>__('Yes','vibe')),
+						'std' => ''
+						),
+						array(
+						'id' => 'linkage',
+                        'title' => __('Enable Linkage', 'vibe'),
+                        'sub_desc' => __('Connect Course, Units, Quiz, Questions with linkage taxonomy', 'vibe'),
+                        'desc' => __('Shorten the list of units, quizzes, courses shown in dropdowns', 'vibe'),
+                        'type' => 'button_set',
+						'options' => array('0' => __('No','vibe'),'1'=>__('Yes','vibe')),
+						'std' => '0'
+						),
 					)
 				);
 
@@ -423,6 +656,31 @@ $sections[] = array(
                         'sub_desc' => __('Select Fonts and setup fonts in Live Editor', 'vibe'),
                         'desc' => __('Use these sample layouts in PageBuilder.', 'vibe')
 						),
+					array(
+						'id' => 'google_fonts_subsets',
+						'type' => 'multi_select',
+                        'title' => __('Select Google Fonts subsets', 'vibe'),
+                        'sub_desc' => __('Select a font subset', 'vibe').'<a href="http://academe.co.uk/2013/09/google-web-fonts-api-categories-and-subsets/"><i class="dashicons-plus-alt"></i></a>',
+                        'options' => array(
+                        	'latin'=>__('Latin','vibe'),
+							'latin-ext' =>__('Latin Ext','vibe'),
+							'menu'=>__('Menu','vibe'),
+							'greek'=>__('Greek','vibe'),
+							'greek-ext'=>__('Greek Ext','vibe'),
+							'cyrillic'=>__('Cyrillic','vibe'),
+							'cyrillic-ext'=>__('Cyrillic Ext','vibe'),
+							'vietnamese'=>__('Vietnamese','vibe'),
+							'arabic'=>__('Arabic','vibe'),
+							'khmer'=>__('Khmer','vibe'),
+							'lao'=>__('Lao','vibe'),
+							'tamil'=>__('Tamil','vibe'),
+							'bengali'=>__('Bengali','vibe'),
+							'hindi'=>__('Hindi','vibe'),
+							'korean'=>__('Korean','vibe'),
+                        	),
+                        'std' => array('latin','latin-ext'),
+                        'desc' => __('Use these font subsets for better rendering of fonts.', 'vibe')
+						),
                         array(
 						'id' => 'custom_fonts',
 						'type' => 'multi_text',
@@ -437,7 +695,7 @@ $sections[] = array(
 $sections[] = array(
 				'icon' => 'visibility',
 				'title' => __('Customizer', 'vibe'),
-				'desc' => '<p class="description">'.__('Import/Export customizer settings. Customize your theme using ','vibe').' <a href="'.get_admin_url().'customize.php" class="button">WP Theme Customizer</a></p>',
+				'desc' => '<p class="description">'.__('Import/Export customizer settings. Customize your theme using ','vibe').' <a href="'.get_admin_url().'customize.php" class="button">'.__('WP Theme Customizer','vibe').'</a></p>',
 				'fields' => array(
                      array(
 						'id' => 'viz_customizer',
@@ -484,10 +742,10 @@ $sections[] = array(
 							'title' => __('Top Footer Sidebar Columns', 'vibe'), 
 							'sub_desc' => __('Footer Columns', 'vibe'),
 							'options' => array(             
-	                                        'col-md-3 col-sm-6' => array('title' => 'Four Columns', 'img' => VIBE_OPTIONS_URL.'img/footer-1.png'),
-											'col-md-4 col-sm-4' => array('title' => 'Three Columns', 'img' => VIBE_OPTIONS_URL.'img/footer-2.png'),    
-											'col-md-6 col-sm-6' => array('title' => 'Two Columns', 'img' => VIBE_OPTIONS_URL.'img/footer-3.png'),
-	                                        'col-md-12' => array('title' => 'One Columns', 'img' => VIBE_OPTIONS_URL.'img/footer-4.png'),
+	                                        'col-md-3 col-sm-6' => array('title' => __('Four Columns','vibe'), 'img' => VIBE_OPTIONS_URL.'img/footer-1.png'),
+											'col-md-4 col-sm-4' => array('title' => __('Three Columns','vibe'), 'img' => VIBE_OPTIONS_URL.'img/footer-2.png'),    
+											'col-md-6 col-sm-6' => array('title' => __('Two Columns','vibe'), 'img' => VIBE_OPTIONS_URL.'img/footer-3.png'),
+	                                        'col-md-12' => array('title' => __('One Columns','vibe'), 'img' => VIBE_OPTIONS_URL.'img/footer-4.png'),
 	                            ),//Must provide key => value(array:title|img) pairs for radio options
 							'std' => '4'
 						),
@@ -497,10 +755,10 @@ $sections[] = array(
 							'title' => __('Bottom Footer Sidebar Columns', 'vibe'), 
 							'sub_desc' => __('Footer Columns', 'vibe'),
 							'options' => array(             
-	                                        'col-md-3 col-sm-6' => array('title' => 'Four Columns', 'img' => VIBE_OPTIONS_URL.'img/footer-1.png'),
-											'col-md-4 col-sm-4' => array('title' => 'Three Columns', 'img' => VIBE_OPTIONS_URL.'img/footer-2.png'),    
-											'col-md-6 col-sm-6' => array('title' => 'Two Columns', 'img' => VIBE_OPTIONS_URL.'img/footer-3.png'),
-	                                        'col-md-12' => array('title' => 'One Columns', 'img' => VIBE_OPTIONS_URL.'img/footer-4.png'),
+	                                        'col-md-3 col-sm-6' => array('title' => __('Four Columns','vibe'), 'img' => VIBE_OPTIONS_URL.'img/footer-1.png'),
+											'col-md-4 col-sm-4' => array('title' => __('Three Columns','vibe'), 'img' => VIBE_OPTIONS_URL.'img/footer-2.png'),    
+											'col-md-6 col-sm-6' => array('title' => __('Two Columns','vibe'), 'img' => VIBE_OPTIONS_URL.'img/footer-3.png'),
+	                                        'col-md-12' => array('title' => __('One Columns','vibe'), 'img' => VIBE_OPTIONS_URL.'img/footer-4.png'),
 	                            ),//Must provide key => value(array:title|img) pairs for radio options
 							'std' => '4'
 						),  
@@ -513,7 +771,15 @@ $sections[] = array(
 							'desc' => __('Also supports shotcodes.', 'vibe'),
 	                        'std' => 'Template Design © <a href="http://www.vibethemes.com" title="VibeCom">VibeThemes</a>. All rights reserved.'
 						),
-                                     
+                        array(
+						'id' => 'footerbottom_right',
+                        'title' => __('Footer Bottom', 'vibe'),
+                        'sub_desc' => __('Select an option for FooterBottom', 'vibe'),
+                        'desc' => __('Select Footer Bottom style, set Social icon links in Social tab', 'vibe'),
+                        'type' => 'button_set',
+						'options' => array('' => __('Show Footer Menu','vibe'),'1'=>__('Show Social Icons','vibe')),
+						'std' => ''
+						),             
                         array(
 							'id' => 'google_analytics',
 							'type' => 'textarea',
@@ -525,12 +791,59 @@ $sections[] = array(
 					)
 				);
 $sections[] = array(
+				'icon' => 'twitter',
+				'title' => __('Social Information', 'vibe'),
+				'desc' => '<p class="description">'.__('All Social media settings','vibe').'..</p>',
+				'fields' => array(
+					   
+                        array(
+						'id' => 'social_icons',
+						'type' => 'multi_social',
+                        'title' => __('Add Social Media Icons ', 'vibe'),
+                        'sub_desc' => __('Dynamically add social media icons', 'vibe'),
+                        'desc' => __('Add your Full URL in social media.', 'vibe')
+						),
+                        array(
+						'id' => 'social_icons_type',
+						'type' => 'button_set',
+						'title' => __('Social Icons Type', 'vibe'), 
+						'sub_desc' => __('Social Icons Theme', 'vibe'),
+						'options' => array('' => __('Minimal','vibe'),'round' => __('Round','vibe'),'square' => __('Square','vibe'),'round color' => __('Round Colored','vibe'),'square color' => __('Square Colored','vibe')),
+						'std' => ''
+						),
+                        array(
+						'id' => 'show_social_tooltip',
+						'type' => 'button_set',
+						'title' => __('Show Tooltip on Social Icons', 'vibe'), 
+						'options' => array(1 => __('Yes','vibe'),0 => __('No','vibe')),
+						'std' => 1
+						),     
+                        array(
+						'id' => 'social_share',
+						'type' => 'multi_select',
+                        'title' => __('Social Sharing buttons', 'vibe'),
+                        'sub_desc' => __('Show in-built sharing buttons in the theme', 'vibe'),
+                        'desc' => __('Adds Social media sharing buttons in single Courses etc.', 'vibe'),
+                        'options' => $social_links
+						),
+					)
+				);
+
+$sections[] = array(
 				'icon' => 'location',
 				'title' => __('Miscellaneous', 'vibe'),
 				'desc' =>'<p class="description">'. __('Miscellaneous settings used in the theme.', 'vibe').'</p>',
 				'fields' => array(
                                         
-
+						array(
+						'id' => 'layout',
+						'type' => 'button_set',
+						'title' => __('Theme Layout', 'vibe'), 
+						'sub_desc' => __('Configure Layout of the theme', 'vibe'),
+						'desc' => __('Select out of predefined layouts for the theme', 'vibe'),
+						'options' => array('' => __('Wide','vibe'),'boxed' => __('Boxed','vibe')),
+						'std' => ''
+						), 
 						array(
 						'id' => 'excerpt_length',
 						'type' => 'text',
@@ -544,15 +857,74 @@ $sections[] = array(
 						'title' => __('Direct Checkout', 'vibe'), 
 						'sub_desc' => __('Requires WooCommerce installed','vibe'),
 						'desc' => __('User is redirected to the checkout page.', 'vibe'),
-						'options' => array(2 => 'Skip Product & Cart page',1 => 'Skip Cart',0 => 'Disable'),
+						'options' => array(2 => __('Skip Product & Cart page','vibe'),3 => __('Skip Product page','vibe'),1 => __('Skip Cart','vibe'),0 => __('Disable','vibe')),
 						'std' => 0
 						),
-                                        
+                        array(
+						'id' => 'thankyou_redirect',
+						'type' => 'button_set',
+						'title' => __('Redirect to Course Page on Order completion', 'vibe'), 
+						'sub_desc' => __('Only if the order contains one product with one course', 'vibe'),
+						'desc' => __('If you\'re forcing the direct checkout, and your products have one course per product then switching this on would send users directly to the course page.', 'vibe'),
+						'options' => array(0 => __('Disable','vibe'),1 => __('Enable','vibe')),
+						'std' => 0
+						),  
+						array(
+						'id' => 'force_complete',
+						'type' => 'button_set',
+						'title' => __('Force complete orders', 'vibe'), 
+						'sub_desc' => __('Force all WooCommerce virtual products orders complete on thank you page.','vibe'),
+						'desc' => __('All Paid Orders : All Orders with only Virtual products and payment complete orders, All Non-Fail Orders : All Orders in Processing, on Hold, Pending orders will be marked complete on Thank you page.', 'vibe'),
+						'options' => array(0 => __('Disable','vibe'),1 => __('All Paid Orders','vibe'),2 => __('All Non-Fail Orders','vibe')),
+						'std' => 0
+						), 
+						array(
+						'id' => 'remove_woo_fields',
+						'type' => 'button_set',
+						'title' => __('Remove Extra Checkout Fields', 'vibe'), 
+						'sub_desc' => __('Recommended if you\'re only selling courses/virtual products','vibe'),
+						'desc' => __('Removes following fields in WooCommerce Checkout : Billing Company/Address,State/Town, Pincode, Phone etc.', 'vibe'),
+						'options' => array(0 => __('No','vibe'),1 => __('Yes','vibe')),
+						'std' => 0
+						),   
+						array(
+						'id' => 'tincan',
+						'type' => 'button_set',
+						'title' => __('Enable TinCan recording', 'vibe'), 
+						'sub_desc' => __('Record TinCan/XAPI statements in External LRS', 'vibe'),
+						'desc' => __('Store all activity in an External LRS, which other XAPI compatible LMSes can read.', 'vibe'),
+						'options' => array(0 => __('Disable','vibe'),1 => __('Enable','vibe')),
+						'std' => 0
+						),	
+						array(
+						'id' => 'tincan_endpoint',
+                        'title' => __('TinCan API EndPoint', 'vibe'),
+                        'sub_desc' => __('Add a TinCan API endpoint', 'vibe'),
+                        'desc' => __('Add Endpoint to track details in external LRS.', 'vibe'),
+                        'type' => 'text',
+						'std' => '0'
+						),
+						array(
+						'id' => 'tincan_user',
+                        'title' => __('LRS User name', 'vibe'),
+                        'sub_desc' => __('TinCan compatible LRS authentication', 'vibe'),
+                        'desc' => __('Enter Username for external LRS authentication.', 'vibe'),
+                        'type' => 'text',
+						'std' => '0'
+						),
+						array(
+						'id' => 'tincan_pass',
+                        'title' => __('LRS Password', 'vibe'),
+                        'sub_desc' => __('TinCan compatible LRS authentication', 'vibe'),
+                        'desc' => __('Enter Password for external LRS authentication.', 'vibe'),
+                        'type' => 'text',
+						'std' => '0'
+						),
                        array(
 						'id' => 'contact_ll',
 						'type' => 'text',
 						'title' => __('Contact Page Latitude and Longitude values', 'vibe'), 
-						'sub_desc' => __('Grab the latitude and Longitude values .', 'vibe'),
+						'sub_desc' => __('Grab the latitude and Longitude values from .', 'vibe').'<a href="http://itouchmap.com/latlong.html">'.__('Link','vibe').'</a>',
 						'std' => '43.730325,7.422155'
 						),
                        array(
@@ -561,19 +933,54 @@ $sections[] = array(
 						'title' => __('Contact Page Map Style', 'vibe'), 
 						'sub_desc' => __('Select the map style on contact page.', 'vibe'),
 						'desc' => __('Content area is the container in which all content is located.', 'vibe'),
-						'options' => array('SATELLITE' => 'Saterllite View','ROADMAP' => 'Road map'),
+						'options' => array('SATELLITE' => __('Saterllite View','vibe'),'ROADMAP' => __('Road map','vibe')),
 						'std' => 'SATELLITE'
-						),         
+						),
+						array(
+							'id' => 'map_zoom',
+							'type' => 'text',
+							'title' => __('Google Map Zoom Level', 'vibe'), 
+							'sub_desc' => __('Enter the zoom level in Google maps', 'vibe'),
+							'desc' => __('Zoom Levels 0 - 19', 'vibe'),
+							'std' => 17
+						), 
                         array(
 							'id' => 'error404',
 							'type' => 'pages_select',
 							'title' => __('Select 404 Page', 'vibe'), 
 							'sub_desc' => __('This page is shown when page not found on your site.', 'vibe'),
 							'desc' => __('User redirected to this page when page not found.', 'vibe'),
+						), 
+						array(
+							'id' => 'minified',
+							'type' => 'button_set',
+							'title' => __('Use Minified Sctipts & Style', 'vibe'), 
+							'sub_desc' => __('Force theme to use inbuilt minified scripts', 'vibe'),
+							'desc' => __('Enable this option to force theme load inbuilt minified scripts and styles.', 'vibe'),
+							'options' => array('' => __('No','vibe'),1 => __('Yes','vibe')),
+							'std' => ''
+						),
+						array(
+							'id' => 'xmlrpc',
+							'type' => 'button_set',
+							'title' => __('Disable XMLRPC/RSD/WLWManifest', 'vibe'), 
+							'sub_desc' => __('Remove security vulnerabilities', 'vibe'),
+							'desc' => __('Removes vulnerabilities at expense of ability to login via remote apps.', 'vibe'),
+							'options' => array('' => __('No','vibe'),1 => __('Yes','vibe')),
+							'std' => ''
+						),
+						array(
+							'id' => 'credits',
+							'type' => 'text',
+							'title' => __('Author & Credits', 'vibe'), 
+							'sub_desc' => __('Credits and Author of the Website', 'vibe'),
+							'desc' => __('Changes the reference to Author {VibeThemes}', 'vibe'),
+	                        'std' => 'VibeThemes'
 						),
                       )
                     );      
 	$tabs = array();
+	
 			
 	if (function_exists('wp_get_theme')){
 		$theme_data = wp_get_theme();

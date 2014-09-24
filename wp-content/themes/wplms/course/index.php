@@ -8,21 +8,18 @@ if(bp_is_course_component()){
 	}
 }
 ?>
-
 <section id="memberstitle">
     <div class="container">
         <div class="row">
              <div class="col-md-9 col-sm-8">
                 <div class="pagetitle">
-                	<h1>Learning Activities</h1>
-			<h5></h5>
+                	<h1><?php the_title(); ?></h1>
+                    <?php the_sub_title(); ?>
                 </div>
             </div>
             <div class="col-md-3 col-sm-4">
             	<?php 
-            		$teacher_form = vibe_get_option('teacher_form');
-            		
-					echo '<a href="'.(isset($teacher_form)?get_permalink($teacher_form):'#').'" class="button create-group-button full">'. __( 'Become a Teacher', 'vibe' ).'</a>';
+            		do_action('wplms_be_instructor_button');	
 				?>
             </div>
         </div>
@@ -51,16 +48,13 @@ if(bp_is_course_component()){
 
 							<?php if ( is_user_logged_in() ) : ?>
 
-								<li id="course-personal"><a href="<?php echo trailingslashit( bp_loggedin_user_domain() . bp_get_course_slug() . 'course' ); ?>"><?php printf( __( 'My Courses <span>%s</span>', 'vibe' ), bp_course_get_total_course_count_for_user( bp_loggedin_user_id() ) ); ?></a></li>
+								<li id="course-personal"><a href="<?php echo trailingslashit( bp_loggedin_user_domain() . bp_get_course_slug() . BP_COURSE_SLUG ); ?>"><?php printf( __( 'My Courses <span>%s</span>', 'vibe' ), bp_course_get_total_course_count_for_user( bp_loggedin_user_id() ) ); ?></a></li>
 
 								<?php if(is_user_instructor()): ?>
-									<li id="course-instructor"><a href="<?php echo trailingslashit( bp_loggedin_user_domain() . bp_get_course_slug() . 'course' ); ?>"><?php printf( __( 'Instructing Courses <span>%s</span>', 'vibe' ), bp_course_get_instructor_course_count_for_user( bp_loggedin_user_id() ) ); ?></a></li>
-
+									<li id="course-instructor"><a href="<?php echo trailingslashit( bp_loggedin_user_domain() . bp_get_course_slug() . BP_COURSE_SLUG ); ?>"><?php printf( __( 'Instructing Courses <span>%s</span>', 'vibe' ), bp_course_get_instructor_course_count_for_user( bp_loggedin_user_id() ) ); ?></a></li>
 								<?php endif; ?>		
 							<?php endif; ?>
-
 							<?php do_action( 'bp_course_directory_filter' ); ?>
-
 						</ul>
 					</div><!-- .item-list-tabs -->
 					<div class="item-list-tabs" id="subnav" role="navigation">
@@ -71,17 +65,19 @@ if(bp_is_course_component()){
 									<?php bp_directory_course_search_form(); ?>
 								</div><!-- #group-dir-search -->
 							</li>
+							<li class="switch_view"><a id="list_view" class="active"><i class="icon-list-1"></i></a><a id="grid_view"><i class="icon-grid"></i></a>
+							</li>
 							<li id="groups-order-select" class="last filter">
 
 								<label for="groups-order-by"><?php _e( 'Order By:', 'vibe' ); ?></label>
 								<select id="groups-order-by">
+									<option value=""><?php _e( 'Select Order', 'vibe' ); ?></option>
+									<option value="newest"><?php _e( 'Newly Published', 'vibe' ); ?></option>
 									<option value="alphabetical"><?php _e( 'Alphabetical', 'vibe' ); ?></option>
 									<option value="popular"><?php _e( 'Most Members', 'vibe' ); ?></option>
-									<option value="newest"><?php _e( 'Newly Created', 'vibe' ); ?></option>
 									<option value="rated"><?php _e( 'Highest Rated', 'vibe' ); ?></option>
 
 									<?php do_action( 'bp_course_directory_order_options' ); ?>
-
 								</select>
 							</li>
 						</ul>
@@ -100,11 +96,13 @@ if(bp_is_course_component()){
 
 					<?php do_action( 'bp_after_directory_course_content' ); ?>
 
-
 				</form><!-- #course-directory-form -->
 			</div>	
-			<div class="col-md-3 col-sm-3">
-				<?php get_sidebar( 'buddypress' ); ?>
+			<div class="col-md-3 col-sm-4">
+				<?php
+					$sidebar = apply_filters('wplms_sidebar','buddypress',get_the_ID());
+	                if ( !function_exists('dynamic_sidebar')|| !dynamic_sidebar($sidebar) ) : ?>
+               	<?php endif; ?>
 			</div>
 		</div>	
 		<?php do_action( 'bp_after_directory_course' ); ?>

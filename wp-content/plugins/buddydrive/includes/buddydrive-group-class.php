@@ -1,6 +1,6 @@
 <?php
 // Exit if accessed directly
-if ( !defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 if ( class_exists( 'BP_Group_Extension' ) ) :
 /**
@@ -10,13 +10,7 @@ if ( class_exists( 'BP_Group_Extension' ) ) :
  * @since 1.0
  * 
  */
-class BuddyDrive_Group extends BP_Group_Extension {	
-
-	var $visibility  = 'private';
-	var $enable_create_step  = false;
-	var $enable_nav_item  = true;
-	var $enable_edit_item = true;
-	
+class BuddyDrive_Group extends BP_Group_Extension {
 
 	/**
 	 * construct method to add some settings and hooks
@@ -24,38 +18,29 @@ class BuddyDrive_Group extends BP_Group_Extension {
 	 * @uses buddydrive_get_name() to get the plugin name
 	 * @uses buddydrive_get_slug() to get the plugin slug
 	 */
-	function __construct() {
+	public function __construct() {
 
-		// BuddyPress is < 1.8, we use the old way
-		if( version_compare( bp_get_version(), '1.8-beta1', '<' ) ) {
-
-			$this->name = buddydrive_get_name();
-			$this->slug = buddydrive_get_slug();
-			$this->nav_item_position = 31;
-			$this->enable_nav_item = $this->enable_nav_item();
-			$this->admin_metabox_context = 'side';
-			$this->admin_metabox_priority = 'core';
-
-			// BuddyPress is > 1.8, we use the new way
-		} else {
-
-			$args = array(
-            	'slug'              => buddydrive_get_slug(),
-           		'name'              => buddydrive_get_name(),
-           		'visibility'        => 'private',
-           		'nav_item_position' => 31,
-           		'enable_nav_item'   => $this->enable_nav_item(),
-           		'screens'           => array( 
-           								'admin' => array( 
-           											'metabox_context'  => 'side',
-           											'metabox_priority' => 'core'
-           											)
-           		)
-        	);
+		$args = array(
+			'slug'              => buddydrive_get_slug(),
+			'name'              => buddydrive_get_name(),
+			'visibility'        => 'private',
+			'nav_item_position' => 31,
+			'enable_nav_item'   => $this->enable_nav_item(),
+			'screens'           => array( 
+				'admin' => array( 
+					'metabox_context'  => 'side',
+					'metabox_priority' => 'core'
+				),
+				'create' => array(
+					'enabled' => false,
+				),
+				'edit' => array(
+					'enabled' => true,
+				),
+			)
+		);
         
-        	parent::init( $args );
-		}
-		
+        parent::init( $args );
 	}
 
 	/**
@@ -65,7 +50,7 @@ class BuddyDrive_Group extends BP_Group_Extension {
 	 * 
 	 * @return boolean false
 	 */
-	function create_screen() {
+	public function create_screen( $group_id = null ) {
 		return false;
 	}
 
@@ -76,7 +61,7 @@ class BuddyDrive_Group extends BP_Group_Extension {
 	 * 
 	 * @return boolean false
 	 */
-	function create_screen_save() {
+	public function create_screen_save( $group_id = null ) {
 		return false;
 	}
 
@@ -92,10 +77,10 @@ class BuddyDrive_Group extends BP_Group_Extension {
 	 * @uses is_admin() to check if we're in WP backend
 	 * @return string html output
 	 */
-	function edit_screen( $group_id = false ) {
+	public function edit_screen( $group_id = null ) {
 			
-		$group_id   = empty( $group_id ) ? bp_get_current_group_id() : $group_id;
-		$checked = groups_get_groupmeta( $group_id, '_buddydrive_enabled' );
+		$group_id = empty( $group_id ) ? bp_get_current_group_id() : $group_id;
+		$checked  = groups_get_groupmeta( $group_id, '_buddydrive_enabled' );
 		?>
 
 		<h4><?php echo esc_attr( $this->name ) ?> <?php _e( 'settings', 'buddydrive' );?></h4>
@@ -110,7 +95,7 @@ class BuddyDrive_Group extends BP_Group_Extension {
 				</div>
 			</div>
 		
-			<?php if ( !is_admin() ) : ?>
+			<?php if ( ! is_admin() ) : ?>
 				<input type="submit" name="save" value="<?php _e( 'Save', 'buddydrive' );?>" />
 			<?php endif; ?>
 
@@ -135,19 +120,19 @@ class BuddyDrive_Group extends BP_Group_Extension {
 	 * @uses bp_core_redirect() to avoid some refreshing stuff
 	 * @uses bp_get_group_permalink() to redirect to
 	 */
-	function edit_screen_save( $group_id = 0 ) {
+	public function edit_screen_save( $group_id = null ) {
 
 		if ( 'POST' !== strtoupper( $_SERVER['REQUEST_METHOD'] ) )
 			return false;
 
 		check_admin_referer( 'groups_edit_save_' . $this->slug, 'buddydrive_group_admin' );
 		
-		$group_id   = !empty( $group_id ) ? $group_id : bp_get_current_group_id();
+		$group_id = ! empty( $group_id ) ? $group_id : bp_get_current_group_id();
 
 		/* Insert your edit screen save code here */
-		$buddydrive_ok = !empty( $_POST['_group_buddydrive_activate'] ) ? $_POST['_group_buddydrive_activate'] : false ;
+		$buddydrive_ok = ! empty( $_POST['_group_buddydrive_activate'] ) ? $_POST['_group_buddydrive_activate'] : false ;
 		
-		if( !empty($buddydrive_ok) ){
+		if( ! empty( $buddydrive_ok ) ){
 			$success = groups_update_groupmeta( $group_id, '_buddydrive_enabled', $buddydrive_ok );
 		} else { 
 			$success = groups_delete_groupmeta( $group_id, '_buddydrive_enabled' );
@@ -156,7 +141,7 @@ class BuddyDrive_Group extends BP_Group_Extension {
 			buddydrive_remove_buddyfiles_from_group( $group_id );
 		}
 		
-		if ( !is_admin() ) {
+		if ( ! is_admin() ) {
 			/* To post an error/success message to the screen, use the following */
 			if ( !$success )
 				bp_core_add_message( __( 'There was an error saving, please try again', 'buddydrive' ), 'error' );
@@ -173,11 +158,11 @@ class BuddyDrive_Group extends BP_Group_Extension {
 	 * 
 	 * @since version 1.1
 	 * 
-	 * @param  integer $item_id group id
+	 * @param  integer $group_id group id
 	 * @uses  BuddyDrive_Group::edit_screen() to output the form
 	 */
-	function admin_screen( $item_id ) {
-		$this->edit_screen( $item_id );
+	public function admin_screen( $group_id = null ) {
+		$this->edit_screen( $group_id );
 	}
 
 	/**
@@ -185,11 +170,11 @@ class BuddyDrive_Group extends BP_Group_Extension {
 	 *
 	 * @since version 1.1
 	 * 
-	 * @param integer $item_id the group id
+	 * @param integer $group_id the group id
 	 * @uses BuddyDrive_Group::edit_screen_save() to save the settings
 	 */
-	function admin_screen_save( $item_id ) {
-		$this->edit_screen_save( $item_id );
+	public function admin_screen_save( $group_id = null ) {
+		$this->edit_screen_save( $group_id );
 	}
 
 	/**
@@ -200,14 +185,21 @@ class BuddyDrive_Group extends BP_Group_Extension {
 	 * @uses buddydrive_get_template() to get the template if bp-default or any theme
 	 * @return string html output
 	 */
-	function display() {
+	public function display() {
 		$group_id = bp_get_current_group_id();
+		buddydrive_item_nav();
 		?>
 		
-		<div class="buddydrive-crumbs"><a href="<?php buddydrive_component_home_url();?>" name="home" id="buddydrive-home" data-group="<?php echo $group_id;?>"><i class="bd-icon-home"></i> <?php _e( 'Root folder', 'buddydrive');?></a></div>
+		<div class="buddydrive-crumbs in-group">
+			<a href="<?php buddydrive_component_home_url();?>" name="home" id="buddydrive-home" data-group="<?php echo $group_id;?>"><i class="icon bd-icon-root"></i> <span id="folder-0" class="buddytree current"><?php _e( 'Root folder', 'buddydrive');?></span></a>
+
+			<?php if ( groups_is_user_member( bp_loggedin_user_id(), $group_id) ) : ?>
+				<?php buddydrive_user_buddydrive_url();?>
+			<?php endif ; ?>
+		</div>
 		
 		<div class="buddydrive single-group" role="main">
-			<?php buddydrive_get_template('buddydrive-loop');?>
+			<?php bp_get_template_part( 'buddydrive-loop' );?>
 		</div><!-- .buddydrive.single-group -->	
 		
 		<?php
@@ -219,7 +211,7 @@ class BuddyDrive_Group extends BP_Group_Extension {
 	 * 
 	 * @return boolean false
 	 */
-	function widget_display() {
+	public function widget_display() {
 		return false;
 	}
 	
@@ -231,11 +223,11 @@ class BuddyDrive_Group extends BP_Group_Extension {
 	 * @uses groups_get_groupmeta() to get the BuddyDrive option
 	 * @return boolean true or false
 	 */
-	function enable_nav_item() {
+	public function enable_nav_item() {
 		
 		$group_id = bp_get_current_group_id();
 		
-		if( empty( $group_id ) )
+		if ( empty( $group_id ) )
 			return false;
 		
 		if ( groups_get_groupmeta( $group_id, '_buddydrive_enabled' ) )

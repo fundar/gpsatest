@@ -77,7 +77,7 @@ get_header( 'buddypress' ); ?>
 
 			<?php do_action( 'bp_after_member_settings_template' ); ?>
 
-		<</div><!-- .padder -->
+		</div><!-- .padder -->
 	</div><!-- #content -->
 	<div class="col-md-3 col-sm-3">
 		<?php get_sidebar( 'buddypress' ); ?>

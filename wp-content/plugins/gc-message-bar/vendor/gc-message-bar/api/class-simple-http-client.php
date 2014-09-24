@@ -17,21 +17,17 @@ class Gc_MessageBar_Simple_HTTP_Client implements Gc_MessageBar_Http_Client_Inte
     }
     public function get_response(){
         $url = $this->get_url();
-        $opts = array('https' =>
-          array(
-            'timeout' => 1
-          )
-        );
-        $context  = stream_context_create($opts);        
-        $response = @file_get_contents($url,false,$context);
+        $request = Gc_MessageBar_CF::create("Http_Request");
+        $response = $request->get($url,$this->parameters);
         return $response;
 
     }
-    protected function get_url(){
+    protected function get_url($parameters = array()){
         $url = rtrim($this->endpoint_url,'/').'/'.trim($this->action,'/');
         if(count($this->parameters)){
             $url .= '?'.http_build_query($this->parameters);
         }
         return $url;
     }
+
 }

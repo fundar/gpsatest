@@ -78,6 +78,7 @@ class gdbbAtt_Admin {
                 'max_file_size' => absint(intval($data['max_file_size'])),
                 'max_to_upload' => absint(intval($data['max_to_upload']))
             );
+
             update_post_meta($post_id, '_gdbbatt_settings', $meta);
         }
     }

@@ -13,17 +13,9 @@
                 </div>
             </div>
             <div class="col-md-3 col-sm-4">
-            	<?php if ( is_user_logged_in() && bp_user_can_create_course() ) : 
-					
-					$create_pageid=vibe_get_option('create_course_page');
-					if(isset($create_pageid))
-						$create_link =get_page_uri($create_pageid);
-					else
-						$create_link='#';
-						?>	
-					&nbsp;
-					<a class="button create-group-button full" href="<?php echo $create_link; ?>"><?php _e( 'Create a Course', 'vibe' ); ?></a>
-				<?php endif; ?>
+            	<?php 
+            		do_action('wplms_be_instructor_button');	
+				?>
             </div>
         </div>
     </div>
@@ -131,7 +123,6 @@
 											<div class="item-desc"><?php bp_course_desc() ?></div>
 											<div class="item-instructor">
 												<?php bp_course_credits(); ?>
-												<?php bp_course_instructor_avatar(); ?>
 												<?php bp_course_instructor(); ?>
 											</div>
 											<div class="item-action"><?php bp_course_action() ?></div>
@@ -167,7 +158,7 @@
 							<?php else: ?>
 
 								<div id="message" class="info">
-									<p><?php _e( 'You have not subscribed to any Course.', 'vibe' ); ?></p>
+									<p><?php _e( 'You have not subscribed to any courses.', 'vibe' ); ?></p>
 								</div>
 
 							<?php endif;  ?>
@@ -186,8 +177,10 @@
 
 				</form><!-- #course-directory-form -->
 			</div>	
-			<div class="col-md-3 col-sm-3">
-				<?php get_sidebar( 'buddypress' ); ?>
+			<div class="col-md-3 col-sm-3"><?php
+			 		$sidebar = apply_filters('wplms_sidebar','buddypress',get_the_ID());
+	                if ( !function_exists('dynamic_sidebar')|| !dynamic_sidebar($sidebar) ) : ?>
+               	<?php endif; ?>
 			</div>
 		</div>	
 		<?php do_action( 'bp_after_directory_course' ); ?>

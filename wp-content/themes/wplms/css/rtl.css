@@ -12,15 +12,32 @@
 /*   01. CAROUSELS
 /*========================================================================*/
 
+
 .heading_more{
 	left: 66px;
 	right:auto;
 }
 
-.block.courseitem .star-rating+strong{
-float:left;
+nav .menu li{
+	float:right;
 }
 
+#headertop .topmenu {
+float: left;
+}
+
+header #searchicon{float:left;}
+.nav-tabs > li {
+	float: right;
+}
+.flexslider{direction: ltr!important;}
+.block.courseitem .star-rating+strong,
+.course_details li i{
+float:left;
+}
+#vibe_bp_login ul+ul li i{
+	float:left;
+}
 .v_module.custom_post_carousel{
 direction: ltr;
 text-align: right;
@@ -41,27 +58,169 @@ text-align:right !important;
 	left:0 !important;
 	right:auto !important;
 }
+.dial{
+	margin-right:-88px !important;
+}
+.quiz_results li > span{
+	float:left;
+}
+.quiz_results li i{
+	float:left;
+	margin-left:5px;
+}
+#buddypress div.item-list-tabs#subnav ul li{
+	float:right;
+}
+#buddypress div.item-list-tabs#subnav ul li a{
+	border-left:1px solid #EFEFEF;
+}
+#buddypress div.item-list-tabs#subnav ul li:first-child a{
+	border-right:1px solid #EFEFEF;
+	border-left:1px solid #EFEFEF;
+	margin-right:1px;
+}
+#buddypress div.item-list-tabs#subnav ul li{
+	max-width: auto;
+}
 
+header #searchform:after{left:10px;right:auto;}
+#vibe_bp_login{left:80px;right:auto;}
+#vibe_bp_login:after{left:20px;right:auto;}
 /*========================================================================*/
-/*   02. BuddyPress
+/*   02. COURSE
+/*========================================================================*/
+.course_students li img, .quiz_students li img, .assignment_students li img {
+float: right;
+margin-left: 20px;
+}
+
+.course_lesson span{
+	left:0;
+	right:auto;
+}
+.course_lesson i {
+float: right;
+margin-left: 10px;
+}
+.course_lesson h6{
+	margin:0 20px 0 140px;
+}
+.course_lesson h6 a span{text-align:left;}
+
+
+/*#buddypress div.item-list-tabs#subnav ul li{max-width:240px;}*/
+#item-body #userstats li img{float:right;margin-right:0;margin-left:30px;}
+#item-body .showhide_indetails{float:left;}
+#item-body #userstats li strong{
+	float:left;
+	margin-right:0;margin-left:30px;
+}
+#item-body .quiz_questions span{
+	float:left;
+}
+
+.rtl .course_instructor_widget img{
+	float:right;
+	margin: 0 0 15px 15px;
+}
+.total_students span{float:left;}
+.item-action-buttons{width:auto;}
+.stat_num strong span {
+float: left;
+}
+/*========================================================================*/
+/*   03. BuddyPress
 /*========================================================================*/
 #buddypress div.item-list-tabs ul li a span{
 		float:left;
 }
-#buddypress #groups-directory-form div.dir-search, #buddypress #course-directory-form div.dir-search, #buddypress #members-directory-form div.dir-search,
-#buddypress div.dir-search{
-	float:left;
-}
-
+#buddypress div.item-list-tabs#subnav ul li.last{float:left;}
 .star-rating span{float:right;}
 
 .widget .button{
 	margin:10px 0;
 }
 
+.breadcrumbs li{float:right;}.breadcrumbs li+li:before{content:"\e172";}
 .course_students li > ul, .quiz_students li > ul{
 	left:90px;
 }
 
 .course_bulk_actions a{float:left;}
+
+#buddypress #groups-directory-form div.item-list-tabs ul li, #buddypress #course-directory-form div.item-list-tabs ul li, #buddypress #members-directory-form div.item-list-tabs ul li{
+	float:right;
+}
+
+.rtl #buddypress .activity-list .activity-avatar{float:right;}
+
+.block.courseitem .course_instructor+strong{
+	float:left;
+}
+.block.courseitem .block_content img,
+.block.courseitem .course_instructor{
+	float:right;
+}
+
+.rtl .instructor_line h3 a,
+.item-credits{
+	float:left;
+}
+.item-list .item-avatar{
+	float:right;
+	margin-left:15px;
+}
+
+#buddypress ul.item-list li div.action{
+	left:0;
+}
+.generic-button{
+	text-align: left;
+}
+#item-admins .item-avatar{
+	float:right;
+}
+
+#buddypress ul.item-list li img.avatar{
+	float:right;
+	margin-right:0;
+	margin-left:30px;
+}
+.rtl .activity .activity-avatar{
+	margin-right:0;
+	margin-left:30px;
+}
+#buddypress #members-activity div.activity-type-tabs ul li{
+	float:right;
+}
+
+.new_question .chosen-container{margin-right:30px;}
+#hidden li h3 >span, #questions li h3 >span{float:left; width:80%;}
+.question_settings h3 span, .assignment_settings h3 span {float: left;}
+/*========================================================================*/
+/*   03. BBPress
+/*========================================================================*/
+
+li.bbp-forum-info, li.bbp-topic-title,
+#bbpress-forums div.bbp-topic-author, 
+#bbpress-forums div.bbp-reply-author{
+	float:right;
+	text-align: right;
+}
+
+#bbpress-forums div.bbp-forum-content, #bbpress-forums div.bbp-topic-content, #bbpress-forums div.bbp-reply-content{
+	margin:0;
+}
+#bbpress-forums li.bbp-header .bbp-topic-author, #bbpress-forums li.bbp-footer .bbp-topic-author, #bbpress-forums li.bbp-header .bbp-reply-author, #bbpress-forums li.bbp-footer .bbp-reply-author{
+	float:right;
+}
+#bbpress-forums li.bbp-header .bbp-topic-content, #bbpress-forums li.bbp-footer .bbp-topic-content, #bbpress-forums li.bbp-header .bbp-reply-content, #bbpress-forums li.bbp-footer .bbp-reply-content{
+	text-align: right;
+	margin-left:0;
+	margin-right:140px;
+}
+
+#bbpress-forums div.bbp-topic-content, #bbpress-forums div.bbp-reply-content{
+	text-align: right;
+}
 

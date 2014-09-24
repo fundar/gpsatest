@@ -63,7 +63,6 @@ function bp_course_has_items( $args = '' ) {
 		$defaults = array(
 			'id' => 0,
 			'date' 	=> date( 'Y-m-d H:i:s' ),
-
 			'user' => 0,
 			'slug' => '',
 			'search_terms'    => '',
@@ -152,7 +151,8 @@ function bp_course_name(){
 }
 
 function bp_course_get_name(){
-	return get_the_title();
+	global $post;
+	return $post->post_title;
 }
 
 
@@ -249,14 +249,14 @@ function bp_course_avatar( $args = array() ) {
 
 		$r = wp_parse_args( $args, $defaults );
 		extract( $r, EXTR_SKIP );
-		$thumb=get_the_post_thumbnail($id,$size);
+		$thumb='<a href="'.get_permalink($id).'" title="'.the_title_attribute('echo=0').'">'.get_the_post_thumbnail($id,$size).'</a>';
 
 		return $thumb;
 	}
 
 
 function bp_course_instructor_avatar( $args = array() ) {
-	echo bp_course_get_instructor_avatar( $args );
+	//echo bp_course_get_instructor_avatar( $args ); Function not OUTDATED
 }
 
 /**
@@ -275,7 +275,7 @@ function bp_course_get_instructor_avatar( $args = array() ) {
 
 	$r = wp_parse_args( $args, $defaults );
 
-	return bp_core_fetch_avatar( $r );
+	return apply_filters('wplms_display_course_instructor_avatar',bp_core_fetch_avatar( $r ),get_the_ID());
 }
 
 
@@ -309,11 +309,18 @@ function bp_course_get_instructor($args=NULL) {
 	
 
 	$displayname = bp_core_get_user_displayname($instructor_id);
-
+	$special='';
+	if(bp_is_active('xprofile'))
 	$special = bp_get_profile_field_data('field='.$field.'&user_id='.$instructor_id);
-	$instructor_title = '<h5 class="course_instructor"><a href="'.bp_core_get_user_domain($instructor_id) .'">'.$displayname.'<span>'.$special.'</span></a></h5>';
-	return apply_filters('wplms_display_course_instructor',$instructor_title,get_the_ID());
+
+	$instructor = '<div class="instructor_course">
+					<div class="item-avatar">'.bp_course_get_instructor_avatar().'</div>
+					<h5 class="course_instructor"><a href="'.bp_core_get_user_domain($instructor_id) .'">'.$displayname.'<span>'.$special.'</span></a>
+					</h5>
+					</div>';
+	return apply_filters('wplms_display_course_instructor',$instructor,get_the_ID());
 }
+
 function bp_course_get_instructor_description($args=NULL) {
 	$defaults = array(
 		'instructor_id' => get_the_author_meta( 'ID' ),
@@ -326,6 +333,8 @@ function bp_course_get_instructor_description($args=NULL) {
 	if(function_exists('vibe_get_option'))
 		$field = vibe_get_option('instructor_about');
 
+	$desc='';
+	if(bp_is_active('xprofile'))
 	$desc = bp_get_profile_field_data('field='.$field.'&user_id='.$instructor_id);
 
 	return apply_filters('the_content',$desc);
@@ -378,7 +387,6 @@ function bp_course_meta() {
 
 function bp_course_get_course_meta() {
 
-	//bp_course_get_course_reviews();
 
 	$reviews=get_post_meta(get_the_ID(),'average_rating',true);
 	$count=get_post_meta(get_the_ID(),'rating_count',true);
@@ -406,10 +414,10 @@ function bp_course_get_course_meta() {
 			}
 			$reviews--;
 		}
-		$meta .= '( <strong itemprop="count">'.$count.'</strong> REVIEWS )</div>';
+		$meta .= '( <strong itemprop="count">'.$count.'</strong> '.__('REVIEWS','vibe').' )</div>';
 	}else{
 		$meta = '<div class="star-rating">
-					<span></span><span></span><span></span><span></span><span></span> ( 0 REVIEWS )
+					<span></span><span></span><span></span><span></span><span></span> ( 0 '.__('REVIEWS','vibe').' )
 				</div>';
 	}
 	
@@ -507,44 +515,74 @@ function bp_course_credits($args=NULL) {
  * @package BuddyPress_Skeleton_Component
  * @since 1.6
  */
-
-function bp_course_get_course_credits($args=NULL) {
-	
-	$defaults=array(
-		'id' =>get_the_ID(),
-		'currency'=>'CREDITS'
-		);
-	$r = wp_parse_args( $args, $defaults );
-		extract( $r, EXTR_SKIP );
-
-	$user_id=get_current_user_id();
-
-	$credits='<strong itemprop="price">';
+if(!function_exists('bp_course_get_course_credits')){
+	function bp_course_get_course_credits($args=NULL) {
 		
-	$free_course = get_post_meta($id,'vibe_course_free',true);
+		$defaults=array(
+			'id' =>get_the_ID(),
+			'currency'=>'CREDITS'
+			);
+		$r = wp_parse_args( $args, $defaults );
+			extract( $r, EXTR_SKIP );
 
-	if(isset($free_course) && $free_course && $free_course!='H'){
-		$credits .= apply_filters('wplms_free_course_price','FREE');
-	}else{
-		
-		$product_id = get_post_meta($id,'vibe_product',true);
-		if(isset($product_id) && $product_id !=''){
-		
-			$product = get_product( $product_id );
-			$credits = $product->get_price_html();
-			$credits = apply_filters('wplms_course_credits',$credits,$id);
+		$private =0;
+		$user_id=get_current_user_id();
+
+		$credits='<strong itemprop="price">';
+			
+		$free_course = get_post_meta($id,'vibe_course_free',true);
+
+		if(vibe_validate($free_course)){
+			$credits .= apply_filters('wplms_free_course_price',__('FREE','vibe'));
 		}else{
-			$credits =get_post_meta($id,'vibe_course_credits',true);
-			if(isset($credits) && $credits !='' ){
-				$credits .= '<span class="subs">'.$currency.'</span>';
-			}
-		}
-	
-	}
-	$credits .='</strong>';
-	return $credits;
-}
+			
+			$product_id = get_post_meta($id,'vibe_product',true);
+			if(isset($product_id) && $product_id !='' && function_exists('get_product')){ //WooCommerce installed
+				$product = get_product( $product_id );
+				if(is_object($product))
+				$credits = $product->get_price_html();
+				//$credits = apply_filters('wplms_course_credits',$credits,$id);
+			}else
+				$private=1;
+		
+	    if ( in_array( 'paid-memberships-pro/paid-memberships-pro.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
 
+			$membership_ids = vibe_sanitize(get_post_meta($id,'vibe_pmpro_membership',false));
+			
+			if(isset($membership_ids) && is_Array($membership_ids) && count($membership_ids) && function_exists('pmpro_getAllLevels')){
+
+			$membership_id = min($membership_ids);
+
+			$levels=pmpro_getAllLevels();
+				foreach($levels as $level){
+					if($level->id == $membership_id){
+						$private=0;
+						$credits .= $level->name.'<span class="subs">'.__('MEMBERSHIP','vibe').'</span>';
+						break;
+					}else
+						$private=1;
+				}
+		    }
+		  }
+
+		  if($private){
+				$credits =get_post_meta($id,'vibe_course_credits',true);
+				if(isset($credits) && $credits !='' ){
+					$private=0;
+					$credits .= '<span class="subs">'.$credits.'</span>';
+				}
+			}
+
+		  if(isset($private) && $private){
+		  	$credits .= apply_filters('wplms_private_course_label',__('PRIVATE','vibe'));
+		  }
+		  	
+		} // End Else
+
+		$credits .='</strong>';
+		return apply_filters('wplms_course_credits',$credits,$id);
+	}
+}
 /**
  * Is this page part of the course component?
  *
@@ -620,23 +658,102 @@ function bp_get_course_root_slug() {
 	return apply_filters( 'bp_get_course_root_slug', $course_root_slug );
 }
 
+if(!function_exists('bp_course_get_students_undertaking')){
+	function bp_course_get_students_undertaking($course_id=NULL, $page=0){ // Modified function, counts total number of students
+		global $wpdb,$post;
+		if(!isset($course_id))
+			$course_id=get_the_ID();
 
-function bp_course_get_students_undertaking(){
-	global $wpdb,$post;
-	$course_id=get_the_ID();
-	$course_members = array();
+		$course_members = array();
 
-	$course_meta = $wpdb->get_results( $wpdb->prepare("select meta_key from {$wpdb->postmeta} where  post_id = %d",$course_id), ARRAY_A);
+		$loop_number=vibe_get_option('loop_number');
+		if(!isset($loop_number)) $loop_number = 5;
 
+		$prepage = (isset($_GET['items_page'])?$loop_number*($_GET['items_page']-1):0);
+		$nextpage = (isset($_GET['items_page'])?$loop_number*$_GET['items_page']:$loop_number);
+		$course_meta = $wpdb->get_results( $wpdb->prepare("select meta_key from {$wpdb->postmeta} where post_id = %d AND meta_value >= %d AND meta_key REGEXP '^-?[0-9]+$' ORDER BY meta_value ASC LIMIT %d, %d",$course_id,0,$prepage,$nextpage), ARRAY_A);
+		
+		foreach($course_meta as $meta){
+			if(is_numeric($meta['meta_key']))  // META KEY is NUMERIC ONLY FOR USERIDS
+				$course_members[] = $meta['meta_key'];
+		}
 
-	foreach($course_meta as $meta){
-		if(is_numeric($meta['meta_key']))  // META KEY is NUMERIC ONLY FOR USERIDS
-			$course_members[] = $meta['meta_key'];
+		return $course_members;
 	}
-	return($course_members);
 }
 
+function bp_course_count_students_pursuing($course_id=NULL){
+	global $wpdb,$post;
+	if(!isset($course_id))
+		$course_id=get_the_ID();
 
+	$course_members = array();
+
+	$loop_number=vibe_get_option('loop_number');
+	if(!isset($loop_number)) $loop_number = 5;
+
+	$course_meta = $wpdb->get_results( $wpdb->prepare("select count(meta_key) as number from {$wpdb->postmeta} where post_id = %d AND meta_value >= %d AND meta_value <= %d AND meta_key REGEXP '^-?[0-9]+$' ORDER BY meta_value",$course_id,0,2), ARRAY_A);
+	$number = $course_meta[0]['number'];
+	
+	return $number;
+}
+
+function bp_course_paginate_students_undertaking($course_id=NULL){
+	global $wpdb,$post;
+	if(!isset($course_id))
+		$course_id=get_the_ID();
+
+	$loop_number=vibe_get_option('loop_number');
+	if(!isset($loop_number)) $loop_number = 5;
+
+	$course_number = $wpdb->get_row( $wpdb->prepare("select count(meta_key) as number from {$wpdb->postmeta} where post_id = %d AND meta_value <= %d AND meta_key REGEXP '^-?[0-9]+$'",$course_id,2), ARRAY_A);
+	$max_page = ceil($course_number['number']/$loop_number);
+
+
+	$return  =	'<div class="pagination"><div class="pag-count" id="course-member-count">Viewing page '.((isset($_GET['items_page']) && $_GET['items_page'])?$_GET['items_page']:1 ).' of '.$max_page.'</div>
+					<div class="pagination-links" id="course-member-page-links">';
+						$f=$g=1;
+						for($i=1;$i<=$max_page;$i++ ){
+
+								if(isset($_GET['items_page']) && is_numeric($_GET['items_page'])){
+									if($_GET['items_page'] == $i){
+										$return .= '<span class="page-numbers current">'.$i.'</span>';
+									}else{
+										if($i == 1 || $i == $max_page || ($_GET['items_page'] < 5 && $i < 5) || (($i <= ($_GET['items_page'] + 2)) && ($i >= ($_GET['items_page'] -2))))
+										 	$return  .= '<a class="page-numbers" href="?action='.$_GET['action'].'&items_page='.$i.'">'.$i.'</a>';
+										 else{
+										 	if($f && ($i > ($_GET['items_page'] + 2))){
+												$return  .= '<a class="page-numbers">...</a>'; 
+												$f=0;
+											}
+											if($g && ($i <($_GET['items_page'] - 2))){
+												$return  .= '<a class="page-numbers">...</a>'; 
+												$g=0;
+											}
+										 }
+									}
+								}else{
+									
+									if($i==1)
+										$return .= '<span class="page-numbers current">1</span>';
+									else{
+										if($i < 5 || $i > ($max_page-2))
+											$return  .= '<a class="page-numbers" href="?action='.$_GET['action'].'&items_page='.$i.'">'.$i.'</a>';
+										else{
+											if($f){
+												$return  .= '<a class="page-numbers">...</a>'; 
+												$f=0;
+											}
+										}
+									}
+								}	
+						}
+						$return  .= '
+					</div>
+				</div>';
+
+	return $return;
+}
 
 /**
  * Echo the total of all high-fives given to a particular user
@@ -680,7 +797,36 @@ function bp_course_get_total_course_count_for_user( $user_id = false ) {
 	
 }
 
+function bp_course_get_curriculum_units($course_id=NULL){
+	$units=array();
+	if(!isset($course_id) || !$course_id)
+		return $units;
 
+	$course_curriculum=vibe_sanitize(get_post_meta($course_id,'vibe_course_curriculum',false));
+        
+        if(isset($course_curriculum) && is_array($course_curriculum)){
+        	foreach($course_curriculum as $key=>$curriculum){
+            if(is_numeric($curriculum)){
+                $units[]=$curriculum;
+            }
+          }
+        }
+    return $units;    
+}
+
+function bp_course_check_unit_complete($unit_id=NULL,$user_id=NULL){
+	if(!isset($unit_id) || !$unit_id)
+		return false;
+	if(!isset($user_id) || !$user_id)
+		$user_id = get_current_user_id();
+
+	$unit_check=0;
+	$unit_check=get_user_meta($user_id,$unit_id,true);
+	if(isset($unit_check) && $unit_check)
+		return true;
+	else
+		return false;
+}
 
 function bp_course_total_course_count() {
 	echo bp_course_get_total_course_count();
@@ -941,11 +1087,13 @@ function is_instructor($id=NULL){
 	if(!isset($id)){
 		$id= $post->ID;
 	}
-
-	if(bp_loggedin_user_id() == $post->post_author)
+	$uid = bp_loggedin_user_id();
+	$authors=array($post->post_author);
+	$authors = apply_filters('wplms_course_instructors',$authors,$post->ID);
+	if(in_array($uid,$authors) )
 		return true;
-	else
-		return false;
+
+	return false;
 }
 
 function bp_course_permalink( $course = false ) {
@@ -984,7 +1132,7 @@ function bp_course_check_course_complete($args=NULL){
 }
 
 
-function bp_get_course_check_course_complete($args=NULL){
+function bp_get_course_check_course_complete($args=NULL){ // AUTO EVALUATION FOR COURSE
 	global $post;
 	$defaults = array(
 		'id'=>$post->ID,
@@ -1010,10 +1158,18 @@ function bp_get_course_check_course_complete($args=NULL){
 		}
 		if(!$flag){
 
-
+			$message = sprintf(__('Student %s finished and submitted the course %s','vibe'),bp_core_get_userlink(get_current_user_id()),get_the_title());
+			bp_course_record_activity(array(
+		          'action' => __('Student Submitted the course ','vibe'),
+		          'content' => $message,
+		          'type' => 'submit_course',
+		          'item_id' => get_the_ID(),
+		          'primary_link'=>get_permalink(get_the_ID()),
+		          'secondary_item_id'=>$user_id
+		        ));
 			$auto_eval = get_post_meta($id,'vibe_course_auto_eval',true);
 
-			if(isset($auto_eval) && $auto_eval && $auto_eval !='H'){
+			if(vibe_validate($auto_eval)){
 
 				// AUTO EVALUATION
 				$curriculum=vibe_sanitize(get_post_meta($id,'vibe_course_curriculum',false));
@@ -1026,12 +1182,20 @@ function bp_get_course_check_course_complete($args=NULL){
 		          			$k=get_post_meta($c,$user_id,true);
 							$student_marks +=$k;
 
+							$questions = vibe_sanitize(get_post_meta($c,'quiz_questions'.$user_id,false));
+        					if(!isset($questions) || !is_array($questions))
 							$questions = vibe_sanitize(get_post_meta($c,'vibe_quiz_questions',false));
+						
 				      		$total_marks += array_sum($questions['marks']);
 						}
 					}
 				}
-				if(!$total_marks)$total_marks=1; // Avoid the Division by Zero Error
+				// Apply Filters on Auto Evaluation
+				$student_marks=apply_filters('wplms_course_student_marks',$student_marks,$id,$user_id);
+				$total_marks=apply_filters('wplms_course_maximum_marks',$total_marks,$id,$user_id);
+
+				if(!$total_marks){$total_marks=$student_marks=1; }// Avoid the Division by Zero Error
+
 				$marks = round(($student_marks*100)/$total_marks);
 
 				$return .='<div class="message" class="updated"><p>'.__('COURSE EVALUATED ','vibe').'</p></div>';
@@ -1040,45 +1204,75 @@ function bp_get_course_check_course_complete($args=NULL){
     			$passing_per = get_post_meta($id,'vibe_course_passing_percentage',true);
 
 
+    			bp_course_record_activity(array(
+			      'action' => __('Auto evaluated Course for Student','vibe'),
+			      'content' => __('Student ','vibe').bp_core_get_userlink( $user_id ).__(' got =','vibe').apply_filters('wplms_course_marks',$marks.'/100').__(' in course ','vibe').get_the_title($id),
+			      'primary_link' => get_permalink($id),
+			      'type' => 'course_evaluated',
+			      'item_id' => $id,
+			      'secondary_item_id' => $user_id
+			      ));
+    			do_action('badgeos_wplms_evaluate_course',$id,$marks);
+    			
     			if(isset($badge_per) && $badge_per && $marks > $badge_per){
 			        $badges = array();
 			        $badges= vibe_sanitize(get_user_meta($user_id,'badges',false));
-			        $badges[]=$id;
+
+			        if(!empty($badges) || !in_array($id,$badges)){
+
+			        if(isset($badges) && is_array($badges))
+			        	$badges[]=$id;
+			        else
+			        	$badges=array($id);
+
 			        update_user_meta($user_id,'badges',$badges);
 
 			        $return .='<div class="congrats_badge">'.__('Congratulations ! You\'ve earned the ','vibe').' <strong>'.get_post_meta($id,'vibe_course_badge_title',true).'</strong> '.__('Badge','vibe').'</div>';
 			        bp_course_record_activity(array(
-			          'action' => 'Student got a Badge in the course '.get_the_title($course_id),
-			          'content' => 'Student '.bp_core_get_userlink($user_id).' got a badge in the course '.get_the_title($id),
+			          'action' => __('Student got a Badge in the course ','vibe'),
+			          'content' => __('Student ','vibe').bp_core_get_userlink($user_id).__(' got a badge in the course ','vibe').get_the_title($id),
 			          'type' => 'student_badge',
 			          'item_id' => $id,
 			          'primary_link'=>get_permalink($id),
 			          'secondary_item_id'=>$user_id
 			        )); 
 
+			    	}
+
 			    }
 
 			    if(isset($passing_per) && $passing_per && $marks > $passing_per){
 			        $pass = array();
 			        $pass=vibe_sanitize(get_user_meta($user_id,'certificates',false));
-			        $pass[]=$course_id;
+			        if(!empty($pass) || !in_array($id,$pass)){
+			        if(isset($pass) && is_array($pass))
+			        	$pass[]=$id;
+			        else
+			        	$pass=array($id);
+
 			        update_user_meta($user_id,'certificates',$pass);
-
 			        $return .='<div class="congrats_certificate">'.__('Congratulations ! You\'ve successfully passed the course and earned the Course Completion Certificate !','vibe').'</div>';
-
 			        bp_course_record_activity(array(
-			          'action' => 'Student got a Certificate in the course '.get_the_title($id),
-			          'content' => 'Student '.bp_core_get_userlink($user_id).' got a caertificate in the course '.get_the_title($id),
+			          'action' => __('Student got a Certificate in the course ','vibe'),
+			          'content' => __('Student ','vibe').bp_core_get_userlink($user_id).__(' got a caertificate in the course ','vibe').get_the_title($id),
 			          'type' => 'student_certificate',
 			          'item_id' => $id,
 			          'primary_link'=>get_permalink($id),
 			          'secondary_item_id'=>$user_id
 			        )); 
+
+			    	}
 			    }
 
 			    if(update_post_meta( $id,$user_id,$marks)){
-			      $message = __('You\'ve obtained ','vibe').$marks.' out of 100 in Course : <a href="'.get_permalink($id).'">'.get_the_title($id).'</a>';
-			      messages_new_message( array('sender_id' => get_current_user_id(), 'subject' => __('Course results available','vibe'), 'content' => $message,   'recipients' => $user_id ) );
+			      $message = __('You\'ve obtained ','vibe').apply_filters('wplms_course_marks',$marks.'/100').__(' in Course :','vibe').' <a href="'.get_permalink($id).'">'.get_the_title($id).'</a>';
+			      
+			      $sender_id=get_the_author_meta( 'ID' );
+			      if(!isset($sender_id) || !is_numeric($sender_id))
+			      	$sender_id = get_current_user_id();
+
+			      if(bp_is_active('messages'))
+			      messages_new_message( array('sender_id' => $sender_id, 'subject' => __('Course results available','vibe'), 'content' => $message,   'recipients' => $user_id ) );
 			      
 			      $return .='<div class="congrats_message">'.$message.'</div>';
 
@@ -1086,24 +1280,24 @@ function bp_get_course_check_course_complete($args=NULL){
 			      $return .='<div id="message" class="error">'. __('FAILED TO MARK COURSE, CONTACT ADMIN','vibe').'</div>';
 			    }
 
-			    bp_course_record_activity(array(
-			      'action' => 'Auto evaluated Course for Student',
-			      'content' => 'Student '.bp_core_get_userlink( $user_id ).' got '.$marks.' out of 100 in course '.get_the_title($id),
-			      'primary_link' => get_permalink($id),
-			      'type' => 'course_evaluated',
-			      'item_id' => $id,
-			      ));
-
-
 			}else{
 				$return .='<div class="message" class="updated"><p>'.__('COURSE SUBMITTED FOR EVALUATION','vibe').'</p></div>';
 				update_post_meta($id,$user_id,2); // 2 determines Course is Complete
+
+				if(bp_is_active('messages')){
+					global $post;
+					$instructor_ids = apply_filters('wplms_course_instructors',array($post->post_author),$post->ID);
+
+					messages_new_message( array('sender_id' => get_current_user_id(), 'subject' => __('Student submitted course for evaluation','vibe'), 'content' => $message,   'recipients' => $instructor_ids ) );
+				}
+						
+
 			}
 			
 			// Show the Generic Course Submission
 			$content=get_post_meta($id,'vibe_course_message',true);
 			$return .=apply_filters('the_content',$content);
-
+			$return = apply_filters('wplms_course_finished',$return);
 		}else{
 			$return .='<div class="message"><p>'.__('PLEASE COMPLETE THE ','vibe').get_post_type($flag).' : '.get_the_title($flag).'</p></div>';
 		}

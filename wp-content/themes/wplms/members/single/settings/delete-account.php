@@ -34,7 +34,7 @@
 				</div><!-- #item-nav -->
 			</div>	
 
-			<div class="col-md-6 col-sm-6">
+			<div class="col-md-9 col-sm-9">
 					<div class="padder">
 						<div id="item-body">
 

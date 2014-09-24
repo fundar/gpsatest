@@ -55,7 +55,10 @@
 	</div>
 	<div class="col-md-3 col-sm-4">
 		<div class="sidebar">
-		<?php get_sidebar( 'buddypress' ); ?>
+			<?php
+		 		$sidebar = apply_filters('wplms_sidebar','buddypress',get_the_ID());
+                if ( !function_exists('dynamic_sidebar')|| !dynamic_sidebar($sidebar) ) : ?>
+           	<?php endif; ?>
 		</div>
 	</div>
 </div>	

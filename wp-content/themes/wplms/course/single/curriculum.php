@@ -25,22 +25,25 @@ if(isset($course_curriculum)){
 					$href=get_the_title($lesson);
 					$free='';
 					$free = get_post_meta($lesson,'vibe_free',true);
-					if(isset($free) && $free !='' && $free !='H'){
-						$href='<a href="'.get_permalink($lesson).'?id='.get_the_ID().'">'.get_the_title($lesson).'<span>FREE</span></a>';
+
+					$curriculum_course_link = apply_filters('wplms_curriculum_course_link',0);
+					if(vibe_validate($free) || ($post->post_author == get_current_user_id()) || current_user_can('manage_options') || $curriculum_course_link){
+						$href=apply_filters('wplms_course_curriculum_free_access','<a href="'.get_permalink($lesson).'?id='.get_the_ID().'">'.get_the_title($lesson).(vibe_validate($free)?'<span>'.__('FREE','vibe').'</span>':'').'</a>',$lesson,$free);
 					}
 
 			echo '<div class="course_lesson">
 
 					<i class="icon-'.$icon.'"></i><h6>'.$href.'</h6>';
 					$minutes=0;
-					$minutes = get_post_meta($lesson,'vibe_duration',true);
-
+					$hours=0;
+					$min = get_post_meta($lesson,'vibe_duration',true);
+					$minutes = $min;
 					if($minutes){
 						if($minutes > 60){
 							$hours = intval($minutes/60);
 							$minutes = $minutes - $hours*60;
 						}
-					echo '<span><i class="icon-clock"></i> '.(isset($hours)?$hours.' Hours':'').' '.$minutes.' minutes</span>';
+					echo apply_filters('wplms_curriculum_time_filter','<span><i class="icon-clock"></i> '.(isset($hours)?$hours.__(' Hours','vibe'):'').' '.$minutes.' '.__('minutes','vibe').'</span>',$min);
 					}	
 
 					echo '</div>';

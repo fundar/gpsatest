@@ -3,16 +3,27 @@
 
 get_header();
 
+global $post;
 $flag=0;
 $free=get_post_meta(get_the_ID(),'vibe_free',true);
-if(isset($free) && $free !='' && $free !='H'){
+
+if(vibe_validate($free)){
     $flag=1;
-}else if(current_user_can('edit_posts') || (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && is_user_logged_in())){
+}else if((isset($_SERVER['HTTP_X_REQUESTED_WITH']) && is_user_logged_in())){
     $flag=1;
+}else if(current_user_can('edit_posts')){
+    $flag=1;
+    $instructor_privacy = vibe_get_option('instructor_content_privacy');
+    $user_id=get_current_user_id();
+    if(isset($instructor_privacy) && $instructor_privacy){
+        if($user_id != $post->post_author)
+          $flag=0;
+    }
 }
 
+$flag = apply_filters('wplms_before_unit',$flag);
 
-if($flag){
+if($flag || current_user_can('manage_options')){
 
     if ( have_posts() ) : while ( have_posts() ) : the_post();
 ?>
@@ -22,12 +33,14 @@ if($flag){
             <div class="col-md-9 col-sm-8">
                 <div class="pagetitle">
                     <h1><?php the_title(); ?></h1>
-                    <h5><?php the_sub_title(); ?></h5>
+                    <?php the_sub_title(); ?>
                 </div>
             </div>
             <div class="col-md-3 col-sm-4">
                 <?php
-                echo '<a href="'.get_permalink($_GET['id']).'" class="course_button button full">'.__('Back to ','vibe').get_the_title($_GET['id']).'</a>';
+                if(isset($_GET['id']))
+                  echo '<a href="'.get_permalink($_GET['id']).'?action=curriculum" class="course_button button full">'.__('Back to Course','vibe').'</a>';
+                
                 ?>
             </div>
         </div>
@@ -47,7 +60,9 @@ if($flag){
                     }
                         the_content();
                     ?>
-                    <?php wp_link_pages('before=<div class="unit-page-links page-links"><div class="page-link">&link_before=<span>&link_after=</span>&after=</div></div>'); ?>
+                    <?php wp_link_pages('before=<div class="unit-page-links page-links"><div class="page-link">&link_before=<span>&link_after=</span>&after=</div></div>'); 
+                    do_action('wplms_after_every_unit',get_the_ID());
+                    ?>
                     </div> 
                     <div class="tags">
                     <?php the_unit_tags('<ul><li>','</li><li>','</li></ul>'); ?>
@@ -102,11 +117,20 @@ if($flag){
                 endwhile;
                 endif;
                 ?>
+                <?php
+                do_action('wplms_unit_end_front_end_controls');
+                ?>
             </div>
             <div class="col-md-3 col-sm-4">
                 <?php
-                    if ( !function_exists('dynamic_sidebar')|| !dynamic_sidebar('coursesidebar') ) : ?>
-                <?php endif; ?>
+                global $wp_query;
+                if(isset($_GET['edit']) || isset($wp_query->query_vars['edit'])){
+                    do_action('wplms_front_end_unit_controls');
+                }else{
+                    $sidebar = apply_filters('wplms_sidebar','coursesidebar',get_the_ID());
+                    if ( !function_exists('dynamic_sidebar')|| !dynamic_sidebar($sidebar) ) {}
+                }
+                ?>
             </div>
         </div>
     </div>

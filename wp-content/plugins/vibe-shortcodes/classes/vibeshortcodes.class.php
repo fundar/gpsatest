@@ -38,17 +38,27 @@ class VibeShortcodes {
 	}
 	
         function frontend(){
-            
+            	$minified=vibe_get_option('minified');
+    			if(!isset($minified) || !$minified){
                     wp_enqueue_style( 'icons-css', VIBE_PLUGIN_URL.'/vibe-shortcodes/css/fonticons.css');
                     wp_enqueue_style( 'magnific-css', VIBE_PLUGIN_URL.'/vibe-shortcodes/css/magnific-popup.css');
                     wp_enqueue_style( 'mejskin', VIBE_PLUGIN_URL . '/vibe-shortcodes/css/skin/mediaelementplayer.css', false, null );
-                    wp_enqueue_style( 'shortcodes-css', VIBE_PLUGIN_URL.'/vibe-shortcodes/css/shortcodes.css');
+                    wp_enqueue_style( 'animation-css', VIBE_PLUGIN_URL.'/vibe-shortcodes/css/animation.css');
                     wp_enqueue_script( 'knob-js', VIBE_PLUGIN_URL . '/vibe-shortcodes/js/jquery.knob.js',array('jquery'),'1.0',true);
-                    wp_enqueue_script( 'magnific-js', VIBE_PLUGIN_URL . '/vibe-shortcodes/js/jquery.magnific-popup.min.js',array('jquery'),'1.0',true);
                     wp_enqueue_script( 'flexslider-js', VIBE_PLUGIN_URL . '/vibe-shortcodes/js/jquery.flexslider-min.js',array('jquery'),'1.0',true);
-                    wp_enqueue_script( 'fitvids-js', VIBE_PLUGIN_URL . '/vibe-shortcodes/js/jquery.fitvids.js',array('jquery','mediaelement'),'1.0',true);
                     wp_enqueue_script( 'masonry-js', VIBE_PLUGIN_URL . '/vibe-shortcodes/js/masonry.min.js',array('jquery'),'1.0',true);
-                   	wp_enqueue_script( 'shortcode-js', VIBE_PLUGIN_URL . '/vibe-shortcodes/js/shortcodes.js',array('jquery','mediaelement'),'1.0',true);
+                    wp_enqueue_script( 'magnific-js', VIBE_PLUGIN_URL . '/vibe-shortcodes/js/jquery.magnific-popup.min.js',array('jquery'),'1.0',true);
+                }                
+                wp_enqueue_script( 'fitvids-js', VIBE_PLUGIN_URL . '/vibe-shortcodes/js/jquery.fitvids.js',array('jquery','mediaelement'),'1.0',true); 
+            	wp_enqueue_style( 'shortcodes-css', VIBE_PLUGIN_URL.'/vibe-shortcodes/css/shortcodes.css',array('thickbox'));
+               	wp_enqueue_script( 'shortcode-js', VIBE_PLUGIN_URL . '/vibe-shortcodes/js/shortcodes.js',array('jquery','mediaelement','thickbox'),'1.0',true);
+               	$translation_array = array( 
+									'sending_mail' => __( 'Sending mail','vibe-shortcodes' ), 
+									'error_string' => __( 'Error :','vibe-shortcodes' ),
+									'invalid_string' => __( 'Invalid ','vibe-shortcodes' ),
+									'captcha_mismatch' => __( 'Captcha Mismatch','vibe-shortcodes' ), 
+									);
+               	wp_localize_script( 'shortcode-js', 'vibe_shortcode_strings', $translation_array );
         }
 	// --------------------------------------------------------------------------
 	
@@ -59,7 +69,12 @@ class VibeShortcodes {
 	 */
 	function add_rich_plugins( $plugin_array )
 	{
-		$plugin_array['vibeShortcodes'] = VIBE_TINYMCE_URI . '/plugin.js';
+		if ( floatval(get_bloginfo('version')) >= 3.9){
+			$plugin_array['vibeShortcodes'] = VIBE_TINYMCE_URI . '/plugin.js';
+		}else{
+			$plugin_array['vibeShortcodes'] = VIBE_TINYMCE_URI . '/plugin.old.js'; // For old versions of WP
+		}
+
 		return $plugin_array;
 	}
 	
@@ -89,24 +104,30 @@ class VibeShortcodes {
 		wp_enqueue_script( 'jquery-livequery', VIBE_TINYMCE_URI . '/js/jquery.livequery.js', false, '1.1.1', false );
 		wp_enqueue_script( 'jquery-appendo', VIBE_TINYMCE_URI . '/js/jquery.appendo.js', false, '1.0', false );
 		wp_enqueue_script( 'base64', VIBE_TINYMCE_URI . '/js/base64.js', false, '1.0', false );
-		wp_enqueue_script( 'vibe-popup', VIBE_TINYMCE_URI . '/js/popup.js', array('jquery-ui-core','jquery-ui-widget','jquery-ui-mouse','jquery-ui-draggable','jquery-ui-slider','iris'), '1.0', false );
         wp_localize_script( 'jquery', 'VibeShortcodes', array('shortcodes_folder' => VIBE_PLUGIN_URL .'/vibe-shortcodes') );
+        
+	        if ( floatval(get_bloginfo('version')) >= 3.9){
+			  wp_enqueue_script( 'vibe-popup', VIBE_TINYMCE_URI . '/js/popup.js', array('jquery-ui-core','jquery-ui-widget','jquery-ui-mouse','jquery-ui-draggable','jquery-ui-slider','iris'), '1.0', false );
+			}else{
+				wp_enqueue_script( 'vibe-popup', VIBE_TINYMCE_URI . '/js/popup.old.js', array('jquery-ui-core','jquery-ui-widget','jquery-ui-mouse','jquery-ui-draggable','jquery-ui-slider','iris'), '1.0', false );
+				//For older versions of WP
+			}
 		}
                 
                 if(is_admin()){
 				wp_enqueue_style( 'vibe-popup', VIBE_TINYMCE_URI . '/css/popup.css', false, '1.0', 'all' );
                 wp_enqueue_style( 'shortcodes-css', VIBE_PLUGIN_URL.'/vibe-shortcodes/css/shortcodes.css');
-                }    
+                }   
         }
-        /*
+        
         function admin_css(){
             // css
                 if(is_admin()){
 		wp_enqueue_style( 'vibe-popup', VIBE_TINYMCE_URI . '/css/popup.css', false, '1.0', 'all' );
                 wp_enqueue_style( 'shortcodes-css', VIBE_URL.'/css/shortcodes.css');
                 }
-                
-        }*/
+               
+        }
         function admin_icons(){
             wp_enqueue_style( 'icons-css', VIBE_PLUGIN_URL.'/vibe-shortcodes/css/fonticons.css');
         }

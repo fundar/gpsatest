@@ -18,11 +18,24 @@ get_header('shop');
     <div class="container">
         <div class="row">
             <div class="col-md-9 col-sm-8">
-                <div class="pagetitle">
-                    <h1>KInowledge Repository</h1>
-                    <h5><?php the_sub_title(); ?></h5>
+					<h1 class="page-title">
+						<?php if ( is_search() ) : ?>
+							<?php
+								printf( __( 'Search Results: &ldquo;%s&rdquo;', 'vibe' ), get_search_query() );
+								if ( get_query_var( 'paged' ) )
+									printf( __( '&nbsp;&ndash; Page %s', 'vibe' ), get_query_var( 'paged' ) );
+							?>
+						<?php elseif ( is_tax() ) : ?>
+							<?php echo single_term_title( "", false ); ?>
+						<?php else : ?>
+							<?php
+								$shop_page = get_post( woocommerce_get_page_id( 'shop' ) );
+
+								echo apply_filters( 'the_title', ( $shop_page_title = get_option( 'woocommerce_shop_page_title' ) ) ? $shop_page_title : $shop_page->post_title );
+							?>
+						<?php endif; ?>
+					</h1>
                 </div>
-            </div>
             <div class="col-md-3 col-sm-4">
             	<div class="vibecrumbs">
                 <?php
@@ -31,9 +44,8 @@ get_header('shop');
 					 *
 					 * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
 					 * @hooked woocommerce_breadcrumb - 20
-					
-					do_action('woocommerce_before_main_content');
 					 */
+					do_action('woocommerce_before_main_content');
                 ?> 
                 </div>
             </div>
@@ -44,7 +56,17 @@ get_header('shop');
 <section class="main">
 	<div class="container">
         <div class="row">
-            <div class="col-md-12">
+        	<div class="col-md-3 col-sm-4">
+		        <?php
+		                /**
+		                * woocommerce_sidebar hook
+		                *
+		                * @hooked woocommerce_get_sidebar - 10
+		                */
+		                do_action('woocommerce_sidebar');
+		        ?>
+		    </div> 
+            <div class="col-md-9 col-sm-8">
                 <div class="shop_products content padder">
 					<?php do_action( 'woocommerce_archive_description' ); ?>
 
@@ -78,7 +100,7 @@ get_header('shop');
 
 					<?php if ( ! woocommerce_product_subcategories( array( 'before' => '<ul class="products">', 'after' => '</ul>' ) ) ) : ?>
 
-						<p><?php _e( 'No products found which match your selection.', 'woocommerce' ); ?></p>
+						<p><?php _e( 'No products found which match your selection.', 'vibe' ); ?></p>
 
 					<?php endif; ?>
 

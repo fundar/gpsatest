@@ -36,13 +36,22 @@ isset($loop_number)?$loop_number:$loop_number=5;
 
 	</div>
 
-	<?php do_action( 'bp_before_directory_members_list' ); ?>
+	<?php do_action( 'bp_before_directory_members_list' );  ?>
 
 	<ul id="members-list" class="item-list" role="main">
 
-	<?php while ( bp_members() ) : bp_the_member(); ?>
+	<?php while ( bp_members() ) : bp_the_member(); 
 
-		<li>
+		global $members_template; 
+		$user_id = $members_template->member->id;
+		$role = 'student';
+		if(user_can($user_id,'edit_posts'))
+			$role = 'instructor';
+		if(user_can($user_id,'manage_options'))
+			$role = 'administrator';
+	?>
+
+		<li <?php echo 'class="role-'.$role.'"'; ?>>
 			<div class="item-avatar">
 				<a href="<?php bp_member_permalink(); ?>"><?php bp_member_avatar(); ?></a>
 			</div>
@@ -50,11 +59,6 @@ isset($loop_number)?$loop_number:$loop_number=5;
 			<div class="item">
 				<div class="item-title">
 					<?php
-					global $members_template;
-					$user_id = $members_template->member->id;
-					$role = 'student';
-					if(user_can($user_id,'edit_posts'))
-						$role = 'instructor';
 
 					echo '<span>'.$role.'</span>';
 					?>
@@ -66,12 +70,15 @@ isset($loop_number)?$loop_number:$loop_number=5;
 						if(!isset($field) || $field =='')
 							$field = 'Location';
 
+
+					if(bp_is_active('xprofile'))
 						echo '<span>'.bp_get_profile_field_data( array('user_id'=>$user_id,'field'=>$field )).'</span>';
 					}else if($role == 'instructor'){
 						$field = vibe_get_option('instructor_field');
 
 						if(!isset($field) || $field =='')
 							$field = 'Expertise';
+						if(bp_is_active('xprofile'))
 						echo '<span>'.bp_get_profile_field_data( array('user_id'=>$user_id,'field'=>$field )).'</span>';
 					}
 

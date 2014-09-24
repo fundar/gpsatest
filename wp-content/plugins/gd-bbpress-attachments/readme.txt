@@ -1,10 +1,10 @@
 === GD bbPress Attachments ===
 Contributors: GDragoN
 Donate link: http://www.gdbbpbox.com/
-Version: 2.0
+Version: 2.1
 Tags: bbpress, attachments, gdragon, dev4press, upload, forum, topic, reply, media library, limit, meta
 Requires at least: 3.3
-Tested up to: 3.6
+Tested up to: 3.9
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -19,24 +19,22 @@ On admin side, topic and reply panels have column with attachments count, and on
 Supported languages: English, Serbian, Polish, Dutch, German, Italian, Slovak, French, Spanish, Persian, Portuguese.
 
 = bbPress Plugin Versions =
-GD bbPress Attachments 2.0 supports bbPress 2.2.x, 2.3.x and 2.4.x versions. bbPress 2.0.x and 2.1.x are no longer supported!
+GD bbPress Attachments 2.1 supports bbPress 2.3.x or newer. bbPress 2.0.x, 2.1.x and 2.2.x are no longer supported!
 
 = BuddyPress Support =
-GD bbPress Attachments 2.0 is tested with BuddyPress 1.8.x and it works fine if you enable BuddyPress support in bbPress plugin for Group Forums. Make sure you enable JavaScript and CSS Settings Always Include option in the Attachments plugin settings.
+GD bbPress Attachments 2.1 is tested with BuddyPress 1.8.x and newer and it works fine if you enable BuddyPress support in bbPress plugin for Group Forums. Make sure you enable JavaScript and CSS Settings Always Include option in the Attachments plugin settings.
 
-= Important URL's =
-[Plugin Home](http://www.dev4press.com/plugins/gd-bbpress-attachments/) |
-[Support Forum](http://www.dev4press.com/forums/forum/free-plugins/gd-bbpress-attachments/) |
-[Twitter](http://twitter.com/milangd) |
-[Facebook Page](http://www.facebook.com/dev4press)
-
-= More free dev4Press.com plugins for bbPress =
-* [GD bbPress Tools](http://wordpress.org/extend/plugins/gd-bbpress-tools/) - various expansion tools for forums
-* [GD bbPress Widgets](http://wordpress.org/extend/plugins/gd-bbpress-widgets/) - additional widgets for bbpress
+= Upgrade to GD bbPress Toolbox Pro =
+Pro version contains many more useful features including admin Attachments List and Errors Log, more control over attachments, use of Font Icons. Also, it contains many more bbPress related features: BBCodes (with toolbar), custom views, quotes, user signatures, many tweaks, widgets and more.
+[GD bbPress Toolbox Pro](http://www.gdbbpbox.com/)
 
 = Premium dev4Press.com plugins for bbPress =
 * [GD bbPress Toolbox Pro](http://www.gdbbpbox.com/) - our free bbPress plugins in one plus more
 * [GD CPT Tools Pro](http://www.gdcpttools.com/features/bbpress-integration/) - meta box for the topic and reply form
+
+= More free dev4Press.com plugins for bbPress =
+* [GD bbPress Tools](http://wordpress.org/extend/plugins/gd-bbpress-tools/) - various expansion tools for forums
+* [GD bbPress Widgets](http://wordpress.org/extend/plugins/gd-bbpress-widgets/) - additional widgets for bbpress
 
 == Installation ==
 = General Requirements =
@@ -46,7 +44,7 @@ GD bbPress Attachments 2.0 is tested with BuddyPress 1.8.x and it works fine if 
 * WordPress: 3.3 or newer
 
 = bbPress Requirements =
-* bbPress Plugin: 2.2 or newer
+* bbPress Plugin: 2.3 or newer
 
 = Basic Installation =
 * Plugin folder in the WordPress plugins folder must be `gd-bbpress-attachments`
@@ -65,10 +63,10 @@ Other common issue is that WordPress Media Library upload is not working. If tha
 All attachments uploads are handled by the WordPress Media Library, and plugin uses native WordPress upload functions. When file is uploaded it will be available through Media Library. Consult WordPress documentation about Media Library requirements.
 
 * Will this plugin work with standalone bbPress instalation?
-No. This plugin requires the plugin versions of bbPress 2.2 or higher.
+No. This plugin requires the plugin versions of bbPress 2.3 or higher.
 
 * Does this plugin work with bbPress that is part of BuddyPress plugin?
-No. Plugin requires bbPress 2.2 or higher plugin.
+No. Plugin requires bbPress 2.3 or higher plugin.
 
 * Does this plugin work with bbPress plugin used as site wide forums for BuddyPress plugin?
 Yes. But, make sure to enable 'Always Include' option for JavaScript and CSS.
@@ -86,7 +84,16 @@ Yes. But, make sure to enable 'Always Include' option for JavaScript and CSS.
 * Spanish: Jhonathan Arroyo - http://www.siswer.com/
 * Persian: Ramin Firooz - http://shayverd.com/
 
+== Upgrade Notice ==
+= 2.1 =
+Improved default styling for the list of attachments. Removed support for bbPress 2.2.x. Fixed posts deletion problem caused by attachments module.
+
 == Changelog ==
+= 2.1 =
+* Improved default styling for the list of attachments
+* Removed support for bbPress 2.2.x
+* Fixed posts deletion problem caused by attachments module
+
 = 2.0 =
 * Improved default styling for the list of attachments
 * Removed obsolete hooks and functions
@@ -228,10 +235,6 @@ Yes. But, make sure to enable 'Always Include' option for JavaScript and CSS.
 * Fixed ignoring selected roles to display upload form elements
 * Fixed upgrading plugin settings process
 * Fixed few more undefined variables warnings
-
-== Upgrade Notice ==
-= 1.9.2 =
-Added Slovak translation. Changed upload field location to end of the form. Dropped support for bbPress 2.0. Dropped support for WordPress 3.2. Fixed problem with saving some settings.
 
 == Screenshots ==
 1. Main plugins settings panel

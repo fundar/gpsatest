@@ -46,7 +46,7 @@ class Gc_MessageBar_Metrix_Code_Renderer extends Gc_MessageBar_Abstract_Renderer
             <div class="clear"></div>
         <?php else: ?>    
             <div class="desc ">
-                <label>Required FREE MY.GetConversion accout. <a href="<?php echo $this->configuration['MYGC'];?>/signup/plugin" target="_blank">Don't have MY.GetConversion account yet?</a></label>
+                <label>Required FREE MY.GetConversion account. <a href="<?php echo $this->configuration['MYGC'];?>/signup/plugin" target="_blank">Don't have MY.GetConversion account yet?</a></label>
             </div>
             <div class="clear"></div>
         <?php endif; ?>
@@ -57,7 +57,7 @@ class Gc_MessageBar_Metrix_Code_Renderer extends Gc_MessageBar_Abstract_Renderer
                 jQuery('body').popBox({
                     easing : 'easeInOutExpo',
                     content : 'iframe',
-                    contentUrl : '<?php echo home_url(); ?>/wp-admin/admin-ajax.php?action=gc-message-bar-mygc-signin',
+                    contentUrl : 'admin-ajax.php?action=gc-message-bar-mygc-signin',
                     useBeforeUnload : false
                 });
             });

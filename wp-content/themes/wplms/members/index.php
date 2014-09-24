@@ -38,13 +38,12 @@ get_header( 'buddypress' ); ?>
              <div class="col-md-9 col-sm-8">
                 <div class="pagetitle">
                     <h1><?php the_title(); ?></h1>
-                    <h5><?php the_sub_title(); ?></h5>
+                    <?php the_sub_title(); ?>
                 </div>
             </div>
              <div class="col-md-3 col-sm-4">
             	<?php 
-            		$teacher_form = vibe_get_option('teacher_form');
-					echo '<a href="'.(isset($teacher_form)?get_permalink($teacher_form):'#').'" class="button create-group-button full">'. __( 'Become a Teacher', 'vibe' ).'</a>';
+            		do_action('wplms_be_instructor_button');	
 				?>
             </div>
         </div>
@@ -115,8 +114,11 @@ get_header( 'buddypress' ); ?>
 
 						<?php do_action( 'bp_after_directory_members_content' ); ?>
 					</div>	
-					<div class="col-md-3 col-sm-3">
-						<?php get_sidebar( 'buddypress' ); ?>
+					<div class="col-md-3 col-sm-4">
+						<?php
+					 		$sidebar = apply_filters('wplms_sidebar','buddypress',get_the_ID());
+			                if ( !function_exists('dynamic_sidebar')|| !dynamic_sidebar($sidebar) ) : ?>
+		               	<?php endif; ?>
 					</div>
 				</div>	
 			</form><!-- #members-directory-form -->

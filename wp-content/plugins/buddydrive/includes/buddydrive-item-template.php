@@ -1,6 +1,6 @@
 <?php
 // Exit if accessed directly
-if ( !defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 
 /**
@@ -16,11 +16,11 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * @return the right url
  */
 function buddydrive_component_home_url() {
-	if( bp_is_user() && bp_current_action() == 'files' )
+	if ( bp_is_user() && bp_current_action() == 'files' )
 		echo buddydrive_get_user_buddydrive_url();
-	else if( bp_is_user() && bp_current_action() == buddydrive_get_friends_subnav_slug() )
+	else if ( bp_is_user() && bp_current_action() == buddydrive_get_friends_subnav_slug() )
 		echo buddydrive_get_friends_buddydrive_url();
-	else if( buddydrive_is_group() )
+	else if ( buddydrive_is_group() )
 		echo buddydrive_get_group_buddydrive_url();
 }
 
@@ -37,15 +37,15 @@ function buddydrive_component_home_url() {
  */
 function buddydrive_select_sharing_options( $id = 'buddydrive-sharing-options', $selected = false, $name = false ) {
 	?>
-	<select id="<?php echo $id;?>" <?php if(!empty( $name ) ) echo 'name="'.$name.'"';?>>
+	<select id="<?php echo $id;?>" <?php if ( ! empty( $name ) ) echo 'name="'.$name.'"';?>>
 		<option value="private" <?php selected( $selected, 'private' );?>><?php _e( 'Private', 'buddydrive' );?></option>
 		<option value="password" <?php selected( $selected, 'password' );?>><?php _e( 'Password protected', 'buddydrive' );?></option>
 		<option value="public" <?php selected( $selected, 'public' );?>><?php _e( 'Public', 'buddydrive' );?></option>
 
-		<?php if( bp_is_active( 'friends' ) ):?>
+		<?php if ( bp_is_active( 'friends' ) ):?>
 			<option value="friends" <?php selected( $selected, 'friends' );?>><?php _e( 'Friends only', 'buddydrive' );?></option>
 		<?php endif;?>
-		<?php if( bp_is_active( 'groups' ) ):?>
+		<?php if ( bp_is_active( 'groups' ) ):?>
 			<option value="groups" <?php selected( $selected, 'groups' );?>><?php _e( 'One of my groups', 'buddydrive' );?></option>
 		<?php endif;?>
 	</select>
@@ -77,10 +77,10 @@ function buddydrive_select_folder_options( $user_id = false, $selected = false, 
 	 * @return string  the select box
 	 */
 	function buddydrive_get_select_folder_options( $user_id = false, $selected = false, $name = false ) {
-		if( empty( $user_id ) )
+		if ( empty( $user_id ) )
 			$user_id = bp_loggedin_user_id();
 			
-		if(!empty( $name ) )
+		if ( ! empty( $name ) )
 			$name = 'name="'.$name.'"';
 		
 		$output = __( 'No folder available', 'buddydrive' );
@@ -135,32 +135,32 @@ function buddydrive_select_user_group( $user_id = false, $selected = false, $nam
 	 * @return string the select box
 	 */
 	function buddydrive_get_select_user_group( $user_id = false, $selected = false, $name = false ) {
-		if( empty( $user_id ) )
+		if ( empty( $user_id ) )
 			$user_id = bp_loggedin_user_id();
 
-		$name = !empty( $name ) ? ' name="'.$name.'"' : false ;
+		$name = ! empty( $name ) ? ' name="'.$name.'"' : false ;
 
 		$output = __( 'No group available for BuddyDrive', 'buddydrive' );
 		
-		if( !bp_is_active( 'groups' ) )
+		if ( ! bp_is_active( 'groups' ) )
 			return $output;
 		
-		$user_groups = groups_get_groups( array( 'user_id' => $user_id, 'show_hidden' => true ) );
+		$user_groups = groups_get_groups( array( 'user_id' => $user_id, 'show_hidden' => true, 'per_page' => false ) );
 
 		$buddydrive_groups = false;
 
 		// checking for available buddydrive groups
-		if( !empty( $user_groups['groups'] ) ) {
+		if ( ! empty( $user_groups['groups'] ) ) {
 			foreach( $user_groups['groups'] as $group ) {
-				if( 1 == groups_get_groupmeta( $group->id, '_buddydrive_enabled' ) )
+				if ( 1 == groups_get_groupmeta( $group->id, '_buddydrive_enabled' ) )
 					$buddydrive_groups[]= array( 'group_id' => $group->id, 'group_name' => $group->name );
 			}
 		}
 
 		// building the select box
-		if( !empty( $buddydrive_groups ) && is_array( $buddydrive_groups ) ) {
+		if ( ! empty( $buddydrive_groups ) && is_array( $buddydrive_groups ) ) {
 			$output = '<select id="buddygroup"'.$name.'>' ;
-			foreach( $buddydrive_groups as $buddydrive_group ) {
+			foreach ( $buddydrive_groups as $buddydrive_group ) {
 				$output .= '<option value="'.$buddydrive_group['group_id'].'" '. selected( $selected, $buddydrive_group['group_id'], false ) .'>'.$buddydrive_group['group_name'].'</option>';
 			}
 			$output .= '</select>';
@@ -227,7 +227,7 @@ function buddydrive_user_used_quota( $type = false, $user_id = false ) {
 	 * @return int|string   the space left or html to display it
 	 */
 	function buddydrive_get_user_space_left( $type = false, $user_id = false ){
-		if( empty( $user_id ) )
+		if ( empty( $user_id ) )
 			$user_id = bp_loggedin_user_id();
 
 		$max_space = buddydrive_get_quota_by_user_id( $user_id );
@@ -237,7 +237,7 @@ function buddydrive_user_used_quota( $type = false, $user_id = false ) {
 		$used_space = intval( $used_space );
 		$quota = number_format( ( $used_space / $max_space ) * 100, 2  );
 
-		if( $type == 'diff' )
+		if ( $type == 'diff' )
 			return $max_space - $used_space;
 		else
 			return apply_filters( 'buddydrive_get_user_space_left', sprintf( __( '<span id="buddy-quota">%s</span>&#37; used', 'buddydrive' ), $quota ), $quota );
@@ -275,13 +275,13 @@ function buddydrive_has_items( $args = '' ) {
 
 		$buddyscope = bp_current_action();
 
-		if( $buddyscope == buddydrive_get_friends_subnav_slug() )
+		if ( $buddyscope == buddydrive_get_friends_subnav_slug() )
 			$buddyscope = 'friends';
 
-		if( is_admin() )
+		if ( is_admin() )
 			$buddyscope = 'admin';
 
-		if( bp_is_active( 'groups' ) && buddydrive_is_group() ) {
+		if ( bp_is_active( 'groups' ) && buddydrive_is_group() ) {
 			$group = groups_get_current_group();
 			
 			$group_id = $group->id;
@@ -293,19 +293,19 @@ function buddydrive_has_items( $args = '' ) {
 		 * function call
 		 */
 		$defaults = array(
-				'id'              => false,
-				'name'            => false,
-				'group_id'	      => $group_id,
-				'user_id'	      => $user,
-				'per_page'	      => 10,
-				'paged'		      => 1,
-				'type'            => $defaulttype,
+				'id'                => false,
+				'name'              => false,
+				'group_id'	        => $group_id,
+				'user_id'	        => $user,
+				'per_page'	        => 10,
+				'paged'		        => 1,
+				'type'              => $defaulttype,
 				'buddydrive_scope'  => $buddyscope,
-				'search'          => false,
+				'search'            => false,
 				'buddydrive_parent' => 0,
-				'exclude'         => 0,
-				'orderby' 		  => 'title', 
-				'order'           => 'ASC'
+				'exclude'           => 0,
+				'orderby' 		    => 'title', 
+				'order'             => 'ASC'
 			);
 		
 		$r = wp_parse_args( $args, $defaults );
@@ -314,7 +314,7 @@ function buddydrive_has_items( $args = '' ) {
 		$buddydrive_template = new BuddyDrive_Item();
 
 
-		if( !empty( $search ) )
+		if ( ! empty( $search ) )
 			$buddydrive_template->get( array( 'per_page' => $per_page, 'paged' => $paged, 'type' => $type, 'buddydrive_scope' => $buddydrive_scope, 'search' => $search, 'orderby' => $orderby, 'order' => $order ) );
 		else
 			$buddydrive_template->get( array( 'id' => $id, 'name' => $name, 'group_id' => $group_id, 'user_id' => $user_id, 'per_page' => $per_page, 'paged' => $paged, 'type' => $type, 'buddydrive_scope' => $buddydrive_scope, 'buddydrive_parent' => $buddydrive_parent, 'exclude' => $exclude, 'orderby' => $orderby, 'order' => $order ) );
@@ -339,7 +339,7 @@ function buddydrive_has_more_items() {
 	$pag_page = intval( $buddydrive_template->query->query_vars['paged'] );
 	
 	$remaining_pages = floor( ( $total_items - 1 ) / ( $pag_num * $pag_page ) );
-	$has_more_items  = (int)$remaining_pages ? true : false;
+	$has_more_items  = (int) $remaining_pages ? true : false;
 
 	return apply_filters( 'buddydrive_has_more_items', $has_more_items );
 }
@@ -451,7 +451,7 @@ function buddydrive_is_buddyfile() {
 	
 	$is_buddyfile = false;
 	
-	if( $buddydrive_template->query->post->post_type == buddydrive_get_file_post_type() )
+	if ( $buddydrive_template->query->post->post_type == buddydrive_get_file_post_type() )
 		$is_buddyfile = true;
 		
 	return $is_buddyfile;
@@ -478,7 +478,7 @@ function buddydrive_action_link() {
 		
 		$buddyslug = 'folder';
 		
-		if( buddydrive_is_buddyfile() )
+		if ( buddydrive_is_buddyfile() )
 			$buddyslug = 'file';
 
 		$slug = trailingslashit( $buddyslug.'/' . $buddydrive_template->query->post->post_name );
@@ -534,7 +534,7 @@ function buddydrive_item_attribute() {
 		
 		$data_attr = false;
 		
-		if( !buddydrive_is_buddyfile() )
+		if ( ! buddydrive_is_buddyfile() )
 			$data_attr = ' data-folder="'.buddydrive_get_item_id().'"';
 		else
 			$data_attr = ' data-file="'.buddydrive_get_item_id().'"';
@@ -585,7 +585,7 @@ function buddydrive_owner_avatar() {
 	 */
 	function buddydrive_get_show_owner_avatar( $user_id = false, $width = '32', $height = '32' ) {
 
-		if( empty( $user_id ) )
+		if ( empty( $user_id ) )
 			$user_id = buddydrive_get_owner_id();
 
 		$username = bp_core_get_username( $user_id );
@@ -658,22 +658,22 @@ function buddydrive_group_avatar() {
 
 		$buddydrive_item_group_meta = false;
 
-		if( empty( $item_id ) ) {
+		if ( empty( $item_id ) ) {
 			$parent_id = buddydrive_get_parent_item_id();
 			$item_id = ( !empty( $parent_id ) ) ? $parent_id : buddydrive_get_item_id();
 		}
 
 		$buddydrive_item_group_meta = get_post_meta( $item_id, '_buddydrive_sharing_groups', true );
 
-		if( empty( $buddydrive_item_group_meta ) )
+		if ( empty( $buddydrive_item_group_meta ) )
 			return false;
 			
-		if( !bp_is_active( 'groups' ) )
+		if ( ! bp_is_active( 'groups' ) )
 			return false;
 
 		$group = groups_get_group( array( 'group_id' => $buddydrive_item_group_meta ) );
 		
-		if( empty( $group) )
+		if ( empty( $group) )
 			return false;
 
 		$group_link = bp_get_group_permalink( $group );
@@ -690,10 +690,10 @@ function buddydrive_group_avatar() {
 										'title'      => $group_name
 									) );
 
-		if( 'hidden' == $group->status && !groups_is_user_member( bp_loggedin_user_id(), $buddydrive_item_group_meta ) && !is_super_admin() )
+		if ( 'hidden' == $group->status && !groups_is_user_member( bp_loggedin_user_id(), $buddydrive_item_group_meta ) && !is_super_admin() )
 			$nolink = true;
 		
-		if( !empty( $nolink ) )
+		if ( ! empty( $nolink ) )
 			return $group_avatar;
 		else
 			return apply_filters( 'buddydrive_get_group_avatar', '<a href="'.$group_link.'" title="'.$group_name.'">' . $group_avatar .'</a>');
@@ -723,7 +723,7 @@ function buddydrive_owner_or_cb() {
 	function buddydrive_get_owner_or_cb() {
 		$output = '';
 		
-		if( bp_is_my_profile() && bp_current_action() == 'files' )
+		if ( bp_is_my_profile() && bp_current_action() == 'files' )
 			$output = '<input type="checkbox" name="buddydrive-item[]" class="buddydrive-item-cb" value="'.buddydrive_get_item_id().'">';
 		else
 			$output = '<a href="'.buddydrive_get_owner_link().'" title="'.__('Owner', 'buddydrive').'">'.buddydrive_get_show_owner_avatar().'</a>';
@@ -750,7 +750,7 @@ function buddydrive_th_owner_or_cb() {
 	function buddydrive_get_th_owner_or_cb() {
 		$output = '';
 		
-		if( bp_is_my_profile() && bp_current_action() == 'files')
+		if ( bp_is_my_profile() && bp_current_action() == 'files')
 			$output = '<input type="checkbox" id="buddydrive-sel-all">';
 		else
 			$output = __('Owner', 'buddydrive');
@@ -769,18 +769,18 @@ function buddydrive_th_owner_or_cb() {
 function buddydrive_item_privacy() {
 	$status = buddydrive_get_item_privacy();
 	
-	switch( $status['privacy'] ) {
+	switch ( $status['privacy'] ) {
 		case 'private' :
-			echo '<a title="'.__( 'Private', 'buddydrive' ).'"><i class="bd-icon-lock"></i></a>';
+			echo '<a title="'.__( 'Private', 'buddydrive' ).'"><i class="icon bd-icon-lock"></i></a>';
 			break;
 		case 'public' :
-			echo '<a title="'.__( 'Public', 'buddydrive' ).'"><i class="bd-icon-unlocked"></i></a>';
+			echo '<a title="'.__( 'Public', 'buddydrive' ).'"><i class="icon bd-icon-unlocked"></i></a>';
 			break;
 		case 'friends' :
-			echo '<a title="'.__( 'Friends', 'buddydrive' ).'"><i class="bd-icon-users"></i></a>';
+			echo '<a title="'.__( 'Friends', 'buddydrive' ).'"><i class="icon bd-icon-users"></i></a>';
 			break;
 		case 'password' :
-			echo '<a title="'.__( 'Password protected', 'buddydrive' ).'"><i class="bd-icon-key"></i></a>';
+			echo '<a title="'.__( 'Password protected', 'buddydrive' ).'"><i class="icon bd-icon-key"></i></a>';
 			break;
 		case 'groups' :
 			if( !empty( $status['group'] ) )
@@ -808,7 +808,7 @@ function buddydrive_item_privacy() {
 		
 		$status['privacy'] = get_post_meta( $item_privacy_id, '_buddydrive_sharing_option', true );
 		
-		if( $status['privacy'] == 'groups' )
+		if ( $status['privacy'] == 'groups' )
 			$status['group'] = get_post_meta( $item_privacy_id, '_buddydrive_sharing_groups', true );
 			
 		return apply_filters( 'buddydrive_get_item_privacy', $status );
@@ -835,7 +835,7 @@ function buddydrive_item_mime_type() {
 		
 		$mime_type = __( 'folder', 'buddydrive' );
 		
-		if( buddydrive_is_buddyfile() ) {
+		if ( buddydrive_is_buddyfile() ) {
 			$doc = $buddydrive_template->query->post->guid;
 
 			$mime_type = __( 'file', 'buddydrive' );
@@ -865,10 +865,10 @@ function buddydrive_item_icon() {
 	 */
 	function buddydrive_get_item_icon() {
 		
-		$icon = '<i class="bd-icon-folder"></i>';
+		$icon = '<i class="icon bd-icon-folder"></i>';
 		
-		if( buddydrive_is_buddyfile() )
-			$icon = '<i class="bd-icon-file"></i>';
+		if ( buddydrive_is_buddyfile() )
+			$icon = '<i class="icon bd-icon-file"></i>';
 		
 		return apply_filters( 'buddydrive_get_item_icon', $icon );
 		
@@ -937,15 +937,15 @@ function buddydrive_item_date() {
 function buddydrive_current_user_can_remove( $group_id = false ) {
 	$can_remove = false;
 
-	if( empty( $group_id ) )
+	if ( empty( $group_id ) )
 		$group_id = bp_get_current_group_id();
 
-	if( !buddydrive_is_group() || buddydrive_get_parent_item_id() )
+	if ( ! buddydrive_is_group() || buddydrive_get_parent_item_id() )
 		$can_remove = false;
 
-	elseif( groups_is_user_admin( bp_loggedin_user_id(), $group_id ) )
+	else if ( groups_is_user_admin( bp_loggedin_user_id(), $group_id ) )
 		$can_remove = true;
-	else if( is_super_admin() )
+	else if ( is_super_admin() )
 		$can_remove = true;
 
 	return apply_filters( 'buddydrive_current_user_can_remove', $can_remove );
@@ -962,7 +962,7 @@ function buddydrive_current_user_can_remove( $group_id = false ) {
 function buddydrive_current_user_can_share() {
 	$can_share = false;
 
-	if( buddydrive_get_owner_id() == bp_loggedin_user_id() && !buddydrive_is_group() )
+	if ( buddydrive_get_owner_id() == bp_loggedin_user_id() && ! buddydrive_is_group() )
 		$can_share = true;
 
 	return apply_filters( 'buddydrive_current_user_can_share', $can_share );
@@ -983,25 +983,25 @@ function buddydrive_current_user_can_share() {
 function buddydrive_current_user_can_link( $privacy = false ) {
 	$can_link = false;
 
-	if( buddydrive_get_owner_id() == bp_loggedin_user_id() )
+	if ( buddydrive_get_owner_id() == bp_loggedin_user_id() )
 		$can_link = true;
 
-	elseif( empty( $privacy ) )
+	else if ( empty( $privacy ) )
 		$can_link = false;
 
-	elseif( !is_user_logged_in() )
+	else if ( ! is_user_logged_in() )
 		$can_link = false;
 
-	elseif( $privacy['privacy'] == 'public' )
+	else if ( $privacy['privacy'] == 'public' )
 		$can_link = true;
 
-	else if( $privacy['privacy'] == 'friends' && bp_is_active('friends') && friends_check_friendship( buddydrive_get_owner_id(), bp_loggedin_user_id() ) )
+	else if ( $privacy['privacy'] == 'friends' && bp_is_active('friends') && friends_check_friendship( buddydrive_get_owner_id(), bp_loggedin_user_id() ) )
 		$can_link = true;
 
-	else if( $privacy['privacy'] == 'groups' && bp_is_active('groups') && !empty( $privacy['group'] ) && groups_is_user_member( bp_loggedin_user_id(), intval( $privacy['group'] ) ) )
+	else if ( $privacy['privacy'] == 'groups' && bp_is_active('groups') && ! empty( $privacy['group'] ) && groups_is_user_member( bp_loggedin_user_id(), intval( $privacy['group'] ) ) )
 		$can_link = true;
 
-	elseif( is_super_admin() )
+	else if ( is_super_admin() )
 		$can_link = true;
 
 	return apply_filters( 'buddydrive_current_user_can_link', $can_link );
@@ -1040,10 +1040,10 @@ function buddydrive_row_actions() {
 
 		$buddyfile_id = buddydrive_get_item_id();
 
-		if( buddydrive_is_buddyfile() ) {
+		if ( buddydrive_is_buddyfile() ) {
 			$description = buddydrive_get_item_description();
 
-			if( !empty( $description ) ) {
+			if ( ! empty( $description ) ) {
 				$inside_top[]= '<a class="buddydrive-show-desc" href="#">' . __('Description', 'buddydrive'). '</a>';
 				$inside_bottom .= '<div class="buddydrive-ra-desc hide ba">'.$description.'</div>';
 			}
@@ -1051,47 +1051,47 @@ function buddydrive_row_actions() {
 
 		$privacy = buddydrive_get_item_privacy();
 
-		switch( $privacy['privacy'] ) {
+		switch ( $privacy['privacy'] ) {
 			case 'public':
-				if( buddydrive_current_user_can_link( $privacy ) ){
+				if ( buddydrive_current_user_can_link( $privacy ) ){
 					$inside_top[]= '<a class="buddydrive-show-link" href="#">' . __( 'Link', 'buddydrive' ). '</a>';
 					$inside_bottom .= '<div class="buddydrive-ra-link hide ba"><input type="text" class="buddydrive-file-input" id="buddydrive-link-' .$buddyfile_id. '" value="' .buddydrive_get_action_link(). '"></div>';
 				}
-				if( buddydrive_current_user_can_share() && bp_is_active( 'activity' ) )
+				if ( buddydrive_current_user_can_share() && bp_is_active( 'activity' ) )
 					$inside_top[]= '<a class="buddydrive-profile-activity" href="#">' . __( 'Share', 'buddydrive' ). '</a>';
 				break;
 			case 'password':
-				if( buddydrive_current_user_can_link( $privacy ) ){
+				if ( buddydrive_current_user_can_link( $privacy ) ){
 					$inside_top[]= '<a class="buddydrive-show-link" href="#">' . __( 'Link', 'buddydrive' ). '</a>';
 					$inside_bottom .= '<div class="buddydrive-ra-link hide ba"><input type="text" class="buddydrive-file-input" id="buddydrive-link-' .$buddyfile_id. '" value="' .buddydrive_get_action_link(). '"></div>';
 				}
-				if( buddydrive_current_user_can_share() && bp_is_active( 'messages' ) )
+				if ( buddydrive_current_user_can_share() && bp_is_active( 'messages' ) )
 					$inside_top[]= '<a class="buddydrive-private-message" href="'.bp_loggedin_user_domain() . bp_get_messages_slug() . '/compose/?buddyitem='.$buddyfile_id.'">' . __('Share', 'buddydrive'). '</a>';
 				break;
 			case 'friends':
-				if( buddydrive_current_user_can_link( $privacy ) ){
+				if ( buddydrive_current_user_can_link( $privacy ) ){
 					$inside_top[]= '<a class="buddydrive-show-link" href="#">' . __( 'Link', 'buddydrive' ). '</a>';
 					$inside_bottom .= '<div class="buddydrive-ra-link hide ba"><input type="text" class="buddydrive-file-input" id="buddydrive-link-' .$buddyfile_id. '" value="' .buddydrive_get_action_link(). '"></div>';
 				}
-				if( buddydrive_current_user_can_share() && bp_is_active( 'messages' ) )
+				if ( buddydrive_current_user_can_share() && bp_is_active( 'messages' ) )
 					$inside_top[]= '<a class="buddydrive-private-message" href="'.bp_loggedin_user_domain() . bp_get_messages_slug() . '/compose/?buddyitem='.$buddyfile_id.'&friends=1">' . __( 'Share', 'buddydrive' ). '</a>';
 				break;
 			case 'groups':
-				if( buddydrive_current_user_can_link( $privacy ) ){
+				if ( buddydrive_current_user_can_link( $privacy ) ){
 					$inside_top[]= '<a class="buddydrive-show-link" href="#">' . __( 'Link', 'buddydrive' ). '</a>';
 					$inside_bottom .= '<div class="buddydrive-ra-link hide ba"><input type="text" class="buddydrive-file-input" id="buddydrive-link-' .$buddyfile_id. '" value="' .buddydrive_get_action_link(). '"></div>';
 				}
-				if( buddydrive_current_user_can_share() && bp_is_active( 'activity' ) && bp_is_active( 'groups' ) )
+				if ( buddydrive_current_user_can_share() && bp_is_active( 'activity' ) && bp_is_active( 'groups' ) )
 					$inside_top[]= '<a class="buddydrive-group-activity" href="#">' . __( 'Share', 'buddydrive' ). '</a>';
-				if( buddydrive_current_user_can_remove( $privacy['group'] ) && bp_is_active( 'groups') )
+				if ( buddydrive_current_user_can_remove( $privacy['group'] ) && bp_is_active( 'groups') )
 					$inside_top[]= '<a class="buddydrive-remove-group" href="#" data-group="'.$privacy['group'].'">' . __( 'Remove', 'buddydrive' ). '</a>';
 				break;
 		}
 
-		if( !empty( $inside_top ) )
+		if ( ! empty( $inside_top ) )
 			$inside_top = '<div class="buddydrive-action-btn">'. implode( ' | ', $inside_top ).'</div>';
 
-		if( !empty( $inside_top ) )
+		if ( ! empty( $inside_top ) )
 			$row_actions .= '<div class="buddydrive-row-actions">' . $inside_top . $inside_bottom .'</div>';
 
 		return apply_filters( 'buddydrive_get_row_actions', $row_actions );
@@ -1110,3 +1110,62 @@ function buddydrive_file_password_form() {
 	</form>
 	<?php
 }
+
+/**
+ * Outputs the BuddyDrive user's toolbar & sort selectbox.
+ */
+function buddydrive_item_nav() {
+	?>
+	<form action="" method="get" id="buddydrive-form-filter">
+		<nav id="buddydrive-item-nav">
+			<ul>
+				
+				<?php do_action( 'buddydrive_member_before_toolbar' ); ?>
+
+				<?php if ( buddydrive_is_user_buddydrive() ):?>
+
+					<li id="buddydrive-action-new-file">
+						<a href="#" id="buddy-new-file" title="<?php _e('New File', 'buddydrive');?>"><i class="icon bd-icon-newfile"></i></a>
+					</li>
+					<li id="buddydrive-action-new-folder">
+						<a href="#" id="buddy-new-folder" title="<?php _e('New Folder', 'buddydrive');?>"><i class="icon bd-icon-newfolder"></i></a>
+					</li>
+					<li id="buddydrive-action-edit-item">
+						<a href="#" id="buddy-edit-item" title="<?php _e('Edit Item', 'buddydrive');?>"><i class="icon bd-icon-edit"></i></a>
+					</li>
+					<li id="buddydrive-action-delete-item">
+						<a href="#" id="buddy-delete-item" title="<?php _e('Delete Item(s)', 'buddydrive');?>"><i class="icon bd-icon-delete"></i></a>
+					</li>
+					<li id="buddydrive-action-analytics">
+						<a><i class="icon bd-icon-analytics"></i> <?php buddydrive_user_used_quota();?></a>
+					</li>
+
+				<?php endif;?>
+
+				<?php do_action( 'buddydrive_member_after_toolbar' ); ?>
+
+				<li class="last"><?php esc_html_e( 'Order by:', 'buddydrive' );?>
+					<select name="buddydrive_filter" id="buddydrive-filter">
+						<option value="title"><?php esc_html_e( 'Name', 'buddydrive' ) ;?></option>
+						<option value="modified"><?php esc_html_e( 'Last edit', 'buddydrive' ) ;?></option>
+					</select>
+				</li>
+
+			</ul>
+		</nav>
+	</form>
+	<?php
+}
+
+/**
+ * Outputs the BuddyDrive user's stats.
+ */
+function buddydrive_wpadmin_profile_stats( $args ) {
+	if ( empty( $args['user_id'] ) )
+		return;
+
+	$space_left = buddydrive_get_user_space_left( false, $args['user_id'] ) .'%';
+
+	echo '<li class="buddydrive-profile-stats">' . $space_left . '</li>';
+}
+add_action( 'bp_members_admin_user_stats', 'buddydrive_wpadmin_profile_stats', 10, 1 );

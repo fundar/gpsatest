@@ -35,25 +35,30 @@ add_action('wp_ajax_course_filter','course_filter');
 add_action('wp_ajax_nopriv_course_filter','course_filter');
 function course_filter(){
 	global $bp;
-	$args=array('post_type' => BP_COURSE_SLUG);
+
+	$args=array('post_type' => BP_COURSE_CPT);
 	if(isset($_POST['filter'])){
-	$filter = $_POST['filter'];
-	switch($filter){
-		case 'popular':
-			$args['orderby'] = 'meta_value';
-			$args['meta_key'] = 'vibe_students';
-		break;
-		case 'newest':
-			$args['orderby'] = 'date';
-		break;
-		case 'rated':
-			$args['orderby'] = 'meta_value';
-			$args['meta_key'] = 'average_rating';
-		break;
-		default:
-			$args['orderby'] = '';
-		break;
-	}
+		$filter = $_POST['filter'];
+		switch($filter){
+			case 'popular':
+				$args['orderby'] = 'meta_value';
+				$args['meta_key'] = 'vibe_students';
+			break;
+			case 'newest':
+				$args['orderby'] = 'date';
+			break;
+			case 'rated':
+				$args['orderby'] = 'meta_value';
+				$args['meta_key'] = 'average_rating';
+			break;
+			case 'alphabetical':
+				$args['orderby'] = 'title';
+				$args['order'] = 'ASC';
+			break;
+			default:
+				$args['orderby'] = '';
+			break;
+		}
 	}
 
 	if(isset($_POST['search_terms']) && $_POST['search_terms'])
@@ -85,8 +90,6 @@ $args['per_page'] = $loop_number;
 ?>
 
 <?php do_action( 'bp_before_course_loop' ); ?>
-
-
 
 <?php 
 
@@ -128,7 +131,6 @@ if ( bp_course_has_items( $args ) ) : ?>
 					<?php bp_course_credits(); ?>
 				</div>
 				<div class="item-instructor">
-					<?php bp_course_instructor_avatar(); ?>
 					<?php bp_course_instructor(); ?>
 				</div>
 				<div class="item-action"><?php bp_course_action(); ?></div>
@@ -209,7 +211,6 @@ function filtering_instructor_custom($qs=false,$object=false){
  return $qs;
  
 }
-
 
 
 /*

@@ -30,7 +30,7 @@ get_header( 'buddypress' ); ?>
             <div class="col-md-9 col-sm-8">
                 <div class="pagetitle">
                     <h1><?php the_title(); ?></h1>
-                    <h5><?php the_sub_title(); ?></h5>
+                    <?php the_sub_title(); ?>
                 </div>
             </div>
             <div class="col-md-3 col-sm-4">
@@ -46,9 +46,9 @@ get_header( 'buddypress' ); ?>
 	<div id="buddypress">
 	    <div class="container">
 	    	<div class="padder">
-				<form action="<?php bp_group_creation_form_action(); ?>" method="post" id="create-group-form" class="standard-form" enctype="multipart/form-data">
 				<div class="row">	
 					<div class="col-md-9 col-sm-8">	
+					<form action="<?php bp_group_creation_form_action(); ?>" method="post" id="create-group-form" class="standard-form" enctype="multipart/form-data">
 				    <?php do_action( 'bp_before_create_group' ); ?>			
 					<?php do_action( 'template_notices' ); ?>
 
@@ -332,6 +332,7 @@ get_header( 'buddypress' ); ?>
 			</div><!-- .item-body -->
 
 			<?php do_action( 'bp_after_create_group' ); ?>
+			</form>
 			</div>
 			<div class="col-md-3 col-sm-4">
 				<?php get_sidebar( 'buddypress' ); ?>

@@ -6,9 +6,7 @@ do_action( 'bp_before_course_header' );
 
 	<div id="item-header-avatar" itemscope itemtype="http://data-vocabulary.org/Product">
 		<a href="<?php bp_course_permalink(); ?>" title="<?php bp_course_name(); ?>" itemprop="image">
-
 			<?php bp_course_avatar(); ?>
-
 		</a>
 	</div><!-- #item-header-avatar -->
 
@@ -31,11 +29,6 @@ do_action( 'bp_before_course_header' );
 <div id="item-admins">
 
 <h3><?php _e( 'Instructors', 'vibe' ); ?></h3>
-	<div class="item-avatar">
-	<?php 
-	bp_course_instructor_avatar();
-	?>
-	</div>
 	<?php
 	bp_course_instructor();
 

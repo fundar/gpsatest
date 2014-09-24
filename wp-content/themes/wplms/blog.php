@@ -3,7 +3,7 @@
  * Template Name: Blog
  */
 get_header();
-
+$page_id = get_the_ID();
 ?>
 <section id="title">
 	<div class="container">
@@ -11,7 +11,7 @@ get_header();
             <div class="col-md-9 col-sm-8">
                 <div class="pagetitle">
                     <h1><?php the_title(); ?></h1>
-                    <h5><?php the_sub_title(); ?></h5>
+                    <?php the_sub_title(); ?>
                 </div>
             </div>
             <div class="col-md-3 col-sm-4">
@@ -22,6 +22,7 @@ get_header();
 </section>
 <section id="content">
 	<div class="container">
+        <div class="row">
 		<div class="col-md-9 col-sm-8">
 			<div class="content">
 				<?php
@@ -29,6 +30,7 @@ get_header();
                     $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; 
                     
                     query_posts(array('post_type'=>'post','per_page'=>5,'paged' => $paged));
+                    
                     if ( have_posts() ) : while ( have_posts() ) : the_post();
 
                     $categories = get_the_category();
@@ -43,16 +45,16 @@ get_header();
                        echo ' <div class="blogpost">
                             <div class="meta">
                                <div class="date">
-                                <p class="day"><span>'.get_the_time('j').'</span></p>
-                                <p class="month">'.get_the_time('M').'</p>
+                                <p class="day"><span>'.sprintf('%02d', get_the_time('j')).'</span></p>
+                                <p class="month">'.get_the_time('M').'\''.get_the_time('y').'</p>
                                </div>
                             </div>
                             '.(has_post_thumbnail(get_the_ID())?'
                             <div class="featured">
-                                <a href="'.get_post_permalink().'">'.get_the_post_thumbnail(get_the_ID(),'full').'</a>
+                                <a href="'.get_permalink().'">'.get_the_post_thumbnail(get_the_ID(),'medium').'</a>
                             </div>':'').'
                             <div class="excerpt '.(has_post_thumbnail(get_the_ID())?'thumb':'').'">
-                                <h3><a href="'.get_post_permalink().'">'.get_the_title().'</a></h3>
+                                <h3><a href="'.get_permalink().'">'.get_the_title().'</a></h3>
                                 <div class="cats">
                                     '.$cats.'
                                     <p>| 
@@ -60,7 +62,7 @@ get_header();
                                     </p>
                                 </div>
                                 <p>'.get_the_excerpt().'</p>
-                                <a href="'.get_permalink().'" class="link">Read More</a>
+                                <a href="'.get_permalink().'" class="link">'.__('Read More','vibe').'</a>
                             </div>
                         </div>';
 
@@ -74,11 +76,13 @@ get_header();
 		</div>
 		<div class="col-md-3 col-sm-4">
 			<div class="sidebar">
-				<?php 
-                    if ( !function_exists('dynamic_sidebar')|| !dynamic_sidebar('mainsidebar') ) : ?>
+                <?php
+                    $sidebar = apply_filters('wplms_sidebar','mainsidebar',$page_id);
+                    if ( !function_exists('dynamic_sidebar')|| !dynamic_sidebar($sidebar) ) : ?>
                 <?php endif; ?>
 			</div>
 		</div>
+        </div>
 	</div>
 </section>
 <?php

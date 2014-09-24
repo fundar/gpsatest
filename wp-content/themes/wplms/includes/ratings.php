@@ -7,16 +7,14 @@ add_action('comment_post','calculate_ratings',99,2);
 //if(is_singular('course')){
 add_action( 'comment_form_logged_in_after', 'additional_fields' );
 add_action( 'comment_form_after_fields', 'additional_fields' );
-
 add_action( 'comment_post', 'save_comment_meta_data' );
-
-
 add_action( 'add_meta_boxes_comment', 'extend_comment_add_meta_box' );
 add_action( 'edit_comment', 'extend_comment_edit_metafields' );
 add_filter( 'comment_text', 'modify_comment');
 //}
 
 function additional_fields () {
+  global $post;
   if(is_singular('course')){
       echo '<p class="comment-form-title">'.
       '<label for="title">' . __( 'Review Title','vibe' ) . '</label>'.
@@ -40,6 +38,9 @@ function additional_fields () {
 
 
 function save_comment_meta_data( $comment_id ) {
+
+if(get_post_type($_POST['comment_post_ID']) != 'course')    
+                return;
 
   if ( ( isset( $_POST['review_title'] ) ) && ( $_POST['review_title'] != '') ){
   $title = wp_filter_nohtml_kses($_POST['review_title']);
@@ -65,6 +66,10 @@ function extend_comment_add_meta_box() {
 }
  
 function extend_comment_meta_box ( $comment ) {
+
+    if(get_post_type($comment->comment_post_ID) != 'course')  
+      return;
+
     $title = get_comment_meta( $comment->comment_ID, 'review_title', true );
     $rating = get_comment_meta( $comment->comment_ID, 'review_rating', true );
     wp_nonce_field( 'extend_comment_update', 'extend_comment_update', false );
@@ -91,7 +96,11 @@ function extend_comment_meta_box ( $comment ) {
 
 
 function extend_comment_edit_metafields( $comment_id ) {
-    if( ! isset( $_POST['extend_comment_update'] ) || ! wp_verify_nonce( $_POST['extend_comment_update'], 'extend_comment_update' ) ) return;
+
+  if(get_post_type($_POST['comment_post_ID']) != 'course')    
+                return;
+
+  if( ! isset( $_POST['extend_comment_update'] ) || ! wp_verify_nonce( $_POST['extend_comment_update'], 'extend_comment_update' ) ) return;
  
   if ( ( isset( $_POST['review_title'] ) ) && ( $_POST['review_title'] != '') ):
   $title = wp_filter_nohtml_kses($_POST['review_title']);
@@ -115,24 +124,26 @@ function extend_comment_edit_metafields( $comment_id ) {
 
 function modify_comment( $text ){
 
-  if( $commenttitle = get_comment_meta( get_comment_ID(), 'review_title', true ) ) {
-    $commenttitle = '<strong>' . esc_attr( $commenttitle ) . '</strong><br/>';
-    $text = $commenttitle . $text;
-  } 
+  global $comment;
 
-  if( $commentrating = get_comment_meta( get_comment_ID(), 'review_rating', true ) ) {
-    $text .= '<div class="comment-rating star-rating">';
-    for($i=0;$i<5;$i++){
-      if($commentrating > $i)
-        $text .='<span class="fill"></span>';
-      else
-        $text .='<span></span>';
-    }
-    $text .='</div>';
-    return $text;   
-  } else {
-    return $text;   
-  }  
+  if(get_post_type($comment->comment_post_ID) == 'course'){
+    if( $commenttitle = get_comment_meta( get_comment_ID(), 'review_title', true ) ) {
+      $commenttitle = '<strong>' . esc_attr( $commenttitle ) . '</strong><br/>';
+      $text = $commenttitle . $text;
+    } 
+    if( $commentrating = get_comment_meta( get_comment_ID(), 'review_rating', true ) ) {
+      $text .= '<div class="comment-rating star-rating">';
+      for($i=0;$i<5;$i++){
+        if($commentrating > $i)
+          $text .='<span class="fill"></span>';
+        else
+          $text .='<span></span>';
+      }
+      $text .='</div>';
+      return $text;   
+    }  
+  }
+  return $text;   
 }
 
 function calculate_ratings($comment_id) {

@@ -25,8 +25,8 @@ if(isset($course_curriculum)){
 					$href=get_the_title($lesson);
 					$free='';
 					$free = get_post_meta($lesson,'vibe_free',true);
-					if(isset($free) && $free !='' && $free !='H'){
-						$href='<a href="'.get_permalink($lesson).'?id='.get_the_ID().'">'.get_the_title($lesson).'<span>FREE</span></a>';
+					if(vibe_validate($free)){
+						$href='<a href="'.get_permalink($lesson).'?id='.get_the_ID().'">'.get_the_title($lesson).'<span>'.__('FREE','vibe').'</span></a>';
 					}
 
 			echo '<div class="course_lesson">
@@ -40,7 +40,7 @@ if(isset($course_curriculum)){
 							$hours = intval($minutes/60);
 							$minutes = $minutes - $hours*60;
 						}
-					echo '<span><i class="icon-clock"></i> '.(isset($hours)?$hours.' Hours':'').' '.$minutes.' minutes</span>';
+					echo '<span><i class="icon-clock"></i> '.(isset($hours)?$hours.__(' Hours','vibe'):'').' '.$minutes.__(' minutes','vibe').'</span>';
 					}	
 
 					echo '</div>';

@@ -1,6 +1,5 @@
 <?php
 
-
   if(is_user_logged_in()):
 
     global $post;
@@ -32,15 +31,15 @@
    $comment_field='<p>' . '<textarea id="comment" name="comment" class="form_field" rows="8" ">'.$content.'</textarea></p>';
 
    if ( isset($_POST['review']) && wp_verify_nonce($_POST['review'],get_the_ID()) ):
+
     comment_form(array('fields'=>$fields,'comment_field'=>$comment_field,'label_submit' => __('Post Review','vibe'),'title_reply'=> '<span>'.__('Write a Review','vibe').'</span>','logged_in_as'=>'','comment_notes_after'=>'' ));
     echo '<div id="comment-status" data-quesid="'.$post->ID.'"></div>';
     endif;
   }
   ?>
-  <?php
-    
+<?php
   endif;
-  ?>
+?>
 <h3 class="review_title"><?php _e('Course Reviews','vibe'); ?></h3>
   <?php
   if (get_comments_number()==0) {

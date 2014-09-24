@@ -1,13 +1,13 @@
 <?php
 /**
  * Plugin Name: Stag Custom Sidebars
- * Plugin URI: http://wordpress.org/plugins/stag-custom-sidebars
+ * Plugin URI: https://wordpress.org/plugins/stag-custom-sidebars
  * Description: Create custom dynamic sidebars and use anywhere with shortcodes.
- * Version: 1.0.6
+ * Version: 1.0.9
  * Author: Ram Ratan Maurya
- * Author URI: http://mauryaratan.me
+ * Author URI: https://mauryaratan.me
  * Requires at least: 3.3
- * Tested up to: 3.8
+ * Tested up to: 4.0
  * License: GPLv2 or later
  *
  * Text Domain: stag
@@ -21,21 +21,21 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  *
  * @package Stag_Custom_Sidebars
  * @author Ram Ratan Maurya
- * @version 1.0.6
- * @copyright 2013 Ram Ratan Maurya
+ * @version 1.0.9
+ * @copyright 2014 Ram Ratan Maurya
  */
 final class Stag_Custom_Sidebars {
 
 	/**
 	 * @var Stag_Custom_Sidebars The single instance of the class
-	 * @since 1.0.6
+	 * @since 1.0.0
 	 */
 	protected static $_instance = null;
 
 	/**
 	 * @var string
 	 */
-	public $version = '1.0.6';
+	public $version = '1.0.9';
 
 	/**
 	 * @var string
@@ -88,7 +88,7 @@ final class Stag_Custom_Sidebars {
 
 		// Load plugin text domain
 		add_action( 'init', array( $this, 'load_plugin_textdomain' ) );
-		
+
 		add_action( 'admin_footer', array( &$this, 'template_custom_widget_area' ), 200 );
 		add_action( 'load-widgets.php', array( &$this, 'load_scripts_styles' ) , 5 );
 
@@ -100,11 +100,13 @@ final class Stag_Custom_Sidebars {
 		add_filter( 'wie_unencoded_export_data', array( &$this, 'export_data' ) );
 		add_filter( 'wie_import_results', array( &$this, 'reset_custom_key' ) );
 		add_action( 'wie_import_data', array( &$this, 'before_wie_import' ) );
+
+		add_action( 'customize_controls_print_scripts', array( &$this, 'customize_controls_print_scripts' ) );
 	}
 
 	/**
 	 * Internationalization.
-	 * 
+	 *
 	 * @return void
 	 */
 	function load_plugin_textdomain () {
@@ -138,7 +140,8 @@ final class Stag_Custom_Sidebars {
 		wp_enqueue_script( 'stag-custom-sidebars', $this->plugin_url() . '/assets/js/stag-custom-sidebars.js', array('jquery'), $this->version, true );
 
 		wp_localize_script( 'stag-custom-sidebars', 'objectL10n', array(
-			'shortcode' => __( 'Shortcode', 'stag' )
+			'shortcode'           => __( 'Shortcode', 'stag' ),
+			'delete_sidebar_area' => __( 'Are you sure you want to delete this sidebar?', 'stag' )
 		) );
 
 		if ( true === version_compare( $wp_version, '3.7.9', '>' ) ) {
@@ -221,7 +224,7 @@ final class Stag_Custom_Sidebars {
 
 	/**
 	 * Check user entered widget area name and manage conflicts.
-	 * 
+	 *
 	 * @param string $name User entered name
 	 * @return string Processed name
 	 */
@@ -229,29 +232,29 @@ final class Stag_Custom_Sidebars {
         if ( empty( $GLOBALS['wp_registered_sidebars'] ) ) {
         	return $name;
         }
-	
+
 	    $taken = array();
 
         foreach ( $GLOBALS['wp_registered_sidebars'] as $sidebar ) {
             $taken[] = $sidebar['name'];
 	    }
-	    
+
         if( empty($this->sidebars) ) $this->sidebars = array();
 	    $taken = array_merge($taken, $this->sidebars);
-	    
+
 	    if ( in_array( $name, $taken ) ) {
-             $counter  = substr($name, -1);  
+             $counter  = substr($name, -1);
              $new_name = "";
-                
+
             if ( ! is_numeric($counter) ) {
                 $new_name = $name . " 1";
             } else {
                 $new_name = substr($name, 0, -1) . ((int) $counter + 1);
             }
-            
+
             $name = $this->get_name($new_name);
 	    }
-	    
+
 	    return $name;
 	}
 
@@ -268,24 +271,28 @@ final class Stag_Custom_Sidebars {
 		$args = apply_filters( 'stag_custom_sidebars_widget_args', array(
 				'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 				'after_widget'  => '</aside>',
-				'before_title'  => '<h3 class="widgettitle">', 
+				'before_title'  => '<h3 class="widgettitle">',
 				'after_title'   => '</h3>'
 			)
 		);
 
 		if( is_array( $sidebars ) ) {
 			foreach( $sidebars as $sidebar ) {
-				$args['id']    = sanitize_title_with_dashes( $sidebar );
 				$args['name']  = $sidebar;
+
+				$sidebar = sanitize_title_with_dashes( $sidebar );
+
+				$args['id']    = $sidebar;
 				$args['class'] = 'stag-custom';
-				register_sidebar($args);
+
+				register_sidebar( apply_filters( 'scs_widget_args_' . $sidebar, $args ) );
 			}
 		}
 	}
 
 	/**
 	 * Shortcode handler.
-	 * 
+	 *
 	 * @param  array $atts Array of attributes
 	 * @return string $output returns the modified html string
 	 */
@@ -305,9 +312,9 @@ final class Stag_Custom_Sidebars {
 			echo "<section id='{$id}' class='stag-custom-widget-area {$class}'>";
 			dynamic_sidebar( $id );
 			echo "</section>";
-			
+
 			do_action( 'stag_custom_sidebars_after' );
-			
+
 			$output = ob_get_clean();
 		}
 
@@ -318,10 +325,10 @@ final class Stag_Custom_Sidebars {
 	 * Set a custom array key in export data.
 	 *
 	 * Inject all custom sidebar areas created on site under export data of "Widget Importer and Exporter".
-	 * 
+	 *
 	 * @uses Widget_Importer_Exporter
-	 * @link http://wordpress.org/plugins/widget-importer-exporter
-	 * 
+	 * @link https://wordpress.org/plugins/widget-importer-exporter
+	 *
 	 * @since 1.0.6
 	 * @param  array $sidebars An array containing sidebars' widget data.
 	 * @return array $sidebars Modified array, adds custom array key set during export.
@@ -339,8 +346,8 @@ final class Stag_Custom_Sidebars {
 	 * Delete custom array key before 'Widget Importer & Exporter' import.
 	 *
 	 * @uses Widget_Importer_Exporter
-	 * @link http://wordpress.org/plugins/widget-importer-exporter
-	 * 
+	 * @link https://wordpress.org/plugins/widget-importer-exporter
+	 *
 	 * @since 1.0.6
 	 * @param  array $results An array containing sidebars' widget data.
 	 * @return array $results Modified array, deletes custom array key set during export.
@@ -358,7 +365,7 @@ final class Stag_Custom_Sidebars {
 	 * Also register new custom widgets areas.
 	 *
 	 * @global $wp_registered_sidebars
-	 * 
+	 *
 	 * @param  object $data Contains widget import data.
 	 * @return array  $data Modified widget import data.
 	 */
@@ -386,6 +393,26 @@ final class Stag_Custom_Sidebars {
 		SCS()->register_custom_sidebars();
 
 		return $data;
+	}
+
+	/**
+	 * Tweak style for Widget customizer.
+	 *
+	 * @since 1.0.7.
+	 * @return void
+	 */
+	function customize_controls_print_scripts() {
+		// Get custom sidebar keys
+		$sidebars = array_keys( get_option('stag_custom_sidebars') );
+
+		if ( ! is_array( $sidebars ) ) return;
+
+		echo "<style type='text/css'>\n";
+		foreach ( $sidebars as $sidebar_id ) :
+			echo "#accordion-section-sidebar-widgets-{$sidebar_id} { display: list-item !important; height: auto !important; }\n";
+			echo "#accordion-section-sidebar-widgets-{$sidebar_id} .widget-top { opacity: 1 !important; }\n";
+		endforeach;
+		echo "</style>\n";
 	}
 }
 

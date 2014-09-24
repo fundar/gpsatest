@@ -1,6 +1,6 @@
 <div id="comments">
     <a href="<?php echo get_post_comments_feed_link(' '); ?>" class="comments_rss"><i class="icon-rss-1"></i></a>
-    <h3 class="comments-title"><?php comments_number('0','1','%'); ?> Responses on "<?php the_title(); ?>"</h3>
+    <h3 class="comments-title"><?php comments_number('0','1','%'); echo __(' Responses on ','vibe'); global $post; echo $post->post_title; ?>"</h3>
    		<ol class="commentlist"> 
    		<?php 
             wp_list_comments('type=comment&avatar_size=120'); 
@@ -20,7 +20,7 @@ $fields =  array(
 
 $comment_field='<p>' . '<textarea id="comment" name="comment" class="form_field" rows="8" " placeholder="'. __( 'Comment','vibe' ) . '"></textarea></p>';
 
-comment_form(array('fields'=>$fields,'comment_field'=>$comment_field,'title_reply'=> '<span>'.__('Leave a Message','vibe').'</span>' ));
+comment_form(array('fields'=>$fields,'comment_field'=>$comment_field,'title_reply'=> '<span>'.__('Leave a Message','vibe').'</span>'));
                 ?>
 </div>
 

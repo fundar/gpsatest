@@ -26,7 +26,7 @@
 
 	<?php while ( buddydrive_has_items() ) : buddydrive_the_item(); ?>
 
-		<?php buddydrive_get_template( 'buddydrive-entry', false );?>
+		<?php bp_get_template_part( 'buddydrive-entry', false );?>
 
 	<?php endwhile; ?>
 

@@ -1,7 +1,6 @@
 <?php
 // Exit if accessed directly
-if ( !defined( 'ABSPATH' ) ) exit;
-
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
  * Main BuddyDrive Component Class
@@ -17,9 +16,7 @@ class BuddyDrive_Component extends BP_Component {
 	 * @package BuddyDrive
 	 * @since 1.0
 	 */
-	
-	function __construct() {
-		global $blog_id;
+	public function __construct() {
 
 		parent::start(
 			buddydrive_get_slug(),
@@ -28,13 +25,24 @@ class BuddyDrive_Component extends BP_Component {
 		);
 
 	 	$this->includes();
-		
+	 	$this->actions();
+	}
+
+	/**
+	 * set some actions
+	 *
+	 *
+	 * @package BuddyDrive
+	 * @since 1.2.0
+	 */
+	private function actions() {
+
 		buddypress()->active_components[$this->id] = '1';
 
 		/**
 		 * Register the BuddyDrive custom post types
 		 */
-		if( $blog_id == BP_ROOT_BLOG ) {
+		if ( get_current_blog_id() == bp_get_root_blog_id() ) {
 			add_action( 'init', array( &$this, 'register_post_types' ), 9 );
 			
 			$this->register_upload_dir();
@@ -42,8 +50,7 @@ class BuddyDrive_Component extends BP_Component {
 		
 		// register the embed handler
 		add_action( 'bp_init', array( $this, 'register_embed_code' ), 4 );
-		
-	}
+	} 
 
 	/**
 	 * BuddyDrive needed files
@@ -53,7 +60,7 @@ class BuddyDrive_Component extends BP_Component {
 	 *
 	 * @uses bp_is_active() to check if group component is active
 	 */
-	function includes() {
+	public function includes( $includes = array() ) {
 
 		// Files to include
 		$includes = array(
@@ -63,15 +70,14 @@ class BuddyDrive_Component extends BP_Component {
 			'buddydrive-item-classes.php',
 			'buddydrive-item-functions.php',
 			'buddydrive-item-template.php',
-			'buddydrive-item-ajax.php'
+			'buddydrive-item-ajax.php',
 		);
 		
-		if( bp_is_active( 'groups' ) )
+		if ( bp_is_active( 'groups' ) )
 			$includes[] = 'buddydrive-group-class.php';
 		
 
 		parent::includes( $includes );
-
 	}
 
 	/**
@@ -84,7 +90,7 @@ class BuddyDrive_Component extends BP_Component {
 	 * @uses buddypress() to get the instance data
 	 * @uses buddydrive_get_slug() to get BuddyDrive root slug
 	 */
-	function setup_globals() {
+	public function setup_globals( $args = array() ) {
 		$bp = buddypress();
 
 		// Set up the $globals array to be passed along to parent::setup_globals()
@@ -92,13 +98,13 @@ class BuddyDrive_Component extends BP_Component {
 			'slug'                  => buddydrive_get_slug(),
 			'root_slug'             => isset( $bp->pages->{$this->id}->slug ) ? $bp->pages->{$this->id}->slug : buddydrive_get_slug(),
 			'has_directory'         => true,
+			'directory_title'       => sprintf( __( '%s download page', 'buddydrive' ), buddydrive_get_name() ),
 			'notification_callback' => 'buddydrive_format_notifications',
 			'search_string'         => __( 'Search files...', 'buddydrive' )
 		);
 
 		// Let BP_Component::setup_globals() do its work.
 		parent::setup_globals( $globals );
-		
 	}
 
 	/**
@@ -115,18 +121,18 @@ class BuddyDrive_Component extends BP_Component {
 	 * @uses buddydrive_get_friends_subnav_name() to get friends subnav name
 	 * @uses buddydrive_get_friends_subnav_slug() to get friends subnav slug
 	 */
-	function setup_nav() {
+	public function setup_nav( $main_nav = array(), $sub_nav = array() ) {
 		$bp =  buddypress();
 		
 		$main_nav = array(
-			'name' 		      => buddydrive_get_name(),
-			'slug' 		      => buddydrive_get_slug(),
-			'position' 	      => 80,
-			'screen_function'     => 'buddydrive_user_files',
+			'name' 		          => buddydrive_get_name(),
+			'slug' 		          => buddydrive_get_slug(),
+			'position' 	          => 80,
+			'screen_function'     => array( 'BuddyDrive_Screens', 'user_files' ),
 			'default_subnav_slug' => 'files'
 		);
 		$displayed_user_id = bp_displayed_user_id();
-		$user_domain = ( !empty( $displayed_user_id ) ) ? bp_displayed_user_domain() : bp_loggedin_user_domain();
+		$user_domain = ( ! empty( $displayed_user_id ) ) ? bp_displayed_user_domain() : bp_loggedin_user_domain();
 
 		$buddydrive_link = trailingslashit( $user_domain . buddydrive_get_slug() );
 
@@ -136,25 +142,23 @@ class BuddyDrive_Component extends BP_Component {
 			'slug'            => 'files',
 			'parent_url'      => $buddydrive_link,
 			'parent_slug'     => $this->slug,
-			'screen_function' => 'buddydrive_user_files',
+			'screen_function' => array( 'BuddyDrive_Screens', 'user_files' ),
 			'position'        => 10,
 		);
 
 		// Add the subnav items to the friends nav item
-		if( bp_is_active('friends') && bp_displayed_user_id() == bp_loggedin_user_id() ) {
+		if ( bp_is_active( 'friends' ) && bp_displayed_user_id() == bp_loggedin_user_id() ) {
 			$sub_nav[] = array(
 				'name'            => buddydrive_get_friends_subnav_name(),
 				'slug'            => buddydrive_get_friends_subnav_slug(),
 				'parent_url'      => $buddydrive_link,
 				'parent_slug'     => $this->slug,
-				'screen_function' => 'buddydrive_friends_files',
+				'screen_function' => array( 'BuddyDrive_Screens', 'friends_files' ),
 				'position'        => 20
 			);
 		}
-		
 
 		parent::setup_nav( $main_nav, $sub_nav );
-		
 	}
 	
 	/**
@@ -169,7 +173,7 @@ class BuddyDrive_Component extends BP_Component {
 	 * @uses buddydrive_get_friends_subnav_slug() to get friends subnav slug
 	 * @uses bp_is_active() to check for the friends component
 	 */
-	function setup_admin_bar() {
+	public function setup_admin_bar( $wp_admin_nav = array() ) {
 
 		// Prevent debug notices
 		$wp_admin_nav = array();
@@ -197,7 +201,7 @@ class BuddyDrive_Component extends BP_Component {
 				'href'   => trailingslashit( $buddydrive_link )
 			);
 			
-			if( bp_is_active('friends') ) {
+			if ( bp_is_active('friends') ) {
 				// Add shared by friends BuddyDrive submenu
 				$wp_admin_nav[] = array(
 					'parent' => 'my-account-' . $buddydrive_slug,
@@ -219,7 +223,7 @@ class BuddyDrive_Component extends BP_Component {
  	 * @uses buddydrive_get_file_post_type() to get the BuddyFile post type
  	 * @uses register_post_type() to register the post type
 	 */
-	function register_post_types() {
+	public function register_post_types() {
 		
 		// Set up some labels for the post type
 		$labels_file = array(
@@ -290,10 +294,10 @@ class BuddyDrive_Component extends BP_Component {
 	 *
 	 * @uses buddydrive_get_upload_data() to get the specific BuddyDrive upload datas
 	 */
-	function register_upload_dir() {
+	private function register_upload_dir() {
 		$upload_data = buddydrive_get_upload_data();
 		
-		if( is_array( $upload_data ) ) {
+		if ( is_array( $upload_data ) ) {
 			buddydrive()->upload_dir = $upload_data['dir'];
 			buddydrive()->upload_url = $upload_data['url'];
 		}
@@ -309,10 +313,9 @@ class BuddyDrive_Component extends BP_Component {
 	 * 
 	 * @uses wp_embed_register_handler() registers the embed code for BuddyDrive
 	 */
-	function register_embed_code() {
+	public function register_embed_code() {
 		wp_embed_register_handler( 'buddydrive', '#'.buddydrive_get_root_url().'\/(.+?)\/(.+?)\/#i', 'wp_embed_handler_buddydrive' );
 	}
-
 }
 
 /**
@@ -324,4 +327,3 @@ function buddydrive_load_component() {
 	buddypress()->buddydrive = new BuddyDrive_Component;
 }
 add_action( 'bp_loaded', 'buddydrive_load_component' );
-?>

@@ -1,7 +1,6 @@
 <?php
-
 // Exit if accessed directly
-if ( !defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
  * What is the version in db ?
@@ -299,8 +298,8 @@ function buddydrive_get_upload_data() {
 	$buddydrive_url = $upload_datas["baseurl"] .'/buddydrive';
 	$buddydrive_upload_data = array( 'dir' => $buddydrive_dir, 'url' => $buddydrive_url );
 	
-	//finally returns $buddydrive_upload_data
-	return $buddydrive_upload_data;
+	//finally returns $buddydrive_upload_data, you can filter if you know what you're doing!
+	return apply_filters( 'buddydrive_get_upload_data', $buddydrive_upload_data );
 }
 
 /**
@@ -313,12 +312,21 @@ function buddydrive_get_upload_data() {
  * @uses bp_core_update_directory_page_ids() to update the BuddyPres component pages ids
  */
 function buddydrive_activation() {
+	// For network, as plugin is not yet activated, bail method won't help..
+	if ( is_network_admin() && function_exists( 'buddypress' ) ) {
+		$check = ! empty( $_REQUEST ) && 'activate' == $_REQUEST['action'] && $_REQUEST['plugin'] == buddydrive()->basename && bp_is_network_activated() && buddydrive::version_check();
+	} else {
+		$check = ! buddydrive::bail();
+	}
+
+	if ( empty( $check ) )
+		return;
 
 	// let's check for BuddyDrive page in directory pages first !
 	$directory_pages = bp_core_get_directory_page_ids();
 	$buddydrive_slug = buddydrive_get_slug();
 
-	if( empty( $directory_pages[$buddydrive_slug] ) ) {
+	if ( empty( $directory_pages[ $buddydrive_slug ] ) ) {
 		// let's create a page and add it to BuddyPress directory pages
 		$buddydrive_page_content = __( 'BuddyDrive uses this page to manage the downloads of your buddies files, please leave it as is. It will not show in your navigation bar.', 'buddydrive');
 
@@ -332,7 +340,7 @@ function buddydrive_activation() {
 												'post_type'      => 'page' 
 												) );
 		
-		$directory_pages[$buddydrive_slug] = $buddydrive_page_id;
+		$directory_pages[ $buddydrive_slug ] = $buddydrive_page_id;
 		bp_core_update_directory_page_ids( $directory_pages );
 	}
 
@@ -348,11 +356,14 @@ function buddydrive_activation() {
  * @uses bp_core_update_directory_page_ids() to update the BuddyPres component pages ids
  */
 function buddydrive_deactivation() {
+	// Bail if config does not match what we need
+	if ( buddydrive::bail() )
+		return;
 
 	$directory_pages = bp_core_get_directory_page_ids();
 	$buddydrive_slug = buddydrive_get_slug();
 
-	if( !empty( $directory_pages[$buddydrive_slug] ) ) {
+	if ( ! empty( $directory_pages[$buddydrive_slug] ) ) {
 		// let's remove the page as the plugin is deactivated.
 		
 		$buddydrive_page_id = $directory_pages[$buddydrive_slug];
@@ -373,7 +384,6 @@ function buddydrive_deactivation() {
  * @uses set_transient() to temporarly save some data to db
  */
 function buddydrive_add_activation_redirect() {
-
 	// Bail if activating from network, or bulk
 	if ( isset( $_GET['activate-multi'] ) )
 		return;
@@ -398,7 +408,6 @@ function buddydrive_add_activation_redirect() {
  * @uses bp_get_admin_url() to build the admin url
  */
 function buddydrive_do_activation_redirect() {
-
 	// Bail if no activation redirect
 	if ( ! get_transient( '_buddydrive_activation_redirect' ) )
 		return;
@@ -430,13 +439,16 @@ function buddydrive_do_activation_redirect() {
  * @uses buddydrive_get_version() to get BuddyDrive plugin version
  */
 function buddydrive_check_version() {
-	if( buddydrive_is_install() || version_compare( buddydrive_get_db_version(), buddydrive_get_version(), '<' ) ) {
+	// Bail if config does not match what we need
+	if ( buddydrive::bail() )
+		return;
+
+	if ( buddydrive_is_install() || version_compare( buddydrive_get_db_version(), buddydrive_get_version(), '<' ) ) {
 		
 		update_option( '_buddydrive_version', buddydrive_get_version() );
 
 	}
 }
-
 add_action( 'buddydrive_admin_init', 'buddydrive_check_version' );
 
 
@@ -455,7 +467,7 @@ function buddydrive_max_upload_size( $bytes = false ) {
 	$buddydrive_max_upload  = bp_get_option( '_buddydrive_max_upload', $max_upload_mo );
 	$buddydrive_max_upload = intval( $buddydrive_max_upload );
 
-	if( empty( $bytes ) )
+	if ( empty( $bytes ) )
 		return $buddydrive_max_upload;
 	else
 		return $buddydrive_max_upload * 1024 * 1024;
@@ -472,12 +484,12 @@ function buddydrive_max_upload_size( $bytes = false ) {
  */
 function buddydrive_array_checked( $value = false, $array = false ) {
 	
-	if( empty( $value ) || empty( $array ) )
+	if ( empty( $value ) || empty( $array ) )
 		return false;
 
 	$array = array_flip( $array );
 
-	if( in_array( $value, $array ) )
+	if ( in_array( $value, $array ) )
 		return checked( true );
 
 }
@@ -493,7 +505,7 @@ function buddydrive_allowed_file_types( $allowed_file_types ) {
 	
 	$allowed_ext = bp_get_option( '_buddydrive_allowed_extensions' );
 
-	if( empty( $allowed_ext ) || !is_array( $allowed_ext ) || count( $allowed_ext ) < 1 )
+	if ( empty( $allowed_ext ) || ! is_array( $allowed_ext ) || count( $allowed_ext ) < 1 )
 		return $allowed_file_types;
 
 	$allowed_ext = array_flip( $allowed_ext );
@@ -516,7 +528,7 @@ function buddydrive_allowed_file_types( $allowed_file_types ) {
  */
 function buddydrive_maybe_redirect_oldlink() {
 
-	if( !is_404() )
+	if ( ! is_404() )
 		return;
 
 	$root_domain_url = bp_get_root_domain();
@@ -525,12 +537,11 @@ function buddydrive_maybe_redirect_oldlink() {
 	$buddydrive_slug = buddydrive()->buddydrive_slug;
 	$buddydrive_old_root_url = trailingslashit( $root_domain_url ) . $buddydrive_slug;
 
-	if( strpos( $maybe_buddydrive, $buddydrive_old_root_url ) === 0 ) {
+	if ( strpos( $maybe_buddydrive, $buddydrive_old_root_url ) === 0 ) {
 
 		$buddydrive_new_url = str_replace( $buddydrive_old_root_url, buddydrive_get_root_url(), $maybe_buddydrive );
 
 		bp_core_redirect( $buddydrive_new_url );
 
 	}
-	
 }

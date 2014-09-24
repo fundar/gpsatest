@@ -221,6 +221,9 @@ implements
         }
 
         $value = $this->value[$variant];
+        if(is_array($value)){
+            return $value;
+        }
         return isset($value) ? stripslashes($value) : $this->get_default();
 
     }

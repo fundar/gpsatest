@@ -1,8 +1,4 @@
 <?php
-if(isset($_GET['key'])){
-	load_template(VIBE_PATH.'/thankyou.php', true );
-	exit();
-}
 if(is_404()){
 	$error404 = vibe_get_option('error404');
     if(isset($error404)){

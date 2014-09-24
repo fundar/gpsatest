@@ -425,7 +425,7 @@ function buddydrive_sanitize_custom_name( $option ) {
 function buddydrive_admin_settings() {
 	$form_action = 'options.php';
 	
-	if( is_multisite() ) {
+	if( bp_core_do_network_admin() ) {
 		do_action( 'buddydrive_multisite_options' );
 		
 		$form_action = add_query_arg( 'page', 'buddydrive', bp_get_admin_url( 'settings.php' ) );
@@ -445,7 +445,7 @@ function buddydrive_admin_settings() {
 			<?php do_settings_sections( 'buddydrive' ); ?>
 
 			<p class="submit">
-				<?php if( is_multisite() ) :?>
+				<?php if( bp_core_do_network_admin() ) :?>
 					<?php wp_nonce_field( 'buddydrive_settings', '_wpnonce_buddydrive_setting' ); ?>
 				<?php endif;?>
 				<input type="submit" name="submit" class="button-primary" value="<?php esc_attr_e( 'Save Changes', 'buddydrive' ); ?>" />

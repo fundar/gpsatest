@@ -74,7 +74,7 @@
 
 						<?php while ( bp_profile_fields() ) : bp_the_profile_field(); ?>
 
-							<div class="editfield show">
+							<div class="editfield">
 
 								<?php if ( 'textbox' == bp_get_the_profile_field_type() ) : ?>
 
@@ -83,7 +83,13 @@
 									<input type="text" name="<?php bp_the_profile_field_input_name(); ?>"  class="form_field" id="<?php bp_the_profile_field_input_name(); ?>" value="<?php bp_the_profile_field_edit_value(); ?>" />
 
 								<?php endif; ?>
+								<?php if ( 'number' == bp_get_the_profile_field_type() ) : ?>
 
+									<label for="<?php bp_the_profile_field_input_name(); ?>"><?php bp_the_profile_field_name(); ?> <?php if ( bp_get_the_profile_field_is_required() ) : ?><?php _e( '(required)', 'vibe' ); ?><?php endif; ?></label>
+									<?php do_action( bp_get_the_profile_field_errors_action() ); ?>
+									<input type="number" name="<?php bp_the_profile_field_input_name(); ?>"  class="form_field" id="<?php bp_the_profile_field_input_name(); ?>" value="<?php bp_the_profile_field_edit_value(); ?>" />
+
+								<?php endif; ?>
 								<?php if ( 'textarea' == bp_get_the_profile_field_type() ) : ?>
 
 									<label for="<?php bp_the_profile_field_input_name(); ?>"><?php bp_the_profile_field_name(); ?> <?php if ( bp_get_the_profile_field_is_required() ) : ?><?php _e( '(required)', 'vibe' ); ?><?php endif; ?></label>
@@ -115,8 +121,8 @@
 								<?php if ( 'radio' == bp_get_the_profile_field_type() ) : ?>
 
 									<div class="radio">
-										<span class="label"><?php bp_the_profile_field_name(); ?> <?php if ( bp_get_the_profile_field_is_required() ) : ?><?php _e( '(required)', 'vibe' ); ?><?php endif; ?></span>
-
+										<label for="<?php bp_the_profile_field_input_name(); ?>"><?php bp_the_profile_field_name(); ?> <?php if ( bp_get_the_profile_field_is_required() ) : ?><?php _e( '(required)', 'vibe' ); ?><?php endif; ?></label>
+										
 										<?php do_action( bp_get_the_profile_field_errors_action() ); ?>
 										<?php bp_the_profile_field_options(); ?>
 
@@ -163,7 +169,7 @@
 
 								<?php if ( bp_current_user_can( 'bp_xprofile_change_field_visibility' ) ) : ?>
 									<p class="field-visibility-settings-toggle" id="field-visibility-settings-toggle-<?php bp_the_profile_field_id() ?>">
-										<?php printf( __( 'This field can be seen by: <span class="current-visibility-level">%s</span>', 'vibe' ), bp_get_the_profile_field_visibility_level_label() ) ?> <a href="#" class="visibility-toggle-link"><?php _ex( 'Change', 'Change profile field visibility level', 'vibe' ); ?></a>
+										<?php printf( __( 'This field can be seen by: <span class="current-visibility-level">%s</span>', 'vibe' ), bp_get_the_profile_field_visibility_level_label() ) ?> <a href="#" class="visibility-toggle-link"><?php _e( 'Change profile field visibility level', 'vibe' ); ?></a>
 									</p>
 
 									<div class="field-visibility-settings" id="field-visibility-settings-<?php bp_the_profile_field_id() ?>">
@@ -286,14 +292,16 @@
 		</div>
 		<div class="col-md-3 col-sm-4">
 			<div class="sidebar">
-			<?php get_sidebar( 'buddypress' ); ?>
+			<?php
+		 		$sidebar = apply_filters('wplms_sidebar','buddypress',get_the_ID());
+                if ( !function_exists('dynamic_sidebar')|| !dynamic_sidebar($sidebar) ) : ?>
+           	<?php endif; ?>
 			</div>
 		</div>
 	</div>	
 </section><!-- #content -->
 	<script type="text/javascript">
 		jQuery(document).ready( function() {
-			jQuery('.editfield').show();
 			if ( jQuery('div#blog-details').length && !jQuery('div#blog-details').hasClass('show') )
 				jQuery('div#blog-details').toggle();
 

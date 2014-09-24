@@ -27,11 +27,11 @@ add_action('after_setup_theme','vibe_customizer_setup');
 
 function vibe_customize($wp_customize) {
 
-    require_once 'config.php';
+    require_once(dirname(__FILE__) . '/config.php');
 /*====================================================== */
 /*===================== SECTIONS ====================== */
 /*====================================================== */
-    $i=164;
+    $i=164; // Show sections after the WordPress default sections
     if(isset($vibe_customizer) && is_Array($vibe_customizer)){
         foreach($vibe_customizer['sections'] as $key=>$value){
             $wp_customize->add_section( $key, array(
@@ -105,13 +105,13 @@ if(isset($vibe_customizer) && is_array($vibe_customizer))
                                 ) ) );
                     break;
                 case 'textarea':
-                        $wp_customize->add_control( $control, array(
+                        $wp_customize->add_control( new Vibe_Customize_Textarea_Control( $wp_customize, $control, array(
                                 'label'   => $type['label'],
                                 'section' => $section,
                                 'settings'   => 'vibe_customizer['.$control.']',
                                 'priority'       => $i,
                                 'type'    => 'textarea',
-                                ) );
+                                ) ) );
                     break;
             }
         }

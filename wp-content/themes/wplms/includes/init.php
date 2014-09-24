@@ -3,12 +3,38 @@
 
 if ( ! isset( $content_width ) ) $content_width = 1170;
 
-add_theme_support( 'woocommerce' );
 add_theme_support( 'post-thumbnails' );
+add_theme_support( 'woocommerce' );
 add_theme_support( 'automatic-feed-links' );
+add_theme_support( 'buddypress' );
+add_theme_support( 'bp-default-responsive' );
+add_theme_support( 'html5', array( 'gallery', 'caption' ) );
+
+add_post_type_support( 'course', 'front-end-editor' );
+add_post_type_support( 'unit', 'front-end-editor' );
+add_post_type_support( 'quiz', 'front-end-editor' );
+add_post_type_support( 'question', 'front-end-editor' );
+add_post_type_support( 'wplms-event', 'front-end-editor' );
+add_post_type_support( 'wplms-assignment', 'front-end-editor' );
+add_post_type_support( 'testimonials', 'front-end-editor' );
+add_post_type_support( 'popups', 'front-end-editor' );
+remove_post_type_support('page', 'front-end-editor' );
+add_post_type_support( 'topic', 'front-end-editor' );
+add_post_type_support( 'reply', 'front-end-editor' );
+
+$defaults = array(
+    'default-color'          => '',
+    'default-image'          => '',
+    'default-repeat'         => '',
+    'default-position-x'     => '',
+    'wp-head-callback'       => 'vibe_custom_background_cb',
+    'admin-head-callback'    => '',
+    'admin-preview-callback' => 'vibe_custom_background_cb'
+);
+add_theme_support( 'custom-background', $defaults );
 
 
-function vibe_admin_url($url) {
+function vibe_admin_url($url='/') {
     if (is_multisite()) {
         if  (is_super_admin())
             return network_admin_url($url);
@@ -21,9 +47,22 @@ function vibe_site_url($url='/') {
     if (is_multisite()) {
         return network_site_url($url);
     } else {
-        
         return site_url($url);
     }
+}
+
+add_filter('wplms_logo_url','vibe_logo_url');
+function vibe_logo_url($url='/'){
+    $logo=vibe_get_option('logo'); 
+    
+    if(isset($logo) && $logo)
+        $url = $logo;
+
+    if(is_ssl()){
+        if (substr($url, 0, 7) == "http://")
+            $url = str_replace('http','https',$url);
+    }
+    return $url;
 }
 
 function count_user_posts_by_type( $userid, $post_type = 'post' ) {
@@ -36,6 +75,7 @@ function count_user_posts_by_type( $userid, $post_type = 'post' ) {
     return apply_filters( 'get_usernumposts', $count, $userid );
 }
 
+if(!function_exists('vibe_get_option')){
 function vibe_get_option($field,$compare = NULL){
     
     $option=get_option(THEME_SHORT_NAME);
@@ -52,7 +92,7 @@ function vibe_get_option($field,$compare = NULL){
         return $return;
     }else
     return NULL;
-    
+   }   
 }
 
 if(!function_exists('getPostMeta')){
@@ -72,7 +112,6 @@ if(!function_exists('getPostMeta')){
 function wpse49326_translate_theme() {
     // Load Theme textdomain
     load_theme_textdomain( 'vibe', get_template_directory() . '/languages');
-
     // Include Theme text translation file
     $locale = get_locale();
     $locale_file = get_template_directory() . "/languages/$locale.php";
@@ -81,7 +120,6 @@ function wpse49326_translate_theme() {
     }
 }
 add_action( 'after_setup_theme', 'wpse49326_translate_theme' );
-
 
 // Restricting Excerpt Length
 // 
@@ -134,7 +172,7 @@ if(!function_exists('ajaxify_comments')){
 
 if(!function_exists('vibe_set_menu')){
     function vibe_set_menu(){
-         echo '<p style="padding:20px 0 10px;color:#FFF;text-align:center;">Setup Menus in Admin Panel</p>';
+         echo '<p style="padding:20px 0 10px;color:#FFF;text-align:center;">'.__('Setup Menus in Admin Panel','vibe').'</p>';
     }
 }
 
@@ -165,6 +203,48 @@ function vibe_wp_title( $title, $sep ) {
 } // end mayer_wp_title
 add_filter( 'wp_title', 'vibe_wp_title', 10, 2 );
 
+
+
+function vibe_custom_background_cb(){
+    // $background is the saved custom image, or the default image.
+    $background = set_url_scheme( get_background_image() );
+
+    // $color is the saved custom color.
+    // A default has to be specified in style.css. It will not be printed here.
+    $color = get_theme_mod( 'background_color' );
+
+    if ( ! $background && ! $color )
+        return;
+
+    $style = $color ? "background-color: #$color;" : '';
+
+    if ( $background ) {
+        $image = " background-image: url('$background');";
+
+        $repeat = get_theme_mod( 'background_repeat', get_theme_support( 'custom-background', 'default-repeat' ) );
+        if ( ! in_array( $repeat, array( 'no-repeat', 'repeat-x', 'repeat-y', 'repeat' ) ) )
+            $repeat = 'repeat';
+        $repeat = " background-repeat: $repeat;";
+
+        $position = get_theme_mod( 'background_position_x', get_theme_support( 'custom-background', 'default-position-x' ) );
+        if ( ! in_array( $position, array( 'center', 'right', 'left' ) ) )
+            $position = 'left';
+        $position = " background-position: top $position;";
+
+        $attachment = get_theme_mod( 'background_attachment', get_theme_support( 'custom-background', 'default-attachment' ) );
+        if ( ! in_array( $attachment, array( 'fixed', 'scroll' ) ) )
+            $attachment = 'scroll';
+        $attachment = " background-attachment: $attachment;";
+
+        $style .= $image . $repeat . $position . $attachment;
+    }
+?>
+<style type="text/css" id="custom-background-css">
+body.custom-background .pusher { <?php echo trim( $style ); ?> }
+</style>
+<?php
+
+}
 
 
 function learndash_admin_notice(){
@@ -202,7 +282,7 @@ function register_required_plugins() {
         array(
             'name'                  => 'Buddypress', // The plugin name
             'slug'                  => 'buddypress', // The plugin slug (typically the folder name)
-            'source'                => 'http://downloads.wordpress.org/plugin/buddypress.1.9.2.zip', // The plugin source
+            'source'                => 'http://downloads.wordpress.org/plugin/buddypress.2.0.1.zip', // The plugin source
             'required'              => true, // If false, the plugin is only 'recommended' instead of required
             'version'               => '1.9', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
             'force_activation'      => $force_activate, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
@@ -212,20 +292,20 @@ function register_required_plugins() {
         array(
             'name'                  => 'WooCommerce', // The plugin name
             'slug'                  => 'woocommerce', // The plugin slug (typically the folder name)
-            'source'                => 'http://downloads.wordpress.org/plugin/woocommerce.2.1.2.zip', // The plugin source
+            'source'                => 'http://downloads.wordpress.org/plugin/woocommerce.2.1.12.zip', // The plugin source
             'required'              => true, // If false, the plugin is only 'recommended' instead of required
             'version'               => '1.6', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
-            'force_activation'      => $force_activate, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
+            'force_activation'      => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
             'force_deactivation'    => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
             'external_url'          => '', // If set, overrides default API URL and points to an external URL
         ),
         array(
             'name'                  => 'BBPress', // The plugin name
             'slug'                  => 'bbpress', // The plugin slug (typically the folder name)
-            'source'                => 'http://downloads.wordpress.org/plugin/bbpress.2.5.3.zip', // The plugin source
+            'source'                => 'http://downloads.wordpress.org/plugin/bbpress.2.5.4.zip', // The plugin source
             'required'              => true, // If false, the plugin is only 'recommended' instead of required
             'version'               => '1.6', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
-            'force_activation'      => true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
+            'force_activation'      => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
             'force_deactivation'    => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
             'external_url'          => '', // If set, overrides default API URL and points to an external URL
         ),
@@ -233,11 +313,21 @@ function register_required_plugins() {
         array(
             'name'                  => 'Layer Slider', // The plugin name
             'slug'                  => 'LayerSlider', // The plugin slug (typically the folder name)
-            'source'                => VIBE_URL . '/plugins/layersliderwp-5.0.2.installable.zip', // The plugin source
+            'source'                => VIBE_URL . '/plugins/layersliderwp-5.2.0.installable.zip', // The plugin source
             'required'              => true, // If false, the plugin is only 'recommended' instead of required
             'version'               => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
             'force_activation'      => true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
             'force_deactivation'    => true, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
+            'external_url'          => '', // If set, overrides default API URL and points to an external URL
+        ),
+        array(
+            'name'                  => 'WP Visual Composer', // The plugin name
+            'slug'                  => 'js_composer', // The plugin slug (typically the folder name)
+            'source'                => VIBE_URL . '/plugins/js_composer.zip', // The plugin source
+            'required'              => true, // If false, the plugin is only 'recommended' instead of required
+            'version'               => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
+            'force_activation'      => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
+            'force_deactivation'    => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
             'external_url'          => '', // If set, overrides default API URL and points to an external URL
         ),
           array(
@@ -250,6 +340,19 @@ function register_required_plugins() {
             'force_deactivation'    => true, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
             'external_url'          => '', // If set, overrides default API URL and points to an external URL
         ),
+        
+          
+        array(
+            'name'                  => 'WPLMS Customizer', // The plugin name
+            'slug'                  => 'wplms-customizer', // The plugin slug (typically the folder name)
+            'source'                => VIBE_URL . '/plugins/wplms-customizer.zip', // The plugin source
+            'required'              => true, // If false, the plugin is only 'recommended' instead of required
+            'version'               => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
+            'force_activation'      => true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
+            'force_deactivation'    => true, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
+            'external_url'          => '', // If set, overrides default API URL and points to an external URL
+        ),
+
     );
     
     if($force_activate){
@@ -263,6 +366,16 @@ function register_required_plugins() {
             'force_deactivation'    => true, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
             'external_url'          => '', // If set, overrides default API URL and points to an external URL
         );  
+         $plugins[]=array(
+            'name'                  => 'WPLMS Events', // The plugin name
+            'slug'                  => 'wplms-events', // The plugin slug (typically the folder name)
+            'source'                => VIBE_URL . '/plugins/wplms-events.zip', // The plugin source
+            'required'              => false, // If false, the plugin is only 'recommended' instead of required
+            'version'               => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
+            'force_activation'      => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
+            'force_deactivation'    => true, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
+            'external_url'          => '', // If set, overrides default API URL and points to an external URL
+        );
           $plugins[]=array(
             'name'                  => 'Vibe Course Module', // The plugin name
             'slug'                  => 'vibe-course-module', // The plugin slug (typically the folder name)
@@ -270,6 +383,26 @@ function register_required_plugins() {
             'required'              => true, // If false, the plugin is only 'recommended' instead of required
             'version'               => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
             'force_activation'      => $force_activate, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
+            'force_deactivation'    => true, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
+            'external_url'          => '', // If set, overrides default API URL and points to an external URL
+        );
+        $plugins[]=array(
+            'name'                  => 'WPLMS Front End', // The plugin name
+            'slug'                  => 'wplms-front-end', // The plugin slug (typically the folder name)
+            'source'                => VIBE_URL . '/plugins/wplms-front-end.zip', // The plugin source
+            'required'              => true, // If false, the plugin is only 'recommended' instead of required
+            'version'               => '1.6', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
+            'force_activation'      => $force_activate, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
+            'force_deactivation'    => true, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
+            'external_url'          => '', // If set, overrides default API URL and points to an external URL
+        );
+        $plugins[]=array(
+            'name'                  => 'WPLMS Assignments', // The plugin name
+            'slug'                  => 'wplms-assignments', // The plugin slug (typically the folder name)
+            'source'                => VIBE_URL . '/plugins/wplms-assignments.zip', // The plugin source
+            'required'              => false, // If false, the plugin is only 'recommended' instead of required
+            'version'               => '', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented
+            'force_activation'      => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
             'force_deactivation'    => true, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins
             'external_url'          => '', // If set, overrides default API URL and points to an external URL
         );
@@ -322,7 +455,19 @@ function register_required_plugins() {
 if(!function_exists('vibe_login_logo')){
 function vibe_login_logo() {    //Copy this function to customize WP Admin login screen
     $url=vibe_get_option('logo');
-
+    $customizer = array();
+    $customizer=get_option('vibe_customizer');
+    if(!isset($customizer) || !is_array($customizer) || !count($customizer)){
+    
+    if(!isset($customizer['header_top_bg']) || $customizer['header_top_bg']=='')
+        $customizer['header_top_bg']='#232b2d';
+    if(!isset($customizer['header_top_color']) || $customizer['header_top_color']=='')
+         $customizer['header_top_color']= '#FFFFFF';
+    if(!isset($customizer['header_bg']) || $customizer['header_bg']=='')
+        $customizer['header_bg']='#313b3d';
+    if(!isset($customizer['header_color']) || $customizer['header_color']=='')
+         $customizer['header_color']= '#FFFFFF';
+    }
     if(!isset($url) || $url == ''){
         $url = get_stylesheet_directory_uri().'/images/logo.png';
     }
@@ -336,7 +481,7 @@ function vibe_login_logo() {    //Copy this function to customize WP Admin login
             background-size:100%;
         }
         html,body.login {
-            background: #313b3d;
+            background: <?php echo $customizer['header_bg']; ?>;
             }
         body:before{
             content:'';
@@ -348,10 +493,11 @@ function vibe_login_logo() {    //Copy this function to customize WP Admin login
             left:0;
         }    
         .login label{
-            color: rgba(255,255,255,0.8);
+            color: <?php echo $customizer['header_color']; ?>;
             font-size:11px;
             text-transform: uppercase;
             font-weight:600;
+            opacity: 0.8;
         }
         .login form{
             background:none;
@@ -360,15 +506,16 @@ function vibe_login_logo() {    //Copy this function to customize WP Admin login
             margin:0;
         }    
         .login form .input, .login input[type=text], .login form input[type=checkbox]{
-            background: #232b2d;
+            background: <?php echo $customizer['header_top_bg']; ?>;
             border-color: rgba(255,255,255,0.1);
             border-radius: 2px;
-            color:#FFF;
+            color:<?php echo $customizer['header_top_color']; ?>;
         }
         .login #nav a, .login #backtoblog a{
-            color: rgba(255,255,255,0.8);
+            color: <?php echo $customizer['header_color']; ?>;
             text-transform: uppercase;
             font-size: 11px;
+            opacity: 0.8;
         }
         div.error, .login #login_error{border-radius:2px;}
     </style>

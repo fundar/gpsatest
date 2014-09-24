@@ -38,7 +38,7 @@ get_header( 'buddypress' ); ?>
             <div class="col-md-9 col-sm-8">
                 <div class="pagetitle">
                     <h1><?php the_title(); ?></h1>
-                    <h5><?php the_sub_title(); ?></h5>
+                    <?php the_sub_title(); ?>
                 </div>
             </div>
             <div class="col-md-3 col-sm-4">
@@ -119,8 +119,10 @@ get_header( 'buddypress' ); ?>
 							</div>	
 							<div class="col-md-3 col-sm-4">
 								<div class="buddysidebar">
-									<?php if ( !function_exists('dynamic_sidebar')|| !dynamic_sidebar('buddypress') ) : ?>
-		                  			 <?php endif; ?>
+									<?php
+								 		$sidebar = apply_filters('wplms_sidebar','buddypress',get_the_ID());
+						                if ( !function_exists('dynamic_sidebar')|| !dynamic_sidebar($sidebar) ) : ?>
+					               	<?php endif; ?>
 								</div>
 							</div>
 						</div>

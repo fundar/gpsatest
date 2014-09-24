@@ -18,29 +18,6 @@
  */
 function bp_course_screen_notification_settings() {
 	global $current_user;
-
-	/**
-	 * Under Settings > Notifications within a users profile page they will see
-	 * settings to turn off notifications for each component.
-	 *
-	 * You can plug your custom notification settings into this page, so that when your
-	 * component is active, the user will see options to turn off notifications that are
-	 * specific to your component.
-	 */
-
-	 /**
-	  * Each option is stored in a posted array notifications[SETTING_NAME]
-	  * When saved, the SETTING_NAME is stored as usermeta for that user.
-	  *
-	  * For course, notifications[notification_friends_friendship_accepted] could be
-	  * used like this:
-	  *
-	  * if ( 'no' == get_user_meta( $bp->displayed_user->id, 'notification_friends_friendship_accepted', true ) )
-	  *		// don't send the email notification
-	  *	else
-	  *		// send the email notification.
-      */
-
 	?>
 	<table class="notification-settings" id="bp-course-notification-settings">
 
@@ -73,7 +50,7 @@ function bp_course_screen_notification_settings() {
 	</table>
 <?php
 }
-add_action( 'bp_notification_settings', 'bp_course_screen_notification_settings' );
+//add_action( 'bp_notification_settings', 'bp_course_screen_notification_settings' );
 
 
 /**

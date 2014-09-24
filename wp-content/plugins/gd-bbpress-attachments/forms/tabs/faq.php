@@ -9,10 +9,10 @@
 <p>All attachments uploads are handled by the WordPress Media Library, and plugin uses native WordPress upload functions. When file is uploaded it will be available through Media Library. Consult WordPress documentation about Media Library requirements.</p>
 
 <h4>Will this plugin work with standalone bbPress instalation?</h4>
-<p>No. This plugin requires the plugin versions of bbPress 2.0 or higher.</p>
+<p>No. This plugin requires the plugin versions of bbPress 2.3 or higher.</p>
 
 <h4>Does this plugin work with bbPress that is part of BuddyPress plugin?</h4>
-<p>No. Plugin requires bbPress 2.0 or higher plugin.</p>
+<p>No. Plugin requires bbPress 2.3 or higher plugin.</p>
 
-<h4>Does this plugin work with bbPress 2.1 used as site wide forums for BuddyPress plugin?</h4>
+<h4>Does this plugin work with bbPress 2.3 used as site wide forums for BuddyPress plugin?</h4>
 <p>Yes. But, make sure to enable 'Always Include' option for JavaScript and CSS.</p>

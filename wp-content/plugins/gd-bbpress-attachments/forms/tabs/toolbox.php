@@ -5,7 +5,7 @@
     <p><?php _e("Buy GD bbPress Toolbox Pro version or Dev4Press Plugins Pack and get 15% discount using this coupon", "gd-bbpress-attachments"); ?>: <strong style="color: #c00;">GDBBPTOPRO</strong></p>
     <h3><?php _e("Important links", "gd-bbpress-attachments"); ?></h3>
     <a href="http://www.gdbbpbox.com/" target="_blank"><?php _e("Official Website", "gd-bbpress-attachments"); ?></a><br/>
-    <a href=""http://d4p.me/247" target="_blank"><?php _e("Dev4Press Plugins Pack", "gd-bbpress-attachments"); ?></a><br/>
+    <a href="http://d4p.me/247" target="_blank"><?php _e("Dev4Press Plugins Pack", "gd-bbpress-attachments"); ?></a><br/>
 </div>
 <div class="d4p-information-second" style="padding-top: 15px;">
     <a title="GD bbPress Toolbox" target="_blank" href="http://www.gdbbpbox.com/"><img src="http://cdnx.dev4press.com/wp-content/uploads/2012/05/front_logo_gdbx.png" alt="GD bbPress Toolbox" /></a>
@@ -19,6 +19,8 @@
     <ul>
         <li><?php _e("Panel with list of attachments", "gd-bbpress-attachments"); ?></li>
         <li><?php _e("Panel with logged errors", "gd-bbpress-attachments"); ?></li>
+        <li><?php _e("More BBCodes", "gd-bbpress-attachments"); ?></li>
+        <li><?php _e("BBCodes Toolbar", "gd-bbpress-attachments"); ?></li>
         <li><?php _e("More widgets", "gd-bbpress-attachments"); ?></li>
         <li><?php _e("More registered views", "gd-bbpress-attachments"); ?></li>
     </ul>

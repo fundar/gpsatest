@@ -40,6 +40,8 @@ class VIBE_Options_multi_social extends VIBE_Options{
                                                     <option value="facebook" '.(($value =='facebook')?'selected="selected"':'').'>Facebook</option>
                                                     <option value="github" '.(($value =='github')?'selected="selected"':'').'>Github</option>
                                                     <option value="pinterest" '.(($value =='pinterest')?'selected="selected"':'').'>Pinterest</option>
+                                                    <option value="fontawesome-webfont-5" '.(($value =='fontawesome-webfont-5')?'selected="selected"':'').'>Youtube</option>
+                                                    <option value="vimeo" '.(($value =='vimeo')?'selected="selected"':'').'>Vimeo</option>
                                                     <option value="pinboard" '.(($value =='pinboard')?'selected="selected"':'').'>pinboard</option>    
                                                     <option value="gplus" '.(($value =='gplus')?'selected="selected"':'').'>Google Plus</option>
                                                     <option value="google" '.(($value =='google')?'selected="selected"':'').'>Google</option>
@@ -118,6 +120,8 @@ class VIBE_Options_multi_social extends VIBE_Options{
                                                     <option value="facebook">Facebook</option>
                                                     <option value="github">Github</option>
                                                     <option value="pinterest">Pinterest</option>
+                                                    <option value="fontawesome-webfont-5">Youtube</option>
+                                                    <option value="vimeo">Vimeo</option>
                                                     <option value="pinboard">pinboard</option>    
                                                     <option value="gplus">Google Plus</option>
                                                     <option value="google">Google</option>
@@ -179,7 +183,7 @@ class VIBE_Options_multi_social extends VIBE_Options{
                                                     <option value="yelp">yelp</option>
                                                     <option value="scribd">scribd</option>
                                                 </select>
-                                                <input type="text" id="'.$this->field['id'].'[url]" name="" value="" class="'.$class.'" rel-name="'.$this->args['opt_name'].'['.$this->field['id'].'][url][]" /> 
+                                                <input type="text" id="'.$this->field['id'].'[url]" name="" placeholder="'.__('Enter Full URL of the page','vibe').'" value="" class="'.$class.'" rel-name="'.$this->args['opt_name'].'['.$this->field['id'].'][url][]" /> 
                                                     <a href="javascript:void(0);" class="vibe-opts-multi-social-remove">'.__('Remove', 'vibe').'</a>
                                                 </li>';
 		

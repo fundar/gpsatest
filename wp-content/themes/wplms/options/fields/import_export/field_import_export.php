@@ -35,8 +35,8 @@ class VIBE_Options_import_export extends VIBE_Options{
                 }
 		$export_code=base64_encode($export_string);
 		$placeholder = (isset($this->field['placeholder']))?' placeholder="'.esc_attr($this->field['placeholder']).'" ':'';
-		echo '<p><strong>Export Code</strong> (Copy export code and paste it in import area of other WordPress isntallation)</p><textarea '.$placeholder.'class="export_code '.$class.'" rows="6" >'.$export_code.'</textarea>';
-		echo '<p><strong>Import Code</strong></p>
+		echo '<p><strong>'.__('Export Code','vibe').'</strong>'.__('(Copy export code and paste it in import area of other WordPress isntallation)','vibe').'</p><textarea '.$placeholder.'class="export_code '.$class.'" rows="6" >'.$export_code.'</textarea>';
+		echo '<p><strong>'.__('Import Code','vibe').'</strong></p>
                       <textarea id="'.$this->field['id'].'" '.$placeholder.' class="import_code '.$class.'" rows="6" ></textarea>
                       <a href="javascript:void(0);" class="import_data button button-primary" rel-id="'.$this->field['id'].'">Import</a>    ';
                 

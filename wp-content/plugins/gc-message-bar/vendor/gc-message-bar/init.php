@@ -15,6 +15,7 @@ require_once( $PATH .'interface-option-meta-data.php');
 require_once( $PATH .'interface-option-type-detection.php');
 require_once( $PATH .'class-service-locator.php');
 require_once( $PATH .'class-option-store.php');
+require_once( $PATH .'class-url-filter.php');
 require_once( $PATH .'class-instance-option-store.php');
 require_once( $PATH .'class-empty-option-store.php');
 require_once( $PATH .'class-option.php');
@@ -26,11 +27,15 @@ require_once( $PATH .'class-option-repository-factory.php');
 require_once( $PATH .'class-request.php');
 require_once( $PATH .'class-registry.php');
 require_once( $PATH .'class-util.php');
+require_once( $PATH .'class-cache.php');
+require_once( $PATH .'class-wp-cache.php');
 require_once( $PATH .'interface-controller.php');
 
 require_once( $PATH .'class-mygetconversion-worker.php');
 
 require_once( $PATH .'event'.DIRECTORY_SEPARATOR.'class-manager.php');
+
+require_once( $PATH .'http'.DIRECTORY_SEPARATOR.'class-http-request.php');
 
 
 

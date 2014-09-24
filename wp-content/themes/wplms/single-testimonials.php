@@ -10,7 +10,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
             <div class="col-md-9 col-sm-8">
                 <div class="pagetitle">
                     <h1><?php the_title(); ?></h1>
-                    <h5><?php the_sub_title(); ?></h5>
+                    <?php the_sub_title(); ?>
                 </div>
             </div>
              <div class="col-md-3 col-sm-4">
@@ -33,7 +33,12 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                     </div>
                     <div class="testimonial-author">
                         <?php
-                            echo get_the_post_thumbnail();
+                            if(has_post_thumbnail()){
+                                echo get_the_post_thumbnail();    
+                            }else{
+                                echo get_avatar( 'email@example.com', 96 );
+                            }
+                            
                             echo '<h4>'.get_post_meta(get_the_ID(),'vibe_testimonial_author_name',true).'
                             <span>'.get_post_meta(get_the_ID(),'vibe_testimonial_author_designation',true).'</span></h4>';
                         ?>
@@ -48,10 +53,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
             <div class="col-md-3 col-sm-3">
                 <div class="sidebar">
                     <?php
-                    $sidebar=getPostMeta($post->ID,'vibe_sidebar');
-                    ((isset($sidebar) && $sidebar)?$sidebar:$sidebar='mainsidebar');
+                    $sidebar = apply_filters('wplms_sidebar','mainsidebar',get_the_ID());
                     if ( !function_exists('dynamic_sidebar')|| !dynamic_sidebar($sidebar) ) : ?>
-                   <?php endif; ?>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

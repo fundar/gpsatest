@@ -45,6 +45,7 @@ while(have_posts()):the_post();
 	<div class="small_desc">
 	<?php $content=get_the_content(); 
 		echo substr(apply_filters('the_content',$content),0,1200).' <a href="#" id="more_desc" class="link">READ MORE</a>';
+		
 	?>
 	</div>
 	<div class="full_desc">

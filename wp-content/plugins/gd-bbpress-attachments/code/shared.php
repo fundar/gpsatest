@@ -21,21 +21,26 @@ if (!function_exists('d4p_bbpress_get_user_roles')) {
     function d4p_bbpress_get_user_roles() {
         $roles = array();
 
-        if (d4p_bbpress_version() < 22) {
-            global $wp_roles;
+        $dynamic_roles = bbp_get_dynamic_roles();
 
-            foreach ($wp_roles->role_names as $role => $title) {
-                $roles[$role] = $title;
-            }
-        } else {
-            $dynamic_roles = bbp_get_dynamic_roles();
-
-            foreach ($dynamic_roles as $role => $obj) {
-                $roles[$role] = $obj['name'];
-            }
+        foreach ($dynamic_roles as $role => $obj) {
+            $roles[$role] = $obj['name'];
         }
 
         return $roles;
+    }
+}
+
+if (!function_exists('d4p_has_bbpress')) {
+    function d4p_has_bbpress() {
+        if (function_exists('bbp_version')) {
+            $version = bbp_get_version();
+            $version = intval(substr(str_replace('.', '', $version), 0, 2));
+
+            return $version > 22;
+        } else {
+            return false;
+        }
     }
 }
 
@@ -47,17 +52,17 @@ if (!function_exists('d4p_bbpress_version')) {
      * @return mixed version value
     */
     function d4p_bbpress_version($ret = 'code') {
-        if (function_exists('bbpress')) {
-            $bbp = bbpress();
-        } else {
-            global $bbp;
+        if (!d4p_has_bbpress()) {
+            return null;
         }
 
-        if (isset($bbp->version)) {
+        $version = bbp_get_version();
+
+        if (isset($version)) {
             if ($ret == 'code') {
-                return substr(str_replace('.', '', $bbp->version), 0, 2);
+                return substr(str_replace('.', '', $version), 0, 2);
             } else {
-                return $bbp->version;
+                return $version;
             }
         }
 
@@ -72,19 +77,7 @@ if (!function_exists('d4p_is_bbpress')) {
     * @return bool true if the current page is the forum related
     */
     function d4p_is_bbpress() {
-        $is = false;
-
-        if (function_exists('bbp_get_forum_id')) {
-            $is = bbp_get_forum_id() > 0 || bbp_get_reply_id() > 0 || bbp_get_topic_id() > 0;
-
-            if (!$is) {
-                global $template;
-
-                $templates = array('single-reply-edit.php', 'single-topic-edit.php');
-                $file = pathinfo($template, PATHINFO_BASENAME);
-                $is = in_array($file, $templates);
-            }
-        }
+        $is = d4p_has_bbpress() ? is_bbpress() : false;
 
         return apply_filters('d4p_is_bbpress', $is);
     }

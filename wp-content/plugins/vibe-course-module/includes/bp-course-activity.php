@@ -39,7 +39,7 @@ function bp_course_record_activity( $args = '' ) {
 	$defaults = array(
 		'id' => false,
 		'user_id' => $bp->loggedin_user->id,
-		'action' => '',
+		'action' => 'course',
 		'content' => '',
 		'primary_link' => '',
 		'component' => 'course',
@@ -52,10 +52,24 @@ function bp_course_record_activity( $args = '' ) {
 
 	$r = wp_parse_args( $args, $defaults );
 	extract( $r );
-
 	return bp_activity_add( array( 'id' => $id, 'user_id' => $user_id, 'action' => $action, 'content' => $content, 'primary_link' => $primary_link, 'component' => $component, 'type' => $type, 'item_id' => $item_id, 'secondary_item_id' => $secondary_item_id, 'recorded_time' => $recorded_time, 'hide_sitewide' => $hide_sitewide ) );
 }
 
+function bp_course_record_activity_meta($args=''){
+	if ( !function_exists( 'bp_activity_update_meta' ) )
+		return false;
+
+	$defaults = array(
+		'id' => false,
+		'meta_key' => '',
+		'meta_value' => ''
+	);
+
+	$r = wp_parse_args( $args, $defaults );
+	extract( $r );
+
+	return bp_activity_update_meta($id,$meta_key,$meta_value);
+}
 
 // Add custom post type to activity record
 add_filter ( 'bp_blogs_record_post_post_types', 'activity_publish_custom_post_types',1,1 );
@@ -84,7 +98,7 @@ return $activity_action;
  
 //Modify activity comment records for custom post-type
 add_filter('bp_blogs_activity_new_comment_action', 'record_cpt_comment_activity_action', 10, 3);
-function record_cpt_comment_activity_action( $activity_action,  &$recorded_comment, $comment_link ) {
+function record_cpt_comment_activity_action( $activity_action,  $recorded_comment, $comment_link ) {
 global $bp;
 
 //$recorded_comment = get_comment( $comment_id ); 

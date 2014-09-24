@@ -37,8 +37,15 @@ class Gc_MessageBar_Util {
     public static function get_version() {
 
         $plugin_folder = get_plugins( );
-        $plugin_file = self::$type.'/'.wp_basename( ( self::$base_file ) );
+        $plugin_file = self::$type.DIRECTORY_SEPARATOR.wp_basename( ( self::$base_file ) );
         return $plugin_folder[$plugin_file]['Version'];
+    }
+
+    public static function get_plugin_file() {
+
+        $plugin_folder = get_plugins( );
+        $plugin_file = self::$type.DIRECTORY_SEPARATOR.wp_basename( ( self::$base_file ) );
+        return $plugin_file;
     }
 
     public static function is_plugin_page(){
@@ -51,5 +58,16 @@ class Gc_MessageBar_Util {
         }
         return false;
     }
+    
+    public static function get_realpath(){
+        $file = WP_CONTENT_DIR.DIRECTORY_SEPARATOR.'plugins'.DIRECTORY_SEPARATOR.self::get_plugin_file();
+        return @realpath(dirname($file));
+    }
+
+    public static function get_url(){
+        $file = plugins_url()."/".self::$type;
+        return $file;
+    }
+
 
 }

@@ -14,6 +14,9 @@
 	<?php do_action( 'bp_before_directory_forums_page' ); ?>
 
 	<div id="content">
+		<div class="container">
+		<div class="row">
+		<div class="col-md-12">
 		<div class="padder">
 
 			<?php do_action( 'bp_before_directory_forums' ); ?>
@@ -156,6 +159,9 @@
 			<?php do_action( 'bp_after_directory_forums_content' ); ?>
 
 		</div><!-- .padder -->
+		</div>
+		</div>
+		</div>
 	</div><!-- #content -->
 
 	<?php do_action( 'bp_after_directory_forums_page' ); ?>

@@ -1,9 +1,10 @@
 <?php
 get_header();
+
 if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 $title=get_post_meta(get_the_ID(),'vibe_title',true);
-if(isset($title) && $title !='' && $title !='H'){
+if(vibe_validate($title)){
 ?>
 <section id="title">
     <div class="container">
@@ -11,13 +12,13 @@ if(isset($title) && $title !='' && $title !='H'){
             <div class="col-md-9 col-sm-8">
                 <div class="pagetitle">
                     <h1><?php the_title(); ?></h1>
-                    <h5><?php the_sub_title(); ?></h5>
+                    <?php the_sub_title(); ?>
                 </div>
             </div>
             <div class="col-md-3 col-sm-4">
                 <?php
                     $breadcrumbs=get_post_meta(get_the_ID(),'vibe_breadcrumbs',true);
-                    if(isset($breadcrumbs) && $breadcrumbs !='' && $breadcrumbs !='H')
+                    if(vibe_validate($breadcrumbs))
                         vibe_breadcrumbs(); 
                 ?>
             </div>

@@ -30,27 +30,28 @@ class Vibe_Instagram_Widget extends WP_Widget {
                 $accesstoken=  strip_tags($accesstoken);
                 $clientid=  strip_tags($clientid);
                 $username=  strip_tags($username);
-                global $vibe_post_script;
-                $vibe_post_script .="
+
+                add_action('wp_footer','vibe_instagram_scripts',1,1);
+                echo "<script>
                         jQuery.fn.spectragram.accessData = {
                                     accessToken: '$accesstoken',
                                     clientID: '$clientid'
                             };";
-                $vibe_post_script .="".(($username)?"                
-               $('ul.instagram').each(function(){
-                $('ul.instagram').spectragram('getUserFeed',{
+                echo "".(($username)?"                
+               jQuery('ul.instagram').each(function(){
+                jQuery('ul.instagram').spectragram('getUserFeed',{
                         query: '$username',
                         max: '$count',
                         size: '$size'
                     });
                         });":"
                         
-                 $('ul.instagram').spectragram('getPopular', { 
+                 jQuery('ul.instagram').spectragram('getPopular', { 
                     size: '$size',
                     max: '$count'
                     });
                 ")."";
-                
+                echo "</script>";
 		echo $args['before_widget'];
 		if ( ! empty( $title ) )
 			echo $args['before_title'] . $title . $args['after_title'];
@@ -58,8 +59,6 @@ class Vibe_Instagram_Widget extends WP_Widget {
                 echo '<ul class="instagram '.$size.'"></ul>';
 		echo $args['after_widget'];
 	}
-
-	
 	/**
 	 * Validate and update widget options.
 	 */
@@ -92,6 +91,7 @@ class Vibe_Instagram_Widget extends WP_Widget {
 		<p>
 			<label for="<?php echo $this->get_field_id( 'accesstoken' ); ?>"><?php _e( 'Instagram AccessToken:','vibe' ); ?></label> 
 			<input class="widefat" id="<?php echo $this->get_field_id( 'accesstoken' ); ?>" name="<?php echo $this->get_field_name( 'accesstoken' ); ?>" type="text" value="<?php echo esc_attr( $accesstoken ); ?>" />
+			<span>Get your instagram Access token from <a href="http://jelled.com/instagram/access-token">here</a></span>
 		</p>
                 <p>
 			<label for="<?php echo $this->get_field_id( 'clientid' ); ?>"><?php _e( 'Instagram Client ID:','vibe' ); ?></label> 

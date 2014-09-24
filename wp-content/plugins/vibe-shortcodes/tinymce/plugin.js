@@ -1,84 +1,90 @@
-(function ()
-{
-	// create vibeShortcodes plugin
-	tinymce.create("tinymce.plugins.vibeShortcodes",
-	{
-		init: function ( ed, url )
-		{
-			ed.addCommand("vibePopup", function ( a, params )
-			{
-				var popup = params.identifier;
-				
-				// load thickbox
-				tb_show("Insert Shortcode", url + "/popup.php?popup=" + popup + "&width=" + 800);
-			});
-		},
-		createControl: function ( btn, e )
-		{
-			if ( btn == "vibe_button" )
-			{	
-				var a = this;
-				
-				var btn = e.createSplitButton('vibe_button', {
-                                        title: "Insert Shortcode",
-					image: VibeShortcodes.shortcodes_folder +"/tinymce/images/icon.png",
-					icons: false
-                });
+(function($) {
+"use strict";   
+ 
 
-                btn.onRenderMenu.add(function (c, b) 
-				{	
-                    a.addWithPopup( b, "Accordion", "accordion" );	
-					a.addWithPopup( b, "Buttons", "button" );
-                    a.addWithPopup( b, "Columns", "columns" );
-                    a.addWithPopup( b, "Course", "course" );
-					a.addWithPopup( b, "Forms", "forms" );
-					a.addWithPopup( b, "Gallery", "gallery" );
-                    a.addWithPopup( b, "Google Maps", "maps" );
-					a.addWithPopup( b, "Heading", "heading" );
-					a.addWithPopup( b, "Icons", "icons" );
-                    a.addWithPopup( b, "Note", "note" );
-                    a.addWithPopup( b, "Popups", "popups" );
-                    a.addWithPopup( b, "Progress Bar", "progressbar" );
-                    a.addWithPopup( b, "PullQuote", "pullquote" );
-                    a.addWithPopup( b, "Round Progress", "roundprogress" );
-					a.addWithPopup( b, "Tabs", "tabs" );
-                    a.addWithPopup( b, "Team", "team_member" );
-					a.addWithPopup( b, "Testimonial", "testimonial" );
-                    a.addWithPopup( b, "Tooltips", "tooltip" );
-                    a.addWithPopup( b, "Video", "iframevideo" );
+
+ 			//Shortcodes
+           tinymce.PluginManager.add( 'vibeShortcodes', function( editor, url ) {
+
+				editor.addCommand("vibePopup", function ( a, params )
+				{
+					var popup = params.identifier;
+					tb_show("Insert Shortcode", url + "/popup.php?popup=" + popup + "&width=" + 800);
 				});
-                
-                return btn;
-			}
-			
-			return null;
-		},
-		addWithPopup: function ( ed, title, id ) {
-			ed.add({
-				title: title,
-				onclick: function () {
-					tinyMCE.activeEditor.execCommand("vibePopup", false, {
-						title: title,
-						identifier: id
-					})
-				}
-			})
-		},
-		addImmediate: function ( ed, title, sc) {
-			ed.add({
-				title: title,
-				onclick: function () {
-					tinyMCE.activeEditor.execCommand( "mceInsertContent", false, sc );
-				}
-			})
-		},
-		getInfo: function () {
-			return {
-				longname: 'Vibe Shortcodes'
-			}
-		}
-	});
-	
-	// add vibeShortcodes plugin
-	tinymce.PluginManager.add("vibeShortcodes", tinymce.plugins.vibeShortcodes);
-})();
+     
+                editor.addButton( 'vibe_button', {
+                    type: 'splitbutton',
+                    icon: 'icon vibe-icon',
+					title:  'Vibe Shortcodes',
+					onclick : function(e) {},
+					menu: [
+					{text: 'Accordion',onclick:function(){
+						editor.execCommand("vibePopup", false, {title: 'Accordion',identifier: 'accordion'})
+					}},
+					{text: 'Buttons',onclick:function(){
+						editor.execCommand("vibePopup", false, {title: 'Buttons',identifier: 'button'})
+					}},
+					{text: 'Columns',onclick:function(){
+						editor.execCommand("vibePopup", false, {title: 'Columns',identifier: 'columns'})
+					}},
+					{text: 'Course',onclick:function(){
+						editor.execCommand("vibePopup", false, {title: 'Course',identifier: 'course'})
+					}},
+					{text: 'Divider',onclick:function(){
+						editor.execCommand("vibePopup", false, {title: 'Divider',identifier: 'divider'})
+					}},
+					{text: 'Forms',onclick:function(){
+						editor.execCommand("vibePopup", false, {title: 'Forms',identifier: 'forms'})
+					}},
+					{text: 'Gallery',onclick:function(){
+						editor.execCommand("vibePopup", false, {title: 'Gallery',identifier: 'gallery'})
+					}},
+					{text: 'Google Maps',onclick:function(){
+						editor.execCommand("vibePopup", false, {title: 'Google Maps',identifier: 'maps'})
+					}},
+					{text: 'Heading',onclick:function(){
+						editor.execCommand("vibePopup", false, {title: 'Heading',identifier: 'heading'})
+					}},
+					{text: 'Icons',onclick:function(){
+						editor.execCommand("vibePopup", false, {title: 'Icons',identifier: 'icons'})
+					}},
+					{text: 'Iframe',onclick:function(){
+						editor.execCommand("vibePopup", false, {title: 'Iframe',identifier: 'iframe'})
+					}},
+					{text: 'Note',onclick:function(){
+						editor.execCommand("vibePopup", false, {title: 'Note',identifier: 'note'})
+					}},
+					{text: 'Popups',onclick:function(){
+						editor.execCommand("vibePopup", false, {title: 'Popups',identifier: 'popups'})
+					}},
+					{text: 'Progress Bar',onclick:function(){
+						editor.execCommand("vibePopup", false, {title: 'Progress Bar',identifier: 'progressbar'})
+					}},
+					{text: 'PullQuote',onclick:function(){
+						editor.execCommand("vibePopup", false, {title: 'PullQuote',identifier: 'pullquote'})
+					}},
+					{text: 'Round Progress',onclick:function(){
+						editor.execCommand("vibePopup", false, {title: 'Round Progress',identifier: 'roundprogress'})
+					}},
+					{text: 'Tabs',onclick:function(){
+						editor.execCommand("vibePopup", false, {title: 'Tabs',identifier: 'tabs'})
+					}},
+					{text: 'Team',onclick:function(){
+						editor.execCommand("vibePopup", false, {title: 'Team',identifier: 'team_member'})
+					}},
+					{text: 'Testimonial',onclick:function(){
+						editor.execCommand("vibePopup", false, {title: 'Testimonial',identifier: 'testimonial'})
+					}},
+					{text: 'Tooltips',onclick:function(){
+						editor.execCommand("vibePopup", false, {title: 'Tooltips',identifier: 'tooltip'})
+					}},
+					{text: 'Video',onclick:function(){
+						editor.execCommand("vibePopup", false, {title: 'Video',identifier: 'iframevideo'})
+					}},
+					]                
+        	  });
+         
+          });
+         
+ 
+})(jQuery);

@@ -1,10 +1,10 @@
 === GC Message Bar ===
 Contributors: GetConversion, vschwarz, skromesch
+Donate link: http://getconversion.com/donate/?plugin=gc-message-bar
 Tags: call to action, cta, notification bar, conversion rate, woocommerce, wpml, getconversion, message bar, gc message bar
-
 Requires at least: 3.4
-Tested up to: 3.8.1
-Stable tag: 2.3.2
+Tested up to: 3.9.1
+Stable tag: 2.3.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,8 +30,10 @@ Set up and start to use in minutes. With highly customizable options you can giv
 
 = Other plugins by GetConversion =
 
-* [GC Message Box](http://wordpress.org/plugins/gc-message-box/)
-* [GC MailPoet EX](http://wordpress.org/plugins/gc-mailpoet-ex/)
+* (FREE) [GC Message Box](http://wordpress.org/plugins/gc-message-box/)
+* (FREE) [GC MailPoet EX](http://wordpress.org/plugins/gc-mailpoet-ex/)
+* (Premium) [GC MailPoet EX PRO](http://getconversion.com/products/gc-mailpoet-ex-pro/)
+* (Premium) [GC MailChimp EX PRO](http://getconversion.com/products/gc-mailchimp-ex-pro/)
 
 
 = Compatibility =
@@ -91,14 +93,16 @@ Set up and start to use in minutes. With highly customizable options you can giv
 * Custom Border Radius
 * Text Shadows
 
-**Demo: [GC Message Bar in action](http://getconversion.net/blog)**
+**Demo: [GC Message Bar in action](http://getconversion.com/products/gc-message-bar)**
 
 
 = GetConversion Community =
+
 * **Vote For Roadmap Features: [GC Message Bar Roadmap](http://community.getconversion.net/roadmap/gc-message-bar)**
 * **Discuss Forum Topics: [GC Message Bar Forum](http://community.getconversion.net/forum/gc-message-bar)**
 * **Suggest An Idea: [Feature Request](http://community.getconversion.net/idea)**
 * **Report A Bug: [Bug Report](http://community.getconversion.net/bug)**
+* **GetConversion Home: [GetConversion.com](http://getconversion.com)**
 
 
 == Screenshots ==
@@ -145,6 +149,28 @@ Open the Engine settings. Scroll down, and find the Show/hide engine setting lin
 
 
 == Changelog ==
+
+= 2.3.8 =
+* Embedded item alignment fix
+* Metrix code submitter fix
+
+= 2.3.7 =
+* Allow/Deny page filter upgraded with Equals to/Begins with setting
+
+= 2.3.6 =
+* Style caching added (speed increased from ~1900ms to ~600ms)
+* Dynamic / Inline / Cached CSS added
+* Setting for CSS Cache directory added
+
+= 2.3.5 =
+* Small fixes
+
+= 2.3.4 =
+* Hotfix for WP 3.9
+
+= 2.3.3 =
+* Many CSS fixes
+* Allow/Deny filter invalidates cache on page and post admin screens
 
 = 2.3.2 =
 * Admin CSS collapse fix 

@@ -12,11 +12,19 @@
 $loop_number=vibe_get_option('loop_number');
 if(!isset($loop_number) || $loop_number == '')
 	$loop_number=5;
+
+global $post;
+$appended = '&primary_id='.$post->ID.'&per_page='.$loop_number;
+
+if($_GET['student'] && is_numeric($_GET['student']))
+	$appended .= '&user_id='.$_GET['student'];
+
+
 ?>
 
 <?php do_action( 'bp_before_course_activity_loop' ); ?>
 
-<?php if ( bp_has_activities( bp_ajax_querystring( 'activity' ).'&search_terms='.get_the_title().'&per_page='.$loop_number ) ) : ?>
+<?php if ( bp_has_activities( bp_ajax_querystring( 'activity' ).$appended ) ) : ?>
 
 	<?php /* Show pagination if JS is not enabled, since the "Load More" link will do nothing */ ?>
 	

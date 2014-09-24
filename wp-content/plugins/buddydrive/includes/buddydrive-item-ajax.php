@@ -1,7 +1,6 @@
 <?php
 // Exit if accessed directly
-if ( !defined( 'ABSPATH' ) ) exit;
-
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
  * Files are ajax uploaded !
@@ -33,7 +32,7 @@ function buddydrive_save_new_buddyfile() {
 	$privacy = $group = $password = $parent = false;
 	
 	// In multisite, we need to remove some filters
-	if( is_multisite() ) {
+	if ( is_multisite() ) {
 		remove_filter( 'upload_mimes', 'check_upload_mimes' );
 		remove_filter( 'upload_size_limit', 'upload_size_limit_filter' );
 	}
@@ -45,7 +44,7 @@ function buddydrive_save_new_buddyfile() {
 	
 	$buddydrive_file = wp_handle_upload( $_FILES['buddyfile-upload'], array( 'action' => 'buddydrive_file_upload', 'test_form' => false ) );
 	
-	if( !empty( $buddydrive_file ) && is_array( $buddydrive_file ) && empty( $buddydrive_file['error'] ) ) {
+	if ( ! empty( $buddydrive_file ) && is_array( $buddydrive_file ) && empty( $buddydrive_file['error'] ) ) {
 		/** 
 		 * file was uploaded !!
 		 * Now we can create the buddydrive_file_post_type
@@ -65,21 +64,21 @@ function buddydrive_save_new_buddyfile() {
 		$content = !empty( $_POST['buddydesc'] ) ? wp_kses( $_POST['buddydesc'], array() ) : false;
 		$meta = false;
 		
-		if( !empty( $_POST['buddyshared'] ) ) {
+		if ( ! empty( $_POST['buddyshared'] ) ) {
 			
-			$privacy = !empty( $_POST['buddyshared'] ) ? $_POST['buddyshared'] : 'private';
-			$group = !empty( $_POST['buddygroup'] ) ? $_POST['buddygroup'] : false;
-			$password = !empty( $_POST['buddypass'] ) ? wp_kses( $_POST['buddypass'], array() ) : false;
+			$privacy  = ! empty( $_POST['buddyshared'] ) ? $_POST['buddyshared'] : 'private';
+			$group    = ! empty( $_POST['buddygroup'] ) && 'groups' == $privacy ? $_POST['buddygroup'] : false;
+			$password = ! empty( $_POST['buddypass'] ) ? wp_kses( $_POST['buddypass'], array() ) : false;
 			
 		}
 		
-		if( !empty( $_POST['buddyfolder'] ) ) {
+		if ( ! empty( $_POST['buddyfolder'] ) ) {
 			
 			$parent = intval( $_POST['buddyfolder'] );
 
 			$privacy = get_post_meta( $parent, '_buddydrive_sharing_option', true );
 
-			if( $privacy == 'groups' ) 
+			if ( $privacy == 'groups' ) 
 				$group = get_post_meta( $parent, '_buddydrive_sharing_groups', true );
 		}
 		
@@ -87,16 +86,20 @@ function buddydrive_save_new_buddyfile() {
 		
 		$meta->privacy = $privacy;
 	
-		$meta->password = !empty( $password ) ? $password : false ;
+		$meta->password = ! empty( $password ) ? $password : false ;
 			
-		$meta->groups = !empty( $group ) ? $group : false;
+		$meta->groups = ! empty( $group ) ? $group : false;
+
+		if ( ! empty( $_POST['customs'] ) ) {
+			$meta->buddydrive_meta = json_decode( wp_unslash( $_POST['customs'] ) );
+		}
 
 		/* 
 		if the name is completely numeric, buddydrive_get_buddyfile
 		will look for an  id instead of a post name, so to avoid this,
 		we add a prefix to the name
 		*/
-		if( is_numeric( $name ) )
+		if ( is_numeric( $name ) )
 			$name = 'f-' . $name;
 
 		// Construct the buddydrive_file_post_type array
@@ -109,7 +112,7 @@ function buddydrive_save_new_buddyfile() {
 			'metas' => $meta
 		);
 		
-		if( !empty( $parent ) )
+		if ( ! empty( $parent ) )
 			$args['parent_folder_id'] = $parent;
 		
 		$buddyfile_id = buddydrive_save_item( $args );
@@ -128,7 +131,6 @@ function buddydrive_save_new_buddyfile() {
 	
 	die();
 }
-
 add_action( 'wp_ajax_buddydrive_upload', 'buddydrive_save_new_buddyfile' );
 
 
@@ -148,19 +150,17 @@ function buddydrive_fetch_created_file() {
 
 	$buddyfile_id = intval( $_POST['createdid'] );
 
-	if( !empty( $buddyfile_id ) ) {
+	if ( ! empty( $buddyfile_id ) ) {
 		if ( buddydrive_has_items ( 'id=' . $buddyfile_id ) ) {
 			while ( buddydrive_has_items() ) {
 				buddydrive_the_item();
-				buddydrive_get_template( 'buddydrive-entry' );
+				bp_get_template_part( 'buddydrive-entry' );
 			}
 		}
 	}
 
 	die();
 }
-
-
 add_action( 'wp_ajax_buddydrive_fetchfile', 'buddydrive_fetch_created_file' );
 
 
@@ -184,18 +184,18 @@ function buddydrive_save_new_buddyfolder() {
 	// Check the nonce
 	check_admin_referer( 'buddydrive_actions', '_wpnonce_buddydrive_actions' );
 
-	if( !empty( $_POST['title'] ) ) {
+	if( ! empty( $_POST['title'] ) ) {
 		$buddydrive_title = $_POST['title'];
 		
-		if( !empty( $_POST['sharing_option'] ) ) {
+		if( ! empty( $_POST['sharing_option'] ) ) {
 			$meta = new stdClass();
 			
 			$meta->privacy = $_POST['sharing_option'];
 			
-			if( $_POST['sharing_option'] == 'password' )
+			if ( $_POST['sharing_option'] == 'password' )
 				$meta->password = wp_kses( $_POST['sharing_pass'], array() );
 				
-			if( $_POST['sharing_option'] == 'groups' )
+			if ( $_POST['sharing_option'] == 'groups' )
 				$meta->groups = $_POST['sharing_group'];
 		}
 		
@@ -212,7 +212,7 @@ function buddydrive_save_new_buddyfolder() {
 		if ( buddydrive_has_items ( 'id=' . $buddyfolder_id ) ) {
 			while ( buddydrive_has_items() ) {
 				buddydrive_the_item();
-				buddydrive_get_template( 'buddydrive-entry' );
+				bp_get_template_part( 'buddydrive-entry' );
 			}
 		}
 
@@ -220,7 +220,6 @@ function buddydrive_save_new_buddyfolder() {
 	
 	die();
 }
-
 add_action( 'wp_ajax_buddydrive_createfolder', 'buddydrive_save_new_buddyfolder');
 
 
@@ -247,7 +246,7 @@ function buddydrive_open_buddyfolder() {
 	$access = false;
 	$buddyscope = $_POST['scope'];
 	
-	if( empty( $buddyfolder->ID ) ) {
+	if ( empty( $buddyfolder->ID ) ) {
 		
 		$result[] = '<tr id="no-buddyitems"><td colspan="5"><div id="message" class="info"><p>'. __( 'Sorry, this folder does not exist anymore.', 'buddydrive' ).'</p></div></td></tr>';
 		
@@ -286,10 +285,10 @@ function buddydrive_open_buddyfolder() {
 				break;
 		}
 		
-		if( !empty( $access ) ) {
+		if ( ! empty( $access ) ) {
 				
 			ob_start();
-			buddydrive_get_template( 'buddydrive-loop' );
+			bp_get_template_part( 'buddydrive-loop' );
 			$result[] = ob_get_contents();
 			ob_end_clean();
 			
@@ -301,7 +300,7 @@ function buddydrive_open_buddyfolder() {
 
 		$name_required = !empty( $_POST['foldername'] ) ? 1 : 0;
 
-		if( !empty( $name_required ) ) {
+		if ( ! empty( $name_required ) ) {
 			$result[] = $buddyfolder->title;
 		}
 		
@@ -311,7 +310,6 @@ function buddydrive_open_buddyfolder() {
 	
 	die();
 }
-
 add_action( 'wp_ajax_buddydrive_openfolder', 'buddydrive_open_buddyfolder');
 add_action( 'wp_ajax_nopriv_buddydrive_openfolder', 'buddydrive_open_buddyfolder');
 
@@ -325,7 +323,7 @@ add_action( 'wp_ajax_nopriv_buddydrive_openfolder', 'buddydrive_open_buddyfolder
 function buddydrive_load_more_items() {
 	
 	ob_start();
-	buddydrive_get_template( 'buddydrive-loop' );
+	bp_get_template_part( 'buddydrive-loop' );
 	$result = ob_get_contents();
 	ob_end_clean();
 	
@@ -333,9 +331,10 @@ function buddydrive_load_more_items() {
 		
 	die();
 }
-
 add_action( 'wp_ajax_buddydrive_loadmore', 'buddydrive_load_more_items' );
 add_action( 'wp_ajax_nopriv_buddydrive_loadmore', 'buddydrive_load_more_items' );
+add_action( 'wp_ajax_buddydrive_filterby', 'buddydrive_load_more_items' );
+add_action( 'wp_ajax_nopriv_buddydrive_filterby', 'buddydrive_load_more_items' );
 
 
 /**
@@ -345,8 +344,8 @@ add_action( 'wp_ajax_nopriv_buddydrive_loadmore', 'buddydrive_load_more_items' )
  * @return string more files if there are any
  */
 function buddydrive_admin_ajax_loadmore() {
-	$folder_id = !empty( $_POST['folder'] ) ? intval( $_POST['folder'] ) : -1;
-	$paged = !empty( $_POST['page'] ) ? intval( $_POST['page'] ) : -1;
+	$folder_id = ! empty( $_POST['folder'] ) ? intval( $_POST['folder'] ) : -1;
+	$paged     = ! empty( $_POST['page'] ) ? intval( $_POST['page'] ) : -1;
 
 	ob_start();
 	buddydrive_admin_edit_files_loop( $folder_id, $paged );
@@ -357,7 +356,6 @@ function buddydrive_admin_ajax_loadmore() {
 
 	die();
 }
-
 add_action( 'wp_ajax_buddydrive_adminloadmore', 'buddydrive_admin_ajax_loadmore');
 
 
@@ -374,12 +372,12 @@ function buddydrive_list_user_groups() {
 	if ( 'POST' !== strtoupper( $_SERVER['REQUEST_METHOD'] ) )
 		return;
 	
-	if( !bp_is_active('groups') )
+	if ( ! bp_is_active('groups') )
 		exit();
 	
-	$user_id = !empty( $_POST['userid'] ) ? intval( $_POST['userid'] ) : bp_loggedin_user_id() ;
-	$group_id = !empty( $_POST['groupid'] ) ? intval( $_POST['groupid'] ) : false ;
-	$name = !empty( $_POST['selectname'] ) ? $_POST['selectname'] : false ;
+	$user_id  = ! empty( $_POST['userid'] ) ? intval( $_POST['userid'] ) : bp_loggedin_user_id() ;
+	$group_id = ! empty( $_POST['groupid'] ) ? intval( $_POST['groupid'] ) : false ;
+	$name     = ! empty( $_POST['selectname'] ) ? $_POST['selectname'] : false ;
 		 
 
 	$output = buddydrive_get_select_user_group( $user_id, $group_id, $name );
@@ -387,7 +385,6 @@ function buddydrive_list_user_groups() {
 	echo $output;
 	die();
 }
-
 add_action( 'wp_ajax_buddydrive_getgroups', 'buddydrive_list_user_groups' );
 
 
@@ -415,7 +412,7 @@ function buddydrive_delete_items() {
 	
 	$items_nbre = buddydrive_delete_item( array( 'ids' => $items ) );
 	
-	if( !empty( $items_nbre) )
+	if ( ! empty( $items_nbre) )
 		echo json_encode( array( 'result' => $items_nbre, 'items' => $items ) );
 	else
 		echo json_encode( array( 'result' => 0 ) );
@@ -423,8 +420,6 @@ function buddydrive_delete_items() {
 	die();
 	
 }
-
-
 add_action( 'wp_ajax_buddydrive_deleteitems', 'buddydrive_delete_items');
 
 
@@ -447,36 +442,40 @@ function buddydrive_edit_form() {
 
 	$item_id = !empty( $_POST['buddydrive_item'] ) ? intval( $_POST['buddydrive_item'] ) : false ;
 	
-	if( !empty( $item_id ) ) {
+	if ( ! empty( $item_id ) ) {
 		$item  = buddydrive_get_buddyfile( $item_id, array( buddydrive_get_folder_post_type(), buddydrive_get_file_post_type() ) );
 		?>
 		<form class="standard-form" id="buddydrive-item-edit-form">
 
 			<div id="buddyitem-description">
 				<input type="hidden" id="buddydrive-item-id" value="<?php echo $item->ID;?>">
-				<label for="buddydrive-item-title"><?php _e( 'Name', 'buddydrive' );?></label>
+				<label for="buddydrive-item-title"><?php esc_html_e( 'Name', 'buddydrive' );?></label>
 				<input type="text" name="buddydrive-edit[item-title]" id="buddydrive-item-title" value="<?php echo esc_attr( stripslashes( $item->title ) ) ?>" />
 
-				<?php if( $item->post_type == buddydrive_get_file_post_type() ) :?>
-					<label for="buddydrive-item-content"><?php _e( 'Description', 'buddydrive' );?></label>
+				<?php if ( $item->post_type == buddydrive_get_file_post_type() ) :?>
+					<label for="buddydrive-item-content"><?php esc_html_e( 'Description', 'buddydrive' );?></label>
 					<textarea name="buddydrive-edit[item-content]" id="buddydrive-item-content" maxlength="140"><?php echo wp_kses( stripslashes( $item->content ), array() );?></textarea>
-
+					<?php if ( has_action( 'buddydrive_uploader_custom_fields' ) ) :?>
+						<div id="buddydrive-custom-step-edit" class="buddydrive-step hide">
+							<?php do_action( 'buddydrive_uploader_custom_fields', $item->ID ) ;?>
+						</div>
+					<?php endif;?>
 				<?php endif;?>
 				
 			</div>
 			
-			<?php if( empty( $item->post_parent) ) :?>
+			<?php if ( empty( $item->post_parent ) ) :?>
 				
 				<div id="buddydrive-privacy-section-options">
-					<label for="buddydrive-sharing-option"><?php _e( 'Item Sharing options', 'buddydrive' );?></label>
+					<label for="buddydrive-sharing-option"><?php esc_html_e( 'Item Sharing options', 'buddydrive' );?></label>
 					<?php buddydrive_select_sharing_options( 'buddyitem-sharing-options', $item->check_for, 'buddydrive-edit[sharing]' );?>
 
 					<div id="buddydrive-admin-privacy-detail">
 						<?php if( $item->check_for == 'password' ):?>
-							<label for="buddydrive-password"><?php _e( 'Password', 'buddydrive' );?></label>
+							<label for="buddydrive-password"><?php esc_html_e( 'Password', 'buddydrive' );?></label>
 							<input type="text" value="<?php echo esc_attr( stripslashes( $item->password ) ) ?>" name="buddydrive-edit[password]" id="buddypass"/>
 						<?php elseif( $item->check_for == 'groups' ) :?>
-							<label for="buddygroup"><?php _e( 'Choose the group', 'buddydrive' );?></label>
+							<label for="buddygroup"><?php esc_html_e( 'Choose the group', 'buddydrive' );?></label>
 							<?php buddydrive_select_user_group( $item->user_id, $item->group, 'buddydrive-edit[buddygroup]' );?>
 						<?php endif;?>
 					</div>
@@ -485,22 +484,22 @@ function buddydrive_edit_form() {
 			<?php else :?>
 				
 				<div id="buddyitem-sharing-option">
-					<label for="buddydrive-sharing-option"><?php _e( 'Edit your sharing options', 'buddydrive' );?></label>
-					<p><?php _e( 'Privacy of this item rely on its parent folder', 'buddydrive' );?></p>
+					<label for="buddydrive-sharing-option"><?php esc_html_e( 'Edit your sharing options', 'buddydrive' );?></label>
+					<p><?php esc_html_e( 'Privacy of this item rely on its parent folder', 'buddydrive' );?></p>
 				</div>
 				
 			<?php endif;?>
 			
-			<?php if( $item->post_type == buddydrive_get_file_post_type() ) :?>
+			<?php if ( $item->post_type == buddydrive_get_file_post_type() ) :?>
 
 				<div class="buddyitem-folder-section" id="buddyitem-folder-section-options">
-					<label for="buddyitem-folder-option"><?php _e( 'Folder', 'buddydrive' );?></label>
+					<label for="buddyitem-folder-option"><?php esc_html_e( 'Folder', 'buddydrive' );?></label>
 					<?php buddydrive_select_folder_options( $item->user_id, $item->post_parent, 'buddydrive-edit[folder]' );?>
 				</div>
 
 			<?php endif;?>
 			
-			<p class="buddydrive-action folder"><input type="submit" value="Edit item" name="buddydrive_edit[submit]">&nbsp;<a href="#" class="cancel-item button"><?php _e( 'Cancel', 'buddydrive' );?></a></p>
+			<p class="buddydrive-action folder"><input type="submit" value="<?php esc_html_e('Edit Item', 'buddydrive');?>" name="buddydrive_edit[submit]">&nbsp;<a href="#" class="cancel-item button"><?php esc_html_e( 'Cancel', 'buddydrive' );?></a></p>
 			
 		</form>
 		<?php
@@ -508,7 +507,6 @@ function buddydrive_edit_form() {
 	die();
 
 }
-
 add_action( 'wp_ajax_buddydrive_editform', 'buddydrive_edit_form' );
 
 
@@ -544,38 +542,42 @@ function buddydrive_ajax_update_item(){
 
 	$args = array();
 		
-	if( !empty( $_POST['title'] ) )
+	if ( ! empty( $_POST['title'] ) )
 		$args['title'] = wp_kses( $_POST['title'], array() );
-	if( !empty( $_POST['content'] ) )
+	if ( ! empty( $_POST['content'] ) )
 		$args['content'] = wp_kses( $_POST['content'], array() );
-	if( !empty( $_POST['sharing'] ) )
+	if ( ! empty( $_POST['sharing'] ) )
 		$args['privacy'] = $_POST['sharing'];
-	if( !empty( $_POST['password'] ) )
+	if ( ! empty( $_POST['password'] ) )
 		$args['password'] = wp_kses( $_POST['password'], array() );
-	if( !empty( $_POST['group'] ) )
+	if ( ! empty( $_POST['group'] ) )
 		$args['group'] = $_POST['group'];
 	
 	$args['parent_folder_id'] = !empty( $_POST['folder'] ) ? intval( $_POST['folder'] ) : 0 ;
 
 	// We need to check if the parent folder is attached to a group.
-	if( !empty( $args['parent_folder_id'] ) ) {
+	if ( ! empty( $args['parent_folder_id'] ) ) {
 		$maybe_in_group = get_post_meta( $args['parent_folder_id'], '_buddydrive_sharing_groups', true );
 
-		if( !empty( $maybe_in_group ) )
+		if ( ! empty( $maybe_in_group ) )
 			$args['group'] = intval( $maybe_in_group );
+	}
+
+	if ( ! empty( $_POST['customs'] ) ) {
+		$args['buddydrive_meta'] = json_decode( wp_unslash( $_POST['customs'] ) );
 	}
 		
 	$updated = buddydrive_update_item( $args, $item );
 
 	$result = array();
 	
-	if( !empty( $updated ) ) {
+	if ( ! empty( $updated ) ) {
 		
 		if ( buddydrive_has_items ( 'id=' . $updated ) ) {
 			ob_start();
 			while ( buddydrive_has_items() ) {
 				buddydrive_the_item();
-				buddydrive_get_template( 'buddydrive-entry', false );
+				bp_get_template_part( 'buddydrive-entry', false );
 			}
 			$result[] = ob_get_contents();
 			ob_end_clean();
@@ -588,7 +590,6 @@ function buddydrive_ajax_update_item(){
 
 	die();
 }
-
 add_action( 'wp_ajax_buddydrive_updateitem', 'buddydrive_ajax_update_item' );
 
 
@@ -619,12 +620,12 @@ function buddydrive_share_in_group() {
 
 	$buddyitem = intval( $_POST['itemid'] );
 	
-	if( empty( $buddyitem ) ) {
+	if ( empty( $buddyitem ) ) {
 		_e( 'this is embarassing, it did not work :(', 'buddydrive' );
 		die();
 	}
 	
-	if( !bp_is_active( 'groups' ) ) {
+	if ( ! bp_is_active( 'groups' ) ) {
 		_e( 'Group component is deactivated, please contact the administrator.', 'buddydrive' );
 		die();
 	}
@@ -634,16 +635,16 @@ function buddydrive_share_in_group() {
 	$user_id = bp_loggedin_user_id();
 	$item_type = ( 'folder' == $_POST['itemtype'] ) ? buddydrive_get_folder_post_type() : buddydrive_get_file_post_type();
 
-	if( !empty( $buddyitem ) ) {
+	if ( ! empty( $buddyitem ) ) {
 		$group_id = get_post_meta( $buddyitem, '_buddydrive_sharing_groups', true );
 
-		if( empty( $group_id ) ) {
+		if ( empty( $group_id ) ) {
 			$buddyfile = buddydrive_get_buddyfile( $buddyitem, $item_type );
 			$parent_id = $buddyfile->post_parent;
 			$group_id = get_post_meta( $parent_id, '_buddydrive_sharing_groups', true );
 		}
 
-		if( !empty( $group_id ) ) {
+		if ( ! empty( $group_id ) ) {
 			$group = groups_get_group( array( 'group_id' => $group_id ) );
 		
 			$action  = $activity_action  = sprintf( __( '%1$s shared a %2$s Item in the group %3$s', 'buddydrive'), bp_core_get_userlink( $user_id ), buddydrive_get_name(), '<a href="' . bp_get_group_permalink( $group ) . '">' . esc_attr( $group->name ) . '</a>' );
@@ -661,14 +662,13 @@ function buddydrive_share_in_group() {
 		}
 
 	}
-	if( !empty( $result ) )
+	if ( ! empty( $result ) )
 		echo 1;
 	else
 		_e( 'this is embarassing, it did not work :(', 'buddydrive' );
 	die();
 
 }
-
 add_action( 'wp_ajax_buddydrive_groupupdate', 'buddydrive_share_in_group' );
 
 
@@ -696,7 +696,7 @@ function buddydrive_share_in_profile() {
 
 	$buddyitem = intval( $_POST['itemid'] );
 	
-	if( empty( $buddyitem ) ) {
+	if ( empty( $buddyitem ) ) {
 		_e( 'this is embarassing, it did not work :(', 'buddydrive' );
 		die();
 	}
@@ -706,11 +706,11 @@ function buddydrive_share_in_profile() {
 	$user_id = bp_loggedin_user_id();
 	$item_type = ( 'folder' == $_POST['itemtype'] ) ? buddydrive_get_folder_post_type() : buddydrive_get_file_post_type();
 
-	if( !empty( $buddyitem ) ) {
+	if ( ! empty( $buddyitem ) ) {
 		
 		$buddyfile = buddydrive_get_buddyfile( $buddyitem, $item_type );
 		
-		if( empty( $buddyfile->ID ) || $buddyfile->check_for != 'public' ) {
+		if ( empty( $buddyfile->ID ) || $buddyfile->check_for != 'public' ) {
 			// no item or not a public one ??
 			_e( 'We could not find your BuddyDrive item or its privacy is not set to public', 'buddydrive');
 			die();
@@ -730,14 +730,13 @@ function buddydrive_share_in_profile() {
 		$result = bp_activity_add( $args );
 
 	}
-	if( !empty( $result ) )
+	if ( ! empty( $result ) )
 		echo 1;
 	else
 		echo _e( 'this is embarassing, it did not work :(', 'buddydrive' );
 	die();
 
 }
-
 add_action( 'wp_ajax_buddydrive_profileupdate', 'buddydrive_share_in_profile' );
 
 
@@ -760,7 +759,6 @@ function buddydrive_update_quota(){
 
 	die();
 }
-
 add_action( 'wp_ajax_buddydrive_updatequota', 'buddydrive_update_quota');
 
 
@@ -774,6 +772,26 @@ add_action( 'wp_ajax_buddydrive_updatequota', 'buddydrive_update_quota');
  */
 function buddydrive_ajax_querystring( $args = false ) {
 	$args = array();
+
+	$filter = ! empty( $_COOKIE['buddydrive_filter'] ) ? $_COOKIE['buddydrive_filter'] : false;
+
+	if ( ! empty( $_POST['buddydrive_filter'] ) ) {
+		$filter = $_POST['buddydrive_filter'];
+	}
+
+	if ( ! empty( $filter ) ) {
+		switch( $filter ) {
+			case 'modified' :
+				$args['orderby'] = 'modified';
+				$args['order']   = 'DESC';
+			break;
+			default:
+				$args['orderby'] = 'title';
+				$args['order']   = 'ASC';
+			break;
+		}
+	}
+
 	if( !empty( $_POST['page'] ) )
 		$args['paged'] = $_POST['page'];
 		
@@ -792,7 +810,6 @@ function buddydrive_ajax_querystring( $args = false ) {
 		
 	return $args;
 }
-
 add_filter( 'buddydrive_querystring', 'buddydrive_ajax_querystring', 1, 1 );
 
 
@@ -814,7 +831,7 @@ function buddydrive_remove_from_group() {
 	$item_id = $_POST['itemid'];
 	$group_id = $_POST['groupid'];
 
-	if( empty( $item_id ) || empty( $group_id ) )
+	if ( empty( $item_id ) || empty( $group_id ) )
 		echo 0;
 	else {
 		$removed = buddydrive_remove_item_from_group( $item_id, $group_id );
@@ -824,5 +841,4 @@ function buddydrive_remove_from_group() {
 	die();
 			  
 }
-
 add_action( 'wp_ajax_buddydrive_removefromgroup', 'buddydrive_remove_from_group' );

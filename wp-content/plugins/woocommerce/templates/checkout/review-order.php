@@ -4,13 +4,13 @@
  *
  * @author 		WooThemes
  * @package 	WooCommerce/Templates
- * @version     2.1.0
+ * @version     2.1.8
  */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
-
 ?>
-<div id="order_review">
+
+<?php if ( ! $is_ajax ) : ?><div id="order_review"><?php endif; ?>
 
 	<table class="shop_table">
 		<thead>
@@ -19,6 +19,32 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 				<th class="product-total"><?php _e( 'Total', 'woocommerce' ); ?></th>
 			</tr>
 		</thead>
+		<tbody>
+			<?php
+				do_action( 'woocommerce_review_order_before_cart_contents' );
+
+				foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
+					$_product     = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
+
+					if ( $_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_checkout_cart_item_visible', true, $cart_item, $cart_item_key ) ) {
+						?>
+						<tr class="<?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key ) ); ?>">
+							<td class="product-name">
+								<?php echo apply_filters( 'woocommerce_cart_item_name', $_product->get_title(), $cart_item, $cart_item_key ); ?>
+								<?php echo apply_filters( 'woocommerce_checkout_cart_item_quantity', ' <strong class="product-quantity">' . sprintf( '&times; %s', $cart_item['quantity'] ) . '</strong>', $cart_item, $cart_item_key ); ?>
+								<?php echo WC()->cart->get_item_data( $cart_item ); ?>
+							</td>
+							<td class="product-total">
+								<?php echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); ?>
+							</td>
+						</tr>
+						<?php
+					}
+				}
+
+				do_action( 'woocommerce_review_order_after_cart_contents' );
+			?>
+		</tbody>
 		<tfoot>
 
 			<tr class="cart-subtotal">
@@ -28,7 +54,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 			<?php foreach ( WC()->cart->get_coupons( 'cart' ) as $code => $coupon ) : ?>
 				<tr class="cart-discount coupon-<?php echo esc_attr( $code ); ?>">
-					<th><?php _e( 'Coupon:', 'woocommerce' ); ?> <?php echo esc_html( $code ); ?></th>
+					<th><?php wc_cart_totals_coupon_label( $coupon ); ?></th>
 					<td><?php wc_cart_totals_coupon_html( $coupon ); ?></td>
 				</tr>
 			<?php endforeach; ?>
@@ -68,7 +94,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 			<?php foreach ( WC()->cart->get_coupons( 'order' ) as $code => $coupon ) : ?>
 				<tr class="order-discount coupon-<?php echo esc_attr( $code ); ?>">
-					<th><?php _e( 'Coupon:', 'woocommerce' ); ?> <?php echo esc_html( $code ); ?></th>
+					<th><?php wc_cart_totals_coupon_label( $coupon ); ?></th>
 					<td><?php wc_cart_totals_coupon_html( $coupon ); ?></td>
 				</tr>
 			<?php endforeach; ?>
@@ -83,32 +109,6 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 			<?php do_action( 'woocommerce_review_order_after_order_total' ); ?>
 
 		</tfoot>
-		<tbody>
-			<?php
-				do_action( 'woocommerce_review_order_before_cart_contents' );
-
-				foreach ( WC()->cart->get_cart() as $cart_item_key => $cart_item ) {
-					$_product     = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
-
-					if ( $_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_checkout_cart_item_visible', true, $cart_item, $cart_item_key ) ) {
-						?>
-						<tr class="<?php echo esc_attr( apply_filters( 'woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key ) ); ?>">
-							<td class="product-name">
-								<?php echo apply_filters( 'woocommerce_cart_item_name', $_product->get_title(), $cart_item, $cart_item_key ); ?>
-								<?php echo apply_filters( 'woocommerce_checkout_cart_item_quantity', ' <strong class="product-quantity">' . sprintf( '&times; %s', $cart_item['quantity'] ) . '</strong>', $cart_item, $cart_item_key ); ?>
-								<?php echo WC()->cart->get_item_data( $cart_item ); ?>
-							</td>
-							<td class="product-total">
-								<?php echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); ?>
-							</td>
-						</tr>
-						<?php
-					}
-				}
-
-				do_action( 'woocommerce_review_order_after_cart_contents' );
-			?>
-		</tbody>
 	</table>
 
 	<?php do_action( 'woocommerce_review_order_before_payment' ); ?>
@@ -147,9 +147,11 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 				} else {
 
 					if ( ! WC()->customer->get_country() )
-						echo '<p>' . __( 'Please fill in your details above to see available payment methods.', 'woocommerce' ) . '</p>';
+						$no_gateways_message = __( 'Please fill in your details above to see available payment methods.', 'woocommerce' );
 					else
-						echo '<p>' . __( 'Sorry, it seems that there are no available payment methods for your state. Please contact us if you require assistance or wish to make alternate arrangements.', 'woocommerce' ) . '</p>';
+						$no_gateways_message = __( 'Sorry, it seems that there are no available payment methods for your state. Please contact us if you require assistance or wish to make alternate arrangements.', 'woocommerce' );
+
+					echo '<p>' . apply_filters( 'woocommerce_no_available_payment_methods_message', $no_gateways_message ) . '</p>';
 
 				}
 			?>
@@ -174,7 +176,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 				$terms_is_checked = apply_filters( 'woocommerce_terms_is_checked_default', isset( $_POST['terms'] ) );
 				?>
 				<p class="form-row terms">
-					<label for="terms" class="checkbox"><?php _e( 'I have read and accept the', 'woocommerce' ); ?> <a href="<?php echo esc_url( get_permalink(wc_get_page_id('terms')) ); ?>" target="_blank"><?php _e( 'terms &amp; conditions', 'woocommerce' ); ?></a></label>
+					<label for="terms" class="checkbox"><?php printf( __( 'I&rsquo;ve read and accept the <a href="%s" target="_blank">terms &amp; conditions</a>', 'woocommerce' ), esc_url( get_permalink( wc_get_page_id( 'terms' ) ) ) ); ?></label>
 					<input type="checkbox" class="input-checkbox" name="terms" <?php checked( $terms_is_checked, true ); ?> id="terms" />
 				</p>
 			<?php } ?>
@@ -189,4 +191,4 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 	<?php do_action( 'woocommerce_review_order_after_payment' ); ?>
 
-</div>
+<?php if ( ! $is_ajax ) : ?></div><?php endif; ?>

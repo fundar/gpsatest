@@ -14,7 +14,7 @@ get_header();
 <section class="main">
 	<div class="container">
         <div class="row">
-            <div class="col-md-9 col-sm-8">
+            <div class="col-md-9 col-sm-8">   
                 <div class="content"> 
     	          <?php while ( have_posts() ) : the_post(); ?>
                     <?php woocommerce_get_template_part( 'content', 'single-product' ); ?>

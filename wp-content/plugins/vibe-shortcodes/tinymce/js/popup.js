@@ -5,7 +5,7 @@ jQuery(document).ready(function($) {
     var vibes = {
     	loadVals: function()
     	{
-                        var shortcode = $('#_vibe_shortcode').text(),
+                var shortcode = $('#_vibe_shortcode').text(),
     			uShortcode = shortcode;
     		
     		// fill in the gaps eg {{param}}
@@ -154,13 +154,13 @@ jQuery(document).ready(function($) {
     		});
     		
     		// when insert is clicked
-    		$('.vibe-insert', form).click(function(event) {event.preventDefault();
-    			if(window.tinyMCE)
-				{
-					window.tinyMCE.execInstanceCommand(window.tinyMCE.activeEditor.id, 'mceInsertContent', false, $('#_vibe_ushortcode', form).html());
-					tb_remove();
-				}
-    		});
+            $('.vibe-insert', form).click(function(event) {event.preventDefault();
+                if(parent.tinyMCE)
+                {   
+                    parent.tinyMCE.execCommand('mceInsertContent', false, $('#_vibe_ushortcode', form).html());
+                    tb_remove();
+                }
+            });
     	}
 	}
     

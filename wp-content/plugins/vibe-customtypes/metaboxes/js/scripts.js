@@ -67,18 +67,13 @@ jQuery(document).ready(function($) {
             clone.find('select').attr('name',selectname);
 
             clone.find('.chosen-container').remove();
-
             lastrow.after(clone);
-
-            //var i=jQuery('.meta_box_repeatable li').size();
-            //i--;
-            //clone.find('span.count').html(i);
             recalculate_index(repeatable);
 
             jQuery('.chzn-select,.chosen').chosen({
-                                      allow_single_deselect: true,
-                                      disable_search_threshold: 8
-                                  });  
+              allow_single_deselect: true,
+              disable_search_threshold: 8
+            });  
         
 		//
 		return false;
@@ -453,9 +448,11 @@ jQuery(document).ready(function(){
                  jQuery('.color').click(function(){
                     jQuery(this).iris('toggle');
                  });
-                 jQuery('.chzn-select').chosen({
-                    allow_single_deselect: true,
-                    disable_search_threshold: 8
+                 jQuery('.chzn-select').each(function(){
+                    jQuery(this).chosen({
+                        allow_single_deselect: true,
+                        disable_search_threshold: 8
+                    });
                  });
 
                  jQuery( ".date-picker-field" ).datepicker({
@@ -463,5 +460,12 @@ jQuery(document).ready(function(){
                     numberOfMonths: 1,
                     showButtonPanel: true,
                 });
+                 jQuery( ".timepicker" ).each(function(){
+                 jQuery(this).timePicker({
+                      show24Hours: false,
+                      separator:':',
+                      step: 15
+                  });
+                }) 
     });
 

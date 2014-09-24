@@ -10,16 +10,16 @@ class Gc_Message_Bar_Admin_Bar {
         $wp_admin_bar->add_menu( array(
             'parent' => false, // use 'false' for a root menu, or pass the ID of the parent menu
             'id' => 'adminbar_gc_menu', // link ID, defaults to a sanitized title value
-            'title' => __('GetConversion'), // link title
+            'title' => '<span class="gc-logo-icon"></span> '.__('GetConversion'), // link title
             'href' => "#", // name of file
             'meta' => array( 'html' => '', 'class' => 'gc_adminbar_icon', 'onclick' => '', 'target' => '', 'title' => 'GetConversion' ),
         ));
         $wp_admin_bar->add_menu( array(
             'parent' => 'adminbar_gc_menu', // use 'false' for a root menu, or pass the ID of the parent menu
             'id' => 'adminbar_mygetconversion', // link ID, defaults to a sanitized title value
-            'title' => __('My.GetConversion'), // link title
+            'title' => __('MY.GetConversion'), // link title
             'href' => $GC_Message_Bar_Config['MYGC'], // name of file
-            'meta' => array( 'html' => '', 'class' => '', 'onclick' => '', 'target' => '_blank', 'title' => 'My.GetConversion' ),
+            'meta' => array( 'html' => '', 'class' => '', 'onclick' => '', 'target' => '_blank', 'title' => 'MY.GetConversion' ),
         ));
         $wp_admin_bar->add_menu( array(
             'parent' => 'adminbar_gc_menu', // use 'false' for a root menu, or pass the ID of the parent menu

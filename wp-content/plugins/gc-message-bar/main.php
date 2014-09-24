@@ -1,15 +1,15 @@
 <?php
 /*
 Plugin Name: GC Message Bar
-Version: 2.3.2
+Version: 2.3.8
 Plugin URI: http://wordpress.org/plugins/gc-message-bar
 Description: GC Message Bar is an easy to use plugin that allows you to place a sticky message and a Call To Action button to the top or bottom of your website
 Author: GetConversion
-Author URI: http://getconversion.net
+Author URI: http://getconversion.com
 License: GPL2
 */
 
-/*  Copyright 2014  eRise Hungary Ltd.  (email : info@getconversion.net)
+/*  Copyright 2014 eRise Hungary Ltd.  (email : info@getconversion.net)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as 

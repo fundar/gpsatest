@@ -2,8 +2,10 @@
 get_header();
 if ( have_posts() ) : while ( have_posts() ) : the_post();
 
+
 $title=get_post_meta(get_the_ID(),'vibe_title',true);
-if(isset($title) && $title !='' && $title !='H'){
+
+if(!isset($title) || !$title || (vibe_validate($title))){
 
 ?>
 <section id="title">
@@ -12,15 +14,15 @@ if(isset($title) && $title !='' && $title !='H'){
             <div class="col-md-9 col-sm-8">
                 <div class="pagetitle">
                     <h1><?php the_title(); ?></h1>
-                    <h5><?php the_sub_title(); ?></h5>
+                    <?php the_sub_title(); ?>
                 </div>
             </div>
              <div class="col-md-3 col-sm-4">
                  <?php
                     $breadcrumbs=get_post_meta(get_the_ID(),'vibe_breadcrumbs',true);
-                    if(isset($breadcrumbs) && $breadcrumbs !='' && $breadcrumbs !='H'){
+                    if(!isset($breadcrumbs) || !$breadcrumbs || vibe_validate($breadcrumbs)){
                         vibe_breadcrumbs();
-                    }    
+                    }   
                 ?>
             </div>
         </div>
@@ -43,17 +45,22 @@ if(isset($title) && $title !='' && $title !='H'){
                     </div>
                     <?php
                     }
-                        the_content();
+
+                    the_content();
 
                      ?>
+
                      <div class="tags">
-                    <?php the_tags('<ul><li>','</li><li>','</li></ul>'); ?>
+                    <?php echo '<div class="indate"><i class="icon-clock"></i> ';the_date();echo '</div>';the_tags('<ul><li>','</li><li>','</li></ul>'); ?>
                     <?php wp_link_pages('before=<div class="page-links"><ul>&link_before=<li>&link_after=</li>&after=</ul></div>'); ?>
+                        <div class="social_sharing">
+                             <?php echo social_sharing() ?>   
+                        </div>
                     </div>
                 </div>
                 <?php
                         $prenex=get_post_meta(get_the_ID(),'vibe_prev_next',true);
-                        if(isset($prenex) && $prenex !='' && $prenex !='H'){
+                        if(vibe_validate($prenex)){
                     ?>
                     <div class="prev_next_links">
                         <ul class="prev_next">
@@ -72,7 +79,7 @@ if(isset($title) && $title !='' && $title !='H'){
                 
                 <?php
                 $author = getPostMeta($post->ID,'vibe_author',true);
-                if(isset($author) && $author && $author !='H'){?>
+                if(vibe_validate($author)){?>
                 <div class="postauthor">
                     <div class="auth_image">
                         <?php
@@ -80,7 +87,7 @@ if(isset($title) && $title !='' && $title !='H'){
                          ?>
                     </div>
                     <div class="author_info">
-                        <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>" class="readmore link">Courses from <?php the_author_meta( 'display_name' ); ?></a>
+                        <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>" class="readmore link"><?php printf(__('Courses from %s','vibe'),get_the_author_meta( 'display_name' )); ?></a>
                         <h6><?php the_author_meta( 'display_name' ); ?></h6>
                         <div class="author_desc">
                              <?php  the_author_meta( 'description' );?>
@@ -105,10 +112,9 @@ if(isset($title) && $title !='' && $title !='H'){
             <div class="col-md-3 col-sm-3">
                 <div class="sidebar">
                     <?php
-                    $sidebar=getPostMeta($post->ID,'vibe_sidebar');
-                    ((isset($sidebar) && $sidebar)?$sidebar:$sidebar='mainsidebar');
+                    $sidebar = apply_filters('wplms_sidebar','mainsidebar',get_the_ID());
                     if ( !function_exists('dynamic_sidebar')|| !dynamic_sidebar($sidebar) ) : ?>
-                   <?php endif; ?>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

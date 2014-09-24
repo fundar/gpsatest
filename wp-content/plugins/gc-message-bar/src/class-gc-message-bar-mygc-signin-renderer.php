@@ -13,7 +13,7 @@ class Gc_Message_Bar_MyGC_Signin_Renderer extends Gc_MessageBar_Abstract_Rendere
         $urlPrefix = (@$_SERVER["HTTPS"] == "on") ? "https://" : "http://";
 
         ?>
-        <script type="text/javascript" src="/wp-includes/js/jquery/jquery.js"></script>
+        <script type="text/javascript" src="../wp-includes/js/jquery/jquery.js"></script>
         <link href="<?php echo $urlPrefix;?>fonts.googleapis.com/css?family=Roboto:400,700,300" media="screen" rel="stylesheet" type="text/css">
         <link href="<?php echo $urlPrefix;?>fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300" media="screen" rel="stylesheet" type="text/css">
         <link href="<?php echo $urlPrefix;?>fonts.googleapis.com/css?family=Bitter:400,700" media="screen" rel="stylesheet" type="text/css">
@@ -21,7 +21,7 @@ class Gc_Message_Bar_MyGC_Signin_Renderer extends Gc_MessageBar_Abstract_Rendere
         <?php if($params['section'] === 'signin'): ?>
         <div class="loginwrapper">
             <h2>Connect To MY.GetConversion</h2>
-            <form action="<?php echo home_url();?>/wp-admin/admin-ajax.php?action=gc-message-bar-mygc-signin" method="POST">
+            <form action="admin-ajax.php?action=gc-message-bar-mygc-signin" method="POST">
                 <?php if(isset($params['failed']) && $params['failed'] === true && $params['error_type'] === 'AUTH_ERROR'): ?>
                 <style> body { height:456px; } </style>
                 <div class="errmsg error-error">Email or password you have entered is incorrect.</div>
@@ -54,7 +54,7 @@ class Gc_Message_Bar_MyGC_Signin_Renderer extends Gc_MessageBar_Abstract_Rendere
         <script>
             jQuery('.button-ok').click(function(){
                 parent.jQuery('body').trigger('popBox.close');
-                parent.window.location.href='<?php echo home_url()."/wp-admin/plugins.php?page=".$params["redirect_to"]; ?>';
+                parent.window.location.href='plugins.php?page=<?php echo $params["redirect_to"]; ?>';
             });
         </script>
         <?php endif; ?>

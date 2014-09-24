@@ -10,12 +10,29 @@
         border-bottom:1px solid #EFEFEF;
         box-shadow: 0 21px 0 #F6F6F6;
 }
+.mce-ico.mce-i-icon.vibe-icon{
+    width:20px;
+    height:20px;
+    display: block;
+    background:url(../images/icon.png) no-repeat;
+}
 #vibe-popup * {
 	font: 12px/20px Arial, Helvetica, sans-serif;	
 }
 
+#TB_window{z-index: 999999 !important;}
+
 .field .iris-picker.iris-border{
     margin-left:200px;
+}
+
+.upload_directory{
+  padding:10px 20px;
+}
+.upload_dirs_navigation{
+  text-align:right; 
+  padding:5px 10px 5px 5px; 
+  margin:5px 20px;
 }
 #vibe-sc-form-live-preview{
     width:100%;

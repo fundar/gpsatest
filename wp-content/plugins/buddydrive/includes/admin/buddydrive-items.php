@@ -778,7 +778,6 @@ class BuddyDrive_List_Table extends WP_List_Table {
 	 * @uses WP_List_Table::display_rows_or_placeholder()
 	*/
 	function display() {
-		extract( $this->_args );
 
 		$this->display_tablenav( 'top' ); ?>
 
@@ -813,17 +812,24 @@ class BuddyDrive_List_Table extends WP_List_Table {
 	 * @uses WP_List_Table::single_row_columns() to display the row
 	 */
 	function single_row( $item = array() ) {
-		static $row_class = '';
+		static $even = false;
 
-		if ( empty( $row_class ) ) {
-			$row_class = ' class="alternate odd"';
+		$row_classes = array();
+
+		if ( $even ) {
+			$row_classes = array( 'even' );
 		} else {
-			$row_class = ' class="even"';
+			$row_classes = array( 'alternate', 'odd' );
 		}
+
+		$row_classes = apply_filters( 'buddydrive_list_table_single_row_class', $row_classes, $item['ID'] );
+		$row_class = ' class="' . implode( ' ', $row_classes ) . '"';
 
 		echo '<tr' . $row_class . ' id="item-' . esc_attr( $item['ID'] ) . '" data-parent_id="' . esc_attr( $item['ID'] ) . '" data-root_id="' . esc_attr( $item['ID'] ) . '">';
 		echo $this->single_row_columns( $item );
 		echo '</tr>';
+
+		$even = ! $even;
 	}
 
 	/**
@@ -866,7 +872,7 @@ class BuddyDrive_List_Table extends WP_List_Table {
 	 * @since BuddyDrive (1.0)
 	 */
 	function get_columns() {
-		return array(
+		return apply_filters( 'buddydrive_list_table_columns', array(
 			'cb'          => '<input name type="checkbox" />',
 			'comment'     => _x( 'Name', 'BuddyDrive admin Item Name column header',               'buddydrive' ),
 			'description' => _x( 'Description', 'BuddyDrive admin Item Description column header', 'buddydrive' ),
@@ -874,7 +880,7 @@ class BuddyDrive_List_Table extends WP_List_Table {
 			'owner'       => _x( 'Owner', 'BuddyDrive admin Owner column header',                  'buddydrive' ),
 			'mime_type'   => _x( 'Mime type', 'BuddyDrive admin Mime type column header',          'buddydrive' ),
 			'last_edit'   => _x( 'Last Edit', 'BuddyDrive admin Last Edit column header',          'buddydrive' )
-		);
+		));
 	}
 
 	/**
@@ -948,7 +954,7 @@ class BuddyDrive_List_Table extends WP_List_Table {
 
 		$content = apply_filters( 'buddydrive_get_item_title', $item['post_title'] );
 
-		$icon = ( $item['post_type'] != buddydrive_get_folder_post_type() ) ? '<i class="bd-icon-file"></i>' : '<i class="bd-icon-folder"></i>';
+		$icon = ( $item['post_type'] != buddydrive_get_folder_post_type() ) ? '<i class="icon bd-icon-file"></i>' : '<i class="icon bd-icon-folder"></i>';
 
 		echo $icon . ' ' . $content . ' ' . $this->row_actions( $actions );
 	}
@@ -979,19 +985,19 @@ class BuddyDrive_List_Table extends WP_List_Table {
 		if( !empty( $privacy ) ) {
 			switch ( $privacy ) {
 				case 'private' :
-					$status_desc = __( 'Private', 'buddydrive' );
+					$status_desc = '<i class="icon bd-icon-lock"></i> ' . __( 'Private', 'buddydrive' );
 					break;
 
 				case 'password' :
-					$status_desc = __( 'Password protected', 'buddydrive' );
+					$status_desc = '<i class="icon bd-icon-key"></i> ' . __( 'Password protected', 'buddydrive' );
 					break;
 
 				case 'public'  :
-					$status_desc = __( 'Public', 'buddydrive' );
+					$status_desc = '<i class="icon bd-icon-unlocked"></i> ' . __( 'Public', 'buddydrive' );
 					break;
 					
 				case 'friends'  :
-					$status_desc = __( 'Friends only', 'buddydrive' );
+					$status_desc = '<i class="icon bd-icon-users"></i> ' . __( 'Friends only', 'buddydrive' );
 					break;
 				
 				case 'groups'  :
@@ -1038,5 +1044,9 @@ class BuddyDrive_List_Table extends WP_List_Table {
 		$date = $item['post_modified_gmt'];
 		$date = bp_format_time( strtotime( $date ), true, false );
 		echo apply_filters( 'buddydrive_get_item_date', $date );
+	}
+
+	function column_default( $item = array(), $column_name ) {
+		return apply_filters( "buddydrive_list_table_custom_column", '', $column_name, (int) $item['ID'] );
 	}
 }

@@ -48,7 +48,7 @@ function form($instance) {
                                 'num_tab2' => '5', 
                                 'show_tab3'  => '1',
                                 'title_tab3'  => __('Courses','vibe'),
-                                'style_tab3' => 'thumbnail', //thumbnail, normal, carousel, Thumbnail grid
+                                'style_tab3' => 'courses', //thumbnail, normal, carousel, Thumbnail grid
                                 'type_tab3'  => 'post', //post,project,testimonials
                                 'sort_tab3'  => 'recent',  //Recent , Recent Tags, Recent Category, 
                                 'num_tab3' => '5'
@@ -78,6 +78,7 @@ function form($instance) {
                 <p> <?php _e('Title','vibe'); ?> : <input class="text" type="text" name="<?php echo $this->get_field_name('title_tab'.$k); ?>" value="<?php echo $instance['title_tab'.$k]; ?>" /></p>
                 <p><?php _e('Content & Style','vibe');?> : <select class="select" name="<?php echo $this->get_field_name('style_tab'.$k); ?>">
                         <option value="thumbnail" <?php if($instance['style_tab'.$k] == 'thumbnail') { ?>selected="selected" <?php } ?>><?php _e('Thumbnail Posts','vibe'); ?></option>
+                        <option value="courses" <?php if($instance['style_tab'.$k] == 'courses') { ?>selected="selected" <?php } ?>><?php _e('Courses','vibe'); ?></option>
                         <option value="comments" <?php if($instance['style_tab'.$k] == 'comments') { ?>selected="selected" <?php } ?>><?php _e('Comments','vibe'); ?></option>
                         </select>
                 </p>
@@ -152,6 +153,26 @@ function widget( $args, $instance )
                                 wp_reset_postdata();
                         break;
                       }
+                      case 'courses':{
+                              echo '<ul class="more_posts">';
+
+                              $query = 'post_type=course&posts_per_page='.$instance['num_tab'.$i];
+                              $loop = new WP_Query($query);
+                              while ( $loop->have_posts() ) : $loop->the_post();
+                              
+                                   $thumb=get_the_post_thumbnail($loop->post->ID,'mini');
+                                   
+                                  echo '<li><a href="'.get_permalink($loop->post->ID).'" title="'.get_the_title($loop->post->ID).'">'.$thumb.'<span>'.get_the_title().'</span></a><small>';
+                                  echo get_the_term_list( $loop->post->ID, 'course-cat', '', ',', ' ' );
+                                  
+                                echo '</small></li>';
+                                    endwhile;
+                                   echo '</ul>';
+                                // Reset Post Data
+                                   wp_reset_query();
+                                wp_reset_postdata();
+                        break;
+                      }
                       case 'comments':{
                         $args=array(
                           'status' => 'approve',
@@ -165,6 +186,7 @@ function widget( $args, $instance )
                         echo '</ul>';
                         break;
                       }
+
                     }
 
                       echo '</div>';
@@ -243,8 +265,7 @@ class vibecarousel extends WP_Widget {
                     <div class="post_thumb">';
                                               echo '<a href="'.get_permalink($loop->post->ID).'">'.  $thumb.'</a>
                     </div>
-                    <h4 class="post_title"><a href="'.get_permalink($loop->post->ID).'">'.get_the_title($loop->post->ID).'</a></h4>
-                                                '.(isset($price)?'<span class="price"><i class="'.$vibe_options['currency'].'"></i>'.$price.'</span>':'').'
+                    <h4 class="post_title"><a href="'.get_permalink($loop->post->ID).'">'.get_the_title($loop->post->ID).'</a></h4>                                                
                     <p class="post_excerpt">'.custom_excerpt($instance['excerpt_length']).'</p>
                     </article>
                 </li>';
@@ -291,7 +312,7 @@ class vibecarousel extends WP_Widget {
                   <article>
                     <div class="post_thumb">'.$onsale;
                                               echo '<a href="'.get_permalink($loop->post->ID).'">'.  $thumb.'</a>';
-                                              if(isset($featured) && $featured && $featured!='H')
+                                              if(vibe_validate($featured))
                                               echo '<span class="vfeatured" data-rel="tooltip" data-original-title="'.$vibe_options['listing_fields']['label'][$i].'"><i class="icon-star"></i></span>';
                                               echo '    
                     </div>
@@ -380,7 +401,7 @@ class vibecarousel extends WP_Widget {
                 
                 ?>
         <p> <?php _e('Title','vibe'); ?> <input type="text" class="text" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo $instance['title']; ?>" /></p>
-  <p><?php _e('Theme','vibe');?> : <select class=""select" name="<?php echo $this->get_field_name('theme'); ?>">
+  <p><?php _e('Theme','vibe');?> : <select class="select" name="<?php echo $this->get_field_name('theme'); ?>">
                            <option value="light" <?php if($instance['theme'] == 'light') { ?>selected="selected" <?php } ?>><?php _e('Light','vibe'); ?></option>
                            <option value="dark" <?php if($instance['theme'] == 'dark') { ?>selected="selected" <?php } ?>><?php _e('Dark','vibe'); ?></option>
                     </select>        
@@ -462,6 +483,7 @@ class vibeposts extends WP_Widget {
                      if(isset($instance['taxonomy']) && $instance['taxonomy']!=''){ 
                      
                          $check=term_exists($instance['term'], $instance['taxonomy']);
+                         
                     if ($check == 0 || $check == null || !$check) {
                             $error = new VibeErrors();
                             echo $error->get_error('term_taxonomy_mismatch');
@@ -499,99 +521,76 @@ class vibeposts extends WP_Widget {
                     <div class="postlist <?php echo $instance['theme'].' post'.$instance['size'];?>">
          <ul class="vibeposts">
                              
-                                              <?php
+                <?php
                                               
-                                              if($instance['style'] == 'post'){
-                                              while ( $loop->have_posts() ) : $loop->the_post(); 
-                                              
-                                                $thumb=  get_the_post_thumbnail($loop->post->ID,$instance['size']);
-                                              
-                                             $price='';
-                                              if(isset($vibe_options['listing_fields']['field_type'])){
-                                                  $i = array_search('price',$vibe_options['listing_fields']['field_type']);
-                                                  if(isset($i)){
-                                                      $key = 'vibe_'.strtolower(str_replace(' ', '-',$vibe_options['listing_fields']['label'][$i]));
-                                                      $price = getPostMeta($loop->post->ID,$key);
-                                                  }
-                                              }
-                                                
-                                              
-                                              if(isset($instance['chars']) && $instance['chars'] !='')
-                                                  $chars=intval($instance['chars']);
-                                              else
-                                                  $chars=80;
-                                              echo '
-                <li>
-                  <article>
-                    <div class="post_thumb">';
-                                              echo '<a href="'.get_permalink($loop->post->ID).'" class="'.$instance['size'].'_thumb">'.  $thumb.'</a>
-                    </div>
-                    <h4 class="post_title"><a href="'.get_permalink($loop->post->ID).'">'.get_the_title($loop->post->ID).'</a></h4>
-                                                '.(isset($price)?'<span class="price"><i class="'.$vibe_options['currency'].'"></i>'.$price.'</span>':'').'    
-                    <p class="post_excerpt">'.custom_excerpt($chars).'</p>
-                    </article>
-                </li>';
-                                            
-                                          endwhile;
-                                              }
-                                                if($instance['style'] == 'imagetitle'){
-                                              while ( $loop->have_posts() ) : $loop->the_post(); 
-                                              
-                                               $price='';
-                                              if(isset($vibe_options['listing_fields']['field_type'])){
-                                                  $i = array_search('price',$vibe_options['listing_fields']['field_type']);
-                                                  if(isset($i)){
-                                                      $key = 'vibe_'.strtolower(str_replace(' ', '-',$vibe_options['listing_fields']['label'][$i]));
-                                                      $price = getPostMeta($loop->post->ID,$key);
-                                                  }
-                                              }
-                                              
-                                              $thumb=get_the_post_thumbnail($loop->post->ID,$instance['size']);
-                                              
-                                              echo '
-                <li>
-                  <article>
-                    <div class="post_thumb">';
-                                              echo '<a href="'.get_permalink($loop->post->ID).'">'.  $thumb.'</a>
-                    </div>
-                    <h5><a href="'.get_permalink($loop->post->ID).'">'.get_the_title($loop->post->ID).'</a></h5>
-                                                    '.(isset($price)?'<span class="price"><i class="'.$vibe_options['currency'].'"></i>'.$price.'</span>'.get_the_term_list( $loop->post->ID, 'location', ' ', ' ', '' ):'').'
-                    </article>
-                </li>';
-                                            
-                                          endwhile;
-                                              }
-                                              if($instance['style'] == 'image'){
-                                              while ( $loop->have_posts() ) : $loop->the_post(); 
-                                               
-                                              $thumb=get_the_post_thumbnail($loop->post->ID,$instance['size']);
-                                              
-                                              echo '
-                <li>
-                    <div class="post_thumb imageonly">';
-                                              echo '<a href="'.get_permalink($loop->post->ID).'">'.  $thumb .'</a>
-                    </div>
-                </li>';
-                                            
-                                          endwhile;
-                                              }
-                                                if($instance['style'] == 'title'){
-                                              while ( $loop->have_posts() ) : $loop->the_post(); 
-                                              echo '
-                <li>
-                    <h5><a href="'.get_permalink($loop->post->ID).'">'.get_the_title($loop->post->ID).'</a></h5>
-        
-                </li>';
-                                            
-                                          endwhile;
-                                              }
-                                              ?>
+                      if($instance['style'] == 'post'){
+                        while ( $loop->have_posts() ) : $loop->the_post(); 
+                        
+                          $thumb=  get_the_post_thumbnail($loop->post->ID,$instance['size']);
+                          
+                        
+                        if(isset($instance['chars']) && $instance['chars'] !='')
+                            $chars=intval($instance['chars']);
+                        else
+                            $chars=80;
+                        echo '
+                              <li>
+                                <article>
+                                  <div class="post_thumb">';
+                                                            echo '<a href="'.get_permalink($loop->post->ID).'" class="'.$instance['size'].'_thumb">'.  $thumb.'</a>
+                                  </div>
+                                  <h4 class="post_title"><a href="'.get_permalink($loop->post->ID).'">'.get_the_title($loop->post->ID).'</a></h4>
+                                  <p class="post_excerpt">'.custom_excerpt($chars).'</p>
+                                  </article>
+                              </li>';
+                      
+                          endwhile;
+                      }
+                      if($instance['style'] == 'imagetitle'){
+                          while ( $loop->have_posts() ) : $loop->the_post(); 
+                          
+                          
+                          $thumb=get_the_post_thumbnail($loop->post->ID,$instance['size']);
+                          
+                          echo '<li>
+                                  <article>
+                                    <div class="post_thumb">';
+                                                              echo '<a href="'.get_permalink($loop->post->ID).'">'.  $thumb.'</a>
+                                    </div>
+                                    <h5><a href="'.get_permalink($loop->post->ID).'">'.get_the_title($loop->post->ID).'</a></h5>
+                                    </article>
+                                </li>';
+                        
+                        endwhile;
+                     }
+                    if($instance['style'] == 'image'){
+                      while ( $loop->have_posts() ) : $loop->the_post(); 
+                       
+                      $thumb=get_the_post_thumbnail($loop->post->ID,$instance['size']);
+                      
+                      echo '<li>
+                                <div class="post_thumb imageonly">';
+                                                          echo '<a href="'.get_permalink($loop->post->ID).'">'.  $thumb .'</a>
+                                </div>
+                            </li>';
+                    
+                      endwhile;
+                    }
+                    if($instance['style'] == 'title'){
+                      while ( $loop->have_posts() ) : $loop->the_post(); 
+                      echo '<li>
+                                  <h5><a href="'.get_permalink($loop->post->ID).'">'.get_the_title($loop->post->ID).'</a></h5>
+                              </li>';
+                    
+                      endwhile;
+                    }
+                  ?>
               </ul> 
           </div>  
-                                <?php
-                                // Restore original Query & Post Data
-                                            wp_reset_query();
-                                            wp_reset_postdata();
+<?php
+// Restore original Query & Post Data
+          wp_reset_query();
+          wp_reset_postdata();
     echo $after_widget;
                 }
 
@@ -672,8 +671,8 @@ class vibeposts extends WP_Widget {
                  <p> Taxonomy Term : <select class="select" name="<?php echo $this->get_field_name('term'); ?>">
                          <?php
                         
-                        foreach ($v_taxonomy_terms as $term ) {?>
-                        <option value="<?php echo $term; ?>" <?php if($instance['term'] == $term) { ?>selected="selected" <?php } ?>><?php echo $term; ?></option>;
+                        foreach ($v_taxonomy_terms as $term  => $name) {?>
+                        <option value="<?php echo $term; ?>" <?php if($instance['term'] == $term) { ?>selected="selected" <?php } ?>><?php echo $name; ?></option>;
                         <?php }
                         ?>
                 </select>
@@ -782,7 +781,9 @@ class vibeposts extends WP_Widget {
         <?php 
     }
 }   
+    
           
+
 /*======= Vibe Testimonials ======== */  
 
 class vibetestimonials extends WP_Widget {
@@ -853,9 +854,10 @@ class vibetestimonials extends WP_Widget {
           <label for="<?php echo $this->get_field_id('id'); ?>"><?php _e('Testimonial Id ','vibe'); ?></label> 
            <select class="select" name="<?php echo $this->get_field_name('id'); ?>">
                          <?php
-                         while ( $loop->have_posts() ) :
+                          echo '<option value="random" '.(($instance['id'] == 'random')?'selected=selected':'' ).' > '.__('Random','vibe').' </option>';
+                        while ( $loop->have_posts() ) :
                             $loop->the_post();
-                        echo '<option value="'.get_the_ID().'" '.(($instance['id'] == get_the_ID())?'selected=selected':'' ).' > '.get_the_title().' </option>';
+                          echo '<option value="'.get_the_ID().'" '.(($instance['id'] == get_the_ID())?'selected=selected':'' ).' > '.get_the_title().' </option>';
                         endwhile;
                         ?>
                 </select>
@@ -871,246 +873,4 @@ class vibetestimonials extends WP_Widget {
     }
 }
 
-
-//* ==== VIBE FEATURED LISTINGS ==== */
-
-class vibefeaturedlistings extends WP_Widget {
-
-  function vibefeaturedlistings() {
-    $widget_ops = array( 'classname' => 'Featured Listings', 'description' => __('Featured Listings Carousel ', 'vibe') );
-    $control_ops = array( 'width' => 300, 'height' => 350, 'id_base' => 'vibefeaturedlistings' );
-    $this->WP_Widget( 'vibefeaturedlistings', __('Vibe Featured Listings', 'vibe'), $widget_ops, $control_ops );
-  }
-  
-  function widget( $args, $instance ) {
-    extract( $args );
-                global $vibe_options;
-    //Our variables from the widget settings.
-    $title = apply_filters('widget_title', $instance['title'] );
-    
-    echo $before_widget;
-
-    // Display the widget title 
-    if ( $title )
-      echo $before_title . $title . $after_title;
-
-    
-
-
-    //Display the name 
-      $args = array(
-              'post_type' => 'listing',
-              'posts_per_page' => $instance['num'],
-        );
-
-      
-      $args['meta_query']=array(
-                                  array(
-                                      'key' => 'vibe_featured',
-                                      'value' => '1',
-                                      'compare' => 'LIKE'
-                                  )
-                              );
-
-      $loop = new WP_Query($args);
-       
-    ?>
-                    <div class="widget_carousel flexslider <?php echo ''.(($instance['auto'])?'auto':'').' '.(($instance['loop'])?'loop':'');?> loading">
-              <ul class="slides">
-                                              <?php
-                                              if($instance['style'] == 'post'){
-                                              while ( $loop->have_posts() ) : $loop->the_post(); 
-                                              $thumb=  featured_component($loop->post->ID,'big');
-                                              
-                                              $price='';
-                                              if(isset($vibe_options['listing_fields']['field_type'])){
-                                                  $i = array_search('price',$vibe_options['listing_fields']['field_type']);
-                                                  if(isset($i)){
-                                                      $key = 'vibe_'.strtolower(str_replace(' ', '-',$vibe_options['listing_fields']['label'][$i]));
-                                                      $price = getPostMeta($loop->post->ID,$key);
-                                                  }
-                                              }
-                                             
-                                              echo '
-                <li>
-                  <article>
-                    <div class="post_thumb">';
-                                              echo '<a href="'.get_permalink($loop->post->ID).'">'.  $thumb.'</a>
-                    </div>
-                    <h4 class="post_title"><a href="'.get_permalink($loop->post->ID).'">'.get_the_title($loop->post->ID).'</a></h4>
-                                                '.(isset($price)?'<span class="price"><i class="'.$vibe_options['currency'].'"></i>'.$price.'</span>':'').'
-                    <p class="post_excerpt">'.custom_excerpt($instance['excerpt_length']).'</p>
-                    </article>
-                </li>';
-                                            
-                                          endwhile;
-                                          // Restore original Query & Post Data
-                                            wp_reset_query();
-                                            wp_reset_postdata();
-
-
-                                              }
-                                                if($instance['style'] == 'imagetitle'){
-                                              while ( $loop->have_posts() ) : $loop->the_post(); 
-                                              $thumb=get_the_post_thumbnail($loop->post->ID);
-                                              
-                                              $price='';
-                                              if(isset($vibe_options['listing_fields']['field_type'])){
-                                                  $i = array_search('price',$vibe_options['listing_fields']['field_type']);
-                                                  if(isset($i)){
-                                                      $key = 'vibe_'.strtolower(str_replace(' ', '-',$vibe_options['listing_fields']['label'][$i]));
-                                                      $price = getPostMeta($loop->post->ID,$key);
-                                                  }
-                                              }
-                                              $featured='';
-                                              if(isset($vibe_options['listing_fields']['field_type'])){
-                                                  $i = array_search('featured',$vibe_options['listing_fields']['field_type']);
-                                                  if(isset($i)){
-                                                      $key = 'vibe_'.strtolower(str_replace(' ', '-',$vibe_options['listing_fields']['label'][$i]));
-                                                      $featured = getPostMeta($loop->post->ID,$key);
-                                                  }
-                                              }
-                                              
-                                                if(!isset($thumb) || $thumb == '')
-                                                $thumb='<img src="'.VIBE_URL.'/img/default_mini.jpg" />';
-                                                 $onsale ='';
-                                                $terms = wp_get_post_terms( $loop->post->ID, 'status');
-                                                if(isset($terms) && is_array($terms)){
-                                                    foreach($terms as $term){
-                                                    $onsale = '<span class="'.$term->slug.'">'.$term->name.'</span>';
-                                                    }
-                                                  }
-                                              echo '
-                <li>
-                  <article>
-                    <div class="post_thumb">'.$onsale;
-                                              echo '<a href="'.get_permalink($loop->post->ID).'">'.  $thumb.'</a>';
-                                              if(isset($featured) && $featured && $featured!='H')
-                                              echo '<span class="vfeatured" data-rel="tooltip" data-original-title="'.$vibe_options['listing_fields']['label'][$i].'"><i class="icon-star"></i></span>';
-                                              echo '    
-                    </div>
-                                                <div class="carouselposttitle">
-                    <h5><a href="'.get_permalink($loop->post->ID).'">'.get_the_title($loop->post->ID).'</a></h5>
-                                                '.(isset($price)?'<span class="price"><i class="'.$vibe_options['currency'].'"></i>'.$price.'</span>'.get_the_term_list( $loop->post->ID, 'location', ' ', ' ', '' ):'').'
-                                                </div>    
-                    </article>
-                </li>';
-                                            
-                                          endwhile;
-                                          // Restore original Query & Post Data
-                                            wp_reset_query();
-                                            wp_reset_postdata();
-                                              }
-                                              if($instance['style'] == 'image'){
-                                              while ( $loop->have_posts() ) : $loop->the_post(); 
-                                              $thumb=get_the_post_thumbnail($loop->post->ID);
-                                                if(!isset($thumb) || $thumb == '')
-                                                $thumb='<img src="'.VIBE_URL.'/img/default_mini.jpg" />';
-                                              echo '
-                <li>
-                    <div class="post_thumb">';
-                                              echo '<a href="'.get_permalink($loop->post->ID).'">'.  $thumb .'</a>
-                    </div>
-                </li>';
-                                            
-                                          endwhile;
-                                          // Restore original Query & Post Data
-                                            wp_reset_query();
-                                            wp_reset_postdata();
-                                              }
-                                                if($instance['style'] == 'title'){
-                                              while ( $loop->have_posts() ) : $loop->the_post(); 
-                                              echo '
-                <li>
-                    <h5><a href="'.get_permalink($loop->post->ID).'">'.get_the_title($loop->post->ID).'</a></h5>
-        
-                </li>';
-                                            
-                                          endwhile;
-                                          // Restore original Query & Post Data
-                                            wp_reset_query();
-                                            wp_reset_postdata();
-                                              }
-                                              ?>
-              </ul> 
-          </div>  
-                                <?php
-    echo $after_widget;
-                }
-
-  //Update the widget 
-   
-  function update( $new_instance, $old_instance ) {
-    $instance = $old_instance;
-
-    $instance['title'] = strip_tags( $new_instance['title'] );
-    $instance['theme'] = strip_tags( $new_instance['theme'] );
-                $instance['sort'] = strip_tags( $new_instance['sort'] );
-                $instance['style'] = strip_tags( $new_instance['style'] );
-                $instance['excerpt_length'] = strip_tags( $new_instance['excerpt_length'] );
-                $instance['auto'] = strip_tags( $new_instance['auto'] );
-                $instance['loop'] = strip_tags( $new_instance['loop'] );
-                $instance['num'] = strip_tags( $new_instance['num'] );
-
-    return $instance;
-  }
-
-  
-  function form( $instance ) {
-
-    //Set up some default widget settings.
-    $defaults = array( 
-                        'theme'  => 'light',
-                        'title'  => 'Featured Listings',
-                        'style'  => 'post',
-                        'excerpt_length'  => '100',
-                        'auto'  => '1',
-                        'loop'  => '1',
-                        'num'  => '3',
-                        );
-    $instance = wp_parse_args( (array) $instance, $defaults ); 
-                
-                ?>
-        <p> <?php _e('Title','vibe'); ?> <input type="text" class="text" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo $instance['title']; ?>" /></p>
-        <p><?php _e('Theme','vibe');?> : <select class=""select" name="<?php echo $this->get_field_name('theme'); ?>">
-                                 <option value="light" <?php if($instance['theme'] == 'light') { ?>selected="selected" <?php } ?>><?php _e('Light','vibe'); ?></option>
-                                 <option value="dark" <?php if($instance['theme'] == 'dark') { ?>selected="selected" <?php } ?>><?php _e('Dark','vibe'); ?></option>
-                          </select>        
-              </p>  
-                <p>
-                    <?php _e('Sort','vibe'); ?> : <select class="select" name="<?php echo $this->get_field_name('sort'); ?>">
-                        <option value="recent" <?php if($instance['sort'] == 'recent') { ?>selected="selected" <?php } ?>>Recent</option>
-                        <option value="popular" <?php if($instance['sort'] == 'popular') { ?>selected="selected" <?php } ?>> Popular</option>
-                        </select>
-                </p>
-                <p>
-                    <?php _e('Style','vibe'); ?> : <select class="select" name="<?php echo $this->get_field_name('style'); ?>">
-                        <option value="post" <?php if($instance['style'] == 'post') { ?>selected="selected" <?php } ?>><?php _e('Post','vibe'); ?></option>
-                        <option value="imagetitle" <?php if($instance['style'] == 'imagetitle') { ?>selected="selected" <?php } ?>> <?php _e('Image with Title','vibe'); ?></option>
-                        <option value="image" <?php if($instance['style'] == 'image') { ?>selected="selected" <?php } ?>><?php _e('Image Only','vibe'); ?></option>
-                        <option value="title" <?php if($instance['style'] == 'title') { ?>selected="selected" <?php } ?>><?php _e('Title Only','vibe'); ?></option>
-                        </select>
-                </p>
-                <p>
-                    <?php _e('Excerpt length','vibe'); ?> : <input type="text" class="text" name="<?php echo $this->get_field_name('excerpt_length'); ?>" value="<?php echo $instance['excerpt_length']; ?>" /></p>
-                </p>
-                <p>
-                    <?php _e('Auto Start','vibe'); ?> : <select class="select" name="<?php echo $this->get_field_name('auto'); ?>">
-                        <option value="1" <?php if($instance['auto'] == '1') { ?>selected="selected" <?php } ?>>Yes</option>
-                        <option value="0" <?php if($instance['auto'] == '0') { ?>selected="selected" <?php } ?>> No</option>
-                        </select>
-                </p>
-                <p>
-                    <?php _e('Loop back, after completion','vibe'); ?> : <select class="select" name="<?php echo $this->get_field_name('loop'); ?>">
-                        <option value="1" <?php if($instance['loop'] == '1') { ?>selected="selected" <?php } ?>>Yes</option>
-                        <option value="0" <?php if($instance['loop'] == '0') { ?>selected="selected" <?php } ?>> No</option>
-                        </select>
-                </p>
-                <p> <?php _e('Number of Posts','vibe'); ?> : <input type="text" class="text" name="<?php echo $this->get_field_name('num'); ?>" value="<?php echo $instance['num']; ?>" /></p>
-
-    
-
-  <?php
-  }
-}
 ?>

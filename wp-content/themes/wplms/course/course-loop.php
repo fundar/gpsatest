@@ -8,16 +8,13 @@
 
 $loop_number=vibe_get_option('loop_number');
 isset($loop_number)?$loop_number:$loop_number=5;
+
 ?>
-
 <?php do_action( 'bp_before_course_loop' ); ?>
-
-
-
 <?php 
 
 
-if ( bp_course_has_items( bp_ajax_querystring( 'course' ).'&per_page='.$loop_number ) ) : ?>
+if ( bp_course_has_items( bp_ajax_querystring( 'course' ).'&orderby=menu_order&per_page='.$loop_number ) ) : ?>
 <?php // global $items_template; var_dump( $items_template ) ?>
 	<div id="pag-top" class="pagination">
 
@@ -48,14 +45,13 @@ if ( bp_course_has_items( bp_ajax_querystring( 'course' ).'&per_page='.$loop_num
 			</div>
 
 			<div class="item">
-				<div class="item-title"  itemprop="itemreviewed"><?php bp_course_title() ?></div>
-				<div class="item-meta"><?php bp_course_meta() ?></div>
-				<div class="item-desc"><?php bp_course_desc() ?></div>
+				<div class="item-title"  itemprop="itemreviewed"><?php bp_course_title(); if(get_post_status() != 'publish'){echo '<i> ( '.get_post_status().' ) </i>';} ?></div>
+				<div class="item-meta"><?php bp_course_meta(); ?></div>
+				<div class="item-desc"><?php bp_course_desc(); ?></div>
 				<div class="item-credits">
 					<?php bp_course_credits(); ?>
 				</div>
 				<div class="item-instructor">
-					<?php bp_course_instructor_avatar(); ?>
 					<?php bp_course_instructor(); ?>
 				</div>
 				<div class="item-action"><?php bp_course_action() ?></div>
@@ -91,7 +87,7 @@ if ( bp_course_has_items( bp_ajax_querystring( 'course' ).'&per_page='.$loop_num
 <?php else: ?>
 
 	<div id="message" class="info">
-		<p><?php _e( 'You have not subscribed to any Course.', 'vibe' ); ?></p>
+		<p><?php _e( 'You have not subscribed to any courses.', 'vibe' ); ?></p>
 	</div>
 
 <?php endif;  ?>

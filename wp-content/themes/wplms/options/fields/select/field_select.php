@@ -53,7 +53,7 @@ class VIBE_Options_select extends VIBE_Options{
 	function enqueue(){
 		
 		wp_enqueue_script(
-			'vibe-opts-field-select-js', 
+			'chosen-js', 
 			VIBE_OPTIONS_URL.'fields/select/chosen.jquery.min.js', 
 			array('jquery'),
 			time(),

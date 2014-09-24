@@ -718,7 +718,7 @@ class VIBE_Options{
 							
 							echo '<h4>'.__('Import Options', 'vibe').'</h4>';
 							
-							echo '<p><a href="javascript:void(0);" id="vibe-opts-import-code-button" class="button-secondary">Import from file</a> <a href="javascript:void(0);" id="vibe-opts-import-link-button" class="button-secondary">Import from URL</a></p>';
+							echo '<p><a href="javascript:void(0);" id="vibe-opts-import-code-button" class="button-secondary">'.__('Import from file','vibe').'</a> <a href="javascript:void(0);" id="vibe-opts-import-link-button" class="button-secondary">'.__('Import from URL','vibe').'</a></p>';
 							
 							echo '<div id="vibe-opts-import-code-wrapper">';
 							
@@ -755,7 +755,7 @@ class VIBE_Options{
 								echo '<p class="description">'.apply_filters('vibe-opts-backup-description', __('Here you can copy/download your themes current option settings. Keep this safe as you can use it as a backup should anything go wrong. Or you can use it to restore your settings on this site (or any other site). You also have the handy option to copy the link to yours sites settings. Which you can then use to duplicate on another site', 'vibe')).'</p>';
 							echo '</div>';
 							
-								echo '<p><a href="javascript:void(0);" id="vibe-opts-export-code-copy" class="button-secondary">Copy</a> <a href="'.add_query_arg(array('feed' => 'vibeopts-'.$this->args['opt_name'], 'action' => 'download_options', 'secret' => md5(AUTH_KEY.SECURE_AUTH_KEY)), site_url()).'" id="vibe-opts-export-code-dl" class="button-primary">Download</a> <a href="javascript:void(0);" id="vibe-opts-export-link" class="button-secondary">Copy Link</a></p>';
+								echo '<p><a href="javascript:void(0);" id="vibe-opts-export-code-copy" class="button-secondary">Copy</a> <a href="'.add_query_arg(array('feed' => 'vibeopts-'.$this->args['opt_name'], 'action' => 'download_options', 'secret' => md5(AUTH_KEY.SECURE_AUTH_KEY)), site_url()).'" id="vibe-opts-export-code-dl" class="button-primary">'.__('Download','vibe').'</a> <a href="javascript:void(0);" id="vibe-opts-export-link" class="button-secondary">'.__('Copy Link','vibe').'</a></p>';
 								$backup_options = $this->options;
 								$backup_options['vibe-opts-backup'] = '1';
 								$encoded_options = '###'.serialize($backup_options).'###';

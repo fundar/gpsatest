@@ -13,13 +13,19 @@ $students=get_post_meta(get_the_ID(),'vibe_students',true);
 $students_undertaking= bp_course_get_students_undertaking(); 
 //vibe_sanitize(get_post_meta(get_the_ID(),'vibe_students_undertaking',false));
 
-if(count($students_undertaking)>0){
+if(count($students_undertaking) > 0 ){
 	echo '<ul class="course_students">';
 	foreach($students_undertaking as $student){
 
 		if (function_exists('bp_get_profile_field_data')) {
 		    $bp_name = bp_core_get_userlink( $student );
-		    $bp_location = bp_get_profile_field_data('field=Location&user_id='.$student);
+		    $sfield=vibe_get_option('student_field');
+		    if(!isset($sfield) || $sfield =='')
+		    	$sfield = 'Location';
+
+		    $bp_location ='';
+		    if(bp_is_active('xprofile'))
+		    $bp_location = bp_get_profile_field_data('field='.$sfield.'&user_id='.$student);
 		    
 		    if ($bp_name) {
 		    	echo '<li>';
@@ -34,5 +40,7 @@ if(count($students_undertaking)>0){
 		}
 	}
 	echo '</ul>';
+	echo bp_course_paginate_students_undertaking();
 }
+
 ?>

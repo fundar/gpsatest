@@ -128,7 +128,16 @@ class Gc_MessageBar_Mygetconversion_Worker{
         public function get_worker_params($raw_data){
             $raw_data = urldecode($raw_data);
             $data = substr($raw_data,7);
-            $signature = substr($data,-32);
+            $params = self::decode_param($data);
+            if(!$params){
+                return false;
+            }
+            if(false == self::is_signature_valid($data)){
+                throw new Exception("SIGNATURE DONT MATCH",0);
+            }
+            return $params;
+        }
+        public static function decode_param($data){
             $data = substr($data, 0,-33);
             
             $decoded_data = base64_decode($data);
@@ -136,9 +145,15 @@ class Gc_MessageBar_Mygetconversion_Worker{
             if(!$params){
                 return false;
             }
-            if(md5($data) != $signature){
-                throw new Exception("SIGNATURE DONT MATCH NEED:".md5($data),0);
-            }
             return $params;
+        }
+        public static function is_signature_valid($data){
+            $signature = substr($data,-32);
+            $data = substr($data, 0,-33);
+            if(md5($data) != $signature){
+                return false;
+            }
+            return true;
+
         }
 }

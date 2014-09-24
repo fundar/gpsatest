@@ -12,7 +12,7 @@
 		echo '<div class="course_grade">
 				<ul>
 					<li>'.__('Total Number of Students who took this course','vibe').' <strong>'.$students.'</strong></li>
-					<li>'.__('Average Percentage obtained by Students','vibe').' <strong>'.$avg.' <span>out of 100</span></strong></li>
+					<li>'.__('Average Percentage obtained by Students','vibe').' <strong>'.$avg.' <span>'.__('out of 100','vibe').'</span></strong></li>
 					<li>'.__('Number of Students who got a Badge','vibe').' <strong>'.$badge.'</strong></li>
 					<li>'.__('Number of Passed Students','vibe').' <strong>'.$pass.'</strong></li>
 					<li>'.__('Number of Students who did not pass ','vibe').' <strong>'.($students-$pass).'</strong></li>

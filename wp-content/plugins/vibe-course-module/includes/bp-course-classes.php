@@ -95,7 +95,7 @@ class BP_COURSE {
 			'per_page'	=> 5,
 			'paged'		=> 1,
 			'order'		=> 'DESC',
-			'orderby'	=> '',
+			'orderby'	=> 'menu_order',
 			'meta_key'  => ''
 			);
 
@@ -111,7 +111,7 @@ class BP_COURSE {
 
 			$query_args = array(
 				'post_status'	 => 'publish',
-				'post_type'	 => BP_COURSE_SLUG,
+				'post_type'	 => BP_COURSE_CPT,
 				'order' => $order,
 				'orderby'=> $orderby,
 				'meta_key' => $meta_key,
@@ -121,31 +121,30 @@ class BP_COURSE {
 				'meta_query'	 => $meta_query
 			);
 
+			if(current_user_can('edit_posts')){
+				$query_args['post_status'] = array('publish','draft','pending','future','private');
+			}
 			
 
 			// Some optional query args
 			// Note that some values are cast as arrays. This allows you to query for multiple
 			// authors/recipients at a time
 			if ( isset($instructor )){
-				$query_args['author'] = $instructor;
+				if ( function_exists('get_coauthors')) {
+					$instructor_name = get_the_author_meta('user_login',$instructor);
+					if(isset($instructor_name))
+						$query_args['author_name'] = $instructor_name;
+					else
+						$query_args['author'] = $instructor;
+				}else
+					$query_args['author'] = $instructor;
 			}
 
 			if(isset($id)){
 				$query_args['p']=$id;
 			}
 
-			// We can filter by postmeta by adding a meta_query argument. Note that
-			/*if ( $recipient_id ) {
-				$query_args['meta_query'][] = array(
-					'key'	  => 'bp_course_recipient_id',
-					'value'	  => (array)$recipient_id,
-					'compare' => 'IN' // Allows $recipient_id to be an array
-				);
-			}*/
-
-			// Run the query, and store as an object property, so we can access from
-			// other methods
-			
+			$query_args = apply_filters('bp_course_wplms_filters',$query_args);
 			$this->query = new WP_Query( $query_args );
 
 			// Let's also set up some pagination

@@ -4,7 +4,7 @@
  * Created on Oct 29, 2012 at 2:22:06 PM 
  * Author: Mr.Vibe 
  * Credits: www.VibeThemes.com
- * Project: vEstate
+ * Project: WPLMS
  */
 
 
@@ -13,8 +13,10 @@ function layout_editor(){
 	add_action( 'admin_enqueue_scripts', 'v_scripts_styles', 10, 1 );
 	function v_scripts_styles( $hook ) {
 		if ( in_array( $hook, array( 'post-new.php', 'post.php' ) ) ){
-			v_new_settings_page_js();
-			v_new_settings_page_css();
+      if( (isset($_GET['post_type']) && ($_GET['post_type'] == 'page')) || (isset($_GET['post']) && (get_post_type($_GET['post']) == 'page'))){
+        v_new_settings_page_js();
+        v_new_settings_page_css();
+      }
 		}
 	}
 
@@ -40,11 +42,11 @@ add_action( 'wp_ajax_add_slider_item', 'v_add_slider_item' );
       echo '<div class="attachment clearfix" data-attachment="' . esc_attr( $attachment_id ) .'">' 
           . $attachment_image
           . '<div class="attachment_options">'
-            . '<p class="clearfix">' . '<label>' . esc_html__('Description (HTML & Shortcodes allowed)', 'vibe') . ': </label>' . '<textarea name="attachment_description[]" class="attachment_description"></textarea> </p>'
-            . '<p class="clearfix">' . '<label>' . esc_html__('Link', 'vibe') . ': </label>'. '<input name="attachment_link[]" class="attachment_link" /> </p>'
+            . '<p class="clearfix">' . '<label>' . esc_html__('Description (HTML & Shortcodes allowed)', 'vibe-customtypes') . ': </label>' . '<textarea name="attachment_description[]" class="attachment_description"></textarea> </p>'
+            . '<p class="clearfix">' . '<label>' . esc_html__('Link', 'vibe-customtypes') . ': </label>'. '<input name="attachment_link[]" class="attachment_link" /> </p>'
           . '</div>'
-          . '<a href="#" class="delete_attachment">' . esc_html__('Delete this slide', 'vibe') . '</a>'
-          . '<a href="#" class="change_attachment_image">' . esc_html__('Change image', 'vibe') . '</a>'
+          . '<a href="#" class="delete_attachment">' . esc_html__('Delete this slide', 'vibe-customtypes') . '</a>'
+          . '<a href="#" class="change_attachment_image">' . esc_html__('Change image', 'vibe-customtypes') . '</a>'
         . '</div>';
     }
     
@@ -131,7 +133,7 @@ function custom_post_carousel($atts, $content = null) {
 
 	$output .= "<div {$attributes['class']}{$attributes['inline_styles']}>";
 
-	if(!isset($atts['post_ids']) || count($atts['post_ids']) > 0){
+	if(!isset($atts['post_ids']) || strlen($atts['post_ids']) < 2){
         
         if(isset($atts['term']) && isset($atts['taxonomy']) && $atts['term'] !='nothing_selected'){
             
@@ -169,7 +171,7 @@ function custom_post_carousel($atts, $content = null) {
         }else
            $query_args=array('post_type'=>$atts['post_type'], 'posts_per_page' => $atts['carousel_number']);
         
-        if($atts['post_type'] == 'course'){
+        if($atts['post_type'] == 'course' && isset($atts['course_style'])){
             switch($atts['course_style']){
                 case 'popular':
                   $query_args['orderby'] = 'meta_value_num';
@@ -185,15 +187,19 @@ function custom_post_carousel($atts, $content = null) {
                 case 'random':
                    $query_args['orderby'] = 'rand';
                 break;
+                default:
+                  $query_args['orderby'] = '';
             }
             $query_args['order'] = 'DESC';
+
+            $query_args =  apply_filters('wplms_carousel_course_filters',$query_args);
         }
-        
         
         $the_query = new WP_Query($query_args);
 
         }else{
-                $cus_posts_ids=explode(",",$atts['post_ids']);
+
+          $cus_posts_ids=explode(",",$atts['post_ids']);
         	$query_args=array( 'post_type' => $atts['post_type'], 'post__in' => $cus_posts_ids , 'orderby' => 'post__in'); 
         	$the_query = new WP_Query($query_args);
         }
@@ -352,22 +358,25 @@ function custom_post_filterable($atts, $content = null) {
         $output .= '<div class="filterable_columns">
   			 	  <ul class="vibe_filterable">';
         if($atts['show_all'])                
-        $output .='<li class="active"><a href="javascript:void();" data-filter="*" class="all">'.__('All','vibe').'</a></li>';
+        $output .='<li class="active"><a href="javascript:void();" data-filter="*" class="all">'.__('All','vibe-customtypes').'</a></li>';
         
         
         while ( have_posts() ) : the_post();
         global $post;
         $cats=get_the_terms($post->ID,$atts['taxonomy']);
+        if(is_array($cats))
         foreach($cats as $cat){
         $categories[$post->ID][]=$cat->slug;
         $all_categories[$cat->slug]=$cat->name;
         }
         endwhile;
   	wp_reset_query();
-  	
-        $all_categories=  array_unique($all_categories);
-        foreach($all_categories as $slug=>$name){
-            $output .='<li><a href="javascript:void();" data-filter=".'.$slug.'">'.$name.'</a></li>';
+  	    
+        if(is_Array($all_categories)){
+          $all_categories=  array_unique($all_categories);
+          foreach($all_categories as $slug=>$name){
+              $output .='<li><a href="javascript:void();" data-filter=".'.$slug.'">'.$name.'</a></li>';
+          }
         }
         $output .='</ul><div class="filterableitems_container">';
         
@@ -381,8 +390,10 @@ function custom_post_filterable($atts, $content = null) {
             query_posts($query_args);
             while ( have_posts() ) : the_post();
             global $post;
-                foreach($categories[$post->ID] as $cat)
-                $classes = $cat.' ';
+                if(isset($categories[$post->ID]) && is_Array($categories[$post->ID])){
+                  foreach($categories[$post->ID] as $cat)
+                  $classes = $cat.' ';
+                }
                 $output .='<div class="filteritem '.$classes.'" style="max-width:'.$atts['column_width'].'px;width:100%;">'; 
                 $output .= thumbnail_generator($post,$atts['featured_style'],$cols,$atts['filterable_excerpt_length'],$atts['filterable_link'],$atts['filterable_lightbox']);
                  $output .='</div>';
@@ -411,28 +422,29 @@ add_shortcode('v_slider', 'custom_slider');
 function custom_slider($atts, $content) {
        extract(shortcode_atts(array(
 				'title' => '',
-                                'slide_style' =>'slide1',
-                                'animation' => "fade",
-                                'auto_slide' => 1,
-                                'loop' => 1,
-                                'randomize' => 1,
-                                'show_directionnav'=>1,
-                                'show_controlnav' => 1,
-                                'animation_duration' => 700,
-                                'auto_speed' => 7000,
-                                'pause_on_hover' =>1 ,
-                                'css_class' => '',
-                                'custom_css' => '',
-                                'container_css' => ''
+        'slide_style' =>'slide1',
+        'animation' => "fade",
+        'auto_slide' => 1,
+        'loop' => 1,
+        'randomize' => 1,
+        'show_directionnav'=>1,
+        'show_controlnav' => 1,
+        'animation_duration' => 700,
+        'auto_speed' => 7000,
+        'pause_on_hover' =>1 ,
+        'css_class' => '',
+        'custom_css' => '',
+        'container_css' => ''
 			), $atts));
        if($atts['custom_css'] && strlen($atts['custom_css'])>5)    
             $output = '<style>'.$atts['custom_css'].'</style>';
         else
             $output= '';
-       global $vibe_post_script;
+       
        $title = preg_replace('/[^a-zA-Z0-9\']/', '_', $title);
        $title = str_replace("'", '', $title).rand(1,999);;
-       $vibe_post_script .= 'jQuery("#'.$title.'").flexslider({
+       echo '<script>jQuery(document).ready(function(){
+         jQuery("#'.$title.'").flexslider({
            animation:"'.$animation.'",
            animationLoop:'.(($loop)?'true':'false').',
            smoothHeight: true,
@@ -443,9 +455,10 @@ function custom_slider($atts, $content) {
            directionNav: '.(($show_directionnav)? 'true':'false').',
            controlNav: '.(($show_controlnav)? 'true':'false').',
            pauseOnHove: '.(($pause_on_hover)? 'true':'false').',   
-           prevText: \'<i class="icon-left-open-mini"></i>\',
-           nextText: \'<i class="icon-right-open-mini"></i>\'    
-           });';
+           prevText: \'<i class="icon-arrow-1-left"></i>\',
+           nextText: \'<i class="icon-arrow-1-right"></i>\'    
+           });
+        });</script>';
         $attributes = v_get_attributes( $atts, "custom_slider" );
 	$output .= "<div {$attributes['class']}{$attributes['inline_styles']}>";
         if(isset($atts['title']) && $atts['title'] && $atts['title'] != 'Content'){
@@ -455,7 +468,7 @@ function custom_slider($atts, $content) {
             $output .='<div id="'.$ntitle.'"></div>';
         }
         
-        $output .= '<div id="'.$title.'" class="image_slider flexslider '.$slide_style.'">';
+        $output .= '<div id="'.$title.'" class="image_slider '.$slide_style.'">';
         $output .= '<ul class="slides">';
         $output .= $content;
         $output .= "</ul>";
@@ -508,7 +521,7 @@ function vibe_post_grid($atts, $content = null) {
         
 	$output .= "<div {$attributes['class']}{$attributes['inline_styles']}>";
         
-	if(!isset($atts['post_ids']) || $atts['post_id'] ==''){
+	if(!isset($atts['post_ids']) || strlen($atts['post_ids']) < 2){
         
         if(isset($atts['term']) && isset($atts['taxonomy']) && $atts['term'] !='nothing_selected'){
             
@@ -531,6 +544,8 @@ function vibe_post_grid($atts, $content = null) {
                            return $output;
                        }
                     }
+
+
             if($atts['column_width'] < 311)
              $cols = 'small';
          
@@ -577,10 +592,11 @@ function vibe_post_grid($atts, $content = null) {
                    $query_args['orderby'] = 'rand';
                 break;
             }
+            $query_args =  apply_filters('wplms_grid_course_filters',$query_args);
         }
 
         }else{
-                $cus_posts_ids=explode(",",$atts['post_ids']);
+          $cus_posts_ids=explode(",",$atts['post_ids']);
         	$query_args=array( 'post_type' => $atts['post_type'], 'post__in' => $cus_posts_ids ); 
         }
         global $paged;
@@ -589,13 +605,17 @@ function vibe_post_grid($atts, $content = null) {
                   $query_args['paged']=$paged;       
                }
         $istyle='';       
+        
         query_posts($query_args);
+
         $masonry=$style=$rel='';
         if(isset($atts['masonry']) && $atts['masonry']){
             $atts['grid_columns'] =' grid-item';
             $style= 'style="width:'.$atts['column_width'].'px;"'; 
             $masonry= 'masonry';
             $istyle .= ' data-width="'.$atts['column_width'].'" data-gutter="'.(isset($atts['gutter'])?$atts['gutter']:'30').'"';// Rel-width used in Masonry+infinite scroll
+        }else{
+                $cols = $atts['grid_columns'];
         }
         $infinite='';
         if(isset($atts['infinite']) && $atts['infinite']){
@@ -626,7 +646,7 @@ function vibe_post_grid($atts, $content = null) {
         
         
         $output .= '<li class="'.$atts['grid_columns'].'" '.$style.'>';
-        $output .= thumbnail_generator($post,$atts['featured_style'],$atts['grid_columns'],$atts['grid_excerpt_length'],$atts['grid_link'],$atts['grid_lightbox']);
+        $output .= thumbnail_generator($post,$atts['featured_style'],$cols,$atts['grid_excerpt_length'],$atts['grid_link'],$atts['grid_lightbox']);
         $output .= '</li>';
         
         endwhile;
@@ -640,8 +660,8 @@ function vibe_post_grid($atts, $content = null) {
         $output .= '</div>';
         
         if(isset($atts['infinite']) && $atts['infinite']){
-            $output .= '<div class="load_grid"><span>'.__('Loading..','vibe').'</i></span></div>
-                        <div class="end_grid"><span>'.__('No more to load','vibe').'</i></span></div>';
+            $output .= '<div class="load_grid"><span>'.__('Loading..','vibe-customtypes').'</i></span></div>
+                        <div class="end_grid"><span>'.__('No more to load','vibe-customtypes').'</i></span></div>';
         }
         $output .="</div>";
         if(isset($atts['pagination']) && $atts['pagination']){
@@ -744,7 +764,8 @@ function new_column( $atts, $content = null, $name = '' ){
             $name .=' fullwidth';
             $attributes = v_get_attributes( $atts, "v_column {$name}" );	
             
-            $output = 	"</div></div>
+            $output = 	"</div>
+                          </div>
                           </section>
                           <section class='stripe'>
                               <!-- Begin Stripe {$name} -->
@@ -828,8 +849,9 @@ function vibe_parallax_block($atts, $content = null) {
         
         $scroll = ($atts['scroll'])?$atts['scroll']:2;
         $rev = ($atts['rev'])?$atts['rev']:'0';
+        $adjust = ($atts['adjust'])?$atts['adjust']:'0';
 	
-	$output .= 	"<div id='$rand' data-rev={$rev} data-scroll={$scroll} {$attributes['class']}{$attributes['inline_styles']} >
+	$output .= 	"<div id='$rand' data-rev={$rev} data-scroll={$scroll} data-adjust={$adjust} {$attributes['class']}{$attributes['inline_styles']} >
                             <div class='parallax_content'>";
         
 	if(isset($atts['title']) && $atts['title'] && $atts['title'] != 'Content'){
@@ -889,8 +911,14 @@ function new_widget_area($atts, $content = null) {
     if(defined('VIBE_URL'))
       wp_enqueue_script( 'chosen-js', VIBE_URL . '/js/chosen.jquery.min.js');        
 
-		wp_enqueue_script( 'v_admin_js',plugins_url( 'js/v_admin.js' , __FILE__ ), array('jquery','jquery-ui-core','jquery-ui-sortable','jquery-ui-draggable','jquery-ui-droppable','jquery-ui-resizable'), '1.0' );
-		wp_localize_script( 'v_admin_js', 'v_options', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'load_nonce' => wp_create_nonce( 'load_nonce' ), 'confirm_message' => __('Confirm Delete?', 'vibe'), 'confirm_message_yes' => __('Yes', 'vibe'), 'confirm_message_no' => __('No', 'vibe'), 'saving_text' => __('Saving...', 'vibe'), 'saved_text' => __('Saved.', 'vibe') ) );
+    
+    
+    if ( floatval(get_bloginfo('version')) >= 3.9){
+      wp_enqueue_script( 'v_admin_js',plugins_url( 'js/v_admin.js' , __FILE__ ), array('jquery','jquery-ui-core','jquery-ui-sortable','jquery-ui-draggable','jquery-ui-droppable','jquery-ui-resizable'), '1.0' );
+    }else{
+      wp_enqueue_script( 'v_admin_js',plugins_url( 'js/v_admin_old.js' , __FILE__ ), array('jquery','jquery-ui-core','jquery-ui-sortable','jquery-ui-draggable','jquery-ui-droppable','jquery-ui-resizable'), '1.0' );
+    }
+		wp_localize_script( 'v_admin_js', 'v_options', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'load_nonce' => wp_create_nonce( 'load_nonce' ), 'confirm_message' => __('Confirm Delete?', 'vibe-customtypes'), 'confirm_message_yes' => __('Yes', 'vibe-customtypes'), 'confirm_message_no' => __('No', 'vibe-customtypes'), 'saving_text' => __('Saving...', 'vibe-customtypes'), 'saved_text' => __('Saved.', 'vibe-customtypes') ) );
 	}
 
 	add_action('init','v_new_modules_init');
@@ -907,85 +935,86 @@ function new_widget_area($atts, $content = null) {
     $post_types=get_post_types('','objects'); 
 
     foreach ( $post_types as $post_type ){
-        if( !in_array($post_type->name, array('attachment','revision','nav_menu_item','sliders','modals','shop','shop_order','shop_coupon','page','forum','topic','reply','unit','question','quiz')))
+        if( !in_array($post_type->name, array('attachment','revision','nav_menu_item','sliders','modals','shop','shop_order','shop_coupon','page','forum','topic','reply','unit','question')))
            $v_post_types[$post_type->name]=$post_type->label;
     }
      
      //Get List of All Products
      
     
-    $v_thumb_styles = array(
+    $v_thumb_styles = apply_filters('vibe_builder_thumb_styles',array(
                             ''=> plugins_url('images/thumb_1.png',__FILE__),
                             'course'=> plugins_url('images/thumb_2.png',__FILE__),
                             'side'=> plugins_url('images/thumb_3.png',__FILE__),
                             'blogpost'=> plugins_url('images/thumb_6.png',__FILE__),
                             'images_only'=> plugins_url('images/thumb_4.png',__FILE__),
                             'testimonial'=> plugins_url('images/thumb_5.png',__FILE__),
-                                );
+                            'event_card'=> plugins_url('images/thumb_7.png',__FILE__),
+                                ));
                 
 /* ===== Declaring the Modules =======  */                
 $v_modules['carousel'] = array(
-			'name' => __('Carousels/Rotating Blocks', 'vibe'),
+			'name' => __('Carousels/Rotating Blocks', 'vibe-customtypes'),
 			'options' => array(
 
         'title' => array(
-        	'title' => __('Title/Heading', 'vibe'),
+        	'title' => __('Title/Heading', 'vibe-customtypes'),
         	'type' => 'text',
-        	'std' => __('Heading', 'vibe')
+        	'std' => __('Heading', 'vibe-customtypes')
         ), 
 
         'show_title' => array(
-					'title' => __('Show Title', 'vibe'),
+					'title' => __('Show Title', 'vibe-customtypes'),
 					'type' => 'select_yesno',
 					'options' => array(0=>'No',1=>'Yes'),
-					'std' => __(1, 'vibe')
+					'std' => __(1, 'vibe-customtypes')
 				),
 
         'show_more' => array(
-					'title' => __('Show Read More link', 'vibe'),
+					'title' => __('Show Read More link', 'vibe-customtypes'),
 					'type' => 'select_yesno',
 					'options' => array(0=>'No',1=>'Yes'),
-					'std' => __(0, 'vibe')
+					'std' => __(0, 'vibe-customtypes')
 				),            
 
         'more_link' => array(
-					'title' => __('More Link (User redirected to this page on click)', 'vibe'),
+					'title' => __('More Link (User redirected to this page on click)', 'vibe-customtypes'),
 					'type' => 'text',
 					'std' => ''
 				), 
 
         'show_controls' => array(
-					'title' => __('Show Controls', 'vibe'),
+					'title' => __('Show Controls', 'vibe-customtypes'),
 					'type' => 'select_yesno',
 					'options' => array(0=>'No',1=>'Yes'),
-					'std' => __(1, 'vibe')
+					'std' => __(1, 'vibe-customtypes')
 				), 
 
         'post_type' => array(
-					'title' => __('Enter Post Type<br /><span style="font-size:11px;">(Select Post Type from Posts/Courses/Clients/Products ...)</span>', 'vibe'),
+					'title' => __('Enter Post Type<br /><span style="font-size:11px;">(Select Post Type from Posts/Courses/Clients/Products ...)</span>', 'vibe-customtypes'),
 					'type' => 'select',
 					'options' => $v_post_types,
-					'std' => __('post', 'vibe')
+					'std' => __('post', 'vibe-customtypes')
 				),
 
         'taxonomy' => array(
-					'title' => __('Enter Taxonomy Slug (optional)<br /><span style="font-size:11px;">(A "Taxonomy" is a grouping mechanism for posts. Like Category for Posts, Tags for Posts, Portfolio Type for Portfolio etc.. <a href="http://codex.wordpress.org/Taxonomies">more</a>)</span> ', 'vibe'),
+					'title' => __('Enter Taxonomy Slug (optional)<br /><span style="font-size:11px;">(A "Taxonomy" is a grouping mechanism for posts. Like Category for Posts, Tags for Posts, Portfolio Type for Portfolio etc.. <a href="http://codex.wordpress.org/Taxonomies">more</a>)</span> ', 'vibe-customtypes'),
 					'type' => 'text',
 					'std' => ''
 				), 
 
 		    'term' => array(
-					'title' => __('Enter Taxonomy Term Name (optional, only if above is selected): ', 'vibe'),
+					'title' => __('Enter Taxonomy Term Name (optional, only if above is selected): ', 'vibe-customtypes'),
 					'type' => 'text',
 					'std' => ''
 				),   
         'post_ids' => array(
-					'title' => __('Or Enter Specific Post Ids', 'vibe'),
+					'title' => __('Or Enter Specific Post Ids', 'vibe-customtypes'),
 					'type' => 'text',
           'std'=>''
 				),   
         'course_style' => array(
-          'title' => __('Course Types [Only for Post type = Course]', 'vibe'),
+          'title' => __('Course Types [Only for Post type = Course]', 'vibe-customtypes'),
           'type' => 'select',
           'options' => array(
             'recent' => 'Recently published',
@@ -994,73 +1023,73 @@ $v_modules['carousel'] = array(
             'reviews' => 'Most Reviews',
             'random' => 'Random'
             ),
-          'std' => __('recent', 'vibe')
+          'std' => __('recent', 'vibe-customtypes')
         ),    
         'featured_style' => array(
-					'title' => __('Carousel/Rotating Block Style', 'vibe'),
+					'title' => __('Carousel/Rotating Block Style', 'vibe-customtypes'),
 					'type' => 'radio_images',
 					'options' => $v_thumb_styles,
-					'std' => __('excerpt', 'vibe')
+					'std' => __('excerpt', 'vibe-customtypes')
 				),
         'auto_slide' => array(
-					'title' => __('Auto slide/rotate', 'vibe'),
+					'title' => __('Auto slide/rotate', 'vibe-customtypes'),
 					'type' => 'select_yesno',
 					'options' => array(0=>'No',1=>'Yes'),
-					'std' => __(1, 'vibe')
+					'std' => __(1, 'vibe-customtypes')
 				),            
 		    'column_width' => array(
-					'title' => __('Width each crousel block', 'vibe'),
+					'title' => __('Width each crousel block', 'vibe-customtypes'),
 					'type' => 'text',
-					'std' => __('268', 'vibe')
+					'std' => __('268', 'vibe-customtypes')
 				), 
         'carousel_max' => array(
-          'title' => __('Maximum Number of blocks in One screen', 'vibe'),
+          'title' => __('Maximum Number of blocks in One screen', 'vibe-customtypes'),
           'type' => 'text',
-          'std' => __('4', 'vibe')
+          'std' => __('4', 'vibe-customtypes')
         ), 
         'carousel_min' => array(
-          'title' => __('Minimum Number of blocks in one Screen', 'vibe'),
+          'title' => __('Minimum Number of blocks in one Screen', 'vibe-customtypes'),
           'type' => 'text',
-          'std' => __('2', 'vibe')
+          'std' => __('2', 'vibe-customtypes')
         ),           
         'carousel_number' => array(
-					'title' => __('Total Number of Blocks', 'vibe'),
+					'title' => __('Total Number of Blocks', 'vibe-customtypes'),
 					'type' => 'text',
-          'std' => __('6', 'vibe')
+          'std' => __('6', 'vibe-customtypes')
 				), 
 		
         'carousel_excerpt_length' => array(
-					'title' => __('Excerpt Length in Block (in characters)', 'vibe'),
+					'title' => __('Excerpt Length in Block (in characters)', 'vibe-customtypes'),
 					'type' => 'text',
-					'std' => __('100', 'vibe')
+					'std' => __('100', 'vibe-customtypes')
 				),  
         'carousel_lightbox' => array(
-					'title' => __('Show Lightbox button on image hover[Opens Full image]', 'vibe'),
+					'title' => __('Show Lightbox button on image hover[Opens Full image]', 'vibe-customtypes'),
 					'type' => 'select_yesno',
 					'options' => array(0=>'No',1=>'Yes'),
-					'std' => __(1, 'vibe')
+					'std' => __(1, 'vibe-customtypes')
 				),
         'carousel_link' => array(
-					'title' => __('Show Link button on image hover', 'vibe'),
+					'title' => __('Show Link button on image hover', 'vibe-customtypes'),
 					'type' => 'select_yesno',
 					'options' => array(0=>'No',1=>'Yes'),
-					'std' => __(1, 'vibe')
+					'std' => __(1, 'vibe-customtypes')
 				), 
         'advanced_settings' => array(
-			      'title' => __('Show Advanced settings', 'vibe'),
+			      'title' => __('Show Advanced settings', 'vibe-customtypes'),
 			      'type' => 'divider',
             'std' => 3
 		    ),             
         'css_class' => array(
-           'title' => __('* Custom Class name (Add Custom Class to this Block)', 'vibe'),
+           'title' => __('* Custom Class name (Add Custom Class to this Block)', 'vibe-customtypes'),
            'type' => 'text'
         ),
         'container_css' => array(
-            'title' => __('* Class for on containing Layout column', 'vibe'),
+            'title' => __('* Class for on containing Layout column', 'vibe-customtypes'),
             'type' => 'text'
         ),
         'custom_css' => array(
-	           'title' => __('* Add Custom CSS (Use <strong>.</strong> for class name, <strong>:hover</strong> for hover styles etc..)', 'vibe'),
+	           'title' => __('* Add Custom CSS (Use <strong>.</strong> for class name, <strong>:hover</strong> for hover styles etc..)', 'vibe-customtypes'),
 			       'type' => 'textarea'
         ),             
 		  ),
@@ -1070,33 +1099,33 @@ $v_modules['carousel'] = array(
 /* ====== Filterable ===== */
                 
 		$v_modules['filterable'] = array(
-			'name' => __('Filterable Posts', 'vibe'),
+			'name' => __('Filterable Posts', 'vibe-customtypes'),
 			'options' => array(
                    
         'title' => array(
-          	'title' => __('Filterable Block Title', 'vibe'),
+          	'title' => __('Filterable Block Title', 'vibe-customtypes'),
           	'type' => 'text',
-          	'std' => __('Heading', 'vibe')
+          	'std' => __('Heading', 'vibe-customtypes')
           ), 
         'show_title' => array(
-					'title' => __('Show Title', 'vibe'),
+					'title' => __('Show Title', 'vibe-customtypes'),
 					'type' => 'select_yesno',
 					'options' => array(0=>'No',1=>'Yes'),
-					'std' => __(1, 'vibe')
+					'std' => __(1, 'vibe-customtypes')
 				), 
         'post_type' => array(
-					'title' => __('Select a Post Type', 'vibe'),
+					'title' => __('Select a Post Type', 'vibe-customtypes'),
 					'type' => 'select',
 					'options' => $v_post_types,
-					'std' => __('post', 'vibe')
+					'std' => __('post', 'vibe-customtypes')
 				),    
         'taxonomy' => array(
-					'title' => __('Enter relevant Taxonomy name used for Filter buttons', 'vibe'),
+					'title' => __('Enter relevant Taxonomy name used for Filter buttons', 'vibe-customtypes'),
 					'type' => 'text',
 					'std' => ''
 				),
         'course_style' => array(
-          'title' => __('Course Types [Only for Post type = Course]', 'vibe'),
+          'title' => __('Course Types [Only for Post type = Course]', 'vibe-customtypes'),
           'type' => 'select',
           'options' => array(
             'recent' => 'Recently published',
@@ -1105,69 +1134,69 @@ $v_modules['carousel'] = array(
             'reviews' => 'Most Reviews',
             'random' => 'Random'
             ),
-          'std' => __('recent', 'vibe')
+          'std' => __('recent', 'vibe-customtypes')
         ), 
         'featured_style' => array(
-					'title' => __('Featured Media Block Style', 'vibe'),
+					'title' => __('Featured Media Block Style', 'vibe-customtypes'),
 					'type' => 'radio_images',
 					'options' => $v_thumb_styles,
-					'std' => __('excerpt', 'vibe')
+					'std' => __('excerpt', 'vibe-customtypes')
 				), 
         'show_all' => array(
-					'title' => __('Show All link', 'vibe'),
+					'title' => __('Show All link', 'vibe-customtypes'),
 					'type' => 'select_yesno',
 					'options' => array(0=>'No',1=>'Yes'),
-					'std' => __(1, 'vibe')
+					'std' => __(1, 'vibe-customtypes')
 				),   
         'column_width' => array(
-					'title' => __('Column Width (in px)', 'vibe'),
+					'title' => __('Column Width (in px)', 'vibe-customtypes'),
 					'type' => 'text',
 					'std' => '200'
 				),           
         'filterable_excerpt_length' => array(
-					'title' => __('Excerpt Length (in characters)', 'vibe'),
+					'title' => __('Excerpt Length (in characters)', 'vibe-customtypes'),
 					'type' => 'text',
-					'std' => __('100', 'vibe')
+					'std' => __('100', 'vibe-customtypes')
 				),              
         'filterable_number' => array(
-					'title' => __('Total Number of blocks', 'vibe'),
+					'title' => __('Total Number of blocks', 'vibe-customtypes'),
 					'type' => 'text',
-					'std' => __('6', 'vibe')
+					'std' => __('6', 'vibe-customtypes')
 				), 
         'show_pagination' => array(
-					'title' => __('Show Pagination', 'vibe'),
+					'title' => __('Show Pagination', 'vibe-customtypes'),
 					'type' => 'select_yesno',
 					'options' => array(0=>'No',1=>'Yes'),
-					'std' => __(1, 'vibe')
+					'std' => __(1, 'vibe-customtypes')
 				),  
                             
         'filterable_lightbox' => array(
-					'title' => __('Show Lightbox [Opens Full image]', 'vibe'),
+					'title' => __('Show Lightbox [Opens Full image]', 'vibe-customtypes'),
 					'type' => 'select_yesno',
 					'options' => array(0=>'No',1=>'Yes'),
-					'std' => __(1, 'vibe')
+					'std' => __(1, 'vibe-customtypes')
 				),
         'filterable_link' => array(
-					'title' => __('Show Link [Links to Post]', 'vibe'),
+					'title' => __('Show Link [Links to Post]', 'vibe-customtypes'),
 					'type' => 'select_yesno',
 					'options' => array(0=>'No',1=>'Yes'),
-					'std' => __(1, 'vibe')
+					'std' => __(1, 'vibe-customtypes')
 				), 
         'advanced_settings' => array(
-			     'title' => __('Show Advanced settings', 'vibe'),
+			     'title' => __('Show Advanced settings', 'vibe-customtypes'),
 			     'type' => 'divider',
            'std' => 3
 		    ),             
         'css_class' => array(
-                 'title' => __('* Custom Class name (Add Custom Class to this Block)', 'vibe'),
+                 'title' => __('* Custom Class name (Add Custom Class to this Block)', 'vibe-customtypes'),
                  'type' => 'text'
                    ),
         'container_css' => array(
-                  'title' => __('* Class for on containing Layout column', 'vibe'),
+                  'title' => __('* Class for on containing Layout column', 'vibe-customtypes'),
                   'type' => 'text'
                    ),
         'custom_css' => array(
-		           'title' => __('* Add Custom CSS (Use <strong>.</strong> for class name, <strong>:hover</strong> for hover styles etc..)', 'vibe'),
+		           'title' => __('* Add Custom CSS (Use <strong>.</strong> for class name, <strong>:hover</strong> for hover styles etc..)', 'vibe-customtypes'),
 			         'type' => 'textarea'
 		          ),            
 		   ),
@@ -1177,46 +1206,46 @@ $v_modules['carousel'] = array(
 /* ===== Grid =======  */                
 		
 		$v_modules['grid'] = array(
-			'name' => __('Post Grid', 'vibe'),
+			'name' => __('Post Grid', 'vibe-customtypes'),
 			'options' => array(
                    
         'title' => array(
-        	'title' => __('Grid Title', 'vibe'),
+        	'title' => __('Grid Title', 'vibe-customtypes'),
         	'type' => 'text',
-        	'std' => __('Heading', 'vibe')
+        	'std' => __('Heading', 'vibe-customtypes')
         ), 
         'show_title' => array(
-					'title' => __('Show Title', 'vibe'),
+					'title' => __('Show Title', 'vibe-customtypes'),
 					'type' => 'select_yesno',
 					'options' => array(0=>'No',1=>'Yes'),
-					'std' => __(1, 'vibe')
+					'std' => __(1, 'vibe-customtypes')
 				),    
         'post_type' => array(
-					'title' => __('Custom Post Type', 'vibe'),
+					'title' => __('Custom Post Type', 'vibe-customtypes'),
 					'type' => 'select',
 					'options' => $v_post_types,
-					'std' => __('post', 'vibe')
+					'std' => __('post', 'vibe-customtypes')
 				),
         
         'taxonomy' => array(
-          'title' => __('Enter Taxonomy Slug (optional)<br /><span style="font-size:11px;">(A "Taxonomy" is a grouping mechanism for posts. Like Category for Posts, Tags for Posts, Portfolio Type for Portfolio etc.. <a href="http://codex.wordpress.org/Taxonomies">more</a>)</span> ', 'vibe'),
+          'title' => __('Enter Taxonomy Slug (optional)<br /><span style="font-size:11px;">(A "Taxonomy" is a grouping mechanism for posts. Like Category for Posts, Tags for Posts, Portfolio Type for Portfolio etc.. <a href="http://codex.wordpress.org/Taxonomies">more</a>)</span> ', 'vibe-customtypes'),
           'type' => 'text',
           'std' => ''
         ), 
 
         'term' => array(
-          'title' => __('Enter Taxonomy Term Name (optional, only if above is selected): ', 'vibe'),
+          'title' => __('Enter Taxonomy Term Name (optional, only if above is selected): ', 'vibe-customtypes'),
           'type' => 'text',
           'std' => ''
         ),   
 
         'post_ids' => array(
-          'title' => __('Or Enter Specific Post Ids (comma saperated)', 'vibe'),
+          'title' => __('Or Enter Specific Post Ids (comma saperated)', 'vibe-customtypes'),
           'type' => 'text',
           'std'=>''
         ),             
         'course_style' => array(
-          'title' => __('Course Types [Only for Post type = Course]', 'vibe'),
+          'title' => __('Course Types [Only for Post type = Course]', 'vibe-customtypes'),
           'type' => 'select',
           'options' => array(
             'recent' => 'Recently published',
@@ -1225,24 +1254,24 @@ $v_modules['carousel'] = array(
             'reviews' => 'Most Reviews',
             'random' => 'Random'
             ),
-          'std' => __('recent', 'vibe')
+          'std' => __('recent', 'vibe-customtypes')
         ),  
         'featured_style' => array(
-					'title' => __('Featured Media Block Style', 'vibe'),
+					'title' => __('Featured Media Block Style', 'vibe-customtypes'),
 					'type' => 'radio_images',
 					'options' => $v_thumb_styles,
-					'std' => __('excerpt', 'vibe')
+					'std' => __('excerpt', 'vibe-customtypes')
 				), 
         
         'masonry' => array(
-					'title' => __('Grid Masonry Layout', 'vibe'),
+					'title' => __('Grid Masonry Layout', 'vibe-customtypes'),
 					'type' => 'select_yesno',
 					'options' => array(0=>'No',1=>'Yes'),
-					'std' => __(0, 'vibe')
+					'std' => __(0, 'vibe-customtypes')
 				),     
 
 		    'grid_columns' => array(
-					'title' => __('Grid Columns', 'vibe'),
+					'title' => __('Grid Columns', 'vibe-customtypes'),
 					'type' => 'select',
 					'options' => array(
             'clear1 col-md-12'=>'1 Columns in FullWidth',
@@ -1254,70 +1283,70 @@ $v_modules['carousel'] = array(
 				), 
 
         'column_width' => array(
-					'title' => __('Masonry Grid Column Width(in px)', 'vibe'),
+					'title' => __('Masonry Grid Column Width(in px)', 'vibe-customtypes'),
 					'type' => 'text',
 					'std' => '200'
 				), 
         'gutter' => array(
-					'title' => __('Spacing between Columns (in px)', 'vibe'),
+					'title' => __('Spacing between Columns (in px)', 'vibe-customtypes'),
 					'type' => 'text',
 					'std' => '30'
 				),             
         'grid_number' => array(
-					'title' => __('Total Number of Blocks in Grid', 'vibe'),
+					'title' => __('Total Number of Blocks in Grid', 'vibe-customtypes'),
 					'type' => 'text',
-          'std' => __('6', 'vibe')
+          'std' => __('6', 'vibe-customtypes')
 				), 
                             
 		    'infinite' => array(
-					'title' => __('Infinite Scroll', 'vibe'),
+					'title' => __('Infinite Scroll', 'vibe-customtypes'),
 					'type' => 'select_yesno',
 					'options' => array(0=>'No',1=>'Yes'),
-					'std' => __(1, 'vibe')
+					'std' => __(1, 'vibe-customtypes')
 				), 
 
         'pagination' => array(
-					'title' => __('Enable Pagination (If infinite scroll is off)', 'vibe'),
+					'title' => __('Enable Pagination (If infinite scroll is off)', 'vibe-customtypes'),
 					'type' => 'select_yesno',
 					'options' => array(0=>'No',1=>'Yes'),
-					'std' => __(1, 'vibe')
+					'std' => __(1, 'vibe-customtypes')
 				),            
 
         'grid_excerpt_length' => array(
-					'title' => __('Excerpt Length (in characters)', 'vibe'),
+					'title' => __('Excerpt Length (in characters)', 'vibe-customtypes'),
 					'type' => 'text',
-					'std' => __('100', 'vibe')
+					'std' => __('100', 'vibe-customtypes')
 				),  
 
         'grid_lightbox' => array(
-					'title' => __('Show Lightbox [Opens Full image]', 'vibe'),
+					'title' => __('Show Lightbox [Opens Full image]', 'vibe-customtypes'),
 					'type' => 'select_yesno',
 					'options' => array(0=>'No',1=>'Yes'),
-					'std' => __(1, 'vibe')
+					'std' => __(1, 'vibe-customtypes')
 				),
 
         'grid_link' => array(
-					'title' => __('Show Link', 'vibe'),
+					'title' => __('Show Link', 'vibe-customtypes'),
 					'type' => 'select_yesno',
 					'options' => array(0=>'No',1=>'Yes'),
-					'std' => __(1, 'vibe')
+					'std' => __(1, 'vibe-customtypes')
 				), 
 
         'advanced_settings' => array(
-			     'title' => __('Show Advanced settings', 'vibe'),
+			     'title' => __('Show Advanced settings', 'vibe-customtypes'),
 			     'type' => 'divider',
            'std' => 3
 		    ),             
         'css_class' => array(
-           'title' => __('* Custom Class name (Add Custom Class to this Block)', 'vibe'),
+           'title' => __('* Custom Class name (Add Custom Class to this Block)', 'vibe-customtypes'),
            'type' => 'text'
          ),
         'container_css' => array(
-            'title' => __('* Class for on containing Layout column', 'vibe'),
+            'title' => __('* Class for on containing Layout column', 'vibe-customtypes'),
             'type' => 'text'
          ),
         'custom_css' => array(
-           'title' => __('* Add Custom CSS (Use <strong>.</strong> for class name, <strong>:hover</strong> for hover styles etc..)', 'vibe'),
+           'title' => __('* Add Custom CSS (Use <strong>.</strong> for class name, <strong>:hover</strong> for hover styles etc..)', 'vibe-customtypes'),
 	         'type' => 'textarea'
         ),   
 			),
@@ -1326,39 +1355,39 @@ $v_modules['carousel'] = array(
                 
 /* ====== Editor ===== */                
 	$v_modules['text_block'] = array(
-			'name' => __('WP Editor', 'vibe'),
+			'name' => __('WP Editor', 'vibe-customtypes'),
 			'options' => array(
             'title' => array(
-                	'title' => __('Reference Title', 'vibe'),
+                	'title' => __('Reference Title', 'vibe-customtypes'),
                 	'type' => 'text',
-                	'std' => __('Content', 'vibe')
+                	'std' => __('Content', 'vibe-customtypes')
                          ), 
     				'text_block_content' => array(
-    					'title' => __('Content', 'vibe'),
+    					'title' => __('Content', 'vibe-customtypes'),
     					'type' => 'wp_editor',
     					'is_content' => true
     				),
             'advanced_settings' => array(
-        			'title' => __('Show Advanced settings', 'vibe'),
+        			'title' => __('Show Advanced settings', 'vibe-customtypes'),
         			'type' => 'divider',
               'std' => 4
 		          ),             
             'animation_effect' => array(
-               'title' => __('* On-Load CSS3 Animation effect on the block (<a href="http://vibethemes.com/forums/showthread.php?914-CSS3-Animation-Effects&p=2488" target="_blank">more</a>)', 'vibe'),
+               'title' => __('* On-Load CSS3 Animation effect on the block (<a href="http://vibethemes.com/forums/showthread.php?914-CSS3-Animation-Effects&p=2488" target="_blank">more</a>)', 'vibe-customtypes'),
                'type' => 'select',
                'options' => animation_effects(),
                'std' => ''
              ),             
             'css_class' => array(
-               'title' => __('* Custom Class name (Add Custom Class to this Block)', 'vibe'),
+               'title' => __('* Custom Class name (Add Custom Class to this Block)', 'vibe-customtypes'),
                'type' => 'text'
              ),
             'container_css' => array(
-              'title' => __('* Class for on containing Layout column', 'vibe'),
+              'title' => __('* Class for on containing Layout column', 'vibe-customtypes'),
               'type' => 'text'
              ),
             'custom_css' => array(
-		           'title' => __('* Add Custom CSS (Use <strong>.</strong> for class name, <strong>:hover</strong> for hover styles etc..)', 'vibe'),
+		           'title' => __('* Add Custom CSS (Use <strong>.</strong> for class name, <strong>:hover</strong> for hover styles etc..)', 'vibe-customtypes'),
 			         'type' => 'textarea'
 		          ),     
 			)
@@ -1367,62 +1396,67 @@ $v_modules['carousel'] = array(
 
 /* ====== Parallax ===== */                
     $v_modules['parallax_block'] = array(
-      'name' => __('Parallax Content', 'vibe'),
+      'name' => __('Parallax Content', 'vibe-customtypes'),
       'options' => array(
             'title' => array(
-                  'title' => __('Reference Title', 'vibe'),
+                  'title' => __('Reference Title', 'vibe-customtypes'),
                   'type' => 'text',
-                  'std' => __('Parallax Title', 'vibe')
+                  'std' => __('Parallax Title', 'vibe-customtypes')
                 ), 
               'text_block_content' => array(
-                'title' => __('Content', 'vibe'),
+                'title' => __('Content', 'vibe-customtypes'),
                 'type' => 'wp_editor',
                 'is_content' => true
               ),
               'bg_image' => array(
-                    'title' => __('Upload Parallax Background image', 'vibe'),
+                    'title' => __('Upload Parallax Background image', 'vibe-customtypes'),
                     'type' => 'upload',
                     'std' => ''
                 ), 
              'rev' => array(
-                  'title' => __('Background Effect', 'vibe'),
+                  'title' => __('Background Effect', 'vibe-customtypes'),
                   'type' => 'select',
                   'options' => array(
                         ''=>'Image Scrolls with scroll',
                         1=>'Image Static with Scroll'),
-                  'std' => __('', 'vibe')
+                  'std' => ''
                 ),  
               'height' => array(
-                  'title' => __('Parallax Block Height (in px)', 'vibe'),
+                  'title' => __('Parallax Block Height (in px)', 'vibe-customtypes'),
                   'type' => 'text',
                   'std' => '200'
                 ), 
                'scroll' => array(
-                    'title' => __('Parallax value (Scroll senstivity, lower value means higher scroll)', 'vibe'),
+                    'title' => __('Parallax value (Scroll senstivity, lower value means higher scroll)', 'vibe-customtypes'),
                     'type' => 'text',
                     'std' => '2'
+                ),
+                'adjust' => array(
+                  'title' => __('Adjust background (in px)', 'vibe-customtypes'),
+                  'type' => 'text',
+                  'std' => '0'
                 ),           
                'advanced_settings' => array(
-                      'title' => __('Show Advanced settings', 'vibe'),
+                      'title' => __('Show Advanced settings', 'vibe-customtypes'),
                       'type' => 'divider',
                         'std' => 4
                     ),       
                 'animation_effect' => array(
-                         'title' => __('* On-Load CSS3 Animation effect on the block (<a href="http://vibethemes.com/forums/showthread.php?914-CSS3-Animation-Effects&p=2488" target="_blank">more</a>)', 'vibe'),
+                         'title' => __('* On-Load CSS3 Animation effect on the block (<a href="http://vibethemes.com/forums/showthread.php?914-CSS3-Animation-Effects&p=2488" target="_blank">more</a>)', 'vibe-customtypes'),
                          'type' => 'select',
                          'options' => animation_effects(),
                          'std' => ''
                            ),            
                 'css_class' => array(
-                         'title' => __('* Custom Class name (Add Custom Class to this Block)', 'vibe'),
+                         'title' => __('* Custom Class name (Add Custom Class to this Block)', 'vibe-customtypes'),
                          'type' => 'text'
                            ),
                 'container_css' => array(
-                          'title' => __('* Class for on containing Layout column', 'vibe'),
+                          'title' => __('* Class for on containing Layout column', 'vibe-customtypes'),
                           'type' => 'text'
                            ),
                 'custom_css' => array(
-                         'title' => __('* Add Custom CSS (Use <strong>.</strong> for class name, <strong>:hover</strong> for hover styles etc..)', 'vibe'),
+                         'title' => __('* Add Custom CSS (Use <strong>.</strong> for class name, <strong>:hover</strong> for hover styles etc..)', 'vibe-customtypes'),
                           'type' => 'textarea'
                         ),     
       )
@@ -1447,28 +1481,28 @@ foreach($rev_sliders as $sliders){
 
            
 $v_modules['revslider'] = array(
-			'name' => __('Revolution Slider', 'vibe'),
+			'name' => __('Revolution Slider', 'vibe-customtypes'),
 			'options' => array(
              'alias' => array(
-    		             'title' => __('Select Slider', 'vibe'),
+    		             'title' => __('Select Slider', 'vibe-customtypes'),
     		             'type' => 'select',
                      'options' => $revsliders
               ),  
               'advanced_settings' => array(
-                			'title' => __('Show Advanced settings', 'vibe'),
+                			'title' => __('Show Advanced settings', 'vibe-customtypes'),
                 			'type' => 'divider',
                       'std' => 3
               ),             
               'css_class' => array(
-                       'title' => __('* Custom Class name (Add Custom Class to this Block)', 'vibe'),
+                       'title' => __('* Custom Class name (Add Custom Class to this Block)', 'vibe-customtypes'),
                        'type' => 'text'
                ),
               'container_css' => array(
-                        'title' => __('* Class for on containing Layout column', 'vibe'),
+                        'title' => __('* Class for on containing Layout column', 'vibe-customtypes'),
                         'type' => 'text'
                ),
               'custom_css' => array(
-                        'title' => __('* Add Custom CSS (Use <strong>.</strong> for class name, <strong>:hover</strong> for hover styles etc..)', 'vibe'),
+                        'title' => __('* Add Custom CSS (Use <strong>.</strong> for class name, <strong>:hover</strong> for hover styles etc..)', 'vibe-customtypes'),
 			                   'type' => 'textarea'
 		          ),    
 			)
@@ -1490,28 +1524,28 @@ $querystr = "
           $layersliders[$sliders->id] = $sliders->name;
        }
 $v_modules['layerslider'] = array(
-			'name' => __('Layer Slider', 'vibe'),
+			'name' => __('Layer Slider', 'vibe-customtypes'),
 			'options' => array(
 				'id' => array(
-      					'title' => __('Select Slider', 'vibe'),
+      					'title' => __('Select Slider', 'vibe-customtypes'),
       					'type' => 'select',
                 'options' => $layersliders
 				        ),  
         'advanced_settings' => array(
-          			'title' => __('Show Advanced settings', 'vibe'),
+          			'title' => __('Show Advanced settings', 'vibe-customtypes'),
           			'type' => 'divider',
                 'std' => 3
 		            ),             
         'css_class' => array(
-                 'title' => __('* Custom Class name (Add Custom Class to this Block)', 'vibe'),
+                 'title' => __('* Custom Class name (Add Custom Class to this Block)', 'vibe-customtypes'),
                  'type' => 'text'
                ),
         'container_css' => array(
-                  'title' => __('* Class for on containing Layout column', 'vibe'),
+                  'title' => __('* Class for on containing Layout column', 'vibe-customtypes'),
                   'type' => 'text'
                ),
         'custom_css' => array(
-		           'title' => __('* Add Custom CSS (Use <strong>.</strong> for class name, <strong>:hover</strong> for hover styles etc..)', 'vibe'),
+		           'title' => __('* Add Custom CSS (Use <strong>.</strong> for class name, <strong>:hover</strong> for hover styles etc..)', 'vibe-customtypes'),
 			           'type' => 'textarea'
 		          ),    
 			   )
@@ -1521,29 +1555,29 @@ $v_modules['layerslider'] = array(
                 
                 //Sidebars
 $v_modules['widget_area'] = array(
-  'name' => __('Sidebar', 'vibe'),
+  'name' => __('Sidebar', 'vibe-customtypes'),
   'options' => array(
       	'area' => array(
-          		'title' => __('Select a Sidebar', 'vibe'),
+          		'title' => __('Select a Sidebar', 'vibe-customtypes'),
           		'type' => 'select',
           		'options' => $v_widget_areas,
-          		'std' => __('MainSidebar', 'vibe')
+          		'std' => __('MainSidebar', 'vibe-customtypes')
           	),
           'advanced_settings' => array(
-              'title' => __('Show Advanced settings', 'vibe'),
+              'title' => __('Show Advanced settings', 'vibe-customtypes'),
               'type' => 'divider',
               'std' => 3
              ),             
           'css_class' => array(
-             'title' => __('* Custom Class name (Add Custom Class to this Block)', 'vibe'),
+             'title' => __('* Custom Class name (Add Custom Class to this Block)', 'vibe-customtypes'),
              'type' => 'text'
            ),
           'container_css' => array(
-              'title' => __('* Class for on containing Layout column', 'vibe'),
+              'title' => __('* Class for on containing Layout column', 'vibe-customtypes'),
               'type' => 'text'
            ),
           'custom_css' => array(
-               'title' => __('* Add Custom CSS (Use <strong>.</strong> for class name, <strong>:hover</strong> for hover styles etc..)', 'vibe'),
+               'title' => __('* Add Custom CSS (Use <strong>.</strong> for class name, <strong>:hover</strong> for hover styles etc..)', 'vibe-customtypes'),
                 'type' => 'textarea'
           ),   
       )
@@ -1551,15 +1585,15 @@ $v_modules['widget_area'] = array(
 		
 		
 $v_modules['slider'] = array(
-			'name' => __('FlexSlider', 'vibe'),
+			'name' => __('FlexSlider', 'vibe-customtypes'),
 			'options' => array(
           'title' => array(
-      					'title' => __('Slider ID (for reference & Css)', 'vibe'),
+      					'title' => __('Slider ID (for reference & Css)', 'vibe-customtypes'),
       					'type' => 'text',
                 'std' => 'FlexSlider'
 				    ),
             'slide_style' => array(
-                  'title' => __('Slide Style', 'vibe'),
+                  'title' => __('Slide Style', 'vibe-customtypes'),
 				          'type' => 'radio_images',
                   'options'=>array(
                                   'slide1'=> plugins_url('images/slider_1.png',__FILE__),
@@ -1571,75 +1605,75 @@ $v_modules['slider'] = array(
                   'std' => 'slide1'
               ),
               'animation' => array(
-        					'title' => __('Animation Effect', 'vibe'),
+        					'title' => __('Animation Effect', 'vibe-customtypes'),
         					'type' => 'select',
-        					'options' => array( __('fade', 'vibe'), __('slide', 'vibe') ),
-        					'std' => __('fade', 'vibe')
+        					'options' => array( 'fade'=>__('fade', 'vibe-customtypes'),'slide'=> __('slide', 'vibe-customtypes') ),
+        					'std' => 'fade'
         				),
                                 
               'slider_settings' => array(
-                  'title' => __('Slider settings', 'vibe'),
+                  'title' => __('Slider settings', 'vibe-customtypes'),
                   'type' => 'divider',
                   'std' => 12
               ),
       				'auto_slide' => array(
-      					'title' => __('Auto slide Images', 'vibe'),
+      					'title' => __('Auto slide Images', 'vibe-customtypes'),
       					'type' => 'select_yesno',
       					'options' => array(0=>'No',1=>'Yes'),
-      					'std' => __(1, 'vibe')
+      					'std' => __(1, 'vibe-customtypes')
       				),
               'loop' => array(
-        					'title' => __('Loop Slides', 'vibe'),
+        					'title' => __('Loop Slides', 'vibe-customtypes'),
         					'type' => 'select_yesno',
         					'options' => array(0=>'No',1=>'Yes'),
-        					'std' => __(1, 'vibe')
+        					'std' => __(1, 'vibe-customtypes')
         				),
                 'randomize' => array(
-        					'title' => __('Randomize Slides', 'vibe'),
+        					'title' => __('Randomize Slides', 'vibe-customtypes'),
         					'type' => 'select_yesno',
         					'options' => array(0=>'No',1=>'Yes'),
-        					'std' => __(1, 'vibe')
+        					'std' => __(1, 'vibe-customtypes')
         				),
                 'show_directionnav' => array(
-            					'title' => __('Show Slider Direction arrows', 'vibe'),
+            					'title' => __('Show Slider Direction arrows', 'vibe-customtypes'),
             					'type' => 'select_yesno',
             					'options' => array(0=>'No',1=>'Yes'),
-            					'std' => __(1, 'vibe')
+            					'std' => __(1, 'vibe-customtypes')
             				),
                 'show_controlnav' => array(
-          					'title' => __('Show Slider Control buttons', 'vibe'),
+          					'title' => __('Show Slider Control buttons', 'vibe-customtypes'),
           					'type' => 'select_yesno',
           					'options' => array(0=>'No',1=>'Yes'),
-          					'std' => __(1, 'vibe')
+          					'std' => __(1, 'vibe-customtypes')
           				),
 				'animation_duration' => array(
-					'title' => __('Animation Duration (in ms)', 'vibe'),
+					'title' => __('Animation Duration (in ms)', 'vibe-customtypes'),
 					'type' => 'text',
 					'std' => '600'
 				),
 				
 				'auto_speed' => array(
-					'title' => __('Auto Animation Speed (in ms)', 'vibe'),
+					'title' => __('Auto Animation Speed (in ms)', 'vibe-customtypes'),
 					'type' => 'text',
 					'std' => '7000'
 				),
 				'pause_on_hover' => array(
-					'title' => __('Pause Slider On Hover', 'vibe'),
+					'title' => __('Pause Slider On Hover', 'vibe-customtypes'),
 					'type' => 'select_yesno',
 					'options' => array(0=>'No',1=>'Yes'),
-					'std' => __(1, 'vibe')
+					'std' => __(1, 'vibe-customtypes')
 				),
                                 
         'css_class' => array(
-            'title' => __('* Custom Class name (Add Custom Class to this Block)', 'vibe'),
+            'title' => __('* Custom Class name (Add Custom Class to this Block)', 'vibe-customtypes'),
             'type' => 'text'
        ),
         'container_css' => array(
-          'title' => __('* Class for on containing Layout column', 'vibe'),
+          'title' => __('* Class for on containing Layout column', 'vibe-customtypes'),
           'type' => 'text'
        ),
         'custom_css' => array(
-          'title' => __('* Add Custom CSS (Use <strong>.</strong> for class name, <strong>:hover</strong> for hover styles etc..)', 'vibe'),
+          'title' => __('* Add Custom CSS (Use <strong>.</strong> for class name, <strong>:hover</strong> for hover styles etc..)', 'vibe-customtypes'),
           'type' => 'textarea'
       ), 
                                 
@@ -1656,14 +1690,14 @@ $v_modules['slider'] = array(
                 
 		$v_modules = apply_filters( 'v_modules', $v_modules );
 		
-		$v_columns['1_2'] = array( 'name' => __('1/2 Column', 'vibe') );
-		$v_columns['1_3'] = array( 'name' => __('1/3 Column', 'vibe') );
-		$v_columns['1_4'] = array( 'name' => __('1/4 Column', 'vibe') );
-		$v_columns['2_3'] = array( 'name' => __('2/3 Column', 'vibe') );
-		$v_columns['3_4'] = array( 'name' => __('3/4 Column', 'vibe') );
-		$v_columns['resizable'] = array( 'name' => __('Full-Width Resizable Column', 'vibe') );
-		$v_columns['stripe_container'] = array( 'name' => __('FullScreen Stripe with Container', 'vibe') );
-    $v_columns['stripe'] = array( 'name' => __('FullScreen Stripe', 'vibe') );
+		$v_columns['1_2'] = array( 'name' => __('1/2 Column', 'vibe-customtypes') );
+		$v_columns['1_3'] = array( 'name' => __('1/3 Column', 'vibe-customtypes') );
+		$v_columns['1_4'] = array( 'name' => __('1/4 Column', 'vibe-customtypes') );
+		$v_columns['2_3'] = array( 'name' => __('2/3 Column', 'vibe-customtypes') );
+		$v_columns['3_4'] = array( 'name' => __('3/4 Column', 'vibe-customtypes') );
+		$v_columns['resizable'] = array( 'name' => __('Full-Width Resizable Column', 'vibe-customtypes') );
+		$v_columns['stripe_container'] = array( 'name' => __('FullScreen Stripe with Container', 'vibe-customtypes') );
+    $v_columns['stripe'] = array( 'name' => __('FullScreen Stripe', 'vibe-customtypes') );
                 
 		$v_columns = apply_filters( 'v_columns', $v_columns );
 		$v_sample_layouts='';
@@ -1688,9 +1722,9 @@ $v_modules['slider'] = array(
 		
 		<div id="page_builder">
 			<div id="vibe_editor_controls" class="clearfix">
-				<a href="#" class="add_element add_column"><span><i class="dashicons dashicons-screenoptions"></i> <?php _e('COLUMNS', 'vibe'); ?></span></a>
-				<a href="#" class="add_element add_module"><span><i class="dashicons dashicons-welcome-widgets-menus"></i> <?php _e('CONTENT', 'vibe'); ?></span></a>
-				<a href="#" class="add_element add_sample_layout"><span><i class="dashicons dashicons-feedback"></i> <?php _e('SAVED LAYOUTS', 'vibe'); ?></span></a>
+				<a href="#" class="add_element add_column"><span><i class="dashicons dashicons-screenoptions"></i> <?php _e('COLUMNS', 'vibe-customtypes'); ?></span></a>
+				<a href="#" class="add_element add_module"><span><i class="dashicons dashicons-welcome-widgets-menus"></i> <?php _e('CONTENT', 'vibe-customtypes'); ?></span></a>
+				<a href="#" class="add_element add_sample_layout"><span><i class="dashicons dashicons-feedback"></i> <?php _e('SAVED LAYOUTS', 'vibe-customtypes'); ?></span></a>
 			</div> <!-- #vibe_editor_controls -->
 			
 			<div id="modules">
@@ -1703,7 +1737,7 @@ $v_modules['slider'] = array(
 						echo "<div data-placeholder='" . esc_attr( $module_settings['name'] ) . "' data-name='" . esc_attr( $module_key ) . "' class='" . esc_attr( $class ) . "'>" . '<span class="module_name">' . esc_html( $module_settings['name'] ) . '</span>' .
 						'<span class="move"></span><span class="delete"></span><span class="settings_arrow"></span><div class="module_settings"></div></div>';
 					}
-					
+					if(is_array($v_columns))
 					foreach ( $v_columns as $column_key => $column_settings ){
 						echo "<div data-placeholder='" . esc_attr( $column_settings['name'] ) . "' data-name='" . esc_attr( $column_key ) . "' class='" . esc_attr( "module m_column m_column_{$column_key}" ) . "'>" . 
 						'<span class="module_name column_name">' . esc_html( $column_settings['name'] ) . '</span>' .
@@ -1730,19 +1764,19 @@ $v_modules['slider'] = array(
 						}
 					?>
 				</div> <!-- #layout -->
-				<div id="v_helper"<?php echo $v_helper_class; ?>><?php esc_html_e('Drag & Drop Layout Columns and then Drag & Drop Content Blocks to each column', 'vibe'); ?></div>
+				<div id="v_helper"<?php echo $v_helper_class; ?>><?php esc_html_e('Drag & Drop Layout Columns and then Drag & Drop Content Blocks to each column', 'vibe-customtypes'); ?></div>
 			</div> <!-- #layout_container -->
 			
 			<div style="display: none;">
 				<?php
-					wp_editor( ' ', 'v_hidden_editor' );
+					wp_editor( ' ', 'v_hidden_editor');
 					do_action( 'v_hidden_editor' );
 				?>
 			</div>
 		</div> <!-- #page_builder -->
                 <div class="overlay">
-                                <label><?php _e('Enter name of Sample Layout','vibe'); ?></label><input type="text" class="text" id="new_sample_layout_name" name="new_sample_layout_name" data-id="<?php global $post; echo $post->ID;?>"/>
-                                <a id="save_new_sample_layout" class="vibe-button-save-new-layout"><?php _e('Save Layout', 'vibe') ?></a>
+                                <label><?php _e('Enter name of Sample Layout','vibe-customtypes'); ?></label><input type="text" class="text" id="new_sample_layout_name" name="new_sample_layout_name" data-id="<?php global $post; echo $post->ID;?>"/>
+                                <a id="save_new_sample_layout" class="vibe-button-save-new-layout"><?php _e('Save Layout', 'vibe-customtypes') ?></a>
                                 <span class="remove"></span>
                 </div>
 		<div id="v_ajax_save">
@@ -1752,8 +1786,8 @@ $v_modules['slider'] = array(
 		
 		<?php
 			echo '<div id="v_save">';
-                        submit_button( __('Save Changes', 'vibe'), 'vibe-button-save', 'v_main_save' );
-			echo '<a id="new_sample_layout" class="vibe-button-save-new-layout" style="display:none;">'. __('Save as New Layout', 'vibe').'</a>';
+                        submit_button( __('Save Changes', 'vibe-customtypes'), 'vibe-button-save', 'v_main_save' );
+			echo '<a id="new_sample_layout" class="vibe-button-save-new-layout" style="display:none;">'. __('Save as New Layout', 'vibe-customtypes').'</a>';
 			echo '</div> <!-- end #v_save -->';
 	}
 
@@ -1834,13 +1868,13 @@ $v_modules['slider'] = array(
 			
 			$module_name = $v_columns[$column_name]['name'];
 			echo '<form id="dialog_settings">'
-					. '<span id="settings_title">' . esc_html( ucfirst( $module_name ) . ' ' . __('Settings', 'vibe') ) . '</span>'
+					. '<span id="settings_title">' . esc_html( ucfirst( $module_name ) . ' ' . __('Settings', 'vibe-customtypes') ) . '</span>'
 					. '<a href="#" id="close_dialog_settings"></a>'
-					. '<p class="clearfix"><input type="checkbox" id="dialog_first_class" name="dialog_first_class" value="" class="v_option" /> ' . esc_html__('This is the first column in the row', 'vibe') . '</p>';
+					. '<p class="clearfix"><input type="checkbox" id="dialog_first_class" name="dialog_first_class" value="" class="v_option" /> ' . esc_html__('This is the first column in the row', 'vibe-customtypes') . '</p>';
 			
-			if ( 'resizable' == $column_name ) echo '<p class="clearfix"><label>' . esc_html__('Column width (%)', 'vibe') . ':</label> <input name="dialog_width" type="text" id="dialog_width" value="100" class="regular-text v_option" /></p>';
+			if ( 'resizable' == $column_name ) echo '<p class="clearfix"><label>' . esc_html__('Column width (%)', 'vibe-customtypes') . ':</label> <input name="dialog_width" type="text" id="dialog_width" value="100" class="regular-text v_option" /></p>';
 			
-			submit_button(__('Save Changes', 'vibe'), 'vibe-button-save');
+			submit_button(__('Save Changes', 'vibe-customtypes'), 'vibe-button-save');
 			
 			echo '<input type="hidden" id="saved_module_name" value="' . esc_attr( "alt_{$column_name}" ) . '" />';
 			
@@ -1858,7 +1892,7 @@ $v_modules['slider'] = array(
 			$form_id = ( 0 == $module_window ) ? 'module_settings' : 'dialog_settings';
 			
 			echo '<form id="' . esc_attr( $form_id ) . '">';
-			echo '<span id="settings_title">' . esc_html( $v_module_exact_name . ' ' . __('Settings', 'vibe') ) . '</span>';
+			echo '<span id="settings_title">' . esc_html( $v_module_exact_name . ' ' . __('Settings', 'vibe-customtypes') ) . '</span>';
 			
 			if ( 0 == $module_window ) echo '<a href="#" id="close_module_settings"></a>';
 			else echo '<a href="#" id="close_dialog_settings"></a>';
@@ -1872,17 +1906,23 @@ $v_modules['slider'] = array(
 				if ( 1 == $module_window ) $option_slug = 'dialog_' . $option_slug;
 				
 				switch ( $option_settings['type'] ) {
-					case 'wp_editor':
-						wp_editor( '', $option_slug, array( 'editor_class' => 'v_wp_editor v_option' . $content_class ) );
+					case 'wp_editor': 
+
+						wp_editor( '', $option_slug, array(
+              'editor_class' => 'wp_editor_area v_wp_editor v_option' . $content_class,
+              'media_buttons' => true,
+              'quicktags'     => TRUE,
+            ));
+
 						break;
 					
 					case 'select':
 						$std = isset( $option_settings['std'] ) ? $option_settings['std'] : '';
 						echo
 						'<select name="' . esc_attr( $option_slug ) . '" id="' . esc_attr( $option_slug ) . '" class="chzn-select v_option' . $content_class . '">'
-							. ( ( '' == $std ) ? '<option value="nothing_selected">  ' . esc_html__('Select', 'vibe') . '  </option>' : '' );
+							. ( ( '' == $std ) ? '<option value="nothing_selected">  ' . esc_html__('Select', 'vibe-customtypes') . '  </option>' : '' );
 							
-                                                foreach ( $option_settings['options'] as $key=>$setting_value ){ 
+              foreach ( $option_settings['options'] as $key=>$setting_value ){ 
 								echo '<option value="' . esc_attr( $key ) . '"' . selected( $key, $std, false ) . '>' . esc_html( $setting_value ) . '</option>';
 							}
 						echo '</select>';
@@ -1892,7 +1932,7 @@ $v_modules['slider'] = array(
 						$std = isset( $option_settings['std'] ) ? $option_settings['std'] : '';
 						echo
 						'<select name="' . esc_attr( $option_slug ) . '" id="' . esc_attr( $option_slug ) . '" class="chzn-select v_option' . $content_class . '" multiple=multiple style="min-width:300px;" data-placeholder="Choose options...">'
-							. ( ( '' == $std ) ? '<option value="nothing_selected">  ' . esc_html__('Select', 'vibe') . '  </option>' : '' );
+							. ( ( '' == $std ) ? '<option value="nothing_selected">  ' . esc_html__('Select', 'vibe-customtypes') . '  </option>' : '' );
 							
                                                 foreach ( $option_settings['options'] as $key=>$setting_value ){ 
                                                     $value_array=explode(',',$std);
@@ -1915,7 +1955,7 @@ $v_modules['slider'] = array(
 						echo
 						'<span class="select_yesno_button"></span>
                                                     <select name="' . esc_attr( $option_slug ) . '" id="' . esc_attr( $option_slug ) . '" class="select_yesno_val v_option' . $content_class . '">'
-							. ( ( '' == $std ) ? '<option value="nothing_selected">  ' . esc_html__('Select', 'vibe') . '  </option>' : '' );
+							. ( ( '' == $std ) ? '<option value="nothing_selected">  ' . esc_html__('Select', 'vibe-customtypes') . '  </option>' : '' );
 							
                                                 foreach ( $option_settings['options'] as $key=>$setting_value ){ 
 								echo '<option value="' . esc_attr( $key ) . '"' . selected( $key, $std, false ) . '>' . esc_html( $setting_value ) . '</option>';
@@ -1939,7 +1979,7 @@ $v_modules['slider'] = array(
 						break; 
             
             case 'upload':
-						echo '<input name="' . esc_attr( $option_slug ) . '" type="hidden" id="' . esc_attr( $option_slug ) . '" value="" class="regular-text v_option v_upload_field' . $content_class . '" />' . '<img src="'.VIBE_URL.'/includes/metaboxes/images/image.png" class="uploaded_image" /><a href="#" rel-default="'.VIBE_URL.'/includes/metaboxes/images/image.png" class="remove_uploaded">cancel</a><a href="#" class="v_upload_button button">' . esc_html__('Upload', 'vibe') . '</a>';
+						echo '<input name="' . esc_attr( $option_slug ) . '" type="hidden" id="' . esc_attr( $option_slug ) . '" value="" class="regular-text v_option v_upload_field' . $content_class . '" />' . '<img src="'.VIBE_URL.'/includes/metaboxes/images/image.png" class="uploaded_image" /><a href="#" rel-default="'.VIBE_URL.'/includes/metaboxes/images/image.png" class="remove_uploaded">cancel</a><a href="#" class="v_upload_button button">' . esc_html__('Upload', 'vibe-customtypes') . '</a>';
 						break;
 					 case 'slider_images':
             $std = isset( $option_settings['std'] ) ? $option_settings['std'] : '';
@@ -1952,7 +1992,7 @@ $v_modules['slider'] = array(
 				++$i;
 			}
 			
-			submit_button(__('Save Changes', 'vibe'), 'vibe-button-save');
+			submit_button(__('Save Changes', 'vibe-customtypes'), 'vibe-button-save');
 			
 			echo '<input type="hidden" id="saved_module_name" value="' . esc_attr( $module_name ) . '" />';
 			
@@ -1980,7 +2020,7 @@ $v_modules['slider'] = array(
             
             $animation ='';
             if(isset($atts['animation_effect']) && $atts['animation_effect']){
-            $animation = ' animate '.$atts['animation_effect'].'';
+            $animation = ' '.$atts['animation_effect'].'';
             }
                         
 			$attributes['class'] = ' class="' . esc_attr( "v_module{$additional_classes}{$first_class}{$css_class}{$animation}" ) . '" '.$container_css.'';
@@ -2029,7 +2069,7 @@ function add_content_option(){
 
 	echo '<p class="vibe_editor_option content_addon">'
 			. '<label for="add_content">'
-				. __('Show Page Content','vibe').'<select name="add_content" id="add_content" ><option value="no" '. selected($v_add_content, 'no', false).'> No</option><option value="yes_top" '. selected($v_add_content, 'yes_top', false).'> Yes, above Page Builder</option><option value="yes_below" '. selected($v_add_content, 'yes_below', false).'> Yes, Below Page Builder</option></select></label>'
+				. __('Show Page Content','vibe-customtypes').'<select name="add_content" id="add_content" ><option value="no" '. selected($v_add_content, 'no', false).'> No</option><option value="yes_top" '. selected($v_add_content, 'yes_top', false).'> Yes, above Page Builder</option><option value="yes_below" '. selected($v_add_content, 'yes_below', false).'> Yes, Below Page Builder</option></select></label>'
 		. '</p>';
 }
 
@@ -2061,7 +2101,7 @@ function vibe_editor_save_details( $post_id, $post ){
        
 }
 
-add_filter( 'the_content', 'show_builder_layout' );
+add_filter( 'the_content', 'show_builder_layout');
 function show_builder_layout( $content ){
 	global $post;
 	

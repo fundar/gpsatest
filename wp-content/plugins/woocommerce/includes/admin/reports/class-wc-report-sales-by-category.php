@@ -1,16 +1,22 @@
 <?php
 /**
- * WC_Report_Sales_By_Category class
+ * WC_Report_Sales_By_Category
+ *
+ * @author      WooThemes
+ * @category    Admin
+ * @package     WooCommerce/Admin/Reports
+ * @version     2.1.0
  */
 class WC_Report_Sales_By_Category extends WC_Admin_Report {
 
-	public $chart_colours = array();
+	public $chart_colours   = array();
 	public $show_categories = array();
 
 	/**
 	 * Constructor
 	 */
 	public function __construct() {
+
 		if ( isset( $_GET['show_categories'] ) && is_array( $_GET['show_categories'] ) ) {
 			$this->show_categories = array_map( 'absint', $_GET['show_categories'] );
 		} elseif ( isset( $_GET['show_categories'] ) ) {
@@ -19,36 +25,49 @@ class WC_Report_Sales_By_Category extends WC_Admin_Report {
 	}
 
 	/**
+	 * Get all product ids in a category (and its children)
+	 *
+	 * @param  int $category_id
+	 * @return array
+	 */
+	public function get_products_in_category( $category_id ) {
+		$term_ids    = get_term_children( $category_id, 'product_cat' );
+		$term_ids[]  = $category_id;
+		$product_ids = get_objects_in_term( $term_ids, 'product_cat' );
+
+		return array_unique( apply_filters( 'woocommerce_report_sales_by_category_get_products_in_category', $product_ids, $category_id ) );
+	}
+
+	/**
 	 * Get the legend for the main chart sidebar
+	 *
 	 * @return array
 	 */
 	public function get_chart_legend() {
+
 		if ( ! $this->show_categories ) {
 			return array();
 		}
 
-		$legend    = array();
-		$index     = 0;
+		$legend = array();
+		$index  = 0;
 
 		foreach ( $this->show_categories as $category ) {
-			$category       = get_term( $category, 'product_cat' );
-			$term_ids 		= get_term_children( $category->term_id, 'product_cat' );
-			$term_ids[] 	= $category->term_id;
-			$total          = 0;
-			$product_ids 	= array_unique( get_objects_in_term( $term_ids, 'product_cat' ) );
+
+			$category    = get_term( $category, 'product_cat' );
+			$total       = 0;
+			$product_ids = $this->get_products_in_category( $category->term_id );
 
 			foreach ( $product_ids as $id ) {
+
 				if ( isset( $this->item_sales[ $id ] ) ) {
 					$total += $this->item_sales[ $id ];
 				}
 			}
 
-			//if ( ! $total )
-			//	continue;
-
 			$legend[] = array(
-				'title' => sprintf( __( '%s sales in %s', 'woocommerce' ), '<strong>' . wc_price( $total ) . '</strong>', $category->name ),
-				'color' => isset( $this->chart_colours[ $index ] ) ? $this->chart_colours[ $index ] : $this->chart_colours[ 0 ],
+				'title'            => sprintf( __( '%s sales in %s', 'woocommerce' ), '<strong>' . wc_price( $total ) . '</strong>', $category->name ),
+				'color'            => isset( $this->chart_colours[ $index ] ) ? $this->chart_colours[ $index ] : $this->chart_colours[ 0 ],
 				'highlight_series' => $index
 			);
 
@@ -62,7 +81,6 @@ class WC_Report_Sales_By_Category extends WC_Admin_Report {
 	 * Output the report
 	 */
 	public function output_report() {
-		global $woocommerce, $wpdb, $wp_locale;
 
 		$ranges = array(
 			'year'         => __( 'Year', 'woocommerce' ),
@@ -73,7 +91,7 @@ class WC_Report_Sales_By_Category extends WC_Admin_Report {
 
 		$this->chart_colours = array( '#3498db', '#34495e', '#1abc9c', '#2ecc71', '#f1c40f', '#e67e22', '#e74c3c', '#2980b9', '#8e44ad', '#2c3e50', '#16a085', '#27ae60', '#f39c12', '#d35400', '#c0392b' );
 
-		$current_range = ! empty( $_GET['range'] ) ? $_GET['range'] : '7day';
+		$current_range = ! empty( $_GET['range'] ) ? sanitize_text_field( $_GET['range'] ) : '7day';
 
 		if ( ! in_array( $current_range, array( 'custom', 'year', 'last_month', 'month', '7day' ) ) ) {
 			$current_range = '7day';
@@ -108,15 +126,19 @@ class WC_Report_Sales_By_Category extends WC_Admin_Report {
 				'filter_range' => true
 			) );
 
-			$this->item_sales = array();
+			$this->item_sales           = array();
 			$this->item_sales_and_times = array();
 
 			if ( $order_items ) {
+
 				foreach ( $order_items as $order_item ) {
+
 					switch ( $this->chart_groupby ) {
+
 						case 'day' :
 							$time = strtotime( date( 'Ymd', strtotime( $order_item->post_date ) ) ) * 1000;
 						break;
+
 						case 'month' :
 							$time = strtotime( date( 'Ym', strtotime( $order_item->post_date ) ) . '01' ) * 1000;
 						break;
@@ -134,9 +156,11 @@ class WC_Report_Sales_By_Category extends WC_Admin_Report {
 
 	/**
 	 * [get_chart_widgets description]
+	 *
 	 * @return array
 	 */
 	public function get_chart_widgets() {
+
 		return array(
 			array(
 				'title'    => __( 'Categories', 'woocommerce' ),
@@ -150,6 +174,7 @@ class WC_Report_Sales_By_Category extends WC_Admin_Report {
 	 * @return void
 	 */
 	public function category_widget() {
+
 		$categories = get_terms( 'product_cat', array( 'orderby' => 'name' ) );
 		?>
 		<form method="GET">
@@ -204,11 +229,12 @@ class WC_Report_Sales_By_Category extends WC_Admin_Report {
 	 * Output an export link
 	 */
 	public function get_export_button() {
-		$current_range = ! empty( $_GET['range'] ) ? $_GET['range'] : '7day';
+
+		$current_range = ! empty( $_GET['range'] ) ? sanitize_text_field( $_GET['range'] ) : '7day';
 		?>
 		<a
 			href="#"
-			download="report-<?php echo $current_range; ?>-<?php echo date_i18n( 'Y-m-d', current_time('timestamp') ); ?>.csv"
+			download="report-<?php echo esc_attr( $current_range ); ?>-<?php echo date_i18n( 'Y-m-d', current_time('timestamp') ); ?>.csv"
 			class="export_csv"
 			data-export="chart"
 			data-xaxes="<?php _e( 'Date', 'woocommerce' ); ?>"
@@ -221,6 +247,7 @@ class WC_Report_Sales_By_Category extends WC_Admin_Report {
 
 	/**
 	 * Get the main chart
+	 *
 	 * @return string
 	 */
 	public function get_main_chart() {
@@ -239,26 +266,29 @@ class WC_Report_Sales_By_Category extends WC_Admin_Report {
 			$index              = 0;
 
 			foreach ( $this->show_categories as $category ) {
-				$category       = get_term( $category, 'product_cat' );
-				$term_ids 		= get_term_children( $category->term_id, 'product_cat' );
-				$term_ids[] 	= $category->term_id;
-				$product_ids 	= array_unique( get_objects_in_term( $term_ids, 'product_cat' ) );
-				$category_total = 0;
+
+				$category            = get_term( $category, 'product_cat' );
+				$product_ids         = $this->get_products_in_category( $category->term_id );
+				$category_total      = 0;
 				$category_chart_data = array();
 
 				for ( $i = 0; $i <= $this->chart_interval; $i ++ ) {
+
 					$interval_total = 0;
 
 					switch ( $this->chart_groupby ) {
+
 						case 'day' :
 							$time = strtotime( date( 'Ymd', strtotime( "+{$i} DAY", $this->start_date ) ) ) * 1000;
 						break;
+
 						case 'month' :
 							$time = strtotime( date( 'Ym', strtotime( "+{$i} MONTH", $this->start_date ) ) . '01' ) * 1000;
 						break;
 					}
 
 					foreach ( $product_ids as $id ) {
+
 						if ( isset( $this->item_sales_and_times[ $time ][ $id ] ) ) {
 							$interval_total += $this->item_sales_and_times[ $time ][ $id ];
 							$category_total += $this->item_sales_and_times[ $time ][ $id ];
@@ -314,8 +344,9 @@ class WC_Report_Sales_By_Category extends WC_Admin_Report {
 
 							highlight_series.color = '#9c5d90';
 
-							if ( highlight_series.bars )
+							if ( highlight_series.bars ) {
 								highlight_series.bars.fillColor = '#9c5d90';
+							}
 
 							if ( highlight_series.lines ) {
 								highlight_series.lines.lineWidth = 5;

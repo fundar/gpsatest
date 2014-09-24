@@ -394,13 +394,15 @@ class WC_API_Reports extends WC_API_Resource {
 
 		foreach ( $top_sellers as $top_seller ) {
 
-			$product = get_product( $top_seller->product_id );
+			$product = wc_get_product( $top_seller->product_id );
 
-			$top_sellers_data[] = array(
-				'title'      => $product->get_title(),
-				'product_id' => $top_seller->product_id,
-				'quantity'   => $top_seller->order_item_qty,
-			);
+			if ( $product ) {
+				$top_sellers_data[] = array(
+					'title'      => $product->get_title(),
+					'product_id' => $top_seller->product_id,
+					'quantity'   => $top_seller->order_item_qty,
+				);
+			}
 		}
 
 		return array( 'top_sellers' => apply_filters( 'woocommerce_api_report_response', $top_sellers_data, $this->report, $fields, $this->server ) );

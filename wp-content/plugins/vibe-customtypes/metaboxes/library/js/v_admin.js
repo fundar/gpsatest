@@ -5,12 +5,13 @@
 			$builder_add_links = $( '#vibe_editor_controls a.add_element' ),
 			$main_save_button = $( '#v_main_save' ),
 			module_settings_clicked = false,
+
 			hidden_editor_object = tinyMCEPreInit.mceInit['v_hidden_editor'],
+
 			page_builder_original_width = 742,
 			main_module_width = 0;
 		
                 
-               
                          
 		$( 'body' ).delegate( 'span.settings_arrow', 'click', function(){
 			var $this_setting_link = $(this),
@@ -85,7 +86,7 @@
 						}
 						
 						if ( $this_option.hasClass('v_wp_editor') ) {
-							tinyMCE.execCommand( "mceAddControl", true, this_option_id );
+							tinyMCE.execCommand( "mceAddEditor", true, this_option_id );
 							quicktags( { id : this_option_id } );
 							init_new_editor( this_option_id );
 						}
@@ -306,7 +307,7 @@
 			var $dialog_form = $('form#dialog_settings');
 			
 			$dialog_form.find('.v_wp_editor').each( function(){
-				tinyMCE.execCommand("mceRemoveControl", false, $(this).attr('id'));
+				tinyMCE.execCommand("mceRemoveEditor", false, $(this).attr('id'));
 			} );
 			
 			close_modal_window();
@@ -329,8 +330,8 @@
                                
                                         
 				 if ( $(this).hasClass('v_wp_editor') ){
-					option_value = $(this).is(':hidden') ? tinyMCE.get( this_option_id ).getContent() : switchEditors.wpautop( tinymce.DOM.get( this_option_id ).value );
-					tinyMCE.execCommand("mceRemoveControl", false, this_option_id);
+					option_value = $(this).is(':hidden') ? tinyMCE.get( this_option_id ).getContent() : switchEditors.wpautop( tinymce.DOM.get( this_option_id ).value );                    
+					tinyMCE.execCommand("mceRemoveEditor", false, this_option_id);
 				}
 				else if ( $(this).is('select, input,textarea') ) {
 					option_value = $(this).val();
@@ -436,7 +437,7 @@
 				
 					 if ( $(this).hasClass('v_wp_editor') ){
 						option_value = $(this).is(':hidden') ? tinyMCE.get( this_option_id ).getContent() : switchEditors.wpautop( tinymce.DOM.get( this_option_id ).value );
-						tinyMCE.execCommand("mceRemoveControl", false, this_option_id);
+						tinyMCE.execCommand("mceRemoveEditor", false, this_option_id);
 					}
 					else if ( $(this).is(':checkbox') ){
 						option_value = ( $(this).is(':checked') ) ? 1 : 0;
@@ -573,7 +574,6 @@
 								var $active_attachment = $('.attachment.active').removeClass('active');
 									
 								attachment_settings = data;
-								console.log(data);
 								$active_attachment.attr( 'data-attachment', attachment_settings['attachment_id'] ).find('img').remove();
 								$active_attachment.prepend( attachment_settings['attachment_image'] );
 								
@@ -917,7 +917,8 @@
 									this_option_id = $this_option.attr('id');
 								
 								if ( $this_option.hasClass('v_wp_editor') ) {
-									tinyMCE.execCommand( "mceAddControl", true, this_option_id );
+									tinyMCE.execCommand( "mceAddEditor", true, this_option_id );
+                                 
 									quicktags( { id : this_option_id } );
 									init_new_editor( this_option_id );
 								}
@@ -952,12 +953,12 @@
 				zIndex: 10,
 				start: function(e, ui){
 					$(this).find('.v_wp_editor').each(function(){
-						tinyMCE.execCommand( 'mceRemoveControl', false, $(this).attr('id') );
+						tinyMCE.execCommand( 'mceRemoveEditor', false, $(this).attr('id') );
 					});
 				},
 				stop: function(e,ui) {
 					$(this).find('.v_wp_editor').each(function(){
-						tinyMCE.execCommand( 'mceAddControl', false, $(this).attr('id') );
+						tinyMCE.execCommand( 'mceAddEditor', false, $(this).attr('id') );
 						tinyMCE.execCommand( 'mceSetContent', false, switchEditors.wpautop( $(this).val() ) );
 						$(this).sortable("refresh");
 					});
@@ -967,9 +968,10 @@
 		
 		function init_new_editor(editor_id){
 			if ( typeof tinyMCEPreInit.mceInit[editor_id] !== "undefined" ) return;
+
 			var new_editor_object = hidden_editor_object;
-			
 			new_editor_object['elements'] = editor_id;
+
 			tinyMCEPreInit.mceInit[editor_id] = new_editor_object;
 		}
 		

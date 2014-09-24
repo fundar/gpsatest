@@ -222,7 +222,7 @@
 .chosen-container-multi .chosen-choices li.search-field input[type="text"] {
   margin: 1px 0;
   padding: 5px;
-  height: 15px;
+  height: auto;
   outline: 0;
   border: 0 !important;
   background: transparent !important;
@@ -428,3 +428,15 @@
   }
 }
 /* @end */
+
+
+/* == RTL Fix : v 1.3.3; ==*/
+.rtl .chosen-container.chosen-with-drop .chosen-drop{
+  display: block;
+  }
+.rtl .chosen-container .chosen-drop{
+  display: none;
+}
+.rtl .chosen-container-single.chosen-container-single-nosearch .chosen-search{
+  display: none;
+}

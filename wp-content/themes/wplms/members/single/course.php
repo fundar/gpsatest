@@ -20,12 +20,12 @@
 
 	do_action( 'bp_before_member_course_content' ); 
 
-	if ( bp_is_current_action( 'course-results' ) ) :
+	if ( bp_is_current_action( BP_COURSE_RESULTS_SLUG ) ) :
 	
 	locate_template( array( 'members/single/course/results.php' ), true );
 	
 	else:
-		if ( bp_is_current_action( 'course-stats' ) ) :
+		if ( bp_is_current_action( BP_COURSE_STATS_SLUG ) ) :
 	
 		locate_template( array( 'members/single/course/stats.php' ), true );
 		

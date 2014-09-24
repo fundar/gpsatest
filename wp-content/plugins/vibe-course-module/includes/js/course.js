@@ -1,5 +1,5 @@
 ;(function($) {
-
+(function(e){"use strict";function t(t){var n=e("");try{n=e(t).clone()}catch(r){n=e("<span />").html(t)}return n}function n(e){return!!(typeof Node==="object"?e instanceof Node:e&&typeof e==="object"&&typeof e.nodeType==="number"&&typeof e.nodeName==="string")}e.print=e.fn.print=function(){var r,i,s=this;if(s instanceof e){s=s.get(0)}if(n(s)){i=e(s);if(arguments.length>0){r=arguments[0]}}else{if(arguments.length>0){i=e(arguments[0]);if(n(i[0])){if(arguments.length>1){r=arguments[1]}}else{r=arguments[0];i=e("html")}}else{i=e("html")}}var o={globalStyles:true,mediaPrint:false,stylesheet:null,noPrintSelector:".no-print",iframe:true,append:null,prepend:null};r=e.extend({},o,r||{});var u=e("");if(r.globalStyles){u=e("style, link, meta, title")}else if(r.mediaPrint){u=e("link[media=print]")}if(r.stylesheet){u=e.merge(u,e('<link rel="stylesheet" href="'+r.stylesheet+'">'))}var a=i.clone();a=e("<span/>").append(a);a.find(r.noPrintSelector).remove();a.append(u.clone());a.append(t(r.append));a.prepend(t(r.prepend));var f=a.html();a.remove();var l,c;if(r.iframe){try{var h=e(r.iframe+"");var p=h.length;if(p===0){h=e('<iframe height="0" width="0" border="0" wmode="Opaque"/>').prependTo("body").css({position:"absolute",top:-999,left:-999})}l=h.get(0);l=l.contentWindow||l.contentDocument||l;c=l.document||l.contentDocument||l;c.open();c.write(f);c.close();setTimeout(function(){l.focus();l.print();setTimeout(function(){if(p===0){h.remove()}},100)},250)}catch(d){console.error("Failed to print from iframe",d.stack,d.message);l=window.open();l.document.write(f);l.document.close();l.focus();l.print();l.close()}}else{l=window.open();l.document.write(f);l.document.close();l.focus();l.print();l.close()}return this}})(jQuery);
 $.fn.timer = function( useroptions ){ 
         var $this = $(this), opt,newVal, count = 0; 
 
@@ -39,6 +39,10 @@ function runnecessaryfunctions(){
   
   jQuery('.fitvids').fitVids();
   jQuery('.tip').tooltip();
+  jQuery('.nav-tabs li:first a').tab('show');
+  jQuery('.nav-tabs li a').click(function(){
+    $(this).tab('show');
+  });
   jQuery('.gallery').magnificPopup({
   delegate: 'a',
   type: 'image',
@@ -56,7 +60,41 @@ function runnecessaryfunctions(){
     }
   }
 });
+$('.ajax-popup-link').magnificPopup({
+    type: 'ajax',
+    alignTop: true,
+    fixedContentPos: true,
+    fixedBgPos: true,
+    overflowY: 'auto',
+    closeBtnInside: true,
+    preloader: false,
+    midClick: true,
+    removalDelay: 300,
+    mainClass: 'my-mfp-zoom-in'
+});
+$('.quiz_results_popup').magnificPopup({
+    type: 'ajax',
+    alignTop: true,
+    fixedContentPos: true,
+    fixedBgPos: true,
+    overflowY: 'auto',
+    closeBtnInside: true,
+    preloader: false,
+    midClick: true,
+    removalDelay: 300,
+    mainClass: 'my-mfp-zoom-in',
+    callbacks: {
+             parseAjax: function( mfpResponse ) {
+              mfpResponse.data = $(mfpResponse.data).find('#item-body');
+            }
+          }
+});
+if ( typeof vc_js == 'function' ) { 
+    window.vc_js();
+  }
+
 }
+
 //AJAX Comments
 function ajaxsubmit_comments(){
   $('#question').each(function(){
@@ -66,16 +104,36 @@ function ajaxsubmit_comments(){
     event.preventDefault();
     var value = '';
 
+    $('#ajaxloader').removeClass('disabled');
+    $('#question').css('opacity',0.2);
+
+    if($this.find('input[type="radio"]:checked').length)
     $this.find('input[type="radio"]:checked').each(function(){
-      value= $(this).val();
-
+      value = $(this).val();
     });
-
+    if($this.find('input[type="checkbox"]:checked').length)
     $this.find('input[type="checkbox"]:checked').each(function(){
       value= $(this).val()+','+value;
     });
-    
-    $('#comment.option_value').val(value);
+
+    if($this.find('.vibe_fillblank').length)
+    $this.find('.vibe_fillblank').each(function(){
+      value += $(this).text();  
+    });
+    if($this.find('#vibe_select_dropdown').length)
+    value = $this.find('#vibe_select_dropdown').val();
+
+    if($this.find('.matchgrid_options li.match_option').length){
+        $('.matchgrid_options li.match_option').each(function(){
+        var id = $(this).attr('id');
+        if( jQuery.isNumeric(id))
+          value +=id+',';
+      });  
+    }
+
+    if($('#comment').hasClass('option_value'))
+      $('#comment.option_value').val(value);
+
     $('#commentform').submit();
   });
     
@@ -87,7 +145,7 @@ function ajaxsubmit_comments(){
 
     var formdata=commentform.serialize();
 
-    statusdiv.html('<p>Processing...</p>');
+    statusdiv.html('<p>'+vibe_course_module_strings.processing+'</p>');
 
     var formurl=commentform.attr('action');
 
@@ -96,17 +154,25 @@ function ajaxsubmit_comments(){
       url: formurl,
       data: formdata,
       error: function(XMLHttpRequest, textStatus, errorThrown){
-        statusdiv.html('<p class="wdpajax-error">Too Fast or You might have not marked the answer.</p>');
+        $('#ajaxloader').addClass('disabled');
+        $('#question').css('opacity',1);
+        statusdiv.html('<p class="wdpajax-error">'+vibe_course_module_strings.too_fast_answer+'</p>');
+        setTimeout(function(){statusdiv.hide(300).html('').show();}, 2000);
       },
       success: function(data, textStatus){
+        $('#question').css('opacity',1);
+        $('#ajaxloader').addClass('disabled');
         if(data=="success"){
-          statusdiv.html('<p class="ajax-success" >Answer Saved.</p>');
+          statusdiv.html('<p class="ajax-success" >'+vibe_course_module_strings.answer_saved+'</p>');
+          setTimeout(function(){statusdiv.hide(300).html('').show();}, 2000);
           $('#ques'+qid).addClass('done');
+          $('.reset_answer').removeClass('hide');
         }
-        else
-          statusdiv.html('<p class="ajax-error" >Saving Answer...please wait</p>');
-          //commentform.find('textarea[name=comment]').val('');
+        else{
+          statusdiv.html('<p class="ajax-error" >'+vibe_course_module_strings.saving_answer+'</p>'); 
+          setTimeout(function(){statusdiv.hide(300).html('').show();}, 2000);
         }
+      }
     });
     return false;
     });
@@ -116,12 +182,58 @@ function ajaxsubmit_comments(){
 
 
 jQuery(document).ready( function($) {
-	
+  var cookieValue = $.cookie("course_directory");
+      if ((cookieValue !== null) && cookieValue == 'grid') {      
+        $('#course-list').addClass('grid');
+        $('#list_view').removeClass('active');
+        $('#grid_view').addClass('active');
+      }
+  $('.quiz_results_popup').magnificPopup({
+      type: 'ajax',
+      alignTop: true,
+      fixedContentPos: true,
+      fixedBgPos: true,
+      overflowY: 'auto',
+      closeBtnInside: true,
+      preloader: false,
+      midClick: true,
+      removalDelay: 300,
+      mainClass: 'my-mfp-zoom-in',
+      callbacks: {
+          parseAjax: function( mfpResponse ) {
+                mfpResponse.data = $(mfpResponse.data).find('#item-body');
+              },
+          ajaxContentAdded: function() {        {
+                $('#prev_results a').on('click',function(event){
+                    event.preventDefault();
+                    $(this).toggleClass('show');
+                    $('.prev_quiz_results').toggleClass('show');
+                });
+                $('.print_results').click(function(event){
+                    event.preventDefault();
+                    $('.quiz_result').print();
+                });
+              }
+            }
+      }      
+  });    
+	$('#grid_view').click(function(){
+    $('#course-list').addClass('grid');
+    $.cookie('course_directory', 'grid', { expires: 2 ,path: '/'});
+    $('#list_view').removeClass('active');
+    $(this).addClass('active');
+  });
+  $('#list_view').click(function(){
+    $('#course-list').removeClass('grid');
+    $.removeCookie('course_directory', { path: '/' });
+    $('#grid_view').removeClass('active');
+    $(this).addClass('active');
+  });
 	$("#average .dial").knob({
 	  	'readOnly': true, 
 	    'width': 120, 
 	    'height': 120, 
-	    'fgColor': '#78c8ce', 
+	    'fgColor': vibe_course_module_strings.theme_color, 
 	    'bgColor': '#f6f6f6',   
 	    'thickness': 0.1
 	});
@@ -129,7 +241,7 @@ jQuery(document).ready( function($) {
 	  	'readOnly': true, 
 	    'width': 120, 
 	    'height': 120, 
-	    'fgColor': '#78c8ce', 
+	    'fgColor': vibe_course_module_strings.theme_color, 
 	    'bgColor': '#f6f6f6',   
 	    'thickness': 0.1
 	});
@@ -137,7 +249,7 @@ jQuery(document).ready( function($) {
 	  	'readOnly': true, 
 	    'width': 120, 
 	    'height': 120, 
-	    'fgColor': '#78c8ce', 
+	    'fgColor': vibe_course_module_strings.theme_color, 
 	    'bgColor': '#f6f6f6',   
 	    'thickness': 0.1
 	});
@@ -146,19 +258,20 @@ jQuery(document).ready( function($) {
 	  	'readOnly': true, 
 	    'width': 120, 
 	    'height': 120, 
-	    'fgColor': '#78c8ce', 
+	    'fgColor': vibe_course_module_strings.theme_color, 
 	    'bgColor': '#f6f6f6',   
 	    'thickness': 0.1 
 	});
+
   //RESET Ajx
-  $('.remove_user_course').click(function(event){
+$( 'body' ).delegate( '.remove_user_course','click',function(event){
       event.preventDefault();
       var course_id=$(this).attr('data-course');
       var user_id=$(this).attr('data-user');
       $(this).addClass('animated spin');
       var $this = $(this);
       $.confirm({
-          text: "This step is irreversible. Are you sure you want to remove the User from the course ? ",
+          text: vibe_course_module_strings.remove_user_text,
           confirm: function() {
              $.ajax({
                     type: "POST",
@@ -182,19 +295,19 @@ jQuery(document).ready( function($) {
               $this.removeClass('animated');
               $this.removeClass('spin');
           },
-          confirmButton: "Confirm, Remove User from Course",
-          cancelButton: "Cancel"
+          confirmButton: vibe_course_module_strings.remove_user_button,
+          cancelButton: vibe_course_module_strings.cancel
       });
 	});
 
-  $('.reset_course_user').click(function(event){
+$( 'body' ).delegate( '.reset_course_user','click',function(event){
       event.preventDefault();
       var course_id=$(this).attr('data-course');
       var user_id=$(this).attr('data-user');
       $(this).addClass('animated spin');
       var $this = $(this);
       $.confirm({
-        text: "This step is irreversible. All Units, Quiz results would be reset for this user. Are you sure you want to Reset the Course for this User? ",
+        text: vibe_course_module_strings.reset_user_text,
           confirm: function() {
           $.ajax({
                   type: "POST",
@@ -216,12 +329,13 @@ jQuery(document).ready( function($) {
               $this.removeClass('animated');
               $this.removeClass('spin');
           },
-          confirmButton: "Confirm, Reset Course for this User",
-          cancelButton: "Cancel"
+          confirmButton: vibe_course_module_strings.reset_user_button,
+          cancelButton: vibe_course_module_strings.cancel
         });
 	});
 
-  $('.course_stats_user').click(function(event){
+  
+$( 'body' ).delegate( '.course_stats_user', 'click', function(event){
       event.preventDefault();
       var $this=$(this);
       var course_id=$this.attr('data-course');
@@ -249,7 +363,7 @@ jQuery(document).ready( function($) {
 	                  	'readOnly': true, 
 			            'width': 160, 
 			            'height': 160, 
-			            'fgColor': '#78c8ce', 
+			            'fgColor': vibe_course_module_strings.theme_color, 
 			            'bgColor': '#f6f6f6',   
 			            'thickness': 0.3 
 	                  });
@@ -257,6 +371,7 @@ jQuery(document).ready( function($) {
 	      });
   		}
 	});
+
 
   $('#calculate_avg_course').click(function(event){
       event.preventDefault();
@@ -288,7 +403,7 @@ jQuery(document).ready( function($) {
       $(this).addClass('animated spin');
       var $this = $(this);
       $.confirm({
-          text: "This step is irreversible. All Questions answers would be reset for this user. Are you sure you want to Reset the Quiz for this User? ",
+          text: vibe_course_module_strings.quiz_rest,
           confirm: function() {
 
       $.ajax({
@@ -304,7 +419,7 @@ jQuery(document).ready( function($) {
                   $(this).removeClass('animated');
                   $(this).removeClass('spin');
                   $('#message').html(html);
-                  $('#s'+user_id).fadeOut('fast');
+                  $('#qs'+user_id).fadeOut('fast');
               }
       });
       }, 
@@ -312,8 +427,8 @@ jQuery(document).ready( function($) {
             $this.removeClass('animated');
             $this.removeClass('spin');
         },
-        confirmButton: "Confirm, Reset Quiz for this User",
-          cancelButton: "Cancel"
+        confirmButton: vibe_course_module_strings.quiz_rest_button,
+        cancelButton: vibe_course_module_strings.cancel
       });
   });
 
@@ -341,6 +456,7 @@ jQuery(document).ready( function($) {
       });
   });
 
+
  $('.evaluate_course_user').click(function(event){
       event.preventDefault();
       var course_id=$(this).attr('data-course');
@@ -365,6 +481,28 @@ jQuery(document).ready( function($) {
       });
   });
 
+$( 'body' ).delegate( '.reset_answer', 'click', function(event){
+       event.preventDefault();
+      var ques_id=$('#comment-status').attr('data-quesid');
+      var $this = $(this);
+      var qid = $('#comment-status').attr('data-quesid');
+      $this.prepend('<i class="icon-sun-stroke animated spin"></i>');
+      $.ajax({
+              type: "POST",
+              url: ajaxurl,
+              data: { action: 'reset_question_answer', 
+                      security: $this.attr('data-security'),
+                      ques_id: ques_id,
+                    },
+              cache: false,
+              success: function (html) {
+                  $this.find('i').remove();
+                   $('#comment-status').html(html);
+                   $('#ques'+qid).removeClass('done');
+                   setTimeout(function(){ $this.addClass('hide');}, 500);
+              }
+      });
+});
 
 $( 'body' ).delegate( '#course_complete', 'click', function(event){
       event.preventDefault();
@@ -411,7 +549,7 @@ $( 'body' ).delegate( '.give_marks', 'click', function(event){
 	    event.preventDefault();
 	    var $this=$(this);
 	    var ansid=$this.attr('data-ans-id');
-	    var aval = $('#'+ansid).val()
+	    var aval = $('#'+ansid).val();
 	    $this.prepend('<i class="icon-sun-stroke animated spin"></i>');
 	    $.ajax({
 	            type: "POST",
@@ -423,7 +561,7 @@ $( 'body' ).delegate( '.give_marks', 'click', function(event){
 	            cache: false,
 	            success: function (html) {
 	                $this.find('i').remove();
-	                $this.html('Marks Saved');
+	                $this.html(vibe_course_module_strings.marks_saved);
 	            }
 	    });
 });
@@ -446,7 +584,7 @@ $( 'body' ).delegate( '#mark_complete', 'click', function(event){
             cache: false,
             success: function (html) {
                 $this.find('i').remove();
-                $this.html('Quiz Marks Saved');
+                $this.html(vibe_course_module_strings.quiz_marks_saved);
             }
     });
 });
@@ -469,11 +607,11 @@ $( 'body' ).delegate( '.submit_quiz', 'click', function(event){
     if($(this).hasClass('disabled')){
       return false;
     }
-
+     
     var $this = $(this);
     var quiz_id=$(this).attr('data-quiz');
     $this.prepend('<i class="icon-sun-stroke animated spin"></i>');
-
+    $('#question').addClass('quiz_submitted_fade');
     $.ajax({
             type: "POST",
             url: ajaxurl,
@@ -483,11 +621,14 @@ $( 'body' ).delegate( '.submit_quiz', 'click', function(event){
                   },
             cache: false,
             success: function (html) {
+                $('#ajaxloader').removeClass('disabled');
+                $('#question').css('opacity',0.2);
                 $this.find('i').remove();
                 location.reload();
             }
     });
 });
+
 // QUIZ RELATED FUCNTIONS
 // START QUIZ AJAX
 jQuery(document).ready( function($) {
@@ -512,17 +653,19 @@ jQuery(document).ready( function($) {
 	                ajaxsubmit_comments();
 	                var ques=$($.parseHTML(html)).filter("#question");
 	                var q='#ques'+ques.attr('data-ques');
+
 	                $('.quiz_timeline').find('.active').removeClass('active');
 	                $(q).addClass('active');
-
+                  $('#question').trigger('question_loaded');
 	                if(ques != 'undefined'){
 	                  $('.quiz_timer').trigger('activate');
 	                }
 
+                $('.tip').tooltip();
                 $('.begin_quiz').each(function(){
                     $(this).removeClass('begin_quiz');
                     $(this).addClass('submit_quiz');
-                    $(this).text('Submit Quiz');
+                    $(this).text(vibe_course_module_strings.submit_quiz);
                 });
             }
         });
@@ -531,8 +674,18 @@ jQuery(document).ready( function($) {
 
 
 
+$( 'body' ).delegate( '.show_hint', 'click', function(event){
+  event.preventDefault();
+  $(this).toggleClass('active');
+  $('.hint').toggle(400);
+});
 
-
+$('.show_explaination').click(function(event){
+    event.preventDefault();
+    var $this = $(this);
+    $this.toggleClass('active');
+    $this.closest('li').find('.explaination').toggle();
+});
 
 $( 'body' ).delegate( '.quiz_question', 'click', function(event){
     event.preventDefault();
@@ -540,6 +693,8 @@ $( 'body' ).delegate( '.quiz_question', 'click', function(event){
     var quiz_id=$(this).attr('data-quiz');
     var ques_id=$(this).attr('data-qid');
     $this.prepend('<i class="icon-sun-stroke animated spin"></i>');
+    $('#ajaxloader').removeClass('disabled');
+    $('#question').css('opacity',0.2);
     $.ajax({
             type: "POST",
             url: ajaxurl,
@@ -551,38 +706,109 @@ $( 'body' ).delegate( '.quiz_question', 'click', function(event){
             cache: false,
             success: function (html) {
                 $this.find('i').remove();
-                $('.content').fadeOut("fast");
                 $('.content').html(html);
-                $('.content').fadeIn("fast");
+                $('#ajaxloader').addClass('disabled');
+                $('#question').css('opacity',1);
                 ajaxsubmit_comments();
                 var ques=$($.parseHTML(html)).filter("#question");
                 var q='#ques'+ques.attr('data-ques');
                 $('.quiz_timeline').find('.active').removeClass('active');
                 $(q).addClass('active');
-
+                $('#question').trigger('question_loaded');
+                $('.tip').tooltip();
                 if(ques != 'undefined')
                   $('.quiz_timer').trigger('activate');
+
+                //Fill in the Blank Live EDIT
+                $(".live-edit").liveEdit({
+                    afterSaveAll: function(params) {
+                      return false;
+                    }
+                });
+
+
+                //Match question type
+                $('.question_options.match').droppable({
+                  drop: function( event, ui ){
+                    $(ui.draggable).removeAttr('style');
+                    $( this )
+                          .addClass( "ui-state-highlight" )
+                          .append($(ui.draggable))
+                  }
+                });
+                $('.question_options.match li').draggable({
+                  revert: "invalid",
+                  containment:'#question'
+                });
+                $( ".matchgrid_options li" ).droppable({
+                    activeClass: "ui-state-default",
+                    hoverClass: "ui-state-hover",
+                    drop: function( event, ui ){
+                      childCount = $(this).children().length;
+                      $(ui.draggable).removeAttr('style');
+                      if (childCount !=0){
+                          return;
+                      }   
+                      
+                       $( this )
+                          .addClass( "ui-state-highlight" )
+                          .append($(ui.draggable))
+                    }
+                  });
+                if($('.matchgrid_options').hasClass('saved_answer')){
+                    var id;
+                    $('.matchgrid_options li').each(function(index,value){
+                        id = $('.matchgrid_options').attr('data-match'+index);
+                        $(this).append($('#'+id));
+                    });
+                } 
+
+                //END Match question type
+                //
+                if($('.timeline_wrapper').height() > $('.quiz_timeline').height()){
+                     $('.quiz_timeline').animate({scrollTop: $(q).position().top}, 'slow');
+                }
             }
       });
 });
 
-jQuery(document).ready( function($) {
-  $('.quiz_timer').each(function(){
-      var qtime = parseInt($(this).attr('data-time'));
-      var $timer =$(this).find('.timer');
-      $timer.knob({
-        'readonly':true,
-        'max': qtime,
-        'width' : 200 ,
-        'height' : 200 ,
-        'fgColor' : "#78c8ce" ,
-        'bgColor' : "#232b2d",
-        'thickness': 0.2 ,
-        'readonly':true 
-      });
+$( 'body' ).delegate( '#question', 'question_loaded',function(){
+  
+  jQuery('.question_options.sort').each(function(){
+
+    var defaultanswer='1';
+    var lastindex = $('ul.question_options li').size();
+    if(lastindex>1)
+    for(var i=2;i<=lastindex;i++){
+      defaultanswer = defaultanswer+','+i;
+    }
+    $('#comment').val(defaultanswer);
+    $('#comment').trigger('change');
+    jQuery('.question_options.sort').sortable({
+      revert: true,
+      cursor: 'move',
+      refreshPositions: true, 
+      opacity: 0.6,
+      scroll:true,
+      containment: 'parent',
+      placeholder: 'placeholder',
+      tolerance: 'pointer',
+      update: function( event, ui ) {
+          var order = $('.question_options.sort').sortable('toArray').toString();
+          $('#comment').val(order);
+          $('#comment').trigger('change');
+      }
+    }).disableSelection();
   });
+});
+
+
+
+jQuery(document).ready( function($) {
+ 
 
   $('.quiz_timer').one('activate',function(){
+
     var qtime = parseInt($(this).attr('data-time'));
 
     var $timer =$(this).find('.timer');
@@ -592,8 +818,8 @@ jQuery(document).ready( function($) {
       'timer': qtime,
       'width' : 200 ,
       'height' : 200 ,
-      'fgColor' : "#78c8ce" ,
-      'bgColor' : "#232b2d" 
+      'fgColor' : vibe_course_module_strings.theme_color ,
+      'bgColor' : vibe_course_module_strings.single_dark_color 
     });
 
     var $timer =$(this).find('.timer');
@@ -614,7 +840,11 @@ jQuery(document).ready( function($) {
           countdown.html($text);
         }else{
             countdown.html('Timeout');
-            $('.submit_quiz').trigger('click');
+            if(!$('.submit_quiz').hasClass('triggerred')){
+                $('.submit_quiz').trigger('click');
+                $('.submit_quiz').addClass('triggerred');
+            } 
+
             $('.quiz_timer').trigger('end');
         }  
     });
@@ -631,15 +861,15 @@ jQuery(document).ready( function($) {
         'max': qtime,
         'width' : 200 ,
         'height' : 200 ,
-        'fgColor' : "#78c8ce" ,
-        'bgColor' : "#232b2d",
+        'fgColor' : vibe_course_module_strings.theme_color ,
+        'bgColor' : vibe_course_module_strings.single_dark_color,
         'thickness': 0.2 ,
         'readonly':true 
       });
     event.stopPropagation();
   });
 
-  $('.quiz_timer').one('end',function(){
+  $('.quiz_timer').one('end',function(event){
     var qtime = parseInt($(this).attr('data-time'));
     var $timer =$(this).find('.timer');
     var $this=$(this);
@@ -649,18 +879,72 @@ jQuery(document).ready( function($) {
         'max': qtime,
         'width' : 200 ,
         'height' : 200 ,
-        'fgColor' : "#78c8ce" ,
-        'bgColor' : "#232b2d",
+        'fgColor' : vibe_course_module_strings.theme_color ,
+        'bgColor' : vibe_course_module_strings.single_dark_color,
         'thickness': 0.2 ,
         'readonly':true 
       });
     event.stopPropagation();
   });
+// Timer function runs after Trigger event definition
+$('.quiz_timer').each(function(){
+    var qtime = parseInt($(this).attr('data-time'));
+    var $timer =$(this).find('.timer');
+    $timer.knob({
+      'readonly':true,
+      'max': qtime,
+      'width' : 200 ,
+      'height' : 200 ,
+      'fgColor' : vibe_course_module_strings.theme_color ,
+      'bgColor' : vibe_course_module_strings.single_dark_color,
+      'thickness': 0.2 ,
+      'readonly':true 
+    });
+    if($(this).hasClass('start')){
+      $('.quiz_timer').trigger('activate');
+    }
+});
+
+jQuery('.question_options.sort').each(function(){
+    var defaultanswer='1';
+    var lastindex = $('ul.question_options li').size();
+    if(lastindex>1)
+    for(var i=2;i<=lastindex;i++){
+      defaultanswer = defaultanswer+','+i;
+    }
+    $('#comment').val(defaultanswer);
+    $('#comment').trigger('change');
+    jQuery('.question_options.sort').sortable({
+      revert: true,
+      cursor: 'move',
+      refreshPositions: true, 
+      opacity: 0.6,
+      scroll:true,
+      containment: 'parent',
+      placeholder: 'placeholder',
+      tolerance: 'pointer',
+      update: function( event, ui ) {
+          var order = $('.question_options.sort').sortable('toArray').toString();
+          $('#comment').val(order);
+          $('#comment').trigger('change');
+      }
+    }).disableSelection();
+  });
 }); 
 
-$( 'body' ).delegate( '.send_course_message', 'click', function(event){
+$( 'body' ).delegate( '.expand_message', 'click', function(event){
   event.preventDefault();
-  $('.course_message').toggle('slow');
+  $('.bulk_message').toggle('slow');
+});
+
+$( 'body' ).delegate( '.expand_add_students', 'click', function(event){
+  event.preventDefault();
+  $('.bulk_add_students').toggle('slow');
+});
+
+$( 'body' ).delegate( '.expand_assign_students', 'click', function(event){
+  event.preventDefault();
+  $('.bulk_assign_students').toggle('slow');
 });
 
 $( 'body' ).delegate( '#send_course_message', 'click', function(event){
@@ -669,7 +953,7 @@ $( 'body' ).delegate( '#send_course_message', 'click', function(event){
 
   var $this = $(this);
   var defaultxt=$this.html();
-  $this.html('<i class="icon-sun-stroke animated spin"></i> Sending messages...');
+  $this.html('<i class="icon-sun-stroke animated spin"></i> '+vibe_course_module_strings.sending_messages);
   var i=0;
   $('.member').each(function(){
     if($(this).is(':checked')){
@@ -681,7 +965,8 @@ $( 'body' ).delegate( '#send_course_message', 'click', function(event){
         type: "POST",
         url: ajaxurl,
         data: { action: 'send_bulk_message', 
-                security: $('#buk_message').val(),
+                security: $('#buk_action').val(),
+                course:$this.attr('data-course'),
                 sender: $('#sender').val(),
                 members: JSON.stringify(members),
                 subject: $('#bulk_subject').val(),
@@ -695,6 +980,74 @@ $( 'body' ).delegate( '#send_course_message', 'click', function(event){
     });    
 });
 
+$( 'body' ).delegate( '#add_student_to_course', 'click', function(event){
+  event.preventDefault();
+  var $this = $(this);
+  var defaultxt=$this.html();
+  var students = $('#student_usernames').val();
+
+  if(students.length <= 0){ 
+    $('#add_student_to_course').html(vibe_course_module_strings.unable_add_students);
+    setTimeout(function(){$this.html(defaultxt);}, 2000);
+    return;
+  }
+
+  $this.html('<i class="icon-sun-stroke animated spin"></i>'+vibe_course_module_strings.adding_students);
+  var i=0;
+  $.ajax({
+        type: "POST",
+        url: ajaxurl,
+        data: { action: 'add_bulk_students', 
+                security: $('#buk_action').val(),
+                course:$this.attr('data-course'),
+                members: students,
+              },
+        cache: false,
+        success: function (html) {
+          if(html.length && html !== '0'){
+            $('#add_student_to_course').html(vibe_course_module_strings.successfuly_added_students);
+            $('ul.course_students').append(html);
+          }else{
+            $('#add_student_to_course').html(vibe_course_module_strings.unable_add_students);
+          }
+            
+            setTimeout(function(){$this.html(defaultxt);}, 3000);
+        }
+    });    
+});
+
+
+$( 'body' ).delegate( '#assign_course_badge_certificate', 'click', function(event){
+  event.preventDefault();
+  var members=[];
+
+  var $this = $(this);
+  var defaultxt=$this.html();
+  $this.html('<i class="icon-sun-stroke animated spin"></i> '+vibe_course_module_strings.processing);
+  var i=0;
+  $('.member').each(function(){
+    if($(this).is(':checked')){
+      members[i]=$(this).val();
+      i++;
+    }
+  });
+
+  $.ajax({
+        type: "POST",
+        url: ajaxurl,
+        data: { action: 'assign_badge_certificates', 
+                security: $('#buk_action').val(),
+                course: $this.attr('data-course'),
+                members: JSON.stringify(members),
+                assign_action: $('#assign_action').val(),
+              },
+        cache: false,
+        success: function (html) {
+            $this.html(html);
+            setTimeout(function(){$this.html(defaultxt);}, 5000);
+        }
+    });    
+});
 
 
 // Course Unit Traverse
@@ -707,7 +1060,7 @@ $( 'body' ).delegate( '.unit', 'click', function(event){
     var $this = $(this);
     var unit_id=$(this).attr('data-unit');
     $this.prepend('<i class="icon-sun-stroke animated spin"></i>');
-
+    
     $.ajax({
             type: "POST",
             url: ajaxurl,
@@ -722,28 +1075,53 @@ $( 'body' ).delegate( '.unit', 'click', function(event){
                     scrollTop: 0
                   }, 1200);
                 $this.find('i').remove();
+
                 $('.unit_content').fadeOut("fast");
                 $('.unit_content').html(html);
                 $('.unit_content').fadeIn("fast");
+                $('.unit_content').trigger('unit_traverse');
+
                 var unit=$($.parseHTML(html)).filter("#unit");
                 var u='#unit'+unit.attr('data-unit');
-
                 $('.course_timeline').find('.active').removeClass('active');
                 $(u).addClass('active');
 
-                
-                $('audio,video').mediaelementplayer();
+                $('audio,video').mediaelementplayer({
+                    success: function(media,node,player) { 
+                      $('#mark-complete').trigger('media_loaded');
+                      $('.mejs-container').each(function(){
+                        $(this).addClass('mejs-mejskin');
+                      });
+                      media.addEventListener('ended', function (e) {
+                        $('#mark-complete').trigger('media_complete');
+                      });
+                    }
+                });
+                runnecessaryfunctions();
 
-                $('.mejs-container').each(function(){
-                  $(this).addClass('mejs-mejskin');
-                }); 
-
-
-                if(unit != 'undefined')
+                if(typeof unit != 'undefined')
                   $('.unit_timer').trigger('activate');
             }
     });
 });
+
+$( 'body' ).delegate( '#mark-complete', 'media_loaded', function(event){
+  event.preventDefault();
+  if($(this).hasClass('tip')){
+      $(this).addClass('disabled');
+  }
+});
+
+$( 'body' ).delegate( '#mark-complete', 'media_complete', function(event){ 
+  event.preventDefault();
+  if($(this).hasClass('tip')){
+    $(this).removeClass('disabled');
+    $(this).removeClass('tip');
+    $(this).tooltip('destroy');
+    jQuery('.tip').tooltip();
+  }  
+});
+
 
 $( 'body' ).delegate( '#mark-complete', 'click', function(event){
     event.preventDefault();
@@ -754,7 +1132,7 @@ $( 'body' ).delegate( '#mark-complete', 'click', function(event){
     var $this = $(this);
     var unit_id=$(this).attr('data-unit');
     $this.prepend('<i class="icon-sun-stroke animated spin"></i>');
-
+    $('body').find('.course_progressbar').removeClass('increment_complete');
     $.ajax({
             type: "POST",
             url: ajaxurl,
@@ -765,15 +1143,46 @@ $( 'body' ).delegate( '#mark-complete', 'click', function(event){
                   },
             cache: false,
             success: function (html) {
+              console.log(html);
                 $this.find('i').remove();
                 $this.html('<i class="icon-check"></i>');
-               $('.course_timeline').find('.active').addClass('done');
-
-                if(unit != 'undefined')
+                $('.course_timeline').find('.active').addClass('done');
+                $('body').find('.course_progressbar').trigger('increment');
+                $('#mark-complete').addClass('disabled');
+                
+                if(html.length > 0){
+                    $('#next_unit').removeClass('hide');
+                    $('#next_unit').attr('data-unit',html);  
+                    $('#unit'+html).find('a').addClass('unit');
+                    $('#unit'+html).find('a').attr('data-unit',html);
+                }
+                if(typeof unit != 'undefined')
                   $('.unit_timer').trigger('finish');
             }
     });
 });
+
+
+$('.course_progressbar').on('increment',function(event){
+
+  if($(this).hasClass('increment_complete')){
+    event.stopPropagation();
+    return false;
+  }else{
+    var iunit = parseInt($(this).attr('data-increase-unit'));
+    var per = parseInt($(this).attr('data-value'));
+    newper = iunit + per;
+    $(this).find('.bar').css('width',newper+'%');
+    $(this).find('.bar span').html(newper + '%');
+    $(this).addClass('increment_complete');
+    $(this).attr('data-value',newper);
+  }
+  event.stopPropagation();
+  return false;
+  
+});
+
+
 
 jQuery(document).ready(function($){
 	$('.showhide_indetails').click(function(event){
@@ -782,34 +1191,60 @@ jQuery(document).ready(function($){
 		$(this).parent().find('.in_details').toggle();
 	});
 
-    $('.ajax-certificate').magnificPopup({
+
+$('.ajax-certificate').each(function(){
+    $(this).magnificPopup({
           type: 'ajax',
           fixedContentPos: true,
-          closeBtnInside: true,
+          alignTop:true,
           preloader: false,
           midClick: true,
           removalDelay: 300,
+          showCloseBtn:false,
           mainClass: 'mfp-with-zoom',
           callbacks: {
              parseAjax: function( mfpResponse ) {
               mfpResponse.data = $(mfpResponse.data).find('#certificate');
+            },
+            ajaxContentAdded: function() {
+              html2canvas($('#certificate'), {
+                  onrendered: function(canvas) {
+                      var data = canvas.toDataURL();
+                      $('#certificate .certificate_content').html('<img src="'+data+'" />');
+                      $('#certificate').trigger('generate_certificate');
+                  }
+              });
             }
           }
       });
+});
 
 $( 'body' ).delegate( '.print_unit', 'click', function(event){
     $('.unit_content').print();
 });
 
-  $('.widget_carousel').flexslider({
-    animation: "slide",
-    controlNav: false,
-    directionNav: true,
-    animationLoop: true,
-    slideshow: false,
-    prevText: "<i class='icon-arrow-1-left'></i>",
-    nextText: "<i class='icon-arrow-1-right'></i>",
-  });
+$( 'body' ).delegate( '.printthis', 'click', function(event){
+    $(this).parent().print();
+});
+
+$( 'body' ).delegate( '#certificate', 'generate_certificate', function(event){
+    $(this).addClass('certificate_generated');
+});
+
+$( 'body' ).delegate( '.certificate_print', 'click', function(event){
+    event.preventDefault();
+    $(this).parent().parent().print();
+});
+
+$('.widget_carousel').flexslider({
+  animation: "slide",
+  controlNav: false,
+  directionNav: true,
+  animationLoop: true,
+  slideshow: false,
+  prevText: "<i class='icon-arrow-1-left'></i>",
+  nextText: "<i class='icon-arrow-1-right'></i>",
+});
 
   /*=== Quick tags ===*/
   $( 'body' ).delegate( '.unit-page-links a', 'click', function(event){
@@ -822,6 +1257,7 @@ $( 'body' ).delegate( '.print_unit', 'click', function(event){
         $this.prepend('<i class="icon-sun-stroke animated spin"></i>');
         $( ".main_unit_content" ).load( $this.attr('href') +" .single_unit_content" );
         runnecessaryfunctions();
+        $('body').trigger('unit_loaded');
         $this.find('i').remove();
         $( ".main_unit_content" ).trigger('unit_reload');
     });

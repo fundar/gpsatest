@@ -53,28 +53,10 @@ if ( bp_course_has_items( bp_ajax_querystring( 'course' ).'&user='.$user_id.'&pe
 				<div class="item-desc"><?php bp_course_desc() ?></div>
 				<div class="item-credits">
 					<?php 
-					$live=get_post_meta($id,$user_id,true);
-						if(isset($live) && $live !=''){
-							echo '<strong>';
-							switch($live){
-								case 0:
-									echo '<a href="'.get_permalink($id).'" class="button">'.__('Start Course','vibe').'</a>';
-								break;
-								case 1:
-									echo '<a href="'.get_permalink($id).'" class="button">'.__('Continue Course','vibe').'</a>';
-								break;
-								default:
-									echo '<a href="'.get_permalink($id).'" class="button">'.__('Course Finished','vibe').'</a>';
-								break;
-							}
-							echo '</strong>';
-						}else{
-							bp_course_credits();		
-						}
+						the_course_button(get_the_ID());
 					 ?>
 				</div>
 				<div class="item-instructor">
-					<?php bp_course_instructor_avatar(); ?>
 					<?php bp_course_instructor(); ?>
 				</div>
 				<div class="item-action"><?php bp_course_action() ?></div>
@@ -110,7 +92,7 @@ if ( bp_course_has_items( bp_ajax_querystring( 'course' ).'&user='.$user_id.'&pe
 <?php else: ?>
 
 	<div id="message" class="info">
-		<p><?php _e( 'You have not subscribed to any Course.', 'vibe' ); ?></p>
+		<p><?php _e( 'You have not subscribed to any courses.', 'vibe' ); ?></p>
 	</div>
 
 <?php endif;  ?>

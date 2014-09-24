@@ -1,6 +1,22 @@
 <?php
-if(!current_user_can('edit_posts'))
+
+$flag=0;
+if(!current_user_can('edit_posts')){
+    $flag=1;
+}else{
+    $flag=0;
+    $instructor_privacy = vibe_get_option('instructor_content_privacy');
+    $user_id=get_current_user_id();
+    if(isset($instructor_privacy) && $instructor_privacy){
+        if($user_id != $post->post_author)
+          $flag=1;
+    }
+}
+
+if($flag){
     wp_die(__('DIRECT ACCESS TO QUESTIONS IS NOT ALLOWED','vibe'),__('DIRECT ACCESS TO QUESTIONS IS NOT ALLOWED','vibe'),array('back_link'=>true));
+}
+
 
 get_header('buddypress');
 if ( have_posts() ) : while ( have_posts() ) : the_post();
@@ -11,7 +27,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
             <div class="col-md-10">
                 <div class="pagetitle">
                     <h1><?php the_title(); ?></h1>
-                    <h5><?php the_sub_title(); ?></h5>
+                    <?php the_sub_title(); ?>
                 </div>
             </div>
             <div class="col-md-2">
@@ -54,6 +70,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                 <?php
                 endwhile;
                 endif;
+
+                do_action('wplms_front_end_question_controls');
                 ?>
             </div>
         </div>

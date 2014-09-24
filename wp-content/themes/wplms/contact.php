@@ -9,6 +9,7 @@ get_header();
 
 $contact_ll=vibe_get_option('contact_ll');
 $contact_style = vibe_get_option('contact_style');
+$map_zoom = vibe_get_option('map_zoom');
 if(have_posts()):while(have_posts()):the_post();
 ?>
 <section class="stripe" id="contactcanvas">
@@ -33,7 +34,11 @@ if(have_posts()):while(have_posts()):the_post();
     </div>
 </section>
 </div> 
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=true"></script>
+<?php
+  $protocol = is_ssl() ? 'https' : 'http';
+  $src = $protocol.'://maps.googleapis.com/maps/api/js?sensor=true';
+?>
+<script type="text/javascript" src="<?php echo $src; ?>"></script>
 <script type='text/javascript'>
   var map;
        
@@ -44,7 +49,7 @@ if(have_posts()):while(have_posts()):the_post();
           
               var myOptions = {
                  center: centrePoint,
-                 zoom: 17,
+                 zoom: <?php if(isset($map_zoom)){echo $map_zoom; }else {echo '17'; }; ?>,
                  mapTypeId: google.maps.MapTypeId.<?php if(isset($contact_style)) {echo $contact_style;}else{echo 'SATELLITE';} ?>,
                  disableDefaultUI:true,
                  scrollwheel:false,

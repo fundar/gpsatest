@@ -7,8 +7,8 @@ function openFolder( srcstring ) {
 	var folder_id = srcstring.replace('?folder-', '');
 	var buddyscope = false;
 
-	if( jQuery('.buddydrive-type-tabs li.current a').length )
-		buddyscope = jQuery('.buddydrive-type-tabs li.current a').attr('id');
+	if( jQuery('#subnav.item-list-tabs li.current a').length )
+		buddyscope = jQuery('#subnav.item-list-tabs li.current a').attr('id');
 
 	folder_id = Number(folder_id) + 0;
 
@@ -45,8 +45,13 @@ jQuery(document).ready(function($){
 
 	if ( '-1' != window.location.search.indexOf('folder-') )
 		openFolder( window.location.search );
+
+	if ( null != $.cookie('buddydrive_filter') && $( '#buddydrive-filter' ).length )
+		$('#buddydrive-filter option[value="' + $.cookie('buddydrive_filter') + '"]').prop( 'selected', true );
 	
-	$('#buddydrive-dir').on('click', '.buddydrive-load-more a', function(){
+	$('#buddydrive-dir').on('click', '.buddydrive-load-more a', function( event ){
+		event.preventDefault();
+
 		var currentfolder = group_id = 0;
 		
 		$('.buddytree').each(function(){
@@ -56,8 +61,8 @@ jQuery(document).ready(function($){
 		
 		var buddyscope = 'groups';
 
-		if( $('.buddydrive-type-tabs li.current a').length )
-			buddyscope = $('.buddydrive-type-tabs li.current a').attr('id');
+		if( $('#subnav.item-list-tabs li.current a').length )
+			buddyscope = $('#subnav.item-list-tabs li.current a').attr('id');
 
 		if( buddyscope == 'groups' && $('#buddydrive-home').attr('data-group') )
 			group_id = $('#buddydrive-home').attr('data-group');
@@ -85,16 +90,18 @@ jQuery(document).ready(function($){
 			loadmore_tr.hide();
 	    });
 		
-		return false;
+		return;
 	});
 	
-	$('#buddydrive-dir').on('click', '.buddyfolder', function(){
+	$('#buddydrive-dir').on('click', '.buddyfolder', function( event ){
+		event.preventDefault();
+
 		var buddyscope = false;
 		
 		$.cookie( 'buddydrive-oldestpage', 1, {path: '/'} );
 
-		if( $('.buddydrive-type-tabs li.current a').length )
-			buddyscope = $('.buddydrive-type-tabs li.current a').attr('id');
+		if( $('#subnav.item-list-tabs li.current a').length )
+			buddyscope = $('#subnav.item-list-tabs li.current a').attr('id');
 		
 		parent_id = $(this).attr('data-folder');
 		$('#buddy-new-folder').hide();
@@ -118,18 +125,20 @@ jQuery(document).ready(function($){
 	        $("#buddydrive-dir tbody").prepend(response[0]);
 	    }, 'json' );
 		
-		return false;
+		return;
 		
 	});
 
-	$('#buddydrive-dir').on('click', '.buddydrive-row-actions a', function(){
+	$('#buddydrive-dir').on('click', '.buddydrive-row-actions a', function( event ){
+		event.preventDefault();
+
 		if( $(this).hasClass('buddydrive-private-message') )
 			return true;
 
 		if( $(this).hasClass('buddydrive-group-activity') ) {
 
 			if( $(this).hasClass('loading') )
-				return false;
+				return;
 
 			target = $(this).parent().parent().parent().find('a').first().attr('data-file');
 			
@@ -158,7 +167,7 @@ jQuery(document).ready(function($){
 
 		if( $(this).hasClass('buddydrive-remove-group') ) {
 			if( $(this).hasClass('loading') )
-				return false;
+				return;
 			
 			target = $(this).parent().parent().parent().find('a').first().attr('data-file');
 			
@@ -185,7 +194,7 @@ jQuery(document).ready(function($){
 		    });
 
 
-			return false;
+			return;
 		}
 		
 		var show = $(this).attr('class').replace('buddydrive-show-', ''); 
@@ -204,7 +213,7 @@ jQuery(document).ready(function($){
 		if( show == 'link' )
 			desc.find('input').focus();
 
-		return false;
+		return;
 	});
 
 	$.fn.selectRange = function(start, end) {
@@ -222,9 +231,42 @@ jQuery(document).ready(function($){
 	 });
 	};
 
-	$('#buddydrive-dir').on('focus', '.buddydrive-file-input', function() {
+	$('#buddydrive-dir').on('focus', '.buddydrive-file-input', function( event ) {
+		event.preventDefault();
+
 		$(this).selectRange( 0, $(this).val().length );
-		return false;
+		return;
+	});
+
+	$( '#buddydrive-filter').on('change', function( event ) {
+		event.preventDefault();
+
+		var buddyscope;
+		
+		$.cookie( 'buddydrive-oldestpage', 1, {path: '/'} );
+		$.cookie( 'buddydrive_filter', $( this ).val(), {path: '/'} );
+
+		if ( $('#subnav.item-list-tabs li.current a').length )
+			buddyscope = $('#subnav.item-list-tabs li.current a').attr('id');
+
+		parent_id = $('.buddytree.current').prop('id').replace( 'folder-', '' );
+		
+		var data = {
+	      action:'buddydrive_filterby',
+		  folder: parent_id,
+		  page:1,
+		  scope:buddyscope,
+		  buddydrive_filter:$( this ).val(),
+	    };
+
+	    $('#buddydrive-dir tbody').html('<tr><td colspan="5"><p class="buddydrive-opening-dir"><a class="loading">'+buddydrive_view.loading+'</a></p></td></tr>');
+	
+		$.post(ajaxurl, data, function(response) {
+			$('#buddydrive-dir tbody').html('');
+	        $("#buddydrive-dir tbody").prepend(response);
+	    } );
+		
+		return;
 	});
 	
 });

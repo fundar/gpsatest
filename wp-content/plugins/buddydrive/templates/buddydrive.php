@@ -1,49 +1,20 @@
-<?php if( buddydrive_is_bp_default() ): ?>
+<?php
+/**
+ * Template for BP Theme Compat
+ */
+?>
+<div id="buddypress">
 
-	<?php get_header( 'buddypress' ); ?>
+	<?php do_action( 'buddydrive_before_directory_content' ); ?>
 
-		<?php do_action( 'buddydrive_before_directory_page' ); ?>
+	<?php do_action( 'template_notices' ); ?>
 
-		<div id="content">
-			<div class="padder">
-
-				<?php do_action( 'buddydrive_before_directory_content' ); ?>
-
+	<div class="buddydrive" role="main">
 				
+		<?php do_action( 'buddydrive_directory_content' ); ?>
 
-				<h3><?php buddydrive_name();?></h3>
+	</div><!-- .buddydrive -->
 
-			
-<?php else:?>
+	<?php do_action( 'buddydrive_after_directory_content' ); ?>
 
-		<div id="buddypress">
-
-				<?php do_action( 'buddydrive_before_directory_content' ); ?>
-
-<?php endif;?>
-
-			<?php do_action( 'template_notices' ); ?>
-
-
-			<div class="buddydrive" role="main">
-				
-				<?php do_action( 'buddydrive_directory_content' ); ?>
-
-			</div><!-- .buddydrive -->
-
-			<?php do_action( 'buddydrive_after_directory_content' ); ?>
-
-
-<?php if( buddydrive_is_bp_default() ):?>
-
-			</div><!-- .padder -->
-		</div><!-- #content -->
-
-	<?php get_sidebar( 'buddypress' ); ?>
-	<?php get_footer( 'buddypress' ); ?>
-
-<?php else:?>
-
-		</div>
-
-<?php endif;?>
+</div>

@@ -14,7 +14,7 @@ get_header( 'buddypress' ); ?>
              <div class="col-md-12">
                 <div class="pagetitle">
                     <h1><?php the_title(); ?></h1>
-                    <h5><?php the_sub_title(); ?></h5>
+                    <?php the_sub_title(); ?>
                 </div>
             </div>
         </div>
@@ -88,8 +88,11 @@ get_header( 'buddypress' ); ?>
 
 			<?php do_action( 'bp_after_directory_blogs_content' ); ?>
 			</div>
-			<div class="col-md-3 col-sm-3">
-				<?php get_sidebar( 'buddypress' ); ?>
+			<div class="col-md-3 col-sm-4">
+				<?php
+			 		$sidebar = apply_filters('wplms_sidebar','buddypress',get_the_ID());
+	                if ( !function_exists('dynamic_sidebar')|| !dynamic_sidebar($sidebar) ) : ?>
+               	<?php endif; ?>
 			</div>
 			</div>
 		</form><!-- #blogs-directory-form -->

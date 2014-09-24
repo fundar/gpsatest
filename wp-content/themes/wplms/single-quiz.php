@@ -1,6 +1,10 @@
 <?php
+
+
+do_action('wplms_before_quiz');
 get_header('buddypress');
 $user_id = get_current_user_id();
+do_action('wplms_before_quiz_begining');
 $quiztaken=get_user_meta($user_id,get_the_ID(),true);
 if ( have_posts() ) : while ( have_posts() ) : the_post();
 
@@ -11,7 +15,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
             <div class="col-md-9 col-sm-9">
                 <div class="pagetitle">
                     <h1><?php the_title(); ?></h1>
-                    <h5><?php the_sub_title(); ?></h5>
+                    <?php the_sub_title(); ?>
                 </div>
             </div>
             <div class="col-md-3 col-sm-3">
@@ -22,14 +26,27 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                     if($quiztaken > time()){
                         echo '<a class="button create-group-button full begin_quiz" data-quiz="'.get_the_ID().'"> '.__('Continue Quiz','vibe').'</a>';
                             wp_nonce_field('start_quiz','start_quiz');
-                    }else{
+                    }else{ 
 
                         $quiz_unfinished_check=get_post_meta(get_the_ID(),$user_id,true);
                         if(!isset($quiz_unfinished_check) || $quiz_unfinished_check ==''){
                             add_post_meta(get_the_ID(),$user_id,0);
                         }
                         
-                        echo '<a href="'.bp_loggedin_user_domain().'course/course-results/?action='.get_the_ID().'" class="button create-group-button full"> '.__('Check Quiz Results','vibe').'</a>';
+                        $quiz_course = get_post_meta(get_the_ID(),'vibe_quiz_course',true);
+
+                        if(isset($quiz_course) && is_numeric($quiz_course) && $quiz_course && wplms_user_course_active_check($user_id,$quiz_course)){
+                            echo '<a href="'.bp_loggedin_user_domain().BP_COURSE_SLUG.'/'.BP_COURSE_RESULTS_SLUG.'/?action='.get_the_ID().'" class="button full"> '.__('Check Quiz Results','vibe').'</a>';
+                            $take_course_page=get_permalink(vibe_get_option('take_course_page'));
+                            echo '<form action="'.$take_course_page.'" method="post">';
+                                echo '<input type="submit" class="button full" value="'.__('Back to Course','vibe').'">';
+                                wp_nonce_field('continue_course'.$user_id,'continue_course'); 
+                                echo  '<input type="hidden" name="course_id" value="'.$quiz_course.'" />';
+                            echo  '</form>'; 
+                            //echo '<a href="'.get_permalink($quiz_course).'" class="button full"> '.__('Back to Course','vibe').'</a>';
+                        }else{
+                            echo '<a href="'.bp_loggedin_user_domain().'course/course-results/?action='.get_the_ID().'" class="button create-group-button full"> '.__('Check Quiz Results','vibe').'</a>';
+                        }
                     }
                 }else{
                     echo '<a class="button create-group-button full begin_quiz" data-quiz="'.get_the_ID().'"> '.__('Start Quiz','vibe').'</a>';
@@ -52,6 +69,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                 <div class="content">
                     <?php
                         the_quiz();
+                        do_action('wplms_front_end_quiz_controls');
                     ?>
                 </div>
             </div>
@@ -62,6 +80,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                     the_quiz_timeline(NULL);
                 ?>
                 </div>
+                <?php
+                do_action('wplms_front_end_quiz_meta_controls');
+                ?>
             </div>
              <?php
                 endwhile;

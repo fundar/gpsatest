@@ -21,11 +21,15 @@ class WC_Install {
 	 * Hook in tabs.
 	 */
 	public function __construct() {
+		// Run this on activation.
 		register_activation_hook( WC_PLUGIN_FILE, array( $this, 'install' ) );
 
+		// Hooks
 		add_action( 'admin_init', array( $this, 'install_actions' ) );
 		add_action( 'admin_init', array( $this, 'check_version' ), 5 );
 		add_action( 'in_plugin_update_message-woocommerce/woocommerce.php', array( $this, 'in_plugin_update_message' ) );
+		add_filter( 'plugin_action_links_' . WC_PLUGIN_BASENAME, array( $this, 'plugin_action_links' ) );
+		add_filter( 'plugin_row_meta', array( $this, 'plugin_row_meta' ), 10, 2 );
 	}
 
 	/**
@@ -108,14 +112,11 @@ class WC_Install {
 		$this->create_files();
 		$this->create_css_from_less();
 
-		// Clear transient cache
-		wc_delete_product_transients();
-
 		// Queue upgrades
-		$current_version = get_option( 'woocommerce_version', null );
+		$current_version    = get_option( 'woocommerce_version', null );
 		$current_db_version = get_option( 'woocommerce_db_version', null );
 
-		if ( version_compare( $current_db_version, '2.1.0', '<' ) && null !== $current_db_version ) {
+		if ( version_compare( $current_db_version, '2.2.0', '<' ) && null !== $current_db_version ) {
 			update_option( '_wc_needs_update', 1 );
 		} else {
 			update_option( 'woocommerce_db_version', WC()->version );
@@ -133,7 +134,7 @@ class WC_Install {
 		flush_rewrite_rules();
 
 		// Redirect to welcome screen
-		set_transient( '_wc_activation_redirect', 1, 60 * 60 );
+		set_transient( '_wc_activation_redirect', 1, HOUR_IN_SECONDS );
 	}
 
 	/**
@@ -176,6 +177,11 @@ class WC_Install {
 			update_option( 'woocommerce_db_version', '2.1.0' );
 		}
 
+		if ( version_compare( $current_db_version, '2.2.0', '<' ) || WC_VERSION == '2.2-bleeding' ) {
+			include( 'updates/woocommerce-update-2.2.php' );
+			update_option( 'woocommerce_db_version', '2.2.0' );
+		}
+
 		update_option( 'woocommerce_db_version', WC()->version );
 	}
 
@@ -187,6 +193,7 @@ class WC_Install {
 		wp_clear_scheduled_hook( 'woocommerce_scheduled_sales' );
 		wp_clear_scheduled_hook( 'woocommerce_cancel_unpaid_orders' );
 		wp_clear_scheduled_hook( 'woocommerce_cleanup_sessions' );
+		wp_clear_scheduled_hook( 'woocommerce_language_pack_updater_check' );
 
 		$ve = get_option( 'gmt_offset' ) > 0 ? '+' : '-';
 
@@ -203,6 +210,7 @@ class WC_Install {
 		}
 
 		wp_schedule_event( time(), 'twicedaily', 'woocommerce_cleanup_sessions' );
+		wp_schedule_single_event( time(), 'woocommerce_language_pack_updater_check' );
 	}
 
 	/**
@@ -214,23 +222,23 @@ class WC_Install {
 	public static function create_pages() {
 		$pages = apply_filters( 'woocommerce_create_pages', array(
 			'shop' => array(
-				'name'    => _x( 'shop', 'page_slug', 'woocommerce' ),
-				'title'   => __( 'Shop', 'woocommerce' ),
+				'name'    => _x( 'shop', 'Page slug', 'woocommerce' ),
+				'title'   => _x( 'Shop', 'Page title', 'woocommerce' ),
 				'content' => ''
 			),
 			'cart' => array(
-				'name'    => _x( 'cart', 'page_slug', 'woocommerce' ),
-				'title'   => __( 'Cart', 'woocommerce' ),
+				'name'    => _x( 'cart', 'Page slug', 'woocommerce' ),
+				'title'   => _x( 'Cart', 'Page title', 'woocommerce' ),
 				'content' => '[' . apply_filters( 'woocommerce_cart_shortcode_tag', 'woocommerce_cart' ) . ']'
 			),
 			'checkout' => array(
-				'name'    => _x( 'checkout', 'page_slug', 'woocommerce' ),
-				'title'   => __( 'Checkout', 'woocommerce' ),
+				'name'    => _x( 'checkout', 'Page slug', 'woocommerce' ),
+				'title'   => _x( 'Checkout', 'Page title', 'woocommerce' ),
 				'content' => '[' . apply_filters( 'woocommerce_checkout_shortcode_tag', 'woocommerce_checkout' ) . ']'
 			),
 			'myaccount' => array(
-				'name'    => _x( 'my-account', 'page_slug', 'woocommerce' ),
-				'title'   => __( 'My Account', 'woocommerce' ),
+				'name'    => _x( 'my-account', 'Page slug', 'woocommerce' ),
+				'title'   => _x( 'My Account', 'Page title', 'woocommerce' ),
 				'content' => '[' . apply_filters( 'woocommerce_my_account_shortcode_tag', 'woocommerce_my_account' ) . ']'
 			)
 		) );
@@ -254,15 +262,6 @@ class WC_Install {
 				'grouped',
 				'variable',
 				'external'
-			),
-			'shop_order_status' => array(
-				'pending',
-				'failed',
-				'on-hold',
-				'processing',
-				'completed',
-				'refunded',
-				'cancelled'
 			)
 		);
 
@@ -289,6 +288,10 @@ class WC_Install {
 		$settings = WC_Admin_Settings::get_settings_pages();
 
 		foreach ( $settings as $section ) {
+			if ( ! method_exists( $section, 'get_settings' ) ) {
+				continue;
+			}
+
 			foreach ( $section->get_settings() as $value ) {
 				if ( isset( $value['default'] ) && isset( $value['id'] ) ) {
 					$autoload = isset( $value['autoload'] ) ? (bool) $value['autoload'] : true;
@@ -325,7 +328,7 @@ class WC_Install {
 	 * @return void
 	 */
 	private function create_tables() {
-		global $wpdb, $woocommerce;
+		global $wpdb;
 
 		$wpdb->hide_errors();
 
@@ -527,7 +530,7 @@ class WC_Install {
 			'view_woocommerce_reports'
 		);
 
-		$capability_types = array( 'product', 'shop_order', 'shop_coupon' );
+		$capability_types = array( 'product', 'shop_order', 'shop_coupon', 'shop_webhook' );
 
 		foreach ( $capability_types as $capability_type ) {
 
@@ -608,12 +611,12 @@ class WC_Install {
 				'content' 	=> ''
 			),
 			array(
-				'base' 		=> WP_PLUGIN_DIR . "/" . plugin_basename( dirname( dirname( __FILE__ ) ) ) . '/logs',
+				'base' 		=> WC_LOG_DIR,
 				'file' 		=> '.htaccess',
 				'content' 	=> 'deny from all'
 			),
 			array(
-				'base' 		=> WP_PLUGIN_DIR . "/" . plugin_basename( dirname( dirname( __FILE__ ) ) ) . '/logs',
+				'base' 		=> WC_LOG_DIR,
 				'file' 		=> 'index.html',
 				'content' 	=> ''
 			)
@@ -634,37 +637,14 @@ class WC_Install {
 	 */
 	private function create_css_from_less() {
 		// Recompile LESS styles if they are custom
-		if ( get_option( 'woocommerce_frontend_css' ) == 'yes' ) {
+		$colors = get_option( 'woocommerce_frontend_css_colors' );
 
-			$colors = get_option( 'woocommerce_frontend_css_colors' );
-
-			if ( ( ! empty( $colors['primary'] ) && ! empty( $colors['secondary'] ) && ! empty( $colors['highlight'] ) && ! empty( $colors['content_bg'] ) && ! empty( $colors['subtext'] ) ) && ( $colors['primary'] != '#ad74a2' || $colors['secondary'] != '#f7f6f7' || $colors['highlight'] != '#85ad74' || $colors['content_bg'] != '#ffffff' || $colors['subtext'] != '#777777' ) ) {
-				if ( ! function_exists( 'woocommerce_compile_less_styles' ) ) {
-					include_once( 'admin/wc-admin-functions.php' );
-				}
-				woocommerce_compile_less_styles();
+		if ( ( ! empty( $colors['primary'] ) && ! empty( $colors['secondary'] ) && ! empty( $colors['highlight'] ) && ! empty( $colors['content_bg'] ) && ! empty( $colors['subtext'] ) ) && ( $colors['primary'] != '#ad74a2' || $colors['secondary'] != '#f7f6f7' || $colors['highlight'] != '#85ad74' || $colors['content_bg'] != '#ffffff' || $colors['subtext'] != '#777777' ) ) {
+			if ( ! function_exists( 'woocommerce_compile_less_styles' ) ) {
+				include_once( 'admin/wc-admin-functions.php' );
 			}
-
+			woocommerce_compile_less_styles();
 		}
-	}
-
-	/**
-	 * Active plugins pre update option filter
-	 *
-	 * @param string $new_value
-	 * @return string
-	 */
-	function pre_update_option_active_plugins( $new_value ) {
-		$old_value = (array) get_option( 'active_plugins' );
-
-		if ( $new_value !== $old_value && in_array( W3TC_FILE, (array) $new_value ) && in_array( W3TC_FILE, (array) $old_value ) ) {
-			$this->_config->set( 'notes.plugins_updated', true );
-			try {
-				$this->_config->save();
-			} catch( Exception $ex ) {}
-		}
-
-		return $new_value;
 	}
 
 	/**
@@ -672,62 +652,78 @@ class WC_Install {
 	 *
 	 * @return void
 	 */
-	function in_plugin_update_message() {
-		$response = wp_remote_get( 'http://plugins.svn.wordpress.org/woocommerce/trunk/readme.txt' );
+	function in_plugin_update_message( $args ) {
+		$transient_name = 'wc_upgrade_notice_' . $args['Version'];
 
-		if ( ! is_wp_error( $response ) && ! empty( $response['body'] ) ) {
+		if ( false === ( $upgrade_notice = get_transient( $transient_name ) ) ) {
 
-			// Output Upgrade Notice
-			$matches = null;
-			$regexp = '~==\s*Upgrade Notice\s*==\s*=\s*[0-9.]+\s*=(.*)(=\s*' . preg_quote( WC_VERSION ) . '\s*=|$)~Uis';
+			$response = wp_remote_get( 'https://plugins.svn.wordpress.org/woocommerce/trunk/readme.txt' );
 
-			if ( preg_match( $regexp, $response['body'], $matches ) ) {
-				$notices = (array) preg_split('~[\r\n]+~', trim( $matches[1] ) );
+			if ( ! is_wp_error( $response ) && ! empty( $response['body'] ) ) {
 
-				echo '<div style="font-weight: normal; background: #cc99c2; color: #fff !important; border: 1px solid #b76ca9; padding: 9px; margin: 9px 0;">';
+				// Output Upgrade Notice
+				$matches        = null;
+				$regexp         = '~==\s*Upgrade Notice\s*==\s*=\s*(.*)\s*=(.*)(=\s*' . preg_quote( WC_VERSION ) . '\s*=|$)~Uis';
+				$upgrade_notice = '';
 
-				foreach ( $notices as $index => $line ) {
-					echo '<p style="margin: 0; font-size: 1.1em; color: #fff; text-shadow: 0 1px 1px #b574a8;">' . preg_replace( '~\[([^\]]*)\]\(([^\)]*)\)~', '<a href="${2}">${1}</a>', $line ) . '</p>';
-				}
+				if ( preg_match( $regexp, $response['body'], $matches ) ) {
+					$version        = trim( $matches[1] );
+					$notices        = (array) preg_split('~[\r\n]+~', trim( $matches[2] ) );
 
-				echo '</div>';
-			}
+					if ( version_compare( WC_VERSION, $version, '<' ) ) {
 
-			// Output Changelog
-			$matches = null;
-			$regexp = '~==\s*Changelog\s*==\s*=\s*[0-9.]+\s*-(.*)=(.*)(=\s*' . preg_quote( WC_VERSION ) . '\s*-(.*)=|$)~Uis';
+						$upgrade_notice .= '<div class="wc_plugin_upgrade_notice">';
 
-			if ( preg_match( $regexp, $response['body'], $matches ) ) {
-				$changelog = (array) preg_split( '~[\r\n]+~', trim( $matches[2] ) );
-
-				echo ' ' . __( 'What\'s new:', 'woocommerce' ) . '<div style="font-weight: normal;">';
-
-				$ul = false;
-
-				foreach ( $changelog as $index => $line ) {
-					if ( preg_match('~^\s*\*\s*~', $line ) ) {
-						if ( ! $ul ) {
-							echo '<ul style="list-style: disc inside; margin: 9px 0 9px 20px; overflow:hidden; zoom: 1;">';
-							$ul = true;
+						foreach ( $notices as $index => $line ) {
+							$upgrade_notice .= wp_kses_post( preg_replace( '~\[([^\]]*)\]\(([^\)]*)\)~', '<a href="${2}">${1}</a>', $line ) );
 						}
-						$line = preg_replace( '~^\s*\*\s*~', '', htmlspecialchars( $line ) );
-						echo '<li style="width: 50%; margin: 0; float: left; ' . ( $index % 2 == 0 ? 'clear: left;' : '' ) . '">' . $line . '</li>';
-					} else {
-						if ( $ul ) {
-							echo '</ul>';
-							$ul = false;
-						}
-						echo '<p style="margin: 9px 0;">' . htmlspecialchars( $line ) . '</p>';
+
+						$upgrade_notice .= '</div> ';
 					}
 				}
 
-				if ( $ul ) {
-					echo '</ul>';
-				}
-
-				echo '</div>';
+				set_transient( $transient_name, $upgrade_notice, DAY_IN_SECONDS );
 			}
 		}
+
+		echo wp_kses_post( $upgrade_notice );
+	}
+
+	/**
+	 * Show action links on the plugin screen.
+	 *
+	 * @access	public
+	 * @param	mixed $links Plugin Action links
+	 * @return	array
+	 */
+	public function plugin_action_links( $links ) {
+		$action_links = array(
+			'settings'	=>	'<a href="' . admin_url( 'admin.php?page=wc-settings' ) . '" title="' . esc_attr( __( 'View WooCommerce Settings', 'woocommerce' ) ) . '">' . __( 'Settings', 'woocommerce' ) . '</a>',
+		);
+
+		return array_merge( $action_links, $links );
+	}
+
+	/**
+	 * Show row meta on the plugin screen.
+	 *
+	 * @access	public
+	 * @param	mixed $links Plugin Row Meta
+	 * @param	mixed $file  Plugin Base file
+	 * @return	array
+	 */
+	public function plugin_row_meta( $links, $file ) {
+		if ( $file == WC_PLUGIN_BASENAME ) {
+			$row_meta = array(
+				'docs'		=>	'<a href="' . esc_url( apply_filters( 'woocommerce_docs_url', 'http://docs.woothemes.com/documentation/plugins/woocommerce/' ) ) . '" title="' . esc_attr( __( 'View WooCommerce Documentation', 'woocommerce' ) ) . '">' . __( 'Docs', 'woocommerce' ) . '</a>',
+				'apidocs'	=>	'<a href="' . esc_url( apply_filters( 'woocommerce_apidocs_url', 'http://docs.woothemes.com/wc-apidocs/' ) ) . '" title="' . esc_attr( __( 'View WooCommerce API Docs', 'woocommerce' ) ) . '">' . __( 'API Docs', 'woocommerce' ) . '</a>',
+				'support'	=>	'<a href="' . esc_url( apply_filters( 'woocommerce_support_url', 'http://support.woothemes.com/' ) ) . '" title="' . esc_attr( __( 'Visit Premium Customer Support Forum', 'woocommerce' ) ) . '">' . __( 'Premium Support', 'woocommerce' ) . '</a>',
+			);
+
+			return array_merge( $links, $row_meta );
+		}
+
+		return (array) $links;
 	}
 }
 

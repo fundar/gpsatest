@@ -1,6 +1,6 @@
 <?php
 // Exit if accessed directly
-if ( !defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 
 /**
@@ -16,23 +16,23 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * @uses buddydrive_is_user_buddydrive() to check we're not on loggedin user's BuddyDrive
  */
 function buddydrive_file_enqueue_scripts() {
-	
 	if ( bp_is_current_component( 'buddydrive' ) || buddydrive_is_group()  ) {
 
+		$budddrive_css = apply_filters( 'buddydrive_global_css', array( 
+			'stylesheet_uri' => buddydrive_get_includes_url() .'css/buddydrive.css',
+			'deps'           => array( 'dashicons' ),
+		) );
+
 		// style is for every BuddyDrive screens
-		wp_enqueue_style( 'buddydrive', buddydrive_get_includes_url() .'css/buddydrive.css' );
+		wp_enqueue_style( 'buddydrive', $budddrive_css['stylesheet_uri'], $budddrive_css['deps'], buddydrive_get_version() );
 		
 		// in group and friends BuddyDrive, loads a specific script
-		if( !buddydrive_is_user_buddydrive() ) {
-			wp_enqueue_script('buddydrive-view', buddydrive_get_includes_url() .'js/buddydrive-view.js', array( 'jquery' ) );
+		if ( ! buddydrive_is_user_buddydrive() ) {
+			wp_enqueue_script('buddydrive-view', buddydrive_get_includes_url() .'js/buddydrive-view.js', array( 'jquery' ), buddydrive_get_version(), true );
 			wp_localize_script( 'buddydrive-view', 'buddydrive_view', buddydrive_get_js_l10n() );
 		}
-			
-
 	}
-		
 }
-
 add_action( 'buddydrive_enqueue_scripts', 'buddydrive_file_enqueue_scripts');
 
 
@@ -44,7 +44,6 @@ add_action( 'buddydrive_enqueue_scripts', 'buddydrive_file_enqueue_scripts');
 function buddydrive_reset_post_data() {
 	wp_reset_postdata();
 }
-
 add_action( 'buddydrive_after_loop', 'buddydrive_reset_post_data', 1 );
 
 
@@ -75,7 +74,7 @@ add_action( 'buddydrive_after_loop', 'buddydrive_reset_post_data', 1 );
  */
 function buddydrive_file_downloader() {
 
-	if ( !bp_displayed_user_id() && bp_is_current_component( 'buddydrive' ) && 'file' == bp_current_action() ) {
+	if ( ! bp_displayed_user_id() && bp_is_current_component( 'buddydrive' ) && 'file' == bp_current_action() ) {
 		
 		$redirect = esc_url( wp_get_referer() );
 		
@@ -83,7 +82,7 @@ function buddydrive_file_downloader() {
 		
 		$buddydrive_file = buddydrive_get_buddyfile( $buddyfile_name );
 		
-		if( empty( $buddydrive_file ) ) {
+		if ( empty( $buddydrive_file ) ) {
 			bp_core_add_message( __( 'OOps, we could not find your file.', 'buddydrive' ), 'error' );
 			bp_core_redirect( buddydrive_get_root_url() );
 		}
@@ -93,7 +92,7 @@ function buddydrive_file_downloader() {
 		$buddydrive_file_mime = $buddydrive_file->mime_type;
 		
 		// if the file belongs to a folder, we need to get the folder's privacy settings
-		if( !empty( $buddydrive_file->post_parent ) ){
+		if ( ! empty( $buddydrive_file->post_parent ) ){
 			$parent = $buddydrive_file->post_parent;
 			
 			$buddydrive_file = buddydrive_get_buddyfile( $parent, buddydrive_get_folder_post_type() );
@@ -101,26 +100,26 @@ function buddydrive_file_downloader() {
 		
 		$can_donwload = false;
 		
-		if( !empty( $buddydrive_file->check_for ) ) {
+		if ( ! empty( $buddydrive_file->check_for ) ) {
 			
 			switch( $buddydrive_file->check_for ) {
 				
 				case 'private' :
-					if( $buddydrive_file->user_id == bp_loggedin_user_id() || is_super_admin() )
+					if ( $buddydrive_file->user_id == bp_loggedin_user_id() || is_super_admin() )
 						$can_donwload = true;
 					break;
 					
 				case 'password' :
-					if( $buddydrive_file->user_id == bp_loggedin_user_id() || is_super_admin() )
+					if ( $buddydrive_file->user_id == bp_loggedin_user_id() || is_super_admin() )
 						$can_donwload = true;
-					elseif( empty( $_POST['buddyfile-form'] ) ) {
+					elseif ( empty( $_POST['buddyfile-form'] ) ) {
 						bp_core_add_message( __( 'This file is password protected', 'buddydrive' ), 'error' );
 						add_action( 'buddydrive_directory_content', 'buddydrive_file_password_form' );
 						$can_donwload = false;
 					} else {
 						//check admin referer
 
-						if( $buddydrive_file->password == $_POST['buddyfile-form']['password']  )
+						if ( $buddydrive_file->password == $_POST['buddyfile-form']['password']  )
 							$can_donwload = true;
 
 						else {
@@ -138,9 +137,9 @@ function buddydrive_file_downloader() {
 					break;
 					
 				case 'friends' :
-					if( $buddydrive_file->user_id == bp_loggedin_user_id() || is_super_admin() )
+					if ( $buddydrive_file->user_id == bp_loggedin_user_id() || is_super_admin() )
 						$can_donwload = true;
-					elseif( bp_is_active( 'friends' ) && friends_check_friendship( $buddydrive_file->user_id, bp_loggedin_user_id() ) )
+					elseif ( bp_is_active( 'friends' ) && friends_check_friendship( $buddydrive_file->user_id, bp_loggedin_user_id() ) )
 						$can_donwload = true;
 					else {
 						$redirect = buddydrive_get_user_buddydrive_url( $buddydrive_file->user_id );
@@ -151,19 +150,19 @@ function buddydrive_file_downloader() {
 					break;
 					
 				case 'groups' :
-					if( $buddydrive_file->user_id == bp_loggedin_user_id() || is_super_admin() )
+					if ( $buddydrive_file->user_id == bp_loggedin_user_id() || is_super_admin() )
 						$can_donwload = true;
-					elseif( !bp_is_active( 'groups' ) ) {
+					elseif ( ! bp_is_active( 'groups' ) ) {
 						bp_core_add_message( __( 'Group component is deactivated, please contact the administrator.', 'buddydrive' ), 'error' );
 						bp_core_redirect( buddydrive_get_root_url() );
 						$can_donwload = false;
 					}
-					elseif( groups_is_user_member( bp_loggedin_user_id(), intval( $buddydrive_file->group ) ) )
+					elseif ( groups_is_user_member( bp_loggedin_user_id(), intval( $buddydrive_file->group ) ) )
 						$can_donwload = true;
-					else{
+					else {
 						$group = groups_get_group( array( 'group_id' => $buddydrive_file->group ) );
 
-						if( 'hidden' == $group->status )
+						if ( 'hidden' == $group->status )
 							$redirect = wp_get_referer();
 
 						else
@@ -177,12 +176,13 @@ function buddydrive_file_downloader() {
 			}
 			
 		} else {
-			if( $buddydrive_file->user_id == bp_loggedin_user_id() || is_super_admin() )
+			if ( $buddydrive_file->user_id == bp_loggedin_user_id() || is_super_admin() )
 				$can_donwload = true;
 		}
 		
 		// we have a file! let's force download.
-		if( file_exists( $buddydrive_file_path ) && !empty( $can_donwload ) ){
+		if ( file_exists( $buddydrive_file_path ) && !empty( $can_donwload ) ){
+			do_action( 'buddydrive_file_downloaded', $buddydrive_file );
 			status_header( 200 );
 			header( 'Cache-Control: cache, must-revalidate' );
 			header( 'Pragma: public' );
@@ -194,13 +194,13 @@ function buddydrive_file_downloader() {
 			die();
 		}
 		
-	} else if( !bp_displayed_user_id() && bp_is_current_component( 'buddydrive' ) && 'folder' == bp_current_action() ) {
+	} else if ( ! bp_displayed_user_id() && bp_is_current_component( 'buddydrive' ) && 'folder' == bp_current_action() ) {
 		
 		$buddyfolder_name = bp_action_variable( 0 );
 		
 		$buddyfolder = buddydrive_get_buddyfile( $buddyfolder_name, buddydrive_get_folder_post_type() );
 
-		if( empty( $buddyfolder ) ) {
+		if ( empty( $buddyfolder ) ) {
 			bp_core_add_message( __( 'OOps, we could not find your folder.', 'buddydrive' ), 'error' );
 			bp_core_redirect( buddydrive_get_root_url() );
 		}
@@ -211,7 +211,6 @@ function buddydrive_file_downloader() {
 		bp_core_redirect( $link );
 	}
 }
-
 add_action( 'buddydrive_actions', 'buddydrive_file_downloader', 1 );
 
 
@@ -228,14 +227,14 @@ add_action( 'buddydrive_actions', 'buddydrive_file_downloader', 1 );
  */
 function buddydrive_attached_file_to_message() {
 	
-	if( !empty( $_REQUEST['buddyitem'] ) ) {
+	if ( ! empty( $_REQUEST['buddyitem'] ) ) {
 		
 		$link = $buddytype = $password = false;
 		$buddyitem = buddydrive_get_buddyfile( $_REQUEST['buddyitem'], array( buddydrive_get_file_post_type(), buddydrive_get_folder_post_type() ) );
 		
-		if( !empty( $buddyitem->ID ) ){
+		if ( ! empty( $buddyitem->ID ) ){
 			
-			if( $buddyitem->user_id != bp_loggedin_user_id() ) {
+			if ( $buddyitem->user_id != bp_loggedin_user_id() ) {
 				?>
 				<div id="message" class="error"><p><?php _e( 'Cheating ?', 'buddydrive' );?></p></div>
 				<?php
@@ -244,11 +243,11 @@ function buddydrive_attached_file_to_message() {
 			
 			$link = $buddyitem->link;
 
-			if( $buddyitem->post_type == buddydrive_get_file_post_type() ) {
+			if ( $buddyitem->post_type == buddydrive_get_file_post_type() ) {
 				$displayed_link = $buddyitem->link;
 				$buddytype = buddydrive_get_name() . ' File';
 
-				if( !empty( $buddyitem->post_parent ) ) {
+				if ( ! empty( $buddyitem->post_parent ) ) {
 					$parent = buddydrive_get_buddyfile( $buddyitem->post_parent, buddydrive_get_folder_post_type() );
 					$password = !empty( $parent->password ) ? $parent->password : false ;
 				} else
@@ -265,7 +264,7 @@ function buddydrive_attached_file_to_message() {
 				<input type="hidden" value="<?php echo $link;?>" id="buddyitem-link" name="_buddyitem_link">
 				<input type="hidden" value="<?php echo $buddyitem->ID;?>" id="buddyitem-id" name="_buddyitem_id">
 				
-				<?php if( !empty( $password ) ) :?>
+				<?php if ( ! empty( $password ) ) :?>
 					<input type="checkbox" name="_buddyitem_pass" value="1" checked> <?php _e('Automatically add the password in the message', 'buddydrive');?>
 				<?php endif;?>
 			</p>
@@ -282,17 +281,16 @@ function buddydrive_attached_file_to_message() {
  */
 function buddydrive_messages_screen_compose() {
 	
-	if( !empty( $_REQUEST['buddyitem'] ) ) {
+	if ( ! empty( $_REQUEST['buddyitem'] ) ) {
 		
 		add_action( 'bp_after_messages_compose_content', 'buddydrive_attached_file_to_message' );
 		
-		if( !empty( $_REQUEST['friends'] ) && bp_is_active( 'friends' ) )
+		if ( ! empty( $_REQUEST['friends'] ) && bp_is_active( 'friends' ) )
 			add_filter( 'bp_get_message_get_recipient_usernames', 'buddydrive_add_friend_to_recipients', 10, 1 );
 		
 	}
 	
 }
-
 add_action( 'messages_screen_compose', 'buddydrive_messages_screen_compose' );
 
 
@@ -307,21 +305,21 @@ add_action( 'messages_screen_compose', 'buddydrive_messages_screen_compose' );
  */
 function buddydrive_update_message_content( $message ) {
 	
-	if( !empty( $_POST['_buddyitem_link'] ) ){
+	if ( ! empty( $_POST['_buddyitem_link'] ) ){
 		
 		$password = $password_check = false;
 		
-		if( !empty( $_POST['_buddyitem_pass'] ) ) {
+		if ( ! empty( $_POST['_buddyitem_pass'] ) ) {
 			
 			$buddyitem = buddydrive_get_buddyfile( $_REQUEST['_buddyitem_id'], array( buddydrive_get_file_post_type(), buddydrive_get_folder_post_type() ) );
 			
-			if( !empty( $buddyitem->post_parent ) ) {
+			if ( ! empty( $buddyitem->post_parent ) ) {
 				$parent = buddydrive_get_buddyfile( $buddyitem->post_parent, buddydrive_get_folder_post_type() );
 				$password_check = $parent->password;
 			} else
 				$password_check = $buddyitem->password;
 
-			$password = !empty( $password_check ) ? '<p>'.sprintf( __('Password : %s', 'buddydrive'), $password_check ) .'</p>' : false;
+			$password = ! empty( $password_check ) ? '<p>'.sprintf( __('Password : %s', 'buddydrive'), $password_check ) .'</p>' : false;
 			
 		}
 		
@@ -329,7 +327,6 @@ function buddydrive_update_message_content( $message ) {
 	}
 	
 }
-
 add_action( 'messages_message_before_save', 'buddydrive_update_message_content', 10, 1 );
 
 
@@ -343,7 +340,7 @@ add_action( 'messages_message_before_save', 'buddydrive_update_message_content',
  * @uses BuddyDrive_Item::update_children() to update the files
  */
 function buddydrive_update_children( $params, $args, $item ) {
-	if( $item->post_type != buddydrive_get_folder_post_type() )
+	if ( $item->post_type != buddydrive_get_folder_post_type() )
 		return;
 		
 	$parent_id = intval( $params['id'] );
@@ -353,7 +350,6 @@ function buddydrive_update_children( $params, $args, $item ) {
 	$buddydrive_update_children->update_children( $parent_id, $metas );
 	
 }
-
 add_action( 'buddydrive_update_item', 'buddydrive_update_children', 1, 3 ) ;
 
 /**
@@ -365,7 +361,6 @@ add_action( 'buddydrive_update_item', 'buddydrive_update_children', 1, 3 ) ;
 function buddydrive_remove_user( $user_id ) {
 	buddydrive_delete_item( array( 'user_id' => $user_id ) );
 }
-
 add_action( 'wpmu_delete_user',  'buddydrive_remove_user', 11, 1 );
 add_action( 'delete_user',       'buddydrive_remove_user', 11, 1 );
 add_action( 'bp_make_spam_user', 'buddydrive_remove_user', 11, 1 );
@@ -380,13 +375,12 @@ add_action( 'bp_make_spam_user', 'buddydrive_remove_user', 11, 1 );
  * @uses groups_update_groupmeta() to save a new meta for the group
  */
 function buddydrive_maybe_enable_group( $group_id = 0 ) {
-	if( empty( $group_id ) )
+	if ( empty( $group_id ) )
 		return;
 
 	$enable_group = bp_get_option( '_buddydrive_auto_group', 0 );
 
-	if( !empty( $enable_group ) )
+	if ( ! empty( $enable_group ) )
 		groups_update_groupmeta( $group_id, '_buddydrive_enabled', 1 );
 }
-
 add_action( 'groups_group_create_complete', 'buddydrive_maybe_enable_group', 10, 1 );

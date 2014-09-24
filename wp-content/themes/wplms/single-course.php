@@ -80,37 +80,36 @@
 						case 'members':
 							locate_template( array( 'course/single/members.php'  ), true );
 						break;
+						case 'events':
+							locate_template( array( 'course/single/events.php'  ), true );
+						break;
 						case 'admin':
-							if(current_user_can( 'manage_options' ) || (get_current_user_id() == $post->post_author)){
+							$uid = bp_loggedin_user_id();
+							$authors=array($post->post_author);
+							$authors = apply_filters('wplms_course_instructors',$authors,$post->ID);
+							
+							if(current_user_can( 'manage_options' ) || in_array($uid,$authors)){
 								locate_template( array( 'course/single/admin.php'  ), true );	
 							}else{
 								locate_template( array( 'course/single/front.php' ) );
 							}
-							
 						break;
 						default:
 							locate_template( array( 'course/single/front.php' ) );
 					}
-					
-				
+					do_action('wplms_load_templates');
 				else :
 					
 					if ( isset($_POST['review_course']) && isset($_POST['review']) && wp_verify_nonce($_POST['review'],get_the_ID()) ){
 						 global $withcomments;
 					      $withcomments = true;
 					      comments_template('/course-review.php',true);
-					}else if(isset($_POST['submit_course']) && isset($_POST['review']) && wp_verify_nonce($_POST['review'],get_the_ID())){
+					}else if(isset($_POST['submit_course']) && isset($_POST['review']) && wp_verify_nonce($_POST['review'],get_the_ID())){ // Only for Validation purpose
 
 						bp_course_check_course_complete();
-
-						bp_course_record_activity(array(
-					          'action' => 'Student Submitted the course '.get_the_title(),
-					          'content' => 'Student '.bp_core_get_userlink(get_current_user_id()).' submitted the course '.get_the_title().' for evaluation',
-					          'type' => 'submit_course',
-					          'item_id' => get_the_ID(),
-					          'primary_link'=>get_permalink(get_the_ID()),
-					          'secondary_item_id'=>$user_id
-					        ));	
+						$user_id=get_current_user_id();
+						do_action('badgeos_wplms_submit_course',$post->ID);
+						
 					// Looking at home location
 					}else if ( bp_is_course_home() ){
 
@@ -156,8 +155,7 @@
 				</div>
 
 			 	<?php
-	                $sidebar=getPostMeta($post->ID,'vibe_sidebar');
-	                ((isset($sidebar) && $sidebar)?$sidebar:$sidebar='coursesidebar');
+			 		$sidebar = apply_filters('wplms_sidebar','coursesidebar',get_the_ID());
 	                if ( !function_exists('dynamic_sidebar')|| !dynamic_sidebar($sidebar) ) : ?>
                	<?php endif; ?>
 			</div>

@@ -1,7 +1,8 @@
 <?php
     global $GC_Message_Bar_Config;
     $GC_Message_Bar_Config = array(
-        'GCHOME' => 'http://getconversion.net',
+        'GCHOME' => 'http://getconversion.com',
+        'GCPLUGINHOME' => 'http://getconversion.com/products/gc-message-bar',
         'GCSERVICES' => 'http://services.getconversion.net',
         'GCFORUM' => 'http://community.getconversion.net/forum/gc-message-bar',
         'GCROADMAP' => 'http://community.getconversion.net/roadmap/gc-message-bar',

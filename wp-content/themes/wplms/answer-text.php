@@ -10,6 +10,7 @@
     $answers=get_comments(array(
       'post_id' => $post->ID,
       'status' => 'approve',
+      'number' => 1,
       'user_id' => $user_id
       ));
     if(isset($answers) && is_array($answers) && count($answers)){
@@ -27,10 +28,20 @@
 
     $comment_field='<p>' . '<textarea id="comment" name="comment" class="form_field" rows="8" ">'.$content.'</textarea></p>';
 
-    comment_form(array('fields'=>$fields,'comment_field'=>$comment_field,'label_submit' => __('Save Answer'),'title_reply'=> '<span>'.__('Answer','vibe').'</span>','logged_in_as'=>'','comment_notes_after'=>'' ));
+    comment_form(array('fields'=>$fields,'comment_field'=>$comment_field,'label_submit' => __('Save Answer','vibe'),'title_reply'=> '<span>'.__('Answer','vibe').'</span>','logged_in_as'=>'','comment_notes_after'=>'' ));
+    $answers=get_comments(array(
+          'post_id' => get_the_ID(),
+          'status' => 'approve',
+          'user_id' => $user_id
+          ));
+        if(isset($answers) && is_array($answers) && count($answers))
+          $display_status ='';   
+        else
+         $display_status = 'hide';
+    echo '<a class="reset_answer '.$display_status.'" data-security="'.wp_create_nonce('security'.$post->ID).'">'.__('Clear Answer','vibe').'</a>';    
    echo '<div id="comment-status" data-quesid="'.$post->ID.'"></div>';
 
-  if(current_user_can('publish_posts')):
+  if(current_user_can('publish_posts') && 0):
   ?>
 <h5><?php _e('Previous Answers to this Question','vibe'); ?></h5>
   <ol class="commentlist"> 

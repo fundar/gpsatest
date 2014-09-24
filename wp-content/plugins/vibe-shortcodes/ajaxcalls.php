@@ -5,8 +5,7 @@
  * Created on Oct 31, 2013 at 3:33:49 PM 
  * Author: Mr.Vibe 
  * Credits: www.VibeThemes.com
- * Project: VibeCom 
- * License: GPLv2
+ * Project: WPLMS
  */
 
 if(!function_exists('getPostMeta')){
@@ -45,7 +44,8 @@ function wp_get_attachment_info( $attachment_id ) {
 }
 add_action( 'wp_ajax_vibe_popup', 'vibe_ajax_popup' );
 add_action( 'wp_ajax_nopriv_vibe_popup', 'vibe_ajax_popup' );
-	function ajax_popup(){ 
+	function vibe_ajax_popup(){ 
+
                 $id = stripslashes($_GET['id']);
                 $npopup = get_page($id);
                 $post_content=apply_filters('the_content', $npopup->post_content);;
@@ -61,21 +61,28 @@ add_action( 'wp_ajax_nopriv_vibe_form_submission', 'vibe_form_submission' );
 
 function vibe_form_submission() {
     global $vibe_options;	
-    $data = json_decode(stripslashes($_POST['data']));
-    $labels = json_decode(stripslashes($_POST['label']));
-    
+    $headers = "MIME-Version: 1.0" . "\r\n";
+    $headers .= "From: get_bloginfo('name')<$to>". "\r\n";
+
+    $isocharset = $_POST['isocharset'];
+    if($isocharset){
+        $data = json_decode(stripslashes(urldecode($_POST['data'])));
+        $labels = json_decode(stripslashes(urldecode($_POST['label'])));
+        $headers .= "Content-type: text/html; charset=utf8" . "\r\n";
+    }else{
+        $data = json_decode(stripslashes(utf8_decode($_POST['data'])));
+        $labels = json_decode(stripslashes(utf8_decode($_POST['label'])));
+        $headers .= "Content-type: text/html; charset=iso-8859-1" . "\r\n";
+    }
 
     $subject=stripslashes($_POST['subject']);
     if(!isset($subject))
-        $subject = "Contact Form Submission";
+        $subject = __('Contact Form Submission','vibe-shortcodes');
     
     $to=stripslashes($_POST['to']);
     if(!isset($to))
         $to = get_option('admin_email'); 
 
-    $headers = "MIME-Version: 1.0" . "\r\n";
-    $headers .= "From: get_bloginfo('name')<$to>". "\r\n";
-    $headers .= "Content-type: text/html; charset=iso-8859-1" . "\r\n";
 
     for($i=1;$i<count($data);$i++){
         $message .= $labels[$i].' : '.$data[$i].' <br />';
@@ -84,9 +91,9 @@ function vibe_form_submission() {
    
     $flag=wp_mail( $to, $subject, $message, $headers );
     if ( $flag ) {
-        echo "<span style='color:#0E7A00;'>Message sent! </span>";
+        echo "<span style='color:#0E7A00;'>".__("Message sent!","vibe-shortcodes")." </span>";
     }else{
-    	echo "Unable to send message! Please try again later..";
+    	echo __("Unable to send message! Please try again later..","vibe-shortcodes");
     	}
 die();
 }
@@ -97,7 +104,7 @@ die();
 
 //Vibe Grid Infinite Scroll
 add_action( 'wp_ajax_grid_scroll', 'vibe_grid_scroll' );
-add_action( 'wp_ajax_no_priv_grid_scroll', 'vibe_grid_scroll' );
+add_action( 'wp_ajax_nopriv_grid_scroll', 'vibe_grid_scroll' );
     function vibe_grid_scroll(){ 
             $atts = json_decode(stripslashes($_POST['args']),true);
             $output ='';
@@ -126,6 +133,8 @@ add_action( 'wp_ajax_no_priv_grid_scroll', 'vibe_grid_scroll' );
         if(isset($atts['masonry']) && $atts['masonry']){
             $style= 'style="width:'.$atts['column_width'].'px;"'; 
         }
+        
+        $query_args =  apply_filters('wplms_grid_course_filters',$query_args);
 
         query_posts($query_args);
         while ( have_posts() ) : the_post();

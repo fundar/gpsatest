@@ -17,7 +17,6 @@ isset($loop_number)?$loop_number:$loop_number=5;
 <?php 
 $user_id=get_current_user_id();
 
-
 if ( bp_course_has_items( bp_ajax_querystring( 'course' ).'&instructor='.$user_id.'&per_page='.$loop_number ) ) : ?>
 <?php // global $items_template; var_dump( $items_template ) ?>
 	<div id="pag-top" class="pagination no-ajax">
@@ -45,7 +44,6 @@ if ( bp_course_has_items( bp_ajax_querystring( 'course' ).'&instructor='.$user_i
 		<li>
 			<div class="item-avatar instructor-course-avatar">
 				<?php bp_course_avatar(); ?>
-
 			</div>
 			<div class="item">
 				<div class="item-title"><?php bp_course_title() ?></div>

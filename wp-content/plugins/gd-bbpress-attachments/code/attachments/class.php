@@ -142,21 +142,21 @@ class gdbbPressAttachments {
     }
 
     public function delete_post($id) {
-        if (!function_exists('bbp_is_reply')) exit;
+        if (d4p_has_bbpress()) {
+            if (bbp_is_reply($id) || bbp_is_topic($id)) {
+                if ($this->o['delete_attachments'] == 'delete') {
+                    $files = d4p_get_post_attachments($id);
 
-        if (bbp_is_reply($id) || bbp_is_topic($id)) {
-            if ($this->o['delete_attachments'] == 'delete') {
-                $files = d4p_get_post_attachments($id);
-
-                if (is_array($files) && !empty($files)) {
-                    foreach ($files as $file) {
-                        wp_delete_attachment($file->ID);
+                    if (is_array($files) && !empty($files)) {
+                        foreach ($files as $file) {
+                            wp_delete_attachment($file->ID);
+                        }
                     }
-                }
-            } else if ($this->o['delete_attachments'] == 'detach') {
-                global $wpdb;
+                } else if ($this->o['delete_attachments'] == 'detach') {
+                    global $wpdb;
 
-                $wpdb->update($wpdb->posts, array('post_parent' => 0), array('post_parent' => $id, 'post_type' => 'attachment'));
+                    $wpdb->update($wpdb->posts, array('post_parent' => 0), array('post_parent' => $id, 'post_type' => 'attachment'));
+                }
             }
         }
     }

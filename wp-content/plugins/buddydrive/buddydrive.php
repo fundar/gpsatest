@@ -3,22 +3,19 @@
 Plugin Name: Buddydrive
 Plugin URI: http://imathi.eu/tag/buddydrive/
 Description: A plugin to share files, the BuddyPress way!
-Version: 1.1.1
+Version: 1.2.1
 Author: imath
 Author URI: http://imathi.eu/
 License: GPLv2
-Network: true
 Text Domain: buddydrive
 Domain Path: /languages/
 */
 
-
 // Exit if accessed directly
-if ( !defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 
-if ( !class_exists( 'BuddyDrive' ) ) :
-
+if ( ! class_exists( 'BuddyDrive' ) ) :
 /**
  * Main BuddyDrive Class
  *
@@ -29,6 +26,26 @@ class BuddyDrive {
 	private $data;
 
 	private static $instance;
+
+	/**
+	 * Required BuddyPress version for the plugin.
+	 *
+	 * @package BuddyDrive
+	 * @since 1.2.0
+	 *
+	 * @var      string
+	 */
+	public static $required_bp_version = '2.0';
+
+	/**
+	 * BuddyPress config.
+	 *
+	 * @package BuddyDrive
+	 * @since 1.2.0
+	 *
+	 * @var      array
+	 */
+	public static $bp_config = array();
 
 	/**
 	 * Main BuddyDrive Instance
@@ -58,9 +75,9 @@ class BuddyDrive {
 	
 	private function __construct() { /* Do nothing here */ }
 	
-	public function __clone() { _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'buddydrive' ), '1.1.1' ); }
+	public function __clone() { _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'buddydrive' ), '1.2.0' ); }
 
-	public function __wakeup() { _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'buddydrive' ), '1.1.1' ); }
+	public function __wakeup() { _doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'buddydrive' ), '1.2.0' ); }
 
 	public function __isset( $key ) { return isset( $this->data[$key] ); }
 
@@ -87,7 +104,7 @@ class BuddyDrive {
 
 		/** Version ***********************************************************/
 
-		$this->version    = '1.1.1';
+		$this->version    = '1.2.1';
 
 		/** Paths *************************************************************/
 
@@ -193,7 +210,162 @@ class BuddyDrive {
 	 * @since 1.0
 	 */
 	public function load_component() {
-		require( $this->includes_dir . 'buddydrive-component.php' );
+		if ( self::bail() ) {
+			add_action( self::$bp_config['network_admin'] ? 'network_admin_notices' : 'admin_notices', array( $this, 'warning' ) );
+		} else {
+			require( $this->includes_dir . 'buddydrive-component.php' );
+		}
+	}
+
+	/** Utilities *****************************************************************************/
+
+	/**
+	 * Checks BuddyPress version
+	 * 
+	 * @package BuddyDrive
+	 * @since 1.2.0
+	 */
+	public static function version_check() {
+		// taking no risk
+		if ( ! defined( 'BP_VERSION' ) )
+			return false;
+
+		return version_compare( BP_VERSION, self::$required_bp_version, '>=' );
+	}
+
+	/**
+	 * Checks if your plugin's config is similar to BuddyPress
+	 * 
+	 * @package BuddyDrive
+	 * @since 1.2.0
+	 */
+	public static function config_check() {
+		/**
+		 * blog_status    : true if your plugin is activated on the same blog
+		 * network_active : true when your plugin is activated on the network
+		 * network_status : BuddyPress & your plugin share the same network status
+		 */
+		self::$bp_config = array(
+			'blog_status'    => false, 
+			'network_active' => false,
+			'network_status' => true,
+			'network_admin'  => false
+		);
+
+		$buddypress = false;
+
+		if ( function_exists( 'buddypress' ) ) {
+			$buddypress = buddypress()->basename;
+		}
+
+		if ( $buddypress && get_current_blog_id() == bp_get_root_blog_id() ) {
+			self::$bp_config['blog_status'] = true;
+		}
+		
+		$network_plugins = get_site_option( 'active_sitewide_plugins', array() );
+
+		// No Network plugins
+		if ( empty( $network_plugins ) )
+			return self::$bp_config;
+
+		$buddydrive = plugin_basename( __FILE__ );
+
+		// Looking for BuddyDrive
+		$check = array( $buddydrive );
+
+		// And for BuddyPress if set
+		if ( ! empty( $buddypress ) )
+			$check = array_merge( array( $buddypress ), $check );
+
+		// Are they active on the network ?
+		$network_active = array_diff( $check, array_keys( $network_plugins ) );
+		
+		// If result is 1, your plugin is network activated
+		// and not BuddyPress or vice & versa. Config is not ok
+		if ( count( $network_active ) == 1 )
+			self::$bp_config['network_status'] = false;
+		
+		self::$bp_config['network_active'] = isset( $network_plugins[ $buddydrive ] );
+
+		// We need to know if the BuddyPress is network activated to choose the right
+		// notice ( admin or network_admin ) to display the warning message.
+		self::$bp_config['network_admin']  = ! empty( $buddypress ) && isset( $network_plugins[ $buddypress ] );
+
+		return self::$bp_config;
+	}
+
+	/**
+	 * Bail if BuddyPress config is different than this plugin
+	 *
+	 * @package BuddyDrive
+	 * @since 1.2.0
+	 */
+	public static function bail() {
+		$retval = false;
+
+		$config = self::config_check();
+
+		if ( ! self::version_check() || ! $config['blog_status'] || ! $config['network_status'] )
+			$retval = true;
+
+		return $retval;
+	}
+
+	/**
+	 * Display a warning message to admin
+	 * 
+	 * @package BuddyDrive
+	 * @since 1.2.0
+	 */
+	public function warning() {
+		$warnings = $resolve = array();
+
+		if ( ! self::version_check() ) {
+			$warnings[] = sprintf( esc_html__( 'BuddyDrive requires at least version %s of BuddyPress.', 'buddydrive' ), self::$required_bp_version );
+			$resolve[]  = sprintf( esc_html__( 'Upgrade BuddyPress to at least version %s', 'buddydrive' ), self::$required_bp_version );
+		}
+
+		if ( ! empty( self::$bp_config ) ) {
+			$config = self::$bp_config;
+		} else {
+			$config = self::config_check();
+		}
+		
+		if ( ! $config['blog_status'] ) {
+			$warnings[] = esc_html__( 'BuddyDrive requires to be activated on the blog where BuddyPress is activated.', 'buddydrive' );
+			$resolve[]  = esc_html__( 'Activate BuddyDrive on the same blog than BuddyPress', 'buddydrive' );
+		}
+
+		if ( ! $config['network_status'] ) {
+			$warnings[] = esc_html__( 'BuddyDrive and BuddyPress need to share the same network configuration.', 'buddydrive' );
+			$resolve[]  = esc_html__( 'Make sure BuddyDrive is activated at the same level than BuddyPress on the network', 'buddydrive' );
+		}
+
+		if ( ! empty( $warnings ) ) {
+			// Give some more explanations to administrator
+			if ( is_super_admin() ) {
+				$deactivate_link = ! empty( $config['network_active'] ) ? network_admin_url( 'plugins.php' ) : admin_url( 'plugins.php' );
+				$deactivate_link = '<a href="' . esc_url( $deactivate_link ) . '">' . esc_html__( 'deactivate', 'buddydrive' ) . '</a>';
+				$resolve_message = '<ol><li>' . sprintf( __( 'You should %s BuddyDrive', 'buddydrive' ), $deactivate_link ) . '</li>';
+
+				foreach ( (array) $resolve as $step ) {
+					$resolve_message .= '<li>' . $step . '</li>';
+				}
+
+				if ( $config['network_status'] && $config['blog_status']  )
+					$resolve_message .= '<li>' . esc_html__( 'Once done try to activate BuddyDrive again.', 'buddydrive' ) . '</li></ol>';
+				
+				$warnings[] = $resolve_message;
+			}
+			
+		?>
+		<div id="message" class="error">
+			<?php foreach ( $warnings as $warning ) : ?>
+				<p><?php echo $warning; ?></p>
+			<?php endforeach ; ?>
+		</div>
+		<?php
+		}
 	}
 	
 }

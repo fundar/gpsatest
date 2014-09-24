@@ -6,7 +6,30 @@
  * @package BuddyPress
  * @subpackage bp-default
  */
+$flag=1;
+$members_view=vibe_get_option('single_member_view');
 
+if(isset($members_view) && $members_view){
+	$flag=0;
+	switch($members_view){
+		case 1:
+			if(is_user_logged_in())$flag=1;
+		break;
+		case 2:
+			if(current_user_can('edit_posts'))$flag=1;
+		break;
+		case 3:
+			if(current_user_can('manage_options'))$flag=1;
+		break;
+	}
+}
+
+if(!$flag){
+	$id=vibe_get_option('members_redirect');
+	if(isset($id))
+		wp_redirect(get_permalink($id));
+	exit();
+}
 get_header( 'buddypress' ); ?>
 <section id="content">
 	<div id="buddypress">
@@ -36,7 +59,9 @@ get_header( 'buddypress' ); ?>
 					<div class="padder">
 						<div id="item-body">
 							<?php do_action( 'template_notices' ); ?>
+							
 							<?php do_action( 'bp_before_member_body' );
+
 
 							if ( bp_is_user_activity() || !bp_current_component() ) :
 								locate_template( array( 'members/single/activity.php'  ), true );

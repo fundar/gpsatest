@@ -3,7 +3,7 @@ get_header();
 if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 $title=get_post_meta(get_the_ID(),'vibe_title',true);
-if(isset($title) && $title !='' && $title !='H'){
+if(vibe_validate($title)){
 
 ?>
 <section id="title">
@@ -12,13 +12,13 @@ if(isset($title) && $title !='' && $title !='H'){
             <div class="col-md-9 col-sm-8">
                 <div class="pagetitle">
                     <h1><?php the_title(); ?></h1>
-                    <h5><?php the_sub_title(); ?></h5>
+                    <?php the_sub_title(); ?>
                 </div>
             </div>
              <div class="col-md-3 col-sm-4">
                  <?php
                     $breadcrumbs=get_post_meta(get_the_ID(),'vibe_breadcrumbs',true);
-                    if(isset($breadcrumbs) && $breadcrumbs !='' && $breadcrumbs !='H'){
+                    if(vibe_validate($breadcrumbs)){
                         vibe_breadcrumbs();
                     }    
                 ?>
@@ -53,7 +53,7 @@ if(isset($title) && $title !='' && $title !='H'){
                 </div>
                 <?php
                         $prenex=get_post_meta(get_the_ID(),'vibe_prev_next',true);
-                        if(isset($prenex) && $prenex !='' && $prenex !='H'){
+                        if(vibe_validate($prenex)){
                     ?>
                     <div class="prev_next_links">
                         <ul class="prev_next">
@@ -72,7 +72,7 @@ if(isset($title) && $title !='' && $title !='H'){
                 
                 <?php
                 $author = getPostMeta($post->ID,'vibe_author',true);
-                if(isset($author) && $author && $author !='H'){?>
+                if(vibe_validate($author)){?>
                 <div class="postauthor">
                     <div class="auth_image">
                         <?php

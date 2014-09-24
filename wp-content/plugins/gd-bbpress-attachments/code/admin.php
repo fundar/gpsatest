@@ -24,7 +24,7 @@ class gdbbA_Admin {
         if (isset($_GET['proupgradebba']) && $_GET['proupgradebba'] == 'hide') {
             global $gdbbpress_attachments;
 
-            $gdbbpress_attachments->o['upgrade_to_pro_200'] = 0;
+            $gdbbpress_attachments->o['upgrade_to_pro_210'] = 0;
 
             update_option('gd-bbpress-attachments', $gdbbpress_attachments->o);
 
@@ -44,7 +44,7 @@ class gdbbA_Admin {
     function upgrade_notice() {
         global $gdbbpress_attachments;
 
-        if ($gdbbpress_attachments->o['upgrade_to_pro_200'] == 1) {
+        if ($gdbbpress_attachments->o['upgrade_to_pro_210'] == 1) {
             $no_thanks = add_query_arg('proupgradebba', 'hide');
 
             echo '<div class="updated d4p-updated">';
@@ -106,8 +106,8 @@ class gdbbA_Admin {
                 <p><a href="http://www.dev4press.com/plugins/gd-bbpress-attachments/" target="_blank">'.__("Home Page on Dev4Press.com", "gd-bbpress-attachments").'</a> | 
                 <a href="http://wordpress.org/extend/plugins/gd-bbpress-attachments/" target="_blank">'.__("Home Page on WordPress.org", "gd-bbpress-attachments").'</a></p> 
                 <h5>'.__("Getting Plugin Support", "gd-bbpress-attachments").'</h5>
-                <p><a href="http://www.dev4press.com/forums/forum/free-plugins/gd-bbpress-attachments/" target="_blank">'.__("Support Forum on Dev4Press.com", "gd-bbpress-attachments").'</a> | 
-                <a href="http://wordpress.org/tags/gd-bbpress-attachments?forum_id=10" target="_blank">'.__("Support Forum on WordPress.org", "gd-bbpress-attachments").'</a> | 
+                <p><a href="http://support.dev4press.com/forums/forum/plugins-free/gd-bbpress-attachments/" target="_blank">'.__("Support Forum on Dev4Press.com", "gd-bbpress-attachments").'</a> | 
+                <a href="http://wordpress.org/support/plugin/gd-bbpress-attachments" target="_blank">'.__("Support Forum on WordPress.org", "gd-bbpress-attachments").'</a> | 
                 <a href="http://www.dev4press.com/plugins/gd-bbpress-attachments/support/" target="_blank">'.__("Plugin Support Sources", "gd-bbpress-attachments").'</a></p>'));
 
         $screen->add_help_tab(array(

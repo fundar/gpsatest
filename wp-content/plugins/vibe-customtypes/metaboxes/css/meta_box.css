@@ -497,22 +497,7 @@ float: left;
 width: 49.5%;
 float: right;
 }
-  /*==== Datepicker ===*/
-
-  /* DatePicker Container */
-.ui-datepicker {
-    width: 245px;
-    height: auto;
-    margin: 5px auto 0;
-    font: 9pt Arial, sans-serif;
-    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .5);
-    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .5);
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .5);
-}
-.ui-datepicker a {
-    text-decoration: none;
-}
-
+  
 .course_info label{
     width:240px;
     display: inline-block;
@@ -559,6 +544,23 @@ float: right;
     display: block;
     text-align: right;
 }
+
+/*==== Datepicker ===*/
+
+  /* DatePicker Container */
+.ui-datepicker {
+    width: 245px;
+    height: auto;
+    margin: 5px auto 0;
+    font: 9pt Arial, sans-serif;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .5);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .5);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .5);
+}
+.ui-datepicker a {
+    text-decoration: none;
+}
+
 /* DatePicker Table */
 .ui-datepicker table {
     width: 100%;
@@ -651,9 +653,9 @@ float: right;
     display: inline-block;
     font-weight: bold;
     text-align: center;
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
     color: #666666;
     text-shadow: 1px 1px 0px #fff;
     filter: dropshadow(color=#fff, offx=1, offy=1);

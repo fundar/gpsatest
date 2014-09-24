@@ -22,14 +22,10 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * Throughout this course the text domain used is 'bp-course', you can use whatever you want.
  * Put the text domain as the second parameter:
  *
- * __( 'This text will be translatable', 'bp-course' ); // Returns the first parameter value
- * _e( 'This text will be translatable', 'bp-course' ); // Echos the first parameter value
+ * __( 'This text will be translatable', 'vibe' ); // Returns the first parameter value
+ * _e( 'This text will be translatable', 'vibe' ); // Echos the first parameter value
  */
 
-
-if ( file_exists( dirname( __FILE__ ) . '/languages/' . get_locale() . '.mo' ) ){
-	load_textdomain( 'vibe', dirname( __FILE__ ) . '/languages/' . get_locale() . '.mo' );
-}
 
 
 /**
@@ -65,13 +61,19 @@ class BP_Course_Component extends BP_Component {
 	 */
 	function __construct() {
 		global $bp;
-
 		parent::start(
 			BP_COURSE_SLUG,
 			__( 'Course', 'vibe' ),
 			BP_COURSE_MOD_PLUGIN_DIR
 		);
 
+		if ( ! defined( 'BP_COURSE_RESULTS_SLUG' ) )
+			define( 'BP_COURSE_RESULTS_SLUG', 'course-results' );
+
+		if ( ! defined( 'BP_COURSE_STATS_SLUG ' ) )
+			define( 'BP_COURSE_STATS_SLUG', 'course-stats' );
+		
+		
 		/**
 		 * BuddyPress-dependent plugins are loaded too late to depend on BP_Component's
 		 * hooks, so we must call the function directly.
@@ -247,6 +249,7 @@ class BP_Course_Component extends BP_Component {
 			'table_name'      => $bp->table_prefix . 'bp_example'
 		);
 		*/
+
 		// Set up the $globals array to be passed along to parent::setup_globals()
 		$globals = array(
 			'slug'                  => BP_COURSE_SLUG,
@@ -300,13 +303,13 @@ class BP_Course_Component extends BP_Component {
 	 */
 	function setup_nav() {
 
-
+		$show_for_displayed_user=apply_filters('wplms_user_profile_courses',false);
 		$main_nav = array(
 			'name'                => sprintf( __( 'Courses <span>%s</span>', 'vibe' ), bp_course_get_total_course_count_for_user() ),
 			'slug' 		      => BP_COURSE_SLUG,
 			'position' 	      => 5,
 			'screen_function'     => 'bp_course_my_courses',
-			'show_for_displayed_user' => false,
+			'show_for_displayed_user' => $show_for_displayed_user, //Change for admin
 			'default_subnav_slug' => BP_COURSE_SLUG,
 		);
 
@@ -318,7 +321,7 @@ class BP_Course_Component extends BP_Component {
 		if(function_exists('vibe_get_option')){
 			$course_view = vibe_get_option('course_view');
 			if(isset($course_view) && $course_view){
-				$main_nav['show_for_displayed_user']=false;
+				$main_nav['show_for_displayed_user']=$show_for_displayed_user; //Change for admin
 			}
 		}
 
@@ -337,36 +340,36 @@ class BP_Course_Component extends BP_Component {
 
 
 		if ( !empty( $user_domain ) ) {
-
-
+			$user_access = bp_is_my_profile();
+			$user_access = apply_filters('wplms_user_profile_courses',$user_access);
 			$sub_nav[] = array(
-				'name'            =>  __( 'My Courses', 'vibe' ),
+				'name'            =>  __('My Courses', 'vibe' ),
 				'slug'            => BP_COURSE_SLUG,
 				'parent_url'      => $course_link,
 				'parent_slug'     => BP_COURSE_SLUG,
 				'screen_function' => 'bp_course_my_courses',
-				'user_has_access' => bp_is_my_profile(),
+				'user_has_access' => $user_access,
 				'position'        => 10
 			);
 			
 			bp_core_new_subnav_item( array(
 				'name' 		  => __( 'Results', 'vibe' ),
-				'slug' 		  => 'course-results',
+				'slug' 		  => BP_COURSE_RESULTS_SLUG,
 				'parent_slug'     => BP_COURSE_SLUG,
 				'parent_url'      => $course_link,
 				'screen_function' => 'bp_course_my_results',
 				'position' 	  => 30,
-				'user_has_access' => bp_is_my_profile() // Only the logged in user can access this on his/her profile
+				'user_has_access' => $user_access // Only the logged in user can access this on his/her profile
 			) );
 
 			bp_core_new_subnav_item( array(
 				'name' 		  => __( 'Stats', 'vibe' ),
-				'slug' 		  => 'course-stats',
+				'slug' 		  => BP_COURSE_STATS_SLUG,
 				'parent_slug'     => BP_COURSE_SLUG,
 				'parent_url'      => $course_link,
 				'screen_function' => 'bp_course_stats',
 				'position' 	  => 40,
-				'user_has_access' => bp_is_my_profile() // Only the logged in user can access this on his/her profile
+				'user_has_access' => $user_access // Only the logged in user can access this on his/her profile
 			) );
 			$sub_nav[] = array(
 				'name'            =>  __( 'Instructing Courses', 'vibe' ),
@@ -391,9 +394,9 @@ class BP_Course_Component extends BP_Component {
 
 		/*global $bp;
 
-		$bp->is_single_item=true;
-		$bp->current_component=BP_COURSE_SLUG;
-		$bp->current_item=$bp->current_action='fikka-dynamics';
+		$bp->is_single_item=true; // Extra comments : BuddyPress never detects a single course page
+		$bp->current_component=BP_COURSE_SLUG;  // Extra comments : BuddyPress successfully detects Course 
+		$bp->current_item=$bp->current_action='fikka-dynamics'; // Extra comments : Only Works if we force the current item variable. Never really works.
 		*/
 	
 	
@@ -414,10 +417,11 @@ class BP_Course_Component extends BP_Component {
 			);
 
 			/*
+			BELOW Part has to hacked to build a custom Menu system. BuddyPress never really detects MENUS properly
 
 			// Add the "Home" subnav item, as this will always be present
 			$sub_nav[] = array(
-				'name'            =>  _e( 'Mean Structure', 'vibe' ),
+				'name'            =>  _e( 'CURRICULUM', 'vibe' ),
 				'slug'            => 'structure',
 				'parent_url'      => $course_link,
 				'parent_slug'     => get_current_course_slug(),
@@ -544,8 +548,7 @@ class BP_Course_Component extends BP_Component {
  * @since 1.6
  */
 function bp_course_load_core_component() {
-	global $bp;
-
+	global $bp;	
 	$bp->course = new BP_Course_Component;
 }
 add_action( 'bp_loaded', 'bp_course_load_core_component' );

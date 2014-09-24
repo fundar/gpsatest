@@ -29,7 +29,7 @@ if(!class_exists("Gc_Message_Bar_Admin_Renderer")){
                         <div class="logo"></div>
                         <?php if( empty($this->metrix_code) ) :?>
                         <div class="connectblock">
-                            <div class="whatismygc"></div>
+                            <?php /* <div class="whatismygc"></div> */ ?>
                             <a href="<?php echo $GC_Message_Bar_Config['MYGC']; ?>/signup/plugin" target="_blank"><b>Sign Up</b> for FREE</a>
                             <div class="indicator">Not connected to MY.GetConversion</div>
                             <div class="clear"></div>
@@ -52,22 +52,24 @@ if(!class_exists("Gc_Message_Bar_Admin_Renderer")){
                     </div>
                     <nav>
                         <ul class="menu1">
-                            <li class="first"><a href="<?php echo $GC_Message_Bar_Config['GCROADMAP']; ?>" target="_blank"><b>Roadmap</b></a></li>
-                            <li><a href="<?php echo $GC_Message_Bar_Config['GCFORUM']; ?>" target="_blank"><b>Forum</b></a></li>
-                            <li><a href="<?php echo $GC_Message_Bar_Config['GCIDEA']; ?>" target="_blank"><b>Suggest An Idea</b></a></li>
+                            <li class="first"><a href="<?php echo $GC_Message_Bar_Config['GCFORUM']; ?>" target="_blank"><b>Forum</b></a></li>
+                            <li><a href="<?php echo $GC_Message_Bar_Config['GCIDEA']; ?>" target="_blank">Suggest an <b>Idea</b></a></li>
+                            <li><a href="<?php echo $GC_Message_Bar_Config['GCBUG']; ?>" target="_blank">Report a <b>Bug</b></a></li>
                             <div class="clear"></div>
                         </ul>
+                        <?php if( !empty($this->metrix_code) ) :?>
                         <ul class="menu2">
-                            <li><a href="<?php echo $GC_Message_Bar_Config['GCBUG']; ?>" target="_blank"><b>Report</b> a Bug</a></li>
+                            <li class="first"><a href="<?php echo $GC_Message_Bar_Config['WPORGURL']; ?>" target="_blank">Support us by giving &#9733;&#9733;&#9733;&#9733;&#9733; rating on wordpress.org</a></li>
                             <div class="clear"></div>
                         </ul>
+                        <?php endif; ?>
                         <div class="clear"></div>
                     </nav>
                 </header>
 
                 <?php if( empty($this->metrix_code) ) :?>
-                <section class="subscribemsg">
-                    <iframe src="<?php echo $GC_Message_Bar_Config['GCSERVICES']; ?>/gc-message-bar/" width="818" height="300"></iframe>
+                <section class="newprodmsg">
+                    <iframe src="<?php echo $GC_Message_Bar_Config['GCSERVICES']; ?>/gc-message-bar/buy-or-connect" width="818" height="280"></iframe>
                 </section>
                 <?php else : ?>
                 <section class="newprodmsg">
@@ -89,13 +91,14 @@ if(!class_exists("Gc_Message_Bar_Admin_Renderer")){
                 <footer>
                     <nav>
                         <ul class="menu1">
-                            <li class="first"><a href="<?php echo $GC_Message_Bar_Config['GCROADMAP']; ?>" target="_blank"><b>Roadmap</b></a></li>
-                            <li><a href="<?php echo $GC_Message_Bar_Config['GCFORUM']; ?>" target="_blank"><b>Forum</b></a></li>
-                            <li><a href="<?php echo $GC_Message_Bar_Config['GCIDEA']; ?>" target="_blank"><b>Suggest An Idea</b></a></li>
+                            <li class="first"><a href="<?php echo $GC_Message_Bar_Config['GCFORUM']; ?>" target="_blank">Ask on <b>Forum</b></a></li>
+                            <li><a href="<?php echo $GC_Message_Bar_Config['GCROADMAP']; ?>" target="_blank">Vote for <b>Roadmap</b></a></li>
+                            <li><a href="<?php echo $GC_Message_Bar_Config['GCIDEA']; ?>" target="_blank">Suggest an <b>Idea</b></a></li>
+                            <li><a href="<?php echo $GC_Message_Bar_Config['GCBUG']; ?>" target="_blank">Report a <b>Bug</b></a></li>
                             <div class="clear"></div>
                         </ul>
                         <ul class="menu2">
-                            <li><a href="<?php echo $GC_Message_Bar_Config['GCBUG']; ?>" target="_blank"><b>Report</b> a Bug</a></li>
+                            <li><a href="<?php echo $GC_Message_Bar_Config['WPORGURL']; ?>" target="_blank">Support us by giving &#9733;&#9733;&#9733;&#9733;&#9733; rating on wordpress.org</a></li>
                             <div class="clear"></div>
                         </ul>
                         <div class="clear"></div>
@@ -108,7 +111,8 @@ if(!class_exists("Gc_Message_Bar_Admin_Renderer")){
                             </div>
                         </div>
                         <div class="copyblock">
-                            GC Message Bar plugin by GetConversion
+                            <div class="copytxt"><a href="<?php echo $GC_Message_Bar_Config['GCPLUGINHOME']; ?>" target="_blank">GC Message Bar</a> by</div>
+                            <div class="copylogo"><a href="<?php echo $GC_Message_Bar_Config['GCHOME']; ?>" target="_blank" class="gclogo">GetConversion</a></div>
                         </div>
                         <div class="clear"></div>
                     </div>

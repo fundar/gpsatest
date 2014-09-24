@@ -92,6 +92,28 @@ class Gc_MessageBar_Themeselect_Renderer extends Gc_MessageBar_Abstract_Renderer
                             }
 
 
+                            if(jQuery("#<?php echo $this->option->get_namespace(); ?>gc_mailpoet_ex_pro_input_background_color").length > 0){
+                                jQuery('#<?php echo $this->option->get_namespace(); ?>gc_mailpoet_ex_pro_input_background_color').wpColorPicker('color',set['<?php echo strtolower("gc_mailpoet_ex_pro_input_background_color"); ?>']);
+                            }
+                            if(jQuery("#<?php echo $this->option->get_namespace(); ?>gc_mailpoet_ex_pro_input_border_color").length > 0){
+                                jQuery('#<?php echo $this->option->get_namespace(); ?>gc_mailpoet_ex_pro_input_border_color').wpColorPicker('color',set['<?php echo strtolower("gc_mailpoet_ex_pro_input_border_color"); ?>']);
+                            }
+                            if(jQuery("#<?php echo $this->option->get_namespace(); ?>gc_mailpoet_ex_pro_input_text_color").length > 0){
+                                jQuery('#<?php echo $this->option->get_namespace(); ?>gc_mailpoet_ex_pro_input_text_color').wpColorPicker('color',set['<?php echo strtolower("gc_mailpoet_ex_pro_input_text_color"); ?>']);
+                            }
+                            if(jQuery("#<?php echo $this->option->get_namespace(); ?>gc_mailpoet_ex_pro_input_placeholder_color").length > 0){
+                                jQuery('#<?php echo $this->option->get_namespace(); ?>gc_mailpoet_ex_pro_input_placeholder_color').wpColorPicker('color',set['<?php echo strtolower("gc_mailpoet_ex_pro_input_placeholder_color"); ?>']);
+                            }
+                            if(jQuery("#<?php echo $this->option->get_namespace(); ?>gc_mailpoet_ex_pro_error_message_color").length > 0){
+                                jQuery('#<?php echo $this->option->get_namespace(); ?>gc_mailpoet_ex_pro_error_message_color').wpColorPicker('color',set['<?php echo strtolower("gc_mailpoet_ex_pro_error_message_color"); ?>']);
+                            }
+                            if(jQuery("#<?php echo $this->option->get_namespace(); ?>gc_mailpoet_ex_pro_error_message_border_color").length > 0){
+                                jQuery('#<?php echo $this->option->get_namespace(); ?>gc_mailpoet_ex_pro_error_message_border_color').wpColorPicker('color',set['<?php echo strtolower("gc_mailpoet_ex_pro_error_message_border_color"); ?>']);
+                            }
+                            if(jQuery("#<?php echo $this->option->get_namespace(); ?>gc_mailpoet_ex_pro_error_message_text_color").length > 0){
+                                jQuery('#<?php echo $this->option->get_namespace(); ?>gc_mailpoet_ex_pro_error_message_text_color').wpColorPicker('color',set['<?php echo strtolower("gc_mailpoet_ex_pro_error_message_text_color"); ?>']);
+                            }
+
 
                             if(jQuery("#<?php echo $this->option->get_namespace(); ?>text_shadow_input").val() !== set['text_shadow']){
                                 jQuery("#<?php echo $this->option->get_namespace(); ?>text_shadow_a").trigger("click");

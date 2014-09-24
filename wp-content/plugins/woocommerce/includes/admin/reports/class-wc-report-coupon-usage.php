@@ -1,6 +1,11 @@
 <?php
 /**
- * WC_Report_Coupon_Usage class
+ * WC_Report_Coupon_Usage
+ *
+ * @author      WooThemes
+ * @category    Admin
+ * @package     WooCommerce/Admin/Reports
+ * @version     2.1.0
  */
 class WC_Report_Coupon_Usage extends WC_Admin_Report {
 
@@ -11,6 +16,7 @@ class WC_Report_Coupon_Usage extends WC_Admin_Report {
 	 * Constructor
 	 */
 	public function __construct() {
+
 		if ( isset( $_GET['coupon_codes'] ) && is_array( $_GET['coupon_codes'] ) ) {
 			$this->coupon_codes = array_filter( array_map( 'sanitize_text_field', $_GET['coupon_codes'] ) );
 		} elseif ( isset( $_GET['coupon_codes'] ) ) {
@@ -20,12 +26,14 @@ class WC_Report_Coupon_Usage extends WC_Admin_Report {
 
 	/**
 	 * Get the legend for the main chart sidebar
+	 *
 	 * @return array
 	 */
 	public function get_chart_legend() {
-		$legend   = array();
 
-		$total_discount 	= $this->get_order_report_data( array(
+		$legend = array();
+
+		$total_discount = $this->get_order_report_data( array(
 			'data' => array(
 				'discount_amount' => array(
 					'type'            => 'order_item_meta',
@@ -46,7 +54,7 @@ class WC_Report_Coupon_Usage extends WC_Admin_Report {
 			'filter_range' => true
 		) );
 
-		$total_coupons    = absint( $this->get_order_report_data( array(
+		$total_coupons = absint( $this->get_order_report_data( array(
 			'data' => array(
 				'order_item_name' => array(
 					'type'            => 'order_item',
@@ -86,6 +94,7 @@ class WC_Report_Coupon_Usage extends WC_Admin_Report {
 	 * Output the report
 	 */
 	public function output_report() {
+
 		$ranges = array(
 			'year'         => __( 'Year', 'woocommerce' ),
 			'last_month'   => __( 'Last Month', 'woocommerce' ),
@@ -98,7 +107,7 @@ class WC_Report_Coupon_Usage extends WC_Admin_Report {
 			'coupon_count'    => '#d4d9dc',
 		);
 
-		$current_range = ! empty( $_GET['range'] ) ? $_GET['range'] : '7day';
+		$current_range = ! empty( $_GET['range'] ) ? sanitize_text_field( $_GET['range'] ) : '7day';
 
 		if ( ! in_array( $current_range, array( 'custom', 'year', 'last_month', 'month', '7day' ) ) ) {
 			$current_range = '7day';
@@ -111,6 +120,7 @@ class WC_Report_Coupon_Usage extends WC_Admin_Report {
 
 	/**
 	 * [get_chart_widgets description]
+	 *
 	 * @return array
 	 */
 	public function get_chart_widgets() {
@@ -126,9 +136,9 @@ class WC_Report_Coupon_Usage extends WC_Admin_Report {
 
 	/**
 	 * Product selection
-	 * @return void
 	 */
 	public function coupons_widget() {
+
 		?>
 		<h4 class="section_title"><span><?php _e( 'Filter by coupon', 'woocommerce' ); ?></span></h4>
 		<div class="section">
@@ -266,6 +276,7 @@ class WC_Report_Coupon_Usage extends WC_Admin_Report {
 				) );
 
 				if ( $most_discount ) {
+
 					foreach ( $most_discount as $coupon ) {
 						echo '<tr class="' . ( in_array( $coupon->coupon_code, $this->coupon_codes ) ? 'active' : '' ) . '">
 							<td class="count" width="1%">' . wc_price( $coupon->discount_amount ) . '</td>
@@ -306,11 +317,11 @@ class WC_Report_Coupon_Usage extends WC_Admin_Report {
 	 * Output an export link
 	 */
 	public function get_export_button() {
-		$current_range = ! empty( $_GET['range'] ) ? $_GET['range'] : '7day';
+		$current_range = ! empty( $_GET['range'] ) ? sanitize_text_field( $_GET['range'] ) : '7day';
 		?>
 		<a
 			href="#"
-			download="report-<?php echo $current_range; ?>-<?php echo date_i18n( 'Y-m-d', current_time('timestamp') ); ?>.csv"
+			download="report-<?php echo esc_attr( $current_range ); ?>-<?php echo date_i18n( 'Y-m-d', current_time('timestamp') ); ?>.csv"
 			class="export_csv"
 			data-export="chart"
 			data-xaxes="<?php _e( 'Date', 'woocommerce' ); ?>"
@@ -323,6 +334,7 @@ class WC_Report_Coupon_Usage extends WC_Admin_Report {
 
 	/**
 	 * Get the main chart
+	 *
 	 * @return string
 	 */
 	public function get_main_chart() {

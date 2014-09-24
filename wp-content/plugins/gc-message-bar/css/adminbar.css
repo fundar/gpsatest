@@ -1,17 +1,34 @@
+@font-face {
+    font-family: 'gc-fonts';
+    src: url('../font/gc-fonts.eot?9024567');
+    src: url('../font/gc-fonts.eot?9024567#iefix') format('embedded-opentype'),
+         url('../font/gc-fonts.woff?9024567') format('woff'),
+         url('../font/gc-fonts.ttf?9024567') format('truetype'),
+         url('../font/gc-fonts.svg?9024567#gc-fonts') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
 .gc_adminbar_icon>a {
-    color: white !important;
-    background: #008dbe !important;
+    vertical-align: top;
 }
-.gc_adminbar_icon>a:hover {
-    color: white !important;
-    background: #819829 !important;
+.gc_adminbar_icon>a span.gc-logo-icon {
+    font-family: 'gc-fonts';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1em;
+    font-size: 1.5em !important;
 }
-.gc_adminbar_icon {
-    .ab-submenu>li>a {
-        color: #008dbe !important;
-    }
-    .ab-submenu>li>a:hover {
-        color: white !important;
-        background: #008dbe !important;
-    }
+.gc_adminbar_icon>a span.gc-logo-icon:before { 
+    content: '\e800';
+    font-family: "gc-fonts";
+    font-style: normal;
+    font-weight: normal;
+    display: inline-block;
+    text-decoration: inherit;
+    width: 1em;
+    margin-right: .2em;
+    text-align: center;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1em;
 }

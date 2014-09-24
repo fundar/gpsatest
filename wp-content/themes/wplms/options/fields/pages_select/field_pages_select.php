@@ -28,13 +28,13 @@ class VIBE_Options_pages_select extends VIBE_Options{
 	*/
 	function render(){
 		
-		$class = (isset($this->field['class']))?'class="'.$this->field['class'].'" ':'';
+		$class = (isset($this->field['class']))?'class="chosen '.$this->field['class'].'" ':'class="chosen "';
 		
 		echo '<select id="'.$this->field['id'].'" name="'.$this->args['opt_name'].'['.$this->field['id'].']" '.$class.'rows="6" >';
 		
 		if(isset($this->field['args']))
 			$args = wp_parse_args($this->field['args'], array());
-
+			echo '<option value="">'.__('None','vibe').'</option>';
 		$pages = get_pages($args); 
 		foreach ( $pages as $page ) {
 			echo '<option value="'.$page->ID.'"'.selected($this->value, $page->ID, false).'>'.$page->post_title.'</option>';

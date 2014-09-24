@@ -9,11 +9,20 @@ class Gc_MessageBar_Options_Group_Container_Renderer extends Gc_MessageBar_Conta
         $this->items = $items;
         $this->group_descriptor = $group_descriptor;
         $this->namespace = $namespace;
+        $this->initialize_state_option();
+        $this->initialize_callback();
+    }
+
+    protected function initialize_state_option(){
         $this->state_option =  Gc_MessageBar_CF::create_and_init("Option",array("namespace" => $this->namespace , "id" => $this->group_descriptor->get_id()."_group" , "default" => "open"));
-        $this->state_option->load();
+        $this->state_option->load();      
+    }
+
+    protected function initialize_callback(){
         $this->add_callback("before_render",array($this,"group_header_render"));
         $this->add_callback("after_render",array($this,"group_footer_render"));
         $this->add_callback("after_item_render",array($this,"after_item_render"));
+
     }
     public function group_header_render(){
         $group_id = $this->group_descriptor->get_id();

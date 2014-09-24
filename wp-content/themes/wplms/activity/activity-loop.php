@@ -12,11 +12,14 @@
 $loop_number=vibe_get_option('loop_number');
 if(!isset($loop_number) || $loop_number == '')
 	$loop_number=5;
+
+$appended = '&per_page='.$loop_number;
+$appended = apply_filters('wplms_activity_loop',$appended);
 ?>
 
 <?php do_action( 'bp_before_activity_loop' ); ?>
 
-<?php if ( bp_has_activities( bp_ajax_querystring( 'activity' ).'&per_page='.$loop_number ) ) : ?>
+<?php if ( bp_has_activities( bp_ajax_querystring( 'activity' ).$appended ) ) : ?>
 
 	<?php /* Show pagination if JS is not enabled, since the "Load More" link will do nothing */ ?>
 	

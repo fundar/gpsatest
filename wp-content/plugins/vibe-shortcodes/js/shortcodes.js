@@ -2,7 +2,46 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
+(function($) {
+  $.expr[":"].onScreen = function(elem) {
+    var $window = $(window);
+    var viewport_top = $window.scrollTop()
+    var viewport_height = $window.height()
+    var viewport_bottom = viewport_top + viewport_height
+    var $elem = $(elem)
+    var top = $elem.offset().top
+    var height = $elem.height()
+    var bottom = top + height
 
+    return (top >= viewport_top && top < viewport_bottom) ||
+           (bottom > viewport_top && bottom <= viewport_bottom) ||
+           (height > viewport_height && top <= viewport_top && bottom >= viewport_bottom)
+  }
+})(jQuery);
+
+jQuery(document).ready(function($){
+    $(window).scroll( function (){
+         $('.animate').filter(":onScreen").not('.load').each(function(i){ 
+            var $this=$(this);
+                 var ind = i * 100;
+                 var docViewTop = $(window).scrollTop();
+                 var docViewBottom = docViewTop + $(window).height();
+                 var elemTop = $this.offset().top;      
+                     if (docViewBottom >= elemTop) { 
+                         setTimeout(function(){ 
+                              $this.trigger('load');
+                          }, ind);
+                         }      
+             });
+            //End function 
+    });
+    $('.animate').on('load',function(){
+        $(this).addClass('load');
+    });
+    $('.form_field').click(function(){ 
+        $(this).removeAttr('style');
+    });
+});
 
 jQuery(document).ready(function($){
     
@@ -24,16 +63,13 @@ $('.image_slider').flexslider({
 });
     
 $('.ajax-popup-link').magnificPopup({
-  type: 'ajax',
-  
-    fixedContentPos: false,
+    type: 'ajax',
+    alignTop: true,
+    fixedContentPos: true,
     fixedBgPos: true,
-
     overflowY: 'auto',
-
     closeBtnInside: true,
     preloader: false,
-    
     midClick: true,
     removalDelay: 300,
     mainClass: 'my-mfp-zoom-in'
@@ -131,69 +167,93 @@ $('.knob').each(function(){
 
 //AJAX CONTACT FORM
 jQuery(document).ready(function ($) {
-	
 	// SUBSCRIPTION FORM AJAX HANDLE
-	         $( 'body' ).delegate( '.form .form_submit', 'click', function(event){
-                      event.preventDefault();
-                      var parent = $(this).parent();
-	              var $response= parent.find(".response");
-                      var error= '';
-                      var to = []
-                      var data = [];
-                      var label = [];
-	              var regex = [];
-                      var to = parent.attr('data-to');
-                      var subject = parent.attr('data-subject');
-                      regex['email'] = /^([a-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,4}$)/i;
-                      regex['phone'] = /[A-Z0-9]{7}|[A-Z0-9][A-Z0-9-]{7}/i;
-                      regex['numeric'] = /^[0-9]+$/i;
-                      var i=0;
-                      parent.find('.form_field').each(function(){
-                          i++;
-                          var validate=$(this).attr('data-validate');
-                          var value = $(this).val();
-                          if(!value.match(regex[validate])){
-                              error += 'Invalid '+validate;
-                              $(this).css('border-color','#e16038');
-                          }else{
-                              data[i]=value;
-                              label[i]=$(this).attr('placeholder');
-                          }
-                      });
-                          if (error !== "") {
-	                  $response.fadeIn("slow");
-	                  $response.html("<span style='color:#D03922;'>Error: " + error + "</span>");
-                            } else {
-                        $response.css("display", "block");
-	                  $response.html("<span style='color:#0E7A00;'>Sending message... </span>");
-	                  $response.fadeIn("slow");
-                          setTimeout(function(){sendmail(to,subject,data,label,parent);}, 2000);
-	              }
-                      
-	              return false;
-	          });
-	          
-	      
-	      
-	      function sendmail(to,subject,formdata,labels,parent) { 
-	      	var $response= parent.find(".response");
-	      	$.ajax({
-	              type: "POST",
-	              url: ajaxurl,
-                      data: {   action: 'vibe_form_submission', 
-                                to: to,
-                                subject : subject,
-                                data:JSON.stringify(formdata),
-                                label:JSON.stringify(labels)
-                            },
-	              cache: false,
-	              success: function (html) {
-	                  $response.fadeIn("slow");
-	                  $response.html(html);
-	                  setTimeout(function(){$response.fadeOut("slow");}, 10000);
-	              }
-	          });
-	      }
+ $( 'body' ).delegate( '.form .form_submit', 'click', function(event){
+    event.preventDefault();
+    var parent = $(this).parent();
+    var $response= parent.find(".response");
+    var error= '';
+    var to = []
+    var data = [];
+    var label = [];
+    var regex = [];
+    var to = parent.attr('data-to');
+    var subject = parent.attr('data-subject');
+    regex['email'] = /^([a-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,4}$)/i;
+    regex['phone'] = /[A-Z0-9]{7}|[A-Z0-9][A-Z0-9-]{7}/i;
+    regex['numeric'] = /^[0-9]+$/i;
+    regex['captcha'] = /^[0-9]+$/i;
+    regex['required'] = /([^\s])/;
+    var i=0;
+    
+    parent.find('.form_field').each(function(){
+        i++;
+        var validate=$(this).attr('data-validate');
+        var value = $(this).val();
+        if(!value.match(regex[validate])){
+            error += vibe_shortcode_strings.invalid_string+validate;
+            $(this).css('border-color','#e16038');
+        }else{
+            data[i]=value;
+            if(parent.hasClass('isocharset')){
+              data[i]=encodeURI(value);
+            }
+            label[i]=$(this).attr('placeholder');
+        }
+        if(validate === 'captcha' && error === ""){
+            var $num = $(this).attr('id');
+            var $sum=$(this).closest('.math-sum');
+            var num1 = parseInt($('#'+$num+'-1').text());
+            var num2 = parseInt($('#'+$num+'-2').text());
+            var sumval = parseInt($(this).val());
+            if( sumval != (num1+num2))
+              error += vibe_shortcode_strings.captcha_mismatch;
+        }
+    });
+    
+  if (error !== "") {
+    $response.fadeIn("slow");
+    $response.html("<span style='color:#D03922;'>"+vibe_shortcode_strings.error_string+" " + error + "</span>");
+  } else {
+    $response.css("display", "block");
+    $response.html("<span style='color:#0E7A00;'>"+vibe_shortcode_strings.sending_mail+"... </span>");
+    $response.fadeIn("slow");
+    setTimeout(function(){sendmail(to,subject,data,label,parent);}, 2000);
+  }
+    
+  return false;
+  });
+
+  function sendmail(to,subject,formdata,labels,parent) { 
+  	var $response= parent.find(".response");
+    var isocharset = false;
+    
+    if(parent.hasClass('isocharset'))
+      isocharset=true;
+
+  	$.ajax({
+          type: "POST",
+          url: ajaxurl,
+                data: {   action: 'vibe_form_submission', 
+                          to: to,
+                          subject : subject,
+                          data:JSON.stringify(formdata),
+                          label:JSON.stringify(labels),
+                          isocharset:isocharset
+                      },
+          cache: false,
+          success: function (html) {
+              console.log(html);
+              $response.fadeIn("slow");
+              $response.html(html);
+              if(html.indexOf('<span') === 0) {
+                parent.find('textarea').val('');
+                parent.find('input[type="text"]').val('');
+              }
+              setTimeout(function(){$response.fadeOut("slow");}, 10000);
+          }
+      });
+  }
 	     
 });
 
@@ -363,3 +423,12 @@ jQuery(document).ready(function ($) {
     }
 });
 
+jQuery(document).ready(function($){
+    // Uploading files
+  var zip_uploader;
+  jQuery('#upload_zip_button').on('click', function( event ){
+      event.preventDefault();
+      var url = $(this).attr('data-admin-url')+'media-upload.php?type=upload&tab=upload&TB_iframe=1';
+      tb_show('Upload ZIP package', url );
+    });
+});

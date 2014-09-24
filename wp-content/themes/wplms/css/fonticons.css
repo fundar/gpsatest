@@ -1016,6 +1016,7 @@
 .icon-3-css:before {
   content: "\e145";
 }
+.icon-gplus:before,
 .icon-google-plus-1:before {
   content: "\e146";
 }
@@ -2342,9 +2343,6 @@
 }
 .icon-fontawesome-webfont-5:before {
   content: "?";
-}
-.icon-fontawesome-webfont-6:before {
-  content: "\";
 }
 .icon-fontawesome-webfont-7:before {
   content: "\e017";

@@ -30,6 +30,13 @@
                 "gc_mailpoet_ex_input_border_color" => "#00709f",
                 "gc_mailpoet_ex_input_text_color" => "#555555",
                 "gc_mailpoet_ex_input_placeholder_color" => "#cccccc",
+                "gc_mailpoet_ex_pro_input_background_color" => "#ffffff",
+                "gc_mailpoet_ex_pro_input_border_color" => "#00709f",
+                "gc_mailpoet_ex_pro_input_text_color" => "#555555",
+                "gc_mailpoet_ex_pro_input_placeholder_color" => "#cccccc",
+                "gc_mailpoet_ex_pro_error_message_color" => "#aa0000",
+                "gc_mailpoet_ex_pro_error_message_border_color" => "#ffffff",
+                "gc_mailpoet_ex_pro_error_message_text_color" => "#ffffff",
             )
         ),
         "green" => array(
@@ -58,6 +65,13 @@
                 "gc_mailpoet_ex_input_border_color" => "#627a00",
                 "gc_mailpoet_ex_input_text_color" => "#555555",
                 "gc_mailpoet_ex_input_placeholder_color" => "#cccccc",
+                "gc_mailpoet_ex_pro_input_background_color" => "#ffffff",
+                "gc_mailpoet_ex_pro_input_border_color" => "#627a00",
+                "gc_mailpoet_ex_pro_input_text_color" => "#555555",
+                "gc_mailpoet_ex_pro_input_placeholder_color" => "#cccccc",
+                "gc_mailpoet_ex_pro_error_message_color" => "#aa0000",
+                "gc_mailpoet_ex_pro_error_message_border_color" => "#ffffff",
+                "gc_mailpoet_ex_pro_error_message_text_color" => "#ffffff",
             )
         ),
         "red" => array(
@@ -86,6 +100,13 @@
                 "gc_mailpoet_ex_input_border_color" => "#8b0000",
                 "gc_mailpoet_ex_input_text_color" => "#555555",
                 "gc_mailpoet_ex_input_placeholder_color" => "#cccccc",
+                "gc_mailpoet_ex_pro_input_background_color" => "#ffffff",
+                "gc_mailpoet_ex_pro_input_border_color" => "#8b0000",
+                "gc_mailpoet_ex_pro_input_text_color" => "#555555",
+                "gc_mailpoet_ex_pro_input_placeholder_color" => "#cccccc",
+                "gc_mailpoet_ex_pro_error_message_color" => "#aa0000",
+                "gc_mailpoet_ex_pro_error_message_border_color" => "#ffffff",
+                "gc_mailpoet_ex_pro_error_message_text_color" => "#ffffff",
             )
         ),
         "orange" => array(
@@ -114,6 +135,13 @@
                 "gc_mailpoet_ex_input_border_color" => "#b25900",
                 "gc_mailpoet_ex_input_text_color" => "#555555",
                 "gc_mailpoet_ex_input_placeholder_color" => "#cccccc",
+                "gc_mailpoet_ex_pro_input_background_color" => "#ffffff",
+                "gc_mailpoet_ex_pro_input_border_color" => "#b25900",
+                "gc_mailpoet_ex_pro_input_text_color" => "#555555",
+                "gc_mailpoet_ex_pro_input_placeholder_color" => "#cccccc",
+                "gc_mailpoet_ex_pro_error_message_color" => "#aa0000",
+                "gc_mailpoet_ex_pro_error_message_border_color" => "#ffffff",
+                "gc_mailpoet_ex_pro_error_message_text_color" => "#ffffff",
             )
         ),
         "gray" => array(
@@ -142,6 +170,13 @@
                 "gc_mailpoet_ex_input_border_color" => "#595959",
                 "gc_mailpoet_ex_input_text_color" => "#555555",
                 "gc_mailpoet_ex_input_placeholder_color" => "#cccccc",
+                "gc_mailpoet_ex_pro_input_background_color" => "#ffffff",
+                "gc_mailpoet_ex_pro_input_border_color" => "#595959",
+                "gc_mailpoet_ex_pro_input_text_color" => "#555555",
+                "gc_mailpoet_ex_pro_input_placeholder_color" => "#cccccc",
+                "gc_mailpoet_ex_pro_error_message_color" => "#aa0000",
+                "gc_mailpoet_ex_pro_error_message_border_color" => "#ffffff",
+                "gc_mailpoet_ex_pro_error_message_text_color" => "#ffffff",
             )
         ),
         "black" => array(
@@ -170,6 +205,13 @@
                 "gc_mailpoet_ex_input_border_color" => "#000000",
                 "gc_mailpoet_ex_input_text_color" => "#555555",
                 "gc_mailpoet_ex_input_placeholder_color" => "#cccccc",
+                "gc_mailpoet_ex_pro_input_background_color" => "#ffffff",
+                "gc_mailpoet_ex_pro_input_border_color" => "#000000",
+                "gc_mailpoet_ex_pro_input_text_color" => "#555555",
+                "gc_mailpoet_ex_pro_input_placeholder_color" => "#cccccc",
+                "gc_mailpoet_ex_pro_error_message_color" => "#aa0000",
+                "gc_mailpoet_ex_pro_error_message_border_color" => "#ffffff",
+                "gc_mailpoet_ex_pro_error_message_text_color" => "#ffffff",
             )
         ),
         "white" => array(
@@ -198,6 +240,13 @@
                 "gc_mailpoet_ex_input_border_color" => "#d0d0d0",
                 "gc_mailpoet_ex_input_text_color" => "#555555",
                 "gc_mailpoet_ex_input_placeholder_color" => "#cccccc",
+                "gc_mailpoet_ex_pro_input_background_color" => "#ffffff",
+                "gc_mailpoet_ex_pro_input_border_color" => "#d0d0d0",
+                "gc_mailpoet_ex_pro_input_text_color" => "#555555",
+                "gc_mailpoet_ex_pro_input_placeholder_color" => "#cccccc",
+                "gc_mailpoet_ex_pro_error_message_color" => "#aa0000",
+                "gc_mailpoet_ex_pro_error_message_border_color" => "#ffffff",
+                "gc_mailpoet_ex_pro_error_message_text_color" => "#ffffff",
             )
         ),
         "xmas_red" => array(
@@ -226,6 +275,13 @@
                 "gc_mailpoet_ex_input_border_color" => "#780000",
                 "gc_mailpoet_ex_input_text_color" => "#555555",
                 "gc_mailpoet_ex_input_placeholder_color" => "#cccccc",
+                "gc_mailpoet_ex_pro_input_background_color" => "#ffffff",
+                "gc_mailpoet_ex_pro_input_border_color" => "#780000",
+                "gc_mailpoet_ex_pro_input_text_color" => "#555555",
+                "gc_mailpoet_ex_pro_input_placeholder_color" => "#cccccc",
+                "gc_mailpoet_ex_pro_error_message_color" => "#aa0000",
+                "gc_mailpoet_ex_pro_error_message_border_color" => "#ffffff",
+                "gc_mailpoet_ex_pro_error_message_text_color" => "#ffffff",
             )
         ),
         "xmas_green" => array(
@@ -254,6 +310,13 @@
                 "gc_mailpoet_ex_input_border_color" => "#005201",
                 "gc_mailpoet_ex_input_text_color" => "#555555",
                 "gc_mailpoet_ex_input_placeholder_color" => "#cccccc",
+                "gc_mailpoet_ex_pro_input_background_color" => "#ffffff",
+                "gc_mailpoet_ex_pro_input_border_color" => "#005201",
+                "gc_mailpoet_ex_pro_input_text_color" => "#555555",
+                "gc_mailpoet_ex_pro_input_placeholder_color" => "#cccccc",
+                "gc_mailpoet_ex_pro_error_message_color" => "#aa0000",
+                "gc_mailpoet_ex_pro_error_message_border_color" => "#ffffff",
+                "gc_mailpoet_ex_pro_error_message_text_color" => "#ffffff",
             )
         ),
         "xmas_gold" => array(
@@ -282,6 +345,13 @@
                 "gc_mailpoet_ex_input_border_color" => "#6b6024",
                 "gc_mailpoet_ex_input_text_color" => "#555555",
                 "gc_mailpoet_ex_input_placeholder_color" => "#cccccc",
+                "gc_mailpoet_ex_pro_input_background_color" => "#ffffff",
+                "gc_mailpoet_ex_pro_input_border_color" => "#6b6024",
+                "gc_mailpoet_ex_pro_input_text_color" => "#555555",
+                "gc_mailpoet_ex_pro_input_placeholder_color" => "#cccccc",
+                "gc_mailpoet_ex_pro_error_message_color" => "#aa0000",
+                "gc_mailpoet_ex_pro_error_message_border_color" => "#ffffff",
+                "gc_mailpoet_ex_pro_error_message_text_color" => "#ffffff",
             )
         ),
     );        

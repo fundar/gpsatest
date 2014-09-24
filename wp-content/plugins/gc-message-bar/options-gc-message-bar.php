@@ -27,6 +27,15 @@ global $gc_message_bar_options;
                 'visible' => true,
                 'description' => 'Enable connect to MY.GetConversion'
             ),
+            'enable_remote_debug' => array(
+                'id' => 'enable_remote_debug',
+                'default' =>1,
+                'text' => 'Enable Remote Debug:',
+                'type' => 'onoff',
+                'group' => 'internal_engine',
+                'visible' => true,
+                'description' => 'Enable remote debugging'
+            ),
             'metrix_code' => array(
                 'id' => 'metrix_code',
                 'default' =>"",
@@ -36,6 +45,15 @@ global $gc_message_bar_options;
                 'renderer' => 'Metrix_Code_Renderer',
                 'visible' => true,
                 'description' => 'Tracking code for MY.GetConversion (Format: XXXXXXX-X)'
+            ),
+            'cache_directory' => array(
+                'id' => 'cache_directory',
+                'default' => '',
+                'text' => 'CSS Cache Directory:',
+                'type' => 'number',
+                'group' => 'internal_engine',
+                'visible' => true,
+                'description' => 'The style cache path directory of the GC Message Bar<br/>Default value: {plugin dir}/cache - Otherwise: {WP install path (ABSPATH)}/&lt;the_value&gt;'
             ),
 			
 			/*
@@ -100,6 +118,19 @@ global $gc_message_bar_options;
 				'type' => 'onoff',
 				'group' => 'general'
 			),
+            'css_handling' => array(
+                'id' => 'css_handling',
+                'default' =>'1',
+                'text' => 'CSS Caching:',
+                'type' => 'select',
+                'options' => array(
+                    '1' => 'Dynamic (Slowest)',
+                    '2' => 'Cached (Fastest)',
+                    '3' => 'Inline'
+                ),
+                'group' => 'general',
+                'description' => "Select the caching method of the plugin's CSS<br/>DYNAMIC = No cache - INLINE = CSS generated in to HTML - CACHED = Generated static CSS"
+            ),
             'content_align' => array(
                 'id' => 'content_align',
                 'default' =>'2',
@@ -248,7 +279,7 @@ global $gc_message_bar_options;
                 'type' => 'text',
                 'group' => 'filters_appear_here',
                 'renderer' => 'Ajax_Group_Renderer',
-                'description' => 'Use the full URL of the page'
+                'description' => 'Select the filter type and enter the URL (http://example.com/urltofilter)'
             ),            
             'mobile_devices' => array(
                 'id' => 'mobile_devices',

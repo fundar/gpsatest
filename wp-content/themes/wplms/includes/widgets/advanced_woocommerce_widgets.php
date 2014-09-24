@@ -41,9 +41,9 @@ class WC_Widget_Advanced_Layered_Nav extends WP_Widget {
 
 		/* Widget variable settings. */
 		$this->widget_cssclass 		= 'woocommerce widget_layered_nav';
-		$this->widget_description	= __( 'Shows a custom attribute in a widget which lets you narrow down the list of products when viewing product categories.', 'woocommerce' );
+		$this->widget_description	= __( 'Shows a custom attribute in a widget which lets you narrow down the list of products when viewing product categories.', 'vibe' );
 		$this->widget_idbase 		= 'vibe_woocommerce_layered_nav';
-		$this->widget_name 			= __( 'Vibe Advanced Layered Nav', 'woocommerce' );
+		$this->widget_name 			= __( 'Vibe Advanced Layered Nav', 'vibe' );
 
 		/* Widget settings. */
 		$widget_ops = array( 'classname' => $this->widget_cssclass, 'description' => $this->widget_description );
@@ -278,10 +278,10 @@ class WC_Widget_Advanced_Layered_Nav extends WP_Widget {
 		if ( ! isset( $instance['query_type'] ) )
 			$instance['query_type'] = 'and';
 ?>
-		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'woocommerce' ) ?></label>
+		<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'vibe' ) ?></label>
 		<input type="text" class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" value="<?php if ( isset( $instance['title'] ) ) echo esc_attr( $instance['title'] ); ?>" /></p>
 
-		<p><label for="<?php echo $this->get_field_id( 'attribute' ); ?>"><?php _e( 'Attribute:', 'woocommerce' ) ?></label>
+		<p><label for="<?php echo $this->get_field_id( 'attribute' ); ?>"><?php _e( 'Attribute:', 'vibe' ) ?></label>
 		<select id="<?php echo esc_attr( $this->get_field_id( 'attribute' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'attribute' ) ); ?>">
 			<?php
 			$attribute_taxonomies = $woocommerce->get_attribute_taxonomies();
@@ -293,10 +293,10 @@ class WC_Widget_Advanced_Layered_Nav extends WP_Widget {
 		</select></p>
 
 		
-		<p><label for="<?php echo $this->get_field_id( 'query_type' ); ?>"><?php _e( 'Query Type:', 'woocommerce' ) ?></label>
+		<p><label for="<?php echo $this->get_field_id( 'query_type' ); ?>"><?php _e( 'Query Type:', 'vibe' ) ?></label>
 		<select id="<?php echo esc_attr( $this->get_field_id( 'query_type' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'query_type' ) ); ?>">
-			<option value="and" <?php selected( $instance['query_type'], 'and' ); ?>><?php _e( 'AND', 'woocommerce' ); ?></option>
-			<option value="or" <?php selected( $instance['query_type'], 'or' ); ?>><?php _e( 'OR', 'woocommerce' ); ?></option>
+			<option value="and" <?php selected( $instance['query_type'], 'and' ); ?>><?php _e( 'AND', 'vibe' ); ?></option>
+			<option value="or" <?php selected( $instance['query_type'], 'or' ); ?>><?php _e( 'OR', 'vibe' ); ?></option>
 		</select></p>
 		<?php
 	}
@@ -369,9 +369,9 @@ class WC_Widget_Advanced_Layered_Nav_Filters extends WP_Widget {
 
 		/* Widget variable settings. */
 		$this->widget_cssclass 		= 'woocommerce widget_layered_nav_filters';
-		$this->widget_description	= __( 'Shows active layered nav filters so users can see and deactivate them.', 'woocommerce' );
+		$this->widget_description	= __( 'Shows active layered nav filters so users can see and deactivate them.', 'vibe' );
 		$this->widget_idbase 		= 'vibe_woocommerce_layered_nav_filters';
-		$this->widget_name 			= __( 'Vibe Advanced Layered Nav Filters', 'woocommerce' );
+		$this->widget_name 			= __( 'Vibe Advanced Layered Nav Filters', 'vibe' );
 
 		/* Widget settings. */
 		$widget_ops = array( 'classname' => $this->widget_cssclass, 'description' => $this->widget_description );
@@ -400,7 +400,7 @@ class WC_Widget_Advanced_Layered_Nav_Filters extends WP_Widget {
 		$current_term 	= $_attributes_array && is_tax( $_attributes_array ) ? get_queried_object()->term_id : '';
 		$current_tax 	= $_attributes_array && is_tax( $_attributes_array ) ? get_queried_object()->taxonomy : '';
 
-		$title = ( ! isset( $instance['title'] ) ) ? __( 'Active filters', 'woocommerce' ) : $instance['title'];
+		$title = ( ! isset( $instance['title'] ) ) ? __( 'Active filters', 'vibe' ) : $instance['title'];
 		$title = apply_filters( 'widget_title', $title, $instance, $this->id_base);
 
 		// Price
@@ -432,18 +432,18 @@ class WC_Widget_Advanced_Layered_Nav_Filters extends WP_Widget {
 					if ( sizeof( $new_filter ) > 0 )
 						$link = add_query_arg( 'filter_' . $taxonomy_filter, implode( ',', $new_filter ), $link );
 
-					echo '<li class="chosen layered_nav ' . strtolower($term->name) . '"><a title="' . __( 'Remove filter', 'woocommerce' ) . '" href="' . $link . '"><span class="remove"><i class="icon-cancel"></i></span></a></li>';
+					echo '<li class="chosen layered_nav ' . strtolower($term->name) . '"><a title="' . __( 'Remove filter', 'vibe' ) . '" href="' . $link . '"><span class="remove"><i class="icon-cancel"></i></span></a></li>';
 				}
 			}
 			}
 			if ( $min_price ) {
 				$link = remove_query_arg( 'min_price' );
-				echo '<li class="chosen layered_nav min_price"><a title="' . __( 'Remove filter', 'woocommerce' ) . '" href="' . $link . '"><span class="remove"><i class="icon-cancel"></i></span>'.__('Greater than','vibe').' ' . woocommerce_price( $min_price ) . '</a></li>';
+				echo '<li class="chosen layered_nav min_price"><a title="' . __( 'Remove filter', 'vibe' ) . '" href="' . $link . '"><span class="remove"><i class="icon-cancel"></i></span>'.__('Greater than','vibe').' ' . woocommerce_price( $min_price ) . '</a></li>';
 			}
 
 			if ( $max_price ) {
 				$link = remove_query_arg( 'max_price' );
-				echo '<li class="chosen layered_nav max_price"><a title="' . __( 'Remove filter', 'woocommerce' ) . '" href="' . $link . '"><span class="remove"><i class="icon-cancel"></i></span>'.__('Less than','vibe').'  ' . woocommerce_price( $max_price ) . '</a></li>';
+				echo '<li class="chosen layered_nav max_price"><a title="' . __( 'Remove filter', 'vibe' ) . '" href="' . $link . '"><span class="remove"><i class="icon-cancel"></i></span>'.__('Less than','vibe').'  ' . woocommerce_price( $max_price ) . '</a></li>';
 			}
 
 			echo "</ul>";

@@ -1,6 +1,6 @@
 <?php
 // Exit if accessed directly
-if ( !defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 
 /**
@@ -12,7 +12,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  */
 function buddydrive_temporarly_filters_wp_upload_dir( $upload_data ) {
 	$path = buddydrive()->upload_dir;
-	$url = buddydrive()->upload_url;
+	$url  = buddydrive()->upload_url;
 	
 	$buddydrive_args = apply_filters( 'buddydrive_upload_datas', 
 		array( 
@@ -95,18 +95,18 @@ function buddydrive_filter_user_space_left( $output, $quota ) {
  */
 function buddydrive_add_friend_to_recipients( $recipients ) {
 	
-	if( empty( $_REQUEST['buddyitem'] ) )
+	if ( empty( $_REQUEST['buddyitem'] ) )
 		return $recipients;
 	
 	$ids = friends_get_friend_user_ids( bp_loggedin_user_id() );
 	
 	$usernames = false;
 	
-	foreach( $ids as $id ) {
+	foreach ( $ids as $id ) {
 		$usernames[] = bp_core_get_username( $id );
 	}
 	
-	if( is_array( $usernames ) )
+	if ( is_array( $usernames ) )
 		return implode( ' ', $usernames );
 		
 	else
@@ -129,11 +129,46 @@ function buddydrive_hide_item( $args ) {
 	
 	$directory_pages = bp_core_get_directory_page_ids();
 	
-	$args['exclude'] = $directory_pages[$buddydrive_slug];
+	if ( empty( $args['exclude'] ) )
+		$args['exclude'] = $directory_pages[$buddydrive_slug];
+	else
+		$args['exclude'] .= ',' . $directory_pages[$buddydrive_slug];
+
 	return $args;
 }
+add_filter( 'wp_page_menu_args', 'buddydrive_hide_item', 20, 1 );
 
-add_filter( 'wp_page_menu_args', 'buddydrive_hide_item', 9, 1 );
+/**
+ * Prevent BuddyDrive directory page from showing in the Pages meta box of the Menu Administration screen.
+ *
+ * @since BuddyDrive (1.2.0)
+ *
+ * @uses bp_is_root_blog() checks if current blog is root blog.
+ * @uses buddypress() gets BuddyPress main instance
+ *
+ * @param object $object The post type object used in the meta box
+ * @return object The $object, with a query argument to remove register and activate pages id.
+ */
+function buddydrive_hide_from_nav_menu_admin( $object = null ) {
+
+	// Bail if not the root blog
+	if ( ! bp_is_root_blog() ) {
+		return $object;
+	}
+
+	if ( 'page' != $object->name ) {
+		return $object;
+	}
+
+	$bp = buddypress();
+
+	if ( ! empty( $bp->pages->buddydrive ) ) {
+		$object->_default_query['post__not_in'] = array( $bp->pages->buddydrive->id );
+	}
+
+	return $object;
+}
+add_filter( 'nav_menu_meta_box_object', 'buddydrive_hide_from_nav_menu_admin', 11, 1 );
 
 /**
  * Adds buddydrive's slug to the groups forbidden names
@@ -149,5 +184,4 @@ function buddydrive_add_to_group_forbidden_names( $names = array() ) {
 	$names[] = buddydrive_get_slug();
 	return $names;
 }
-
 add_filter( 'groups_forbidden_names', 'buddydrive_add_to_group_forbidden_names' );

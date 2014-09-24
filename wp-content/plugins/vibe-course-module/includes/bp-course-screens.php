@@ -44,10 +44,8 @@ function bp_course_my_results(){
  */
 
 function bp_course_my_courses() {
-
 	do_action( 'bp_course_screen_my_courses' );
-
-	bp_core_load_template( apply_filters( 'bp_course_template_my_courses', 'members/single/home' ) );
+	bp_core_load_template(apply_filters( 'bp_course_template_my_courses', 'members/single/home' ));
 }
 
 function bp_course_stats() {
@@ -146,4 +144,58 @@ function bp_screen_course_structure(){
 	
 }
 
+add_action('wplms_course_admin_bulk_actions','bp_course_admin_bulk_actions',10);
+
+function bp_course_admin_bulk_actions(){
+	echo '<ul>'.apply_filters('wplms_course_admin_bulk_actions_list',
+			'<li><a href="#" class="expand_message tip" title="'.__('Send Bulk Message','vibe').'"><i class="icon-letter-mail-1"></i></a></li>
+		    <li><a href="#" class="expand_add_students tip" title="'.__('Add Students to Course','vibe').'"><i class="icon-users"></i></a></li>
+		    <li><a href="#" class="expand_assign_students tip" title="'.__('Assign Badges/Certificates to Students','vibe').'"><i class="icon-key-fill"></i></a></li>').
+		'</ul>';
+}
+
+add_action('wplms_course_admin_bulk_actions','bp_course_admin_bulk_send_message',10);
+function bp_course_admin_bulk_send_message(){
+	$user_id = get_current_user_id();
+	echo'
+		<div class="bulk_message">
+			<input type="text" id="bulk_subject" class="form_field" placeholder="'.__('Type Message Subject','vibe').'">
+			<textarea id="bulk_message" placeholder="'.__('Type Message','vibe').'"></textarea>
+	 		<a href="#" id="send_course_message" data-course="'.get_the_ID().'" class="button full">'.__('Send Message','vibe').'</a>
+	 		<input type="hidden" id="sender" value="'.$user_id.'" />';
+	 	echo '</div>';
+		
+}
+
+add_action('wplms_course_admin_bulk_actions','bp_course_admin_add_students',20);
+function bp_course_admin_add_students(){
+	$instructor_add_students = vibe_get_option('instructor_add_students');
+	if((isset($instructor_add_students) && $instructor_add_students) || current_user_can('publish_posts')){
+		$user_id = get_current_user_id();
+		echo'
+			<div class="bulk_add_students">
+				<textarea id="student_usernames" placeholder="'.__('Enter Student Usernames, separated by comma','vibe').'"></textarea>
+		 		<a href="#" id="add_student_to_course" data-course="'.get_the_ID().'" class="button full">'.__('Add Students','vibe').'</a>';
+	 	echo '</div>';
+	}
+}
+
+add_action('wplms_course_admin_bulk_actions','bp_course_admin_assign_students',20);
+function bp_course_admin_assign_students(){
+	$instructor_assign_students = vibe_get_option('instructor_assign_students');
+	if((isset($instructor_assign_students) && $instructor_assign_students) || current_user_can('publish_posts')){
+		$user_id = get_current_user_id();
+		echo'
+		<div class="bulk_assign_students">
+			<br />
+			<select id="assign_action" name="assign_action">
+				<option value="add_badge">'.__('ASSIGN COURSE BADGE','vibe').'</option>
+				<option value="add_certificate">'.__('ASSIGN COURSE CERTIFICATE','vibe').'</option>
+				<option value="remove_badge">'.__('REMOVE COURSE BADGE','vibe').'</option>
+				<option value="remove_certificate">'.__('REMOVE COURSE CERTIFICATE','vibe').'</option>
+			</select>
+			<a href="#" id="assign_course_badge_certificate" data-course="'.get_the_ID().'" class="button full">'.__('Assign Action','vibe').'</a>';
+	 	echo '</div>';
+	}
+}
 ?>

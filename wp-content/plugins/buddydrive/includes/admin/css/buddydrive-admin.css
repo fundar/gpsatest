@@ -1,57 +1,3 @@
-i.bd-icon-file,.bd-icon-folder,
-i.bd-icon-users,
-i.bd-icon-remove,
-i.bd-icon-uniF47C,
-i.bd-icon-createfile,
-i.bd-icon-addfolder,
-i.bd-icon-home,
-i.bd-icon-analytics3,
-i.bd-icon-key,
-i.bd-icon-lock,
-i.bd-icon-unlocked {
-	display: inline-block;
-	width: 16px;
-	height: 16px;
-	background-image: url(../../images/buddydrive-bar.png);
-	background-repeat: no-repeat;
-}
-i.bd-icon-file {
-	background-position: 0 0;
-}
-i.bd-icon-folder {
-	background-position: -32px 0;
-}
-i.bd-icon-users {
-	background-position: -64px 0;
-}
-i.bd-icon-remove {
-	background-position: -96px 0;
-}
-i.bd-icon-uniF47C {
-	background-position: -128px 0;
-}
-i.bd-icon-createfile {
-	background-position: -160px 0;
-}
-i.bd-icon-addfolder {
-	background-position: -192px 0;
-}
-i.bd-icon-home {
-	background-position: -224px 0;
-}
-i.bd-icon-analytics3 {
-	background-position: -256px 0;
-}
-i.bd-icon-key {
-	background-position: -288px 0;
-}
-i.bd-icon-lock {
-	background-position: -320px 0;
-}
-i.bd-icon-unlocked {
-	background-position: -352px 0;
-}
-
 #buddydrive-edit-form input {
 	outline: medium none;
 	padding: 3px 8px;
@@ -90,4 +36,65 @@ i.bd-icon-unlocked {
 .buddydrive-load-more a {
 	color: #4D4D4D;
 	text-decoration:none;
+}
+
+i.icon {
+	font-family: 'dashicons';
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	line-height: 1;
+	font-size: 24px;
+	font-weight: normal;
+	font-style: normal;
+	vertical-align: top;
+	text-align: center;
+	-webkit-transition: color .1s ease-in 0;
+	transition: color .1s ease-in 0;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+i.icon.bd-icon-newfile:before {
+	content: "\f133";
+}
+
+i.icon.bd-icon-newfolder:before,
+i.icon.bd-icon-folder:before {
+	content:"\f322";
+}
+
+i.icon.bd-icon-delete:before {
+	content: "\f182";
+}
+
+i.icon.bd-icon-edit:before {
+	content:"\f464";
+}
+
+i.icon.bd-icon-analytics:before{
+	content: "\f185";
+}
+
+i.icon.bd-icon-root:before{
+	content: "\f102";
+}
+i.icon.bd-icon-lock:before{
+	content: "\f160";
+}
+
+i.icon.bd-icon-users:before{
+	content: "\f307";
+}
+
+i.icon.bd-icon-key:before{
+	content: "\f112";
+}
+
+i.icon.bd-icon-unlocked:before{
+	content: "\f177";
+}
+
+i.icon.bd-icon-file:before{
+	content: "\f498";
 }

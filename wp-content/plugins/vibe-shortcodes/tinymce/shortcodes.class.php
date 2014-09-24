@@ -62,6 +62,7 @@ class vibe_shortcodes
 			}
 			
 			// filters and excutes params
+			if(is_Array($this->params))
 			foreach( $this->params as $pkey => $param )
 			{
 				// prefix the fields names and ids with vibe_

@@ -19,6 +19,7 @@ function bp_course_register_widgets() {
     register_widget('BP_Course_Widget');
     register_widget('BP_Instructor_Widget');
     register_widget('BP_Course_Search_Widget');
+    register_widget('BP_Course_Stats_Widget');
 }
 
 class BP_Course_Widget extends WP_Widget {
@@ -71,6 +72,7 @@ class BP_Course_Widget extends WP_Widget {
 
 		     switch($style){
 		     	case 'list':
+		     	case 'list1':
 		     		echo '<ul class="widget_course_list no-ajax">';
 		     	break;
 		     	case 'carousel':
@@ -84,7 +86,10 @@ class BP_Course_Widget extends WP_Widget {
 	global $post;
 	switch($style){
 		     	case 'list':
-		     	echo '<li><a href="'.get_permalink($post->ID).'">'.get_the_post_thumbnail($post->ID,'thumbnail').'<h6>'.get_the_title($post->ID).'<span>by '.bp_core_get_user_displayname($post->post_author).'</span></h6></a>';
+		     	echo '<li><a href="'.get_permalink($post->ID).'">'.get_the_post_thumbnail($post->ID,'thumbnail').'<h6>'.get_the_title($post->ID).'<span>'.__('by','vibe').' '.bp_core_get_user_displayname($post->post_author).'</span></h6></a></li>';
+		     	break;
+		     	case 'list1':
+		     	echo '<li><a href="'.get_permalink($post->ID).'">'.get_the_post_thumbnail($post->ID,'thumbnail').'<h6>'.get_the_title($post->ID).'<span>'.bp_course_get_course_meta().'</span></h6></a></li>';
 		     	break;
 		     	case 'carousel':
 		     	echo '<li>';
@@ -103,6 +108,7 @@ class BP_Course_Widget extends WP_Widget {
 	?>
 	<?php
 		switch($style){
+				case 'list1':
 		     	case 'list':
 		     		echo '</ul>';
 		     	break;
@@ -145,6 +151,7 @@ class BP_Course_Widget extends WP_Widget {
 		<select id="<?php echo $this->get_field_id( 'style' ); ?>" name="<?php echo $this->get_field_name( 'style' ); ?>">
 			<option value="single" <?php selected('single',esc_attr( $style )); ?>><?php _e('Single'); ?></option>
 			<option value="list" <?php selected('list',esc_attr( $style )); ?>><?php _e('List'); ?></option>
+			<option value="list1" <?php selected('list1',esc_attr( $style )); ?>><?php _e('Ratings List'); ?></option>
 			<option value="carousel" <?php selected('carousel',esc_attr( $style )); ?>><?php _e('Carousel'); ?></option>
 		</select>
 		</p>
@@ -211,16 +218,15 @@ class BP_Instructor_Widget extends WP_Widget {
 		     }
 
 		    echo '<div class="course_instructor_widget">';
-		    echo bp_course_get_instructor_avatar('item_id='.$instructor);
 		    echo bp_course_get_instructor('instructor_id='.$instructor);
 		    echo '<div class="description">'.bp_course_get_instructor_description('instructor_id='.$instructor).'</div>';
 		    echo '<a href="'.get_author_posts_url($instructor).'" class="tip" title="'.__('Check all Courses created by ','vibe').bp_core_get_user_displayname($instructor).'"><i class="icon-plus-1"></i></a>';
 		    echo '<h5>'.__('More Courses by ','vibe').bp_core_get_user_displayname($instructor).'</h5>';
 		    echo '<ul class="widget_course_list">';
-		    $query = new WP_Query( 'post_type=course&author='.$instructor.'&post_per_page='.$max_items );
+		    $query = new WP_Query( 'post_type=course&author='.$instructor.'&posts_per_page='.$max_items );
 		    while($query->have_posts()):$query->the_post();
 		    global $post;
-		    echo '<li><a href="'.get_permalink($post->ID).'">'.get_the_post_thumbnail($post->ID,'thumbnail').'<h6>'.get_the_title($post->ID).'<span>by '.bp_core_get_user_displayname($post->post_author).'</span></h6></a>';
+		    echo '<li><a href="'.get_permalink($post->ID).'">'.get_the_post_thumbnail($post->ID,'thumbnail').'<h6>'.get_the_title($post->ID).'<span>'.__('by','vibe').' '.bp_core_get_user_displayname($post->post_author).'</span></h6></a>';
 		    endwhile;
 		    wp_reset_postdata();
 		    echo '</ul>';
@@ -315,36 +321,24 @@ class BP_Course_Search_Widget extends WP_Widget {
 					$html .='</select></li>';        
 				}	        
 		     }
+		     $leveloption = vibe_get_option('level'); 
+		     if(isset($leveloption) && $leveloption && isset($level) && $level == 1){
+		     	$level_val=$_GET['level'];
 
-		     
+		     	$level_vals = get_terms('level');
+		     	$html .= '<li><select name="level" class="chosen chzn-select">';
+		     	$html .='<option value="">'.__('Select Course Level','vibe').'</option>';
+		     	foreach($level_vals as $term){
+		     		$html .='<option value="'.$term->slug.'" '.(isset($level_val)?selected($level_val,$term->slug,false):'').'>'.$term->name.'</option>';
+		     	}
+		     	$html .= '</select></li>';
+		     }
+
 				$html .='<li><input type="text" value="'.(isset($_GET['s'])?$_GET['s']:'').'" name="s" id="s" placeholder="'.__('Type Keywords..','vibe').'" /></li>
-					     <li><input type="submit" id="searchsubmit" value="Search" /></li></ul>
+					     <li><input type="submit" id="searchsubmit" value="'.__('Search','vibe').'" /></li></ul>
 					</form>';
 
 					echo $html;
-		     /*
-		     if(is_single()){
-		     	global $post;
-				$instructor=$post->post_author;
-		     }
-
-		    echo '<div class="course_instructor_widget">';
-		    echo bp_course_get_instructor_avatar('item_id='.$instructor);
-		    echo bp_course_get_instructor('instructor_id='.$instructor);
-		    echo '<div class="description">'.bp_course_get_instructor_description('instructor_id='.$instructor).'</div>';
-		    echo '<a href="'.get_author_posts_url($instructor).'" class="tip" title="'.__('Check all Courses created by ','vibe').bp_core_get_user_displayname($instructor).'"><i class="icon-plus-1"></i></a>';
-		    echo '<h5>'.__('More Courses by ','vibe').bp_core_get_user_displayname($instructor).'</h5>';
-		    echo '<ul class="widget_course_list">';
-		    $query = new WP_Query( 'post_type=course&author='.$instructor.'&post_per_page='.$max_items );
-		    while($query->have_posts()):$query->the_post();
-		    global $post;
-		    echo '<li><a href="'.get_permalink($post->ID).'">'.get_the_post_thumbnail($post->ID,'thumbnail').'<h6>'.get_the_title($post->ID).'<span>by '.bp_core_get_user_displayname($post->post_author).'</span></h6></a>';
-		    endwhile;
-		    wp_reset_postdata();
-		    echo '</ul>';
-		    echo '</div>'; 
-		    */
-		     //Preparing Query
 		    
 	 echo $after_widget; ?>
 	<?php
@@ -356,8 +350,7 @@ class BP_Course_Search_Widget extends WP_Widget {
 		$instance['title'] = strip_tags( $new_instance['title'] );
 		$instance['cats'] = strip_tags( $new_instance['cats'] );
 		$instance['instructors'] = strip_tags( $new_instance['instructors'] );
-		
-
+		$instance['level'] = strip_tags( $new_instance['level'] );
 		return $instance;
 	}
 
@@ -365,19 +358,161 @@ class BP_Course_Search_Widget extends WP_Widget {
 		$defaults = array( 
 			'title'=> 'Advanced Course Search Widget',
 			'instructors' => 1,
-			'cats' => 1 );
+			'cats' => 1,
+			'level' => 1,
+			 );
 
 		$instance = wp_parse_args( (array) $instance, $defaults );
-
+		$leveloption = vibe_get_option('level'); 
 		extract( $instance, EXTR_SKIP );
 		$title = esc_attr($instance['title']);
 		$cats = esc_attr($instance['cats']);
 		$instructors = esc_attr($instance['instructors']);
+		$level = esc_attr($instance['level']);
+		if(isset($leveloption) && $leveloption)
+			$level = esc_attr($instance['level']);
 		?>
 		<p><label for="bp-course-search-widget-title"><?php _e( 'Widget Title', 'vibe' ); ?> <input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" style="width: 30%" /></label></p>
 		<p><label for="bp-course-cat-dropdown"><?php _e( 'Show Course Category Dropdown', 'vibe' ); ?> <input class="checkbox" id="<?php echo $this->get_field_id( 'cats' ); ?>" name="<?php echo $this->get_field_name( 'cats' ); ?>" type="checkbox" value="1" <?php checked($cats,1,true) ?>/></label></p>
 		<p><label for="bp-instructor-dropdown"><?php _e( 'Show Instructor Dropdown', 'vibe' ); ?> <input class="checkbox" id="<?php echo $this->get_field_id( 'instructors' ); ?>" name="<?php echo $this->get_field_name( 'instructors' ); ?>" type="checkbox" value="1"  <?php checked($instructors,1,true) ?>/></label></p>
+		<?php 
+		if(isset($leveloption) && $leveloption){
+		?>
+			<p><label for="bp-instructor-level"><?php _e( 'Show Level Dropdown', 'vibe' ); ?> <input class="checkbox" id="<?php echo $this->get_field_id( 'level' ); ?>" name="<?php echo $this->get_field_name( 'level' ); ?>" type="checkbox" value="1"  <?php checked($level,1,true) ?>/></label></p>
+		<?php
+		}
+	}
+}
+
+
+class BP_Course_Stats_Widget extends WP_Widget {
+
+
+
+	function BP_Course_Stats_Widget() {
+	  $widget_ops = array( 'classname' => 'buddypress-course-stats-widget', 'description' => 'Displays Stats for Course.' );
+	  $control_ops = array( 'width' => 250, 'height' => 350,'id_base' => 'bp_course_stats_widget');
+	  $this->WP_Widget( 'bp_course_stats_widget',  __('BuddyPress Course Stats Widget','vibe'), $widget_ops, $control_ops);
+	  }
+
+	function widget( $args, $instance ) {
+		global $bp,$wpdb;
+
+		extract( $args );
+
+		extract( $instance, EXTR_SKIP );
+		echo $before_widget;
+		if(isset($title) && $title !='')
+		echo $before_title .
+		     $title .
+		     $after_title; 
+
+		if($course == 'current')     
+			$course = get_the_ID();
+
+		if(is_numeric($course)){
+			if($students){
+				$ct=$wpdb->get_results("
+						SELECT SUM(rel.meta_value) as total_students
+					    FROM {$wpdb->posts} AS posts
+					    LEFT JOIN {$wpdb->postmeta} AS rel ON posts.ID = rel.post_id
+					    WHERE 	posts.post_type 	= 'course'
+					    AND     posts.ID = $course
+						AND 	posts.post_status 	= 'publish'
+						AND 	rel.meta_key   = 'vibe_students'
+					");
+				$total_students=(empty($ct[0]->total_students)?0:$ct[0]->total_students);
+			}
+			if($badgecertificates){
+				$total_badges = get_post_meta($course,'badge',true);
+				$total_certificates= get_post_meta($course,'pass',true);
+			}
+		}else{
+			if($students){
+				$ct=$wpdb->get_results("
+						SELECT SUM(rel.meta_value) as total_students
+					    FROM {$wpdb->posts} AS posts
+					    LEFT JOIN {$wpdb->postmeta} AS rel ON posts.ID = rel.post_id
+					    WHERE 	posts.post_type 	= 'course'
+						AND 	posts.post_status 	= 'publish'
+						AND 	rel.meta_key   = 'vibe_students'
+					");
+				$total_students=(empty($ct[0]->total_students)?0:$ct[0]->total_students);
+			}
+			if($badgecertificates){
+				$ct=$wpdb->get_results("
+							SELECT count(rel.meta_value) as badge
+						    FROM {$wpdb->posts} AS posts
+						    LEFT JOIN {$wpdb->postmeta} AS rel ON posts.ID = rel.post_id
+						    WHERE 	posts.post_type 	= 'course'
+							AND 	posts.post_status 	= 'publish'
+							AND 	rel.meta_key   = 'badge'
+						");
+				$total_badges = (empty($ct[0]->badge)?0:$ct[0]->badge);
+				$ct=$wpdb->get_results("
+							SELECT count(rel.meta_value) as certificates
+						    FROM {$wpdb->posts} AS posts
+						    LEFT JOIN {$wpdb->postmeta} AS rel ON posts.ID = rel.post_id
+						    WHERE 	posts.post_type 	= 'course'
+							AND 	posts.post_status 	= 'publish'
+							AND 	rel.meta_key   = 'pass'
+						");
+				$total_certificates= (empty($ct[0]->certificates)?0:$ct[0]->certificates);
+			}
+		}    
+		 
+		echo '<div class="stat_num">';
+		if($students)
+		    echo '<strong class="tip" title="'.__('TOTAL STUDENTS','vibe').'"><i class="icon-myspace-alt"></i><span>'.$total_students.'</span></strong>';
+		if($badgecertificates)
+		    echo '<strong  class="tip" title="'.__('BADGES','vibe').'"><i class="icon-award-stroke"></i><span>'.$total_badges.'</span></strong>
+		        <strong  class="tip" title="'.__('CERTIFICATES','vibe').'"><i class="icon-certificate-file"></i><span>'.$total_certificates.'</span></strong>';
+
+		    echo '</div>';                
+	 echo $after_widget; ?>
 	<?php
+	}
+
+	function update( $new_instance, $old_instance ) {
+		$instance = $old_instance;
+		$instance['title'] = strip_tags( $new_instance['title'] );
+		$instance['course'] = strip_tags( $new_instance['course'] );
+		$instance['students'] = strip_tags( $new_instance['students'] );
+		$instance['badgecertificates'] = strip_tags( $new_instance['badgecertificates'] );
+		return $instance;
+	}
+
+	function form( $instance ) {
+		$defaults = array( 
+			'title'=> 'Course Stats Widget',
+			'course' => '',
+			 );
+
+		$instance = wp_parse_args( (array) $instance, $defaults );
+		extract( $instance, EXTR_SKIP );
+		$title = esc_attr($instance['title']);
+		$course = esc_attr($instance['course']);
+		$students = esc_attr($instance['students']);
+		$badgecertificates = esc_attr($instance['badgecertificates']);
+		?>
+		<p><label for="bp-course-stats-widget-title"><?php _e( 'Widget Title', 'vibe' ); ?> <input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" style="width: 30%" /></label></p>
+		<p><label for="bp-course-stats-dropdown"><?php _e( 'Select Course', 'vibe' ); ?> 
+			<select id="<?php echo $this->get_field_id( 'course' ); ?>" name="<?php echo $this->get_field_name( 'course' ); ?>">
+				<option value="" <?php selected('',$course); ?>><?php _e('All','vibe'); ?></option>
+				<option value="current" <?php selected('current',$course); ?>><?php _e('Current Course (defaults to all)','vibe'); ?></option>
+				<?php
+					$args = array('post_type'=>'course','posts_per_page'=>-1);
+					$the_query= new WP_QUERY($args);
+					while($the_query->have_posts()):$the_query->the_post();
+					echo '<option value="'.get_the_ID().'" '.selected('current',$course).'>'.get_the_title().'</option>';
+					endwhile;
+					wp_reset_postdata();
+				?>
+			</select>
+		</label></p>
+		<p><label for="bp-course-stats-level"><?php _e( 'Show Students Stats', 'vibe' ); ?> <input class="checkbox" id="<?php echo $this->get_field_id( 'students' ); ?>" name="<?php echo $this->get_field_name( 'students' ); ?>" type="checkbox" value="1"  <?php checked($students,1,true) ?>/></label></p>
+		<p><label for="bp-course-certificates-level"><?php _e( 'Show Badge/Certificates Stats', 'vibe' ); ?> <input class="checkbox" id="<?php echo $this->get_field_id( 'badgecertificates' ); ?>" name="<?php echo $this->get_field_name( 'badgecertificates' ); ?>" type="checkbox" value="1"  <?php checked($badgecertificates,1,true) ?>/></label></p>
+		<?php
 	}
 }
 
