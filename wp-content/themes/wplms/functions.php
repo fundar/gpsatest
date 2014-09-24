@@ -208,12 +208,14 @@ function get_custom_post_type_template($single_template) {
 add_filter( "single_template", "get_custom_post_type_template" ) ;
 
 //fix for cookie error while login.
+/*
 function set_wp_test_cookie() {
 	setcookie(TEST_COOKIE, 'WP Cookie check', 0, COOKIEPATH, COOKIE_DOMAIN);
 	if ( SITECOOKIEPATH != COOKIEPATH ) {
 		setcookie(TEST_COOKIE, 'WP Cookie check', 0, SITECOOKIEPATH, COOKIE_DOMAIN);
 	}
 }
+*/
 
 add_filter( 'wp_headers', 'yourprefix_remove_x_pingback' );
 function yourprefix_remove_x_pingback( $headers )
@@ -221,3 +223,4 @@ function yourprefix_remove_x_pingback( $headers )
     unset( $headers['X-Pingback'] );
     return $headers;
 }
+add_action( 'after_setup_theme', 'set_wp_test_cookie', 101 );
