@@ -1,0 +1,45 @@
+* version1.7.4
+* UPDATED : Translation files
+* version1.7.3
+* version1.7.2
+* UPDATED : Language files
+* ADDED : CodeStyling localization compatibility
+* version1.7.1
+* version1.7
+* version1.6.5
+* version 1.6.4
+* version 1.6.3
+* FIXED : Adding Protocol http or https identification in google maps
+* version 1.6.2
+* Updated  : Language files
+* version 1.6.1
+* ADDED : Hide Student invite buttons for paid events
+* version 1.6
+* UPDATED : Language Files
+* FIXED : Google maps script to load only on events page
+* version 1.5.5
+* UPDATED : Language Files [US,ES]
+* ADDED : Private and Paid Events
+* Version 1.5.4
+* Fixed : Translation bug
+* version 1.5.3
+* UPDATED : Language files
+* FIXED : Changed load_textdomain to load_plugin_textdomain
+* FIXED : Events in Added in translation files
+* version 1.5.2
+* ADDED :Translation files
+* FIXED : Issue in Checkout Page due to events magnific popup bug
+* FIXED : Mobile viewport fix
+* Fix : Today date fix in left
+* Version 1.4.1
+* Fix: Flush permalinks on activate and deactivate
+* Version 1.4
+* Adding Event Styles in widget
+* Auto Update in Course Events
+* Finishing Widget Modules
+* Invitation and Reminders
+* Invitation and reminder CSS
+* Adding Invitation and Reminders
+* Events init 0.1
+* starting with plugin
+* init files

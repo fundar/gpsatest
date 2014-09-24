@@ -1,0 +1,152 @@
+* version1.7.5
+* Translation update
+* ADDED : Adjustment parameter in Parallax
+* version1.7.4
+* version1.7.4
+* UPDATED : Language files
+* FIXED : Translation bugs
+* Filters added to hide courses from site.
+* FREE Translated
+* Shifted the Vibe_GET_Option function
+* version1.7.3
+* UPDATED : Language  files
+* FIXED : Translation line
+* ADDED : Get option function to avoid fatal errors on Multi site
+* FIXED : Warning on Course Style not being set
+* REMOVED : Redundant Tax_select option
+* UPDATED : Language files hook
+* version1.7.2
+* UPDATED : Language Files
+* FIXED : Google maps static in admin pages
+* ADDED : CodeStyling localization compatibility
+* version1.7.1
+* FIXED : Private label bug in PMPro memberships
+* FIXED : Linkage for products
+* version 1.7
+* version 1.7
+* UPDATED : Language files
+* ADDED: Variable Assignment Upload limit
+* version1.6.5
+* version1.6.5
+* ADDED :  Calculate duration function
+* ADDED : Duration parameters
+* ADDED : Level taxonomy
+* UPDATED : Assignments to multi cpt
+* ADDED : Fallback for selectcpt in selectmulticpt
+* version1.6.4
+* UPDATED : Translation files
+* ADDED : Page Attributes in courses for Custom Ordering
+* FIXED : Set a default value for course in course creation
+* ADDED : Thumbnail style output filter
+* ADDED : Event Card and Thumb Style filter
+* ADDED : Dynamic Taxonomy select for dynamic quiz
+* version 1.6.3.1
+* FIXED : Vibe Custom types plugin multicpt metabox issue
+* version1.6.3
+* FIXED : All featured block images now link to their respective posts
+* version 1.6.2.1
+* Added : pt_BR language files
+* FIXED : Product settings Course selection issue
+* FIXED : Enable CPT Quiz in Page builder
+* version 1.6.2
+* Updated  : Language files
+* ADDED : Linkage taxonomy
+* ADDED : Filters for each meta box , to extend the metaboxes
+* ADDED : French language files
+* FIXED : Check on array validity. Course Bug in Products
+* FIXED : Post ids bug in Page Builder
+* Added: Spanish language files
+* ADDED : Linkage
+* ADDED : Course Start date & Number of Seats in course
+* version 1.6.1
+* ADDED : Unit type hook for more unit types
+* version 1.6
+* UPDATED : Language Files [US]
+* UPDATED : Added filter for all backend queries
+* Version 1.5.5
+* UPDATED : Translation files
+* ADDED : Event Access and Product integration
+* Version 1.5.4.1
+* FIXED : Add Units in Course
+* version 1.5.4
+* UPDATED : Translation files
+* FIXED : Translation bug
+* FIXED : Quiz Repeatable questions bug
+* FIXED : Pagebuilder Flexslider bug
+* FIXED: Quiz multiple repeating questions bug
+* FIXED : Refactored Course credits filter
+* FIXED : Spelling mistake in Assignment
+* Version 1.5.3
+* Version 1.5.3
+* Fixed : Load_textdomain to load_plugin_textodmain
+* UPDATED : Translation files
+* FIXED : Translation of "reviews"
+* UPDATED : Certificate Shortcodes added
+* ADDED :Hooks for custom admin functions
+* 1.5.2.3
+* FIXED : WP 3.9 compatibility
+* version 1.5.2.1
+* FIXED : WP 3.9 Page Builder issue
+* FIXED : Active Check for WooCommerce on Network sites
+* version 1.5.2
+* FIXED: Meta box warning
+* FIXED: Animation effects on Page builder blocks
+* Updated version 1.5.1.2
+* Fixed : Animation Effects
+* FIXED: Price Bug in Course Thumbnail style
+* FIXED : Page builder bug fix
+* Fixed : Get Price fix
+* UPDATED : Language files updated
+* FIXED : WooCommerce Coupons bug fix
+* FIXED : Page Builder Post grid actual image widths bug
+* UPDATED : PMPro multi level support for Courses
+* Fix : PHP Warning on meta box saving Yes/No , Show/Hide
+* Fix : Added a hook to hide/show student count in Course Thumbnail
+* ADDED : Assignment Connect in Units
+* Updated : Removed the WooCommerce endpoints temporary fix. Everything works fine now.
+* Fix : PMPro in Featured Thumbnail
+* version 1.4.1
+* Fix: Updated Language Files
+* ADDED : PMPRO Support
+* Fix: Quiz connected Course hook.
+* FIX : Testimonial Default Image fix.
+* Timepicker
+* v 1.4
+* Comments in Translation files
+* Front end editor changes
+* Active plugin check for events
+* ADDED : Event Card featured thumbnail style
+* Fix: WooCommerce End point fixes
+* Enabling events
+* Script Bug fix occurs only in rare case
+* Flush rewrite rules permalink fix
+* Flush rewrite rules permalink fix
+* Language files updated
+* v 1.3.4
+* WPLMS Multi Site Fix.
+* Instructor Stats
+* Disabling events for 1.3.4 version
+* Adding Sort Question type
+* Show Course Categories in Admin menu
+* Events, Testimonials label fix
+* Events Post Type metabox
+* Registering Events Post type
+* Adding Time Picker files and field tipe
+* Adding Time Picker
+* Events Metabox
+* v 1.3.3
+* Language Translation Files and fixes
+* Direct access fix
+* Retake Quiz option
+* Several Filters for Thumbnail styles
+* Certificate BG Image bug fix
+* version 1.3.2
+* Certificate Generator
+* Version 1.3.1
+* Course Meta Query Controls added in standard Page builder blocks
+* Course Auto Evaluation
+* Page Builder Conflict with InfuseWoo pro
+* Finishing Instructor Commission Payments
+* Adding Provision for Recording payments
+* Starting with history
+* Initializing Repo

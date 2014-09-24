@@ -1,0 +1,240 @@
+* version1.7.5
+* WP FEE 1.0 beta fix
+* Child theme fix
+* version1.7.4
+* UPDATED  : Language files
+* Translation fixes
+* JQuery Print script added
+* Version 1.7.3.1
+* ADDED : Free Translation
+* FIXED : Child Theme bug
+* FIXED : Multisite auto activation
+* Coauthor plus support in instructing courses
+* added course it in Drip filter
+* Fixed : Record CPT Warning
+* Renamed Enter student name/email
+* version1.7.3
+* UPDATED : Language files
+* Load Quiz results in popup
+* FIXED : Language translation fix
+* ADDED : Custom Course Time format
+* ADDED : Load finished quiz results in the Course curriculum
+* ADDED : Search Student in Course Admin
+* FIXED : Language and translation issues
+* ADDED : Message sent to instructor when user submits course for manual courses
+* Fixed : Printing issues
+* UPDATED: Language files
+* Updated : Language files
+* FIXED : 9999 days in activity for unlimited duration
+* version1.7.2
+* FIXED : Multiple Correct Auto Evaluated bug
+* UPDATED : Language files
+* ADDED : Course Stats widget
+* REMOVED : BP Course Instructor avatar function
+* FIXED : WPML Start course bug
+* ADDED : Hooks for BadgeOs Addon plugin
+* ADDED : Query args filter for Filter Widgets
+* ADDED : Minification support
+* FIXED : COURSE CPT constant instead of SLUG
+* ADDED : CodeStyling localization compatibility
+* UPDATED : Added filter for Marks
+* FIXED : BP Course CPT in Post Type slug
+* FIXED : Remove BP Course instructor avatar call
+* FIXED : DW Q&A Integration fixes
+* UPDATED : Instructor display html
+* ADDED : Rating list in Course widget
+* FIXED : Language files
+* FIXED: Instructor course CSS for CoAuthor Plus
+* version1.7.1
+* version1.7.1
+* UPDATED : Language Files
+* ADDED :Language gr_GR
+* ADDED : Grid view in course
+* FIXED : Pricing issue in Course, Product, membership, private label conflict.
+* FIXED : Hint shown on blank
+* FIXED : Fetch Quiz colors from customizer
+* Removing Instructor query from plugin
+* version1.7
+* UPDATED : LANGUAGE FILES
+* FIXED: Record activity from all Post Type
+* UPDATED : Order correction for recording activities
+* version 1.6.5
+* FIXED : Duration parameters
+* ADDED : Filter to arrange information in course details
+* ADDED : Levels in course search widget
+* ADDED : Custom slugs
+* version1.6.4
+* FIXED : Course access removed when order is cancelled/refunded
+* FIXED : Reset Answer and Save Answer
+* ADDED : Default orderly is Menu order
+* ADDED : Match Question type
+* FIXED : Students finishing course can see course
+* FIXED: Unnecessary settings in notifications
+* ADDED : PMPRo and WooCommerce simultaneously
+* ADDED : Question Hints
+* UPDATED : Language files
+* FIXED : Firefox Issues on media completion
+* version 1.6.3.1
+* FIXED : Duration on manually adding user to course
+* FIXED : Several warning in WPDEBUG mode
+* version 1.6.3
+* ADDED : Search in translation files in Course search widget
+* ADDED : Portugese translation files
+* version 1.6.2
+* Updated  : Language files
+* FIXED : xprofile check
+* ADDED : rs_RS.po file
+* FIXED : Course with No quiz
+* ADDE : Filter for Extra information in course button
+* FIXED : Remove Member from Group and removing from Course
+* FIXED : WPLMS Student course reset action
+* FIXED : Blank or invalid certificate code
+* version 1.6.1
+* FIXED : Duplicate Badge and Certificate assignment
+* FIXED : Warning message in Quiz when no questions defined
+* version 1.6
+* UPDATED : Language FILES [US,FR,PL,DE,ES,IT]
+* ADDED : Hook for resetting course expired students
+* FIXED : Unregistered actions bug
+* FIXED : Draft,Pending,Private,future courses
+* FIXED : Date labels filter
+* ADDED : Filter for Instructor to view courses in user profile
+* UPDATED : Course Members section now show all completed members
+* FIXED: Unit complete scroll issue
+* ADDED : French Translation files
+* version 1.5.5
+* FIXED : Visual composer javascript functions on Units and Unit media locking tooltip bug
+* ADDED: Filter wplms_course_finished on the Finished content. Used in showing reviews after course is finished
+* FIXED : ADDED a boundary Condition, checks for course array
+* Version 1.5.4
+* UPDATED : Translation files [US,ES,DE,IT,PL]
+* FIXED : by in translation
+* FIXED : Bulk send message bug
+* FIXED : Pagination bug in Course -> Members
+* ADDED: Ajax loader for Quiz
+* ADDED : Custom Functions to check user active status in a course
+* ADDED : Badge & Certificate Assigning form Course Admin
+* FIXED : Added Course action in Activity
+* ADDED :Italian translation files
+* FIXED : Adding per to translation files
+* Version 1.5.3.1
+* ADDED : German Translation files
+* FIXED: Translations bug
+* FIXED : Ajax Quiz bug
+* FIXED : Proceed to Quiz fix for unit locking
+* FIXED : Activity pages blank due to BuddyPress pagination bug
+* Version1.5.3
+* UPDATED : Language Files
+* FIXED : Changed load_textdomain to load_plugin_textdomain
+* FIXED : Warning when Certificates were reset to a string.
+* FIXED : Certificate Print functions
+* ADDED : New HTML Canvas Library
+* FIXED : CSS fixes
+* ADDED : Private Courses
+* ADDED : Instructor ability to add Students
+* ADDED : New Library for printing certificates
+* ADDED : Unit Blocking
+* version 1.5.2
+* FIXED: Quiz submit question appearing.
+* FIXED : BP Course SLUG Added in Quiz Results marks message.
+* v 1.5.1.1
+* FIXED: Quiz timer event bug in Firefox
+* FIXED : Language files
+* FIXED : PMPRO Membership errors
+* UPDATED : Language files updated
+* FIXED : Free Course not show error message for non-logged in users
+* FIXED : Translation fixes in Unit Traverse
+* ADDED : Necessary course functions for various tips and hooks
+* FIXED : All Course Page Title default values
+* FIXED : Alphabetical Sort Order
+* FIX : Timer in Theme Color
+* ADDED : Unit Complete filter
+* Updated : Assignment Submissions CSS
+* Fix : Reset Badges and Certificates on course reset
+* ADDED : Pagination in Members in Courses -> Members
+* Fix : Fallback All Course Page title function added
+* Fix : Consolidating validation in one function
+* Fix: Credits fix
+* version 1.4.1
+* version 1.4.1
+* UPDATED : Language Files
+* ADDED : PMPRO Membership fixes
+* ADDED : Reset Answer Button in Questions
+* FIX : Added Filter wplms_course_front_details
+* Fix : Reviews Translation
+* Fix : Badge display in Course pages
+* version 1.4
+* Fix : Hide activity Provision
+* Fix : Course button can be placed anywhere
+* FIX : One Question quiz next button
+* adding keywords to translation files
+* FIX : Current menu highlight in Course Menu
+* Optimizing the get Course students function
+* Language files updated
+* v 1.3.4
+* Recording Activity Meta for Instructor Stats
+* Fix for Free Course auto join Group
+* Bug on Quiz submission : Fade added
+* Sort, MCQ and language fixes
+* Sort answer option added
+* Sort Answer Question
+* Localization strings added to Js
+* Instructor Avatar display check in Course Directory.
+* Triggering event for js files to detect and run custom functions. For compatibility with other short code plugins.
+* Badges and Certificate Fix on Auto Evalutation
+* Insecure Query fix
+* v 1.3.3.2
+* Reset Quiz Fix
+* v 1.3.3
+* Language Files updated
+* Activity translation functions added
+* Generic parent print function
+* Quiz Retake option
+* Language fix
+* version 1.3.2
+* Certificate Generator
+* Version 1.3.1
+* Course Search Widget
+* User stats CSS fix
+* User stats CSS fix
+* Course Auto Evaluation
+* Friendly Time filter
+* version 1.2.1
+* Threaded page units nextpage
+* Language changes II
+* Language changes
+* Version 1.2
+* Version 1.2
+* Additional hooks
+* Free Course Price Hooks & Multiple Instructor hook
+* Unit Print
+* BP_COURSE_SLUG Fix
+* Google Microdata fix & addition of hooks and filters
+* Auto Update added
+* Auto Update
+* Course Widget fix
+* Bug Fixes Round 1
+* Instructor filter
+* Ratings  & Reviews fixes
+* Removing alert message
+* Fixes to Quiz Rest & evaluate, Timer & Auto Submit
+* Final changes
+* Fix for Instructor  Widget
+* Course Template
+* final fixes
+* Quiz total
+* Course confim fix
+* Confirm on reset
+* Ajax Fixes
+* Course mod final
+* Course Mod complete
+* Fixing after the merge
+* Course
+* Fixing Course and Starting with Alternate Route
+* Single course page
+* Course archive and all course page
+* Finishing Archive
+* Modifying classes and template
+* Adding course Admin
+* Adding Course Admin panel
+* Course Module Init

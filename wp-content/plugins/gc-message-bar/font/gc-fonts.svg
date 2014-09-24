@@ -1,0 +1,12 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2014 by original authors @ fontello.com</metadata>
+<defs>
+<font id="gc-fonts" horiz-adv-x="1000" >
+<font-face font-family="gc-fonts" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="logo_picto2" unicode="&#xe800;" d="m799 188l314 314v-403c0-37-31-67-68-67h-469l-248-179l67 179h-223c-38 0-68 30-68 67v44l180 157l112-134l246 224l157-202z m-403 67l246 225l157-202l314 314c0 37-31 67-68 67h-873c-38 0-68-30-68-67v-359l180 157l112-135z" horiz-adv-x="1217" />
+</font>
+</defs>
+</svg>

@@ -1,0 +1,413 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WPLMS Assignments\n"
+"POT-Creation-Date: 2014-08-31 22:29+0400\n"
+"PO-Revision-Date: 2014-09-01 18:28+0400\n"
+"Last-Translator: Ivan Dyakov <imdyakov@mac.com>\n"
+"Language-Team: Olymp <info@olymproject.org>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.9\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: autoupdate/class-envato-protected-api.php:67
+msgid "Please enter your Envato Marketplace Username."
+msgstr "Пожалуйста введите логин с сайта Envato"
+
+#: autoupdate/class-envato-protected-api.php:71
+msgid "Please enter your Envato Marketplace API Key."
+msgstr "Пожалуйста введите API ключ из учётной записи Envato"
+
+#: autoupdate/class-envato-protected-api.php:96
+msgid "The API \"set\" is a required parameter."
+msgstr "\"Ввод\" API ключа - обязательный параметр."
+
+#: autoupdate/class-envato-protected-api.php:167
+msgid "The Envato Marketplace \"item ID\" is a required parameter."
+msgstr "\"ID покупки\" с сайта Envato является обязательным параметром. "
+
+#: autoupdate/class-plugin-update.php:376
+msgid "An Unexpected HTTP Error occurred during the API request."
+msgstr "При выполнении API запроса возникла неизвестная ошибка HTTP."
+
+#: autoupdate/class-plugin-update.php:376
+#: autoupdate/class-plugin-update.php:541
+msgid "Try again"
+msgstr "Попробуйте еще раз "
+
+#: autoupdate/class-plugin-update.php:417
+msgid "An unknown error occurred"
+msgstr "Возникла неизвестная ошибка"
+
+#: autoupdate/class-plugin-update.php:453
+msgid ""
+"The plugin has been updated, but could not be reactivated. Please reactivate "
+"it manually."
+msgstr ""
+"Плагин был обновлен, но не активирован. Пожалуйста активируйте его в ручном "
+"режиме."
+
+#: autoupdate/class-plugin-update.php:454
+msgid "Plugin reactivated successfully. "
+msgstr "Плагин успешно активирован."
+
+#: autoupdate/class-plugin-update.php:476
+msgid " Plugin Updates"
+msgstr "Обновления плагина"
+
+#: autoupdate/class-plugin-update.php:515
+msgid "Username: "
+msgstr "Логин: "
+
+#: autoupdate/class-plugin-update.php:519
+msgid "Email: "
+msgstr "Email: "
+
+#: autoupdate/class-plugin-update.php:525
+msgid "Key: "
+msgstr "Ключ: "
+
+#: autoupdate/class-plugin-update.php:531
+msgid "<p>Your plugin update is <span style=\"color:green\">active</span></p>"
+msgstr ""
+"<p>Ваш обновленный плагин <span style=\"color:green\">активирован</span></p>"
+
+#: autoupdate/class-plugin-update.php:535
+msgid ""
+"<p>Your input is <span style=\"color:red\">not valid</span>, automatic "
+"updates is <span style=\"color:red\">not active</span>.</p>"
+msgstr ""
+"<p>Ваши данные <span style=\"color:red\">не верны</span>, автоообновления "
+"<span style=\"color:red\">отключены</span>.</p>"
+
+#: autoupdate/class-plugin-update.php:536
+msgid "Edit Key"
+msgstr "Изменить ключ"
+
+#: autoupdate/class-plugin-update.php:540
+msgid "<p>Unable to validate update activation.</p>"
+msgstr "<p>Не могу обновить активацию.</p>"
+
+#: autoupdate/class-plugin-update.php:546
+msgid "Add Key"
+msgstr "Добавить ключ"
+
+#: autoupdate/class-plugin-update.php:632
+msgid "User name"
+msgstr "Логин "
+
+#: autoupdate/class-plugin-update.php:638
+msgid "Email"
+msgstr "Email"
+
+#: autoupdate/class-plugin-update.php:647
+msgid "Themeforest User name ( for Auto-Updates )"
+msgstr "Логин на Themeforest (для автоматических обновлений)"
+
+#: includes/assignments.php:47
+msgid "Assignment Attachment deleted."
+msgstr "Приложение к поручению удалено."
+
+#: includes/assignments.php:111
+msgid "Upload Assignment"
+msgstr "Загрузить поручение"
+
+#: includes/assignments.php:584 includes/assignments.php:589
+#: includes/assignments.php:591 includes/assignments.php:593
+#: includes/assignments.php:595 includes/assignments.php:597
+#: includes/assignments.php:599 includes/assignments.php:601
+msgid "ERROR:"
+msgstr "ОШИБКА: "
+
+#: includes/assignments.php:584
+msgid "File you upload must be valid file type"
+msgstr "Загружаемый файл должен быть в допустимом формате"
+
+#: includes/assignments.php:584
+msgid ", and under "
+msgstr ", и не превышать допустимый размер "
+
+#: includes/assignments.php:589
+msgid "Please upload an Attachment."
+msgstr "Пожалуйста, загрузите приложение."
+
+#: includes/assignments.php:591
+msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini."
+msgstr ""
+"Загружаемый файл превышает допустимый размер, заданный в файле php.ini."
+
+#: includes/assignments.php:593
+msgid ""
+"The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
+"the HTML form."
+msgstr "агружаемый файл превышает допустимый размер, заданный в HTML форме."
+
+#: includes/assignments.php:595
+msgid "The uploaded file was only partially uploaded. Please try again later."
+msgstr ""
+"Файл был загружен частично. Пожалуйста, попробуйте снова немного погодя. "
+
+#: includes/assignments.php:597
+msgid "Missing a temporary folder."
+msgstr "Отсутствует временная директория."
+
+#: includes/assignments.php:599
+msgid "Failed to write file to disk."
+msgstr "Невозможно записать файл на сервер."
+
+#: includes/assignments.php:601
+msgid "A PHP extension stopped the file upload."
+msgstr "Расширение PHP прервало загрузку файла."
+
+#: includes/assignments.php:795
+msgid "Delete Attachment"
+msgstr "Удалить приложение"
+
+#: includes/assignments_functions.php:28
+msgid "Submitted by"
+msgstr "Отправлено автором"
+
+#: includes/assignments_functions.php:28
+msgid "<span>"
+msgstr "<span>"
+
+#: includes/assignments_functions.php:31
+msgid "Your assignment is awaiting moderation."
+msgstr "Ваше поручение ожидает модераци"
+
+#. translators: 1: date, 2: time
+#: includes/assignments_functions.php:38
+#, php-format
+msgid "%1$s at %2$s"
+msgstr "%1$s в %2$s"
+
+#: includes/assignments_functions.php:38
+msgid "(Edit)"
+msgstr "(Изменить)"
+
+#: includes/assignments_functions.php:89 includes/assignments_functions.php:97
+msgid "Time Remaining"
+msgstr "Осталось времени"
+
+#: includes/assignments_functions.php:90
+msgid "Days"
+msgstr " (дней)"
+
+#: includes/assignments_functions.php:98
+msgid "Hours"
+msgstr " (часов)"
+
+#: includes/assignments_functions.php:98
+msgid "Minutes"
+msgstr " (минут)"
+
+#: includes/assignments_functions.php:137
+msgid "START ASSIGNMENT"
+msgstr "ПРИНЯТЬ ПОРУЧЕНИЕ В РАБОТУ"
+
+#: includes/assignments_functions.php:149
+msgid "CONTINUE ASSIGNMENT"
+msgstr "ПРОДОЛЖИТЬ ВЫПОЛНЕНИЕ ПОРУЧЕНИЯ"
+
+#: includes/assignments_functions.php:170
+#: includes/assignments_functions.php:179
+msgid "SUBMIT ASSIGNMENT"
+msgstr "ОТПРАВИТЬ ПОРУЧЕНИЕ"
+
+#: includes/assignments_functions.php:175
+msgid "INACTIVE COURSE "
+msgstr "НЕАКТИВНЫЕ КУРС"
+
+#: includes/assignments_functions.php:186
+msgid "CHECK RESULTS"
+msgstr "ПРОВЕРИТЬ РЕЗУЛЬТАТЫ"
+
+#: includes/assignments_functions.php:197
+#: includes/assignments_functions.php:294
+#: includes/assignments_functions.php:349
+msgid "Security check failed !"
+msgstr "Проверка безопасности не пройдена!"
+
+#: includes/assignments_functions.php:208
+msgid "Student started assignment "
+msgstr "Слушатель начал выполнение задания"
+
+#: includes/assignments_functions.php:209
+#: includes/assignments_functions.php:247
+msgid "Student "
+msgstr "Слушатель"
+
+#: includes/assignments_functions.php:209
+msgid " started the assignment  "
+msgstr "начал выполнять задание"
+
+#: includes/assignments_functions.php:223
+msgid "Assignment can not be re-started"
+msgstr "Поручение нельзя начать заново"
+
+#: includes/assignments_functions.php:233
+msgid "TIME EXPIRED, PLEASE SUBMIT THE ASSIGNMENT"
+msgstr "ОТВЕДЁННОЕ ВРЕМЯ ВЫШЛО, ПОЖАЛУЙСТА, ОТПРАВЬТЕ ЗАДАНИЕ "
+
+#: includes/assignments_functions.php:241
+#: includes/assignments_functions.php:408
+msgid "Assignment "
+msgstr "Gjhextybt "
+
+#: includes/assignments_functions.php:241
+msgid " submitted by student "
+msgstr " отправлено слушателем "
+
+#: includes/assignments_functions.php:242
+msgid "Assignment submitted by Student"
+msgstr "Задание отправлено слушателем "
+
+#: includes/assignments_functions.php:246
+msgid "Student submitted assignment "
+msgstr "Слушатель отправил задание "
+
+#: includes/assignments_functions.php:247
+msgid " submitted the assignment  "
+msgstr "отправил(а) задание"
+
+#: includes/assignments_functions.php:275
+msgid "Invalid ID"
+msgstr "Неверный ID"
+
+#: includes/assignments_functions.php:279
+msgid " previous submissions removed ! Reloading page ..."
+msgstr "предыдущие отправки удалены, перегружаю страницу ..."
+
+#: includes/assignments_functions.php:281
+msgid "Unable to remove previous submissions"
+msgstr "Невозможно удалить предыдущие отправки"
+
+#: includes/assignments_functions.php:299
+#: includes/assignments_functions.php:354
+msgid " Incorrect User selected."
+msgstr "Выбран неверный пользователь."
+
+#: includes/assignments_functions.php:304
+#: includes/assignments_functions.php:359
+msgid " Incorrect Assignment"
+msgstr "Неверное задание"
+
+#: includes/assignments_functions.php:312
+msgid "SUBMISSION"
+msgstr "ОТПРАВКА"
+
+#: includes/assignments_functions.php:328
+msgid "Download Attachment"
+msgstr "Загрузить приложение"
+
+#: includes/assignments_functions.php:336
+msgid "REMARKS (if any)"
+msgstr "ЗАМЕЧАНИЯ (если есть)"
+
+#: includes/assignments_functions.php:337
+msgid "GIVE MARKS"
+msgstr "ОЦЕНИТЬ"
+
+#: includes/assignments_functions.php:370
+msgid "Assignment Reset for Selected User"
+msgstr "Сброс заданий выбранному пользователю"
+
+#: includes/assignments_functions.php:372
+#: includes/assignments_functions.php:374
+msgid "Could not find Assignment for User. Contact Admin."
+msgstr "Невозможно найти задания пользователя. Свяжитесь с администратором."
+
+#: includes/assignments_functions.php:378
+msgid "Instructor Reseted the Assignment for User"
+msgstr "Инструктор сбросил задания для пользователя."
+
+#: includes/assignments_functions.php:379
+#, php-format
+msgid "Assignment %s was reset by the Instructor for user %s"
+msgstr " Задание %s было сброшено инструктором для слушателя %s"
+
+#: includes/assignments_functions.php:399
+msgid "You've obtained "
+msgstr "Вы набрали "
+
+#: includes/assignments_functions.php:399
+msgid " in Assignment :"
+msgstr " за задание : "
+
+#: includes/assignments_functions.php:400
+msgid "Check Results"
+msgstr "Проверить результаты "
+
+#: includes/assignments_functions.php:401
+msgid "Additional Remarks form Instructor"
+msgstr "Дополнительные замечания для инструктора "
+
+#: includes/assignments_functions.php:404
+msgid "Assignment results available"
+msgstr "доступны результаты выполнения поручения "
+
+#: includes/assignments_functions.php:407
+msgid "Instructor Evaluated the Assignment for User"
+msgstr "Инструктор оценил выполнение поручения пользователем "
+
+#: includes/assignments_functions.php:408
+msgid " was evaluated by the Instructor for user"
+msgstr " оценено инструктором для пользователя "
+
+#: includes/assignments_functions.php:441
+msgid "ASSIGNMENT : "
+msgstr "ПОРУЧЕНИЕ : "
+
+#: includes/assignments_functions.php:443
+msgid "MARKS : "
+msgstr "ОЦЕНКИ : "
+
+#: includes/assignments_functions.php:444
+msgid "DURATION : "
+msgstr "СРОК : "
+
+#: includes/assignments_functions.php:444
+msgid " days"
+msgstr "дней "
+
+#: includes/assignments_functions.php:462
+msgid " out of "
+msgstr "из "
+
+#: includes/assignments_functions.php:462
+msgid " PENDING"
+msgstr "ВЫПОЛНЯЕТСЯ "
+
+#: wplms-assignments.php:66
+msgid ""
+"This step is irreversible. All Assignment subsmissions would be reset for "
+"this user. Are you sure you want to Reset the Assignment for this User? "
+msgstr ""
+"Это действие носит необратимый характер. Все выполненные поручения будут "
+"обнулены для данного пользователя. Вы уверены, что хотите обнулить поручение "
+"для пользователя? "
+
+#: wplms-assignments.php:67
+msgid "Confirm, Assignment reset for this User"
+msgstr "Подтвердить обнуление поручения данному пользователю"
+
+#: wplms-assignments.php:68
+msgid "Marks Saved"
+msgstr "Оценки сохранены"
+
+#: wplms-assignments.php:69
+msgid "Assignment Marks Saved"
+msgstr "Оценки за выполнение поручения сохранены"
+
+#: wplms-assignments.php:70
+msgid "Cancel"
+msgstr "Отмена"

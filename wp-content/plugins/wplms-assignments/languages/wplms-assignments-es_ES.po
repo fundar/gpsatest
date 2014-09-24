@@ -1,0 +1,423 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WPLMS Assignments\n"
+"POT-Creation-Date: 2014-08-19 20:05+0530\n"
+"PO-Revision-Date: 2014-08-19 20:05+0530\n"
+"Last-Translator: VibeThemes <vibethemes@gmail.com>\n"
+"Language-Team: VibeThemes <vibethemes@gmail.com>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.7\n"
+"X-Poedit-Basepath: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-"
+"assignments/\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: /Applications/MAMP/htdocs/wplms/wp-content/plugins/"
+"wplms-assignments\n"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/autoupdate/class-envato-protected-api.php:67
+msgid "Please enter your Envato Marketplace Username."
+msgstr "Please enter your Envato Marketplace Username."
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/autoupdate/class-envato-protected-api.php:71
+msgid "Please enter your Envato Marketplace API Key."
+msgstr "Por favor introduzca su Envato Marketplace API Key."
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/autoupdate/class-envato-protected-api.php:96
+msgid "The API \"set\" is a required parameter."
+msgstr "La API \"set\" es un parámetro obligatorio."
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/autoupdate/class-envato-protected-api.php:167
+msgid "The Envato Marketplace \"item ID\" is a required parameter."
+msgstr "El Envato Marketplace \"ID de Artículo\" es un parámetro obligatorio."
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/autoupdate/class-plugin-update.php:376
+msgid "An Unexpected HTTP Error occurred during the API request."
+msgstr "Una inesperado error de HTTP ocurrió durante la petición de la API."
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/autoupdate/class-plugin-update.php:376
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/autoupdate/class-plugin-update.php:541
+msgid "Try again"
+msgstr "Inténtelo de nuevo"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/autoupdate/class-plugin-update.php:417
+msgid "An unknown error occurred"
+msgstr "Se ha producido un error desconocido"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/autoupdate/class-plugin-update.php:453
+msgid ""
+"The plugin has been updated, but could not be reactivated. Please reactivate "
+"it manually."
+msgstr ""
+"El plug-in se ha actualizado, pero no pudo ser reactivado. Por favor "
+"reactivarlo manualmente."
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/autoupdate/class-plugin-update.php:454
+msgid "Plugin reactivated successfully. "
+msgstr "Plugin reactivado con éxito. "
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/autoupdate/class-plugin-update.php:476
+msgid " Plugin Updates"
+msgstr "Actualizaciones del plugin"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/autoupdate/class-plugin-update.php:515
+msgid "Username: "
+msgstr "Nombre de usuario:"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/autoupdate/class-plugin-update.php:519
+msgid "Email: "
+msgstr "Email: "
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/autoupdate/class-plugin-update.php:525
+msgid "Key: "
+msgstr "Clave:"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/autoupdate/class-plugin-update.php:531
+msgid "<p>Your plugin update is <span style=\"color:green\">active</span></p>"
+msgstr ""
+"<p>La actualización del plugin está  <span style=\"color:green\">activa</"
+"span></p>"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/autoupdate/class-plugin-update.php:535
+msgid ""
+"<p>Your input is <span style=\"color:red\">not valid</span>, automatic "
+"updates is <span style=\"color:red\">not active</span>.</p>"
+msgstr ""
+"<p>Su entrada es <span style=\"color:red\">no válida</span>, las "
+"actualizaciones automáticas <span style=\"color:red\">no están activadas</"
+"span>. </p>"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/autoupdate/class-plugin-update.php:536
+msgid "Edit Key"
+msgstr "Editar clave"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/autoupdate/class-plugin-update.php:540
+msgid "<p>Unable to validate update activation.</p>"
+msgstr "<p> No se puede validar la activación de la actualización.</p>"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/autoupdate/class-plugin-update.php:546
+msgid "Add Key"
+msgstr "Agregar clave"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/autoupdate/class-plugin-update.php:632
+msgid "User name"
+msgstr "Nombre de usuario"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/autoupdate/class-plugin-update.php:638
+msgid "Email"
+msgstr "Email"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/autoupdate/class-plugin-update.php:647
+msgid "Themeforest User name ( for Auto-Updates )"
+msgstr "Nombre de usuario de ThemeForest (para actualizaciones automáticas)"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments.php:47
+msgid "Assignment Attachment deleted."
+msgstr "Adjunto de Asignatura eliminado."
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments.php:111
+msgid "Upload Assignment"
+msgstr "Subir Imagen de Asignatura"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments.php:584
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments.php:589
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments.php:591
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments.php:593
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments.php:595
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments.php:597
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments.php:599
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments.php:601
+msgid "ERROR:"
+msgstr "ERROR:"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments.php:584
+msgid "File you upload must be valid file type"
+msgstr "El archivo que carga debe ser de tipo válido"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments.php:584
+msgid ", and under "
+msgstr ", en evaluación"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments.php:589
+msgid "Please upload an Attachment."
+msgstr "Por favor suba una imagen"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments.php:591
+msgid "The uploaded file exceeds the upload_max_filesize directive in php.ini."
+msgstr "El archivo subido excede la directiva upload_max_filesize en php.ini."
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments.php:593
+msgid ""
+"The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in "
+"the HTML form."
+msgstr ""
+"El archivo subido excede la directiva MAX_FILE_SIZE que se especifico en el "
+"formulario HTML."
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments.php:595
+msgid "The uploaded file was only partially uploaded. Please try again later."
+msgstr ""
+"El archivo subido fue sólo parcialmente cargado. Por favor, inténtelo de "
+"nuevo más tarde."
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments.php:597
+msgid "Missing a temporary folder."
+msgstr "Falta una carpeta temporal."
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments.php:599
+msgid "Failed to write file to disk."
+msgstr "No se pudo escribir el archivo en el disco."
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments.php:601
+msgid "A PHP extension stopped the file upload."
+msgstr "Una extensión de PHP detuvo la carga de archivos."
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments.php:795
+msgid "Delete Attachment"
+msgstr "Eliminar datos adjuntos"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:28
+msgid "Submitted by"
+msgstr "Presentado por"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:28
+msgid "<span>"
+msgstr "<span>"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:31
+msgid "Your assignment is awaiting moderation."
+msgstr "Su asignatura está en espera de moderación."
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:38
+#, php-format
+msgid "%1$s at %2$s"
+msgstr "%1$s de %2$s"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:38
+msgid "(Edit)"
+msgstr "(Editar)"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:89
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:97
+msgid "Time Remaining"
+msgstr "Tiempo restante"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:90
+msgid "Days"
+msgstr "Días"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:98
+msgid "Hours"
+msgstr "Horas"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:98
+msgid "Minutes"
+msgstr " Minutos"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:137
+msgid "START ASSIGNMENT"
+msgstr "COMENZAR ASIGNATURA"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:149
+msgid "CONTINUE ASSIGNMENT"
+msgstr "CONTINUAR ASIGNATURA"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:170
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:179
+msgid "SUBMIT ASSIGNMENT"
+msgstr "PRESENTAR ASIGNATURA"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:175
+msgid "INACTIVE COURSE "
+msgstr "CURSO INACTIVO "
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:186
+msgid "CHECK RESULTS"
+msgstr "VER RESULTADOS"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:197
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:294
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:349
+msgid "Security check failed !"
+msgstr "Control de seguridad ha fallado!"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:208
+msgid "Student started assignment "
+msgstr "Alumno comenzó asignatura"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:209
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:247
+msgid "Student "
+msgstr "Alumno"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:209
+msgid " started the assignment  "
+msgstr " comenzó la asignatura"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:223
+msgid "Assignment can not be re-started"
+msgstr "La asignatura no se puede volver a realizar"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:233
+msgid "TIME EXPIRED, PLEASE SUBMIT THE ASSIGNMENT"
+msgstr "TIEMPO VENCIDO, POR FAVOR PRESENTAR LA ASIGNATURA"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:241
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:408
+msgid "Assignment "
+msgstr "Asignatura "
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:241
+#, fuzzy
+msgid " submitted by student "
+msgstr "Presentado por"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:242
+msgid "Assignment submitted by Student"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:246
+#, fuzzy
+msgid "Student submitted assignment "
+msgstr "Alumno comenzó asignatura"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:247
+#, fuzzy
+msgid " submitted the assignment  "
+msgstr " comenzó la asignatura"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:275
+msgid "Invalid ID"
+msgstr "ID no válido"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:279
+msgid " previous submissions removed ! Reloading page ..."
+msgstr " presentaciones anteriores eliminadas! Recargando página..."
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:281
+msgid "Unable to remove previous submissions"
+msgstr "No se pueden eliminar las presentaciones anteriores"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:299
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:354
+msgid " Incorrect User selected."
+msgstr "Usuario seleccionado incorrecto."
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:304
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:359
+msgid " Incorrect Assignment"
+msgstr "Asignatura seleccionada incorrecta."
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:312
+msgid "SUBMISSION"
+msgstr "PRESENTACIÓN"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:328
+msgid "Download Attachment"
+msgstr "Descargar archivo adjunto"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:336
+msgid "REMARKS (if any)"
+msgstr "Re evaluaciones (si las hubiera)"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:337
+msgid "GIVE MARKS"
+msgstr "ENTREGAR CALIFICACIONES"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:370
+msgid "Assignment Reset for Selected User"
+msgstr "Restablecer asignatura para el usuario seleccionado"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:372
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:374
+msgid "Could not find Assignment for User. Contact Admin."
+msgstr ""
+"No se pudo encontrar la asignatura de usuario. Contacte al Administrador."
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:378
+msgid "Instructor Reseted the Assignment for User"
+msgstr "Profesor restablece asignatura de usuario"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:379
+#, fuzzy, php-format
+msgid "Assignment %s was reset by the Instructor for user %s"
+msgstr " fue restablecido por el profesor para el usuario"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:399
+msgid "You've obtained "
+msgstr "Has obtenido"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:399
+msgid " in Assignment :"
+msgstr " en Asignatura:"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:400
+msgid "Check Results"
+msgstr "Ver Resultados"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:401
+msgid "Additional Remarks form Instructor"
+msgstr "Formulario de Calificaciones Adicionales"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:404
+msgid "Assignment results available"
+msgstr "Resultados de la asignatura disponibles"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:407
+msgid "Instructor Evaluated the Assignment for User"
+msgstr "Profesor evaluó asignatura de usuario"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:408
+msgid " was evaluated by the Instructor for user"
+msgstr " fue evaluado por el profesor para el usuario"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:441
+msgid "ASSIGNMENT : "
+msgstr "ASIGNATURA: "
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:443
+msgid "MARKS : "
+msgstr "CALIFICACIONES: "
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:444
+msgid "DURATION : "
+msgstr "DURACIÓN: "
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:444
+msgid " days"
+msgstr " días"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:462
+msgid " out of "
+msgstr " fuera de "
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/includes/assignments_functions.php:462
+msgid " PENDING"
+msgstr " PENDIENTE"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/wplms-assignments.php:66
+msgid ""
+"This step is irreversible. All Assignment subsmissions would be reset for "
+"this user. Are you sure you want to Reset the Assignment for this User? "
+msgstr ""
+"Este paso es irreversible. Todas las presentaciones de asignatura se "
+"restablecerían para este usuario. ¿Está seguro de que desea restablecer la "
+"asignatura de este usuario? "
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/wplms-assignments.php:67
+msgid "Confirm, Assignment reset for this User"
+msgstr "Confirme, reinicio de asignatura para este usuario"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/wplms-assignments.php:68
+msgid "Marks Saved"
+msgstr "Calificaciones Guardadas"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/wplms-assignments.php:69
+msgid "Assignment Marks Saved"
+msgstr "Calificaciones de Asignatura Guardadas"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-assignments/wplms-assignments.php:70
+msgid "Cancel"
+msgstr "Cancelar"

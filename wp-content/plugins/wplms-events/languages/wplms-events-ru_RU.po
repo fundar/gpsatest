@@ -1,0 +1,352 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WPLMS Events\n"
+"POT-Creation-Date: 2014-09-03 20:15+0530\n"
+"PO-Revision-Date: 2014-09-03 20:15+0530\n"
+"Last-Translator: VibeThemes <vibethemes@gmail.com>\n"
+"Language-Team: Olymproject <info@olymproject.org>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.7\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: autoupdate/class-envato-protected-api.php:67
+msgid "Please enter your Envato Marketplace Username."
+msgstr "Пожалуйста введите свой логин на сайте Envato."
+
+#: autoupdate/class-envato-protected-api.php:71
+msgid "Please enter your Envato Marketplace API Key."
+msgstr "Пожалуйста введите свой API ключ из учётной записи Envato."
+
+#: autoupdate/class-envato-protected-api.php:96
+msgid "The API \"set\" is a required parameter."
+msgstr "API \"установлен\" как обязательный параметр."
+
+#: autoupdate/class-envato-protected-api.php:167
+msgid "The Envato Marketplace \"item ID\" is a required parameter."
+msgstr "\"ID покупки\" на сайте Envanto - обязательный параметр."
+
+#: autoupdate/class-plugin-update.php:376
+msgid "An Unexpected HTTP Error occurred during the API request."
+msgstr "Воникла неизвестная HTTP ошибка при выполнении API запроса."
+
+#: autoupdate/class-plugin-update.php:376
+#: autoupdate/class-plugin-update.php:541
+msgid "Try again"
+msgstr "Попробовать снова"
+
+#: autoupdate/class-plugin-update.php:417
+msgid "An unknown error occurred"
+msgstr "Возникла неизвестная ошибка"
+
+#: autoupdate/class-plugin-update.php:453
+msgid ""
+"The plugin has been updated, but could not be reactivated. Please reactivate "
+"it manually."
+msgstr ""
+"Плагин был обновлен, но не был активирован. Пожалуйста выполните это "
+"действие вручную."
+
+#: autoupdate/class-plugin-update.php:454
+msgid "Plugin reactivated successfully. "
+msgstr "Плагин успешно активирован."
+
+#: autoupdate/class-plugin-update.php:476
+msgid " Plugin Updates"
+msgstr "Обновление плагина"
+
+#: autoupdate/class-plugin-update.php:515
+msgid "Username: "
+msgstr "Логин: "
+
+#: autoupdate/class-plugin-update.php:519
+msgid "Email: "
+msgstr "Email: "
+
+#: autoupdate/class-plugin-update.php:525
+msgid "Key: "
+msgstr "Ключ: "
+
+#: autoupdate/class-plugin-update.php:531
+msgid "<p>Your plugin update is <span style=\"color:green\">active</span></p>"
+msgstr ""
+"<p>Обновление Вашего плагина <span style=\"color:green\">активировано</"
+"span></p>"
+
+#: autoupdate/class-plugin-update.php:535
+msgid ""
+"<p>Your input is <span style=\"color:red\">not valid</span>, automatic "
+"updates is <span style=\"color:red\">not active</span>.</p>"
+msgstr ""
+"<p>Ваши данные <span style=\"color:red\">недействительны</span>, "
+"авоматическое обновление <span style=\"color:red\">отключено</span>.</p>"
+
+#: autoupdate/class-plugin-update.php:536
+msgid "Edit Key"
+msgstr "Изменить ключ"
+
+#: autoupdate/class-plugin-update.php:540
+msgid "<p>Unable to validate update activation.</p>"
+msgstr "<p>Не возможно подтвердить активацию.</p>"
+
+#: autoupdate/class-plugin-update.php:546
+msgid "Add Key"
+msgstr "Добавить ключ"
+
+#: autoupdate/class-plugin-update.php:632
+msgid "User name"
+msgstr "Логин"
+
+#: autoupdate/class-plugin-update.php:638
+msgid "Email"
+msgstr "Email"
+
+#: autoupdate/class-plugin-update.php:647
+msgid "Themeforest User name ( for Auto-Updates )"
+msgstr "Логин на Themeforest (для автообновлений)"
+
+#: classes/events_class.php:138
+#, php-format
+msgctxt "calendar caption"
+msgid "%1$s %2$s"
+msgstr "%1$s %2$s"
+
+#: classes/events_class.php:140
+msgid "EVENTS IN "
+msgstr "СОБЫТИЯ ЗА ПЕРИОД"
+
+#: classes/events_class.php:175
+#, php-format
+msgid "View Events for %1$s %2$s"
+msgstr "События для %1$s %2$s"
+
+#: classes/events_class.php:196
+#, php-format
+msgid "View posts for %1$s %2$s"
+msgstr "Сообщения для %1$s %2$s"
+
+#: classes/events_class.php:309 classes/events_class.php:341
+msgid "Events "
+msgstr "События"
+
+#: classes/events_class.php:355
+msgid "Incorrect Date selected"
+msgstr "Выбрана некорректная дата"
+
+#: classes/events_class.php:365 classes/events_class.php:425
+#: classes/events_class.php:482
+msgid "Security check Failed. Contact Administrator."
+msgstr "Ошибка уровня безопасности. Свяжитесь с администратором."
+
+#: classes/events_class.php:372
+msgid "Please enter a Invitation subject"
+msgstr "Введите тему приглашения "
+
+#: classes/events_class.php:379
+msgid "Please enter a Invitation Message"
+msgstr "Введите текст приглашения"
+
+#: classes/events_class.php:387
+msgid "EVENT : "
+msgstr "СОБЫТИЕ : "
+
+#: classes/events_class.php:387
+msgid "view event"
+msgstr "смотреть событие"
+
+#: classes/events_class.php:388
+msgid "COURSE : "
+msgstr "КУРС : "
+
+#: classes/events_class.php:388
+msgid "view course"
+msgstr "смотреть курс"
+
+#: classes/events_class.php:399
+msgid "ACCEPT"
+msgstr "ПРИНЯТЬ"
+
+#: classes/events_class.php:400
+msgid "REJECT"
+msgstr "ОТКЛОНИТЬ"
+
+#: classes/events_class.php:415
+msgid "Invitation Message successfully sent to "
+msgstr "Приглашение успешно отправлено "
+
+#: classes/events_class.php:416 classes/events_class.php:466
+msgid " Students"
+msgstr " пользователям"
+
+#: classes/events_class.php:432
+msgid "Please enter a reminder subject"
+msgstr "Пожалуйста введите тему напоминания"
+
+#: classes/events_class.php:439
+msgid "Please enter a reminder Message"
+msgstr "Пожалуйста введите текст напоминания"
+
+#: classes/events_class.php:446
+msgid "Please send an invitation to course students."
+msgstr "Пожалуйста отправьте приглашение слушателям курса."
+
+#: classes/events_class.php:465
+msgid "Reminder Message successfully sent to "
+msgstr "Напоминание успешно отправлено слушателю"
+
+#: classes/events_class.php:488
+msgid "Invitation accepted."
+msgstr "Приглашение принято."
+
+#: classes/events_class.php:491
+msgid "Unable to accept invitation."
+msgstr "Невозможно принять приглашение."
+
+#: classes/events_class.php:494
+msgid "Student Accepted Event Invitation "
+msgstr "Слушатель принял приглашение на событие"
+
+#: classes/events_class.php:495 classes/events_class.php:508
+msgid "Student "
+msgstr "Слушатель"
+
+#: classes/events_class.php:495 classes/events_class.php:508
+msgid " accepted invitation for Event "
+msgstr "принял"
+
+#: classes/events_class.php:504
+msgid "Invitation rejected."
+msgstr "Приглашение отклонено."
+
+#: classes/events_class.php:507
+msgid "Student Rejected Event Invitation "
+msgstr "Слушатель отклонил приглашение на событие"
+
+#: classes/events_class.php:515
+msgid "Unable to reject invitation."
+msgstr "Невозможно отклонить приглашение."
+
+#: classes/events_class.php:526
+msgid "Invitation Responses"
+msgstr "Ответы на приглашение"
+
+#: classes/events_class.php:540 classes/events_class.php:545
+msgid "ACCEPTED"
+msgstr "ПРИНЯТО"
+
+#: classes/events_class.php:540 classes/events_class.php:546
+msgid "REJECTED"
+msgstr "ОТКЛОНЕНО"
+
+#: classes/events_class.php:540 classes/events_class.php:547
+msgid "AWAITING RESPONSE"
+msgstr "ОЖИДАЕТ ОТВЕТА"
+
+#: classes/events_class.php:544
+msgid "INVITATION RESULTS"
+msgstr "РЕЗУЛЬТАТЫ"
+
+#: classes/events_class.php:593
+msgid "GET ACCESS TO THIS EVENT"
+msgstr "ПОЛУЧИТЬ ДОСТУП К СОБЫТИЯМ"
+
+#: classes/events_widget.php:15
+msgid "WPLMS Events Widget"
+msgstr "Виджет событий WPLMS"
+
+#: classes/events_widget.php:122
+msgid "To"
+msgstr " по "
+
+#: classes/events_widget.php:149
+msgid "No Events in next "
+msgstr "Нет событий на следующие "
+
+#: classes/events_widget.php:149
+msgid " days"
+msgstr " дней"
+
+#: classes/events_widget.php:197
+msgid "Widget Title"
+msgstr "Название виджета"
+
+#: classes/events_widget.php:198
+msgid "Date Range (from Today to X Days)"
+msgstr "Временной период (с текущей даты плюс Х дней)"
+
+#: classes/events_widget.php:200
+msgid "Show Events Starting in range"
+msgstr "События начинающиеся в рамках периода"
+
+#: classes/events_widget.php:203
+msgid "Show Events Ending in range"
+msgstr "События заканчивающиеся в рамках периода"
+
+#: classes/events_widget.php:205
+msgid "Style"
+msgstr "Стиль"
+
+#: classes/events_widget.php:207
+msgid "List"
+msgstr "Список"
+
+#: classes/events_widget.php:208
+msgid "Single"
+msgstr "По отдельности"
+
+#: classes/events_widget.php:209
+msgid "Carousel"
+msgstr "Карусель"
+
+#: classes/events_widget.php:212
+msgid "Select Event type (optional)"
+msgstr "Выбрать тип события (необязательно)"
+
+#: classes/events_widget.php:228
+msgid "Order By"
+msgstr "Упорядочены по"
+
+#: classes/events_widget.php:230
+msgid "Default (Publish Date)"
+msgstr "Умолчанию (дата публикации)"
+
+#: classes/events_widget.php:231
+msgid "Random"
+msgstr "Произвольно"
+
+#: classes/events_widget.php:232
+msgid "Name"
+msgstr "Название"
+
+#: classes/events_widget.php:235
+msgid "Sort "
+msgstr "Сортировка"
+
+#: classes/events_widget.php:237
+msgid "Ascending"
+msgstr "По возрастанию"
+
+#: classes/events_widget.php:238
+msgid "Decending"
+msgstr "По убыванию"
+
+#: classes/events_widget.php:241
+msgid "Specific Events (enter comma saperated ids)"
+msgstr "Конкретные события (введите ID через запятую)"
+
+#: classes/events_widget.php:242
+msgid "Maxmium Number of Events to show"
+msgstr "Количество курсов для отображения"
+
+#: classes/events_widget.php:244
+msgid "Show Course Events (on Course pages)"
+msgstr "Показывать события курсов (на странице курса)"

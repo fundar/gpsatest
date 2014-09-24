@@ -1,0 +1,2137 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WPLMS v1.4.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-09-09 19:39+0530\n"
+"PO-Revision-Date: 2014-09-09 19:39+0530\n"
+"Last-Translator: VibeThemes <vibethemes@gmail.com>\n"
+"Language-Team: \n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 1.6.9\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: ../\n"
+"X-Textdomain-Support: yes\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: autoupdate/class-envato-protected-api.php:67
+msgid "Please enter your Envato Marketplace Username."
+msgstr ""
+
+#: autoupdate/class-envato-protected-api.php:71
+msgid "Please enter your Envato Marketplace API Key."
+msgstr ""
+
+#: autoupdate/class-envato-protected-api.php:96
+msgid "The API \"set\" is a required parameter."
+msgstr ""
+
+#: autoupdate/class-envato-protected-api.php:167
+msgid "The Envato Marketplace \"item ID\" is a required parameter."
+msgstr ""
+
+#: autoupdate/class-plugin-update.php:376
+msgid "An Unexpected HTTP Error occurred during the API request."
+msgstr ""
+
+#: autoupdate/class-plugin-update.php:376
+#: autoupdate/class-plugin-update.php:541
+msgid "Try again"
+msgstr ""
+
+#: autoupdate/class-plugin-update.php:417
+msgid "An unknown error occurred"
+msgstr ""
+
+#: autoupdate/class-plugin-update.php:453
+msgid ""
+"The plugin has been updated, but could not be reactivated. Please reactivate "
+"it manually."
+msgstr ""
+
+#: autoupdate/class-plugin-update.php:454
+msgid "Plugin reactivated successfully. "
+msgstr ""
+
+#: autoupdate/class-plugin-update.php:476
+msgid " Plugin Updates"
+msgstr ""
+
+#: autoupdate/class-plugin-update.php:515
+msgid "Username: "
+msgstr ""
+
+#: autoupdate/class-plugin-update.php:519
+msgid "Email: "
+msgstr ""
+
+#: autoupdate/class-plugin-update.php:525
+msgid "Key: "
+msgstr ""
+
+#: autoupdate/class-plugin-update.php:531
+msgid "<p>Your plugin update is <span style=\"color:green\">active</span></p>"
+msgstr ""
+
+#: autoupdate/class-plugin-update.php:535
+msgid ""
+"<p>Your input is <span style=\"color:red\">not valid</span>, automatic "
+"updates is <span style=\"color:red\">not active</span>.</p>"
+msgstr ""
+
+#: autoupdate/class-plugin-update.php:536
+msgid "Edit Key"
+msgstr ""
+
+#: autoupdate/class-plugin-update.php:540
+msgid "<p>Unable to validate update activation.</p>"
+msgstr ""
+
+#: autoupdate/class-plugin-update.php:546
+msgid "Add Key"
+msgstr ""
+
+#: autoupdate/class-plugin-update.php:632
+msgid "User name"
+msgstr ""
+
+#: autoupdate/class-plugin-update.php:638
+msgid "Email"
+msgstr ""
+
+#: autoupdate/class-plugin-update.php:647
+msgid "Themeforest User name ( for Auto-Updates )"
+msgstr ""
+
+# @ vibe
+#: includes/bp-course-actions.php:20
+msgid "Removed a student from Course"
+msgstr "Teilnehmer aus dem Kurs entfernt "
+
+#: includes/bp-course-actions.php:21 includes/bp-course-actions.php:25
+msgid "Student submitted a Course"
+msgstr "Teilnehmer hat ein Kursergebnis eingesandt "
+
+#: includes/bp-course-actions.php:22 includes/bp-course-actions.php:24
+msgid "Student started a Course"
+msgstr "Teilnehmer hat einen Kurs begonnen "
+
+#: includes/bp-course-actions.php:23
+msgid "Student submitted a Quiz"
+msgstr "Teilnehmer hat die Quizergebnisse eingesandt"
+
+# @ vibe
+#: includes/bp-course-actions.php:26
+msgid "Course reset for Student"
+msgstr "Kurs für den Benutzer zurückgesetzt"
+
+# @ vibe
+#: includes/bp-course-actions.php:27
+msgid "Bulk action by instructor"
+msgstr "Trainer sendet Massennachricht an alle Teilnehmer"
+
+#: includes/bp-course-actions.php:28
+msgid "Course Evaluated for student"
+msgstr "Trainer hat Kurs für den Teilnehmer bewertet "
+
+# @ vibe
+#: includes/bp-course-actions.php:29
+msgid "Student got a Badge"
+msgstr "Teilnehmer hat einen Badge für einen Kurs erhalten"
+
+# @ vibe
+#: includes/bp-course-actions.php:30
+msgid "Student got a certificate"
+msgstr "Teilnehmer hat ein Zertifikat erhalten "
+
+#: includes/bp-course-actions.php:31
+msgid "Quiz Evaluated for student"
+msgstr "Quiz für den Teilnehmer bewertet"
+
+# @ vibe
+#: includes/bp-course-actions.php:32
+msgid "Student subscribed for course"
+msgstr "Teilnehmer zum Kurs angemeldet"
+
+#: includes/bp-course-actions.php:50 includes/bp-course-actions.php:52
+msgid "per"
+msgstr "pro"
+
+# @ vibe
+#: includes/bp-course-actions.php:69
+msgid "SUBSCRIPTION FOR"
+msgstr "EINGESCHRIEBEN FÜR "
+
+#: includes/bp-course-actions.php:103 includes/bp-course-actions.php:128
+msgid "Unlimited Duration"
+msgstr ""
+
+# @ vibe
+#: includes/bp-course-actions.php:106 includes/bp-course-actions.php:131
+#: includes/bp-course-functions.php:1272
+msgid "Student subscribed for course "
+msgstr "Teilnehmer für Kurs angemeldet"
+
+# @ vibe
+#: includes/bp-course-actions.php:107 includes/bp-course-actions.php:132
+#: includes/bp-course-actions.php:167 includes/bp-course-actions.php:168
+#: includes/bp-course-ajax.php:306 includes/bp-course-ajax.php:307
+#: includes/bp-course-ajax.php:472 includes/bp-course-ajax.php:492
+#: includes/bp-course-ajax.php:509 includes/bp-course-ajax.php:552
+#: includes/bp-course-functions.php:454 includes/bp-course-functions.php:812
+#: includes/bp-course-functions.php:1273 includes/bp-course-template.php:1209
+#: includes/bp-course-template.php:1233 includes/bp-course-template.php:1257
+msgid "Student "
+msgstr "Teilnehmer "
+
+# @ vibe
+#: includes/bp-course-actions.php:107 includes/bp-course-actions.php:132
+#: includes/bp-course-ajax.php:822 includes/bp-course-ajax.php:858
+#: includes/bp-course-functions.php:1273
+msgid " subscribed for course "
+msgstr "eingeschrieben für den Kurs"
+
+#: includes/bp-course-actions.php:107 includes/bp-course-actions.php:132
+#: includes/bp-course-functions.php:1273
+msgid " for "
+msgstr "für"
+
+# @ vibe
+#: includes/bp-course-actions.php:167 includes/bp-course-ajax.php:306
+msgid " removed from course "
+msgstr " aus dem Kurs entfernt"
+
+# @ vibe
+#: includes/bp-course-actions.php:168 includes/bp-course-ajax.php:307
+msgid " removed from the course "
+msgstr " aus diesem Kurs entfernt "
+
+# @ vibe
+#: includes/bp-course-actions.php:183
+#, php-format
+msgid "All Instructors <span>%s</span>"
+msgstr "Alle Trainer <span>%s</span>"
+
+#: includes/bp-course-actions.php:192
+msgid "Enter student name/email"
+msgstr ""
+
+#: includes/bp-course-actions.php:193 includes/bp-course-functions.php:133
+#: includes/bp-course-widgets.php:338
+msgid "Search"
+msgstr "Suche "
+
+#: includes/bp-course-activity.php:92
+#, php-format
+msgid "%1$s wrote a new %2$s, %3$s, on the site %4$s"
+msgstr "%1$s schrieb einen neuen %2$s, %3$s, auf der Seite %4$s"
+
+#: includes/bp-course-activity.php:94
+#, php-format
+msgid "%1$s wrote a new %2$s, %3$s"
+msgstr " %1$s schrieb einen neuen  %2$s, %3$s"
+
+#: includes/bp-course-activity.php:107
+#, php-format
+msgid "%1$s reviewed the %2$s, %3$s, on the site %4$s"
+msgstr "%1$s rezensierte %2$s, %3$s, auf der Seite %4$s"
+
+#: includes/bp-course-activity.php:109
+#, php-format
+msgid "%1$s reviewed the %2$s, %3$s"
+msgstr "%1$s rezensierte %2$s, %3$s"
+
+#: includes/bp-course-activity.php:113
+#, php-format
+msgid "%1$s answered the %2$s, %3$s, on the site %4$s"
+msgstr "%1$s beantwortete %2$s, %3$s, auf der Seite %4$s"
+
+#: includes/bp-course-activity.php:115
+#, php-format
+msgid "%1$s answered the %2$s, %3$s"
+msgstr "%1$s beantwortete %2$s, %3$s"
+
+# @ vibe
+#: includes/bp-course-ajax.php:37 includes/bp-course-ajax.php:987
+msgid "Security check Failed. Contact Administrator."
+msgstr "Sicherheitstest fehlgeschlagen. Kontaktieren Sie den Administrator."
+
+# @ vibe
+#: includes/bp-course-ajax.php:61
+msgid "Student finished unit "
+msgstr "Teilnehmer hat eine Lektion beendet"
+
+#: includes/bp-course-ajax.php:62
+msgid "Student finished the unit "
+msgstr "Teilnehmer hat die Lektion beendet"
+
+#: includes/bp-course-ajax.php:62 includes/bp-course-ajax.php:472
+#: includes/bp-course-ajax.php:1051 includes/bp-course-template.php:1209
+msgid " in course "
+msgstr "im Kurs"
+
+# @ vibe
+#: includes/bp-course-ajax.php:88
+msgid "Answer Reset"
+msgstr "Antwort zurückgesetzt"
+
+# @ vibe
+#: includes/bp-course-ajax.php:90
+msgid "Unable to Reset"
+msgstr "Kann nicht zurückgesetzt werden"
+
+#: includes/bp-course-ajax.php:101 includes/bp-course-ajax.php:209
+#: includes/bp-course-ajax.php:283 includes/bp-course-ajax.php:327
+#: includes/bp-course-ajax.php:409 includes/bp-course-ajax.php:573
+#: includes/bp-course-ajax.php:626 includes/bp-course-functions.php:429
+msgid "Security check failed !"
+msgstr "Sicherheitstest fehlgeschlagen."
+
+#: includes/bp-course-ajax.php:106
+msgid "Incorrect Course selected."
+msgstr "Falschen Kurs ausgewählt."
+
+#: includes/bp-course-ajax.php:193
+msgid "Statistics successfully calculated. Reloading..."
+msgstr "Statistik erfolgreich berechnet. Neu laden ..."
+
+# @ vibe
+#: includes/bp-course-ajax.php:195
+msgid "Unable to calculate Average."
+msgstr "Durchschnitt kann nicht berechnet werden. "
+
+#: includes/bp-course-ajax.php:206
+msgid "SHOW STATS"
+msgstr "Statistik anzeigen "
+
+#: includes/bp-course-ajax.php:206
+msgid "HIDE"
+msgstr "VERBERGEN"
+
+#: includes/bp-course-ajax.php:214
+msgid "Incorrect User selected."
+msgstr "Falschen Benutzer ausgewählt. "
+
+# @ vibe
+#: includes/bp-course-ajax.php:225
+msgid "This User has not started the course."
+msgstr "Dieser Benutzer hat den Kurs noch nicht begonnen. "
+
+#: includes/bp-course-ajax.php:227
+msgid "This User has completed the course."
+msgstr "Dieser Benutzer hat dne Kurs vollständig bearbeitet. "
+
+#: includes/bp-course-ajax.php:228
+msgid "Student Score for Course "
+msgstr "Kursergebnis des Teilnehmers "
+
+# @ vibe
+#: includes/bp-course-ajax.php:228
+msgid " out of 100"
+msgstr "von 100"
+
+# @ vibe
+#: includes/bp-course-ajax.php:238
+msgid "Course Started : "
+msgstr "Kurs begonnen : "
+
+# @ vibe
+#: includes/bp-course-ajax.php:239
+msgid " ago"
+msgstr "vor "
+
+# @ vibe
+#: includes/bp-course-ajax.php:243
+msgid "Curriculum :"
+msgstr "Kursablauf "
+
+#: includes/bp-course-ajax.php:244
+msgid "Quizes"
+msgstr "Quiz"
+
+#: includes/bp-course-ajax.php:254
+msgid "Marks Obtained : "
+msgstr "Bewertung, die die Teilnehmer erreicht haben "
+
+#: includes/bp-course-ajax.php:254
+msgid "Under Evaluation"
+msgstr "Unter Auswertung"
+
+# @ vibe
+#: includes/bp-course-ajax.php:269
+msgid "Units Completed "
+msgstr "Vollständige Lektionen "
+
+# @ vibe
+#: includes/bp-course-ajax.php:269 includes/bp-course-ajax.php:545
+#: includes/bp-course-ajax.php:552 includes/bp-course-ajax.php:598
+#: includes/bp-course-functions.php:1213
+msgid " out of "
+msgstr "von "
+
+#: includes/bp-course-ajax.php:288 includes/bp-course-ajax.php:332
+#: includes/bp-course-ajax.php:414 includes/bp-course-ajax.php:578
+#: includes/bp-course-ajax.php:631 includes/bp-course-functions.php:433
+msgid " Incorrect User selected."
+msgstr "Falschen Benutzer ausgewählt. "
+
+# @ vibe
+#: includes/bp-course-ajax.php:299
+msgid "User removed from the Course"
+msgstr "Teilnehmer aus dem Kurs entfernt  "
+
+#: includes/bp-course-ajax.php:315
+msgid ""
+"There was issue in removing this user from the Course. Please contact admin."
+msgstr ""
+"Es gab ein Problem beim Entfernen dieses Benutzers aus dem Kurs. Bitte "
+"kontaktieren Sie den Admin."
+
+# @ vibe
+#: includes/bp-course-ajax.php:387
+msgid "Course Reset for User"
+msgstr "Kurs für den Benutzer zurückgesetzt"
+
+# @ vibe
+#: includes/bp-course-ajax.php:389
+msgid "Course reset for student "
+msgstr "Kurs für den Benutzer zurückgesetzt "
+
+# @ vibe
+#: includes/bp-course-ajax.php:390
+msgid "Course "
+msgstr "Kurs"
+
+#: includes/bp-course-ajax.php:390
+msgid " reset for student "
+msgstr "Kurs für den Teilnehmer zurückgesetzt"
+
+# @ vibe
+#: includes/bp-course-ajax.php:397
+msgid ""
+"There was issue in resetting this course for the user. Please contact admin."
+msgstr ""
+"Es gab ein Problem beim Zurücksetzen des Kurses für den Teilnehmer. Bitte "
+"kontaktieren sie den Admin. "
+
+#: includes/bp-course-ajax.php:432
+msgid "Quiz Reset for Selected User"
+msgstr "Quiz für den ausgewählten Benutzer zurückgesetzt"
+
+#: includes/bp-course-ajax.php:434
+msgid "Could not find Quiz results for User. Contact Admin."
+msgstr ""
+"Quizergebnisse für den Benutzer konnten nicht gefunden werden. Kontakt Sie "
+"den Admin."
+
+# @ vibe
+#: includes/bp-course-ajax.php:439
+msgid "Instructor Reseted the Quiz for User"
+msgstr "Trainer hat das Quiz für den Benutzer zurückgesetzt"
+
+#: includes/bp-course-ajax.php:440 includes/bp-course-functions.php:773
+#: includes/bp-course-functions.php:1225
+msgid "Quiz "
+msgstr "Quiz "
+
+# @ vibe
+#: includes/bp-course-ajax.php:440
+msgid " was reset by the Instructor for user"
+msgstr "Kurs für den Benutzer zurückgesetzt  "
+
+# @ vibe
+#: includes/bp-course-ajax.php:471
+msgid "Instructor evaluated Course for Student"
+msgstr "Trainer hat Kurs für den Teilnehmer ausgewertet "
+
+#: includes/bp-course-ajax.php:472 includes/bp-course-template.php:1209
+#, fuzzy
+msgid " got ="
+msgstr " erhalten "
+
+# @ vibe
+#: includes/bp-course-ajax.php:491 includes/bp-course-template.php:1232
+msgid "Student got a Badge in the course "
+msgstr "Teilnehmer, die einen Badge für den Kurs erhalten haben "
+
+#: includes/bp-course-ajax.php:492 includes/bp-course-template.php:1233
+msgid " got a badge in the course "
+msgstr "Teilnehmer, die einen Badge erhalten haben "
+
+# @ vibe
+#: includes/bp-course-ajax.php:508
+#, fuzzy
+msgid "Student got a Certificate in course"
+msgstr "Teilnehmer hat ein Zertifikat erhalten  "
+
+#: includes/bp-course-ajax.php:509
+msgid " got a certificate in the course "
+msgstr "erhielt ein Zertifikat für den Kurs "
+
+#: includes/bp-course-ajax.php:517 includes/bp-course-ajax.php:545
+#: includes/bp-course-functions.php:1213 includes/bp-course-template.php:1268
+msgid "You've obtained "
+msgstr "Sie haben erreicht "
+
+#: includes/bp-course-ajax.php:517 includes/bp-course-template.php:1268
+#, fuzzy
+msgid " in Course :"
+msgstr "im Kurs"
+
+# @ vibe
+#: includes/bp-course-ajax.php:519 includes/bp-course-template.php:1275
+msgid "Course results available"
+msgstr "Ergebnisse verfügbar "
+
+#: includes/bp-course-ajax.php:520
+msgid "COURSE MARKED COMPLETE"
+msgstr "KURS ALS VOLLSTÄNDIG MARKIERT "
+
+#: includes/bp-course-ajax.php:523 includes/bp-course-template.php:1280
+msgid "FAILED TO MARK COURSE, CONTACT ADMIN"
+msgstr "KURS KONNTE NICHT BEWERTET WERDEN, KONTAKTIEREN SIE DEN ADMIN. "
+
+# @ vibe
+#: includes/bp-course-ajax.php:545
+msgid " in Quiz"
+msgstr "im Quiz "
+
+# @ vibe
+#: includes/bp-course-ajax.php:547 includes/bp-course-functions.php:1220
+msgid "Quiz results available"
+msgstr "Quizergebnisse verfügbar "
+
+# @ vibe
+#: includes/bp-course-ajax.php:550
+msgid "Instructor evaluated Quiz for student "
+msgstr "Trainer wertet das Quiz für den Benutzer aus. "
+
+#: includes/bp-course-ajax.php:552
+msgid " got "
+msgstr " erhalten "
+
+# @ vibe
+#: includes/bp-course-ajax.php:552
+msgid " in Quiz "
+msgstr " im Quiz "
+
+#: includes/bp-course-ajax.php:598
+msgid "MARKS: "
+msgstr " Bewertungen: "
+
+#: includes/bp-course-ajax.php:598 includes/bp-course-ajax.php:603
+msgid " PENDING"
+msgstr "ANSTEHEND"
+
+#: includes/bp-course-ajax.php:603
+msgid "DONE"
+msgstr "ERLEDIGT"
+
+# @ pmpro
+# @ woocommerce
+#: includes/bp-course-ajax.php:612 includes/bp-course-ajax.php:742
+msgid "Total"
+msgstr "Gesamt "
+
+#: includes/bp-course-ajax.php:613
+msgid "Course Percentage (Out of 100)"
+msgstr "Prozentanteil am Kurs (von 100)"
+
+#: includes/bp-course-ajax.php:613
+msgid "Course Percentage out of 100"
+msgstr "Prozentanteil am Kurs von 100"
+
+# @ vibe
+#: includes/bp-course-ajax.php:614
+msgid "Mark Course Complete"
+msgstr "Markieren Sie den Kurs als vollständig bearbeitet"
+
+#: includes/bp-course-ajax.php:636
+msgid " Incorrect Quiz Id."
+msgstr "Falsche Quiz-ID."
+
+# @ vibe
+#: includes/bp-course-ajax.php:656
+msgid "Marked Answer :"
+msgstr "Bewertete Antwort : "
+
+# @ vibe
+#: includes/bp-course-ajax.php:717
+msgid "Correct Answer :"
+msgstr "Richtige Antwort: "
+
+# @ vibe
+#: includes/bp-course-ajax.php:727 includes/bp-course-ajax.php:732
+msgid "Marks Obtained"
+msgstr "Bewertungen, die die Teilnehmer erreicht haben "
+
+#: includes/bp-course-ajax.php:727 includes/bp-course-ajax.php:732
+msgid "Give marks"
+msgstr "Bewertungen vergeben "
+
+# @ vibe
+#: includes/bp-course-ajax.php:728
+msgid "Update Marks"
+msgstr "Bewertungen aktualisieren "
+
+#: includes/bp-course-ajax.php:733
+msgid "Give Marks"
+msgstr "Bewertungen vergeben "
+
+#: includes/bp-course-ajax.php:743
+msgid "Mark Quiz as Checked"
+msgstr "Markieren Sie das Quiz als korrigiert.  "
+
+#: includes/bp-course-ajax.php:764 includes/bp-course-ajax.php:769
+msgid "Set a Subject for the message"
+msgstr "Betreffzeile für diese Nachricht eingeben "
+
+# @ vibe
+#: includes/bp-course-ajax.php:780
+msgid "Messages Sent to "
+msgstr "Nachrichten gesendet an "
+
+# @ vibe
+#: includes/bp-course-ajax.php:780 includes/bp-course-ajax.php:962
+msgid " members"
+msgstr " Mitglieder "
+
+#: includes/bp-course-ajax.php:782 includes/bp-course-ajax.php:973
+msgid "Please select members"
+msgstr "Bitte Mitglieder auswählen "
+
+#: includes/bp-course-ajax.php:786
+msgid "Instructor sent Bulk message to students : "
+msgstr "Trainer sendet Massennachricht an alle Teilnehmer : "
+
+#: includes/bp-course-ajax.php:787
+msgid "Bulk Message sent to students "
+msgstr "Massennachricht an alle Teilnehmer "
+
+#: includes/bp-course-ajax.php:821 includes/bp-course-ajax.php:857
+msgid "Instructor added Student for course "
+msgstr "Trainer fügte Teilnehmer zum Kurs hinzu "
+
+# @ vibe
+#: includes/bp-course-ajax.php:822 includes/bp-course-ajax.php:858
+msgid "Instructore added Student "
+msgstr "Trainer hat Teilnehmer hinzugefügt "
+
+# @ vibe
+#: includes/bp-course-ajax.php:835 includes/bp-course-ajax.php:871
+#: includes/templates/course/single/admin.php:188
+msgid "Reset Course for User"
+msgstr "Kurs für den Benutzer zurücksetzen "
+
+# @ vibe
+#: includes/bp-course-ajax.php:836 includes/bp-course-ajax.php:872
+#: includes/templates/course/single/admin.php:189
+msgid "See Course stats for User"
+msgstr "Kursstatistik für den Teilnehmer ansehen "
+
+# @ vibe
+#: includes/bp-course-ajax.php:837 includes/bp-course-ajax.php:873
+#: includes/templates/course/single/admin.php:190
+msgid "Remove User from this Course"
+msgstr "Teilnehmer aus dem Kurs entfernen "
+
+#: includes/bp-course-ajax.php:882
+msgid "Instructor added students in course  "
+msgstr "Trainer fügte Teilnehmer zum Kurs hinzu"
+
+# @ vibe
+#: includes/bp-course-ajax.php:883
+msgid "Instructor added "
+msgstr "Trainer fügte "
+
+#: includes/bp-course-ajax.php:883 includes/bp-course-ajax.php:965
+msgid " students in course "
+msgstr "Teilnehmer zum Kurs hinzu "
+
+#: includes/bp-course-ajax.php:905
+msgid "Select Assign Value"
+msgstr "Fügen Sie einen Wert hinzu "
+
+#: includes/bp-course-ajax.php:962
+msgid "Action assigned to "
+msgstr "Aktivität zugewiesen"
+
+#: includes/bp-course-ajax.php:964
+msgid "Instructor assigned/removed Certificate/Badges  "
+msgstr "Trainer überreicht/entfernt Zertifikate/ Badges"
+
+#: includes/bp-course-ajax.php:965
+msgid "Instructor added/removed Badges/Certificates from "
+msgstr "Trainer überreicht/entfernt Zertifikate/ Badges von"
+
+#: includes/bp-course-ajax.php:970
+msgid "Could not assign action to members"
+msgstr "Aktion konnte den Mitgliedern nicht hinzugefügt werden "
+
+# @ vibe
+#: includes/bp-course-ajax.php:999
+#, fuzzy
+msgid "Course Expired."
+msgstr "Kurstitel "
+
+#: includes/bp-course-ajax.php:1042
+msgid "Unit will be available in "
+msgstr "Lektion wird verfügbar sein in "
+
+#: includes/bp-course-ajax.php:1050
+msgid "Student started a unit"
+msgstr "Teilnehmer hat eine Lektion begonnen "
+
+#: includes/bp-course-ajax.php:1051
+msgid "Student started the unit "
+msgstr "Teilnehmer hat die Lektion begonnen "
+
+# @ vibe
+#: includes/bp-course-ajax.php:1060
+msgid "Unit can not be accessed."
+msgstr "Lektion kann nicht aufgerufen werden. "
+
+# @ vibe
+#: includes/bp-course-ajax.php:1083
+#: includes/templates/course/single/curriculum.php:43
+msgid " Hours"
+msgstr "Stunden "
+
+# @ vibe
+#: includes/bp-course-ajax.php:1083
+#: includes/templates/course/single/curriculum.php:43
+msgid " minutes"
+msgstr " Minuten "
+
+# @ vibe
+#: includes/bp-course-ajax.php:1111 includes/bp-course-ajax.php:1113
+msgid "Back to Quiz"
+msgstr "Zurück zum Quiz "
+
+# @ vibe
+#: includes/bp-course-ajax.php:1116
+msgid "Previous Unit"
+msgstr "Vorige Lektion "
+
+# @ vibe
+#: includes/bp-course-ajax.php:1124
+#, fuzzy
+msgid "Check Results"
+msgstr "Ergebnisse "
+
+# @ vibe
+#: includes/bp-course-ajax.php:1126
+msgid "Start Quiz"
+msgstr "Quiz beginnen "
+
+# @ vibe
+#: includes/bp-course-ajax.php:1129
+msgid "Mark this Unit Complete"
+msgstr "Markieren Sie diese Lektion als vollständig bearbeitet. "
+
+# @ vibe
+#: includes/bp-course-ajax.php:1152 includes/bp-course-ajax.php:1154
+msgid "Proceed to Quiz"
+msgstr "Weiter zum Quiz "
+
+# @ vibe
+#: includes/bp-course-ajax.php:1156
+msgid "Next Unit"
+msgstr "Nächste Lektion "
+
+#: includes/bp-course-cssjs.php:24
+msgid "Too Fast or Answer not marked."
+msgstr "Zu schnell, oder Antwort nicht markiert. "
+
+# @ vibe
+#: includes/bp-course-cssjs.php:25
+msgid "Answer Saved."
+msgstr "Antwort gespeichert. "
+
+# @ pmpro
+#: includes/bp-course-cssjs.php:26
+msgid "Processing..."
+msgstr "Weiter..."
+
+#: includes/bp-course-cssjs.php:27
+msgid "Saving Answer...please wait"
+msgstr "Antwort wird gespeichert ... bitte warten "
+
+#: includes/bp-course-cssjs.php:28
+msgid ""
+"This step is irreversible. Are you sure you want to remove the User from the "
+"course ?"
+msgstr ""
+"Dieser Schritt kann nicht rückgängig gemacht werden. Sind Sie sicher, dass "
+"Sie den Benutzer aus dem Kurs entfernen möchten?"
+
+# @ vibe
+#: includes/bp-course-cssjs.php:29
+msgid "Confirm, Remove User from Course"
+msgstr "Bestätigen Sie: Teilnehmer aus dem Kurs entfernen."
+
+# @ vibe
+# @ pmpro
+#: includes/bp-course-cssjs.php:30
+msgid "Cancel"
+msgstr "Beenden "
+
+#: includes/bp-course-cssjs.php:31
+msgid ""
+"This step is irreversible. All Units, Quiz results would be reset for this "
+"user. Are you sure you want to Reset the Course for this User?"
+msgstr ""
+"Dieser Schritt kann nicht rückgängig gemacht werden. Alle Antworten dieses "
+"Benutzers werden zurückgesetzt. Sind sie sicher, dass Sie den Kurs für "
+"diesen Benutzer zurücksetzen möchten?"
+
+# @ vibe
+#: includes/bp-course-cssjs.php:32
+msgid "Confirm, Reset Course for this User"
+msgstr "Bestätigen sie: Kurs für den Benutzer zurücksetzen "
+
+#: includes/bp-course-cssjs.php:33
+msgid ""
+"This step is irreversible. All Questions answers would be reset for this "
+"user. Are you sure you want to Reset the Quiz for this User? "
+msgstr ""
+"Dieser Schritt kann nicht rückgängig gemacht werden. Alle Fragen dieses "
+"Benutzers werden zurückgesetzt. Sind sie sicher, dass Sie den Kurs für "
+"diesen Benutzer zurücksetzen möchten?"
+
+# @ vibe
+#: includes/bp-course-cssjs.php:34
+msgid "Confirm, Reset Quiz for this User"
+msgstr "Bestätigen Sie: Quiz für den Benutzer zurücksetzen "
+
+# @ vibe
+#: includes/bp-course-cssjs.php:35
+msgid "Marks Saved"
+msgstr "Bewertungen gespeichert "
+
+#: includes/bp-course-cssjs.php:36
+msgid "Quiz Marks Saved"
+msgstr "Quizbewertungen gespeichert "
+
+# @ vibe
+#: includes/bp-course-cssjs.php:37
+msgid "Submit Quiz"
+msgstr "Quizergebnisse absenden "
+
+# @ vibe
+#: includes/bp-course-cssjs.php:38
+msgid "Sending Messages ..."
+msgstr "Nachrichten absenden ..."
+
+#: includes/bp-course-cssjs.php:39
+msgid "Adding Students to Course ..."
+msgstr "Teilnehmer zum Kurs hinzufügen ..."
+
+# @ vibe
+#: includes/bp-course-cssjs.php:40
+msgid "Students successfully added to Course"
+msgstr "Teilnehmer dem Kurs hinzugefügt "
+
+# @ vibe
+#: includes/bp-course-cssjs.php:41
+msgid "Unable to Add students to Course"
+msgstr "Kann den Teilnehmer nicht hinzufügen "
+
+# @ pmpro
+#: includes/bp-course-filters.php:169
+msgid "No Courses found."
+msgstr "Keine Kurse gefunden. "
+
+# @ vibe
+#: includes/bp-course-functions.php:49
+msgid "Course Directory"
+msgstr "Kursverzeichnis "
+
+# @ vibe
+#: includes/bp-course-functions.php:50
+msgid "All Courses by all instructors"
+msgstr "Alle Kurse aller Trainer "
+
+# @ vibe
+#: includes/bp-course-functions.php:82 includes/bp-course-loader.php:411
+#: includes/templates/course/single/home.php:23
+msgid "Home"
+msgstr "Startseite "
+
+# @ vibe
+#: includes/bp-course-functions.php:88
+msgid "Curriculum"
+msgstr "Kursablauf "
+
+# @ buddypress
+# @ vibe
+#: includes/bp-course-functions.php:94
+msgid "Members"
+msgstr "Mitglieder "
+
+# @ vibe
+#: includes/bp-course-functions.php:152 includes/bp-course-functions.php:237
+msgid "TAKE THIS COURSE"
+msgstr "KURS BUCHEN "
+
+# @ vibe
+#: includes/bp-course-functions.php:194
+msgid "START COURSE"
+msgstr "KURS BEGINNEN "
+
+# @ vibe
+#: includes/bp-course-functions.php:200
+msgid "CONTINUE COURSE"
+msgstr "KURS FORTSETZEN "
+
+#: includes/bp-course-functions.php:204
+msgid "COURSE UNDER EVALUATION"
+msgstr "KURS WIRD AUSGEWERTET "
+
+# @ vibe
+#: includes/bp-course-functions.php:209
+#, fuzzy
+msgid "FINISHED COURSE"
+msgstr "KURS BEENDET "
+
+# @ vibe
+#: includes/bp-course-functions.php:212
+msgid "COURSE FINISHED"
+msgstr "KURS BEENDET "
+
+# @ vibe
+#: includes/bp-course-functions.php:224
+msgid "COURSE ENABLED"
+msgstr "KURS FREIGESCHALTET "
+
+#: includes/bp-course-functions.php:224
+msgid "CONTACT ADMIN TO ENABLE"
+msgstr "KONTAKTIEREN SIE DEN ADMIN FÜR DIE FREISCHALTUNG "
+
+# @ vibe
+#: includes/bp-course-functions.php:229
+msgid "COURSE EXPIRED"
+msgstr "KURS AUSGELAUFEN "
+
+# @ vibe
+#: includes/bp-course-functions.php:239
+msgid "PRIVATE COURSE"
+msgstr "PRIVATER KURS "
+
+#: includes/bp-course-functions.php:266
+msgid "* REQUIRES"
+msgstr "* ERFORDERT"
+
+#: includes/bp-course-functions.php:269
+msgid "SEATS"
+msgstr "PLÄTZE"
+
+# @ vibe
+#: includes/bp-course-functions.php:270
+msgid "Course Badge"
+msgstr "Kurs-Badge "
+
+# @ vibe
+#: includes/bp-course-functions.php:271
+msgid "Course Certificate"
+msgstr "Kurszertifikat "
+
+#: includes/bp-course-functions.php:303
+#, fuzzy
+msgid "SHOW HINT"
+msgstr "Anzeigen: "
+
+#: includes/bp-course-functions.php:304
+msgid "HINT"
+msgstr ""
+
+#: includes/bp-course-functions.php:349
+msgid "FALSE"
+msgstr ""
+
+#: includes/bp-course-functions.php:349
+msgid "TRUE"
+msgstr ""
+
+#: includes/bp-course-functions.php:429 includes/bp-course-functions.php:433
+msgid "Security Error"
+msgstr "Sicherheitsfehler"
+
+#: includes/bp-course-functions.php:453
+msgid "Quiz retake by Student"
+msgstr "Teilnehmer wiederholt das Quiz "
+
+#: includes/bp-course-functions.php:454
+msgid " initiated quiz retake "
+msgstr "Quizwiederholung initiiert "
+
+# @ vibe
+#: includes/bp-course-functions.php:559 includes/bp-course-functions.php:567
+msgid "Next Question"
+msgstr "Nächste Frage "
+
+# @ vibe
+#: includes/bp-course-functions.php:563 includes/bp-course-functions.php:566
+msgid "Previous Question"
+msgstr "Vorige Frage"
+
+#: includes/bp-course-functions.php:608
+msgid "Duration not Set"
+msgstr ""
+
+#: includes/bp-course-functions.php:618 includes/bp-course-functions.php:1081
+msgid "Time Remaining"
+msgstr "Verbleibende Zeit "
+
+#: includes/bp-course-functions.php:619
+msgid "Mins"
+msgstr "Minuten "
+
+#: includes/bp-course-functions.php:619
+msgid "Secs"
+msgstr "Sekunden "
+
+# @ vibe
+#: includes/bp-course-functions.php:666
+msgid "QUESTION"
+msgstr "Frage "
+
+#: includes/bp-course-functions.php:700
+msgid "year"
+msgstr ""
+
+#: includes/bp-course-functions.php:701
+msgid "years"
+msgstr ""
+
+#: includes/bp-course-functions.php:702
+msgid "month"
+msgstr ""
+
+#: includes/bp-course-functions.php:703
+msgid "months"
+msgstr ""
+
+#: includes/bp-course-functions.php:704
+msgid "week"
+msgstr ""
+
+#: includes/bp-course-functions.php:705
+msgid "weeks"
+msgstr ""
+
+#: includes/bp-course-functions.php:706
+#, fuzzy
+msgid "day"
+msgstr "Tage"
+
+#: includes/bp-course-functions.php:707
+#, fuzzy
+msgid "days"
+msgstr "Tage"
+
+#: includes/bp-course-functions.php:708
+msgid "hour"
+msgstr ""
+
+# @ vibe
+#: includes/bp-course-functions.php:709
+#, fuzzy
+msgid "hours"
+msgstr "Stunden "
+
+# @ vibe
+#: includes/bp-course-functions.php:710
+#, fuzzy
+msgid "minute"
+msgstr " Minuten "
+
+# @ vibe
+#: includes/bp-course-functions.php:711
+#, fuzzy
+msgid "minutes"
+msgstr " Minuten "
+
+#: includes/bp-course-functions.php:712
+msgid "second"
+msgstr ""
+
+#: includes/bp-course-functions.php:713
+msgid "seconds"
+msgstr ""
+
+#: includes/bp-course-functions.php:717
+msgid "NOW"
+msgstr ""
+
+#: includes/bp-course-functions.php:759
+msgid "Right now"
+msgstr "Jetzt "
+
+#: includes/bp-course-functions.php:772
+msgid "Student submitted the Quiz"
+msgstr "Teilnehmer hat die Quizergebnisse eingesandt "
+
+# @ vibe
+#: includes/bp-course-functions.php:773
+msgid " was submitted by student"
+msgstr " wurde vom Teilnehmer eingesandt "
+
+#: includes/bp-course-functions.php:811
+msgid "Student started a quiz"
+msgstr "Teilnehmer startet Quiz  "
+
+#: includes/bp-course-functions.php:812
+msgid " started the quiz "
+msgstr " hat Quiz begonnen "
+
+#: includes/bp-course-functions.php:831 includes/bp-course-functions.php:866
+#: includes/bp-course-functions.php:898
+msgid "Quiz Timed Out ."
+msgstr "Quizzeit abgelaufen . "
+
+#: includes/bp-course-functions.php:832 includes/bp-course-functions.php:867
+#: includes/bp-course-functions.php:899 includes/bp-course-functions.php:903
+msgid "If you want to attempt again, Contact Instructor to reset the quiz."
+msgstr ""
+"Wenn Sie es noch einmal versuchen möchten, kontaktieren Sie den Trainer, "
+"damit er das Quiz zurückgesetzt."
+
+#: includes/bp-course-functions.php:838
+msgid "Quiz Already Attempted."
+msgstr "Quiz bereits bearbeitet. "
+
+#: includes/bp-course-functions.php:839
+msgid "Security Check Failed. Contact Site Admin."
+msgstr "Sicherheitstest fehlgeschlagen. Kontaktieren Sie den Admin."
+
+#: includes/bp-course-functions.php:871
+msgid "Start Quiz to begin quiz."
+msgstr "Starten Sie das Quiz, um zu beginnen. "
+
+#: includes/bp-course-functions.php:872
+msgid "Click \"Start Quiz\" button to start the Quiz."
+msgstr "Klicken Sie den \"Start Quiz\" -Button, um das Quiz zu starten."
+
+#: includes/bp-course-functions.php:876
+msgid "Quiz not active."
+msgstr ""
+
+#: includes/bp-course-functions.php:877
+msgid "Contact your instructor or site admin."
+msgstr ""
+
+#: includes/bp-course-functions.php:902
+msgid "Quiz Already Attempted ."
+msgstr "Quiz bereits bearbeitet "
+
+# @ vibe
+#: includes/bp-course-functions.php:948
+msgid "Course Curriculum Not Set."
+msgstr "Keine Kursübersicht angelegt. "
+
+# @ vibe
+#: includes/bp-course-functions.php:1012
+msgid "Attachments"
+msgstr "Anhänge "
+
+# @ vibe
+#: includes/bp-course-functions.php:1020
+msgid "Have Questions ? Ask in the Unit Forums"
+msgstr ""
+"Hier geht es zu den Lektionenforen! Laden Sie hier Ihr Bilder hoch und "
+"diskutieren Sie Ihre Ergebnisse. "
+
+# @ vibe
+#: includes/bp-course-functions.php:1041
+msgid "Instructor"
+msgstr "Trainer "
+
+# @ vibe
+#: includes/bp-course-functions.php:1213
+msgid " in quiz "
+msgstr "im Quiz "
+
+#: includes/bp-course-functions.php:1224
+msgid "Quiz Auto Evaluated"
+msgstr "Quiz automatisch ausgewertet. "
+
+#: includes/bp-course-functions.php:1225
+msgid " auto evaluated for student "
+msgstr " automatisch für den Teilnehmer ausgewertet "
+
+#: includes/bp-course-functions.php:1225
+msgid " with marks "
+msgstr " mit Bewertungen "
+
+#: includes/bp-course-functions.php:1225
+msgid "/"
+msgstr ""
+
+#: includes/bp-course-functions.php:1254
+msgid "Certificate not valid for user"
+msgstr "Zertifikat nicht gültig für den Teilnehmer "
+
+#: includes/bp-course-functions.php:1273
+msgid " days"
+msgstr "Tage"
+
+# @ vibe
+#: includes/bp-course-functions.php:1325
+msgid "Evaluate course submissions"
+msgstr "KURS EINSENDUNGEN AUSWERTEN "
+
+# @ vibe
+#: includes/bp-course-functions.php:1340
+msgid "Evaluate Quiz submissions"
+msgstr "EINSENDEAUFGABEN AUSWERTEN "
+
+# @ vibe
+#: includes/bp-course-functions.php:1345
+msgid "Manage Students"
+msgstr "Teilnehmer verwalten "
+
+# @ vibe
+#: includes/bp-course-functions.php:1346
+msgid "See Stats"
+msgstr "Kursstatistik ansehen "
+
+# @ vibe
+#: includes/bp-course-functions.php:1347
+msgid "See all Activity"
+msgstr "Alle Aktivitäten ansehen "
+
+#: includes/bp-course-functions.php:1373
+msgid "Seconds"
+msgstr ""
+
+# @ vibe
+#: includes/bp-course-functions.php:1374
+#, fuzzy
+msgid "Minutes"
+msgstr " Minuten "
+
+# @ vibe
+#: includes/bp-course-functions.php:1375
+#, fuzzy
+msgid "Hours"
+msgstr "Stunden "
+
+#: includes/bp-course-functions.php:1376
+msgid "Days"
+msgstr ""
+
+#: includes/bp-course-functions.php:1377
+msgid "Weeks"
+msgstr ""
+
+#: includes/bp-course-functions.php:1378
+msgid "Months"
+msgstr ""
+
+#: includes/bp-course-functions.php:1379
+msgid "Years"
+msgstr ""
+
+# @ vibe
+#: includes/bp-course-loader.php:66
+msgid "Course"
+msgstr "Kurs "
+
+#: includes/bp-course-loader.php:259
+msgid "Search ..."
+msgstr "Suche ... "
+
+# @ vibe
+#: includes/bp-course-loader.php:308
+#, php-format
+msgid "Courses <span>%s</span>"
+msgstr "Kurse <span>%s</span>"
+
+# @ vibe
+#: includes/bp-course-loader.php:346
+msgid "My Courses"
+msgstr "Meine Kurse "
+
+# @ vibe
+#: includes/bp-course-loader.php:356
+msgid "Results"
+msgstr "Ergebnisse "
+
+# @ vibe
+#: includes/bp-course-loader.php:366
+msgid "Stats"
+msgstr "Statistik "
+
+# @ vibe
+#: includes/bp-course-loader.php:375
+msgid "Instructing Courses"
+msgstr "Kurse anbieten "
+
+# @ vibe
+#: includes/bp-course-notifications.php:27
+msgid "course"
+msgstr "Kurs "
+
+# @ vibe
+#: includes/bp-course-notifications.php:28
+msgid "Yes"
+msgstr "Ja "
+
+# @ vibe
+#: includes/bp-course-notifications.php:29
+msgid "No"
+msgstr "Nein "
+
+# @ buddypress
+#: includes/bp-course-notifications.php:36
+msgid "Action One"
+msgstr "Schritt 1"
+
+# @ buddypress
+#: includes/bp-course-notifications.php:42
+msgid "Action Two"
+msgstr "Schritt 2 "
+
+#: includes/bp-course-notifications.php:100
+msgid "Multiple high-fives"
+msgstr "Super Riesenglückwunsch! "
+
+#: includes/bp-course-notifications.php:100
+#, php-format
+msgid "%d new high-fives, multi-five!"
+msgstr "%d new high-fives, multi-five!"
+
+#: includes/bp-course-notifications.php:104
+#, php-format
+msgid "%s sent you a high-five!"
+msgstr "%s sendet Ihnen ein high-five!"
+
+#: includes/bp-course-notifications.php:141
+#, php-format
+msgid "%s high-fived you!"
+msgstr "%s high-fived you!"
+
+#: includes/bp-course-notifications.php:144
+#, php-format
+msgid ""
+"Results for %s are out. You've recieved %s marks.\n"
+"\n"
+"see quiz results %s ,evaluated by %s [%s]\n"
+"\n"
+"\n"
+"---------------------\n"
+msgstr ""
+"Die Ergebnisse für %s sind da. Sie haben %s Punkte erreicht.\n"
+"\n"
+"Sehen Sie sich die Quizergebnisse an %s ,überprüft von %s [%s]\n"
+"\n"
+"\n"
+"---------------------\n"
+
+# @ vibe
+#: includes/bp-course-screens.php:96
+msgid "Course Settings Header"
+msgstr "Kurseinstellungen Überschrift "
+
+# @ vibe
+#: includes/bp-course-screens.php:100
+msgid "course Settings"
+msgstr "Kurseinstellungen "
+
+# @ pmpro
+#: includes/bp-course-screens.php:108
+msgid "Changes Saved."
+msgstr "Änderungen gespeichert. "
+
+# @ pmpro
+#: includes/bp-course-screens.php:114
+msgid "Do you love clicking checkboxes?"
+msgstr "Mögen Sie es Checkboxen anzuklicken? "
+
+# @ vibe
+#: includes/bp-course-screens.php:116
+msgid "Save Settings"
+msgstr "Einstellungen speicher "
+
+# @ vibe
+#: includes/bp-course-screens.php:151
+msgid "Send Bulk Message"
+msgstr "Nachricht an alle absenden "
+
+#: includes/bp-course-screens.php:152
+msgid "Add Students to Course"
+msgstr "Teilnehmer zum Kurs hinzufügen "
+
+#: includes/bp-course-screens.php:153
+msgid "Assign Badges/Certificates to Students"
+msgstr "Den Teilnehmern Badges/ Zertifikate zuweisen "
+
+#: includes/bp-course-screens.php:162
+msgid "Type Message Subject"
+msgstr "Betreff eingeben "
+
+# @ vibe
+#: includes/bp-course-screens.php:163
+msgid "Type Message"
+msgstr "Nachricht schreiben "
+
+# @ vibe
+#: includes/bp-course-screens.php:164
+msgid "Send Message"
+msgstr "Nachricht absenden "
+
+#: includes/bp-course-screens.php:177
+msgid "Enter Student Usernames, separated by comma"
+msgstr "Geben Sie die Namen der Teilnehmer ein, kommagetrennt"
+
+# @ vibe
+#: includes/bp-course-screens.php:178
+msgid "Add Students"
+msgstr "Teilnehmer hinzufügen "
+
+# @ vibe
+#: includes/bp-course-screens.php:192
+msgid "ASSIGN COURSE BADGE"
+msgstr "Kurs-Badge verleihen "
+
+#: includes/bp-course-screens.php:193
+msgid "ASSIGN COURSE CERTIFICATE"
+msgstr "Kurszertifikat verleihen "
+
+# @ vibe
+#: includes/bp-course-screens.php:194
+msgid "REMOVE COURSE BADGE"
+msgstr "Kurs-Badge entfernen "
+
+# @ vibe
+#: includes/bp-course-screens.php:195
+msgid "REMOVE COURSE CERTIFICATE"
+msgstr "Kurszertifikat entfernen "
+
+# @ buddypress
+#: includes/bp-course-screens.php:197
+msgid "Assign Action"
+msgstr "Aktivität hinzufügen "
+
+#: includes/bp-course-template.php:201
+#, php-format
+msgid "Viewing page %1$s of %2$s"
+msgstr "Seite  %1$s von %2$s ansehen"
+
+# @ vibe
+#: includes/bp-course-template.php:417 includes/bp-course-template.php:420
+msgid "REVIEWS"
+msgstr "REZENSIONEN "
+
+# @ vibe
+#: includes/bp-course-template.php:428
+msgid "STUDENTS"
+msgstr "TEILNEHMER "
+
+# @ vibe
+#: includes/bp-course-template.php:536
+#: includes/templates/course/single/curriculum.php:29
+msgid "FREE"
+msgstr "KOSTENLOS "
+
+#: includes/bp-course-template.php:560
+msgid "MEMBERSHIP"
+msgstr "MITGLIEDSCHAFT "
+
+#: includes/bp-course-template.php:577
+msgid "PRIVATE"
+msgstr "PRIVAT "
+
+#: includes/bp-course-template.php:1161
+#, fuzzy, php-format
+msgid "Student %s finished and submitted the course %s"
+msgstr "Teilnehmer hat ein Kursergebnis eingesandt "
+
+#: includes/bp-course-template.php:1163
+#, fuzzy
+msgid "Student Submitted the course "
+msgstr "Teilnehmer hat ein Kursergebnis eingesandt "
+
+#: includes/bp-course-template.php:1201
+msgid "COURSE EVALUATED "
+msgstr "KURS BEWERTET "
+
+# @ vibe
+#: includes/bp-course-template.php:1208
+msgid "Auto evaluated Course for Student"
+msgstr "Den Kurs für den Teilnehmer automatich auswerten "
+
+#: includes/bp-course-template.php:1230
+msgid "Congratulations ! You've earned the "
+msgstr "Herzlichen Glückwunsch, Sie haben das Ziel erreicht "
+
+# @ vibe
+#: includes/bp-course-template.php:1230
+msgid "Badge"
+msgstr "Badge "
+
+#: includes/bp-course-template.php:1254
+msgid ""
+"Congratulations ! You've successfully passed the course and earned the "
+"Course Completion Certificate !"
+msgstr ""
+"Herzlichen Glückwunsch! Sie haben den Kurs erfolgreich abgeschlossen und "
+"sich das Kursabschluss-Zertifikat verdient!"
+
+# @ vibe
+#: includes/bp-course-template.php:1256
+msgid "Student got a Certificate in the course "
+msgstr "Teilnehmer hat ein Zertifikat erhalten  "
+
+#: includes/bp-course-template.php:1257
+msgid " got a caertificate in the course "
+msgstr " hat ein Kurszertifikta erhalten "
+
+# @ vibe
+#: includes/bp-course-template.php:1284
+msgid "COURSE SUBMITTED FOR EVALUATION"
+msgstr "KURS ZUR BEWERTUNG ABGESCHICKT "
+
+#: includes/bp-course-template.php:1291
+#, fuzzy
+msgid "Student submitted course for evaluation"
+msgstr "Teilnehmer hat ein Kursergebnis eingesandt "
+
+#: includes/bp-course-template.php:1302
+msgid "PLEASE COMPLETE THE "
+msgstr "BITTE VERVOLLSTÄNDIGEN SIE DIE "
+
+#: includes/bp-course-template.php:1305
+msgid "COURSE CURRICULUM NOT SET"
+msgstr "Keine Kursübersicht angelegt.  "
+
+# @ vibe
+#: includes/bp-course-widgets.php:32
+msgid "BuddyPress Course Widget"
+msgstr "BuddyPress Kurs-Widget"
+
+#: includes/bp-course-widgets.php:89 includes/bp-course-widgets.php:229
+msgid "by"
+msgstr "von"
+
+# @ vibe
+#: includes/bp-course-widgets.php:149 includes/bp-course-widgets.php:260
+#: includes/bp-course-widgets.php:375 includes/bp-course-widgets.php:498
+msgid "Widget Title"
+msgstr "Widget-Titel"
+
+# @ vibe
+#: includes/bp-course-widgets.php:150
+msgid "Style"
+msgstr "Stil "
+
+#: includes/bp-course-widgets.php:152
+msgid "Single"
+msgstr "Einzel "
+
+#: includes/bp-course-widgets.php:153
+msgid "List"
+msgstr "Liste "
+
+# @ vibe
+#: includes/bp-course-widgets.php:154
+#, fuzzy
+msgid "Ratings List"
+msgstr "Bewertung "
+
+# @ vibe
+#: includes/bp-course-widgets.php:155
+msgid "Carousel"
+msgstr "Karussell "
+
+# @ vibe
+#: includes/bp-course-widgets.php:158 includes/bp-course-widgets.php:301
+msgid "Select Course Category"
+msgstr "Kurskategorie auswählen "
+
+# @ vibe
+#: includes/bp-course-widgets.php:168
+msgid "Order By"
+msgstr "Sortiert nach "
+
+#: includes/bp-course-widgets.php:170
+msgid "Random"
+msgstr "Zufällig"
+
+# @ vibe
+#: includes/bp-course-widgets.php:171
+msgid "Name"
+msgstr "Name "
+
+# @ vibe
+#: includes/bp-course-widgets.php:172
+msgid "Course Title"
+msgstr "Kurstitel "
+
+# @ vibe
+#: includes/bp-course-widgets.php:173
+msgid "Number of Reviews"
+msgstr "Anzahl der Bewertungen "
+
+#: includes/bp-course-widgets.php:174
+msgid "Date Published"
+msgstr "Erscheinungsdatum "
+
+# @ vibe
+#: includes/bp-course-widgets.php:175
+msgid "Rating"
+msgstr "Bewertung "
+
+# @ vibe
+#: includes/bp-course-widgets.php:176
+msgid "Number of Students"
+msgstr "Anzahl der Kursteilnehmer  "
+
+# @ vibe
+#: includes/bp-course-widgets.php:179
+msgid "Sort "
+msgstr "Art "
+
+# @ pmpro
+#: includes/bp-course-widgets.php:181
+msgid "Ascending"
+msgstr "Aufsteigend "
+
+# @ pmpro
+#: includes/bp-course-widgets.php:182
+msgid "Decending"
+msgstr "Absteigend "
+
+#: includes/bp-course-widgets.php:185
+msgid "Specific Courses (enter comma saperated ids)"
+msgstr "Spezifische Kurse (kommagetrennte IDs)"
+
+# @ vibe
+#: includes/bp-course-widgets.php:186
+msgid "Number of Courses to show"
+msgstr "Anzahl der angezeigten Kurse "
+
+# @ vibe
+#: includes/bp-course-widgets.php:200
+msgid "BuddyPress Instructor Widget"
+msgstr "BuddyPress Trainer Widget"
+
+# @ vibe
+#: includes/bp-course-widgets.php:223
+msgid "Check all Courses created by "
+msgstr "Alle angebotenen Kurse ansehen von "
+
+# @ vibe
+#: includes/bp-course-widgets.php:224
+msgid "More Courses by "
+msgstr "Mehr Kurse von "
+
+# @ vibe
+#: includes/bp-course-widgets.php:261
+msgid "Fallback Instructor ID"
+msgstr "Fallback Instructor ID"
+
+# @ vibe
+#: includes/bp-course-widgets.php:262
+msgid "Number of Courses by the Instructor to show"
+msgstr "Kurse des Trainers  "
+
+# @ vibe
+#: includes/bp-course-widgets.php:276
+msgid "BuddyPress Course Search Widget"
+msgstr "BuddyPress Kurssuchwidget"
+
+# @ vibe
+#: includes/bp-course-widgets.php:317
+msgid "Select Instructor"
+msgstr "Trainer auswählen "
+
+# @ vibe
+#: includes/bp-course-widgets.php:330
+#, fuzzy
+msgid "Select Course Level"
+msgstr "Kurskategorie auswählen "
+
+#: includes/bp-course-widgets.php:337
+msgid "Type Keywords.."
+msgstr "Keywords eingeben..."
+
+#: includes/bp-course-widgets.php:376
+msgid "Show Course Category Dropdown"
+msgstr "Dropdown-Menü für Kurskategorie anzeigen"
+
+# @ vibe
+#: includes/bp-course-widgets.php:377
+msgid "Show Instructor Dropdown"
+msgstr "Trainer im Dropdown-Menü anzeigen "
+
+#: includes/bp-course-widgets.php:381
+#, fuzzy
+msgid "Show Level Dropdown"
+msgstr "Dropdown-Menü für Kurskategorie anzeigen"
+
+# @ vibe
+#: includes/bp-course-widgets.php:395
+#, fuzzy
+msgid "BuddyPress Course Stats Widget"
+msgstr "BuddyPress Kurs-Widget"
+
+# @ vibe
+#: includes/bp-course-widgets.php:466
+#, fuzzy
+msgid "TOTAL STUDENTS"
+msgstr "TEILNEHMER "
+
+#: includes/bp-course-widgets.php:468
+msgid "BADGES"
+msgstr ""
+
+#: includes/bp-course-widgets.php:469
+msgid "CERTIFICATES"
+msgstr ""
+
+# @ vibe
+#: includes/bp-course-widgets.php:499
+#, fuzzy
+msgid "Select Course"
+msgstr "Kurskategorie auswählen "
+
+#: includes/bp-course-widgets.php:501
+msgid "All"
+msgstr ""
+
+#: includes/bp-course-widgets.php:502
+msgid "Current Course (defaults to all)"
+msgstr ""
+
+#: includes/bp-course-widgets.php:513
+msgid "Show Students Stats"
+msgstr ""
+
+#: includes/bp-course-widgets.php:514
+#, fuzzy
+msgid "Show Badge/Certificates Stats"
+msgstr "Den Teilnehmern Badges/ Zertifikate zuweisen "
+
+# @ vibe
+#: includes/templates/course/course-loop.php:94
+#: includes/templates/course/my-courses.php:111
+msgid "You have not subscribed to any Course."
+msgstr "Sie sind in keinem Kurs angemeldet. "
+
+# @ vibe
+#: includes/templates/course/create.php:25
+msgid "Groups Directory"
+msgstr "Gruppenverzeichnis "
+
+# @ vibe
+#: includes/templates/course/create.php:54
+msgid "Group Name (required)"
+msgstr "Gruppenname (erforderlich) "
+
+# @ vibe
+#: includes/templates/course/create.php:57
+msgid "Group Description (required)"
+msgstr "Gruppenbeschreibung (erforderlich) "
+
+# @ vibe
+#: includes/templates/course/create.php:73
+msgid "Privacy Options"
+msgstr "Privatsphäreeinstellungen "
+
+# @ vibe
+#: includes/templates/course/create.php:77
+msgid "This is a public group"
+msgstr "Dies ist eine öffentliche Gruppe "
+
+# @ vibe
+#: includes/templates/course/create.php:79
+msgid "Any site member can join this group."
+msgstr "Alle Benutzer der Seite können der Gruppe beitreten. "
+
+# @ vibe
+#: includes/templates/course/create.php:80
+#: includes/templates/course/create.php:89
+msgid ""
+"This group will be listed in the groups directory and in search results."
+msgstr ""
+"Diese Gruppe wird im Gruppenverzeichnis und in den Suchergebnissen "
+"aufgeführt. "
+
+# @ vibe
+#: includes/templates/course/create.php:81
+msgid "Group content and activity will be visible to any site member."
+msgstr ""
+"Gruppeninhalte und Aktivitäten sind für alle Benutzer dieser Webseite "
+"sichtbar. "
+
+# @ vibe
+#: includes/templates/course/create.php:86
+msgid "This is a private group"
+msgstr "Dies ist eine private Gruppe. "
+
+# @ vibe
+#: includes/templates/course/create.php:88
+msgid "Only users who request membership and are accepted can join the group."
+msgstr ""
+"Nur Benutzer, die die Mitgliedschaft beantragen und akzeptiert werden, "
+"können der Gruppe beitreten. "
+
+# @ vibe
+#: includes/templates/course/create.php:90
+#: includes/templates/course/create.php:99
+msgid ""
+"Group content and activity will only be visible to members of the group."
+msgstr ""
+"Gruppeninhalte und Aktivitäten sind nur für Gruppenmitglieder sichtbar."
+
+# @ vibe
+#: includes/templates/course/create.php:95
+msgid "This is a hidden group"
+msgstr "Dies ist eine versteckte Gruppe "
+
+# @ vibe
+#: includes/templates/course/create.php:97
+msgid "Only users who are invited can join the group."
+msgstr "Nur eingeladene Benutzer können der Gruppe beitreten. "
+
+# @ vibe
+#: includes/templates/course/create.php:98
+msgid ""
+"This group will not be listed in the groups directory or search results."
+msgstr ""
+"Diese Gruppe wird nicht in den Gruppenverzeichnissen oder Suchergebnissen "
+"aufgeführt."
+
+# @ vibe
+#: includes/templates/course/create.php:104
+msgid "Group Invitations"
+msgstr "Gruppeneinladungen "
+
+# @ vibe
+#: includes/templates/course/create.php:106
+msgid "Which members of this group are allowed to invite others?"
+msgstr "Welchen Mitgliedern dieser Gruppe ist es erlaubt, andere einzuladen?"
+
+# @ vibe
+#: includes/templates/course/create.php:111
+msgid "All group members"
+msgstr "Alle Gruppenmitglieder "
+
+# @ vibe
+#: includes/templates/course/create.php:116
+msgid "Group admins and mods only"
+msgstr "Nur Gruppenadministratoren und Moderatoren "
+
+# @ vibe
+#: includes/templates/course/create.php:121
+msgid "Group admins only"
+msgstr "Nur Gruppenadministratoren "
+
+# @ vibe
+#: includes/templates/course/create.php:127
+msgid "Group Forums"
+msgstr "Gruppenforen "
+
+# @ vibe
+#: includes/templates/course/create.php:131
+msgid "Should this group have a forum?"
+msgstr "Soll diese Gruppe ein Forum erhalten? "
+
+# @ vibe
+#: includes/templates/course/create.php:134
+msgid "Enable discussion forum"
+msgstr "Diskussionsforum einrichten "
+
+# @ vibe
+#: includes/templates/course/create.php:138
+#, php-format
+msgid ""
+"<strong>Attention Site Admin:</strong> Group forums require the <a href=\"%s"
+"\">correct setup and configuration</a> of a bbPress installation."
+msgstr ""
+"<strong>Achtung Webseiten-Admin:</strong> Gruppenforen erfordern das <a href="
+"\"%s\">korrekte Setup und die Konfiguration</a> einer bbPress-Installation."
+
+# @ vibe
+#: includes/templates/course/create.php:164
+msgid ""
+"Upload an image to use as an avatar for this group. The image will be shown "
+"on the main group page, and in search results."
+msgstr ""
+"Laden Sie ein Bild als Avatar für diese Gruppe. Das Bild wird auf der "
+"Gruppenstartseite, und in den Suchergebnissen angezeigt. "
+
+# @ vibe
+#: includes/templates/course/create.php:168
+msgid "Upload Image"
+msgstr "Bild hochladen "
+
+# @ vibe
+#: includes/templates/course/create.php:172
+msgid "To skip the avatar upload process, hit the \"Next Step\" button."
+msgstr ""
+"Um den Hochladen des Avatars anzuhalten, drücken Sie den \"Nächster Schritt"
+"\" Button."
+
+# @ vibe
+#: includes/templates/course/create.php:179
+msgid "Crop Group Avatar"
+msgstr "Gruppenavatar beschneiden"
+
+# @ vibe
+#: includes/templates/course/create.php:181
+msgid "Avatar to crop"
+msgstr "Avatar zum Beschneiden "
+
+# @ vibe
+#: includes/templates/course/create.php:184
+msgid "Avatar preview"
+msgstr "Avatar Vorschau "
+
+# @ vibe
+#: includes/templates/course/create.php:187
+msgid "Crop Image"
+msgstr "Bild beschneiden "
+
+# @ vibe
+#: includes/templates/course/create.php:226
+msgid "Select people to invite from your friends list."
+msgstr ""
+"Wählen Sie Personen aus Ihrer Freundesliste aus und laden Sie sie ein. "
+
+# @ vibe
+#: includes/templates/course/create.php:244
+msgid "Remove Invite"
+msgstr "Einladung löschen "
+
+# @ vibe
+#: includes/templates/course/create.php:261
+msgid ""
+"Once you have built up friend connections you will be able to invite others "
+"to your group."
+msgstr ""
+"Sobald Sie sich mit anderen vernetzt haben, dürfen Sie andere zu Ihrer "
+"Gruppe einladen."
+
+# @ vibe
+#: includes/templates/course/create.php:283
+msgid "Back to Previous Step"
+msgstr "Zurück zum vorhergehenden Schritt "
+
+# @ vibe
+#: includes/templates/course/create.php:290
+msgid "Next Step"
+msgstr "Nächster Schritt "
+
+# @ vibe
+#: includes/templates/course/create.php:297
+msgid "Create Group and Continue"
+msgstr "Erstellen Sie eine Gruppe und fahren Sie fort "
+
+# @ vibe
+#: includes/templates/course/create.php:304
+msgid "Finish"
+msgstr "Beenden "
+
+# @ vibe
+#: includes/templates/course/index.php:29
+msgid "Become a Teacher"
+msgstr "Trainer werden "
+
+# @ vibe
+#: includes/templates/course/index.php:54
+#, php-format
+msgid "All Courses <span>%s</span>"
+msgstr "Alle Kurse <span>%s</span>"
+
+# @ vibe
+#: includes/templates/course/index.php:58
+#, php-format
+msgid "My Courses <span>%s</span>"
+msgstr "Meine Kurse <span>%s</span>"
+
+# @ vibe
+#: includes/templates/course/index.php:76
+msgid "Order By:"
+msgstr "Sortiert nach: "
+
+# @ vibe
+#: includes/templates/course/index.php:78
+msgid "Alphabetical"
+msgstr "Alphabetisch "
+
+# @ vibe
+#: includes/templates/course/index.php:79
+msgid "Most Members"
+msgstr "Die meisten Mitglieder "
+
+# @ vibe
+#: includes/templates/course/index.php:80
+msgid "Newly Created"
+msgstr "Neueste "
+
+# @ vibe
+#: includes/templates/course/index.php:81
+msgid "Highest Rated"
+msgstr "Am besten bewertet "
+
+# @ vibe
+#: includes/templates/course/my-courses.php:59
+msgid "Start Course"
+msgstr "Kurs starten "
+
+# @ vibe
+#: includes/templates/course/my-courses.php:62
+msgid "Continue Course"
+msgstr "Kurs fortsetzen "
+
+# @ vibe
+#: includes/templates/course/my-courses.php:65
+msgid "Course Finished"
+msgstr "Kurs beendet "
+
+# @ vibe
+#: includes/templates/course/single/admin.php:27
+msgid "QUIZ SUBMISSIONS"
+msgstr "EINSENDEAUFGABEN "
+
+# @ vibe
+#: includes/templates/course/single/admin.php:56
+msgid "Reset Quiz for User"
+msgstr "Quiz für den Benutzer zurücksetzen "
+
+# @ vibe
+#: includes/templates/course/single/admin.php:57
+msgid "Evaluate Quiz for User"
+msgstr "Das Quiz für den Benutzer auswerten "
+
+# @ vibe
+#: includes/templates/course/single/admin.php:71
+msgid "COURSE SUBMISSIONS"
+msgstr "KURS EINSENDUNGEN "
+
+# @ vibe
+#: includes/templates/course/single/admin.php:97
+msgid "Evaluate Course for User"
+msgstr "Den Kurs für den Teilnehmer auswerten "
+
+# @ vibe
+#: includes/templates/course/single/admin.php:119
+msgid "Total Number of Students who took this course"
+msgstr "Gesamtzahl aller Teilnehmer, die den Kurs gebucht haben. "
+
+# @ vibe
+#: includes/templates/course/single/admin.php:120
+msgid "Average Percentage obtained by Students"
+msgstr "Durchschnittlicher Prozentsatz, den die Teilnehmer erreicht haben "
+
+# @ vibe
+#: includes/templates/course/single/admin.php:121
+#: includes/templates/course/single/admin.php:128
+msgid "Number of Students who got a Badge"
+msgstr "Anzahl der Teilnehmer, die einen Badge erhalten haben "
+
+# @ vibe
+#: includes/templates/course/single/admin.php:122
+#: includes/templates/course/single/admin.php:127
+msgid "Number of Passed Students"
+msgstr "Anzahl der Teilnehmer, die bestanden haben "
+
+# @ vibe
+#: includes/templates/course/single/admin.php:123
+msgid "Number of Students who did not pass "
+msgstr "Anzahl der Teilnehmer, die nicht bestanden haben "
+
+# @ vibe
+#: includes/templates/course/single/admin.php:126
+msgid "Average Marks obtained by Students"
+msgstr "Durchschnittliche Bewertung, die die Teilnehmer erreicht haben "
+
+# @ vibe
+#: includes/templates/course/single/admin.php:143
+msgid "Average Marks in Quiz "
+msgstr "Durchschnittliche Bewertungen beim Quiz "
+
+# @ vibe
+#: includes/templates/course/single/admin.php:151
+msgid "Calculate :"
+msgstr "Berechnen : "
+
+# @ vibe
+#: includes/templates/course/single/admin.php:152
+msgid "Calculate Statistics for Course"
+msgstr "Berechnen Sie die Statistiken für den Kurs : "
+
+# @ vibe
+#: includes/templates/course/single/admin.php:161
+#: includes/templates/course/single/members.php:9
+msgid "Total number of Students in course"
+msgstr "Anzahl der Kursteilnehmer "
+
+# @ vibe
+#: includes/templates/course/single/admin.php:162
+#: includes/templates/course/single/members.php:10
+msgid "Students Currently taking this course"
+msgstr "Aktuelle Kursteilnehmer "
+
+# @ vibe
+#: includes/templates/course/single/course-header.php:39
+msgid "Instructors"
+msgstr "Trainer "
+
+# @ vibe
+#: includes/templates/course/single/curriculum.php:8
+msgid "Course Curriculum"
+msgstr "Kursablauf "
+
+# @ vibe
+#: includes/templates/course/single/front.php:10
+msgid "Requires completition of course "
+msgstr "Erfordert die vollständige Bearbeitung des Kurses "
+
+# @ vibe
+#: includes/templates/course/single/home.php:24
+msgid "Structure"
+msgstr "Struktur "
+
+# @ vibe
+#: includes/templates/course/single/home.php:29
+msgid "Admin"
+msgstr "Admin "
+
+# @ vibe
+#: includes/templates/course/single/home.php:30
+msgid "Units"
+msgstr "Lektionen "
+
+# @ vibe
+#: includes/templates/course/single/home.php:106
+msgid "Related Courses"
+msgstr "Verwandte Kurse "
+
+# @ vibe
+#, fuzzy
+#~ msgid "EXPIRED"
+#~ msgstr "KURS AUSGELAUFEN "
+
+#~ msgid " out of 100 in Course :"
+#~ msgstr "von 100 im Kurs : "
+
+#~ msgid "Security Check Failed ."
+#~ msgstr "Sicherheitstest fehlgeschlagen. "
+
+#~ msgid "Contact Site Admin."
+#~ msgstr "Kontaktieren sie den Seiten-Admin. "
+
+#~ msgid " out of 100 in course "
+#~ msgstr " von 100 im Kurs "
+
+#~ msgid "No Level Selected"
+#~ msgstr "Kein Level ausgewählt "

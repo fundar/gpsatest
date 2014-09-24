@@ -1,0 +1,64 @@
+* version1.7.5
+* UPDATED : Language files
+* Captcha Added in forms
+* JS Translation strings added
+* Language fixes
+* version1.7.4
+* UPDATED : Translation files
+* FIXED: Boxed footer carousel widget
+* Sending email translation
+* FIXED : hide course filters
+* version1.7.3
+* UPDATED : Language files
+* FIXED : Accordion random id issue
+* ADDED : Iso-charset option in forms
+* FIXED : Upload handler issue
+* version1.7.2
+* UPDATED : Language files
+* FIXED: Instructor border issue
+* ADDED : Minified scripts
+* ADDED : CodeStyling localization compatibility
+* version1.7.1
+* version1.7
+* ADDED : Credits for upload handler
+* ADDED : Shortcode certificate_student_field to show a student field in certificate
+* version1.6.5
+* FIXED : Add package not opening WP media popup
+* version1.6.4
+* UPDATED : Language files
+* ADDED : Shortcodes for Fill in the Blank or Match question types and Select question types
+* FIXED : Zip upload form now appears when edit unit
+* version 1.6.3
+* ADDED :Translation files
+* ADDED : Package Upload handler
+* ADDED : Upload Zip package and manage from front end
+* ADDED : Iframe shortcode
+* FIXED : Post Grid infinite scroll issue
+* version 1.6.2
+* Update : Language files
+* ADDED : All Badges Shortcode with Current user status.
+* FIXED : Vibe Carousel in footer
+* version 1.6.1
+* Fixed : Background color in Course page in buttons
+* FIXED: Visual composer popup overlapping Vibe shortcodes
+* version 1.6
+* UPDATED : Language files [US]
+* FIXED : Remove Form field error on clicking the field.
+* FIXED : Visual compose issue with Vibe Shortcodes
+* Version 1.5.5
+* ADDED : Required Parameter
+* FIXED : TEAM MEMBER shortcodes bug
+* Version 1.5.4.1
+* FIXED : Team Social Icons fix
+* version 1.5.4
+* version 1.5.4
+* Updated : Translation files
+* FIXED : Flexslider  bug
+* FIXED : Translation bug
+* ADDED : Instructor Shortcode
+* FIXED : Mobile Layout fixes
+* version 1.5.3
+* ADDED : Student Email and Student Certificate Code
+* FIXED : 3.9 Support added
+* Base
+* Base 1.0

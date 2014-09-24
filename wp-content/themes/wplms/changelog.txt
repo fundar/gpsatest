@@ -1,0 +1,705 @@
+* version1.7.4
+* Styling for input search box
+* FIXED :Print bug in minified scripts
+* Translation fixes
+* ADDED : Hook for eCommerce and memberships plugins
+* FIXED : Radio button appearance in registration pages
+* ADDED : Hide courses feature
+* UPDATED: Minified file
+* FIXED: Checkout Step 3 bug
+* ADDED : Hide Course from directory feature
+* FIXED : Language, bottom footer background color
+* FIXED: Menu TRIGGER Fix on tablet mode
+* RTL Fixes on Stats widget
+* version1.7.3
+* Updated : language files
+* ADDED : Course Display parameter set form options panel
+* FIXED : Quiz results appear in poup
+* FIXED : Back to course instead of course name
+* UPDATED : Course submission activity
+* ADDED hook, bp_before_course_Stats
+* FIXED : Previous results trigger "on" added
+* FIXED : Warning message in quiz
+* FIXED : Quiz Bar background color
+* FIXED : Magnific popup cSS aded in minified script
+* GRID Margin fixes
+* FIXED : Boxed Layout fixes
+* FIXED : Panel CSS removed from Bootstrap for account fix
+* ADDED : Search in course admin
+* FIXED : Checkout Step 3 Coupon fix
+* FIXED: Certificate template issue
+* FIXED : Out of 100 translation
+* Checkout bug for logged in users
+* FIXED : RTL Fixes
+* UPDATED : Language files
+* version1.7.2
+* ADDED : Color on Correct/Incorrect answers in quiz results
+* UPDATED : Language files
+* FIXED : CSS issues
+* UPDATED : Template files
+* FIXED : MediaPlayer issue in minified scripts
+* ADDED : Quiz Random & WooCommerce  Skip product, go to Cart fix
+* ADDED : Minified scripts
+* ADDED : Validation in WooCommerce  Step checkout
+* UPDATED : Minified jQuery Cookie script
+* ADDED : Inbuilt Minified scripts
+* UPDATED : Back to Course button after Quiz completion takes user to the course.
+* ADDED : Single Member Profile view Privacy option
+* COMMENTS FOR : WooCommerce Checkout Pincode Bug fix
+* FIXED : Phrase changed "not subscribed to any courses"
+* FIXED : Border in Members directory
+* FIXED:  Course percentage hook for grading
+* ADDED : BadeOS hooks
+* Updated : Language files
+* FIXED : Removed commented link in sidebareffects.js
+* FIXED : Vibe Posts not working issue
+* FIXED : Default sort filter ajax calls
+* FIXED : Config not reading issue on IIS servers
+* FIXED : Current menu item hover color
+* ADDED : Minified CSS, JS
+* FIXED : Blog view in iPad
+* FIXED : Select boxes cut issue
+* FIXED : Instructor course CSS Fix
+* FIXED: Show pricing for WooCommerce & Pmpro both
+* FIX : Template modification in bp_course_instructor function
+* FIXED : Blog date with 0 for single letter date
+* UPDATED: Language files
+* FIXED : CoAuthor plus integration
+* ADDED : Minified scripts option
+* Updated : Language files
+* Updated : Language files
+* version1.7.1
+* FIXED : Warning message on pmpro subscriptions
+* ADDED : Role class in Members directory. Use this class to give styling in directory.
+* FIXED : Load Results slug constants and Stats slug constants for loading results and stats template
+* FIXED : Sort and Match answer type auto evaluation
+* FIXED : Expired course stats issue
+* FIXED : Number field in Registration forum
+* FIXED : Parallax issue in Page builder
+* ADDED : New language file gl_GR
+* FIXED : Course stats location in Login widget
+* FIXED : Delete notification/messages
+* ADDED : Font Manager Google fonts subsets
+* FIXED : Removed Pincode Required, waiting for WooCommerce to fix the issue.
+* ADDED : Link color in Theme customizer
+* ADDED : Notification "dot" in header top for unread notifications.
+* Fixed : WooCommerce alt button force color
+* FIXED : Form fields in Footer fixes
+* BuddyPress error message display
+* FIXED : Course Badge issue
+* ADDED : Grid view in course
+* FIXED : Delete messages bug in BuddyPress messages
+* version 1.7
+* UPDATED : Language files
+* ADDED : TinCan Support
+* FIXED : Sidebar issues
+* FIXED : Course instructor on Start Course page
+* FIXED : Read more added in translation file in tag archive
+* ADDED : Option of external LRS
+* ADDED : In date in single blog post
+* ADDED : Articulate XAPI support
+* FIXED : Site url warning
+* FIXED:  Default avatar
+* ADDED : TinCan API support
+* FIXED: WooCommerce star rating issue
+* FIXED : CSS fixes for indate
+* ADDED : Edit course in Admin panel link in edit course from front end
+* ADDED : Year in Date in archive
+* ADDED : Date in Blog page
+* FIXED:  All instructors page 's' bug
+* version1.6.5 : Updated language files
+* UPDATED : Duration parameter for assignments
+* UPDATED : Duration parameter in Course Product subscription
+* UPDATED : Image sizes in Media manager
+* ADDED : Duration filter for Drip feeds and Courses
+* ADDED : Duration filters in Create content template
+* FIXED : Unmarked questions bug in quiz auto evalute
+* FIXED : Custom slugs in theme
+* FIXED : CSS issue in WP Media popup in front end
+* ADDED : SLUGS contants
+* ADDED : Multiple assignments
+* FIXED : Exclude ids issue
+* ADDED : Level in search
+* ADDED : Level taxonomy
+* version1.6.4
+* UPDATED : Language files
+* ADDED : Finished course access option
+* FIXED : Print Quiz results provision
+* ADDED : Language files no_NO
+* FIXED : Hook for dynamic quiz
+* FIXED : Dynamic quiz provision in quiz results
+* FIXED : Tab index value in login widget
+* FIXED : Protocol added for RTL Bootstrap
+* FIXED : Unlimited time in Course curriculum for quiz/units
+* FIXED : Pagination colors in Theme customizer
+* FIXED : Subtitle now has h5
+* FIXED : RTL Fixes
+* FIXED: Pricing display when men ship enabled
+* ADDED : Help Tags in Course creation
+* ADDED : Default Order for courses in Course directory
+* UPDATED : Question answers
+* ADDED : Select from Dropdown Question type
+* ADDED : Match Answers Question type
+* ADDED : Fill in the Blank Question type
+* ADDED : Provision to hide Administrators from All Instructors page
+* FIXED : H5 tag now in subtitle function
+* FIXED : Added access for finished students
+* FIXED : Linkage and Course online offline tip in Create Course from front end.
+* Fixed : WP DEBUG WARNING in func.php
+* FIXED:  Fatal error in sidebar of unit and assignment
+* FIXED : No title issue when importing loads of posts.
+* ADDED : Turkish language
+* FIXED : Protocol issue in contact page
+* FIXED : Color of text in bio field
+* FIXED : Dynamic sidebars on pages
+* FIXED: Currency warning in Post widget
+* FIXED : Sidebar issue
+* version 1.6.3
+* version 1.6.3
+* ADDED : Draft status for courses in draft
+* FIXED : RTL Changes
+* FIXED : Division by 0 error when no units in course
+* FIXED: Ratings in course comment editing
+* ADDED : RTL Bootstrap
+* FIXED:  Description in options panel for Take this course page.
+* REMOVED : Tour.php from functions
+* FIXED : Front end editing for BBPress
+* Removed : Duplicate CSS Loading for poups
+* ADDED : Forgot password in Login widget
+* ADDED : Random testimonial in Testimonial widget
+* FIXED : Visibility parameter in registration page, translation issue.
+* FIXED: Front end unit controls now on editing unit from front end.
+* FIXED : Grid image issues
+* FIXED : Changed Text in Course Start time in Course button.
+* FIXED : Primary Background color of arrows in Carousel widget
+* FIXED : Shortcode execution in Footer Copyright text
+* ADDED : Google Plus icon
+* ADDED : Edit Link for Units , Quizzes in Course curriculum in Front end course creation
+* UPDATED : Filter to open unit in popup
+* FIXED : Administrators included in All instructors page.
+* Fixed : Instructor button
+* Updated : Js composer
+* FIXED : Default post title and brad crumbs
+* version 1.6.2
+* Updated  : Language files
+* FIXED : Extra arrow in Member setting capabilities
+* FIXED : Language in quiz retakes
+* ADDED : Filter for Time display in course curriculum
+* ADDED : Front end Linkage
+* FIXED: Checkout steps font size changed from Body font size
+* FIXED: Hover border on images in widgets
+* FIXED : Quiz unlimited time in course curriculum
+* FIXED : Registration page CSS fixes
+* FIXED : xProfile check throughout the theme
+* ADDED : Linkage
+* FIXED : De register WooCommerce checkout script, breaking Checkout, by removing the Zip code field.
+* FIXED : Assignment enabled for instructor and administrator
+* ADDED : Brazilian translation files
+* ADDED : Course Seats and Maximum students in course filter
+* REMOVED : Instagram widget
+* ADDED : CSS for Cart totals in Shopping cart
+* FIXED : CSS in course button
+* FIXED : CSS Bug in BuddyPress profile fields
+* ADDED : Course Start date and number of seats in course
+* FIXED : Radio button appearance in Registration page
+* ADDED : Brazilian translation files
+* FIXED : Translation fixes in  Stats
+* ADDED : Youtube and Vimeo social icons in options panel
+* ADDED : Body font family in theme Customizer
+* FIXED : Vibe Grid inside Content area styling issue
+* version 1.6.1
+* FIXED : Logo url issue
+* FIXED : Warning in course stats when curriculum not set
+* FIXED : Fatal error in assignments
+* FIXED : Hide Invite button for students in paid events
+* FIXED : Restrict Student activity hook
+* Fixed : Footer logo issue
+* FIXED : Header logo issue
+* FIXED: Single activity entry comments css
+* FIXED : Warning in submissions due to curriculum not being set
+* FIXED: Single Course activity bug
+* ADDED : Activity hook, wplms_activity_loop
+* version 1.6
+* version 1.6
+* UPDATED : Create Course Content Template
+* FIXED : Image Align center
+* FIXED: WooCommerce zipcode bug
+* UPDATED : Language files [US,DE,PL,IT,ES,FR,RU]
+* FIXED : WooCommerce checkout login bug
+* ADDED : Front end course editing
+* ADDED : Create a Course from Front END
+* FIXED : WooCommerce error in checkout page hide on click
+* ADDED : Sharing in blog posts
+* ADDED : Hooks for Front end course creation
+* ADDED : None option for Become an Instructor Page
+* ADDED : German Language files
+* UPDATED : Vibe Tabs widget with courses 3rd tab
+* ADDED : Certificate code validator widget
+* ADDED : Google plus sharing option
+* UPDATED: Remove admin bar only for Instructors
+* FIXED : Course Progress bar boundary conditions
+* FIXED : BBPress footer paragraph css
+* FIXED : Reviews
+* UPDATED : WooCommerce Checkout
+* ADDED : Front end Course Creation
+* FIXED : Print notices for non-logged in users
+* ADDED : Filter in for unit access flag
+* Added : Added French Translation files
+* UPDATED : Disabled Force activation for BBPress, BuddyPress
+* UPDATED : Refactored Instructor privacy code
+* FIXED : Badges images in FQDN
+* FIXED : WooCommerce Products widget
+* FIXED : BBPress TINYMCE addon styling
+* FIXED : Hours bug in curriculum
+* Create content template
+* NEW : Logo filters
+* FIXED : Current Active Menu item  color from Theme Customizer
+* FIX : HTTPS Fix for Logo image
+* version 1.5.5
+* UPDATED : Translation files
+* ADDED : Ninja form ID for Instructor signup in options panel
+* ADDED: Private Event hook for Event Thumbnail card
+* FIXED : Instructor Privacy in units not for Admin
+* FIXED : Boundary condition with quiz question have no marks
+* ADDED : PRIVATE AND PAID Events
+* ADDED: INSTRUCTOR SIGNUP with Ninja Forms
+* ADDED : NINJA FORMS Support
+* FIXED : RTL Bug Fixes
+* FIXED : Course Content duplication bug
+* FIXED : Grid alignment issues in Archive/Blog/Category pages
+* FIXED : All Instructors page, number of instructors bug
+* Version 1.5.4
+* UPDATED: Translation files [US,ES,DE,IT,PO]
+* FIXED : Breadcrumbs Course not Translatable
+* FIXED : RugWarrior Mobile CSS bugs
+* FIXED : Home and Course Translation in breadcrumbs
+* FIXED : RTL Fixes
+* ADDED : WP Visual Composer
+* ADDED : Hook to open Free units in a Popup window
+* FIXED : Boxed CSS Fixed in Page Builder pages
+* Updated: WooCommerce Checkout Review order file to latest version
+* ADDED : Option for Instructors to Assign Badges & Certificates from Course -> Admin
+* ADDED : Support for Social icons in options panel
+* ADDED : Course Categories widget
+* ADDED : Social sharing options
+* FIXED : Course Search Bug
+* ADDED : Social icons color connected to Theme Customizer Theme color
+* FIXED : Translation of Create an account title in signup
+* ADDED: Social icons option in footer
+* ADDED : Social Icons/sharing styling
+* FIXED : Course Read more fix for Visual Composer
+* ADDED : Hook for adding custom actions for students in Course Admin
+* ADDED : Student activity in Course
+* ADDED : Force All pending orders as complete
+* FIXED: UL,OL fixes in BBPress content
+* FIXED : Threaded replies fix
+* FIXED : Member -> Settings -> Profile CSS changes
+* ADDED : Instructor Privacy option
+* FIXED : CSS padding issue in Course Category page
+* ADDED : Instructor Privacy option
+* FIXED : Layout of Member Settings (General, Email, Profile)
+* FIXED : Member -> Settings -> Profile fix
+* FIXED:  Added theme color for ajax loader
+* FIXED : Custom fonts from Vibe Options panel fix
+* FIXED : Widget Avatar fix in Groups creation
+* ADDED : Hook for shown Course curriculum link
+* FIXED : Previous answers showing up in Questions in quiz
+* ADDED : Unit Media Locking feature
+* UPDATED : Course Search file
+* ADDE : Italian translation files
+* FIXED : Boxed Layout Theme Customizer Bugs
+* FIXED: Grid layout issue in Members, Blog and Course directory page
+* FIXED : Permalink issue in Blog post titles in blog page
+* FIXED : BuddyPress Activity page tabs in Mobile view
+* FIXED : BuddyPress widget in footer avatars
+* FIXED :Breadcrumbs fix
+* FIXED : Instructors unable to Edit Categories
+* FIXED : Background image in Certificate Fix
+* FIXED : Unlimited access bug
+* FIXED : Mobile Layout fixes
+* Updated to 1.5.3
+* UPDATED : Translation files
+* FIXED : Customizable Printable custom certificate templates
+* ADDED : Certificate Validation
+* FIXED : Translation strings in Course Admin
+* FIXED : Contact Form 7 compatibility
+* FIXED : RTL Fixes
+* Updated : Boxed Layout files
+* FIXED : Translation of student, instructor,administrator in members page
+* FIXED : Course Cookie bug
+* ADDED : Boxed Layout
+* FIXED : WooCommerce Checkout Registration Bug
+* ADDED : Instructor add students from Course Admin control in options panel
+* FIXED : WP 3.9 Gallery fix
+* ADDED : Assignment Locking
+* FIXED : Tag cloud colors in Customizer
+* ADDED : Hook for Adding more Bulk Actions in Course Admin
+* ADDED : Unit Locking, Options Panel -> Course manger
+* FIXED : Pagination Bug in Course Category and Author page
+* FIXED : Start Course and Proceed to button quiz
+* FIXED : WP Login panel text color in input box
+* version 1.5.2
+* FIXED : All Course Page from breadcrumbs bug
+* FIXED : Pre-Course Bug
+* FIXED : Read More Bug in Course Description. Now detects <!--more--> more quick tag
+* FIXED : FIX Front end login issue
+* FIX : RTL Login Panel CSS issue
+* FIXED: Admin panel link in Login panel
+* Fixed : Badge & Certificate Reset bug
+* FIXED : Checkout Coupon inactive Bug
+* FIXED : Login panel CSS issues
+* Fixed : Fatal Error on page builder WordPress sep hook in some cases
+* Fix : Read more fix now detects line breaks for adding read more.
+* 1.5
+* Version 1.5
+* ADDED : Language files ** incomplete
+* FIXED : Aministrator label for Administrator on all members page
+* Fixed : PHP Warning on Yoast compatibility connect
+* Fixed : WooCommerce Order table alignment issue
+* FIXED : BuddyPress Widgets running into each other in sidebar
+* FIXED : Instructor fields issue in All Instructors page
+* UPDATED : Language files updated
+* ADDED : Option to reduce Checkout fields on virtual products checkout
+* ADDED : Option to Force Complete order (Options Panel -> Miscellaneous)
+* Updated : Code Refactored in Quiz
+* FIXED : Become an Instructor button in all Members page
+* FIXED : WP Admin Login panel colors from Theme Customizer
+* UPDATED : Refactored Quiz Retake code
+* FIXED : Registration and Mobile CSS Bugs
+* Added: Link to Admin panel in BP Login Widget
+* FIXED : BuddyPress Mobile bugs
+* Fix: Unit buttons (Next, prev, Mark as complete )in Mobile view
+* Fix: PMPRO Membership Cancellation , cancels course access.
+* FIXED : Rating Stars issue on Blog Comments
+* UPDATED :  Start Page Code Refactoring
+* FIXED : Drip Feed Course Start page issue.
+* FIX : Read More breaking lines in Course Description + Refactor
+* ADDED : Navigation Font Family in Customizer
+* FIXED : Total Marks, Marks Obtained Translation fixes
+* ADDED : Course Progressbar
+* FIX : Renamed Newly Created to Newly Published
+* FIXED : SAVE ANSWER/MARKS ANSWER Translation issues
+* Fix : Hook for WPEngine in Login widget
+* Fix: Course Translation in Group -> Course link
+* Fix : Member Profile fields white border below labels
+* Fix : After Event hook modification to show Assignments
+* Fix : Show comments template in Assignments for Instructor and Admin
+* Updated : Added WPLMS Assignments results in Member -> Course -> Results
+* Fix : Changing text domain from woocommerce to vibe
+* Fix : All Assignment Answers now visible to Instructor and Administrator
+* Fix : WooCommerce translations in Translation files
+* Fix : RTL Fix for star rating and course details
+* Fix : Added Assignments CSS in Buddypress.css
+* ADDE :Assignment Submissions
+* ADDED : WPLMS Assignments
+* Fix: Translation issue in course start page
+* Fix : Replacing the Sidebar hook in Course Search page
+* Fix : Compatibility with Yoast SEO
+* Fix : Customizer fix, PMPRo and assignment controls
+* Fix : Vibe Grid CSS fix inside main container
+* Fix: CSS in cart page
+* ADDED : Pagination for Members in Courses
+* Fix : Limiting query to return only latest comment in answers, faster execution
+* FIX :Adding VibeValidate function to Validate yes/no fields
+* Updated : Change Log
+* Fix : CSS Fix Terms and Conditions in checkout
+* Update: Language Files Updated
+* version 1.4.1
+* ADDED : PMPro Templates
+* Fix: Instructor ability to add unfiltered HTML (iFrame Videos in short codes)
+* Fix : Instructor Specific Field Group , not viewable to students
+* Fix: Reset Answer button styling
+* FIX : Profile Elements Colors form Theme Customizer
+* ADDED : Reset Answer Option flush out previously saved answers
+* ADDED : Instructor Specific Field group
+* Fix : Custom Hook in Search Page
+* Fix : Instructor Button fix in All Instructors page
+* FIX : Incorrect next/prev unit calculation (Next Unit or Next Quiz) in Start course page
+* UPDATED : Added Quiz <-> Course Connectivity
+* ADDED : Redirect user to Course on order completion when Single Course in Product
+* Fix: Menu and Unit Title extra spacing fix.
+* FIX : Customizer Fixes Checkout Button, Mobile Menu, Search icon
+* FIX : Commenting out Extra Cookie Test code
+* Fix : WooCommerce Payment Page Bug Fix
+* Fix: Coupon box Fix in Checkout
+* Fix : Translation fixes in Curriculum
+* Added : Custom CSS option in Theme Customizer
+* Update : Force Activation false for WooCommerce
+* Remove: Removing Instagram widget
+* Fix : Translation Fixes
+* Fix : Adding a link to get the Latitude and Longitude values easily
+* Updated : Google Map Zoom controls
+* UPDATED : Events Sidebar option in options panel -> sidebar manager
+* Fix : Events color Customizer fix
+* Version 1.4
+* Course Button
+* Fix : Access units via Curriculum
+* Fix : Translation text : Courses by Instructor
+* FIX : Customizer changes
+* UPDATED : Option to removing VibeThemes Credits
+* FIX: WooCommerce ThankYou Page Bug Fix
+* FIXED : Widget/WooCommerce Titles in Theme Customizer
+* ADD : Background Image controls in theme Customizer
+* UPDATED : Units accessible from Curriculum to Course Instructor and Administrator
+* ADDED Default avatar
+* FIX : Menu & Sub-Menu Hover colors fix
+* Updated : Added BuddyPress Default avatar controls
+* ADD : All Events Archive
+* FIX : Woocommerce checkout bars customizer fix.
+* Fix : Adding Alt tag in logo image in top header
+* FIX : Customizer Bug Fixes (5)
+* UPDATED: Adding a Checkout Sidebar
+* Moving Event Card to generic Featured function
+* Events Archive / All Events
+* Course Events Template
+* Provision for Front end Editor
+* Search Sidebar Fix
+* Event Success and Error message css added
+* Full Buttons CSS fix for Events Buttons
+* BuddyPress messages connect with Customizer
+* Single Event
+* Single Events connect to the popup
+* Cleanup removing extra spaces
+* RTL Fix for Buddypress navigation items
+* Responses on translation ready in Comments page
+* Read more translation ready in Category page
+* Read more translation ready in Blog page
+* Read more translation ready in archive page
+* Fixing All Course Page Title and Sub title
+* JS LINT recommendations
+* Fixing Menu hover issues
+* Commenting out BBPress fix for localhost setup
+* Adding Course Slug Constant instead of course
+* Parallax Layer Fix in Page Builder
+* Start Course fix , start from last incomplete unit on continue course
+* BBPress Widget Titles fix
+* Adding Change Log
+* Updating Layerslider Version
+* Language Files updated
+* v 1.3.4
+* Dynamic sidebar bug fix in Blog page
+* Recording Activity Meta for Instructor Stats
+* Removing the margin between units
+* Start Course page bug fix
+* BuddyPress Activity in profile css fix
+* Sort options auto evaluate fix
+* Auto Evaluate Quiz Options
+* Sort Answer styling
+* Course Category added in Menu
+* Checkbox css issue fix for buddy press
+* Profile data bug fix in Quiz & Course Submissions
+* BuddyPress CSS Fix for activity header
+* Opacity fix for Menu items
+* Theme Customizer Color fix for current menu item
+* Adding Theme Support
+* Groups Button Link
+* Testimonial default image fix
+* Import/Export page builder fix.
+* Activation Redirect page
+* Starting with Events
+* Single Events Template
+* Events Template connect
+* Align right fix
+* Certificate Styling, BBPress Reply Fix,
+* BuddyPress single Activity fix
+* BBPress styling fixes
+* Added Menu filters
+* Additional color options for buddy press item tabs via Customizer
+* Lost password page fix
+* Language fixes , Signup in header
+* Updated layer slider
+* Updated certificate template
+* Back to Course Fix from Free Units
+* Version update to 1.3.3
+* Hooks for front course description
+* Updated Language files
+* Action hook to print results
+* Quiz Retake
+* Fixed the Logged in menu in activity
+* Login cookie fix
+* Fixed notice
+* Course Search template fix
+* RTL Select fix
+* Customizer controls for changing Menu
+* Search Widget Fix
+* BuddyPress Profile activity fix
+* Breaking the excerpt at the end of a word fix
+* become and Instructor button fix
+* Mobile rtl fix
+* The Instructor Button hook
+* Customizer fixes
+* version 1.3.2
+* version 1.3.2
+* Customizer Fixes
+* Navigation Search
+* Certificate Generator
+* 1.3.1
+* 1.3.1
+* CSS Fixes
+* Questions answers showing in Comments
+* Direct Access to Questions not allowed
+* Advanced Course Search
+* Learndash Compatibility
+* Learndash Compatibility
+* Advanced Certificates
+* RTL Fix
+* Course Review Button Fix
+* Rtl fixes
+* Certificate Hooks for customization
+* Read More fix in Mozilla firefox
+* Version 1.3
+* Version 1.3
+* iPhone WooCommerce CSS Fixes
+* Fixed Course Stats Bug
+* Course Auto Evaluation & Start Page Bug
+* CSS Fix, Login panel hiding below Google map
+* CSS Bug fix, Menu hiding below checkout steps
+* Vibe Direct Checkout
+* Provision to control read more content limit in single courses
+* no change
+* Header Logo Size add on in Customizer
+* 1.2.2
+* version 1.2.1
+* Next Page quick tags in Unit
+* Quicktags multi page support for free units
+* Mail short code and formatting issues
+* Language Changes II
+* Language specific Changes
+* Theme Customizer Fix
+* Thank you page fix
+* 404 permalink bug
+* version 1.2
+* version 1.2
+* quiz 0 revert
+* Print button in units
+* RTL and CSS Fixes
+* RTL Fix
+* Course Navigation Filter
+* woocommerce direct checkout
+* Activity tracking and Course Activity addition
+* Provision for Instructor Courses
+* Adding hook bp_before_directory_course
+* 1.1 version
+* Google Microdata
+* no change
+* email message fix
+* styling changes
+* WooCommerce Order Received fix
+* BBPress pagination fix
+* Adding Course Link in groups
+* Customizer Bug
+* WooCommerce Changes
+* Fixes
+* Language and Activity
+* Security Fixes, Adding Prepare in SQL Queries
+* WooCommerce Fix
+* Fixing Theme Check
+* Recording Activity
+* Kailoon Bug Fixes
+* Added Plugins & doc link
+* iVor fixes 3
+* Woocommerce add in Required plugins
+* Kailoon final fixes
+* Kailoon/Ivor Fixes
+* Various bug fixes
+* Fix for Ratings & Reviews in Course block
+* Bug Fixes Round 1
+* Fixes Quiz, certificates
+* finalizing status
+* Finalizing bugs
+* bug fixes
+* final fixes
+* Several fixes and instructor page
+* Fixes for Demo
+* Dynamic Instructor and Student Field fix
+* Loop number fix in Members
+* Activity Fixes
+* Final fixes with Theme check
+* Questions & quiz
+* Finalizing version for demo
+* Contact page and confirm
+* Optiona Panel Connect -> Footer & Header
+* Header Fix, Ajax Fixes
+* Certificate & Badges
+* Badges & Certifications complete
+* Privacy Connect with Options Panel
+* Finishing and Syncing
+* Woocommerce Advanced Widgets tested
+* Finishing course
+* Fixes
+* Pagebuilder and Shortcode generator integration
+* Pagebuilder init
+* Course Stats, User Stats finished
+* Working on Course details
+* WooCommerce Subscription Working
+* Single Product Purchase
+* WooCommerce Subscription complete
+* Checkout Start
+* WooCommerce begining
+* Single Woo Commerce and CSS fixes
+* Course Stats, Member Stats, WooCommerce Subscription
+* Quiz Check complete
+* Quiz panel in Course Admin
+* Quiz in Members panel
+* Cookie fix for Course
+* Reload Course
+* Course Traverse Complete
+* Course working
+* Course Begin
+* Finishing Quiz Front end
+* Finishing Quiz
+* Working Draft of Quiz
+* Starting with Ajax Quiz development
+* Quiz
+* Starting Quiz
+* Adding Single Question
+* Single Question
+* Course Curriculum
+* Adding notifications form bp1.9.1
+* Finishing single
+* Working Single Course
+* Navigation on archive and member working
+* Course Archives
+* Tried and failed setting up globals for BP Component
+* Testing Course component
+* Single course
+* All course
+* Course in Members
+* Adding course loop
+* Finishing Course Archive
+* Starting with Course Module
+* Activity Finish
+* Removing Load more and Adding Pagination in activity
+* Updating CSS and Screens
+* CSS and All gouts Page
+* Base
+* Adding Quiz form
+* Starting off with Quiz Module
+* Limiting Activity count
+* Course Structure display
+* Trying Module Sort the WP Way
+* Initiating Modules
+* Courses complete
+* Adding Buttons for Sections / Units
+* Course Creation form Front end
+* Front end submission
+* Restyling Buddypress and Core
+* Custom Nav function for Course
+* Profile Nav items
+* Starting with options panel
+* ajaxfix for buddypress
+* Menu correction
+* Groups and All members
+* Single Notifications
+* BuddyPress Profile
+* Login and Including Buddypress templates
+* Finishing Profile
+* Adding the Login widget
+* Integrating plugins
+* adding js/css for CPT
+* Widgets
+* single,page,blog,category,tag,archive,search
+* Header & Footer
+* Starting off WP Development
+* starting header
+* HTML init

@@ -1,0 +1,2389 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Vibe Custom Types\n"
+"POT-Creation-Date: 2014-09-09 19:36+0530\n"
+"PO-Revision-Date: 2014-09-09 19:36+0530\n"
+"Last-Translator: VibeThemes <vibethemes@gmail.com>\n"
+"Language-Team: Olymproject <info@olymproject.org>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.9\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: autoupdate/class-envato-protected-api.php:67
+msgid "Please enter your Envato Marketplace Username."
+msgstr "Пожалуйста, введите свой логин с сайта Envato Marketplace."
+
+#: autoupdate/class-envato-protected-api.php:71
+msgid "Please enter your Envato Marketplace API Key."
+msgstr "Пожалуйста, введите свой API ключ с сайта Envato Marketplace."
+
+#: autoupdate/class-envato-protected-api.php:96
+msgid "The API \"set\" is a required parameter."
+msgstr "API \"установлен\" как обязательный параметр."
+
+#: autoupdate/class-envato-protected-api.php:167
+msgid "The Envato Marketplace \"item ID\" is a required parameter."
+msgstr ""
+"\"ID покупки\" на Envato Marketplace установлен как обязательный парметр."
+
+#: autoupdate/class-plugin-update.php:376
+msgid "An Unexpected HTTP Error occurred during the API request."
+msgstr "При отправке запроса API возникла неизвестная ошибка HTTP."
+
+#: autoupdate/class-plugin-update.php:376
+#: autoupdate/class-plugin-update.php:541
+msgid "Try again"
+msgstr "Попробуйте ещё раз"
+
+#: autoupdate/class-plugin-update.php:417
+msgid "An unknown error occurred"
+msgstr "Возникла неизвестная ошибка"
+
+#: autoupdate/class-plugin-update.php:453
+msgid ""
+"The plugin has been updated, but could not be reactivated. Please reactivate "
+"it manually."
+msgstr ""
+"Плагин был обновлён, но не активирован. Пожалуйста, сделайте это вручную."
+
+#: autoupdate/class-plugin-update.php:454
+msgid "Plugin reactivated successfully. "
+msgstr "Плагин успешно реактивирован."
+
+#: autoupdate/class-plugin-update.php:476
+msgid " Plugin Updates"
+msgstr "Обновления плагина"
+
+#: autoupdate/class-plugin-update.php:515
+msgid "Username: "
+msgstr "Логин: "
+
+#: autoupdate/class-plugin-update.php:519
+msgid "Email: "
+msgstr "Email: "
+
+#: autoupdate/class-plugin-update.php:525
+msgid "Key: "
+msgstr "Ключ: "
+
+#: autoupdate/class-plugin-update.php:531
+msgid "<p>Your plugin update is <span style=\"color:green\">active</span></p>"
+msgstr ""
+"<p>Ваш обновлённый плагин <span style=\"color:green\">активен</span></p>"
+
+#: autoupdate/class-plugin-update.php:535
+msgid ""
+"<p>Your input is <span style=\"color:red\">not valid</span>, automatic "
+"updates is <span style=\"color:red\">not active</span>.</p>"
+msgstr ""
+"<p>Ваши данные <span style=\"color:red\">недействительны</span>, функция "
+"авотматического обновления <span style=\"color:red\">отключена</span>.</p>"
+
+#: autoupdate/class-plugin-update.php:536
+msgid "Edit Key"
+msgstr "Изменить ключ"
+
+#: autoupdate/class-plugin-update.php:540
+msgid "<p>Unable to validate update activation.</p>"
+msgstr "<p>Невозможно проверить активацию.</p>"
+
+#: autoupdate/class-plugin-update.php:546
+msgid "Add Key"
+msgstr "Добавить ключ"
+
+#: autoupdate/class-plugin-update.php:632
+msgid "User name"
+msgstr "Логин"
+
+#: autoupdate/class-plugin-update.php:638 metaboxes/meta_box.php:3966
+msgid "Email"
+msgstr "Email"
+
+#: autoupdate/class-plugin-update.php:647
+msgid "Themeforest User name ( for Auto-Updates )"
+msgstr "Логин с сайта Themeforest (для автообновлений)"
+
+#: custom-post-types.php:72 custom-post-types.php:73
+#, fuzzy
+msgid "Courses"
+msgstr "Курс"
+
+#: custom-post-types.php:74 custom_meta_boxes.php:645 statistics.php:20
+msgid "Course"
+msgstr "Курс"
+
+#: custom-post-types.php:75
+#, fuzzy
+msgid "Add New Course"
+msgstr "Бесплатный курс"
+
+#: custom-post-types.php:76
+#, fuzzy
+msgid "All Courses"
+msgstr "Курс"
+
+#: custom-post-types.php:97
+#, fuzzy
+msgid "Course Category"
+msgstr "Форум курса"
+
+#: custom-post-types.php:98 custom-post-types.php:99
+msgid "Category"
+msgstr ""
+
+#: custom-post-types.php:100
+msgid "Add New Course Category"
+msgstr ""
+
+#: custom-post-types.php:101
+msgid "All Categories"
+msgstr ""
+
+#: custom-post-types.php:118 custom-post-types.php:119
+msgid "Units"
+msgstr ""
+
+#: custom-post-types.php:120
+#, fuzzy
+msgid "Unit"
+msgstr "Тип модуля"
+
+#: custom-post-types.php:121
+msgid "Add New Unit"
+msgstr ""
+
+#: custom-post-types.php:122
+msgid "All Units"
+msgstr ""
+
+#: custom-post-types.php:143 custom-post-types.php:144
+#: custom-post-types.php:145 custom-post-types.php:209
+#: custom-post-types.php:210
+msgid "Tag"
+msgstr ""
+
+#: custom-post-types.php:146 custom-post-types.php:211
+msgid "Add New Tag"
+msgstr ""
+
+#: custom-post-types.php:147 custom-post-types.php:212
+msgid "All Tags"
+msgstr ""
+
+#: custom-post-types.php:161 custom-post-types.php:162
+#, fuzzy
+msgid "Quizes"
+msgstr "Настройки теста"
+
+#: custom-post-types.php:163
+msgid "Quiz"
+msgstr ""
+
+#: custom-post-types.php:164
+msgid "All Quizes"
+msgstr ""
+
+#: custom-post-types.php:185 custom-post-types.php:186
+#, fuzzy
+msgid "Question Bank"
+msgstr "Тип вопроса"
+
+#: custom-post-types.php:187
+#, fuzzy
+msgid "Question"
+msgstr "Тип вопроса"
+
+#: custom-post-types.php:188
+#, fuzzy
+msgid "All Questions"
+msgstr "Выбор вопросов"
+
+#: custom-post-types.php:208
+#, fuzzy
+msgid "Question Tag"
+msgstr "Тип вопроса"
+
+#: custom-post-types.php:232 custom-post-types.php:233
+#, fuzzy
+msgid "Events"
+msgstr "Мероприятие - "
+
+#: custom-post-types.php:234
+#, fuzzy
+msgid "Event"
+msgstr "Мероприятие - "
+
+#: custom-post-types.php:235
+msgid "Add New Events"
+msgstr ""
+
+#: custom-post-types.php:236
+#, fuzzy
+msgid "All Events"
+msgstr "Мероприятие - "
+
+#: custom-post-types.php:257 custom-post-types.php:258
+#: custom-post-types.php:259
+#, fuzzy
+msgid "Event type"
+msgstr "Мероприятие - "
+
+#: custom-post-types.php:260
+msgid "Add New Event type"
+msgstr ""
+
+#: custom-post-types.php:261
+msgid "All Event types"
+msgstr ""
+
+#: custom-post-types.php:282 custom-post-types.php:283
+#, fuzzy
+msgid "Assignments"
+msgstr "Подключить задание"
+
+#: custom-post-types.php:284
+#, fuzzy
+msgid "Assignment"
+msgstr "Подключить задание"
+
+#: custom-post-types.php:285
+#, fuzzy
+msgid "Add New Assignment"
+msgstr "Подключить задание"
+
+#: custom-post-types.php:286
+#, fuzzy
+msgid "All Assignments"
+msgstr "Подключить задание"
+
+#: custom-post-types.php:307 custom-post-types.php:308
+#: custom-post-types.php:309
+#, fuzzy
+msgid "Assignment type"
+msgstr "Подзаголовок задания"
+
+#: custom-post-types.php:310
+#, fuzzy
+msgid "Add New Assignment type"
+msgstr "Подзаголовок задания"
+
+#: custom-post-types.php:311
+#, fuzzy
+msgid "All Assignment types"
+msgstr "Подзаголовок задания"
+
+#: custom-post-types.php:329 custom-post-types.php:330
+#, fuzzy
+msgid "Payments"
+msgstr "Настройки платежей"
+
+#: custom-post-types.php:331
+msgid "Payment"
+msgstr ""
+
+#: custom-post-types.php:332
+msgid "Add New Payment"
+msgstr ""
+
+#: custom-post-types.php:333
+#, fuzzy
+msgid "Payments History"
+msgstr "Настройки платежей"
+
+#: custom-post-types.php:354 custom-post-types.php:356
+#: custom_meta_boxes.php:239
+msgid "Certificate Template"
+msgstr "Шаблон сертификата"
+
+#: custom-post-types.php:355
+#, fuzzy
+msgid "Certificates Template"
+msgstr "Шаблон сертификата"
+
+#: custom-post-types.php:357
+#, fuzzy
+msgid "Add New Certificate"
+msgstr "Всего сертификатов"
+
+#: custom-post-types.php:358
+#, fuzzy
+msgid "Certificate Templates"
+msgstr "Шаблон сертификата"
+
+#: custom-post-types.php:377 custom-post-types.php:378
+#: custom-post-types.php:379
+msgid "Linkage"
+msgstr ""
+
+#: custom-post-types.php:380
+#, fuzzy
+msgid "Add New Link"
+msgstr "Добавить раздел"
+
+#: custom-post-types.php:381
+#, fuzzy
+msgid "All Links"
+msgstr "Показать все ссылки"
+
+#: custom-post-types.php:398 custom-post-types.php:399
+#: custom-post-types.php:400
+msgid "Level"
+msgstr ""
+
+#: custom-post-types.php:401
+msgid "Add New Level"
+msgstr ""
+
+#: custom-post-types.php:402
+msgid "All Levels"
+msgstr ""
+
+#: custom-post-types.php:426 custom-post-types.php:427
+msgid "Testimonials"
+msgstr ""
+
+#: custom-post-types.php:428
+msgid "Testimonial"
+msgstr ""
+
+#: custom-post-types.php:429
+msgid "All Testimonials"
+msgstr ""
+
+#: custom-post-types.php:454 custom-post-types.php:455
+msgid "Popups"
+msgstr ""
+
+#: custom-post-types.php:456
+msgid "Popup"
+msgstr ""
+
+#: custom-post-types.php:457
+msgid "All Popups"
+msgstr ""
+
+#: custom_meta_boxes.php:22
+msgid "Post Sub-Title"
+msgstr "Подзаголовок записи"
+
+#: custom_meta_boxes.php:23
+msgid "Post Sub- Title."
+msgstr " позаголовок записи."
+
+#: custom_meta_boxes.php:30
+msgid "Post Template"
+msgstr "Шаблон записи"
+
+#: custom_meta_boxes.php:31
+msgid "Select a post template for showing content."
+msgstr "Выбрать шаблон блога для отображения содержания."
+
+#: custom_meta_boxes.php:35
+msgid "Default"
+msgstr ""
+
+#: custom_meta_boxes.php:36
+#, fuzzy
+msgid "Content on Right"
+msgstr "Содержание"
+
+#: custom_meta_boxes.php:37
+#, fuzzy
+msgid "Content on Left"
+msgstr "Содержание"
+
+#: custom_meta_boxes.php:42 custom_meta_boxes.php:142
+#: custom_meta_boxes.php:156 custom_meta_boxes.php:835
+#: metaboxes/library/vibe-editor.php:1559
+msgid "Sidebar"
+msgstr "Боковая панель"
+
+#: custom_meta_boxes.php:43 custom_meta_boxes.php:157
+#: custom_meta_boxes.php:836
+msgid "Select a Sidebar | Default : mainsidebar"
+msgstr "Выбрать панель | Стандартная: MainSidebar"
+
+#: custom_meta_boxes.php:49 custom_meta_boxes.php:106
+msgid "Show Page Title"
+msgstr "Показывать название страницы"
+
+#: custom_meta_boxes.php:50 custom_meta_boxes.php:107
+msgid "Show Page/Post Title."
+msgstr "Показывать название страницы/статьи"
+
+#: custom_meta_boxes.php:62
+msgid "Show Author Information"
+msgstr "Показывать инфо об авторе"
+
+#: custom_meta_boxes.php:63
+msgid "Author information below post content."
+msgstr "Информация об авторе под текстом публикации."
+
+#: custom_meta_boxes.php:76 custom_meta_boxes.php:129
+msgid "Show Breadcrumbs"
+msgstr "Отображать путь"
+
+#: custom_meta_boxes.php:77 custom_meta_boxes.php:130
+msgid "Show breadcrumbs."
+msgstr "Показывает путь к материалу в виде ссылок."
+
+#: custom_meta_boxes.php:88
+msgid "Show Prev/Next Arrows"
+msgstr "Показывать стрелки Назад/Далее"
+
+#: custom_meta_boxes.php:89
+msgid "Show previous/next links on top below the Subheader."
+msgstr "Показывать ссылки назад/далее вверху и внизу подзаголовка."
+
+#: custom_meta_boxes.php:121
+msgid "Page Sub-Title"
+msgstr "Подзаголовок страницы"
+
+#: custom_meta_boxes.php:122
+msgid "Page Sub- Title."
+msgstr "Подзаголовок страницы."
+
+#: custom_meta_boxes.php:143
+msgid "Select Sidebar | Sidebar : mainsidebar"
+msgstr "Выбрать боковую панель | Стандартная: mainsidebar"
+
+#: custom_meta_boxes.php:164
+msgid "Total Duration of Course"
+msgstr "Продолжительность курса"
+
+#: custom_meta_boxes.php:165
+#, php-format
+msgid "Duration of Course (in %s)"
+msgstr "Продолжительность курса (%s)"
+
+#: custom_meta_boxes.php:172
+msgid "Total number of Students in Course"
+msgstr "Общее количество слушателей"
+
+#: custom_meta_boxes.php:173
+msgid "Total number of Students who have taken this Course."
+msgstr "Общее количество слушателей, прошедших курс."
+
+#: custom_meta_boxes.php:179
+msgid "Auto Evaluation"
+msgstr "Автооценка"
+
+#: custom_meta_boxes.php:180
+msgid ""
+"Evalute Courses based on Quizes scores available in Course (* Requires "
+"atleast 1 Quiz in course)"
+msgstr ""
+"Оценка по результатам прохождения тестов курса (* необходимо наличие хотя бы "
+"одного теста)"
+
+#: custom_meta_boxes.php:192
+msgid "Course Start Date"
+msgstr "Дата начала курса"
+
+#: custom_meta_boxes.php:193
+msgid "Date from which Course Begins"
+msgstr "День, в который стартует курс"
+
+#: custom_meta_boxes.php:198
+msgid "Maximum Students in Course"
+msgstr "Лимит единовременно обучающихся "
+
+#: custom_meta_boxes.php:199
+msgid "Maximum number of students who can pursue the course at a time."
+msgstr ""
+"Максимальное количество слушателей, обучающихся на курсе единовременно."
+
+#: custom_meta_boxes.php:204
+msgid "Excellence Badge"
+msgstr "Знак отличия"
+
+#: custom_meta_boxes.php:205
+msgid "Upload badge image which Students recieve upon course completion"
+msgstr ""
+"Загрузить знак отличия, который слушатели получают по результатам "
+"прохождения курса"
+
+#: custom_meta_boxes.php:211
+msgid "Badge Percentage"
+msgstr "Проходной балл"
+
+#: custom_meta_boxes.php:212
+msgid "Badge is given to people passing above percentage (out of 100)"
+msgstr "Знак отличия присуждается слушателям набравшим (процентов из 100)"
+
+#: custom_meta_boxes.php:218
+msgid "Badge Title"
+msgstr "Название знака отличия"
+
+#: custom_meta_boxes.php:219
+msgid "Title is shown on hovering the badge."
+msgstr "Название отображается при наведении курсора на знак отличия."
+
+#: custom_meta_boxes.php:225
+msgid "Completion Certificate"
+msgstr "Сертификат"
+
+#: custom_meta_boxes.php:226
+msgid ""
+"Enable Certificate image which Students recieve upon course completion (out "
+"of 100)"
+msgstr ""
+"Включает картинку с сертификатом, который слушатели получают по результату "
+"набранных баллов (процентов из 100)"
+
+#: custom_meta_boxes.php:240
+msgid "Select a Certificate Template"
+msgstr "Выберите шаблон сертификата"
+
+#: custom_meta_boxes.php:247
+msgid "Passing Percentage"
+msgstr "Проходной балл"
+
+#: custom_meta_boxes.php:248
+msgid "Course passing percentage, for completion certificate"
+msgstr "Проходной балл для получения сертификата"
+
+#: custom_meta_boxes.php:253
+msgid "Drip Feed"
+msgstr "Поэтапное прохождение"
+
+#: custom_meta_boxes.php:254
+msgid "Enable Drip Feed course"
+msgstr "Позволяет разбивить курс на этапы"
+
+#: custom_meta_boxes.php:266
+msgid "Drip Feed Duration"
+msgstr "Продолжительность этапа"
+
+#: custom_meta_boxes.php:267
+msgid "Duration between consecutive Drip feed units (in "
+msgstr "Интервалы между этапами/разделами курса ("
+
+#: custom_meta_boxes.php:275
+msgid "Course Curriculum"
+msgstr "План обучения"
+
+#: custom_meta_boxes.php:276
+msgid ""
+"Set Course Curriculum, prepare units and quizes before setting up curriculum"
+msgstr "Составьте план обучения, подготовьте модули и тесты до его составления"
+
+#: custom_meta_boxes.php:284
+msgid "Pre-Required Course"
+msgstr "Базовый курс"
+
+#: custom_meta_boxes.php:285
+msgid "Pre Required course for this course"
+msgstr "Курс, который необходимо пройти предварительно"
+
+#: custom_meta_boxes.php:291
+msgid "Course Forum"
+msgstr "Форум курса"
+
+#: custom_meta_boxes.php:292
+msgid "Connect Forum with Course."
+msgstr "Подключить форум для обмена опытом сокурсниками."
+
+#: custom_meta_boxes.php:298
+msgid "Course Group"
+msgstr "Группа курса"
+
+#: custom_meta_boxes.php:299
+msgid "Connect a Group with Course."
+msgstr "Подключить группу для повседневного общения сокурсников."
+
+#: custom_meta_boxes.php:304
+msgid "Course Completion Message"
+msgstr "Сообщение, выводимое по окончанию курса"
+
+#: custom_meta_boxes.php:305
+msgid "This message is shown to users when they Finish submit the course"
+msgstr ""
+"Это сообщение выводится слушателям, когда они завершают курс и отправляют "
+"результаты заключительного теста"
+
+#: custom_meta_boxes.php:316
+msgid "Free Course"
+msgstr "Бесплатный курс"
+
+#: custom_meta_boxes.php:317
+msgid "Course is Free for all Members"
+msgstr "Данный курс является бесплатным для всех слушателей"
+
+#: custom_meta_boxes.php:337
+msgid "PMPro Membership"
+msgstr "Плагин PMPro Membership"
+
+#: custom_meta_boxes.php:338
+msgid "Required Membership levle for this course"
+msgstr "Необходимый уровень членства для данного курса"
+
+#: custom_meta_boxes.php:352
+msgid "Associated Product"
+msgstr "Связанный продукт"
+
+#: custom_meta_boxes.php:353
+msgid "Associated Product with the Course."
+msgstr "Продукт связанный с данным курсом"
+
+#: custom_meta_boxes.php:365
+msgid "Video"
+msgstr "Видео"
+
+#: custom_meta_boxes.php:366
+msgid "Audio"
+msgstr "Аудио"
+
+#: custom_meta_boxes.php:367
+msgid "Podcast"
+msgstr "Подкаст"
+
+#: custom_meta_boxes.php:368 musettings.php:15
+msgid "General"
+msgstr "Общий"
+
+#: custom_meta_boxes.php:373
+msgid "Unit Description"
+msgstr "Описание модуля"
+
+#: custom_meta_boxes.php:374
+msgid "Small Description."
+msgstr "Краткое описание."
+
+#: custom_meta_boxes.php:380
+msgid "Unit Type"
+msgstr "Тип модуля"
+
+#: custom_meta_boxes.php:381
+msgid "Select Unit type from Video , Audio , Podcast, General , "
+msgstr "Выберите тип модуля: видео, аудио, запись или общий,  "
+
+#: custom_meta_boxes.php:388
+msgid "Free Unit"
+msgstr "Открытый модуль"
+
+#: custom_meta_boxes.php:389
+msgid "Set Free unit, viewable to all"
+msgstr "Задать открытый модуль, виден всем"
+
+#: custom_meta_boxes.php:401
+msgid "Unit Duration"
+msgstr "Продолжительность модуля"
+
+#: custom_meta_boxes.php:402
+msgid "Duration in "
+msgstr "Продолжительность "
+
+#: custom_meta_boxes.php:407
+msgid "Connect Assignments"
+msgstr "Подключить задание"
+
+#: custom_meta_boxes.php:408
+msgid "Select an Assignment which you can connect with this Unit"
+msgstr "Выберите задание, которое Вы хотели бы подключить к данному модулю"
+
+#: custom_meta_boxes.php:414
+msgid "Unit Forum"
+msgstr "Форум модуля"
+
+#: custom_meta_boxes.php:415
+msgid "Connect Forum with Unit."
+msgstr "Связать форум и модуль."
+
+#: custom_meta_boxes.php:425
+msgid "True or False"
+msgstr ""
+
+#: custom_meta_boxes.php:426
+msgid "Multiple Choice"
+msgstr ""
+
+#: custom_meta_boxes.php:427
+msgid "Multiple Correct"
+msgstr ""
+
+#: custom_meta_boxes.php:428
+#, fuzzy
+msgid "Sort Answers"
+msgstr "Правильный ответ"
+
+#: custom_meta_boxes.php:429
+msgid "Match Answers"
+msgstr ""
+
+#: custom_meta_boxes.php:430
+msgid "Fill in the Blank"
+msgstr ""
+
+#: custom_meta_boxes.php:431
+msgid "Dropdown Select"
+msgstr ""
+
+#: custom_meta_boxes.php:432
+msgid "Small Text"
+msgstr ""
+
+#: custom_meta_boxes.php:433
+msgid "Large Text"
+msgstr ""
+
+#: custom_meta_boxes.php:437
+msgid "Question Type"
+msgstr "Тип вопроса"
+
+#: custom_meta_boxes.php:438
+msgid "Select Question type, "
+msgstr "Выберите нужный тип вопроса. "
+
+#: custom_meta_boxes.php:445
+msgid "Question Options (For Single/Multiple/Sort/Match Question types)"
+msgstr "Варианты ответов"
+
+#: custom_meta_boxes.php:446
+msgid "Single/Mutiple Choice question options"
+msgstr ""
+"Варианты для ответов (простой (верно/неверно), множественный выбор с одним "
+"верным ответом, множественный выбор с несколькими верными ответами, "
+"упорядочивание ответов в нужной последовательности, заполнение пропущенного "
+"текста, развернутый ответ, ниспадающий список с выбором ответов, небольшой "
+"текст, большой текст)"
+
+#: custom_meta_boxes.php:451
+msgid "Correct Answer"
+msgstr "Правильный ответ"
+
+#: custom_meta_boxes.php:452
+msgid ""
+"Enter (1 = True, 0 = false ) or Choice Number (1,2..) or comma saperated "
+"Choice numbers (1,2..) or Correct Answer for small text (All possible "
+"answers comma saperated) | 0 for No Answer or Manual Check"
+msgstr ""
+"<br>Укажите (1=Верно, 0=Неверно) для простого вопроса; <br /> <br>Номер "
+"верного ответа (1 или 2 или ...) для множественного выбора с одним верным "
+"ответом или перечислите все верные варианты ответов через запятую (1,2..) "
+"для множественного выбора с несколькими верными ответами; <br /><br>Введите "
+"текст для ответа типа \"небольшой текст\" (все допустимые варианты ответов "
+"через запятую); <br /><br> Введите 0 для открытого вопроса типа \"большой "
+"текст\" c произвольным ответом, требующим ручного режима проверки.<br />"
+
+#: custom_meta_boxes.php:458
+msgid "Answer Hint"
+msgstr "Подсказка к ответу"
+
+#: custom_meta_boxes.php:459
+msgid "Add a Hint/clue for the answer to show to student"
+msgstr "Добавить подсказку/намёк для верного ответа слушателем"
+
+#: custom_meta_boxes.php:465
+msgid "Answer Explaination"
+msgstr "Комментарий к ответу"
+
+#: custom_meta_boxes.php:466
+msgid "Add Answer explaination"
+msgstr "Здесь можно добавить комментарий к ответу"
+
+#: custom_meta_boxes.php:477
+msgid "Quiz Subtitle"
+msgstr "Подзаголовок теста"
+
+#: custom_meta_boxes.php:478
+msgid "Quiz Subtitle."
+msgstr "Введите подзаголовок теста."
+
+#: custom_meta_boxes.php:484 custom_meta_boxes.php:939
+msgid "Connected Course"
+msgstr "Возврат к курсу"
+
+#: custom_meta_boxes.php:485
+msgid "Adds a Back to Course button, on quiz submission."
+msgstr "Добавить кнопку \"Вернуться к курсу\" при отправке заполненного теста."
+
+#: custom_meta_boxes.php:491
+msgid "Quiz Duration"
+msgstr "Продолжительность теста"
+
+#: custom_meta_boxes.php:492
+msgid "Quiz duration in "
+msgstr "Параметр определяет продолжительность теста"
+
+#: custom_meta_boxes.php:492
+msgid " Enables Timer & auto submits on expire. 9999 to disable."
+msgstr ""
+", включает таймер и автоматическую отправку ответов по истечении отведенного "
+"на тест времени (введите 9999 чтобы отключить данную функцию)."
+
+#: custom_meta_boxes.php:499
+msgid "Auto Evatuate Results"
+msgstr "Автоматическая оценка"
+
+#: custom_meta_boxes.php:500
+msgid ""
+"Evaluate results as soon as quiz is complete. (* No Large text questions ), "
+"Diable for manual evaluate"
+msgstr ""
+"Оценивать результаты сразу по факту завершения теста. (* При отсутствии "
+"открытых вопросов типа \"большой текст\"). Отключите, если хотите "
+"использовать ручной режим проверки."
+
+#: custom_meta_boxes.php:513
+msgid "Number of Extra Quiz Retakes"
+msgstr "Дополнительные попытки"
+
+#: custom_meta_boxes.php:514
+msgid ""
+"Student can reset and start the quiz all over again. Number of Extra retakes "
+"a student can take."
+msgstr ""
+"Слушатель может сбросить тест и начать его прохождение снова. Укажите "
+"количество возможных дополнительных попыток тестирования."
+
+#: custom_meta_boxes.php:520
+msgid "Post Quiz Message"
+msgstr "Сообщение о завершении"
+
+#: custom_meta_boxes.php:521
+msgid "This message is shown to users when they submit the quiz"
+msgstr ""
+"Это сообщение будет отображаться пользователям, когда они отправляю ответы "
+"теста"
+
+#: custom_meta_boxes.php:527
+msgid "Dynamic Quiz"
+msgstr "Динамический тест"
+
+#: custom_meta_boxes.php:528
+msgid "Dynamic quiz automatically selects questions."
+msgstr ""
+"В режиме динамического теста вопросы выбираются в автоматическом режиме."
+
+#: custom_meta_boxes.php:540
+msgid "Dynamic Quiz Question tags"
+msgstr "Теги отбора вопросов"
+
+#: custom_meta_boxes.php:541
+msgid ""
+"Select Question tags from where questions will be selected for the quiz."
+"(required if dynamic enabled)"
+msgstr ""
+"Выберите теги по которым будут отбираться вопросы для динамического теста "
+"(необходимо указывать, если активирован динамический тест)."
+
+#: custom_meta_boxes.php:548
+msgid "Number of Questions in Dynamic Quiz"
+msgstr "Количество вопросов"
+
+#: custom_meta_boxes.php:549
+msgid ""
+"Enter the number of Questions in the dynamic quiz. (required if dynamic "
+"enabled)."
+msgstr ""
+"Задайте количество вопросов для динамического теста (требуется указать, если "
+"активирован режим динамического теста)."
+
+#: custom_meta_boxes.php:555
+msgid "Marks per Question in Dynamic Quiz"
+msgstr "Оценка вопросов"
+
+#: custom_meta_boxes.php:556
+msgid ""
+"Enter the number of marks per Questions in the dynamic quiz. (required if "
+"dynamic enabled)."
+msgstr ""
+"Укажите количество баллов за правильно отвеченные вопросы в динамическом "
+"тесте (необходимо указать, если активирован режим динамического теста)."
+
+#: custom_meta_boxes.php:562
+msgid "Randomize Quiz Questions"
+msgstr "Перемешать вопросы теста"
+
+#: custom_meta_boxes.php:563
+msgid "Random Question sequence for every quiz"
+msgstr "Хаотичный порядок вопросов для всех тестов"
+
+#: custom_meta_boxes.php:575
+msgid "Quiz Questions"
+msgstr "Выбор вопросов"
+
+#: custom_meta_boxes.php:576
+msgid "Quiz questions for Static Quiz only"
+msgstr ""
+"Вопросы теста (необходимо указать только для обычного режима тестирования)."
+
+#: custom_meta_boxes.php:590
+msgid "Author Name"
+msgstr "Имя автора"
+
+#: custom_meta_boxes.php:591
+msgid "Enter the name of the testimonial author."
+msgstr "Введите имя автора рекомендации."
+
+#: custom_meta_boxes.php:596
+msgid "Designation"
+msgstr "Должность"
+
+#: custom_meta_boxes.php:597
+msgid "Enter the testimonial author's designation."
+msgstr "Введите должность автора рекомендации"
+
+#: custom_meta_boxes.php:607
+msgid "Associated Courses"
+msgstr "Связанные курсы"
+
+#: custom_meta_boxes.php:608
+msgid "Associated Courses with this product. Enables access to the course."
+msgstr "Курсы связанные с данным продуктом. Открывает доступ к курсу."
+
+#: custom_meta_boxes.php:614
+msgid "Subscription "
+msgstr "Подписка"
+
+#: custom_meta_boxes.php:615
+msgid "Enable if Product is Subscription Type (Price per month)"
+msgstr "Включите, если продукт имеет тип \"подписка\" (ежемесячная оплата) "
+
+#: custom_meta_boxes.php:627
+msgid "Subscription Duration"
+msgstr "Продолжительность подписки"
+
+#: custom_meta_boxes.php:628
+msgid "Duration for Subscription Products (in "
+msgstr "Продолжительность подписки ("
+
+#: custom_meta_boxes.php:638
+msgid "Event Sub-Title"
+msgstr "Подзаголовк мероприятия"
+
+#: custom_meta_boxes.php:639
+msgid "Event Sub-Title."
+msgstr "Введите подзаголовок для данного мероприятия"
+
+#: custom_meta_boxes.php:646
+msgid "Select Course for which the event is valid"
+msgstr "Выберите курс для данного мероприятия"
+
+#: custom_meta_boxes.php:652
+msgid "Connect an Assignment"
+msgstr "Подключить задание "
+
+#: custom_meta_boxes.php:653
+msgid "Select an Assignment which you can connect with this Event"
+msgstr "Выберите задание, которое Вы хотите подключить к данному событию "
+
+#: custom_meta_boxes.php:659
+msgid "Event Icon"
+msgstr "Иконка мероприятия"
+
+#: custom_meta_boxes.php:660
+msgid "Click on icon to  select an icon for the event"
+msgstr "Кликните по иконке, которую хотите выбрать для мероприятия "
+
+#: custom_meta_boxes.php:665
+msgid "Event Color"
+msgstr "Цвет события"
+
+#: custom_meta_boxes.php:666
+msgid "Select color for Event"
+msgstr "Выберите цвет события"
+
+#: custom_meta_boxes.php:671
+msgid "Start Date"
+msgstr "Начало"
+
+#: custom_meta_boxes.php:672 custom_meta_boxes.php:684
+msgid "Date from which Event Begins"
+msgstr "Дата и время, когда событие начинается"
+
+#: custom_meta_boxes.php:677
+msgid "End Date"
+msgstr "Конец"
+
+#: custom_meta_boxes.php:678 custom_meta_boxes.php:690
+msgid "Date on which Event ends."
+msgstr "Дата и время, когда событие завершается"
+
+#: custom_meta_boxes.php:683
+msgid "Start Time"
+msgstr "Начало"
+
+#: custom_meta_boxes.php:689
+msgid "End Time"
+msgstr "Конец"
+
+#: custom_meta_boxes.php:695
+msgid "Show Location"
+msgstr "Место проведения"
+
+#: custom_meta_boxes.php:696
+msgid "Show Location and Google map with the event"
+msgstr "Показывает место проведения на картах Google"
+
+#: custom_meta_boxes.php:708
+msgid "Location"
+msgstr "Место"
+
+#: custom_meta_boxes.php:709
+msgid "Location of event"
+msgstr "Введите данные о месте проведения мероприятия"
+
+#: custom_meta_boxes.php:714
+msgid "Additional Information"
+msgstr "Дополнительно"
+
+#: custom_meta_boxes.php:715
+msgid "Point wise Additional Information regarding the event"
+msgstr "Укажите дополнительную информацию о мероприятии"
+
+#: custom_meta_boxes.php:720
+msgid "More Information"
+msgstr "Другая информация"
+
+#: custom_meta_boxes.php:721
+msgid "Supports HTML and shortcodes"
+msgstr "Поддерживается HTML и короткий код"
+
+#: custom_meta_boxes.php:726
+msgid "Private Event"
+msgstr "Закрытое мероприятие"
+
+#: custom_meta_boxes.php:727
+msgid "Only Invited participants can see the Event"
+msgstr "Мероприятие будут видеть только приглашённые участники"
+
+#: custom_meta_boxes.php:745
+msgid "Associated Product for Event Access"
+msgstr "Приобретение продукта"
+
+#: custom_meta_boxes.php:746
+msgid "Purchase of this product grants Event access to the member."
+msgstr ""
+"Приобретение данного продукта предоставляет доступ на данное мероприятие."
+
+#: custom_meta_boxes.php:758
+msgid "From"
+msgstr "От "
+
+#: custom_meta_boxes.php:759 custom_meta_boxes.php:765
+msgid "Date on which Payment was done."
+msgstr "Дата платежа."
+
+#: custom_meta_boxes.php:764
+msgid "To"
+msgstr "Кому "
+
+#: custom_meta_boxes.php:770
+msgid "Instructor and Commissions"
+msgstr "Инструктор и комиссионные"
+
+#: custom_meta_boxes.php:771
+msgid "Instructor commissions"
+msgstr "Комиссионные инструторов"
+
+#: custom_meta_boxes.php:781
+msgid "Background Image/Pattern"
+msgstr "Фоновое изображение/Рисунок"
+
+#: custom_meta_boxes.php:782
+msgid "Add background image"
+msgstr "Добавить фоновое изображение"
+
+#: custom_meta_boxes.php:787
+msgid "Enable Print"
+msgstr "Разрешить печать "
+
+#: custom_meta_boxes.php:788
+msgid "Displays a Print Button on top right corner of certificate"
+msgstr "Показать кнопку печати в верхнем правом углу сертификата"
+
+#: custom_meta_boxes.php:800
+msgid "Custom Class"
+msgstr "Дополнительный класс"
+
+#: custom_meta_boxes.php:801
+msgid "Add Custom Class over Certificate container."
+msgstr "Ввести дополнительный класс для контейнера сертификата.  "
+
+#: custom_meta_boxes.php:806
+msgid "Custom CSS"
+msgstr "Дополнительный CSS"
+
+#: custom_meta_boxes.php:807
+msgid "Add Custom CSS for Certificate."
+msgstr "Добавить CSS код для сертификата."
+
+#: custom_meta_boxes.php:812
+msgid "NOTE:"
+msgstr "ПРИМЕЧАНИЕ: "
+
+#: custom_meta_boxes.php:813
+msgid ""
+" USE FOLLOWING SHORTCODES TO DISPLAY RELEVANT DATA : <br />1. "
+"<strong>[certificate_student_name]</strong> : Displays Students Name<br />2. "
+"<strong>[certificate_course]</strong> : Displays Course Name<br />3. "
+"<strong>[certificate_student_marks]</strong> : Displays Students Marks in "
+"Course<br />4. <strong>[certificate_student_date]</strong>: Displays date on "
+"which Certificate was awarded to the Student<br />5. "
+"<strong>[certificate_student_email]</strong>: Displays registered email of "
+"the Student<br />6. <strong>[certificate_code]</strong>: Generates unique "
+"code for Student which can be validated from Certificate page."
+msgstr ""
+" ИСПОЛЬЗУЙТЕ СЛЕДУЮЩИЙ КОРОТКИЙ КОД ДЛЯ ОТОБРАЖЕНИЯ СООТВЕТСТВУЩИХ ДАННЫХ : "
+"<br />1. <strong>[certificate_student_name]</strong> : Отображает имя "
+"слушателя<br />2. <strong>[certificate_course]</strong> : Отображает "
+"название курса<br />3. <strong>[certificate_student_marks]</strong> : "
+"Отображает набранные слушателем балы<br />4. "
+"<strong>[certificate_student_date]</strong>: Отображает дату присвоения "
+"сертификата слушателю<br />5. <strong>[certificate_student_email]</strong>: "
+"Отображает зарегистрированный email слушателя<br />6. "
+"<strong>[certificate_code]</strong>: Генерирует уникальный код слушателя, с "
+"помощью которого можно проверять наличие сертификатов на специальной "
+"странице."
+
+#: custom_meta_boxes.php:828
+msgid "Assignment Sub-Title"
+msgstr "Подзаголовок задания"
+
+#: custom_meta_boxes.php:829
+msgid "Assignment Sub-Title."
+msgstr "Введите подзаголовок задания."
+
+#: custom_meta_boxes.php:842
+msgid "Assignment Maximum Marks"
+msgstr "Максимальный бал за выполнение задания"
+
+#: custom_meta_boxes.php:843
+msgid "Set Maximum marks for the assignment"
+msgstr "Установите максимальный бал за выполнение задания "
+
+#: custom_meta_boxes.php:849
+msgid "Assignment Maximum Time limit"
+msgstr "Максимальная продолжительность задания"
+
+#: custom_meta_boxes.php:850
+msgid "Set Maximum Time limit for Assignment ( in "
+msgstr "Укажите максимальный временной интервал для выполнения задания ( "
+
+#: custom_meta_boxes.php:856
+msgid "Include in Course Evaluation"
+msgstr "Включить в оценку курса"
+
+#: custom_meta_boxes.php:857
+msgid "Include assignment marks in Course Evaluation"
+msgstr "Включить балы за выполнение задания в общую оценку прохождения курса "
+
+#: custom_meta_boxes.php:869
+msgid "Include in Course"
+msgstr "Включить в курс"
+
+#: custom_meta_boxes.php:870
+msgid "Assignments marks will be shown/used in course evaluation"
+msgstr ""
+"Балы за задание будут отображаться/использоваться в оценке прохождения курса"
+
+#: custom_meta_boxes.php:876
+msgid "Assignment Submissions"
+msgstr "Отправка заданий"
+
+#: custom_meta_boxes.php:877
+msgid "Select type of assignment submissions"
+msgstr "Выберите тип отправки заданий"
+
+#: custom_meta_boxes.php:887
+msgid "Attachment Type"
+msgstr "Приложение"
+
+#: custom_meta_boxes.php:888
+msgid "Select valid attachment types "
+msgstr "Выберите допустимые форматы приложенных файлов"
+
+#: custom_meta_boxes.php:928
+msgid "Attachment Size (in MB)"
+msgstr "Размер приложения (в Мб)"
+
+#: custom_meta_boxes.php:929
+msgid "Set Maximum Attachment size for upload ( set less than "
+msgstr "Установите максимальный объем приложения ( не более "
+
+#: custom_meta_boxes.php:940
+msgid "Connect this question to a course"
+msgstr "Подключить этот вопрос к курсу "
+
+#: custom_meta_boxes.php:946
+msgid "Connected Unit"
+msgstr "Связанный модуль"
+
+#: custom_meta_boxes.php:947
+msgid "Connect this question to a Unit"
+msgstr "Подключить этот вопрос к модулю"
+
+#: custom_meta_boxes.php:958
+msgid "Post Settings"
+msgstr "Настройки записи"
+
+#: custom_meta_boxes.php:959
+msgid "Page Settings"
+msgstr "Настройки страницы"
+
+#: custom_meta_boxes.php:961
+msgid "Course Settings"
+msgstr "Настройки курса"
+
+#: custom_meta_boxes.php:963
+msgid "Course Product"
+msgstr "Продукт курса "
+
+#: custom_meta_boxes.php:965
+msgid "Course Membership"
+msgstr "Необходимое членство"
+
+#: custom_meta_boxes.php:968
+msgid "Unit Settings"
+msgstr "Настройки модуля"
+
+#: custom_meta_boxes.php:970
+msgid "Question Settings"
+msgstr "Настройки вопроса"
+
+#: custom_meta_boxes.php:971
+msgid "Quiz Settings"
+msgstr "Настройки теста"
+
+#: custom_meta_boxes.php:974 metaboxes/library/vibe-editor.php:1872
+#: metaboxes/library/vibe-editor.php:1896
+msgid "Settings"
+msgstr "Настройки"
+
+#: custom_meta_boxes.php:976
+msgid "Testimonial Author Information"
+msgstr "Информация об авторе рекомендации"
+
+#: custom_meta_boxes.php:977
+msgid "Payments Settings"
+msgstr "Настройки платежей"
+
+#: custom_meta_boxes.php:978
+msgid "Certificate Template Settings"
+msgstr "Настройки шаблона сертификата"
+
+#: custom_meta_boxes.php:981
+msgid "Product Course Settings"
+msgstr "Настройки продукта курса"
+
+#: custom_meta_boxes.php:985
+msgid "WPLMS Events Settings"
+msgstr "Настройки событий WPLMS"
+
+#: custom_meta_boxes.php:990
+msgid "WPLMS Assignments Settings"
+msgstr "Настройки заданий WPLMS"
+
+#: custom_meta_boxes.php:999
+msgid "Page Builder"
+msgstr "Конструктор страниц"
+
+#: errorhandle.php:18
+msgid "Unknown error."
+msgstr "Неизвестная ошибка."
+
+#: errorhandle.php:25
+msgid "Please save the changes again."
+msgstr "Пожалуйста, сохраните изменения снова. "
+
+#: errorhandle.php:26
+msgid "Some Uknown issue appeared, please contact us."
+msgstr "Обнаружены неизвестные ошибки, пожалуйста, свяжитесь с нами."
+
+#: errorhandle.php:27
+msgid "Please save the Page Builder changes !"
+msgstr "Пожалуйста, сохраните изменения Конструктора страниц !"
+
+#: errorhandle.php:28
+msgid "Requested Slider was not found, Please check slider post id !"
+msgstr ""
+"Запрошенный слайдер не найден, пожалуйста, проверьте идентификатор его "
+"записи !"
+
+#: errorhandle.php:29
+msgid "No Posts Id's found in given Custom Post Type."
+msgstr "Идентификаторов записей заданного формата не найдено. "
+
+#: errorhandle.php:30
+msgid "Author Information missing."
+msgstr "Отсутствует информация об авторе."
+
+#: errorhandle.php:31
+msgid "You do not have permission to do that."
+msgstr "У Вас нет прав для данного действия."
+
+#: errorhandle.php:32
+msgid "Unable to get tweets from Twitter !"
+msgstr "Невозможно загрузить твитты из Твиттера !"
+
+#: errorhandle.php:33
+msgid "No public tweets found on Twitter !"
+msgstr "Общие твитты в Твиттере не найдены !"
+
+#: errorhandle.php:34
+msgid "Term : Taxonomy Mismatch: Selected Term does not exist in Taxonomy !"
+msgstr ""
+"Термин: Несоответствие систематики: Выбранный термин отсутствует в "
+"систематике ! "
+
+#: errorhandle.php:35
+msgid ""
+"Post Type : Taxonomy Mismatch: Selected Taxonomy does not exist in Post "
+"Type !"
+msgstr ""
+"Тип записи: Несоответствие систематики: Выбранной систематики в типах "
+"записей отсутствует ! "
+
+#: errorhandle.php:36
+msgid "Featured Component does not Exist !"
+msgstr "Титульный компонент не существует ! "
+
+#: errorhandle.php:37
+msgid "Incorrect or Incompatible Audio Format !"
+msgstr "Неверный или несовместимый формат аудио ! "
+
+#: errorhandle.php:38
+msgid "Incorrect or Incompatible Video Embed Code !"
+msgstr "Неверный или несовместимый формат видео ! "
+
+#: errorhandle.php:39
+msgid "Modal ID Incorrect, please recheck !"
+msgstr ""
+"Неверный идентификатор модального элемента, пожалуйста, перепроверьте ! "
+
+#: errorhandle.php:40
+msgid "Testimonial ID Incorrect, please recheck !"
+msgstr "Неверный идентификатор рекомендации, пожалуйста, перепроверьте ! "
+
+#: errorhandle.php:41
+msgid "Post ID Incorrect, please recheck !"
+msgstr "Неверный идентификатор записи, пожалуйста, перепроверьте !"
+
+#: errorhandle.php:54
+msgid "Seconds"
+msgstr "Секунд"
+
+#: errorhandle.php:55
+msgid "Minutes"
+msgstr "Минут"
+
+#: errorhandle.php:56
+msgid "Hours"
+msgstr "Часы"
+
+#: errorhandle.php:57
+msgid "Days"
+msgstr "Дней"
+
+#: errorhandle.php:58
+msgid "Weeks"
+msgstr "Недель"
+
+#: errorhandle.php:59
+msgid "Months"
+msgstr "Месяцев"
+
+#: errorhandle.php:60
+msgid "Years"
+msgstr "Лет"
+
+#: featured.php:6
+msgid "Read more"
+msgstr "Читать далее"
+
+#: featured.php:46
+msgid "REVIEWS"
+msgstr "ОБЗОРЫ"
+
+#: featured.php:53
+msgid "FREE"
+msgstr ""
+
+#: featured.php:77
+msgid "MEMBERSHIP"
+msgstr "ЧЛЕНСТВО"
+
+#: featured.php:86
+msgid "PRIVATE COURSE"
+msgstr "БЕСПЛАТНЫЙ КУРС"
+
+#: featured.php:104
+msgid "Students"
+msgstr "Слушатели"
+
+#: featured.php:154
+msgid " Comments"
+msgstr " Комментарии"
+
+#: featured.php:222
+msgid "Event "
+msgstr "Мероприятие - "
+
+#: featured.php:227
+msgid "Start Date "
+msgstr "Начало"
+
+#: featured.php:230
+msgid "End Date "
+msgstr "Конец"
+
+#: featured.php:234
+msgid "Start Time "
+msgstr "Начало"
+
+#: featured.php:237
+msgid "End Time "
+msgstr "Конец"
+
+#: featured.php:240
+msgid "Frequency "
+msgstr "Частота "
+
+#: featured.php:240
+msgid "Every "
+msgstr "Каждые "
+
+#: featured.php:243
+msgid "Venue "
+msgstr "Адрес"
+
+#: featured.php:246
+msgid "View full details"
+msgstr "Смотреть все детали"
+
+#: metaboxes/library/vibe-editor.php:362
+msgid "All"
+msgstr "Все"
+
+#: metaboxes/library/vibe-editor.php:664
+msgid "Loading.."
+msgstr "Загружаю..."
+
+#: metaboxes/library/vibe-editor.php:665
+msgid "No more to load"
+msgstr "Больше ничего нет"
+
+#: metaboxes/library/vibe-editor.php:922
+msgid "Confirm Delete?"
+msgstr "Подтвердить удаление?"
+
+#: metaboxes/library/vibe-editor.php:922
+msgid "Yes"
+msgstr "Да"
+
+#: metaboxes/library/vibe-editor.php:922
+msgid "No"
+msgstr "Нет"
+
+#: metaboxes/library/vibe-editor.php:922
+msgid "Saving..."
+msgstr "Сохраняю..."
+
+#: metaboxes/library/vibe-editor.php:922
+msgid "Saved."
+msgstr "Сохранено."
+
+#: metaboxes/library/vibe-editor.php:958
+msgid "Carousels/Rotating Blocks"
+msgstr "Карусель/Вращающиеся блоки"
+
+#: metaboxes/library/vibe-editor.php:962
+msgid "Title/Heading"
+msgstr "Название/Заголовок"
+
+#: metaboxes/library/vibe-editor.php:964
+#: metaboxes/library/vibe-editor.php:1109
+#: metaboxes/library/vibe-editor.php:1216
+msgid "Heading"
+msgstr "Заголовок"
+
+#: metaboxes/library/vibe-editor.php:968
+#: metaboxes/library/vibe-editor.php:1112
+#: metaboxes/library/vibe-editor.php:1219
+msgid "Show Title"
+msgstr "Показывать название"
+
+#: metaboxes/library/vibe-editor.php:975
+msgid "Show Read More link"
+msgstr "Показывать ссылку Читать далее"
+
+#: metaboxes/library/vibe-editor.php:982
+msgid "More Link (User redirected to this page on click)"
+msgstr "Ссылка далее (использовать перенаправление на данную страницу)"
+
+#: metaboxes/library/vibe-editor.php:988
+msgid "Show Controls"
+msgstr "Показать элементы управление"
+
+#: metaboxes/library/vibe-editor.php:995
+msgid ""
+"Enter Post Type<br /><span style=\"font-size:11px;\">(Select Post Type from "
+"Posts/Courses/Clients/Products ...)</span>"
+msgstr ""
+"Ввести тип записи<br /><span style=\"font-size:11px;\">(Выберите тип записи "
+"из Статьи/Курсы/Клиенты/Продукты ...)</span>"
+
+#: metaboxes/library/vibe-editor.php:998
+#: metaboxes/library/vibe-editor.php:1121
+#: metaboxes/library/vibe-editor.php:1228
+msgid "post"
+msgstr "запись "
+
+#: metaboxes/library/vibe-editor.php:1002
+#: metaboxes/library/vibe-editor.php:1232
+msgid ""
+"Enter Taxonomy Slug (optional)<br /><span style=\"font-size:11px;\">(A "
+"\"Taxonomy\" is a grouping mechanism for posts. Like Category for Posts, "
+"Tags for Posts, Portfolio Type for Portfolio etc.. <a href=\"http://codex."
+"wordpress.org/Taxonomies\">more</a>)</span> "
+msgstr ""
+"Введите код систематики (необязательно)<br /><span style=\"font-size:11px;"
+"\">(\"Систематика\" - это механизм группировки записей. Подобно рубрикам или "
+"ключевым словам для материалов блога или типам элементов для наборов "
+"портфолио и т.п. <a href=\"http://codex.wordpress.org/Taxonomies"
+"\">подробнее</a>)</span> "
+
+#: metaboxes/library/vibe-editor.php:1008
+#: metaboxes/library/vibe-editor.php:1238
+msgid "Enter Taxonomy Term Name (optional, only if above is selected): "
+msgstr ""
+"Введите название термина систематики (необязательно, если предыдущее поле "
+"заполнено): "
+
+#: metaboxes/library/vibe-editor.php:1013
+msgid "Or Enter Specific Post Ids"
+msgstr " или укажите идентификаторы конкретных записей "
+
+#: metaboxes/library/vibe-editor.php:1018
+#: metaboxes/library/vibe-editor.php:1129
+#: metaboxes/library/vibe-editor.php:1249
+msgid "Course Types [Only for Post type = Course]"
+msgstr "Тип курса [Только типа записей = Курсы]"
+
+#: metaboxes/library/vibe-editor.php:1027
+#: metaboxes/library/vibe-editor.php:1138
+#: metaboxes/library/vibe-editor.php:1258
+msgid "recent"
+msgstr "последнее "
+
+#: metaboxes/library/vibe-editor.php:1030
+msgid "Carousel/Rotating Block Style"
+msgstr "Стиль карусели/Блока прокрутки"
+
+#: metaboxes/library/vibe-editor.php:1033
+#: metaboxes/library/vibe-editor.php:1144
+#: metaboxes/library/vibe-editor.php:1264
+msgid "excerpt"
+msgstr "цитата "
+
+#: metaboxes/library/vibe-editor.php:1036
+msgid "Auto slide/rotate"
+msgstr "Авто слайд/прокрутка"
+
+#: metaboxes/library/vibe-editor.php:1042
+msgid "Width each crousel block"
+msgstr "Ширина блоков карусели"
+
+#: metaboxes/library/vibe-editor.php:1044
+msgid "268"
+msgstr "268"
+
+#: metaboxes/library/vibe-editor.php:1047
+msgid "Maximum Number of blocks in One screen"
+msgstr "Максимальное количество блоков на экране"
+
+#: metaboxes/library/vibe-editor.php:1049
+msgid "4"
+msgstr "4"
+
+#: metaboxes/library/vibe-editor.php:1052
+msgid "Minimum Number of blocks in one Screen"
+msgstr "Задать максимальное количество блоков на одном экране"
+
+#: metaboxes/library/vibe-editor.php:1054
+msgid "2"
+msgstr "2"
+
+#: metaboxes/library/vibe-editor.php:1057
+msgid "Total Number of Blocks"
+msgstr "Общее количество блоков"
+
+#: metaboxes/library/vibe-editor.php:1059
+#: metaboxes/library/vibe-editor.php:1165
+#: metaboxes/library/vibe-editor.php:1299
+msgid "6"
+msgstr "6"
+
+#: metaboxes/library/vibe-editor.php:1063
+msgid "Excerpt Length in Block (in characters)"
+msgstr "Длина цитаты в блоке (в символах)"
+
+#: metaboxes/library/vibe-editor.php:1065
+#: metaboxes/library/vibe-editor.php:1160
+#: metaboxes/library/vibe-editor.php:1319
+msgid "100"
+msgstr "100"
+
+#: metaboxes/library/vibe-editor.php:1068
+msgid "Show Lightbox button on image hover[Opens Full image]"
+msgstr "Показать иконку лайтбокса при наведении [открывает полное изображение]"
+
+#: metaboxes/library/vibe-editor.php:1074
+msgid "Show Link button on image hover"
+msgstr "Показать кнопку с ссылкой при наведении"
+
+#: metaboxes/library/vibe-editor.php:1080
+#: metaboxes/library/vibe-editor.php:1187
+#: metaboxes/library/vibe-editor.php:1337
+#: metaboxes/library/vibe-editor.php:1372
+#: metaboxes/library/vibe-editor.php:1441
+#: metaboxes/library/vibe-editor.php:1493
+#: metaboxes/library/vibe-editor.php:1536
+#: metaboxes/library/vibe-editor.php:1568
+msgid "Show Advanced settings"
+msgstr "Показать другие настройки"
+
+#: metaboxes/library/vibe-editor.php:1085
+#: metaboxes/library/vibe-editor.php:1192
+#: metaboxes/library/vibe-editor.php:1342
+#: metaboxes/library/vibe-editor.php:1383
+#: metaboxes/library/vibe-editor.php:1452
+#: metaboxes/library/vibe-editor.php:1498
+#: metaboxes/library/vibe-editor.php:1541
+#: metaboxes/library/vibe-editor.php:1573
+#: metaboxes/library/vibe-editor.php:1669
+msgid "* Custom Class name (Add Custom Class to this Block)"
+msgstr "* Имя дополнительного класса (укажите свой класс в этом блоке)"
+
+#: metaboxes/library/vibe-editor.php:1089
+#: metaboxes/library/vibe-editor.php:1196
+#: metaboxes/library/vibe-editor.php:1346
+#: metaboxes/library/vibe-editor.php:1387
+#: metaboxes/library/vibe-editor.php:1456
+#: metaboxes/library/vibe-editor.php:1502
+#: metaboxes/library/vibe-editor.php:1545
+#: metaboxes/library/vibe-editor.php:1577
+#: metaboxes/library/vibe-editor.php:1673
+msgid "* Class for on containing Layout column"
+msgstr "* Класс колонки макета, где находится блок"
+
+#: metaboxes/library/vibe-editor.php:1093
+#: metaboxes/library/vibe-editor.php:1200
+#: metaboxes/library/vibe-editor.php:1350
+#: metaboxes/library/vibe-editor.php:1391
+#: metaboxes/library/vibe-editor.php:1460
+#: metaboxes/library/vibe-editor.php:1506
+#: metaboxes/library/vibe-editor.php:1549
+#: metaboxes/library/vibe-editor.php:1581
+#: metaboxes/library/vibe-editor.php:1677
+msgid ""
+"* Add Custom CSS (Use <strong>.</strong> for class name, <strong>:hover</"
+"strong> for hover styles etc..)"
+msgstr ""
+"* Добавить свой CSS (используйте <strong>&#46 </strong> для имени класса, "
+"<strong>:hover</strong> для стилей при наведении и т.п.)"
+
+#: metaboxes/library/vibe-editor.php:1103
+msgid "Filterable Posts"
+msgstr "Фильтруемые записи"
+
+#: metaboxes/library/vibe-editor.php:1107
+msgid "Filterable Block Title"
+msgstr "Название фильтруемого блока "
+
+#: metaboxes/library/vibe-editor.php:1118
+msgid "Select a Post Type"
+msgstr "Выбрать тип записи"
+
+#: metaboxes/library/vibe-editor.php:1124
+msgid "Enter relevant Taxonomy name used for Filter buttons"
+msgstr ""
+"Введите соответствующую систематику, используемую для кнопки фильтрации"
+
+#: metaboxes/library/vibe-editor.php:1141
+#: metaboxes/library/vibe-editor.php:1261
+msgid "Featured Media Block Style"
+msgstr "Стиль титульного медиа блока"
+
+#: metaboxes/library/vibe-editor.php:1147
+msgid "Show All link"
+msgstr "Показать все ссылки"
+
+#: metaboxes/library/vibe-editor.php:1153
+msgid "Column Width (in px)"
+msgstr "Ширина колонки (px)"
+
+#: metaboxes/library/vibe-editor.php:1158
+#: metaboxes/library/vibe-editor.php:1317
+msgid "Excerpt Length (in characters)"
+msgstr "Длина цитаты (в знаках)"
+
+#: metaboxes/library/vibe-editor.php:1163
+msgid "Total Number of blocks"
+msgstr "Общее количество блоков"
+
+#: metaboxes/library/vibe-editor.php:1168
+msgid "Show Pagination"
+msgstr "Нумерация страниц"
+
+#: metaboxes/library/vibe-editor.php:1175
+#: metaboxes/library/vibe-editor.php:1323
+msgid "Show Lightbox [Opens Full image]"
+msgstr "Показать лайтбокс [Открывает изображение целиком]"
+
+#: metaboxes/library/vibe-editor.php:1181
+msgid "Show Link [Links to Post]"
+msgstr "Показывать ссылку [Ссылки на записи]"
+
+#: metaboxes/library/vibe-editor.php:1210
+msgid "Post Grid"
+msgstr "Сетка записей"
+
+#: metaboxes/library/vibe-editor.php:1214
+msgid "Grid Title"
+msgstr "Название сетки"
+
+#: metaboxes/library/vibe-editor.php:1225
+msgid "Custom Post Type"
+msgstr "Выбрать тип записи "
+
+#: metaboxes/library/vibe-editor.php:1244
+msgid "Or Enter Specific Post Ids (comma saperated)"
+msgstr "или введите идентификаторы нужных записей (через запятую)"
+
+#: metaboxes/library/vibe-editor.php:1268
+msgid "Grid Masonry Layout"
+msgstr "Макет сетки"
+
+#: metaboxes/library/vibe-editor.php:1275
+msgid "Grid Columns"
+msgstr "Колонки сетки "
+
+#: metaboxes/library/vibe-editor.php:1287
+msgid "Masonry Grid Column Width(in px)"
+msgstr "Ширина ячейки сетки (px)"
+
+#: metaboxes/library/vibe-editor.php:1292
+msgid "Spacing between Columns (in px)"
+msgstr "Просвет между колонками (px)"
+
+#: metaboxes/library/vibe-editor.php:1297
+msgid "Total Number of Blocks in Grid"
+msgstr "Общее количество блоков сетки"
+
+#: metaboxes/library/vibe-editor.php:1303
+msgid "Infinite Scroll"
+msgstr "Бесконечная прокрутка"
+
+#: metaboxes/library/vibe-editor.php:1310
+msgid "Enable Pagination (If infinite scroll is off)"
+msgstr "Нумерация страниц (если бесконечная прокрутка отключена)"
+
+#: metaboxes/library/vibe-editor.php:1330
+msgid "Show Link"
+msgstr "Показывать ссылку"
+
+#: metaboxes/library/vibe-editor.php:1359
+msgid "WP Editor"
+msgstr "Редактор WP"
+
+#: metaboxes/library/vibe-editor.php:1362
+#: metaboxes/library/vibe-editor.php:1403
+msgid "Reference Title"
+msgstr "Название для справки"
+
+#: metaboxes/library/vibe-editor.php:1364
+#: metaboxes/library/vibe-editor.php:1367
+#: metaboxes/library/vibe-editor.php:1408
+msgid "Content"
+msgstr "Содержание"
+
+#: metaboxes/library/vibe-editor.php:1377
+#: metaboxes/library/vibe-editor.php:1446
+msgid ""
+"* On-Load CSS3 Animation effect on the block (<a href=\"http://vibethemes."
+"com/forums/showthread.php?914-CSS3-Animation-Effects&p=2488\" target=\"_blank"
+"\">more</a>)"
+msgstr ""
+"CSS3 анимация блока при загрузке (<a href=\"http://vibethemes.com/forums/"
+"showthread.php?914-CSS3-Animation-Effects&p=2488\" target=\"_blank"
+"\">подробнее</a>)"
+
+#: metaboxes/library/vibe-editor.php:1400
+msgid "Parallax Content"
+msgstr "Блок с эффектом Parallax"
+
+#: metaboxes/library/vibe-editor.php:1405
+msgid "Parallax Title"
+msgstr "Название блока Parallax"
+
+#: metaboxes/library/vibe-editor.php:1413
+msgid "Upload Parallax Background image"
+msgstr "Загрузить изображение заднего фона"
+
+#: metaboxes/library/vibe-editor.php:1418
+msgid "Background Effect"
+msgstr "Эффект Parallax для заднего фона"
+
+#: metaboxes/library/vibe-editor.php:1426
+msgid "Parallax Block Height (in px)"
+msgstr "Высота блока Parallax (px) "
+
+#: metaboxes/library/vibe-editor.php:1431
+msgid "Parallax value (Scroll senstivity, lower value means higher scroll)"
+msgstr ""
+"Параметр Parallax (чувствительность прокрутки - меньшее значение для более "
+"интенсивной прокрутки) "
+
+#: metaboxes/library/vibe-editor.php:1436
+#, fuzzy
+msgid "Adjust background (in px)"
+msgstr "Добавить фоновое изображение"
+
+#: metaboxes/library/vibe-editor.php:1485
+msgid "Revolution Slider"
+msgstr "Revolution Slider"
+
+#: metaboxes/library/vibe-editor.php:1488
+#: metaboxes/library/vibe-editor.php:1531
+msgid "Select Slider"
+msgstr "Выбрать слайдер"
+
+#: metaboxes/library/vibe-editor.php:1528
+msgid "Layer Slider"
+msgstr "Layer Slider"
+
+#: metaboxes/library/vibe-editor.php:1562
+msgid "Select a Sidebar"
+msgstr "Выбрать боковую панель"
+
+#: metaboxes/library/vibe-editor.php:1565
+msgid "MainSidebar"
+msgstr "Стандартная панель"
+
+#: metaboxes/library/vibe-editor.php:1589
+msgid "FlexSlider"
+msgstr "FlexSlider"
+
+#: metaboxes/library/vibe-editor.php:1592
+msgid "Slider ID (for reference & Css)"
+msgstr "Идентификатор слайдера (для справки и CSS)"
+
+#: metaboxes/library/vibe-editor.php:1597
+msgid "Slide Style"
+msgstr "Стиль слайдера"
+
+#: metaboxes/library/vibe-editor.php:1609
+msgid "Animation Effect"
+msgstr "Эффект анимации"
+
+#: metaboxes/library/vibe-editor.php:1611
+msgid "fade"
+msgstr "обесцвечивание"
+
+#: metaboxes/library/vibe-editor.php:1611
+msgid "slide"
+msgstr "скольжение"
+
+#: metaboxes/library/vibe-editor.php:1616
+msgid "Slider settings"
+msgstr "Настройки слайдера"
+
+#: metaboxes/library/vibe-editor.php:1621
+msgid "Auto slide Images"
+msgstr "Автопрокрутка картинок"
+
+#: metaboxes/library/vibe-editor.php:1627
+msgid "Loop Slides"
+msgstr "Повтор слайдов"
+
+#: metaboxes/library/vibe-editor.php:1633
+msgid "Randomize Slides"
+msgstr "Произвольный порядок слайдов"
+
+#: metaboxes/library/vibe-editor.php:1639
+msgid "Show Slider Direction arrows"
+msgstr "Стрелки для смены слайдов"
+
+#: metaboxes/library/vibe-editor.php:1645
+msgid "Show Slider Control buttons"
+msgstr "Кнопки управления слайдами"
+
+#: metaboxes/library/vibe-editor.php:1651
+msgid "Animation Duration (in ms)"
+msgstr "Продолжительность анимации (м/сек)"
+
+#: metaboxes/library/vibe-editor.php:1657
+msgid "Auto Animation Speed (in ms)"
+msgstr "Автоматическая скорость анимации (м/сек)"
+
+#: metaboxes/library/vibe-editor.php:1662
+msgid "Pause Slider On Hover"
+msgstr "Останавливать слайд при наведении курсора"
+
+#: metaboxes/library/vibe-editor.php:1694
+msgid "1/2 Column"
+msgstr "1/2 колонки"
+
+#: metaboxes/library/vibe-editor.php:1695
+msgid "1/3 Column"
+msgstr "1/3 колонки"
+
+#: metaboxes/library/vibe-editor.php:1696
+msgid "1/4 Column"
+msgstr "1/4 колонки"
+
+#: metaboxes/library/vibe-editor.php:1697
+msgid "2/3 Column"
+msgstr "2/3 колонки"
+
+#: metaboxes/library/vibe-editor.php:1698
+msgid "3/4 Column"
+msgstr "3/4 колонки"
+
+#: metaboxes/library/vibe-editor.php:1699
+msgid "Full-Width Resizable Column"
+msgstr "Колонка на ширину страницы"
+
+#: metaboxes/library/vibe-editor.php:1700
+msgid "FullScreen Stripe with Container"
+msgstr "Полоса с контейнером на ширину страницы"
+
+#: metaboxes/library/vibe-editor.php:1701
+msgid "FullScreen Stripe"
+msgstr "Полоса на ширину страницы"
+
+#: metaboxes/library/vibe-editor.php:1726
+msgid "COLUMNS"
+msgstr "КОЛОНКИ"
+
+#: metaboxes/library/vibe-editor.php:1727
+msgid "CONTENT"
+msgstr "СОДЕРЖАНИЕ"
+
+#: metaboxes/library/vibe-editor.php:1728
+msgid "SAVED LAYOUTS"
+msgstr "СОХРАНЁННЫЕ МАКЕТЫ"
+
+#: metaboxes/library/vibe-editor.php:1779
+msgid "Enter name of Sample Layout"
+msgstr "Введите название примера макета"
+
+#: metaboxes/library/vibe-editor.php:1780
+msgid "Save Layout"
+msgstr "Сохранить макет"
+
+#: metaboxes/library/vibe-editor.php:1790
+#: metaboxes/library/vibe-editor.php:1878
+#: metaboxes/library/vibe-editor.php:1996
+msgid "Save Changes"
+msgstr "Сохранить изменения"
+
+#: metaboxes/library/vibe-editor.php:1791
+msgid "Save as New Layout"
+msgstr "Сохранить как новый макет"
+
+#: metaboxes/library/vibe-editor.php:2073
+msgid "Show Page Content"
+msgstr "Показать содержание страницы"
+
+#: metaboxes/meta_box.php:3581 metaboxes/meta_box.php:3602
+#: metaboxes/meta_box.php:3931
+msgid "None"
+msgstr "Нет"
+
+#: metaboxes/meta_box.php:3692
+msgid "Latitude"
+msgstr "Широта"
+
+#: metaboxes/meta_box.php:3693
+msgid "Longitude"
+msgstr "Долгота"
+
+#: metaboxes/meta_box.php:3694
+msgid "Closest Matching Address"
+msgstr "Ближайший адрес"
+
+#: metaboxes/meta_box.php:3697
+msgid "Street Address"
+msgstr "Улица"
+
+#: metaboxes/meta_box.php:3698
+msgid "City"
+msgstr "Город"
+
+#: metaboxes/meta_box.php:3699
+msgid "State"
+msgstr "Область"
+
+#: metaboxes/meta_box.php:3700
+msgid "Zip/Pin Code"
+msgstr "Индекс"
+
+#: metaboxes/meta_box.php:3701
+msgid "Country"
+msgstr "Страна"
+
+#: metaboxes/meta_box.php:3723
+msgid "Buddypress Groups is not Active"
+msgstr "Группы BuddyPress неактивны"
+
+#: metaboxes/meta_box.php:3731
+msgid "Add Section"
+msgstr "Добавить раздел"
+
+#: metaboxes/meta_box.php:3787
+msgid "Select Taxonomy"
+msgstr "Выбрать систематику"
+
+#: metaboxes/meta_box.php:3910
+msgid "Add More"
+msgstr "Добавить"
+
+#: metaboxes/meta_box.php:3937 metaboxes/meta_box.php:3958
+msgid "Marks for a Correct answer"
+msgstr "Оценки за верные ответы"
+
+#: metaboxes/meta_box.php:3962
+msgid "Total marks for the Quiz :"
+msgstr "Общая оценка тестирования: "
+
+#: metaboxes/meta_box.php:3966 musettings.php:289 statistics.php:21
+msgid "Instructor"
+msgstr "Инструктор"
+
+#: metaboxes/meta_box.php:3966 musettings.php:357
+msgid "Commission"
+msgstr "Комиссия "
+
+#: metaboxes/meta_box.php:3988
+msgid "Delete image"
+msgstr "Удалить изображение"
+
+#: metaboxes/meta_box.php:3988 metaboxes/meta_box.php:4051
+#: metaboxes/meta_box.php:4130 metaboxes/meta_box.php:4193
+#: metaboxes/meta_box.php:4272 metaboxes/meta_box.php:4335
+msgid "Delete"
+msgstr "Удалить"
+
+#: metaboxes/meta_box.php:4002
+msgid "Add Gallery images"
+msgstr "Добавить изображения в галерею"
+
+#: metaboxes/meta_box.php:4028
+msgid "Add Images to Gallery"
+msgstr "Добавить изображение в галерею"
+
+#: metaboxes/meta_box.php:4030
+msgid "Add to Gallery"
+msgstr "Добавить в галерею"
+
+#: metaboxes/meta_box.php:4130
+msgid "Delete audio file"
+msgstr "Удалить аудио файл"
+
+#: metaboxes/meta_box.php:4144
+msgid "Add Audio Files"
+msgstr "Добавить аудио файлы"
+
+#: metaboxes/meta_box.php:4170 metaboxes/meta_box.php:4172
+msgid "Add Audio"
+msgstr "Добавить аудио"
+
+#: metaboxes/meta_box.php:4272
+msgid "Delete video file"
+msgstr "Удалить видео файл"
+
+#: metaboxes/meta_box.php:4286 metaboxes/meta_box.php:4312
+msgid "Add Video Files"
+msgstr "Добавить видео файлы"
+
+#: metaboxes/meta_box.php:4314
+msgid "Add Video"
+msgstr "Добавить видео"
+
+#: musettings.php:16
+#, fuzzy
+msgid "Set Commissions"
+msgstr "Комиссия "
+
+#: musettings.php:17
+#, fuzzy
+msgid "Pay Commissions"
+msgstr "Комиссия "
+
+#: musettings.php:18
+#, fuzzy
+msgid "Admin Functions"
+msgstr "Добавить раздел"
+
+#: musettings.php:84
+#, fuzzy
+msgid "LMS General Settings"
+msgstr "Настройки событий WPLMS"
+
+#: musettings.php:89
+#, fuzzy
+msgid "Limit Number of Courses per Instructor"
+msgstr "Количество изучаемых курсов"
+
+#: musettings.php:92
+msgid "( 0 for unlimited course per instructor )"
+msgstr ""
+
+#: musettings.php:95
+msgid "Limit Number of Units Created per Instructor"
+msgstr ""
+
+#: musettings.php:98
+msgid " ( 0 for unlimited )"
+msgstr ""
+
+#: musettings.php:101
+msgid "Limit Number of Quiz Created per Instructor "
+msgstr ""
+
+#: musettings.php:104
+msgid "(0 for unlimited course per instructor )"
+msgstr ""
+
+#: musettings.php:134
+msgid "You have reached your monthly post limit"
+msgstr ""
+
+#: musettings.php:142
+msgid "LMS Admin Functions [ For Ad-Hoc Management]"
+msgstr ""
+
+#: musettings.php:144
+#, fuzzy
+msgid "Custom Field Value"
+msgstr "Дополнительный класс"
+
+#: musettings.php:145
+msgid "Custom Field for Student Value"
+msgstr ""
+
+#: musettings.php:146
+msgid "Current Time Stamp "
+msgstr ""
+
+#: musettings.php:198
+#, fuzzy
+msgid "Save Settings"
+msgstr "Настройки страницы"
+
+#: musettings.php:214
+msgid "Field Value Changed"
+msgstr ""
+
+#: musettings.php:216
+msgid "Error Field value not changed"
+msgstr ""
+
+#: musettings.php:218
+msgid "Error Field value not entered"
+msgstr ""
+
+#: musettings.php:231
+#, fuzzy
+msgid "Student Value Changed"
+msgstr "Сохранить изменения"
+
+#: musettings.php:233
+msgid "Student value not changed"
+msgstr ""
+
+#: musettings.php:235
+msgid "Student value not entered"
+msgstr ""
+
+#: musettings.php:273
+#, fuzzy
+msgid "Set Instructor Commisions"
+msgstr "Комиссионные инструторов"
+
+#: musettings.php:277
+#, fuzzy
+msgid "Instructor Commissions Saved"
+msgstr "Комиссионные инструторов"
+
+#: musettings.php:279
+msgid "Instructor Commissions not saved, contact Site-Admin !"
+msgstr ""
+
+#: musettings.php:289
+#, fuzzy
+msgid "Course Name"
+msgstr "Курс"
+
+#: musettings.php:289
+msgid "PERCENTAGE"
+msgstr ""
+
+#: musettings.php:304
+#, fuzzy
+msgid "Set Commisions"
+msgstr "Комиссия "
+
+#: musettings.php:340
+msgid "CHECK NOW"
+msgstr ""
+
+#: musettings.php:357
+#, fuzzy
+msgid "Instructor Name"
+msgstr "Инструктор"
+
+#: musettings.php:357
+msgid "PAYPAL EMAIL"
+msgstr ""
+
+#: musettings.php:357
+#, fuzzy
+msgid "Select"
+msgstr "Выбрать слайдер"
+
+#: musettings.php:371
+msgid "Mark as Paid"
+msgstr ""
+
+#: statistics.php:19 statistics.php:25
+msgid "Overview"
+msgstr ""
+
+#: statistics.php:26
+#, fuzzy
+msgid "My Courses"
+msgstr "Курс"
+
+#: statistics.php:128
+msgid "Subscriptions"
+msgstr "Подписки"
+
+#: statistics.php:133
+msgid "Number of students"
+msgstr "Количество слушателей"
+
+#: statistics.php:225
+msgid "Total Students"
+msgstr "Всего слушателей"
+
+#: statistics.php:227 statistics.php:233 statistics.php:239 statistics.php:245
+#: statistics.php:251 statistics.php:491 statistics.php:497 statistics.php:503
+#: statistics.php:509 statistics.php:515 statistics.php:645 statistics.php:651
+#: statistics.php:657 statistics.php:774 statistics.php:780 statistics.php:786
+#: statistics.php:1058 statistics.php:1064 statistics.php:1070
+#: statistics.php:1076
+msgid "n/a"
+msgstr "н/д"
+
+#: statistics.php:231 statistics.php:643
+msgid "Total Instructors"
+msgstr "Всего инструкторов"
+
+#: statistics.php:237
+msgid "Total Course Taken"
+msgstr "Всего курсов изучено"
+
+#: statistics.php:243
+msgid "Total Badges"
+msgstr "Всего знаков отличия"
+
+#: statistics.php:249
+msgid "Total Certificates"
+msgstr "Всего сертификатов"
+
+#: statistics.php:258 statistics.php:793
+msgid "This year's monthly subscriptions"
+msgstr "Ежемесячные подписки за год"
+
+#: statistics.php:260 statistics.php:795
+msgid "This month's daily subscriptions"
+msgstr "Подписки за месяц"
+
+#: statistics.php:356 statistics.php:896
+msgid "Number of Courses Started"
+msgstr "Количество изучаемых курсов"
+
+#: statistics.php:489
+msgid "Total Students taking courses"
+msgstr "Всего обучающихся слушателей"
+
+#: statistics.php:495
+msgid "Courses Started By Students"
+msgstr "Изучаемые слушателем курсы"
+
+#: statistics.php:501
+msgid "Total Courses Finished by Students"
+msgstr "Всего курсов изучено слушателями"
+
+#: statistics.php:507
+msgid "Total Units Finished by Students"
+msgstr "Всего модулей изучено слушателями"
+
+#: statistics.php:513
+msgid "Total Quiz Finished by Students"
+msgstr "Всего тестов пройдено слушателями"
+
+#: statistics.php:649
+msgid "Total Courses Evaluated by Instructor"
+msgstr "Всего курсов оценено инструктором"
+
+#: statistics.php:655
+msgid "Total Quiz Evaluated by Instructor"
+msgstr "Всего тестов оценено инструктором"
+
+#: statistics.php:772
+msgid "Total Students in My Courses"
+msgstr "Всего слушателей на моих курсах"
+
+#: statistics.php:778
+msgid "Total Badges given in My Courses"
+msgstr "Всего знаков отличия получено на моих курсах"
+
+#: statistics.php:784
+msgid "Total Certificates given in My Courses"
+msgstr "Всего сертификатов выдано на моих курсах"
+
+#: statistics.php:1056
+msgid "Total Students taking my courses"
+msgstr "Всего слушателей изучающих мои курсы"
+
+#: statistics.php:1062
+msgid "My Courses Finished by Students"
+msgstr "Мои курсы оконченные слушателями"
+
+#: statistics.php:1068
+msgid "My Units Finished by Students"
+msgstr "Мои модули оконченные слушателями"
+
+#: statistics.php:1074
+msgid "My Quiz Finished by Students"
+msgstr "Мои тесты пройденные слушателями"
+
+#~ msgid "No Level Selected"
+#~ msgstr "Уровень не выбран"
+
+#~ msgid "Send Notification upon evaluation"
+#~ msgstr "Высылать уведомление после оценки"
+
+#~ msgid "Student recieve notification when quiz is evaluated."
+#~ msgstr "Слушатель получает уведомление, когда тест был оценён. "
+
+#~ msgid "Quiz questions"
+#~ msgstr "Вопросы теста"
+
+#, fuzzy
+#~ msgid "Create a Gallery in post."
+#~ msgstr "Crear grupo y continuar"

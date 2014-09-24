@@ -1,0 +1,319 @@
+.pagetitle h1 i{
+	font-size: 64px;
+	float: left;
+	margin-right: 20px;
+}
+.pagetitle > span a{
+	margin-left: 80px;
+	font-size:11px;
+	text-transform: uppercase;
+	font-weight: 600;
+}
+.additional_info li{
+	padding: 6px 0;
+	border-bottom: 1px dotted #DDD;
+}
+
+.pagetitle h5 span:first-child{
+	margin-left:60px;
+}
+
+/*========================================================================*/
+/*   07. EVENT CARD
+/*========================================================================*/
+
+.event_card{
+	margin-top:30px;
+	background:#FFF;
+	border:1px solid #DDD;
+	border-radius:2px;
+	position: relative;
+	z-index: 1;
+}
+
+.widget .event_card{
+	margin-top:0;
+}
+
+#wplms-calendar td#today{
+	background:#EFEFEF;
+	color:#333;
+	position: relative;
+}
+#wplms-calendar td#today:after{
+	content :'TODAY';
+	font-size:8px;
+	position:absolute;
+	top:2px;
+	left:2px;
+	color:#222;
+}
+.mfp-content .event_card{
+	max-width:640px;
+	margin-top:10%;
+}
+
+.event_card .mfp-close{
+	margin:0;
+}
+.event_icon{
+	color: #e54242;
+	position: absolute;
+	font-size: 140px;
+	right: 0px;
+	top: 30px;
+	z-index: -1;
+	opacity: 0.2;
+}
+
+.event_card h4{
+	width: 100%;
+	padding: 10px;
+	margin:0;
+	background-color: #78c8c9;
+	background-image:url(../images/button.png);
+	color: #FFF;
+	font-weight: 600;
+	font-size: 16px;
+}
+.event_card h4 a{color:#FFF;font-weight:600;}
+
+.event_card ul{
+	padding:10px 30px 30px;
+}
+.event_card li{
+	clear:both;
+	display: inline-block;
+	width:100%;
+	font-size:12px;
+	font-weight:600;
+	border-bottom: 1px dotted #EFEFEF;
+	padding: 6px 0;
+}
+.event_card li a{
+	font-weight:700;
+	text-transform: uppercase;
+}
+.event_card label{
+	float:left;
+	width:120px;
+	font-size:12px;
+	text-transform: uppercase;
+	color:#bbb;
+	margin:0;
+}
+.single-wplms-event .event_full_details{
+	display: none;
+}
+.event_full_details{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	padding: 5px 6px;
+	line-height: 1;
+	font-weight: 600;
+	text-transform: uppercase;
+	font-size: 11px;
+	background-color: #70c0c9;
+	background-image:url(../images/button.png);
+	color: #fff;
+	border-top-left-radius: 2px;
+}
+.event_full_details:hover{
+	background-color: #EFEFEF;
+	color:#333;
+}
+/*========================================================================*/
+/*   07. CALENDAR
+/*========================================================================*/
+#wplms-calendar{
+	width:100%;
+	margin:0;
+}
+
+#wplms-calendar caption{
+	background: #efefef;
+padding: 12px 0;
+font-weight: 600;
+text-transform: uppercase;
+}
+#wplms-calendar tfoot,
+#wplms-calendar tbody{
+	border-left:1px solid #EFEFEF;
+}
+#wplms-calendar thead{
+	font-size:11px;
+	font-weight:600;
+	text-transform: uppercase;
+	border:1px solid #EFEFEF;
+	color:#BBB;
+}
+#wplms-calendar td{
+	text-align: center;
+	font-size: 16px;
+	border-right: 1px solid #EFEFEF;
+	border-bottom: 1px solid #EFEFEF;
+	padding: 15px 0;
+	position: relative;
+}
+#wplms-calendar td a{font-weight:600;}
+#wplms-calendar td a span{
+	background: #78c8c9;
+	font-size: 11px;
+	padding: 2px 6px;
+	color: #FFF;
+	font-weight: 700;
+	position: absolute;
+	top: 0;
+	right:0;
+}
+#wplms-calendar #prev a,
+#wplms-calendar #next a{
+	font-size: 11px;
+text-transform: uppercase;
+font-weight: 600;
+color: #BBB;
+}
+
+/*========================================================================*/
+/*   07. EVENTS LIST
+/*========================================================================*/
+.events_this_day h3.heading span{
+	float: right;
+	color: #FFF;
+	padding: 1px 6px;
+	background: #78c8c9;
+	border-radius: 50%;
+}
+.events_list{list-style: none !important;}
+.events_list li{
+	padding: 8px 0;
+	border-bottom: 1px dotted #EFEFEF;
+}
+
+.events_list li a{
+	font-size:12px;
+	text-transform: uppercase;
+	font-weight:600;
+}
+
+#send_event_invitation span{
+	padding: 1px 6px;
+	background: #FFF;
+	color: #78c8c9;
+	border-radius: 50%;
+	margin-left:5px;
+}
+
+
+#wplms-calendar td.active{
+	background-color:#78c8c9;
+	background-image:url(../images/button.png);
+	border-color:#78c8c9;
+	color:#FFF;
+}
+#wplms-calendar td.active a{
+	color:#FFF;
+}
+.events_list li a span{
+	color:#bbb;
+	font-size:11px;
+	float: right;
+}
+.events_list li strong{
+	font-size: 16px;
+	padding: 3px 4px 1px;
+	line-height: 0;
+	color: #FFF;
+	margin-right: 15px;
+	float:left;
+	line-height: 1;
+}
+
+#content .content ul.invitation_students,
+	#content .content ul.invitation_results{
+	list-style:none;
+}
+
+.invitation_students li,
+.invitation_results li{
+	font-size: 12px;
+text-transform: uppercase;
+padding: 6px 0;
+border-bottom: 1px dotted #EFEFEF;
+}
+.invitation_students li a{
+	font-weight: 600;
+}
+.invitation_students li i{float:right;color:#bbb;}
+.invitation_students li label,
+.invitation_results li label{margin:0;}
+.invitation_results li span{
+	float:right;
+	font-weight:600;
+}
+.invitation_results li strong{text-align: center;display: block;}
+/*========================================================================*/
+/*   07. EVENTS POPUPS
+/*========================================================================*/
+
+#invitation_form,
+#reminder_form {
+  position: relative;
+  background: #FFF;
+  padding: 20px;
+  width: auto;
+  max-width: 500px;
+  margin: 20px auto;
+}
+.mfp-close{margin:0;}
+.col-md-3 #invitation_form,
+.col-md-3 #reminder_form{display: none;}
+
+/*========================================================================*/
+/*   07. EVENTS Widget
+/*========================================================================*/
+
+.widget_event_list li a i{
+	font-size: 32px;
+	float: left;
+	margin-right: 10px;
+}
+
+.widget_event_list li a i{
+	font-size: 32px;
+	float: left;
+	margin-right: 10px;
+}
+
+.widget_event_list li a span{
+	color: #bbb;
+	font-size: 11px;
+	font-weight: 400;
+	text-transform: uppercase;
+	display: block;
+	padding-top: 5px;
+	margin-left:40px;
+}
+
+.widget_event_list li a span i{
+	font-size:11px;
+}
+
+.widget .event_card label{
+	width:80px;
+	font-size:11px;
+}
+.widget .event_card li,
+.widget .event_card li a{font-size:11px;}
+
+/*========================================================================*/
+/*   07. RESPONSIVE FIXES
+/*========================================================================*/
+
+@media (max-width: 540px) {
+	.events_list li a span{
+		clear:both;
+		float:left;
+	}
+}

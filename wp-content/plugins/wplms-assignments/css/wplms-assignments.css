@@ -1,0 +1,151 @@
+
+/*========================================================================*/
+/*   01. Assignment Submissions
+/*========================================================================*/
+#content .content ol.assignment_submissionlist {list-style: none;}
+.assignment_submissionlist .comment-body{
+	border: 1px solid #DDD;
+	background: #EFEFEF;
+	padding: 10px;
+	border-radius: 2px;
+	display: inline-block;
+	width: 100%;
+}
+.assignment_submissionlist .says{
+	display: none;
+}
+
+.assignment_submissionlist .comment{display: inline-block;width:100%;}
+.assignment_submissionlist .comment-meta {
+	position: absolute;
+	top: 0;
+	right: 10px;
+	margin:0;
+	padding:0;
+	border:none;
+}
+.assignment_submissionlist .reply{
+	top:20px;
+	right:10px;
+}
+
+.attachmentFile{
+	border: 1px solid #DDD;
+	margin-top:15px;
+	padding: 10px;
+	display: inline-block;
+	background: #FFF;
+	float: right;
+	max-width:120px;
+}
+.attachmentFile > p{margin:0 !important;}
+.assignment_submissionlist div.comment-author.vcard span{
+	font-size:11px;
+	font-weight:600;
+	text-transform: uppercase;
+}
+
+.assignment_marks{
+	text-align: center;
+}
+.assignment_marks h2{
+	font-size:64px;
+	font-family: 'Oswald';
+	line-height: 1.2;
+}
+.assignment_marks span{
+	font-size:12px;
+	display: block;
+	text-transform: uppercase;
+	font-weight:600;
+	opacity:0.3;
+	font-family: Arial;
+
+}
+
+#clear_previous_submissions{cursor:pointer;}
+/*========================================================================*/
+/*   02. Assignment Timer
+/*========================================================================*/
+.assignment_duration{
+	text-align: center;
+}
+.assignment_timer{
+	display: inline-block;
+	text-align: center;
+	position: relative;
+	color: #FFF;
+	margin:30px 0;
+	background: #313b3d;
+	border-radius: 50%;
+	width: 212px;
+	height: 212px;
+	border: 6px solid #313b3d;
+}
+
+.counttime+span{
+	position: absolute;
+	top: 54px;
+	left: 0;
+	width:100%;
+	text-align: center;
+	font-size: 11px;
+	color:#bbb;
+	text-transform: uppercase;
+	font-weight: 600;
+}
+
+.counttime{
+	font-family: 'Oswald',sans-serif;
+    font-size: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    position: absolute;
+    top: 65px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    letter-spacing:2px;
+}
+
+
+.counttime+span+span{
+	font-size: 11px;
+	text-transform: uppercase;
+	color: #bbb;
+	font-weight: 700;
+	position: absolute;
+	left: 0;
+	width: 100%;
+	bottom: 52px;
+}
+/*========================================================================*/
+/*   02. EVALUATION
+/*========================================================================*/
+.download_attachment{
+	padding: 10px;
+	margin: 10px 0;
+	text-align: center;
+	background: #EFEFEF;
+}
+
+#give_assignment_marks{
+	cursor:pointer;
+}
+
+div.assignment_submissionlist .comments-title,
+div.assignment_submissionlist .comments_rss,
+div.assignment_submissionlist .comment-reply-link,
+div.assignment_submissionlist #respond{
+	display: none;
+}
+
+
+.assignment_heading span{
+	float:right;
+	font-size:12px;
+	color:#BBB;
+	margin-left:10px;
+}
+.assignment_heading.heading a i{margin-left:15px;font-size:12px;}
+.assignment_heading.heading a{float:none;font-size:16px;font-weight:600;} 

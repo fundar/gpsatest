@@ -1,0 +1,349 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WPLMS Events\n"
+"POT-Creation-Date: 2014-09-03 20:15+0530\n"
+"PO-Revision-Date: 2014-09-03 20:15+0530\n"
+"Last-Translator: VibeThemes <vibethemes@gmail.com>\n"
+"Language-Team: VibeThemes <vibethemes@gmail.com>\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.7\n"
+"X-Poedit-Basepath: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-"
+"events\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: /Applications/MAMP/htdocs/wplms/wp-content/plugins/"
+"wplms-events\n"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/autoupdate/class-envato-protected-api.php:67
+msgid "Please enter your Envato Marketplace Username."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/autoupdate/class-envato-protected-api.php:71
+msgid "Please enter your Envato Marketplace API Key."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/autoupdate/class-envato-protected-api.php:96
+msgid "The API \"set\" is a required parameter."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/autoupdate/class-envato-protected-api.php:167
+msgid "The Envato Marketplace \"item ID\" is a required parameter."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/autoupdate/class-plugin-update.php:376
+msgid "An Unexpected HTTP Error occurred during the API request."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/autoupdate/class-plugin-update.php:376
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/autoupdate/class-plugin-update.php:541
+msgid "Try again"
+msgstr "Tente novamente"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/autoupdate/class-plugin-update.php:417
+msgid "An unknown error occurred"
+msgstr "Ocorreu um erro desconhecido"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/autoupdate/class-plugin-update.php:453
+msgid ""
+"The plugin has been updated, but could not be reactivated. Please reactivate "
+"it manually."
+msgstr ""
+"O plugin foi atualizado, mas não pode ser reativado. Por favor, reativá-lo "
+"manualmente."
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/autoupdate/class-plugin-update.php:454
+msgid "Plugin reactivated successfully. "
+msgstr "Plugin reativado com sucesso."
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/autoupdate/class-plugin-update.php:476
+msgid " Plugin Updates"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/autoupdate/class-plugin-update.php:515
+msgid "Username: "
+msgstr "Usuário: "
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/autoupdate/class-plugin-update.php:519
+msgid "Email: "
+msgstr "Email: "
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/autoupdate/class-plugin-update.php:525
+msgid "Key: "
+msgstr "Chave: "
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/autoupdate/class-plugin-update.php:531
+msgid "<p>Your plugin update is <span style=\"color:green\">active</span></p>"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/autoupdate/class-plugin-update.php:535
+msgid ""
+"<p>Your input is <span style=\"color:red\">not valid</span>, automatic "
+"updates is <span style=\"color:red\">not active</span>.</p>"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/autoupdate/class-plugin-update.php:536
+msgid "Edit Key"
+msgstr "Editar Chave"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/autoupdate/class-plugin-update.php:540
+msgid "<p>Unable to validate update activation.</p>"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/autoupdate/class-plugin-update.php:546
+msgid "Add Key"
+msgstr "Adicionar Chave"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/autoupdate/class-plugin-update.php:632
+msgid "User name"
+msgstr "Nome do usuário"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/autoupdate/class-plugin-update.php:638
+msgid "Email"
+msgstr "Email"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/autoupdate/class-plugin-update.php:647
+msgid "Themeforest User name ( for Auto-Updates )"
+msgstr "Themeforest User name ( for Auto-Updates )"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:140
+msgid "EVENTS IN "
+msgstr "EVENTOS EM"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:175
+#, php-format
+msgid "View Events for %1$s %2$s"
+msgstr "Ver Eventos para %1$s %2$s"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:196
+#, php-format
+msgid "View posts for %1$s %2$s"
+msgstr "Ver posts para %1$s %2$s"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:309
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:341
+msgid "Events "
+msgstr "Eventos "
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:355
+msgid "Incorrect Date selected"
+msgstr "Selecionada data incorreta"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:365
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:425
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:482
+msgid "Security check Failed. Contact Administrator."
+msgstr "A verificação de segurança falhou. Contactar Administrador."
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:372
+msgid "Please enter a Invitation subject"
+msgstr "Por favor insira um assunto no convite"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:379
+msgid "Please enter a Invitation Message"
+msgstr "Por favor, digite uma mensagem no convite"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:387
+msgid "EVENT : "
+msgstr "EVENTO : "
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:387
+msgid "view event"
+msgstr "ver evento"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:388
+msgid "COURSE : "
+msgstr "CURSO : "
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:388
+msgid "view course"
+msgstr "ver curso"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:399
+msgid "ACCEPT"
+msgstr "ACEITAR"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:400
+msgid "REJECT"
+msgstr "REJEITAR"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:415
+msgid "Invitation Message successfully sent to "
+msgstr "Mensagem do convite enviada com sucesso para "
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:416
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:466
+msgid " Students"
+msgstr " Alunos"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:432
+msgid "Please enter a reminder subject"
+msgstr "Por favor insira um assunto ao lembrete"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:439
+msgid "Please enter a reminder Message"
+msgstr "Por favor insira uma mensagem ao lembrete"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:446
+msgid "Please send an invitation to course students."
+msgstr "Por favor, envie um convite para os alunos do curso."
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:465
+msgid "Reminder Message successfully sent to "
+msgstr "Mensagem do lembrete enviada com sucesso para "
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:488
+msgid "Invitation accepted."
+msgstr "Convite aceito."
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:491
+msgid "Unable to accept invitation."
+msgstr "Incapaz de aceitar o convite."
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:494
+msgid "Student Accepted Event Invitation "
+msgstr "Convite do aluno aceito no evento "
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:495
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:508
+msgid "Student "
+msgstr "Aluno "
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:495
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:508
+msgid " accepted invitation for Event "
+msgstr " convite aceito para evento "
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:504
+msgid "Invitation rejected."
+msgstr "Convite rejeitado."
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:507
+msgid "Student Rejected Event Invitation "
+msgstr "Rejeitado convite do evento para o aluno"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:515
+msgid "Unable to reject invitation."
+msgstr "Incapaz de rejeitar o convite."
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:526
+msgid "Invitation Responses"
+msgstr "Respostas do Convite"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:540
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:545
+msgid "ACCEPTED"
+msgstr "ACEITO"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:540
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:546
+msgid "REJECTED"
+msgstr "REJEITADO"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:540
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:547
+msgid "AWAITING RESPONSE"
+msgstr "AGUARDANDO RESPOSTA"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:544
+msgid "INVITATION RESULTS"
+msgstr "RESULTADOS DO CONVITE"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_class.php:593
+msgid "GET ACCESS TO THIS EVENT"
+msgstr "TER ACESSO A ESTE EVENTO"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_widget.php:15
+msgid "WPLMS Events Widget"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_widget.php:122
+msgid "To"
+msgstr "Para"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_widget.php:149
+msgid "No Events in next "
+msgstr "Não há Eventos no próximo "
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_widget.php:149
+msgid " days"
+msgstr " dias"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_widget.php:197
+msgid "Widget Title"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_widget.php:198
+msgid "Date Range (from Today to X Days)"
+msgstr "Período (a partir de hoje a X Dias)"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_widget.php:200
+msgid "Show Events Starting in range"
+msgstr "Mostrar eventos que iniciam no período"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_widget.php:203
+msgid "Show Events Ending in range"
+msgstr "Mostrar eventos que terminam no período"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_widget.php:205
+msgid "Style"
+msgstr "Estilo"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_widget.php:207
+msgid "List"
+msgstr "Lista"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_widget.php:208
+msgid "Single"
+msgstr "Único"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_widget.php:209
+msgid "Carousel"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_widget.php:212
+msgid "Select Event type (optional)"
+msgstr "Selecione o tipo de evento (opcional)"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_widget.php:228
+msgid "Order By"
+msgstr "Ordenar Por"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_widget.php:230
+msgid "Default (Publish Date)"
+msgstr "Padrão (Data de Publicação)"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_widget.php:231
+msgid "Random"
+msgstr "Aleatório"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_widget.php:232
+msgid "Name"
+msgstr "Nome"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_widget.php:235
+msgid "Sort "
+msgstr "Curto "
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_widget.php:237
+msgid "Ascending"
+msgstr "Ascendente"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_widget.php:238
+msgid "Decending"
+msgstr "Descendente"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_widget.php:241
+msgid "Specific Events (enter comma saperated ids)"
+msgstr "Eventos específicos (digite separados por vírgula ids)"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_widget.php:242
+#, fuzzy
+msgid "Maxmium Number of Events to show"
+msgstr "Número de Cursos para mostrar"
+
+#: /Applications/MAMP/htdocs/wplms/wp-content/plugins/wplms-events/classes/events_widget.php:244
+msgid "Show Course Events (on Course pages)"
+msgstr "Mostrar Eventos do Curso (em páginas do curso)"
