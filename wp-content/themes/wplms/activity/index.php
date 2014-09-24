@@ -196,6 +196,11 @@ get_header( 'buddypress' ); ?>
 				</div>
 			</div>
 		</div><!-- .padder -->
+		
+		<!-- Map Roster of practitioners -->
+			<?php getMap();?>
+		<!-- End Map Roster of practitioners -->
+		
 	</div><!-- #content -->
 
 	<?php do_action( 'bp_after_directory_activity_page' ); ?>
