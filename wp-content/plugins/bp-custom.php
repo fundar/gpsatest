@@ -37,5 +37,3 @@ $qs = 'action=activity_update';
 return $qs;
 }
 add_filter( 'bp_ajax_querystring', 'bbg_my_groups_activity_default', 999 );
-
-?>
