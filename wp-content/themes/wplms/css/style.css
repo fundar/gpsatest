@@ -737,14 +737,14 @@ float: none;
 header{
 	display: inline-block;
 	width:100%;
-	background:#313B3D;
+	background:#253169;
 	padding:0;
 	margin:0 0 -5px 0;
 	z-index: 99;
 }
 
 #headertop{
-	background:#232b2d;
+	background:#fff;
 	padding:8px 0;
 	font-size:11px;
 	text-transform: uppercase;
@@ -848,7 +848,7 @@ header #searchform:after{
 
 nav{
 	 /* Adjusting for Logo */
-	float:right;
+	float:left;
 }
 
 
@@ -871,27 +871,26 @@ nav .menu li.active a{
 	border-color: transparent transparent #FFF transparent;
 } */
 nav .menu li:hover > a{
-	opacity:1;
+	color:#FFF !important;
 }
 nav .sub-menu li:hover > a{
-	opacity: 1;
+	color:#fbfbfb;
 }
 
 nav .menu li a{
-	font-family: 'Raleway',sans-serif;
-	font-weight:600;
-	margin:0 10px;
-	padding: 30px 6px;
+	color:#fff;
+	font-family: 'Open Sans', sans-serif;
+	margin:0;
+	padding: 8px 15px;
 	display: inline-block;
 	font-size: 13px;
 	text-transform:uppercase;
-	color: #FFF;
-	opacity: 0.8;
 	position: relative;
+	border-left: 1px solid rgba(209, 209, 209, 0.1);
+	
 }
 nav .menu li.current-menu-item a{
-	color:#FFF;
-	opacity: 1;
+	color:#F4F4F4;
 }
 nav .menu li.iconstyle{
 	width:88px;
@@ -3654,6 +3653,10 @@ span.wpcf7-form-control-wrap{
 		margin-top:10px;
 	}
 }
+
+
+
+
 /** Home **/
 .page-id-24 > .global > .pusher > #content {
     background:url("images/bg-intro3.png") no-repeat scroll center bottom rgba(0, 0, 0, 0) !important;
@@ -3876,4 +3879,375 @@ section.sombra {
     font-size: 27px;
     padding-bottom: 10px;
     text-transform: uppercase;
+}
+/Title & Map/
+.pagetitle h2{
+  color: #253169;        
+       margin:0;
+       padding:0;
+       font-family: 'steelfish_rgregular';
+       font-size:25px;
+       text-transform:uppercase;
+}
+
+#map { position:relative; width:100%; height: 500px; }
+/* End Title & Map*/
+Me lo puso como negritas el comentario, aca va otra vez:
+
+/** Title & Map **/
+.pagetitle h2{
+  color: #253169;        
+       margin:0;
+       padding:0;
+       font-family: 'steelfish_rgregular';
+       font-size:25px;
+       text-transform:uppercase;
+}
+
+#map { position:relative; width:100%; height: 500px; }
+/* End Title & Map*/
+
+/** li arrow bullet **/
+.beginDiv {
+    margin-right: 46px;
+}
+.beginDiv ul li {
+    background: url("images/arrow-purple.png") no-repeat scroll 0 5px rgba(0, 0, 0, 0) !important;
+}
+.beginDiv li {
+    color: #666666;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+/**botones **/
+.contorno-morado {
+    background-color: rgba(0, 0, 0, 0) !important;
+    border: 1px solid #253169;
+    border-radius: 0 0 0 0;
+    color: #253169;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: normal;
+    margin:20px 0;
+    padding: 5px 12px;
+}
+a:hover.contorno-morado {
+    border: 1px solid #6D6F9E;	
+}
+/** repository **/
+.top{
+	margin: 40px !important;
+}
+.sort-serach {
+    background: none repeat scroll 0 0 #F1F1F1;
+    padding: 31px 0;
+}
+.box-bookmark-repository {
+    float: right;
+    background: none repeat scroll 0 0 #29356C;
+    color: #FFFFFF;
+    display: inline-block;
+    margin-bottom:18px;
+}
+.box-bookmark-repository > .add-bookmark {
+    background: url("images/icon-favorities.png") no-repeat scroll 11px 11px rgba(0, 0, 0, 0);
+    border-radius: 0 0 0 0;
+    color: #FFF !important;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: normal;
+    margin:0;
+    padding: 11px 11px 11px 37px;
+
+}
+.box-bookmark-repository > a.add-bookmark:hover{
+    background: url("images/icon-favorities.png") no-repeat scroll 11px 11px rgba(250, 250, 250, 0.15);
+}
+p.resumen {
+    margin-bottom: 10px;
+    margin-top: 7px;
+    padding-right: 32px;
+    width: 74%;
+}
+.excerpt2 > .blogpost > h3 {
+    color: #29356C !important;
+    font-family: open sans;
+    font-size: 15px;
+    margin-top: 0;
+    width: 72%;
+}
+.birrete {
+    margin-left: 6px;
+    margin-top: -4px;
+}
+form#sbc-search select#cat {
+    border-radius:2px 0 0 2px !important;
+    
+}
+form#sbc-search input#sbc-submit {
+    border-radius: 0 2px 2px 0 !important;
+}
+/** Related post */
+.yarpp-related{
+    display: none !important;
+}
+/** lerning activities soon **/
+.comingsoon {
+    background: url("images/coming-soon2.png") no-repeat scroll center 0 rgba(0, 0, 0, 0);
+    position: relative;
+}
+#soon {
+    padding-top: 399px;
+}
+.page-id-13 > #global > .pusher > #content > .container{
+    display: none;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+p.aprendizaje {
+    font-size: 17px;
+    font-weight: lighter;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/** MAILCHIMP **/
+#mc_embed_signup input.email {
+    background: none repeat scroll 0 0 #E9E9E9;
+    display: block;
+    margin: 0 4% 10px 0;
+    min-width: 130px;
+    padding: 8px 0;
+    text-indent: 5px;
+    width: 100% !important;
+}
+#mc_embed_signup .button:hover {
+    background-color: #777777;
+}
+#mc_embed_signup input {
+    border: 0px solid #E9E9E9 !important;
+}
+#mc_embed_signup .button {
+    background-color: #289CD7 !important;
+    border: 0 none;
+    border-radius: 0 0 0 0 !important;
+    clear: both;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 12px !important;
+    font-weight: normal !important;
+    height: 32px;
+    letter-spacing: 0 !important;
+    line-height: 32px;
+    margin: 0 5px 10px 0;
+    padding: 0;
+    text-decoration: none;
+    text-transform: uppercase !important;
+    vertical-align: top;
+    white-space: nowrap;
+    width: auto;
+}
+#mc_embed_signup {
+    background: none repeat scroll 0 0 #FFFFFF;
+    clear: left;
+    font: 12px Open Sans,Helvetica,Arial,sans-serif !important;
+    margin-top: -19px !important;
+}
+
+
+/** widget aidebar costum**/
+.sidebar .widget{
+    border-bottom: 1px solid #d7d9e3;
+}
+
+/**menu top**/
+.sub-menu > .menu-item > a {
+	color:#000 !important;
+}
+
+/** archive webinar**/
+
+.term-31 > #global > .pusher > #content > .container > .col-md-9 > .content > .blogpost h3{
+    pointer-events: none !important;
+    font-family: open sans !important;
+    font-size: 18px !important;
+    font-weight: lighter !important;
+    margin-top: 0;
+}
+.term-31 > #global > .pusher > #content > .container > .col-md-9 > .content > .blogpost .excerpt.thumb{
+    margin-left:90px;
+
+}
+.term-31 > #global > .pusher > #content > .container > .col-md-9 > .content .meta{
+    display: none !important;
+}
+.term-31 > #global > .pusher > #content > .container > .col-md-9 > .content .cats{
+    display: none !important;
+}
+
+/** formularios **/
+#formulario1 {
+    background: none repeat scroll 0 0 #FCFCFC;
+    border: 1px solid #E1E1E1;
+    color: #919191;
+    margin-top: 3px;
+    padding: 12px;
+}
+.wpcf7-submit{
+    background: none repeat scroll 0 0 #253169;
+    border: 2px none;
+    color: #FFFFFF;
+    font-family: open sans;
+    padding: 12px 60px;
+}
+.wpcf7-submit:hover{
+    background: none repeat scroll 0 0 #6D6F9E;
+    color: #FFFFFF;
+}
+.repositorio{
+	text-align:center;
+}
+
+/** perfil expertos **/
+#item-body-experts {
+    background: none repeat scroll 0 0 #FCFCFC;
+    border-radius: 2px 2px 2px 2px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+    padding: 4px;
+    position: relative;
+}
+.label-default {
+    background:transparent !important;
+    color: #666;
+    display: inline;
+    font-size:13px;
+    font-weight: lighter;
+    line-height: 1;
+    padding: 0.9em 30px 0.3em 0.9em;
+    text-align: left !important;
+    vertical-align: baseline;
+    white-space: nowrap;
+}
+.data {
+    background:transparent !important;
+    color: #666;
+    font-size:13px;
+    font-weight: lighter;
+    line-height: 1;
+    padding: 0.9em 30px 0.3em 0.9em;
+    text-align: left !important;
+    vertical-align: baseline;
+}
+.data > p {
+    line-height: 16px;
+    margin: 0 0 10px;
+}
+.divgris{
+   border-bottom:1px solid #e9e9e9;
+}
+.claro{
+  background:#fff;
+}
+#item-body-experts > .bp-widget > table {
+	width:100%;
+}
+
+/** publicaciones **/
+.top-puplicaciones {
+    margin: 0;
+    padding: 50px 0;
+}
+.separador {
+    background: none repeat scroll 0 0 #dbdbdb;
+    height: 1px;
+    margin-bottom: 15px;
+}
+.publicacionpost {
+    clear: both;
+    margin-bottom: 10px;
+}
+.publicacionpost h3 {
+    font-family: steelfish_rgregular;
+    font-size: 26px;
+    margin-top: 0;
+}
+
+
+/** widgets destacados sidebar **/
+.inside > .widget-title {
+    background: url("images/bullet-title-sidebar.png") no-repeat scroll left 8px rgba(0, 0, 0, 0);
+    color: #000000;
+    display: block;
+    font-family: steelfish_rgregular;
+    font-size: 27px;
+    padding-bottom: 10px;
+    text-indent: 13px;
+    text-transform: uppercase;
+}
+
+/** touch caurusel **/
+.carruselhome > #touchcarousel-1 > .touchcarousel-wrapper > .touchcarousel-container > li.touchcarousel-item{
+width:225px !important;
+}
+.carruselhome > #touchcarousel-2 > .touchcarousel-wrapper > .touchcarousel-container > li.touchcarousel-item > a{
+width:150px !important;
+}
+.carruselcat7 > #touchcarousel-2 > .touchcarousel-wrapper > .touchcarousel-container > li.touchcarousel-item{
+width:180px !important;
+}
+.carruselcat7 > #touchcarousel-2 > .touchcarousel-wrapper > .touchcarousel-container > .touchcarousel-item{
+width:180px !important;
+}
+
+.carruselke > #touchcarousel-3 > .touchcarousel-wrapper > .touchcarousel-container > li.touchcarousel-item{
+width:220px !important;
+}
+.carruselke > #touchcarousel-3 > .touchcarousel-wrapper > .touchcarousel-container > .touchcarousel-item{
+width:220px !important;
+}
+.carruselke > #touchcarousel-3 > .touchcarousel-wrapper > .touchcarousel-container > .touchcarousel-item > a{
+font-size: 12px !important;
+}
+.tc-block > h4 {
+	color:#000;
+	font-size:12px !important;
+}
+
+/** external webinars sidebar **/
+.linksw{
+	color:#000;
+}
+.separadorsw {
+    background: none repeat scroll 0 0 #d7d9e3;
+    height: 1px;
+    margin-bottom: 15px;
+}
+/** botón how to navigate **/
+
+figure:after {
+    clear: both;
+    content: "";
+    display: block;
+}
+.list-item > li figure {
+    margin-top: 0;
+}
+.rollover {
+    transition: all 0.25s ease-out 0s;
+}
+
+figure {
+    position: relative;
+}
+/** cursos **/
+.box-bookmark-repository > .suscribete-curso {
+    border-radius: 0 0 0 0;
+    color: #FFF !important;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: normal;
+    margin:0;
+    padding: 11px 11px 11px 37px;
+
 }
