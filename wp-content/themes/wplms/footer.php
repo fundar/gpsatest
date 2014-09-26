@@ -51,6 +51,7 @@
     </div>
 </footer>
 <div id="footerbottom">
+    <footer>
     <div class="container">
         <div class="row">
             <div class="footerbottom">
@@ -118,6 +119,26 @@
 		</div>
             </div>
         </div>
+    </div> 
+    <div id="scrolltop">
+        <a><i class="icon-arrow-1-up"></i><span><?php _e('top','vibe'); ?></span></a>
+    </div>
+</footer>
+<div id="footerbottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">              
+                <?php $copyright=vibe_get_option('copyright'); echo (isset($copyright)?$copyright:'&copy; 2013, All rights reserved.'); ?>, Developed by 
+                <a href="http://fundar.org.mx"  style="text-decoration:none;" title="Fundar, Centro de Análisis e Investigación">Fundar, Centro de Análisis e Investigación</a>
+            </div>
+            <div class="col-md-4">
+                <div id="footermenu">
+                </div>    
+            </div>
+        </div>
+    </div>
+</div>
+
 </div>
 </div><!-- END PUSHER -->
 </div><!-- END MAIN -->
