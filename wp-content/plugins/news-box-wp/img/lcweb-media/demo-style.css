@@ -1,0 +1,58 @@
+@font-face {
+	font-family: 'lcweb-media';
+	src:url('fonts/lcweb-media.eot?yh8z36');
+	src:url('fonts/lcweb-media.eot?#iefixyh8z36') format('embedded-opentype'),
+		url('fonts/lcweb-media.woff?yh8z36') format('woff'),
+		url('fonts/lcweb-media.ttf?yh8z36') format('truetype'),
+		url('fonts/lcweb-media.svg?yh8z36#lcweb-media') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'lcweb-media';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-link:before {
+	content: "\e60a";
+}
+.icon-eye:before {
+	content: "\e602";
+}
+.icon-plus:before {
+	content: "\e603";
+}
+.icon-magnifier:before {
+	content: "\e601";
+}
+.icon-link2:before {
+	content: "\e604";
+}
+.icon-image:before {
+	content: "\e605";
+}
+.icon-audio:before {
+	content: "\e609";
+}
+.icon-gallery:before {
+	content: "\e608";
+}
+.icon-video:before {
+	content: "\e606";
+}
+.icon-custom_content:before {
+	content: "\e607";
+}
+.icon-eye2:before {
+	content: "\e600";
+}
