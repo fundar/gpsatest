@@ -3840,6 +3840,7 @@ h2.logos_title {
 .block_home {
     cursor: default;
     height: 100%;
+    padding-right: 15px;
     position: relative;
     width: 100%;
 }
