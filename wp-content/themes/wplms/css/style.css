@@ -3584,6 +3584,37 @@ span.wpcf7-form-control-wrap{
 	margin:0;
 }
 /*========================================================================*/
+/*   07. TITILE
+/*========================================================================*/
+
+#title {
+    background: none repeat scroll 0 0 #F4F4F4;
+    margin-top:0px;
+    padding: 23px 0 0;
+    position: relative;
+}
+#title:after{
+	background: url("images/shadow-bottom.png") no-repeat scroll center bottom rgba(0, 0, 0, 0);
+        bottom: -6px;
+	content: "";
+	height: 7px;
+	left: 0;
+	position: absolute;
+	width: 100%;
+}
+.pagetitle h1{
+        color: #253169;	
+	margin:0;
+	padding:0;
+	font-family: 'steelfish_rgregular';
+	font-size:38px;
+	text-transform:uppercase;
+}
+
+.pagetitle h5{
+	margin-bottom:10px;
+}
+/*========================================================================*/
 /*   07. RESPONSIVE
 /*========================================================================*/
 @media (max-width: 991px) {
