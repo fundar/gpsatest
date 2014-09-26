@@ -1416,14 +1416,13 @@ footer .item-avatar{
 }
 
 #footerlogo{
-	max-width:48px;
+	max-width:190px;
 	float:left;
 	margin:-15px 10px 0 0;
 	padding:0;
-	opacity: 0.6;
 }
 #footerlogo:hover{
-	opacity: 1;
+	opacity: 0.9;
 }
 #footer_social_icons,
 #footermenu{float:right;}
@@ -4378,4 +4377,40 @@ a.buttoncontact{
 }
 a:hover.buttoncontact {
     color:#fff !important;
+}
+.sitemap {
+    float:left;
+    margin-bottom: 12px;
+    margin-top: -22px;
+}
+.footertop{
+	background:#f3f3f3;
+}
+.footermenu li{
+	float:left;
+	margin-left:15px;
+}
+.footertitle, footer h4 {
+    color: #333333 !important;
+    font-size: 12px;
+    font-weight: normal;
+    text-transform: none;
+}
+.footertitle, footer h4 >a {
+    color: #2a2a2a !important;
+    font-size: 12px;
+    font-weight: normal;
+    text-transform: none;
+}
+.footertitle, footer h4 >a:hover {
+    color: #333333 !important;
+    font-size: 12px;
+    font-weight: normal;
+    text-transform: none;
+}
+footer, footer a, .footerwidget li a:hover {
+    color: #666666 !important ;
+}
+footer, footer a:hover, .footerwidget li a {
+    color: #666666 !important;
 }
