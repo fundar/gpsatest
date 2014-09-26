@@ -1297,8 +1297,8 @@ h2#sidelogo:hover img{
 
 #logo img {
     margin-bottom: 11px;
-    max-height: 68px;
-    max-width: 293px;
+    max-height: 58px !important;
+    max-width: 283px !important;
     width: auto;
 }
 .container-logo {
