@@ -1793,7 +1793,7 @@ a.page-numbers,
 	padding:30px 0;
 }
 .sidebar .widget{
-	margin-bottom:40px;
+	margin-bottom:0;
 }
 .widget .widget_title {
     background: url("images/bullet-title-sidebar.png") no-repeat scroll left 8px rgba(0, 0, 0, 0);
@@ -2831,7 +2831,7 @@ background: url(../images/check_radio_sheet.png) -57px top no-repeat;
 	margin: 30px 0;
 }
 .vcard img{
-	width: 64px;
+	width: 45px;
 	height:auto;
 	border-radius: 2px;
 	float: left;
@@ -4225,7 +4225,13 @@ p.aprendizaje {
     text-indent: 13px;
     text-transform: uppercase;
 }
-
+span.activity {
+    color: #666;
+    font-size: 11px !important;
+}
+.item-title .fn {
+    text-transform: uppercase;
+}
 /** touch caurusel **/
 .carruselhome > #touchcarousel-1 > .touchcarousel-wrapper > .touchcarousel-container > li.touchcarousel-item{
 width:225px !important;
