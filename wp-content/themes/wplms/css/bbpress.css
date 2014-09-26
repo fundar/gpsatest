@@ -21,6 +21,16 @@ color:#444;
 #bbp-search-form,#forums-search-form{
 float:right;
 }
+#bbpress-forums > h3 {
+    color: #6d6f9e;
+    display: inline-block;
+    float: left;
+    font-family: 'steelfish_rgregular';
+    font-size: 41px;
+    font-weight: normal !important;
+    margin-top: -9px !important;
+    text-transform: uppercase;
+}
 #bbp_search,#forums_search{
  border: 1px solid #EFEFEF;
  padding: 2px 10px;

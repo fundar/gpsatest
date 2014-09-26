@@ -28,7 +28,8 @@
     font-weight: normal !important;
     margin-top: -9px !important;
     text-transform: uppercase;
-}#bbpress-forums div.even,
+}
+#bbpress-forums div.even,
 #bbpress-forums ul.even {
 	background-color: #fff;
 }
