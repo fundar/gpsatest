@@ -875,7 +875,7 @@ nav .menu li:hover > a{
 	color:#FFF !important;
 }
 nav .sub-menu li:hover > a{
-	color:#ccc;
+	color:#171717;
 }
 
 nav .menu li a{
@@ -965,7 +965,7 @@ nav .sub-menu > li:last-child a{
 	border-bottom:none;
 }
 nav .sub-menu li a:hover{
-	opacity: 1;
+	opacity: 9;
 }
 
 nav .menu li:hover > .sub-menu{
