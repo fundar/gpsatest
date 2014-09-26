@@ -19,8 +19,16 @@
 	overflow: hidden;
 	font-size: 12px;
 }
-
-#bbpress-forums div.even,
+#bbpress-forums > h3 {
+    color: #6d6f9e;
+    display: inline-block;
+    float: left;
+    font-family: 'steelfish_rgregular';
+    font-size: 41px;
+    font-weight: normal !important;
+    margin-top: -9px !important;
+    text-transform: uppercase;
+}#bbpress-forums div.even,
 #bbpress-forums ul.even {
 	background-color: #fff;
 }
