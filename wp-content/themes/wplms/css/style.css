@@ -1798,13 +1798,18 @@ a.page-numbers,
 .sidebar{
 	padding:30px 0;
 }
-
-.widget .widget_title{
-	border-bottom: 5px solid #EFEFEF;
-	padding-bottom: 10px;
-	font-size: 16px;
-	text-transform: uppercase;
-	font-weight: 600;
+.sidebar .widget{
+	margin-bottom:40px;
+}
+.widget .widget_title {
+    background: url("images/bullet-title-sidebar.png") no-repeat scroll left 8px rgba(0, 0, 0, 0);
+    color:#000;
+    display: block;
+    font-family: steelfish_rgregular;
+    font-size: 27px;
+    padding-bottom: 10px;
+    text-indent: 13px;
+    text-transform: uppercase;
 }
 .widget+.widget{
 	margin-top:30px;
