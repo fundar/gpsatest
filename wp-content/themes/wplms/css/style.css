@@ -793,12 +793,13 @@ header #searchdiv{
 	font-size:16px;
 	padding:28px 0 0;
 }
-header #searchicon{
-	float: right;
-	color: rgba(255,255,255,0.6);
-	font-size: 20px;
-	padding: 25px 0;
-	cursor: pointer;
+header #searchicon {
+    background: none repeat scroll 0 0 #6d6f9e;
+    color: #fff !important;
+    cursor: pointer;
+    float: right;
+    font-size: 17px;
+    padding: 6px 8px 4px;
 }
 header #searchdiv{display: none;z-index: 999;}
 header #searchform{
