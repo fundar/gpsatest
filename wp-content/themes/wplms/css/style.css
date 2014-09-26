@@ -875,7 +875,7 @@ nav .menu li:hover > a{
 	color:#FFF !important;
 }
 nav .sub-menu li:hover > a{
-	color:#171717;
+	color:#ccc;
 }
 
 nav .menu li a{
@@ -3833,14 +3833,13 @@ h2.logos_title {
 .bloque_title > a:hover{
     color:#dcdced;
 }
-.th_home{
-   margin-top:-48px;
-
+.th_home {
+    margin-top: -48px;
+    width: 100%;
 }
 .block_home {
     cursor: default;
     height: 100%;
-    max-width: 330px;
     position: relative;
     width: 100%;
 }
