@@ -1341,6 +1341,7 @@ h2#sidelogo:hover img{
 /*========================================================================*/
 footer {
     font-size: 10px;
+    margin-bottom: 25px;
     margin-top: 30px;
     position: relative;
 }
@@ -1398,10 +1399,11 @@ footer .item-avatar{
 
 
 #footerbottom {
-    margin:10px 0;
+    padding:3px 0;
 }
-#footerbottom a{
-	color:rgba(255,255,255,0.6);
+#footerbottom, #footerbottom a {
+    color: #ebebeb;
+    font-size: 9px;
 }
 
 #footerlogo{
