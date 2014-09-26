@@ -4310,3 +4310,72 @@ figure {
 .blogpost .excerpt2{
 	margin-left:170px;
 }
+/** footer custom**/
+.footer-contact{
+	color: #fff;
+	margin-top:30px;
+	padding:0;
+	border-bottom: 3px solid #6D6F9E;
+	text-align:center;
+	
+}
+.buttoncontact {
+    background: url("images/mail.png") no-repeat scroll left top #6D6F9E;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: lighter;
+    line-height: 1;
+    margin: 0;
+    padding: 6px 24px 4px 47px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-rendering: optimizelegibility;
+    transition: background-color 0.15s ease-in-out 0s;
+    width: auto;
+}
+.buttoncontact {
+    background: url("images/mail.png") no-repeat scroll left top #6D6F9E;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: lighter;
+    line-height: 1;
+    margin: 0;
+    padding: 6px 24px 4px 47px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-rendering: optimizelegibility;
+    transition: background-color 0.15s ease-in-out 0s;
+    width: auto;
+}
+.buttoncontact {
+    background: url("images/mail.png") no-repeat scroll left top #6D6F9E;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: lighter;
+    line-height: 1;
+    margin: 0;
+    padding: 6px 24px 4px 47px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-rendering: optimizelegibility;
+    transition: background-color 0.15s ease-in-out 0s;
+    width: auto;
+}
+a.buttoncontact{
+    color:#fff !important;
+}
+a:hover.buttoncontact {
+    color:#fff !important;
+}
