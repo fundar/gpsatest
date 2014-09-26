@@ -1,4 +1,3 @@
-<!--custom-->
 <section class="stripe sombra">
 </section>
 <section class="stripe about-4">
@@ -26,32 +25,10 @@
 	</div>
 	</div>
     </div>
-</section>
-<!--fin custom-->
 
+
+</section>
 <footer>
-    <div class="container">
-        <div class="row">
-            <div class="footertop">
-                <?php 
-                            if ( !function_exists('dynamic_sidebar')|| !dynamic_sidebar('topfootersidebar') ) : ?>
-                <?php endif; ?>
-            </div>
-        </div>
-        <div class="row">
-            <div class="footerbottom">
-                <?php 
-                    if ( !function_exists('dynamic_sidebar')|| !dynamic_sidebar('bottomfootersidebar') ) : ?>
-                <?php endif; ?>
-            </div>
-        </div>
-    </div> 
-    <div id="scrolltop">
-        <a><i class="icon-arrow-1-up"></i><span><?php _e('top','vibe'); ?></span></a>
-    </div>
-</footer>
-<div id="footerbottom">
-    <footer>
     <div class="container">
         <div class="row">
             <div class="footerbottom">
@@ -138,16 +115,25 @@
         </div>
     </div>
 </div>
-
-</div>
 </div><!-- END PUSHER -->
 </div><!-- END MAIN -->
 	<!-- SCRIPTS -->
 <?php
 wp_footer();
-?>    
+?>
+   
 <?php
 echo vibe_get_option('google_analytics');
 ?>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-21808432-6', 'gpsaknowledge.org');
+  ga('send', 'pageview');
+
+</script>
 </body>
 </html>
