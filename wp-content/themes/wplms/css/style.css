@@ -1340,12 +1340,8 @@ h2#sidelogo:hover img{
 /*   03. FOOTER
 /*========================================================================*/
 footer{
-	background:#313B3D;
 	position: relative;
-	margin-top:30px;
-	padding:30px 0;
-	font-size:14px;
-	color:rgba(255,255,255,0.6);
+	font-size:10px;
 }
 
 footer .item-list li{
@@ -1404,12 +1400,11 @@ footer .item-avatar{
 	border-top:1px solid rgba(255,255,255,0.1);
 }
 
-#footerbottom{
-	background:#232b2d;
-	padding:30px 0 20px;
-	color:rgba(255,255,255,0.6);
-	font-size: 11px;
-	text-transform: uppercase;
+#footerbottom {
+    background: none repeat scroll 0 0 #232b2d;
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 10px;
+    padding: 5px 0;
 }
 #footerbottom a{
 	color:rgba(255,255,255,0.6);
