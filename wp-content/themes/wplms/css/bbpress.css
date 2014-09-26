@@ -21,6 +21,14 @@ color:#444;
 #bbp-search-form,#forums-search-form{
 float:right;
 }
+
+#bbp_search,#forums_search{
+ border: 1px solid #EFEFEF;
+ padding: 2px 10px;
+ border-radius:2px; 
+}
+#forums_search_submit,
+#bbp_search_submit{padding:4px 10px;}
 #bbpress-forums > h3 {
     color: #6d6f9e;
     display: inline-block;
@@ -30,20 +38,6 @@ float:right;
     font-weight: normal !important;
     margin-top: -9px !important;
     text-transform: uppercase;
-}
-#bbp_search,#forums_search{
- border: 1px solid #EFEFEF;
- padding: 2px 10px;
- border-radius:2px; 
-}
-#forums_search_submit,
-#bbp_search_submit{padding:4px 10px;}
-#bbpress-forums > h3 {
-font-size: 16px;
-font-weight: 600;
-text-transform: uppercase;
-display: inline-block;
-float: left;
 }
 
 #subscription-toggle{
