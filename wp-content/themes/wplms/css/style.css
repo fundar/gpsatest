@@ -39,6 +39,9 @@
 /*========================================================================*/
 /*   01. DEFAULT STYLING
 /*========================================================================*/
+
+@import url("fonts/stylesheet.css");
+
 body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, adress, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td {
 text-rendering: optimizeLegibility;
 -webkit-font-smoothing: antialiased;
@@ -60,7 +63,7 @@ body {
 	font-family: 'Open Sans', 'Helvetica Neue',sans-serif;
 	-webkit-font-smoothing: antialiased;
 	font-weight: 400;
-	font-size: 14px;
+	font-size: 13px;
 }
 
 *,
@@ -106,15 +109,36 @@ font-family: 'Steelfish Bold'
 
 h1,h2,h3,h4,h5,h6{
 	line-height:1.35em;
-	 font-family: 'Raleway','Open Sans', sans-serif;
 	color: #282828;
 }
 h1{
 	font-size: 32px;
 }
 h2{
-	font-size: 28px;
+	font-size: 44px;
+	font-family: 'steelfish_rgregular';
+	color:#6D6F9E;
 
+}
+h2.subt {
+    color: #6D6F9E;
+    font-family: 'steelfish_rgregular';
+    font-size: 47px;
+    text-transform: uppercase;
+}
+h2.subt2 {
+    color: #6D6F9E;
+    font-size: 25px;
+    margin: 0;
+    padding: 0 !important;
+    text-transform: uppercase;
+}
+.pagetitle > h2{
+    color: #6D6F9E;
+    font-size: 47px;
+    margin: 0;
+    padding: 0 !important;
+    text-transform: uppercase;
 }
 h3{
 	font-size: 24px;
@@ -1273,7 +1297,7 @@ h2#sidelogo:hover img{
 }
 
 #logo img{
-		max-height:48px;	
+		max-height:58px;	
 		width:auto;
 }
 
@@ -3629,4 +3653,227 @@ span.wpcf7-form-control-wrap{
 	#buddypress div.pagination .pagination-links{
 		margin-top:10px;
 	}
+}
+/** Home **/
+.page-id-24 > .global > .pusher > #content {
+    background:url("images/bg-intro3.png") no-repeat scroll center bottom rgba(0, 0, 0, 0) !important;
+}
+.content.no {
+	background:transparent !important;
+}
+
+h1.welcome1 {
+    color: #6D6F9E;
+    font-family: 'steelfish_rgregular';
+    font-size: 32px;
+    margin-bottom: 0;
+    text-transform: uppercase;
+    margin-left:30px;
+}
+h1.welcome2 {
+    color: #28336A;
+    font-family: 'steelfish_rgregular';
+    font-size: 57px;
+    line-height: 59px;
+    margin-bottom: 9px;
+    margin-top:0px;
+    text-transform: uppercase;
+    margin-left:30px;
+}
+p.welcome3 {
+    color: #666;
+    font-size: 15px;
+    font-weight:300;
+    margin-left:30px;
+}
+img.wp-image-2001 {
+    margin-top: 20px;
+}
+.greybackhome:before {
+    background: url("images/shadow-bottom.png") no-repeat scroll center bottom rgba(0, 0, 0, 0);
+    bottom: -6px;
+    content: "";
+    height: 7px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+}
+.greybackhome {
+    background: none repeat scroll 0 0 #F4F4F4;
+    margin-top: -10px !important;
+    overflow: visible !important;
+    padding: 20px 0 10px 0px !important;
+    position: relative;
+}
+    /** full calendar home**/
+    #evcal_calendar_2 > #evcal_head > #evcal_cur {
+	font-family: 'Open Sans','Helvetica Neue',sans-serif;
+	font-size:13px;
+	text-transform:none;
+	color:#000;
+    }
+    .eventon_fullcal p {
+    color: #666666 !important;
+    font-family: 'Open Sans','Helvetica Neue',sans-serif !important;
+    font-size: 12px !important;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    }
+    .eventon_fullcal .eventon_fc_daynames .evo_fc_day {
+    display: none;
+    font-size: 14px;
+    }
+    #evcal_calendar_2 {
+    margin-top: -15px;
+    }
+    #evcal_calendar_2 > .evo_sort_btn {
+    cursor: pointer;
+    font-family: open sans;
+    font-size: 10px;
+    height: 15px;
+    margin-left: 6px !important;
+    padding-left: 20px;
+    text-transform: none;
+    width: auto;
+    }
+    #evcal_calendar_2 > .eventon_fullcal > .evcal_list  > .eventon_list_event > span.evcal_desc2{
+	font-size:11px;
+	  
+    }
+.eventon_events_list .eventon_list_event .evcal_desc span.evcal_desc2, .evo_pop_body .evcal_desc span.evcal_desc2 {
+    color: #6B6B6B;
+
+    text-transform: none !important;
+    }
+    .evcal_event_title{
+     font-size:13px !important;
+    }
+/** eventon news & events **/
+
+.eventon_events_list .eventon_list_event .evcal_cblock, .evo_pop_body .evcal_cblock {
+    color: #ABABAB;
+    font-family: steelfish_rgregular !important;
+    font-size: 27px !important;
+    font-weight: normal !important;
+    line-height: 110%;
+}
+.eventon_events_list .eventon_list_event .evcal_list_a{
+	
+	min-height: 64px !important;
+}
+h4.bloque_title {
+    background-color:rgba(32, 33, 53, 0.8);
+    border-radius: 0 0 0 0;
+    color: #FFFFFF !important;
+    display: inline-block;
+    font-family: 'steelfish_rgregular';
+    font-size: 28px;
+    font-weight: normal;
+    margin: 0;
+    padding: 5px 12px;
+    position: relative;
+    text-transform: uppercase;
+    z-index: 1000;
+}
+h2.logos_title {
+    color: #253169 !important;
+    font-family: 'steelfish_rgregular';
+    font-size: 28px;
+    font-weight: normal;
+    text-transform:uppercase;
+
+}
+.bloque_title > a{
+    color:#fff;
+}
+.bloque_title > a:hover{
+    color:#dcdced;
+}
+.th_home{
+   margin-top:-48px;
+
+}
+.block_home {
+    cursor: default;
+    height: 100%;
+    max-width: 330px;
+    position: relative;
+    width: 100%;
+}
+.block_info {
+    background: none repeat scroll 0 0 #F4F4F4;
+    border-bottom: 5px solid #F4F4F4;
+    border-left: 5px solid #F4F4F4;
+    border-right: 5px solid #F4F4F4;
+    display: block;
+    min-height: 158px;
+    padding: 7px;
+    width: inherit;
+}
+.more {
+    background-color:#253169;
+    border: 1px solid #253169;
+    border-radius: 0 0 0 0;
+    color: #FFF !important;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: normal;
+    margin:0;
+    padding: 5px 12px;
+    text-transform:uppercase;
+}
+a.more:hover{
+    background-color:#6D6F9E;
+    border: 1px solid #6D6F9E;
+    border-radius: 0 0 0 0;
+    color: #FFF;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: normal;
+    margin:0;
+    padding: 5px 12px;
+    text-transform:uppercase;
+}
+/** about **/
+.aboutus-1 {
+    background: url("images/bk-components.png") repeat-x scroll 0 0 #FCFCFC;
+    padding-top: 50px;
+}
+
+.aboutus-3 {
+    background: none repeat scroll 0 0 #F2F2F5;
+    border-top: 1px solid #FFFFFF;
+    padding-top: 40px;
+}
+/** knowledge exchange **/
+.exchange {
+    background: url("images/bk-components.png") repeat-x scroll 0 0 #FCFCFC;
+    margin-top: -30px !important;
+    padding-top: 50px;
+}
+/** contribute **/
+section.sombra {
+    box-shadow: 0 1px 1px rgba(2, 4, 4, 0.15);
+    margin-top: -21px;
+    padding-bottom: 17px;
+}
+.about-4 {
+    margin-top: 40px !important;
+}
+/** news and events**/
+.evento{
+    background: url("images/bk-components.png") repeat-x scroll 0 bottom #fff;
+    padding: 50px 0 80px !important;
+}
+#evcal_calendar_1{
+    margin-top: -26px;
+}
+#evcal_calendar_1 > #evcal_head > #evcal_cur p {  
+    color: #000;
+    display: block;
+    font-family: steelfish_rgregular;
+    font-size: 27px;
+    padding-bottom: 10px;
+    text-transform: uppercase;
 }
