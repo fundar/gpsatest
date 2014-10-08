@@ -76,9 +76,8 @@ $page_id = get_the_ID();
 		</div>
 		<div class="col-md-3 col-sm-4">
 			<div class="sidebar">
-                <?php
-                    $sidebar = apply_filters('wplms_sidebar','mainsidebar',$page_id);
-                    if ( !function_exists('dynamic_sidebar')|| !dynamic_sidebar($sidebar) ) : ?>
+				<?php 
+                    if ( !function_exists('dynamic_sidebar')|| !dynamic_sidebar('mainsidebar') ) : ?>
                 <?php endif; ?>
 			</div>
 		</div>
