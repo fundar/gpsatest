@@ -115,7 +115,7 @@ input[type="file"]{
 #vibe_bp_login ul+ul li i{
 	float:right;
 }
-#vibe_bp_login li#vbplogout a{font-size:11px;color:#FFF;}
+#vibe_bp_login li#vbplogout a{font-size:11px;color:#000;}
 #vibe_bp_login li{
   position: relative;
 }
