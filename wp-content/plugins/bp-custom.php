@@ -37,3 +37,91 @@ $qs = 'action=activity_update';
 return $qs;
 }
 add_filter( 'bp_ajax_querystring', 'bbg_my_groups_activity_default', 999 );
+//grupos
+function bpfr_add_page_to_group() {
+
+	if ( class_exists( 'BP_Group_Extension' ) ) :
+
+class My_Custom_Group_Extension extends BP_Group_Extension {
+
+    function __construct() {
+         $args = array(
+            'slug' => 'Files-Browser',
+            'name' => 'File Browser',
+        );
+        parent::init( $args );
+    }
+
+
+     function settings_screen( $group_id ) {
+		// don't remove this function
+           }
+          function display() {
+
+
+			// grab page or post ID
+			$id = 1315;
+			$p = get_post($id);
+
+			// output the title
+			echo '<h3>'.apply_filters('the_content', $p->post_title).'</h3>';
+			// output the post
+			echo apply_filters('the_content', $p->post_content);
+
+			// end option
+			}
+} // end of class
+
+class My_Custom_Group2_Extension extends BP_Group_Extension {
+
+    function __construct() {
+         $args = array(
+            'slug' => 'Files-Browser',
+            'name' => 'File Browser',
+        );
+        parent::init( $args );
+    }
+
+
+     function settings_screen( $group_id ) {
+		// don't remove this function
+           }
+          function display() {
+
+
+			// grab page or post ID
+			$id = 1325;
+			$p = get_post($id);
+
+			// output the title
+			echo '<h3>'.apply_filters('the_content', $p->post_title).'</h3>';
+			// output the post
+
+			echo apply_filters('the_content', $p->post_content);
+
+			// end option
+			}
+}
+/* display content only in one group*/
+
+
+    // check for a group ID
+        if( bp_has_groups() ) {
+            // Grab current group ID
+            bp_the_group();
+            $group_id = bp_get_group_ID();
+        }
+
+
+    /* apply our changes only to this group */
+        // conditionnal action
+        if ( $group_id == 2) {
+            bp_register_group_extension( 'My_Custom_Group_Extension' );
+        }
+         if ( $group_id == 3) {
+            bp_register_group_extension( 'My_Custom_Group2_Extension' );
+        }
+
+    endif;
+}
+add_filter('bp_groups_default_extension', 'bpfr_add_page_to_group' );
