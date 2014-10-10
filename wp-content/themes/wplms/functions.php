@@ -178,7 +178,7 @@ function getSurvey() {
 			jQuery("#survey").hide();
 		});
 	</script>';
-	
+
 	return true;
 }
 
@@ -189,24 +189,24 @@ function get_custom_cat_template($single_template) {
     if(in_category( 'expert' )) {
         $single_template = dirname( __FILE__ ) . '/single-expert.php';
     }
-    
+
     return $single_template;
 }
- 
-add_filter( "single_template", "get_custom_cat_template" ) ;
 
+add_filter( "single_template", "get_custom_cat_template" ) ;
+/*
 //custom post type template
 function get_custom_post_type_template($single_template) {
     global $post;
-	
+
     if ($post->post_type == 'ajde_events') {
          $single_template = dirname( __FILE__ ) . '/single-events.php';
     }
     return $single_template;
 }
- 
-add_filter( "single_template", "get_custom_post_type_template" ) ;
 
+add_filter( "single_template", "get_custom_post_type_template" ) ;
+*/
 //fix for cookie error while login.
 /*
 function set_wp_test_cookie() {
