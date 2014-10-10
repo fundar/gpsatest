@@ -94,7 +94,7 @@ function getBookmarks() {
 
 //Map of roster of practitioners
 function getMap() {
-	echo "<script src='http://code.jquery.com/jquery-1.11.0.min.js'></script>";
+	//echo "<script src='http://code.jquery.com/jquery-1.11.0.min.js'></script>";
 	echo "<script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.js'></script>";
 	echo "<link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.css' rel='stylesheet'/>";
 	echo "<link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.2/mapbox.css' rel='stylesheet'/>";
