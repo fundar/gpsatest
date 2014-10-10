@@ -126,7 +126,7 @@ function bp_course_screen_settings_menu() {
 	}
 
 
-/*=== SINGLE COURSE SCREENS ====*/	
+/*=== SINGLE COURSE SCREENS ====*/
 
 
 function bp_screen_course_home() {
@@ -141,16 +141,16 @@ function bp_screen_course_home() {
 }
 
 function bp_screen_course_structure(){
-	
+
 }
 
 add_action('wplms_course_admin_bulk_actions','bp_course_admin_bulk_actions',10);
 
 function bp_course_admin_bulk_actions(){
 	echo '<ul>'.apply_filters('wplms_course_admin_bulk_actions_list',
-			'<li><a href="#" class="expand_message tip" title="'.__('Send Bulk Message','vibe').'"><i class="icon-letter-mail-1"></i></a></li>
-		    <li><a href="#" class="expand_add_students tip" title="'.__('Add Students to Course','vibe').'"><i class="icon-users"></i></a></li>
-		    <li><a href="#" class="expand_assign_students tip" title="'.__('Assign Badges/Certificates to Students','vibe').'"><i class="icon-key-fill"></i></a></li>').
+			'<li><a href="#" class="expand_message tip"><i class="icon-letter-mail-1"></i></a></li>
+		    <li><a href="#" class="expand_add_students tip" ><i class="icon-users"></i></a></li>
+		    <li><a href="#" class="expand_assign_students tip"><i class="icon-key-fill"></i></a></li>').
 		'</ul>';
 }
 
