@@ -46,8 +46,8 @@ class My_Custom_Group_Extension extends BP_Group_Extension {
 
     function __construct() {
          $args = array(
-            'slug' => 'Files-Browser',
-            'name' => 'File Browser',
+            'slug' => 'Gpsa-space',
+            'name' => 'GPSA SPACE',
         );
         parent::init( $args );
     }
@@ -72,36 +72,7 @@ class My_Custom_Group_Extension extends BP_Group_Extension {
 			}
 } // end of class
 
-class My_Custom_Group2_Extension extends BP_Group_Extension {
 
-    function __construct() {
-         $args = array(
-            'slug' => 'Files-Browser',
-            'name' => 'File Browser',
-        );
-        parent::init( $args );
-    }
-
-
-     function settings_screen( $group_id ) {
-		// don't remove this function
-           }
-          function display() {
-
-
-			// grab page or post ID
-			$id = 1325;
-			$p = get_post($id);
-
-			// output the title
-			echo '<h3>'.apply_filters('the_content', $p->post_title).'</h3>';
-			// output the post
-
-			echo apply_filters('the_content', $p->post_content);
-
-			// end option
-			}
-}
 /* display content only in one group*/
 
 
@@ -115,12 +86,10 @@ class My_Custom_Group2_Extension extends BP_Group_Extension {
 
     /* apply our changes only to this group */
         // conditionnal action
-        if ( $group_id == 2) {
+        if ( $group_id == 3) {
             bp_register_group_extension( 'My_Custom_Group_Extension' );
         }
-         if ( $group_id == 3) {
-            bp_register_group_extension( 'My_Custom_Group2_Extension' );
-        }
+
 
     endif;
 }
