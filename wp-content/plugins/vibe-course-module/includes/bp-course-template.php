@@ -667,7 +667,7 @@ if(!function_exists('bp_course_get_students_undertaking')){
 		$course_members = array();
 
 		$loop_number= 200;
-		if(!isset($loop_number)) $loop_number = 200;
+		if(!isset($loop_number))
 
 		$prepage = (isset($_GET['items_page'])?$loop_number*($_GET['items_page']-1):0);
 		$nextpage = (isset($_GET['items_page'])?$loop_number*$_GET['items_page']:$loop_number);
@@ -705,7 +705,7 @@ function bp_course_paginate_students_undertaking($course_id=NULL){
 
    //	$loop_number=vibe_get_option('loop_number');
     $loop_number = 200;
-    if(!isset($loop_number))    $loop_number = 200;
+    if(!isset($loop_number))
 
 	$course_number = $wpdb->get_row( $wpdb->prepare("select count(meta_key) as number from {$wpdb->postmeta} where post_id = %d AND meta_value <= %d AND meta_key REGEXP '^-?[0-9]+$'",$course_id,2), ARRAY_A);
 	$max_page = ceil($course_number['number']/$loop_number);
