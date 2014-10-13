@@ -694,7 +694,7 @@ function bp_course_count_students_pursuing($course_id=NULL){
 
 	$course_meta = $wpdb->get_results( $wpdb->prepare("select count(meta_key) as number from {$wpdb->postmeta} where post_id = %d AND meta_value >= %d AND meta_value <= %d AND meta_key REGEXP '^-?[0-9]+$' ORDER BY meta_value",$course_id,0,2), ARRAY_A);
 	$number = $course_meta[0]['number'];
-	
+
 	return $number;
 }
 
@@ -703,9 +703,9 @@ function bp_course_paginate_students_undertaking($course_id=NULL){
 	if(!isset($course_id))
 		$course_id=get_the_ID();
 
-   // $loop_number=vibe_get_option('loop_number');
+   //	$loop_number=vibe_get_option('loop_number');
     $loop_number = 200;
-    if(!isset($loop_number))
+    if(!isset($loop_number))    $loop_number = 200;
 
 	$course_number = $wpdb->get_row( $wpdb->prepare("select count(meta_key) as number from {$wpdb->postmeta} where post_id = %d AND meta_value <= %d AND meta_key REGEXP '^-?[0-9]+$'",$course_id,2), ARRAY_A);
 	$max_page = ceil($course_number['number']/$loop_number);
@@ -724,17 +724,17 @@ function bp_course_paginate_students_undertaking($course_id=NULL){
 										 	$return  .= '<a class="page-numbers" href="?action='.$_GET['action'].'&items_page='.$i.'">'.$i.'</a>';
 										 else{
 										 	if($f && ($i > ($_GET['items_page'] + 2))){
-												$return  .= '<a class="page-numbers">...</a>'; 
+												$return  .= '<a class="page-numbers">...</a>';
 												$f=0;
 											}
 											if($g && ($i <($_GET['items_page'] - 2))){
-												$return  .= '<a class="page-numbers">...</a>'; 
+												$return  .= '<a class="page-numbers">...</a>';
 												$g=0;
 											}
 										 }
 									}
 								}else{
-									
+
 									if($i==1)
 										$return .= '<span class="page-numbers current">1</span>';
 									else{
@@ -742,12 +742,12 @@ function bp_course_paginate_students_undertaking($course_id=NULL){
 											$return  .= '<a class="page-numbers" href="?action='.$_GET['action'].'&items_page='.$i.'">'.$i.'</a>';
 										else{
 											if($f){
-												$return  .= '<a class="page-numbers">...</a>'; 
+												$return  .= '<a class="page-numbers">...</a>';
 												$f=0;
 											}
 										}
 									}
-								}	
+								}
 						}
 						$return  .= '
 					</div>
@@ -788,14 +788,14 @@ function bp_course_get_total_course_count_for_user( $user_id = false ) {
 	}
 
 	$user_courses=get_posts('post_type=course&numberposts=999&meta_key='.$user_id);
-	
+
 	$c=count($user_courses);
 	if(!isset($c) || !$c) $c = 0;
 
 	//return $c;
 
 	return apply_filters( 'wplms_get_total_course_count', $c, $user_id );
-	
+
 }
 
 function bp_course_get_curriculum_units($course_id=NULL){
@@ -804,7 +804,7 @@ function bp_course_get_curriculum_units($course_id=NULL){
 		return $units;
 
 	$course_curriculum=vibe_sanitize(get_post_meta($course_id,'vibe_course_curriculum',false));
-        
+
         if(isset($course_curriculum) && is_array($course_curriculum)){
         	foreach($course_curriculum as $key=>$curriculum){
             if(is_numeric($curriculum)){
@@ -812,7 +812,7 @@ function bp_course_get_curriculum_units($course_id=NULL){
             }
           }
         }
-    return $units;    
+    return $units;
 }
 
 function bp_course_check_unit_complete($unit_id=NULL,$user_id=NULL){
@@ -846,13 +846,13 @@ function bp_course_total_course_count() {
  */
 function bp_course_get_total_course_count( ) {
 	// If no explicit user id is passed, fall back on the loggedin user
-	
+
 	$count_course = wp_count_posts(BP_COURSE_SLUG);
 
 	if(!isset($count_course)) $count_course =0;
 
 	return $count_course->publish;
-	
+
 }
 
 
@@ -1050,11 +1050,11 @@ function bp_are_previous_course_creation_steps_complete( $step_slug ) {
 
 
 function is_user_instructor(){
-	
+
 	if(!is_user_logged_in())
 		return false;
 
-	
+
 	if(current_user_can('edit_posts'))
 		return true;
 	else
@@ -1072,7 +1072,7 @@ function bp_course_get_instructor_course_count_for_user($id=NULL){
 }
 
 function bp_is_my_profile_intructor(){
-	
+
 	if(current_user_can('edit_posts'))
 		return true;
 	else
@@ -1080,7 +1080,7 @@ function bp_is_my_profile_intructor(){
 }
 
 function is_instructor($id=NULL){
-	
+
 	if(!is_user_logged_in())
 		return false;
 
@@ -1108,7 +1108,7 @@ function bp_get_course_permalink( $course = false ) {
 	}else{
 		$id=$post->ID;
 	}
-	
+
 	return apply_filters( 'bp_get_course_permalink', get_permalink($id));
 }
 
