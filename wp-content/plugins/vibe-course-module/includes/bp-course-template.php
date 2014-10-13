@@ -666,13 +666,13 @@ if(!function_exists('bp_course_get_students_undertaking')){
 
 		$course_members = array();
 
-		$loop_number=vibe_get_option('loop_number');
-		if(!isset($loop_number)) $loop_number = 5;
+		$loop_number= 200;
+		if(!isset($loop_number)) $loop_number = 200;
 
 		$prepage = (isset($_GET['items_page'])?$loop_number*($_GET['items_page']-1):0);
 		$nextpage = (isset($_GET['items_page'])?$loop_number*$_GET['items_page']:$loop_number);
 		$course_meta = $wpdb->get_results( $wpdb->prepare("select meta_key from {$wpdb->postmeta} where post_id = %d AND meta_value >= %d AND meta_key REGEXP '^-?[0-9]+$' ORDER BY meta_value ASC LIMIT %d, %d",$course_id,0,$prepage,$nextpage), ARRAY_A);
-		
+
 		foreach($course_meta as $meta){
 			if(is_numeric($meta['meta_key']))  // META KEY is NUMERIC ONLY FOR USERIDS
 				$course_members[] = $meta['meta_key'];
