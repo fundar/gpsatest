@@ -192,6 +192,7 @@ function bp_course_admin_search_course_students($students,$course_id){
 			<input type="text" name="search" value="'.$_POST['search'].'" placeholder="'.__('Enter student name/email','vibe').'" class="input" />
 			<input type="submit" value="'.__('Search','vibe').'" />
 		  </form>';
+  	echo '<input type="checkbox" name="select-all" id="select-all" /> Select all';
     if(isset($_POST['search'])){
 
     	$args = array(

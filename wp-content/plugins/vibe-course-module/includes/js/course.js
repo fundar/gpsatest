@@ -13,7 +13,7 @@ $.fn.timer = function( useroptions ){
             }, useroptions 
         ); 
 
-        
+
         $this.knob({ 
             'min':0, 
             'max': opt.timer, 
@@ -1235,6 +1235,21 @@ $( 'body' ).delegate( '.certificate_print', 'click', function(event){
     event.preventDefault();
     $(this).parent().parent().print();
 });
+
+$('#select-all').click(function(event) {
+  if(this.checked) {
+      // Iterate each checkbox
+      $(':checkbox').each(function() {
+          this.checked = true;
+      });
+  }
+  else {
+    $(':checkbox').each(function() {
+          this.checked = false;
+      });
+  }
+});
+
 
 $('.widget_carousel').flexslider({
   animation: "slide",
