@@ -147,7 +147,15 @@ if(!class_exists('WPLMS_Customizer_Plugin_Class'))
          */
         
         function wplms_course_nav_menu($menu_array){
-            //unset($menu_array['members']);
+           unset($menu_array['members']);
+
+ 	$menu_array['external_link']=array(
+                                'id' => 'external_link',
+                                'label'=>__('My Custom Link','vibe'),
+				'action' => 'jose',
+                                
+                            );
+            
             return $menu_array;
         }
         function wplms_course_product_id($pid,$id=NULL){
