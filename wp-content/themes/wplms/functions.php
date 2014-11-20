@@ -166,9 +166,8 @@ function getSurvey() {
 			</div>
 		<div class="content-survey">
 						<span>Your feedback is very important for us. So, please give us your opinion on the Knowledge Platform and its different activities through the following survey before December 12, 2014.</span>
-			<a class="contorno-morado" id="yes-survey" href="https://www.surveymonkey.com/s/DK35YCR" target="_blank">Yes</a>
-			<a class="contorno-morado" href="#close">No</a>
-		</div>
+			<a class="contorno-morado" id="yes-survey" href="https://www.surveymonkey.com/r/ZVM6KWM" target="_blank">Survey</a>
+					</div>
 	</div>
 
 	<script>
