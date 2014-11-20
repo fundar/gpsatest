@@ -163,6 +163,7 @@ function getSurvey() {
 	echo '<div id="survey" class="border">
 		<div class="title-survey border">
 			<span>Help us improve the Knowledge Platform!</span>
+    		<a class="contorno-morado" href="#close">X</a>
 
 			</div>
 		<div class="content-survey">
