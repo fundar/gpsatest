@@ -158,17 +158,15 @@ function getSurvey() {
 		#yes-survey { margin-left:155px; }
 	</style>";
 	
-	$url_image = get_template_directory_uri() . '/images/admiracion.png';
+	//$url_image = get_template_directory_uri() . '/images/admiracion.png';
 	
 	echo '<div id="survey" class="border">
 		<div class="title-survey border">
-			<span>Let’s increase our knowledge <br/>about social accountability</span>
-			<img src="'.$url_image.'" alt="Let’s increase our knowledge about social accountability"/>
-		</div>
+			<span>Help us improve the Knowledge Platform!</span>
+			</div>
 		
 		<div class="content-survey">
-			<span>Help us improve the Knowledge Platform!</span>
-			<span>Your feedback is very important for us. So, please give us your opinion on the Knowledge Platform and its different activities through the following survey before December 12, 2014.</span>
+						<span>Your feedback is very important for us. So, please give us your opinion on the Knowledge Platform and its different activities through the following survey before December 12, 2014.</span>
 			<a class="contorno-morado" id="yes-survey" href="https://www.surveymonkey.com/s/DK35YCR" target="_blank">Yes</a>
 			<a class="contorno-morado" href="#close">No</a>
 		</div>
