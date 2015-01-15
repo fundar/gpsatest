@@ -875,6 +875,7 @@ nav .menu li:hover > a{
 	color:#FFF !important;
 }
 nav .sub-menu li:hover > a{
+display: block;
 	color:#ccc;
 }
 
