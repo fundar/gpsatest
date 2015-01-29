@@ -118,21 +118,11 @@ if(isset($title) && $title !='' && $title !='H'){
                                                                     </div>
                                                                      <!-- roster -->
                                                                     <div class="block_home" style="margin-top: 50px;">
-                                                                    <?php $service_query = new WP_Query('page_id=11');
-                                                                    while ( $service_query->have_posts() ) : $service_query->the_post(); ?>
-                                                                       <article id="post-<?php the_ID(); ?>" <?php post_class(''); ?>>
-                                                                   
-                                                                               <div class="animate zoom load">
-                                                                               <h4 class="bloque_title"><a class="" href="http://gpsaknowledge.org/networking/"><?php the_title(); ?></a> </h4>  
-                                                                               <a href="http://gpsaknowledge.org/networking/"><img class="th_home"  <?php echo get_the_post_thumbnail(); ?></a>                                                                                
-                                                                               </div> 	<!-- end .post-thumbnail -->					
-                                                                               <div class="block_info">						
-                                                                                       <?php the_content(); ?>
-                                                                               </div> 	<!-- end .post_content -->                                                                                  
-                                                                                <a class="more" href="http://gpsaknowledge.org/networking/"><span>Read more</span></a>
-
-                                                                       </article> <!-- end .entry -->
-                                                                       <?php endwhile; // end of the loop. ?>
+																		<?php if ( bp_has_activities( bp_ajax_querystring( 'activity' ) ) ) : ?>
+																			<?php while ( bp_activities() ) : bp_the_activity(); ?>
+																				<?php locate_template( array( 'activity/entry.php' ), true, false ); ?>
+																			<?php endwhile; ?>
+																		<?php endif; ?>
                                                                     </div>                
                                                 </div>
                         </div><!--fin 4 entradas: blog, webinar, forum, roster-->
