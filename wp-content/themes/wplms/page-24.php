@@ -98,6 +98,22 @@ if(isset($title) && $title !='' && $title !='H'){
                                                         ?>                                       
                                                      </div>                                                                                                                   
               <!--forums and toster and blog --><div class="one_half ">
+			  
+													<!--Inicio Networking -->
+																	<div class="block_home1" style="margin-top: 50px;">
+																	 <h4 class="bloque_title"><a class="" href="http://gpsaknowledge.org/networking/">Networking Board</a> </h4>  
+
+																		<?php if ( bp_has_activities( bp_ajax_querystring( 'activity' ) . '&action=activity_update' ) ) : ?>
+																			<?php while ( bp_activities() ) : bp_the_activity(); ?>
+																				<?php locate_template( array( 'activity/entry.php' ), true, false ); ?>
+																			<?php endwhile; ?>
+																		<?php endif; ?>
+                                                                    </div>       
+						
+						
+													 <!-- Fin de Networkin -->
+					  
+			  
                                                                   <!-- forums -->
                                                                     <div class="block_home">
                                                                     <?php $service_query = new WP_Query('page_id=182');
@@ -137,20 +153,7 @@ if(isset($title) && $title !='' && $title !='H'){
                                                 </div>
                         </div><!--fin 4 entradas: blog, webinar, forum, roster-->
                       
-						<!--Inicio Networking -->
-																	<div class="block_home1" style="margin-top: 50px;">
-																	 <h4 class="bloque_title"><a class="" href="http://gpsaknowledge.org/networking/">Networking Board</a> </h4>  
-
-																		<?php if ( bp_has_activities( bp_ajax_querystring( 'activity' ) . '&action=activity_update' ) ) : ?>
-																			<?php while ( bp_activities() ) : bp_the_activity(); ?>
-																				<?php locate_template( array( 'activity/entry.php' ), true, false ); ?>
-																			<?php endwhile; ?>
-																		<?php endif; ?>
-                                                                    </div>       
 						
-						
-						<!-- Fin de Networkin -->
-					  
 					  <!--Inicio carrusel -->
                         
                                 <?php $service_query = new WP_Query('page_id=813');
