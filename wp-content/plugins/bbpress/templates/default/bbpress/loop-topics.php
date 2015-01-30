@@ -10,6 +10,7 @@
 ?>
 
 <?php do_action( 'bbp_template_before_topics_loop' ); ?>
+<p><h3>Welcome to the GPSA Knowledge Platform Forums!</h3></p>
 
 <ul id="bbp-forum-<?php bbp_forum_id(); ?>" class="bbp-topics">
 
