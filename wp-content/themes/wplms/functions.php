@@ -223,6 +223,20 @@ function yourprefix_remove_x_pingback( $headers )
     unset( $headers['X-Pingback'] );
     return $headers;
 }
+
+function mycustom_breadcrumb_options() {
+    // Home - default = true
+    $args['include_home']    = false;
+    // Forum root - default = true
+    $args['include_root']    = false;
+    // Current - default = true
+    $args['include_current'] = true;
+ 
+    return $args;
+}
+ 
+add_filter('bbp_before_get_breadcrumb_parse_args', 'mycustom_breadcrumb_options');
+
 add_action( 'after_setup_theme', 'set_wp_test_cookie', 101 );
 
 add_action( 'bp_member_header_actions', 'bp_add_friend_button' );
