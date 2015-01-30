@@ -8,7 +8,14 @@
  */
 
 ?>
-
+<div class="col-md-3 col-sm-4">
+	<div class="buddysidebar">
+			<div class="widget">
+				<h4 class="widget_title">Jose</h4>			<div class="textwidget">Solo se muestra en el grupo My Space</div>
+			</div>
+		
+	</div>
+</div>
 <?php do_action( 'bbp_template_before_forums_loop' ); ?>
 <br/><br/><br/>
 <p><h3>Welcome to the GPSA Knowledge Platform Forums!</h3></p>
