@@ -55,8 +55,17 @@ if(isset($title) && $title !='' && $title !='H'){
 					   <!--Inicio Networking -->
 																	<div class="block_home1" style="margin-top: 50px;">
 																	 <h4 class="bloque_title"><a class="" href="http://gpsaknowledge.org/networking/">Networking Board</a> </h4>  
-
-																		<?php if ( bp_has_activities( bp_ajax_querystring( 'activity' ) . '&action=activity_update' .'&max=10') ) : ?>
+																			
+																			
+																			<?php 
+																			// best practice is to create a function in another file, but this will work... 
+																			
+																			$friends[] = ('112','6');
+																			$friends_and_me = implode( ',', (array) $friends );
+																			$friends_and_me =  '&user_id=' . $friends_and_me;
+																			
+																			?>
+																		<?php if ( bp_has_activities( bp_ajax_querystring( 'activity' ) . '&action=activity_update&$friends_and_me' .'&max=5') ) : ?>
 																			<?php while ( bp_activities() ) : bp_the_activity(); ?>
 																				<?php locate_template( array( 'activity/entry.php' ), true, false ); ?>
 																			<?php endwhile; ?>
