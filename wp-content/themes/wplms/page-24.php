@@ -56,7 +56,7 @@ if(isset($title) && $title !='' && $title !='H'){
 																	<div class="block_home1" style="margin-top: 50px;">
 																	 <h4 class="bloque_title"><a class="" href="http://gpsaknowledge.org/networking/">Networking Board</a> </h4>  
 
-																		<?php if ( bp_has_activities( bp_ajax_querystring( 'activity' ) . '&action=activity_update' ) ) : ?>
+																		<?php if ( bp_has_activities( bp_ajax_querystring( 'activity' ) . '&action=activity_update' .'&max=10') ) : ?>
 																			<?php while ( bp_activities() ) : bp_the_activity(); ?>
 																				<?php locate_template( array( 'activity/entry.php' ), true, false ); ?>
 																			<?php endwhile; ?>
