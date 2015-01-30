@@ -99,7 +99,7 @@ if(isset($title) && $title !='' && $title !='H'){
                                                      </div>                                                                                                                   
               <!--forums and toster and blog --><div class="one_half ">
 			  
-													<!--Inicio Networking -->
+											<!--Inicio Networking -->
 																	<div class="block_home1" style="margin-top: 50px;">
 																	 <h4 class="bloque_title"><a class="" href="http://gpsaknowledge.org/networking/">Networking Board</a> </h4>  
 
@@ -111,7 +111,7 @@ if(isset($title) && $title !='' && $title !='H'){
                                                                     </div>       
 						
 						
-													 <!-- Fin de Networkin -->
+												<!-- Fin de Networkin -->
 					  
 			  
                                                                   <!-- forums -->
