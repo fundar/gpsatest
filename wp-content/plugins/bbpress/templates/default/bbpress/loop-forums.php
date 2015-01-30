@@ -8,6 +8,11 @@
  */
 
 ?>
+
+<?php do_action( 'bbp_template_before_forums_loop' ); ?>
+<br/><br/><br/>
+<p><h3>Welcome to the GPSA Knowledge Platform Forums!</h3></p>
+<br/><br/><br/><p>This section offers users the opportunity to interact and exchange knowledge and lessons<br/> learned on selected social accountability issues through two types of online forums:</p><br/>
 <div class="col-md-3 col-sm-4">
 	<div class="buddysidebar">
 			<div class="widget">
@@ -16,10 +21,6 @@
 		
 	</div>
 </div>
-<?php do_action( 'bbp_template_before_forums_loop' ); ?>
-<br/><br/><br/>
-<p><h3>Welcome to the GPSA Knowledge Platform Forums!</h3></p>
-<br/><br/><br/><p>This section offers users the opportunity to interact and exchange knowledge and lessons<br/> learned on selected social accountability issues through two types of online forums:</p><br/>
 <ul id="forums-list-<?php bbp_forum_id(); ?>" class="bbp-forums">
 
 	<li class="bbp-header">
