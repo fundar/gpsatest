@@ -59,13 +59,13 @@ if(isset($title) && $title !='' && $title !='H'){
 																			
 																			<?php 
 																			// best practice is to create a function in another file, but this will work... 
-																			
-																			$friends[] = ('112','6');
+																			$friends = friends_get_friend_user_ids( bp_loggedin_user_id() );
+																			$friends[] = bp_loggedin_user_id();
 																			$friends_and_me = implode( ',', (array) $friends );
 																			$friends_and_me =  '&user_id=' . $friends_and_me;
 																			
 																			?>
-																		<?php if ( bp_has_activities( bp_ajax_querystring( 'activity' ) . '&action=activity_update&$friends_and_me' .'&max=5') ) : ?>
+																		<?php if ( bp_has_activities( bp_ajax_querystring( 'activity' ) . '&action=activity_update' .'&max=5') ) : ?>
 																			<?php while ( bp_activities() ) : bp_the_activity(); ?>
 																				<?php locate_template( array( 'activity/entry.php' ), true, false ); ?>
 																			<?php endwhile; ?>
