@@ -10,6 +10,8 @@
 ?>
 
 <?php do_action( 'bbp_template_before_topics_loop' ); ?>
+<?php get_sidebar(); ?>
+
 
 <ul id="bbp-forum-<?php bbp_forum_id(); ?>" class="bbp-topics">
 
