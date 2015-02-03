@@ -1,52 +1,35 @@
 <?php
-
 /**
- * BuddyPress - Activity Loop
- *
- * Querystring is set via AJAX in _inc/ajax.php - bp_dtheme_object_filter()
+ * Activity loop
  *
  * @package BuddyPress
- * @subpackage bp-default
+ * @subpackage Templatepack
  */
-
-$loop_number=vibe_get_option('loop_number');
-if(!isset($loop_number) || $loop_number == '')
-	$loop_number=5;
-
-$appended = '&per_page='.$loop_number;
-$appended = apply_filters('wplms_activity_loop',$appended);
 ?>
-
 <?php do_action( 'bp_before_activity_loop' ); ?>
 
-<?php if ( bp_has_activities( bp_ajax_querystring( 'activity' ).$appended ) ) : ?>
+<?php if ( bp_has_activities( bp_ajax_querystring( 'activity' ) ) ) : ?>
 
 	<?php /* Show pagination if JS is not enabled, since the "Load More" link will do nothing */ ?>
-	
+	<noscript>
 		<div class="pagination">
-			<div class="pag-count"><?php bp_activity_pagination_count(); ?></div>
+			<div class="pagination-count"><?php bp_activity_pagination_count(); ?></div>
 			<div class="pagination-links"><?php bp_activity_pagination_links(); ?></div>
 		</div>
-	
+	</noscript>
 
 	<?php if ( empty( $_POST['page'] ) ) : ?>
-
 		<ul id="activity-stream" class="activity-list item-list">
-
 	<?php endif; ?>
 
 	<?php while ( bp_activities() ) : bp_the_activity(); ?>
-
-		<?php locate_template( array( 'activity/entry.php' ), true, false ); ?>
-
+		<?php bp_get_template_part( 'activity/entry' ); ?>
 	<?php endwhile; ?>
 
 	<?php if ( bp_activity_has_more_items() ) : ?>
-		<li>
-			<div class="pagination">
-			<div class="pag-count"><?php bp_activity_pagination_count(); ?></div>
-			<div class="pagination-links"><?php bp_activity_pagination_links(); ?></div>
-		</div>
+
+		<li class="load-more">
+			<a href="#more"><?php _e( 'Load More', 'buddypress' ); ?></a>
 		</li>
 
 	<?php endif; ?>
@@ -60,12 +43,10 @@ $appended = apply_filters('wplms_activity_loop',$appended);
 <?php else : ?>
 
 	<div id="message" class="info">
-		<p><?php _e( 'Sorry, there was no activity found. Please try a different filter.', 'vibe' ); ?></p>
+		<p><?php _e( 'Sorry, there was no activity found. Please try a different filter.', 'buddypress' ); ?></p>
 	</div>
-
 <?php endif; ?>
-
-<?php do_action( 'bp_after_activity_loop' ); ?>
+	<?php do_action( 'bp_after_activity_loop' ); ?>
 
 <form action="" name="activity-loop-form" id="activity-loop-form" method="post">
 
