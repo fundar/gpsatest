@@ -5,7 +5,17 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 $title=get_post_meta(get_the_ID(),'vibe_title',true);
 
+	if($title=="THEMATIC FORUMS"){
+		$var="EXPERT FORUMS";
+		$slug="expert-forums";
+	}else{
+		$var="THEMATIC FORUMS";
+		$slug="tematic-forums";
+		}
+
 if(!isset($title) || !$title || (vibe_validate($title))){
+
+
 
 ?>
 <section id="title">
@@ -117,9 +127,9 @@ if(!isset($title) || !$title || (vibe_validate($title))){
                     <?php endif; ?>
                 </div>
 				<div class="sidebar">
-                    <div class="widget"><h4 class="widget_title">Solo expertos</h4>
+                    <div class="widget"><h4 class="widget_title">Forums</h4>
 								<ul>
-				<li><a class="bbp-forum-title" href="http://gpsatest.fundarlabs.mx/forums/forum/expert-forums/">Expert Forums</a></li>
+				<li><a class="bbp-forum-title" href="http://gpsatest.fundarlabs.mx/forums/forum/<?php $slug; ?>/"><?php $var; ?></a></li>
 								</ul>
 					</div>                
 				</div>
