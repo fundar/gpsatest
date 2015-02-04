@@ -3,7 +3,7 @@ get_header();
 if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 
-$title=get_post_meta(get_the_ID(),'vibe_title',true);
+echo $title=get_post_meta(get_the_ID(),'vibe_title',true);
 
 
 if(!isset($title) || !$title || (vibe_validate($title))){
@@ -16,7 +16,7 @@ if(!isset($title) || !$title || (vibe_validate($title))){
         <div class="row">
             <div class="col-md-9 col-sm-8">
                 <div class="pagetitle">
-                    <h1><?php the_title(); ?></h1>
+                    <h1><?php 	$titulo=the_title(); ?></h1>
                     <?php the_sub_title(); ?>
                 </div>
             </div>
@@ -123,7 +123,6 @@ if(!isset($title) || !$title || (vibe_validate($title))){
                     <div class="widget"><h4 class="widget_title">Forums</h4>
 								<ul>
 				<?php 
-				$titulo=the_title();			
 				   if($titulo=="Thematic Forums"){
 					    $var="EXPERT FORUMS";
 					     $slug="expert-forums";
@@ -132,7 +131,7 @@ if(!isset($title) || !$title || (vibe_validate($title))){
 					      $slug="tematic-forums";
 						  } 
 							?>
-				<li><a class="bbp-forum-title" href="http://gpsatest.fundarlabs.mx/forums/forum/<?php echo $slug; ?>/"><?php echo $var; ?></a></li>
+				<li><a class="bbp-forum-title" href="http://gpsatest.fundarlabs.mx/forums/forum/<?php echo $slug; ?>/"><?php echo $titulo; ?></a></li>
 								</ul>
 					</div>                
 				</div>
@@ -144,7 +143,7 @@ if(!isset($title) || !$title || (vibe_validate($title))){
     </div>
 </section>
 </div>
-
+<?php 
 <?php
 get_footer();
 ?>
