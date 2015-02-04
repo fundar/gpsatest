@@ -5,7 +5,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 $title=get_post_meta(get_the_ID(),'vibe_title',true);
 
-	if($title=="THEMATIC FORUMS"){
+	if($title=="Thematic Forums"){
 		$var="EXPERT FORUMS";
 		$slug="expert-forums";
 	}else{
