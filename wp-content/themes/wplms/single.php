@@ -129,7 +129,7 @@ if(!isset($title) || !$title || (vibe_validate($title))){
 				<div class="sidebar">
                     <div class="widget"><h4 class="widget_title">Forums</h4>
 								<ul>
-				<li><a class="bbp-forum-title" href="http://gpsatest.fundarlabs.mx/forums/forum/<?php $slug; ?>/"><?php $var; ?></a></li>
+				<li><a class="bbp-forum-title" href="http://gpsatest.fundarlabs.mx/forums/forum/<?php echo $slug; ?>/"><?php echo $var; ?></a></li>
 								</ul>
 					</div>                
 				</div>
