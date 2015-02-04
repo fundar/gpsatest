@@ -116,6 +116,21 @@ if(!isset($title) || !$title || (vibe_validate($title))){
                     if ( !function_exists('dynamic_sidebar')|| !dynamic_sidebar($sidebar) ) : ?>
                     <?php endif; ?>
                 </div>
+					<div class="sidebar">
+                    <div class="widget"><h4 class="widget_title">Forums</h4>
+								<ul>
+				<li><a class="bbp-forum-title" href="http://gpsatest.fundarlabs.mx/forums/forum/expert-forums/">Expert Forums</a></li>
+								</ul>
+					</div>                
+				</div>
+            
+				
+				
+				
+				
+				
+				
+				
             </div>
         </div>
     </div>
