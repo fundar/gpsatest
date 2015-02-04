@@ -5,13 +5,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 $title=get_post_meta(get_the_ID(),'vibe_title',true);
 
-	if($title=="Thematic Forums"){
-		$var="EXPERT FORUMS";
-		$slug="expert-forums";
-	}else{
-		$var="THEMATIC FORUMS";
-		$slug="tematic-forums";
-		}
 
 if(!isset($title) || !$title || (vibe_validate($title))){
 
@@ -129,6 +122,16 @@ if(!isset($title) || !$title || (vibe_validate($title))){
 				<div class="sidebar">
                     <div class="widget"><h4 class="widget_title">Forums</h4>
 								<ul>
+				<?php 
+				$titulo=the_title();			
+				   if($titulo=="Thematic Forums"){
+					    $var="EXPERT FORUMS";
+					     $slug="expert-forums";
+					}else{
+					     $var="THEMATIC FORUMS";
+					      $slug="tematic-forums";
+						  } 
+							?>
 				<li><a class="bbp-forum-title" href="http://gpsatest.fundarlabs.mx/forums/forum/<?php echo $slug; ?>/"><?php echo $var; ?></a></li>
 								</ul>
 					</div>                
