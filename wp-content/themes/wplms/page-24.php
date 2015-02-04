@@ -65,15 +65,22 @@ if(isset($title) && $title !='' && $title !='H'){
 																			$friends_and_me =  '&user_id=' . $friends_and_me;
 																			
 																			?>
-																		<?php if ( bp_has_activities( bp_ajax_querystring( 'activity' ) . '&action=activity_update' .'&max=5') ) : ?>
+																		<?php if ( bp_has_activities( bp_ajax_querystring( 'activity' ) . '&action=activity_update' .'&max=10') ) : ?>
 																			<?php while ( bp_activities() ) : bp_the_activity(); ?>
 																				<?php locate_template( array( 'activity/entry.php' ), true, false ); ?>
 																			<?php endwhile; ?>
 																		<?php endif; ?>
-																					<li class="load-more">
-																					<a href="#more"><?php _e( 'Load More', 'buddypress' ); ?></a>
-																					</li>
-  
+																				<div class="pagination">
+
+												<div class="pag-count"><?php bp_activity_pagination_count() ?></div>
+
+											<div class="pagination-links"><?php bp_activity_pagination_links() ?></div>
+
+												</div>
+																		
+																		
+																		
+                                                                    </div>       
 						
 						
 														<!-- Fin de Networking -->
