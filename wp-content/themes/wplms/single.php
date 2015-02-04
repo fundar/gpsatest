@@ -3,7 +3,7 @@ get_header();
 if ( have_posts() ) : while ( have_posts() ) : the_post();
 
 
-echo $title=get_post_meta(get_the_ID(),'vibe_title',true);
+$title=get_post_meta(get_the_ID(),'vibe_title',true);
 
 
 if(!isset($title) || !$title || (vibe_validate($title))){
