@@ -70,7 +70,10 @@ if(isset($title) && $title !='' && $title !='H'){
 																				<?php locate_template( array( 'activity/entry.php' ), true, false ); ?>
 																			<?php endwhile; ?>
 																		<?php endif; ?>
-																				  
+																					<li class="load-more">
+																					<a href="#more"><?php _e( 'Load More', 'buddypress' ); ?></a>
+																					</li>
+  
 						
 						
 														<!-- Fin de Networking -->
