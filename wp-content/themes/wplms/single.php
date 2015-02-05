@@ -144,7 +144,6 @@ if(!isset($title) || !$title || (vibe_validate($title))){
     </div>
 </section>
 </div>
-<?php 
 <?php
 get_footer();
 ?>
