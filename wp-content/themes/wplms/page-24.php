@@ -5,7 +5,6 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 $title=get_post_meta(get_the_ID(),'vibe_title',true);
 if(isset($title) && $title !='' && $title !='H'){
 ?>
-<div id="bar"><center>Not Compatible </center></div>
 
 <section id="title">
     <div class="container">
@@ -206,17 +205,3 @@ if(isset($title) && $title !='' && $title !='H'){
 <?php
 get_footer();
 ?>
-<script type="text/javascript">
-var trident = !!navigator.userAgent.match(/Trident\/7.0/);
-var net = !!navigator.userAgent.match(/.NET4.0E/);
-var IE11 = trident && net
-var IEold = ( navigator.userAgent.match(/MSIE/i) ? true : false );
-
-
-if(IE11 || IEold){
-
-}
-else{
-document.getElementById("bar").style.display = "none";
-}
-</script>
