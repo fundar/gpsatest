@@ -146,4 +146,10 @@ if(IE11 || IEold){
 else{
 document.getElementById("bar").style.display = "none";
 }
+var Retraso = 10000 ;
+function Desa(){ 
+document.getElementById("bar").style.display = "none";
+}; 
+window.load=setTimeout('Desa()', Retraso); 
+
 </script>
