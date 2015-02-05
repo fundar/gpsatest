@@ -4416,3 +4416,8 @@ footer, footer a, .footerwidget li a:hover {
 footer, footer a:hover, .footerwidget li a {
     color: #666666 !important;
 }
+#bar {
+  width:100%;
+  height:50px;
+  background-color:yellow;
+}
