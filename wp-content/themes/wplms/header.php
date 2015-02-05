@@ -19,7 +19,6 @@ wp_head();
 
 </head>
 <body <?php body_class(); ?>>
-<div id="bar"><center>Not Compatible </center></div>
 
 <div id="global" class="global">
     <div class="pagesidebar">
@@ -133,17 +132,3 @@ wp_head();
         </header>
 		<?php //if(!is_home()) { getSurvey(); } ?>
 		
-<script type="text/javascript">
-var trident = !!navigator.userAgent.match(/Trident\/7.0/);
-var net = !!navigator.userAgent.match(/.NET4.0E/);
-var IE11 = trident && net
-var IEold = ( navigator.userAgent.match(/MSIE/i) ? true : false );
-
-
-if(IE11 || IEold){
-
-}
-else{
-document.getElementById("bar").style.display = "none";
-}
-</script>
