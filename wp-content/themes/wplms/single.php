@@ -16,7 +16,7 @@ if(!isset($title) || !$title || (vibe_validate($title))){
         <div class="row">
             <div class="col-md-9 col-sm-8">
                 <div class="pagetitle">
-                    <h1><?php $titulo=the_title(); ?></h1>
+                    <h1><?php $titulo=the_title('', '', false); ?></h1>
                     <?php the_sub_title(); ?>
                 </div>
             </div>
