@@ -237,7 +237,7 @@ function mycustom_breadcrumb_options() {
  
  / Remove original sidebars
 function no_sidebars() {
-	if (is_page 'tematic-forums')
+	if (is_page ('tematic-forums'))
 		return false;
 	else
 		return true;
