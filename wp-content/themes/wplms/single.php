@@ -8,7 +8,7 @@ $title=get_post_meta(get_the_ID(),'vibe_title',true);
 
 if(!isset($title) || !$title || (vibe_validate($title))){
 
-
+echo $paged = $wp_query->get( 'paged' );
 
 ?>
 <section id="title">
