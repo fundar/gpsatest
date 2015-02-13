@@ -18,7 +18,7 @@ wp_head();
 ?>
 
 </head>
-<body <?php body_class(); ?>
+<body>
 <div id="bar"><center>Your browser is out-of-date. Please download one of these up-to-date, free and excellent browsers: Chrome, Firefox</center></div>
 
 <div id="global" class="global">
