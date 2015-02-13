@@ -235,14 +235,7 @@ function mycustom_breadcrumb_options() {
     return $args;
 }
  
- / Remove original sidebars
-function no_sidebars() {
-	if (is_page ('tematic-forums'))
-		return false;
-	else
-		return true;
-}
-add_filter('thesis_show_sidebars', 'no_sidebars');
+ 
  
 add_filter('bbp_before_get_breadcrumb_parse_args', 'mycustom_breadcrumb_options');
 
