@@ -235,9 +235,9 @@ function mycustom_breadcrumb_options() {
     return $args;
 }
  
- / Remove original sidebars
+ // Remove original sidebars
 function no_sidebars() {
-	if (is_home())
+	if (is_page('528'))
 		return false;
 	else
 		return true;
