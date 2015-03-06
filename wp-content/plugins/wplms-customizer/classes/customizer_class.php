@@ -373,6 +373,7 @@ if(!class_exists('WPLMS_Customizer_Plugin_Class'))
                 $custom_redirect_url=bp_core_get_user_domain($user->ID);
                 return $custom_redirect_url;    
             }
+			
             return $redirect_url;
             
         }  
