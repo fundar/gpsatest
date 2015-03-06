@@ -245,7 +245,7 @@ function no_sidebars() {
 
 function buddypress_login_redirection($redirect_url,$request_url,$user){
     global $bp;
-     $custom_redirect_url='http://google.com';
+     $custom_redirect_url=bp_core_get_user_domain($user->ID).'/'.WPLMS_DASHBOARD_SLUG;
         return $custom_redirect_url; 
 } 
 add_filter('login_redirect',array($this, 'buddypress_login_redirection'),100,3);  
