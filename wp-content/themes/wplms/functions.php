@@ -242,13 +242,6 @@ function no_sidebars() {
 	else
 		return true;
 }
-
-function buddypress_login_redirection($redirect_url,$request_url,$user){
-    global $bp;
-     $custom_redirect_url= '/members-2/'.bp_core_get_user_domain($user->ID).'/';
-        return 
-}  
-
 add_filter('thesis_show_sidebars', 'no_sidebars');
  
 add_filter('bbp_before_get_breadcrumb_parse_args', 'mycustom_breadcrumb_options');
