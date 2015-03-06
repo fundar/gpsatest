@@ -370,7 +370,7 @@ if(!class_exists('WPLMS_Customizer_Plugin_Class'))
         function buddypress_login_redirection($redirect_url,$request_url,$user){
             global $bp;
             if ( defined( 'BP_COURSE_SLUG' ) ){
-                $custom_redirect_url=bp_core_get_user_domain($user->ID).'/'.BP_COURSE_SLUG;
+                $custom_redirect_url=bp_core_get_user_domain($user->ID);
                 return $custom_redirect_url;    
             }
             return $redirect_url;
