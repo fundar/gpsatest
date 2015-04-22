@@ -70,13 +70,7 @@ if(isset($title) && $title !='' && $title !='H'){
 																				<?php locate_template( array( 'activity/entry.php' ), true, false ); ?>
 																			<?php endwhile; ?>
 																		<?php endif; ?>
-																				<div class="pagination">
-
-												<div class="pag-count"><?php bp_activity_pagination_count() ?></div>
-
-											<div class="pagination-links"><?php bp_activity_pagination_links() ?></div>
-
-												</div>
+																				
 																		
 																		
 																		
