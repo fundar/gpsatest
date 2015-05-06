@@ -57,17 +57,10 @@ if(isset($title) && $title !='' && $title !='H'){
 																	 <h4 class="bloque_title"><a class="" href="http://gpsaknowledge.org/networking/">Networking Board</a> </h4>  
 																			
 																			
-																			<?php 
-																			// best practice is to create a function in another file, but this will work... 
-																			$friends = friends_get_friend_user_ids( bp_loggedin_user_id() );
-																			$friends[] = bp_loggedin_user_id();
-																			$friends_and_me = implode( ',', (array) $friends );
-																			$friends_and_me =  '&user_id=' . $friends_and_me;
-																			
-																			?>
+
 																		<?php if ( bp_has_activities( bp_ajax_querystring( 'activity' ) . '&action=activity_update' .'&max=4') ) : ?>
 																			<?php while ( bp_activities() ) : bp_the_activity(); ?>
-																				<?php locate_template( array( 'activity/entry.php' ), true, false ); ?>
+																				<?php locate_template( array( 'activity/entry2.php' ), true, false ); ?>
 																			<?php endwhile; ?>
 																		<?php endif; ?>
 																				
