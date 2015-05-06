@@ -252,8 +252,3 @@ add_action( 'bp_member_header_actions', 'bp_add_friend_button' );
 add_action( 'bp_member_header_actions', 'bp_send_private_message_button' );
 
 
-function cc_custom_excerpt_length() {
-return '3';
-}
-add_filter( 'bp_activity_excerpt_length', 'cc_custom_excerpt_length' );
-
