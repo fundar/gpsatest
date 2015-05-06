@@ -65,7 +65,7 @@ if(isset($title) && $title !='' && $title !='H'){
 																			$friends_and_me =  '&user_id=' . $friends_and_me;
 																			
 																			?>
-																		<?php if ( bp_has_activities( bp_ajax_querystring( 'activity' ) . '&action=activity_update' .'&max=5') ) : ?>
+																		<?php if ( bp_has_activities( bp_ajax_querystring( 'activity' ) . '&action=activity_update' .'&max=4') ) : ?>
 																			<?php while ( bp_activities() ) : bp_the_activity(); ?>
 																				<?php locate_template( array( 'activity/entry.php' ), true, false ); ?>
 																			<?php endwhile; ?>
