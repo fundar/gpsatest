@@ -35,7 +35,8 @@ if(isset($title) && $title !='' && $title !='H'){
 removeimages(); 
 
 add_filter( 'bp_activity_excerpt_length', 'cc_custom_excerpt_length' );
-add_filter('wp_trim_excerpt', 'new_excerpt_more');        
+add_filter('bp_activity_truncate_entry', 'bpfr_excerpt', 3, 3 ); 
+
 
 ?>
 
