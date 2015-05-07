@@ -5,7 +5,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 $title=get_post_meta(get_the_ID(),'vibe_title',true);
 if(isset($title) && $title !='' && $title !='H'){
 ?>
-<style>
+<style type="text/css">
 #buddypress .activity-list li.new_forum_topic .activity-content .activity-inner {
 
 input[type="file"]{
@@ -611,6 +611,13 @@ body.activity-permalink #buddypress .activity-list li .activity-header > p {
 	margin-left: 5px;
 	padding-left: 10px;
 }
+
+#buddypress .activity-list li.new_forum_post .activity-content .activity-inner. .bpfb_images,
+#buddypress .activity-list li.new_forum_topic .activity-content .activity-inner .bpfb_images {
+	display: none;
+}
+
+
 body.activity-permalink #buddypress .activity-content .activity-inner,
 body.activity-permalink #buddypress .activity-content blockquote {
 	margin-left: 0;
