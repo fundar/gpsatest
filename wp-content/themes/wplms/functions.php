@@ -246,7 +246,10 @@ function no_sidebars() {
 function removeimages() {
 	echo "<style>
 			.bpfb_images {display: none;}
-		  </style>";
+		  </style>
+<script src='/wp-content/themes/wplms/js/buddypress.js'></script>";
+		  
+		  
 	return true;
 }
 
