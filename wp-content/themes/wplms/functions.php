@@ -258,7 +258,7 @@ return '180';
 
 
 function cc_excerpt_append_text() {
-return '<a href="http://gpsatest.fundarlabs.mx/networking/" rel="nofollow">[Read more]</a>';
+return 'Read more in networking';
 }
 
 add_filter('thesis_show_sidebars', 'no_sidebars');
