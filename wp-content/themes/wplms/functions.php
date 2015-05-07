@@ -257,10 +257,9 @@ return '180';
 }
 
 
-function bpfr_excerpt($text) {
-return str_replace( '<a>','',$text );
+function cc_excerpt_append_text() {
+return '';
 }
-
 
 add_filter('thesis_show_sidebars', 'no_sidebars');
  
