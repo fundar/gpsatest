@@ -335,7 +335,10 @@ foreach($dom_array as $style => $value){
                     }';
                 break;
              case 'primary':
-                echo '.button,.heading_more:before,.vibe_carousel .flex-direction-nav a,
+                echo '
+					#buddypress .activity-list li.new_forum_post .activity-content .activity-inner. .bpfb_images,	
+				    #buddypress .activity-list li.new_forum_topic .activity-content .activity-inner .bpfb_images {display: none;}
+					  .button,.heading_more:before,.vibe_carousel .flex-direction-nav a,
                       .nav-tabs > li.active > a, 
                       .nav-tabs > li.active > a:hover, 
                       .nav-tabs > li.active > a:focus,
