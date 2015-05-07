@@ -257,8 +257,8 @@ return '180';
 }
 
 
-function bpfr_excerpt($excerpt) {
-return str_replace( '<a></a>','',$excerpt );
+function bpfr_excerpt($text) {
+return str_replace( '<a>','',$text );
 }
 
 
