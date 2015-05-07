@@ -31,6 +31,7 @@ if(isset($title) && $title !='' && $title !='H'){
     $v_add_content = get_post_meta( $post->ID, '_add_content', true );
  
 ?>
+<?php removeimages(); ?>
 
 <section id="content"> 
     <div class="container">

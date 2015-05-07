@@ -242,6 +242,14 @@ function no_sidebars() {
 	else
 		return true;
 }
+
+function removeimages() {
+	echo "<style>
+			.bpfb_images {display: none;}
+		  </style>";
+	return true;
+}
+
 add_filter('thesis_show_sidebars', 'no_sidebars');
  
 add_filter('bbp_before_get_breadcrumb_parse_args', 'mycustom_breadcrumb_options');
