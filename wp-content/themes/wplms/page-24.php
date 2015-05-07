@@ -35,7 +35,7 @@ if(isset($title) && $title !='' && $title !='H'){
 removeimages(); 
 
 add_filter( 'bp_activity_excerpt_length', 'cc_custom_excerpt_length' );
-add_filter( 'bp_excerpt_append_text', 'cc_excerpt_append_text' );
+add_filter( 'bp_activity_excerpt_append_text', 'cc_excerpt_append_text' );
 
 
 ?>

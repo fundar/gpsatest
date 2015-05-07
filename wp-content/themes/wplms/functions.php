@@ -258,7 +258,7 @@ return '180';
 
 
 function cc_excerpt_append_text() {
-return '';
+return 'Sto';
 }
 
 add_filter('thesis_show_sidebars', 'no_sidebars');
