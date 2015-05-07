@@ -252,6 +252,13 @@ function removeimages() {
 	return true;
 }
 
+function cc_custom_excerpt_length() {
+return '180';
+}
+
+
+        
+
 add_filter('thesis_show_sidebars', 'no_sidebars');
  
 add_filter('bbp_before_get_breadcrumb_parse_args', 'mycustom_breadcrumb_options');
