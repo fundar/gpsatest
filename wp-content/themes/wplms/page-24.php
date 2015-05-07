@@ -31,7 +31,12 @@ if(isset($title) && $title !='' && $title !='H'){
     $v_add_content = get_post_meta( $post->ID, '_add_content', true );
  
 ?>
-<?php removeimages(); ?>
+<?php 
+removeimages(); 
+
+add_filter( 'bp_activity_excerpt_length', 'cc_custom_excerpt_length' );
+
+?>
 
 <section id="content"> 
     <div class="container">
@@ -60,6 +65,7 @@ if(isset($title) && $title !='' && $title !='H'){
 																			
 
 																		<?php if ( bp_has_activities( bp_ajax_querystring( 'activity' ) . '&action=activity_update' .'&max=4') ) : ?>
+																			
 																			<?php while ( bp_activities() ) : bp_the_activity(); ?>
 																				<?php locate_template( array( 'activity/entry2.php' ), true, false ); ?>
 																			<?php endwhile; ?>
