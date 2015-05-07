@@ -257,7 +257,12 @@ return '180';
 }
 
 
-        
+function new_excerpt_more($excerpt) {
+    $link = "/networking/";
+    $title = the_title('','',false);
+    $ahref = '<a href="'.$link.'" title="'.$title.'">more...</a>';
+    return str_replace('[...]', $ahref, $excerpt);
+}
 
 add_filter('thesis_show_sidebars', 'no_sidebars');
  
