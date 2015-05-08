@@ -51,7 +51,9 @@
 				<?php bp_activity_content_body(); ?>
 
 			</div>
-
+			<div class="read_more">
+				<a href="http://gpsaknowledge.org/networking/" rel="nofollow">[Read more]</a>
+			</div>
 		<?php endif; ?>
 
 	
