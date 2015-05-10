@@ -44,44 +44,27 @@ add_filter( 'bp_activity_excerpt_append_text', 'cc_excerpt_append_text' );
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-
+		  <!--carrusel -->		  
                 <div class="<?php echo $v_add_content;?> content">
                     <?php
                         the_content();
-                     ?>
+                     ?>		   
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!-- second part home -->
+<!--carrusel -->
+<section class="stripe aboutus-3">
+</section>
+<!-- seccion grtis morada -->
 <section id="content" style="background: none repeat scroll 0% 0% rgb(255, 255, 255);">
     <div class="container">
         <div class="row">
             <div class="col-md-9 col-sm-8">
-                       <div class="content" style="padding: 0px ! important; margin-top: 48px ! important;">
-					   <!--Inicio Networking -->
-																	<div class="block_home1" style="margin-top: 50px;">
-																	 <h4 class="bloque_title"><a class="" href="http://gpsaknowledge.org/networking/">Networking Board</a> </h4>  
-																			
-																			
-
-																		<?php if ( bp_has_activities( bp_ajax_querystring( 'activity' ) . '&action=activity_update' .'&max=4') ) : ?>
-																			
-																			<?php while ( bp_activities() ) : bp_the_activity(); ?>
-																				<?php locate_template( array( 'activity/entry2.php' ), true, false ); ?>
-																			<?php endwhile; ?>
-																		<?php endif; ?>
-																				
-																		
-																		
-																		
-                                                                    </div>       
-						
-						
-														<!-- Fin de Networking -->
+                   <div class="content" style="padding: 0px ! important; margin-top: 48px ! important;">
 					   
-                       <!--webinars and blog --><div class="one_half clearfix">
+                     <!--webinars and blog --><div class="one_half clearfix">
                                                         <div class="column_content first">
                                                                     <!-- webinars -->
                                                                     <div class="block_home">
@@ -167,12 +150,27 @@ add_filter( 'bp_activity_excerpt_append_text', 'cc_excerpt_append_text' );
 
                                                                        </article> <!-- end .entry -->
                                                                        <?php endwhile; // end of the loop. ?>
-                                                                    </div>                
+                                                                    </div>
+	
+						   <!--Inicio Networking -->
+					    <div class="block_home1" style="margin-top: 50px;">
+						<h4 class="bloque_title"><a class="" href="http://gpsaknowledge.org/networking/">Networking Board</a> </h4>  
+						    <?php if ( bp_has_activities( bp_ajax_querystring( 'activity' ) . '&action=activity_update' .'&max=4') ) : ?>							
+						    <?php while ( bp_activities() ) : bp_the_activity(); ?>
+						    <?php locate_template( array( 'activity/entry2.php' ), true, false ); ?>
+						    <?php endwhile; ?>
+						    <?php endif; ?>																							    																		
+                                             </div>       			
+			<!-- Fin de Networking -->
+	
+	
+	
+	
                                                 </div>
                         </div><!--fin 4 entradas: blog, webinar, forum, roster-->
                       
 						
-					  <!--Inicio carrusel -->
+					
                         
                                 <?php $service_query = new WP_Query('page_id=813');
                                 while ( $service_query->have_posts() ) : $service_query->the_post(); ?>
