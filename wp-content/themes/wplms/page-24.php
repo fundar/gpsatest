@@ -132,7 +132,7 @@ add_filter( 'bp_activity_excerpt_append_text', 'cc_excerpt_append_text' );
     <div class="container">
         <div class="row">
             <div class="col-md-9 col-sm-8">
-                    <div id="networking-home"class="content" style="padding: 0px ! important; margin-top: 48px ! important;">
+                    <div id="networking-home"class="content" style="padding: 0px ! important; margin-top: 18px ! important;">
 				<!--Inicio Networking -->				     
 				<h2 class="logos_title"><a class="" href="http://gpsaknowledge.org/networking/">Networking Board</a> </h2>
 				<div class="block_networking">
