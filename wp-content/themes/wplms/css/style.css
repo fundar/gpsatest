@@ -3846,18 +3846,19 @@ h2.logos_title > a {
     margin-top: 0;
     padding: 25px 0 0 10px;
 }
-.block_networking{
+.block_networking {
     background: none repeat scroll 0 0 #f4f4f4;
     border-bottom: 5px solid #f4f4f4;
     border-left: 5px solid #f4f4f4;
+    border-radius: 3px;
     border-right: 5px solid #f4f4f4;
     display: block;
+    margin-bottom: 30px;
+    margin-top: 20px;
     min-height: 158px;
     padding: 7px 7px 30px;
     width: inherit;
-    margin-bottom:30px;
 }
-
 #networking-home > .block_networking > #activitytitle > .container > .row > .activity > .activity-content {
     border-bottom: 1px solid #fff;
     padding-bottom: 20px;
