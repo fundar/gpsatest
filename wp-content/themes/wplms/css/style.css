@@ -3749,6 +3749,9 @@ img.wp-image-2001 {
     padding: 20px 0 10px 0px !important;
     position: relative;
 }
+#second-content{
+	background:#dee2ef;
+}
     /** full calendar home**/
     #evcal_calendar_2 > #evcal_head > #evcal_cur {
 	font-family: 'Open Sans','Helvetica Neue',sans-serif;
