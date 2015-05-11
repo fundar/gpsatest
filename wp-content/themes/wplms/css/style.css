@@ -3831,6 +3831,14 @@ h2.logos_title {
     text-transform:uppercase;
 
 }
+h2.logos_title > a {
+    color: #253169 !important;
+    font-family: 'steelfish_rgregular';
+    font-size: 28px;
+    font-weight: normal;
+    text-transform:uppercase;
+
+}
 .bloque_title > a{
     color:#fff;
 }
