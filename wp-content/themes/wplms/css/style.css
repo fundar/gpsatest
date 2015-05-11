@@ -3749,8 +3749,10 @@ img.wp-image-2001 {
     padding: 20px 0 10px 0px !important;
     position: relative;
 }
-#second-content{
-	background:#dee2ef;
+#second-content {
+    background: none repeat scroll 0 0 #dee2ef;
+    padding-bottom: 30px;
+    padding-top: 30px;
 }
     /** full calendar home**/
     #evcal_calendar_2 > #evcal_head > #evcal_cur {
@@ -3839,8 +3841,10 @@ h2.logos_title > a {
     text-transform:uppercase;
 
 }
-#networking-home > .block_networking > #activitytitle > .container > .row > li{
-	list-style:none;
+#networking-home > .block_networking > #activitytitle > .container > .row > li {
+    list-style: outside none none;
+    margin-top: 0;
+    padding: 25px 0 0 10px;
 }
 .block_networking{
     background: none repeat scroll 0 0 #f4f4f4;
@@ -3852,6 +3856,11 @@ h2.logos_title > a {
     padding: 7px 7px 30px;
     width: inherit;
     margin-bottom:30px;
+}
+
+#networking-home > .block_networking > #activitytitle > .container > .row > .activity > .activity-content {
+    border-bottom: 1px solid #fff;
+    padding-bottom: 20px;
 }
 .country{
 	text-align:center;
