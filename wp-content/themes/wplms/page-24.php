@@ -132,15 +132,17 @@ add_filter( 'bp_activity_excerpt_append_text', 'cc_excerpt_append_text' );
     <div class="container">
         <div class="row">
             <div class="col-md-9 col-sm-8">
-                    <div class="content" style="padding: 0px ! important; margin-top: 48px ! important;">
+                    <div id="networking-home"class="content" style="padding: 0px ! important; margin-top: 48px ! important;">
 				<!--Inicio Networking -->				     
-				<h2 class="logos_title "><a class="" href="http://gpsaknowledge.org/networking/">Networking Board</a> </h2>  
+				<h2 class="logos_title"><a class="" href="http://gpsaknowledge.org/networking/">Networking Board</a> </h2>
+				<div class="block_networking">
 					     <?php if ( bp_has_activities( bp_ajax_querystring( 'activity' ) . '&action=activity_update' .'&max=4') ) : ?>
 																	     
 						     <?php while ( bp_activities() ) : bp_the_activity(); ?>
 						     <?php locate_template( array( 'activity/entry2.php' ), true, false ); ?>
 						     <?php endwhile; ?>
 						     <?php endif; ?>
+				</div>
 				    
 				<!-- Fin de Networking -->
 				<!--Inicio carrusel -->

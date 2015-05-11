@@ -3839,6 +3839,24 @@ h2.logos_title > a {
     text-transform:uppercase;
 
 }
+#networking-home > .block_networking > #activitytitle > .container > .row > li{
+	list-style:none;
+}
+.block_networking{
+    background: none repeat scroll 0 0 #f4f4f4;
+    border-bottom: 5px solid #f4f4f4;
+    border-left: 5px solid #f4f4f4;
+    border-right: 5px solid #f4f4f4;
+    display: block;
+    min-height: 158px;
+    padding: 7px 7px 30px;
+    width: inherit;
+    margin-bottom:30px;
+}
+.country{
+	text-align:center;
+	font-size:11px;
+}
 .bloque_title > a{
     color:#fff;
 }
