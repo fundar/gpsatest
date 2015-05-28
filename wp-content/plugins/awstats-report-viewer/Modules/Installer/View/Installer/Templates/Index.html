@@ -1,0 +1,146 @@
+<?php
+/**
+* 	
+*/
+
+# No direct access
+defined('ABSPATH') or die(ARV\NO_DIRECT_ACCESS_MESSAGE);
+	
+# Initialize
+$router =& $this->router();
+$installerModel =& $this->mvcServiceManager()->getModel();
+
+# Get forms
+$forms =& $this->result();
+
+/**
+* put your comment there...
+* 
+* @var ARV\Modules\Installer\Model\Forms\AWStatsDiscoverParametersForm
+*/
+$discoverForm =& $forms->discoverForm;
+
+/**
+* put your comment there...
+* 
+* @var ARV\Modules\Installer\Model\Forms\InstallationParametersForm
+*/
+$installationform =& $forms->installationForm;
+
+/**
+* put your comment there...
+* 
+* @var ARV\Modules\Installer\Model\Forms\ResetParametersForm
+*/
+$resetForm =& $forms->resetForm;
+
+# Security token field name, both installation, discover and reset forms are the same 
+$sTokenName = $installationform->getSecurityTokenName();
+?>
+<!-- STYLESHEET FILE START -->
+<style type="text/css">
+	ul#installations-errors {color: red;background-color: white;height: 68px;overflow: auto;padding: 10px 0px 0 30px;width: 96%;}
+	ul#installations-errors li {list-style-type: square;}
+</style>
+<style type="text/css">
+	#arv-instalation-page p {margin: 0;}
+	.form-tips {margin: 15px 12px;}
+	#arv-instalation-page p.field-tip {margin-left: 206px; color: #aaa;}
+	#arv-installation-form {margin-top: 10px;}
+	div#help-box {margin: 8px;float: right;}
+	fieldset {width: 98%; padding: 2px 5px; display: inline;}
+	fieldset strong {background-color: white;margin: 11px;top: 7px;position: relative;}
+	fieldset ul {padding: 0 15px;}
+	label {width: 200px; display: inline-block;}
+	#arv-reset {margin-top: 20px;}
+	input[type="submit"] {width: 120px; background-color: white;}
+	input[type="text"] {width: 512px;}
+</style>
+<!-- STYLESHEET FILE ENDD -->
+<div id="arv-instalation-page" class="arv-body">
+<?php if ($installerModel->hasErrors()) : ?>
+	<ul id="installations-errors">
+<?php foreach ($installerModel->getCleanErrors() as $errorMessage) : ?>
+		<li><?php echo $errorMessage; ?></li>
+<?php endforeach; ?>
+	</ul>
+<?php $installerModel->writeState(); # Re-write state as this is running too late! ?>
+<?php endif; ?>
+	<div id="help-box">
+		Have a problem? Submit a support question on <a target="_blank" href="https://wordpress.org/plugins/awstats-report-viewer/">ARV Plugin Support page</a>
+	</div>
+	<form id="arv-discover-awstats-params-tool" method="post">
+		<fieldset>
+			<strong>AWStats Discover Parameters</strong>
+			<div class="form-tips">
+				<p>The following parameters are being used to help Wordpress Admin discover AWStats installation parameters that will be used for generating report</p>
+				<p>You can change the following parameters and press discover to get ARV Plugin discovering the installation parameters for you.</p>
+			</div>
+			<ul>
+				<li>
+					<label for="discover-script-path" title="">AWStats Script</label>
+					<input id="discover-script-path" type="text" name="discover[scriptPath]" value="<?php echo $discoverForm->getAWStatsScript()->getValue(); ?>">
+					<p class="field-tip">Path to AWStats program used for discovering currently installed AWStats version number</p>
+				</li>
+				<li>
+					<label for="discover-domain" title="">Domain</label>
+					<input id="discover-domain" type="text" name="discover[domain]" value="<?php echo $discoverForm->getDomain()->getValue() ?>">
+					<p class="field-tip">Domain name used for discovering AWStats config file name</p>
+				</li>
+				<li>
+					<label for="discover-system-user" title="">System User</label>
+					<input id="discover-system-user" type="text" name="discover[systemUser]" value="<?php echo $discoverForm->getSystemUser()->getValue() ?>">
+					<p class="field-tip">Host user name used for discovering Configuration file path</p>
+				</li>
+				<li>
+					<input type="hidden" name="discover[<?php echo $sTokenName; ?>]" value="<?php echo $discoverForm->getSecurityToken()->getValue(); ?>" />
+					<input type="submit" name="Auto Discover" value="Auto Discover" />
+				</li>
+			</ul>
+		</fieldset>
+	</form>
+	<form id="arv-installation-form" method="post" action="<?php echo $router->routeAction('Install') ?>">
+		<fieldset>
+			<strong>AWStats Installation Parameters</strong>
+			<div class="form-tips">
+				<p>This is the final AWStats parameters to be used for generating AWStats report.</p>
+				<p>You can either fill it manually or use the form above for auto discovering those parameters</p>
+			</div>
+			<ul>
+				<li>
+					<label for="installs-domain" title="">Domain</label>
+					<input id="installs-domain" type="text" name="awstatsParams[domain]" value="<?php echo $installationform->getDomain()->getValue() ?>">
+					<p class="field-tip">Domain name to get statictics for</p>
+				</li>
+				<li>
+					<label for="installs-scriptPath" title="">AWStats Script</label>
+					<input id="installs-scriptPath" type="text" name="awstatsParams[scriptPath]" value="<?php echo $installationform->getAWStatsScriptPath()->getValue(); ?>">
+					<p class="field-tip">AWStats script program used for generating statictis report</p>
+				</li>
+				<li>
+					<label for="installs-buildStaticPath" title="">Build Static</label>
+					<input id="installs-buildStaticPath" type="text" name="awstatsParams[buildStaticPath]" value="<?php echo $installationform->getBuildStaticPath()->getValue(); ?>">
+					<p class="field-tip">AWStats build static tools used for creating HTML files from the generated awstats report</p>
+				</li>
+				<li>
+					<label for="installs-configFile" title="">Config File</label>
+					<input id="installs-configFile" type="text" name="awstatsParams[configFile]" value="<?php echo $installationform->getConfigFilePath()->getValue(); ?>">
+					<p class="field-tip">Path to awstats configuration file for the specified domain</p>
+				</li>
+				<li>
+					<label for="installs-iconsDir" title="">Icons Directory</label>
+					<input id="installs-iconsDir" type="text" name="awstatsParams[iconsDir]" value="<?php echo $installationform->getIconsDirPath()->getValue(); ?>">
+					<p class="field-tip">AWStats Icons source directory used for copying images to the ARV report directory</p>
+				</li>
+				<li>
+					<input type="hidden" name="awstatsParams[<?php echo $sTokenName; ?>]" value="<?php echo $installationform->getSecurityToken()->getValue(); ?>" />
+					<input type="submit" name="Install" value="Install" />
+				</li>
+			</ul>
+		</fieldset>
+	</form>
+	<form id="arv-reset" method="post" action="<?php echo $router->routeAction('Reset') ?>">
+		<input type="hidden" name="reset[<?php echo $sTokenName; ?>]" value="<?php echo $resetForm->getSecurityToken()->getValue(); ?>" />
+		<input type="submit" name="Reset" value="Reset" />
+	</form>
+</div>

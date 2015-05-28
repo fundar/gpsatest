@@ -1,0 +1,21 @@
+<?php
+/**
+* 
+*/
+
+# No direct access
+defined('ABSPATH') or die(ARV\NO_DIRECT_ACCESS_MESSAGE);
+
+# Get Report Page Address
+$reportPage = new ARV\Services\Dashboard\MenuPages\Viewer\Page();
+?>
+<style type="text/css">
+	#arv-installer-install {margin-top: 86px;}
+</style>
+<div id="arv-installer-install">
+	<p>ARV Plugin has been installed successfuly</p>
+	<p>AWStats report has been created for the first time</p>
+	<p>You're now ready to view awstats report on <a href="<?php echo $reportPage->getUrl(); ?>">ARV Page</a></p>
+	<p>Please let me know your thoughts about ARV by submitting a review on Wordpress repository</p>
+	<p>Thank you for using ARV Plugin</p>
+</div>
