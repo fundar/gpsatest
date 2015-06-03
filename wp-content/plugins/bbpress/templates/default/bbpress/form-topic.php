@@ -48,10 +48,10 @@
 				<?php do_action( 'bbp_theme_before_topic_form_notices' ); ?>
 
 				
-							<?php $current_forum_id = get_forum_id(); ?>
+							<?php echo $current_forum_id = get_forum_id();  $b=566; ?>
 
 				
-				<?php if ( !bbp_is_topic_edit() && bbp_is_forum_closed()  || $current_forum_id== "566"    ) : ?>
+				<?php if ( !bbp_is_topic_edit() && bbp_is_forum_closed()  || $current_forum_id==$b) : ?>
 
 				
 				
