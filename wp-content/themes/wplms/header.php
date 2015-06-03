@@ -46,7 +46,7 @@ wp_head();
         <div id="headertop" class="<?php if(isset($fix) && $fix){echo 'fix';} ?>">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-8 col-sm-9">
+                    <div class="col-md-8 col-sm-9">ertt
                        <a href="<?php echo vibe_site_url(); ?>" class="homeicon"><img src="<?php echo (isset($logo)?$logo:VIBE_URL.'/images/logo.png'); ?>" alt="<?php echo get_bloginfo('name'); ?>"></a>
                     </div>
                     <div class="col-md-4 col-sm-3">
