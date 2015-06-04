@@ -750,7 +750,7 @@ header{
 	text-transform: uppercase;
 	color:rgba(255,255,255,0.6);
 }
-#headertop .homeicon{display: none;}
+#headertop .homeicon{display: block;}
 #headertop.fixed{
 	position: fixed;
 	width:100%;
@@ -765,7 +765,7 @@ header{
  -webkit-transform: translateZ(0); 
 }
 #headertop .homeicon img{
-	max-height: 20px;
+	max-height: 40px;
 }
 #headertop li{
 	float:left;
@@ -1299,12 +1299,15 @@ h2#sidelogo:hover img{
 
 #logo img {
     margin-bottom: 11px;
-    max-height: 58px !important;
-    max-width: 283px !important;
+    height: auto !important;
     width: auto;
 }
 .container-logo {
+    display: list-item;
+    float: left;
+    margin: -18px auto 0;
     text-align: center;
+    width: 100%;
 }
 #bpavatar+ul{
 	position: relative;
