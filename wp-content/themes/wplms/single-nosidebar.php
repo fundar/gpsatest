@@ -124,7 +124,7 @@ if(isset($title) && $title !='' && $title !='H'){
     <div class="container"> 
     <div class="row">
         <h2 class="subt">Related Materials</h2>
-
+        <?php if ( function_exists( 'echo_ald_crp' ) ) echo_ald_crp(); ?>
     </div>
     </div>
 </section>
