@@ -123,7 +123,7 @@ if(isset($title) && $title !='' && $title !='H'){
 <section class="stripe aboutus-3">
     <div class="container"> 
     <div class="row">
-        <?php if ( function_exists( 'echo_ald_crp' ) ) echo_ald_crp(); ?>
+      <!--  <?php if ( function_exists( 'echo_ald_crp' ) ) echo_ald_crp(); ?> -->
     </div>
     </div>
 </section>
