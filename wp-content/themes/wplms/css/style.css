@@ -2029,8 +2029,8 @@ h4.block_title + .date{line-height:1.4;}
 .p12{
     font-size:12px;
 }
-.left-i{
-    margin-left: 10px;
+.left-i {
+    margin-right: 4px;
 }
 p.autor_material {
     float: right;
