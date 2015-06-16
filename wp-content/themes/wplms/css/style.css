@@ -2024,10 +2024,13 @@ h4.block_title + .date{line-height:1.4;}
     margin-right: 5px;
     margin-top: -22px;
     position: relative;
-    top: -2px;
+    top: -1px;
 }
 .p12{
     font-size:12px;
+}
+.left-i{
+    margin-left: 10px;
 }
 p.autor_material {
     float: right;
