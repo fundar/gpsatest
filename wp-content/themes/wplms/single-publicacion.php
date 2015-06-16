@@ -52,20 +52,32 @@ if(isset($title) && $title !='' && $title !='H'){
                     <div class="col-md-9 col-sm-8">
                     <div class="publicacionpost"><h3><?php the_title(); ?></h3></div>
                     <div class="separador"></div>
-                     <div class="tags">
-                    <?php the_tags('<ul><li>','</li><li>','</li></ul>'); ?>
-                    <?php wp_link_pages('before=<div class="page-links"><ul>&link_before=<li>&link_after=</li>&after=</ul></div>'); ?>
+                                        
+                     <div class="tags"> 
+                    <div class="indate"><i class="icon-clock"></i><?php echo get_post_meta($post->ID, 'publication_year', true); ?> </div>           
+                    <div class="indate"><i class="icon-user clicked"></i><?php echo get_post_meta($post->ID, 'publication_author', true); ?></div>
+                    <div class="indate"><i class="icon-script clicked"></i>
+                        <?php
+                         $terms = get_terms('Material Type');
+                         
+                         foreach ($terms as $term) {
+                             echo '<a href="'.get_term_link($term).'">'.$term->name.'</a>';
+                         }
+                        ;?>
                     </div>
+                     </div>  
+                                           
                     <?php
                     }
                         the_content();
 
                      ?>
+                   
                     <div class="box-bookmark"><?php bookmarks(); ?></div>
                     <div class="adthis"><?php do_action( 'addthis_widget', get_permalink(), get_the_title(), 'small_toolbox'); ?></div>
                     </div>
                     
-                </div>
+                
                 
                 <?php
                         $prenex=get_post_meta(get_the_ID(),'vibe_prev_next',true);
