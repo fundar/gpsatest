@@ -2011,6 +2011,22 @@ h4.block_title + .date{line-height:1.4;}
 	float: left;
 	margin: 0 10px 0 0;
 }
+.inpublication{
+	opacity: 0.7;
+	font-weight: 600;
+	font-size: 11px;
+	text-transform: none;
+	float: left;
+	margin: 0 10px 0 0;
+}
+.13p{
+    font-size: 13px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.12p{
+    font-size:12px;
+}
 .course_title > h2{
 	margin:0;
 }

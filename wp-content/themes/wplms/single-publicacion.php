@@ -54,9 +54,9 @@ if(isset($title) && $title !='' && $title !='H'){
                     <div class="separador"></div>
                                         
                      <div class="tags"> 
-                    <div class="indate"><i class="icon-clock"></i><?php echo get_post_meta($post->ID, 'publication_year', true); ?> </div>           
-                    <div class="indate"><i class="icon-user clicked"></i><?php echo get_post_meta($post->ID, 'publication_author', true); ?></div>
-                    <div class="indate"><i class="icon-script clicked"></i>
+                    <div class="inpublication"><i class="icon-clock"></i><?php echo get_post_meta($post->ID, 'publication_year', true); ?> </div>           
+                    <div class="inpublication"><i class="icon-user clicked 13p"></i><?php echo get_post_meta($post->ID, 'publication_author', true); ?></div>
+                    <div class="inpublication"><i class="icon-script clicked 12p"></i>
                         <?php
                          $terms = get_terms('Material Type');
                          
@@ -65,6 +65,8 @@ if(isset($title) && $title !='' && $title !='H'){
                          }
                         ;?>
                     </div>
+                    
+<?php get_category_link( $category_id ); ?> 
                      </div>  
                                            
                     <?php
