@@ -2013,7 +2013,6 @@ h4.block_title + .date{line-height:1.4;}
 }
 .inpublication{
 	opacity: 0.6;
-	font-weight: 600;
 	font-size: 11px;
 	text-transform: none;
 	float: left;
@@ -2022,13 +2021,19 @@ h4.block_title + .date{line-height:1.4;}
 .p13 {
     font-size: 14px;
     margin-left: 10px;
-    margin-right: 10px;
+    margin-right: 5px;
     margin-top: -22px;
     position: relative;
     top: -2px;
 }
 .p12{
     font-size:12px;
+}
+p.autor_material {
+    float: right;
+    font-size: 11px;
+    margin: 0 7px 0 0;
+    padding: 0;
 }
 .course_title > h2{
 	margin:0;
