@@ -65,9 +65,14 @@ if(isset($title) && $title !='' && $title !='H'){
                          }
                         ;?>
                     </div>
-                    
-<?php get_category_link( $category_id ); ?> 
-                     </div>  
+                    <div class="inpublication"><i class="icon-folder-fill clicked p12 left-i"></i>
+                    <?php
+                    $category = get_the_category(); 
+                    echo $category[0]->cat_name;
+                    ?>
+                           
+                    </div>
+                 </div>  
                                            
                     <?php
                     }
