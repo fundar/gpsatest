@@ -303,3 +303,10 @@ function add_custom_taxonomies() {
   ));
 }
 add_action( 'init', 'add_custom_taxonomies', 0 );
+function custom_group_alpha_first() {
+
+?><option SELECTED value="alphabetical"><?php _e( 'Alphabetical', 'buddypress' ) ?></option><?php
+
+}
+
+add_action( 'bp_members_directory_order_options', 'custom_group_alpha_first' );
