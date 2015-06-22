@@ -303,10 +303,20 @@ function add_custom_taxonomies() {
   ));
 }
 add_action( 'init', 'add_custom_taxonomies', 0 );
-function custom_group_alpha_first() {
+function members_alpha_by_default( $query_string ) {
 
-?><option SELECTED value="alphabetical"><?php _e( 'Alphabetical', 'buddypress' ) ?></option><?php
+global $bp;
+
+
+
+if ( $bp->current_component == BP_MEMBERS_SLUG && !$bp->current_action)
+
+$query_string = 'type=alphabetical&action=alphabetical';
+
+
+
+return $query_string;
 
 }
 
-add_action( 'bp_members_directory_order_options', 'custom_group_alpha_first' );
+add_filter( 'bp_dtheme_ajax_querystring', 'members_alpha_by_default' );
