@@ -303,20 +303,7 @@ function add_custom_taxonomies() {
   ));
 }
 add_action( 'init', 'add_custom_taxonomies', 0 );
-function members_alpha_by_default( $query_string ) {
-
-global $bp;
-
-
-
-if ( $bp->current_component == BP_MEMBERS_SLUG && !$bp->current_action)
-
-$query_string = 'type=alphabetical&action=alphabetical';
-
-
-
-return $query_string;
-
+function sort_alpha_by_default( $qs ) {
+return ($qs) ? $qs : 'type=alphabetical&action=alphabetical';
 }
-
-add_filter( 'bp_dtheme_ajax_querystring', 'members_alpha_by_default' );
+add_filter( 'bp_dtheme_ajax_querystring', 'sort_alpha_by_default' );
