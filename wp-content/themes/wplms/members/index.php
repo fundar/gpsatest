@@ -91,7 +91,7 @@ get_header( 'buddypress' ); ?>
 
 										<?php if ( bp_is_active( 'xprofile' ) ) : ?>
 
-											<option value="alphabetical"><?php _e( 'Alphabetical', 'vibe' ); ?></option>
+											<option value="alphabetical" selected="selected"><?php _e( 'Alphabetical', 'vibe' ); ?></option>
 
 										<?php endif; ?>
 
