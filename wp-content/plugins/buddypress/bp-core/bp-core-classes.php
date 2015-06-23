@@ -321,36 +321,14 @@ class BP_User_Query {
 
 			// Any other 'type' falls through
 			default :
-			
+				$this->uid_name = 'ID';
+				$sql['select']  = "SELECT u.{$this->uid_name} as id FROM {$wpdb->users} u";
 
-				// We prefer to do alphabetical sorts against the display_name field
-				// of wp_users, because the table is smaller and better indexed. We
-				// can do so if xprofile sync is enabled, or if xprofile is inactive.
-				//
-				// @todo remove need for bp_is_active() check
-				if ( ! bp_disable_profile_sync() || ! bp_is_active( 'xprofile' ) ) {
-					$this->uid_name = 'ID';
-					$sql['select']  = "SELECT u.{$this->uid_name} as id FROM {$wpdb->users} u";
-					$sql['orderby'] = "ORDER BY u.display_name";
-					$sql['order']   = "ASC";
-
-				// When profile sync is disabled, alphabetical sorts must happen against
-				// the xprofile table
-				} else {
-					$this->uid_name = 'user_id';
-					$sql['select']  = "SELECT u.{$this->uid_name} as id FROM {$bp->profile->table_name_data} u";
-					$sql['where'][] = $wpdb->prepare( "u.field_id = %d", bp_xprofile_fullname_field_id() );
-					$sql['orderby'] = "ORDER BY u.value";
-					$sql['order']   = "ASC";
-				}
-
-				// Alphabetical queries ignore last_activity, while BP uses last_activity
-				// to infer spam/deleted/non-activated users. To ensure that these users
-				// are filtered out, we add an appropriate sub-query.
-				$sql['where'][] = "u.{$this->uid_name} IN ( SELECT ID FROM {$wpdb->users} WHERE " . bp_core_get_status_sql( '' ) . " )";
+				// In this case, we assume that a plugin is
+				// handling order, so we leave those clauses
+				// blank
 
 				break;
-
 		}
 
 		/** WHERE *************************************************************/
@@ -1025,13 +1003,13 @@ class BP_Core_User {
 		}
 
 		switch ( $type ) {
-			case 'active': case 'online': 
+			case 'active': case 'online': default:
 				$sql[] = "ORDER BY um.meta_value DESC";
 				break;
 			case 'newest':
 				$sql[] = "ORDER BY u.ID DESC";
 				break;
-			case 'alphabetical': default:
+			case 'alphabetical':
 				$sql[] = "ORDER BY pd.value ASC";
 				break;
 			case 'random':
