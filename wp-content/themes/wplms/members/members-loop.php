@@ -17,11 +17,15 @@ isset($loop_number)?$loop_number:$loop_number=5;
 
 
 
+
+
 <?php do_action( 'bp_before_members_loop' ); ?>
 
 
 
-<?php if ( bp_has_members( bp_ajax_querystring( 'members' ).'&type=alphabetical'.'&per_page='.$loop_number ) ) : ?>
+<?php if ( bp_has_members( bp_ajax_querystring( 'members' ).'&per_page='.$loop_number ) ) : ?>
+
+'
 
 
 
