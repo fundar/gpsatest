@@ -1003,13 +1003,13 @@ class BP_Core_User {
 		}
 
 		switch ( $type ) {
-			case 'active': case 'online': default:
+			case 'active': case 'online': 
 				$sql[] = "ORDER BY um.meta_value DESC";
 				break;
 			case 'newest':
 				$sql[] = "ORDER BY u.ID DESC";
 				break;
-			case 'alphabetical':
+			case 'alphabetical': default:
 				$sql[] = "ORDER BY pd.value ASC";
 				break;
 			case 'random':
