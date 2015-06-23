@@ -303,10 +303,7 @@ function add_custom_taxonomies() {
   ));
 }
 add_action( 'init', 'add_custom_taxonomies', 0 );
-function sort_alpha_by_default( $qs ) {
-return ($qs) ? $qs : 'type=alphabetical&action=alphabetical&filter=alphabetical';
-}
-add_filter( 'bp_dtheme_ajax_querystring', 'sort_alpha_by_default' );
+
 
 
 
