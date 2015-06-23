@@ -14,6 +14,17 @@ isset($loop_number)?$loop_number:$loop_number=5;
 
 ?>
 
+<?php /* My Custom Member Query to order alphabetical by default */
+function my_query_filter_new ( $query_string ) {
+$query_string .= '&per_page=15&type=alphabetical';
+return $query_string;
+}
+add_filter( 'bp_ajax_querystring', 'my_query_filter_new' );
+?>
+
+
+
+
 <?php do_action( 'bp_before_members_loop' ); ?>
 
 
