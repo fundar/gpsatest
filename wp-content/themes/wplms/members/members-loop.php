@@ -27,7 +27,9 @@ isset($loop_number)?$loop_number:$loop_number=5;
 
 <?php if ( bp_has_members( bp_ajax_querystring( 'members' ).'&type=alphabetical'.'&per_page='.$loop_number ) ) : ?>
  
- <?php bp_ajax_querystring( 'members' ).'&type=alphabetical'.'&per_page='.$loop_number; ?>
+ <?php 
+ echo $queryString = "type=alphabetical&action=alphabetical";
+ ?>
 
 	<div id="pag-top" class="pagination">
 
