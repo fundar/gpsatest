@@ -21,9 +21,9 @@ isset($loop_number)?$loop_number:$loop_number=5;
 
 <?php do_action( 'bp_before_members_loop' ); ?>
 
-<?php echo  bp_ajax_querystring( 'members' ); ?>
+<?php echo 	 bp_ajax_querystring( 'members' ); ?>
 
-<?php if (  bp_ajax_querystring( 'members' ) == "" )   { ?>
+<?php if (  bp_ajax_querystring( 'members' ) == "action=activity_update" )   { ?>
 
 <?php if ( bp_has_members( bp_ajax_querystring( 'members' ).'&type=alphabetical'.'&per_page='.$loop_number ) ) : ?>
 
