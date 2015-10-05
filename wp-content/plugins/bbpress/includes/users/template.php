@@ -611,6 +611,35 @@ function bbp_author_ip( $args = '' ) {
 		return apply_filters( 'bbp_get_author_ip', $author_ip, $r );
 	}
 
+function bbp_nice( $args = '' ) {
+	echo bbp_get_nice( $args );
+}
+function bbp_get_nice( $args = '' ) {
+		// Used as post id
+		$post_id = is_numeric( $args ) ? (int) $args : 0;
+
+		// Parse arguments against default values
+		$r = bbp_parse_args( $args, array(
+			'post_id' => $post_id,
+			'before'  => '<span class="bbp-author-ip">(',
+			'after'   => ')</span>'
+		), 'get_nice' );
+
+		// Get the author IP meta value
+		$author_ip = get_post_meta( $r['post_id'], '_bbp_author_ip', true );
+		if ( !empty( $author_ip ) ) {
+			$author_ip = $r['before'] . $author_ip . $r['after'];
+
+		// No IP address
+		} else {
+			$author_ip = '';
+		}
+
+		return apply_filters( 'bbp_get_nice', $author_ip, $r );
+	}
+	
+	
+	
 /** Anonymous Fields **********************************************************/
 
 /**
