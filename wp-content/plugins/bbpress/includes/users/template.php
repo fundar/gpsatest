@@ -594,7 +594,7 @@ function bbp_author_ip( $args = '' ) {
 		// Parse arguments against default values
 		$r = bbp_parse_args( $args, array(
 			'post_id' => $post_id,
-			'before'  => '<span class="bbp-author-ip">(',
+			'before'  => '<span class="bbp-author-ips">(',
 			'after'   => ')</span>'
 		), 'get_author_ip' );
 
@@ -621,7 +621,7 @@ function bbp_get_nice( $args = '' ) {
 		// Parse arguments against default values
 		$r = bbp_parse_args( $args, array(
 			'post_id' => $post_id,
-			'before'  => '<span class="bbp-author-ip">(',
+			'before'  => '<span class="jose">(',
 			'after'   => ')</span>'
 		), 'get_nice' );
 
