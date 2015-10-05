@@ -626,7 +626,7 @@ function bbp_get_nice( $args = '' ) {
 		), 'get_nice' );
 
 		// Get the author IP meta value
-		$author_ip = get_post_meta( $r['post_id'], '_bbp_author_ip', true );
+		$author_ip = get_post_meta( $r['post_id'], '_bbp_nice', true );
 		if ( !empty( $author_ip ) ) {
 			$author_ip = $r['before'] . $author_ip . $r['after'];
 
