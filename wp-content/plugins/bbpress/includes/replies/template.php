@@ -1415,7 +1415,7 @@ function bbp_get_reply_nice( $args = array() ) {
 		$reply_id    = bbp_get_reply_id( $r['reply_id'] );
 		$role =  bbp_get_user_nicename( bbp_get_reply_author_id($reply_id ))  ; 
 
-		$author_role = sprintf( '%1$s<div  id="nicename" class="niceman">%3$s</div>%4$s', $ra['before'], esc_attr( $r['class'] ), esc_html( $role), $r['after'] );
+		$author_role = sprintf( '%1$s<div  id="nicename" class="niceman">@%3$s</div>%4$s', $ra['before'], esc_attr( $r['class'] ), esc_html( $role), $r['after'] );
 
 		return apply_filters( 'bbp_get_reply_nice', $author_role, $r );
 	}
