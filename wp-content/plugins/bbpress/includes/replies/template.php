@@ -1243,7 +1243,9 @@ function bbp_reply_author_link( $args = '' ) {
 				if ( true === $r['show_role'] ) {
 					$author_link[] = bbp_get_reply_author_role( array( 'reply_id' => $reply_id ) );
 				}
-
+if ( true === $r['show_role'] ) {
+					$author_link[] = bbp_get_reply_nice( array( 'reply_id' => $reply_id ) );
+				}
 				$author_link = implode( $r['sep'], $author_link );
 
 			// No links if anonymous
@@ -1367,6 +1369,10 @@ function bbp_reply_author_email( $reply_id = 0 ) {
 function bbp_reply_author_role( $args = array() ) {
 	echo bbp_get_reply_author_role( $args );
 }
+
+function bbp_reply_nice( $args = array() ) {
+	echo bbp_get_reply_nice( $args );
+}
 	/**
 	 * Return the reply author role
 	 *
@@ -1396,7 +1402,25 @@ function bbp_reply_author_role( $args = array() ) {
 
 		return apply_filters( 'bbp_get_reply_author_role', $author_role, $r );
 	}
+function bbp_get_reply_nice( $args = array() ) {
 
+		// Parse arguments against default values
+		$r = bbp_parse_args( $args, array(
+			'reply_id' => 0,
+			'class'    => 'bbp-author-role',
+			'before'   => '',
+			'after'    => ''
+		), 'get_reply_nice' );
+
+		$reply_id    = bbp_get_reply_id( $r['reply_id'] );
+		$role =  bbp_get_user_nicename( bbp_get_reply_author_id($reply_id ))  ; 
+
+		$author_role = sprintf( '%1$s<div  id="nicename" class="niceman">%3$s</div>%4$s', $ra['before'], esc_attr( $r['class'] ), esc_html( $role), $r['after'] );
+
+		return apply_filters( 'bbp_get_reply_nice', $author_role, $r );
+	}
+	
+	
 /**
  * Output the topic title a reply belongs to
  *
