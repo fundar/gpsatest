@@ -193,10 +193,13 @@ var geojson = {
       "type": "Feature",
       "properties": {
         "names": [
-          "Richard Holloway"
+          "Richard Holloway",
+		  "Jose Chavez"
         ],
         "urls": [
-          "http://gpsaknowledge.org/expert/richard-holloway/"
+          "http://gpsaknowledge.org/expert/richard-holloway/",
+		  "http://gpsaknowledge.org/expert/richard-holloway/"
+		  
         ],
         "themes": [
           [1,2,3,4,5,6,7,8]
